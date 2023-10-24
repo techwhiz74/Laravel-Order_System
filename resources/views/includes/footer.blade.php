@@ -2,7 +2,6 @@
 <script>
     $(document).on("change", ".uploadProfileInput", function() {
         var triggerInput = $(this);
-        console.log(triggerInput);
         var currentImg = $(this).closest(".pic-holder").find(".pic").attr("src");
         var holder = $(this).closest('.profile-pic-wrapper').find(".pic-holder");
         var wrapper = $(this).closest(".profile-pic-wrapper");
@@ -136,7 +135,6 @@
             error: () => {
                 $('#order_progress').addClass('reqiurd');
                 $('#order_progress').text('{{ __('home.Files uploading failed') }}');
-                console.error("error!");
             }
         });
     });
@@ -157,7 +155,7 @@
                   <p class="size">Processing...</p>
                   <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
               </td>
-              <td>
+              <td style="text-align:end;">
                   {% if (!o.options.autoUpload && o.options.edit && o.options.loadImageFileTypes.test(file.type)) { %}
                     <button class="btn btn-success edit" data-index="{%=i%}" disabled>
                         <i class="glyphicon glyphicon-edit"></i>
@@ -165,15 +163,15 @@
                     </button>
                   {% } %}
                   {% if (!i && !o.options.autoUpload) { %}
-                      <button class="btn btn-primary start" disabled>
+                      <button class="upload_table_button start" disabled>
                           <i class="glyphicon glyphicon-upload"></i>
                           <span style="font-size:13px;">Start</span>
                       </button>
                   {% } %}
                   {% if (!i) { %}
-                      <button class="btn btn-warning cancel">
+                      <button class="upload_table_button cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
-                          <span style="font-size:13px;">Cancel</span>
+                          <span style="font-size:13px;">Stornieren</span>
                       </button>
                   {% } %}
               </td>
@@ -225,13 +223,14 @@
     </script>
 <script>
     function contentViewer(id) {
-        console.log(id);
         for (let i = 0; i < 4; i++) {
             $('#menu_content_wrapper' + i).hide();
         }
         $('#bn_sec').hide();
+        $('.lion_popup_wrrpr').removeClass('active');
+        $("#wrapper").removeClass("full_height");
+        $(".main-content-wrapper").show();
         $('#menu_content_wrapper' + id).show();
-        console.log($('#menu_content_wrapper' + id));
         return false;
     }
     $(function() {
@@ -264,6 +263,7 @@
             $('[name=size]').css("border", "1px solid #ccc");
             $('.order_form_validation_products').hide();
             $('#selected_products').css("border", "1px solid #ccc");
+            $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
 
@@ -283,6 +283,7 @@
             $('[name=size]').css("border", "1px solid #ccc");
             $('.order_form_validation_products').hide();
             $('#selected_products').css("border", "1px solid #ccc");
+            $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
 
@@ -300,8 +301,8 @@
             $('[name=project_name]').css("border", "1px solid #ccc");
             $('.order_form_file_upload').hide();
             $('[name=size]').val("24");
+            $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
-            console.log($('[name=size]').val(), $('#selected_products').text());
         });
         $('#order_form_em_standard_popup4').click(function() {
             typeInput.val('Vector');
@@ -316,8 +317,13 @@
             $('[name=project_name]').css("border", "1px solid #ccc");
             $('.order_form_file_upload').hide();
             $('[name=size]').val("24");
+            $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
         });
+        $('#view_order_popup1').click(function() {
+            $('#order_detail_popup').hide();
+            $('#order_change_popup').hide();
+        })
 
         $('.product-select-items input[type=checkbox]').change(function() {
             products = [];
@@ -330,7 +336,6 @@
         });
 
         $(popup).find('#order_submit_form').submit(function(e) {
-            console.log('submitted');
             e.preventDefault();
             $('.product-items-menu').show();
         });
@@ -388,6 +393,9 @@
             $('#order_form_textarea').val('');
             $('#fileupload').val('');
             $('.template-upload').remove();
+            $('#admin_customer_search_table tr').remove();
+            $('#adminTableSearchInput').val('');
+            $('#order_form_checkbox').prop("checked", false);
             $('.order_form_anotherOrder').hide();
             $('.product-select-items input[type=checkbox]').prop('checked', false);
         });
@@ -401,8 +409,54 @@
             data.append('special_instructions', $('[name=special_instructions]').val());
             data.append('type', typeInput);
             data.append('deliver_time', deliverTimeInput);
+            data.append('customer_number', $('[name=customer_number]').val());
+            data.append('ordered_from', $('[name=ordered_from]').val());
         });
-        $('.request_profile_message').hide();
+        $('.admin_order_form_submit').click(function() {
+            var data = new FormData();
+            data.append('project_name', $('[name=project_name]').val());
+            data.append('size', $('[name=size]').val());
+            data.append('width_height', $('[name=width_height]:checked').val());
+            data.append('products', $('[name=products]').val());
+            data.append('special_instructions', $('[name=special_instructions]').val());
+            data.append('type', typeInput);
+            data.append('deliver_time', deliverTimeInput);
+            data.append('customer_number', $('[name=customer_number]').val());
+            data.append('ordered_from', $('[name=ordered_from]').val());
+            data.append('searched_id', $('[name=searched_id]').val());
+        });
+        $('.admin_order_form_submit').click(function(e) {
+            e.preventDefault();
+            if (($('[name=project_name]').val() != "") && ($(
+                    '[name=size]').val() != "") && ($('#selected_products')
+                    .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
+                    '#order_form_checkbox').is(':checked')) && ($('#admin_customer_search_table tr')
+                    .length != 1)) {
+                $('.fileupload-buttonbar .start').trigger('click');
+            }
+            if ($('#admin_customer_search_table tr').length == 1) {
+                $('.admin_search_customer_validation').show();
+                $('.SearchInputWrapper').css("border", "1px solid red");
+            }
+            if ($('[name=project_name]').val() == "") {
+                $('.order_form_validation_projectname').show();
+                $('[name=project_name]').css("border", "1px solid red");
+            }
+            if ($('[name=size]').val() == "") {
+                $('.order_form_validation_size').show();
+                $('[name=size]').css("border", "1px solid red");
+            }
+            if ($('#selected_products').text() == "") {
+                $('.order_form_validation_products').show();
+                $('#selected_products').css("border", "1px solid red");
+            }
+            if ($('#order_form_upload_list tr').length == 0) {
+                $('.order_form_file_upload').show();
+            }
+            if ($('#order_form_checkbox').is(':not(:checked)')) {
+                $('.order_form_validation_checkbox').show();
+            }
+        });
         $('#request_profile_form').submit(function(e) {
             e.preventDefault();
             var request_profile_data = new FormData();
@@ -437,7 +491,8 @@
                 processData: false,
                 data: request_profile_data,
                 success: () => {
-                    $('.request_profile_message').show();
+                    toastr.success(
+                        "Warten Sie auf die Genehmigung durch den Administrator");
                     $('#customer_list_table_reload_button').trigger('click');
                 },
                 error: () => {
@@ -445,17 +500,19 @@
                 }
             })
 
-        })
+        });
+
 
         //validation
         $('.order_form_submit').click(function(e) {
             e.preventDefault();
 
-            // if (($('[name=project_name]').val() != "") && ($(
-            //         '[name=size]').val() != "") && ($('#selected_products')
-            //         .text() != "") && ($('#order_form_upload_list tr th').length == 0)) {
-            $('.fileupload-buttonbar .start').trigger('click');
-            // }
+            if (($('[name=project_name]').val() != "") && ($(
+                    '[name=size]').val() != "") && ($('#selected_products')
+                    .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
+                    '#order_form_checkbox').is(':checked'))) {
+                $('.fileupload-buttonbar .start').trigger('click');
+            }
 
             if ($('[name=project_name]').val() == "") {
                 $('.order_form_validation_projectname').show();
@@ -471,6 +528,9 @@
             }
             if ($('#order_form_upload_list tr').length == 0) {
                 $('.order_form_file_upload').show();
+            }
+            if ($('#order_form_checkbox').is(':not(:checked)')) {
+                $('.order_form_validation_checkbox').show();
             }
         });
         $("[name=project_name]").keyup(function(e) {
@@ -492,8 +552,15 @@
         $('.fileinput-button').click(function(e) {
             $('.order_form_file_upload').hide();
         });
+        $('#order_form_checkbox').click(function(e) {
+            $('.order_form_validation_checkbox').hide();
+        })
+        $('.SearchInputWrapper').click(function(e) {
+            $('.admin_search_customer_validation').hide();
+            $('.SearchInputWrapper').css("border", "none");
+        })
 
-        // validation size field
+        // validation order form size field
         $("#input_number_format").keyup(function(e) {
             if ($(this).val().match(/^[0-9]+$/))
                 return;
@@ -506,7 +573,20 @@
             $('#name').val('');
             $('#email').val('');
             $('#password').val('');
-        })
+        });
+
+        // order-change message and file upload form
+        $('#order_change_form').submit(function(e) {
+            e.preventDefault();
+        });
+        $('.order_change_submit').click(function(e) {
+            e.preventDefault();
+            var data = new FormData();
+            data.append('order_id', $('[name=order_id]').val());
+            data.append('order_change_textarea', $('[name=order_form]').val());
+            $('#fileupload_em_ex').find('.fileupload-buttonbar .start').trigger('click');
+        });
+
     });
     $(function() {
         var table;

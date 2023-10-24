@@ -15,6 +15,7 @@ return [
 
 
     'customer-vieworders' => '/en/customer/view-orders',
+    'customer-order_delete' => '/en/customer/order_delete',
     'customer-toggle-status' => '/en/customer/toggle-status',
     'customer-order_detail' => '/en/customer/order_detail',
     'customer-order_change' => '/en/customer/order_change',
@@ -131,6 +132,8 @@ return [
     'admin-get-customer-profile' => '/en/admin/get-customer-profile',
     'admin-change-profile' => '/en/admin/change-profile/',
     'admin-add-customer' => '/en/admin/add-customer',
+    'admin-customer-search-table' => '/en/admin/customer-search-table',
+
 
 
 

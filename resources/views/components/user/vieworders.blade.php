@@ -30,92 +30,58 @@
                 </div>
             </div>
             <div class="controlGroup2">
-                <div class="dropdown">
-                    <button class="tableFilterBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <i class="fas fa-file-import" style="margin-right:8px"></i>
-                        <span>{{ __('home.import') }}</span>
-                    </button>
-                    <div class="dropdown-menu megamenu" role="menu" style="width:230px; padding:15px;">
-                        <div class="form-group">
-                            <input type="file" style="width: 100% !important" class="form-control"
-                                id="upload_customer" multiple webkitdirectory />
-                        </div>
-                    </div>
-                </div>
-                <div class="tableFilter dropdown">
-                    <button class="tableFilterBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <img src="/asset/images/tableFilter.svg" class="filterImage" alt="">
-                        <span>{{ __('home.filter') }}</span>
-                    </button>
-                    <div class="dropdown-menu megamenu" role="menu"
-                        style="width:220px; padding:15px; font-size:13px">
-                        <div>{{ __('home.order_type') }}</div>
-
-                        <label>
-                            <input type="radio" class="option-input radio" name="example" checked />
-                            {{ __('home.all') }}
-                        </label>
-                        <label>
-                            <input type="radio" class="option-input radio" name="example" />
-                            {{ __('home.internet_order') }}
-                        </label>
-
-                        <div class="radioButtons">
-                            <button id="" class="radioButton">{{ __('home.cancel') }}</button>
-                            <button id="" class="radioButton">{{ __('home.apply') }}</button>
-                        </div>
-                    </div>
-                </div>
                 <div class="tableColumn dropdown">
                     <button class="tableCloumnBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <img src="/asset/images/tableColumn.svg" class="columnImage" alt="">
                         <span>{{ __('home.column') }}</span>
                     </button>
                     <div class="dropdown-menu megamenu" role="menu"
-                        style="width:230px; padding:15px; font-size:13px">
-                        <div>{{ __('home.COLUMN') }}</div>
-
-                        <label style="color:#ccc">
-                            <input type="checkbox" class="option-input checkbox" style="background:#B22222;" checked
-                                disabled />
+                        style="width:190px; padding:15px; font-size:13px">
+                        <div style="margin-bottom:10px;">{{ __('home.COLUMN') }}</div>
+                        <label>
+                            <input type="checkbox" id="checkbox_order_type" class="option-input checkbox" checked />
+                            {{ __('home.order_type') }}
+                        </label><br>
+                        <label>
+                            <input type="checkbox" id="checkbox_delivery_time" class="option-input checkbox" checked />
+                            {{ __('home.delivery_time') }}
+                        </label><br>
+                        <label>
+                            <input type="checkbox" id="checkbox_order" class="option-input checkbox" checked />
                             {{ __('home.order') }}
-                        </label>
-
-                        <label style="color:#ccc;">
-                            <input type="checkbox" class="option-input checkbox" style="background:#B22222;" checked
-                                disabled />
-                            {{ __('home.status') }}
-                        </label>
-
+                        </label><br>
                         <label>
                             <input type="checkbox" id="checkbox_date" class="option-input checkbox" checked />
                             {{ __('home.date') }}
-                        </label>
+                        </label><br>
                         <label>
                             <input type="checkbox" id="checkbox_ordered_from" class="option-input checkbox" checked />
                             {{ __('home.order_from') }}
-                        </label>
+                        </label><br>
                         <label>
                             <input type="checkbox" id="checkbox_project" class="option-input checkbox" checked />
                             {{ __('home.project') }}
+                        </label><br>
+                        <label>
+                            <input type="checkbox" id="checkbox_status" class="option-input checkbox" checked />
+                            {{ __('home.status') }}
+                        </label><br>
+                        <label>
+                            <input type="checkbox" id="checkbox_detail" class="option-input checkbox" checked />
+                            {{ __('home.detail') }}
+                        </label><br>
+                        <label>
+                            <input type="checkbox" id="checkbox_change" class="option-input checkbox" checked />
+                            {{ __('home.change') }}
                         </label>
 
                         <div class="CheckboxButtons">
                             <button id="" class="CheckboxButton">{{ __('home.cancel') }}</button>
                             <button id="checkbox_apply" class="CheckboxButton">{{ __('home.apply') }}</button>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="select">
-            <select id="status-filter">
-                <option value="">All</option>
-                <option value="pending">Pending</option>
-                <option value="delivered">Delivered</option>
-            </select> -->
         </div>
 
         <div>
@@ -124,15 +90,20 @@
                 <table id="view-order" class="table table-striped" style="width:100%; font-size:13px;">
                     <thead>
                         <tr>
-                            <th style="max-width: 110px !important">{{ __('home.order_type') }}</th>
+                            <th style="max-width: 110px !important; text-align:center;">{{ __('home.order_type') }}
+                            </th>
                             <th>{{ __('home.delivery_time') }}</th>
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
                             <th>{{ __('home.order_from') }}</th>
-                            <th style="min-width: 250px !important">{{ __('home.project') }}</th>
+                            <th style="min-width: 350px !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 110px !important; text-align:center;">{{ __('home.detail') }}</th>
                             <th style="max-width: 110px !important; text-align:center;">{{ __('home.change') }}</th>
+                            {{-- <th style="max-width: 100px !important;"><input type="checkbox" name="select_all"
+                                    id="select_all">
+                                <span><button type="button" id="order_view_delete_ok">Sure</button></span>
+                            </th> --}}
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -157,10 +128,19 @@
     });
 
 
-    // $(".DatePickerWrapperStart").datepicker();
     $("#checkbox_apply").click(function() {
-        if ($("#checkbox_date").is(":checked")) {
-            console.log("checked");
+        if ($("#checkbox_order_type").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(0)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(0)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(0)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(0)").hide();
+            });
+        }
+        if ($("#checkbox_delivery_time").is(":checked")) {
             $("#view-order > thead > tr > th:eq(1)").show();
             $("#view-order > tbody > tr").each(function() {
                 $(this).find("td:eq(1)").show();
@@ -171,8 +151,7 @@
                 $(this).find("td:eq(1)").hide();
             });
         }
-        if ($("#checkbox_ordered_from").is(":checked")) {
-            console.log("checked");
+        if ($("#checkbox_order").is(":checked")) {
             $("#view-order > thead > tr > th:eq(2)").show();
             $("#view-order > tbody > tr").each(function() {
                 $(this).find("td:eq(2)").show();
@@ -183,8 +162,7 @@
                 $(this).find("td:eq(2)").hide();
             });
         }
-        if ($("#checkbox_project").is(":checked")) {
-            console.log("checked");
+        if ($("#checkbox_date").is(":checked")) {
             $("#view-order > thead > tr > th:eq(3)").show();
             $("#view-order > tbody > tr").each(function() {
                 $(this).find("td:eq(3)").show();
@@ -195,10 +173,65 @@
                 $(this).find("td:eq(3)").hide();
             });
         }
+        if ($("#checkbox_ordered_from").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(4)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(4)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(4)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(4)").hide();
+            });
+        }
+        if ($("#checkbox_project").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(5)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(5)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(5)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(5)").hide();
+            });
+        }
+        if ($("#checkbox_status").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(6)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(6)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(6)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(6)").hide();
+            });
+        }
+        if ($("#checkbox_detail").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(7)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(7)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(7)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(7)").hide();
+            });
+        }
+        if ($("#checkbox_change").is(":checked")) {
+            $("#view-order > thead > tr > th:eq(8)").show();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(8)").show();
+            });
+        } else {
+            $("#view-order > thead > tr > th:eq(8)").hide();
+            $("#view-order > tbody > tr").each(function() {
+                $(this).find("td:eq(8)").hide();
+            });
+        }
     });
 
-    var viewOrderTable;
 
+    var viewOrderTable;
     $(function() {
         $(".datepicker").datepicker({
             autoclose: true,
@@ -227,10 +260,6 @@
             order: [
                 [2, 'desc']
             ],
-            // columnDefs: [{
-            //     targets: [0],
-            //     orderData: [4, 1]
-            // }],
 
             columns: [{
                     data: 'type',
@@ -263,22 +292,28 @@
                     data: 'status',
                     name: 'status'
                 },
-
                 {
                     data: 'detail',
                     name: 'detail',
                     orderable: false,
                     searchable: false
                 },
-
                 {
                     data: 'action',
                     name: 'action',
                     orderable: false,
                     searchable: false
-                }
-            ]
+                },
+                // {
+                //     data: 'delete',
+                //     name: 'delete',
+                //     orderable: false,
+                //     searchable: false
+                // }
+            ],
+
         });
+
 
         $('#status-filter, #category-filter').change(function() {
             viewOrderTable.ajax.reload();
@@ -300,6 +335,35 @@
             viewOrderTable.ajax.reload();
         });
     });
+
+    $('#order_view_delete_ok').click(function() {
+        var order_view_checkbox_data = new FormData();
+        var $data = [];
+        $("#view-order > tbody > tr").each(function() {
+            if ($(this).find("td:eq(9)").find(":checked").val() != null) {
+                $data.push($(this).find("td:eq(9)").find(":checked").val());
+            }
+        });
+        console.log($data);
+        order_view_checkbox_data.append('delete_id', $data);
+        $.ajax({
+            url: '{{ __('routes.customer-order_delete') }}',
+            type: 'post',
+            contentType: false,
+            processData: false,
+            data: order_view_checkbox_data,
+            success: () => {
+                console.log("success!");
+                viewOrderTable.ajax.reload();
+                $('#customer_dahsboard_table_reload_button').trigger('click');
+            },
+            error: () => {
+                console.error("error!");
+            }
+        })
+    })
+
+
 
     $("#upload_customer").change(function(e) {
         var files = e.target.files;
@@ -325,30 +389,12 @@
             success: () => {
                 console.log("success!");
                 viewOrderTable.ajax.reload();
+                $('#customer_dahsboard_table_reload_button').trigger('click');
+
             },
             error: () => {
                 console.error("error!");
             }
         });
-
-        // uploadFiles(files);
     });
-
-    // function toggleStatus(id) {
-    //     $.ajax({
-    //         url: "{{ __('routes.customer-toggle-status') }}",
-    //         type: 'POST',
-    //         data: {
-    //             id: id
-    //         },
-    //         success: function(result) {
-    //             if (result == "ok") {
-    //                 table.ajax.reload();
-    //             }
-    //         },
-    //         error: function(err) {
-    //             console.log(err);
-    //         }
-    //     });
-    // }
 </script>

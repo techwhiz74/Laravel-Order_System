@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderChange;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
@@ -282,24 +283,24 @@ class OrderController extends Controller
 
         if ($request->ajax()) {
             $data = Order::orderBy('id', 'desc')
-                ->where('org_id', $authuser->org_id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
+                ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
             if ($request->start_date_filter == '') {
                 if ($request->end_date_filter == '') {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('org_id', $authuser->org_id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
+                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
                 } else {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('org_id', $authuser->org_id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
                         ->where('created_at', '<=', date('Y-m-d', strtotime($request->end_date_filter)))->get();
                 }
             } else {
                 if ($request->end_date_filter == '') {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('org_id', $authuser->org_id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
                         ->where('created_at', '>=', date('Y-m-d', strtotime($request->start_date_filter)))->get();
                 } else {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('org_id', $authuser->org_id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
                         ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime($request->end_date_filter))])->get();
                 }
             }
@@ -308,11 +309,6 @@ class OrderController extends Controller
                     $order = $row->customer_number . '-' . $row->order_number;
                     return $order;
                 })
-                ->editColumn('user', function ($row) {
-                    $user = $row->user->name;
-                    return $user;
-                })
-
                 ->editColumn('date', function ($row) {
                     $date = $row->created_at->format('d.m.Y');
                     return $date;
@@ -342,16 +338,15 @@ class OrderController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary"></i></button>';
+                    $btn = '';
+                    if ($row->status == "Ausgeliefert") {
+                        $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary"></i></button>';
+                    }
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info"></i></button>';
-                    return $btn;
-                })
-                ->addColumn('download', function ($row) {
-                    $btn = '<a href=' . __("routes.customer-files") . $row->id . ' class="btn btn-secondary btn-sm"> Download Files </a>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -363,13 +358,26 @@ class OrderController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'catgory', 'action', 'user', 'date', 'detail', 'user', 'download', 'salutation', 'selection', 'status', 'type', 'deliver_time'])
+                ->addColumn('delete', function ($row) {
+                    $delete = '<input class="overview_td_checkbox" type="checkbox" value="' . $row->id . '"/>';
+                    return $delete;
+                })
+                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'delete'])
                 ->make(true);
         }
 
         // $ordersWithCategory = Order::with(['category','Order_address'])->where('user_id', $authuser)->get();
 
         return view('users.orders.vieworder');
+    }
+    public function DeleteOrder(Request $request)
+    {
+        $delete_id = $request->post('delete_id');
+        $delete_ids = explode(',', $delete_id);
+        foreach ($delete_ids as $id) {
+            $order = Order::findOrfail($id);
+            $order->delete();
+        }
     }
 
     public function OrderDetail(Request $request)
@@ -392,7 +400,7 @@ class OrderController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" class="btn btn-secondary btn-sm" style="display:flex; margin-left:30px"><i class="fa-solid fa-download"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
                     return $btn;
                 })
 
@@ -434,8 +442,9 @@ class OrderController extends Controller
 
     public function DashboardTable1(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->whereIn('status', ['Offen', 'In Bearbeitung'])->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->whereIn('status', ['Offen', 'In Bearbeitung'])->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -471,8 +480,9 @@ class OrderController extends Controller
     }
     public function DashboardTable2(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('status', 'Ausgeliefert')->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Ausgeliefert')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -514,35 +524,188 @@ class OrderController extends Controller
         $size = $request->post('size');
         $width_height = $request->post('width_height');
         $products = $request->post('products');
-        $speical_instructions = $request->post('special_instructions');
+        $special_instructions = $request->post('special_instructions');
+        $customer_number = $request->post('customer_number');
+        $ordered_from = $request->post('ordered_from');
         $last_order = Order::orderBy('order_number', 'desc')->first();
-        // var_dump($last_order_number);
-        // die();
-        $order = Order::where('customer_number', '100363')
-            ->where('type', $type)
+
+        $order = Order::where('type', $type)
             ->where('project_name', $project_name)
             ->where('size', $size)
             ->where('deliver_time', $deliver_time)
             ->where('width_height', $width_height)
             ->where('products', $products)
-            ->where('special_instructions', $speical_instructions)->first();
+            ->where('special_instructions', $special_instructions)
+            ->where('ordered_from', $ordered_from)->first();
+
         if ($order == null) {
             $order = new Order();
-            $order->customer_number = '100363';
+            $order->customer_number = $customer_number;
             $order->order_number = $last_order == null ? '0001' : sprintf('%04s', $last_order->order_number + 1);
             $order->project_name = $project_name;
-            $order->ordered_from = 'Mustermann';
+            $order->ordered_from = $ordered_from;
             $order->status = 'Offen';
             $order->type = $type;
             $order->size = $size;
             $order->deliver_time = $deliver_time;
             $order->width_height = $width_height;
             $order->products = $products;
-            $order->special_instructions = $speical_instructions;
+            $order->special_instructions = $special_instructions;
             $order->category_id = 1;
             $order->user_id = auth()->user()->id;
             $order->assigned_to = 4;
             $order->org_id = auth()->user()->id;
+            $order->save();
+        }
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Originaldatei/';
+        $path = $uploadDir . $filePath;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
+    }
+    public function fileUploadChange(Request $request)
+    {
+        $order_id = $request->post('order_id');
+        $order_change_message = $request->post('order_change_textarea');
+
+
+        $order = Order::findOrfail($order_id);
+        $customer = User::findOrfail($order->user_id);
+
+        OrderChange::where('order_number', $order->order_number)->delete();
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->message = $order_change_message;
+        $order_change->save();
+
+        $order->status = 'Offen';
+        $order->save();
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Änderungsdateien Kunde/';
+        $path = $uploadDir . $filePath;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+    }
+    public function adminFileUpload(Request $request)
+    {
+        $type = $request->post('type');
+        $deliver_time = $request->post('deliver_time');
+        $project_name = $request->post('project_name');
+        $size = $request->post('size');
+        $width_height = $request->post('width_height');
+        $products = $request->post('products');
+        $special_instructions = $request->post('special_instructions');
+        $customer_number = $request->post('customer_number');
+        $ordered_from = $request->post('ordered_from');
+        $searched_id = $request->post('searched_id');
+        $last_order = Order::orderBy('order_number', 'desc')->first();
+
+        $order = Order::where('type', $type)
+            ->where('project_name', $project_name)
+            ->where('size', $size)
+            ->where('deliver_time', $deliver_time)
+            ->where('width_height', $width_height)
+            ->where('products', $products)
+            ->where('special_instructions', $special_instructions)
+            ->where('ordered_from', $ordered_from)->first();
+
+        if ($order == null) {
+            $order = new Order();
+            $order->customer_number = $customer_number;
+            $order->order_number = $last_order == null ? '0001' : sprintf('%04s', $last_order->order_number + 1);
+            $order->project_name = $project_name;
+            $order->ordered_from = $ordered_from;
+            $order->status = 'Offen';
+            $order->type = $type;
+            $order->size = $size;
+            $order->deliver_time = $deliver_time;
+            $order->width_height = $width_height;
+            $order->products = $products;
+            $order->special_instructions = $special_instructions;
+            $order->category_id = 1;
+            $order->user_id = $searched_id;
+            $order->assigned_to = 4;
+            $order->org_id = $searched_id;
             $order->save();
         }
 
@@ -621,13 +784,13 @@ class OrderController extends Controller
         }
 
     }
-    public function changeOrderIndex(Request $request)
-    {
-        $order_file_upload = Order_file_upload::findOrFail($request->post('id'));
-        $order_file_upload->index = $request->post('index');
-        $order_file_upload->save();
-        return response()->json($order_file_upload);
-    }
+    // public function changeOrderIndex(Request $request)
+    // {
+    //     $order_file_upload = Order_file_upload::findOrFail($request->post('id'));
+    //     $order_file_upload->index = $request->post('index');
+    //     $order_file_upload->save();
+    //     return response()->json($order_file_upload);
+    // }
 
     public function importData(Request $request)
     {
@@ -657,8 +820,8 @@ class OrderController extends Controller
             $ordered_from = 'Mustermann';
             $status = "Ausgeliefert";
             $type = 'Embroidery';
-            $size = "";
-            $width_height = "";
+            $size = "24";
+            $width_height = "Höhe";
             $deliver_time = "STANDARD";
             $products = "Patch, Patch Material";
             $special_instructions = "Es handelt sich um spezielle Anweisungen";

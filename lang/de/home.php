@@ -132,7 +132,7 @@ return [
     'detail' => 'Detail',
     'change' => 'Ändern',
 
-    'order_type' => 'Auftragsart',
+    'order_type' => 'Art',
     'alldownload' => 'ALLE DATEIEN DOWNLOADEN',
     'internet_order' => 'Internet Order',
     'cancel' => 'Abbrechen',
@@ -140,6 +140,7 @@ return [
     'COLUMN' => 'SPALTE',
 
     'order_detail' => 'Bestelldetails',
+    'order_change' => 'Auftragsänderung',
     'order_number' => 'Bestellnummer',
     'index' => 'Index',
     'extension' => 'Verlängerung',
@@ -239,6 +240,7 @@ return [
     'validation_size' => 'Größe ist erforderlich',
     'validation_products' => 'Endmaterial ist erforderlich',
     'validation_file_upload' => 'Datei-Upload bestellen ist erforderlich',
+    'validation_checkbox' => 'Dem müssen Sie zustimmen',
 
     //view-order-express
     'orderform_title' => 'Auftrag erfassen - Stickprogramme ',

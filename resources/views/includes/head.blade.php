@@ -26,6 +26,7 @@
     rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"rel="stylesheet">
 <link href="{{ asset('asset/css/jquery.multiselect.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="https://blueimp.github.io/Gallery/css/blueimp-gallery.min.css" />
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
@@ -83,7 +84,7 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
     $.ajaxSetup({
         headers: {
@@ -135,6 +136,7 @@
 <!-- The main application script -->
 <script src="{{ asset('asset/js/demo.js') }}"></script>
 <script src="{{ asset('asset/js/demo_em_ex.js') }}"></script>
+<script src="{{ asset('asset/js/demo_admin.js') }}"></script>
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
 <script>

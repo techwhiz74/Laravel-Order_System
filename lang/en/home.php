@@ -140,6 +140,7 @@ return [
     'COLUMN' => 'COLUMN',
 
     'order_detail' => 'Order Detail',
+    'order_change' => 'Order Change',
     'order_number' => 'Order Number',
     'index' => 'Index',
     'extension' => 'Extension',
@@ -229,6 +230,8 @@ return [
     'validation_size' => 'Size is Required',
     'validation_products' => 'Final Products is Required',
     'validation_file_upload' => 'File Upload is Required',
+    'validation_checkbox' => 'You must agree to this',
+
 
     //view-order-express
     'orderform_title' => 'Create Order - Embroidery programs',

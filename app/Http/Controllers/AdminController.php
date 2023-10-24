@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\TempCustomer;
+use App\Models\OrderChange;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -277,6 +278,7 @@ class AdminController extends Controller
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
             $temp_data = TempCustomer::orderBy('id', 'desc')->get();
+            $order_changes = OrderChange::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('edit', function ($row) {
                     $edit = '
@@ -288,10 +290,21 @@ class AdminController extends Controller
                         </div>';
                     return $edit;
                 })
-                ->addColumn('request', function ($row) use ($temp_data) {
+                ->addColumn('request', function ($row) use ($temp_data, $order_changes) {
                     $req = '';
                     foreach ($temp_data as $temp) {
                         if ($temp->customer_id == $row->id) {
+                            $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    }
+                    foreach ($order_changes as $order_change) {
+                        if ($order_change->customer_id == $row->id) {
                             $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
@@ -312,93 +325,100 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
         $tempCustomer = TempCustomer::where('customer_id', $id)->orderBy('id', 'desc')->first();
+        $order_changes = OrderChange::where('customer_id', $id)->orderBy('id', 'desc')->get();
 
         $responseText = '';
         $count = 0;
 
-        if ($user['name'] != $tempCustomer['name']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "name" von "' . $user['name'] . '" in "' . $tempCustomer['name'] . '" angefordert.<br />';
-            $count++;
+        foreach ($order_changes as $order_change) {
+            $responseText .= '"' . $order_change["customer_name"] . '" hat eine Nachricht zu Bestellnummer ' . $order_change['order_number'] . ' gesendet: „' . $order_change['message'] . '“<br />';
         }
-        if ($user['first_name'] != $tempCustomer['first_name']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "first_name" von "' . $user['first_name'] . '" in "' . $tempCustomer['first_name'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['email'] != $tempCustomer['email']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "email" von "' . $user['email'] . '" in "' . $tempCustomer['email'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['company'] != $tempCustomer['company']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "company" von "' . $user['company'] . '" in "' . $tempCustomer['company'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['company_addition'] != $tempCustomer['company_addition']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "company_addition" von "' . $user['company_addition'] . '" in "' . $tempCustomer['company_addition'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['street_number'] != $tempCustomer['street_number']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "street_number" von "' . $user['street_number'] . '" in "' . $tempCustomer['street_number'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['postal_code'] != $tempCustomer['postal_code']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "postal_code" von "' . $user['postal_code'] . '" in "' . $tempCustomer['postal_code'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['location'] != $tempCustomer['location']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "location" von "' . $user['location'] . '" in "' . $tempCustomer['location'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['country'] != $tempCustomer['country']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "country" von "' . $user['country'] . '" in "' . $tempCustomer['country'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['website'] != $tempCustomer['website']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "websitewebsite" von "' . $user['name'] . '" in "' . $tempCustomer['name'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['phone'] != $tempCustomer['phone']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "phone" von "' . $user['phone'] . '" in "' . $tempCustomer['phone'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['mobile'] != $tempCustomer['mobile']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "mobile" von "' . $user['mobile'] . '" in "' . $tempCustomer['mobile'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['tax_number'] != $tempCustomer['tax_number']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "tax_number" von "' . $user['tax_number'] . '" in "' . $tempCustomer['tax_number'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['vat_number'] != $tempCustomer['vat_number']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "vat_number" von "' . $user['vat_number'] . '" in "' . $tempCustomer['vat_number'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['register_number'] != $tempCustomer['register_number']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "register_number" von "' . $user['register_number'] . '" in "' . $tempCustomer['register_number'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['kd_group'] != $tempCustomer['kd_group']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "kd_group" von "' . $user['kd_group'] . '" in "' . $tempCustomer['kd_group'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['kd_category'] != $tempCustomer['kd_category']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "kd_category" von "' . $user['kd_category'] . '" in "' . $tempCustomer['kd_category'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['payment_method'] != $tempCustomer['payment_method']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "payment_method" von "' . $user['payment_method'] . '" in "' . $tempCustomer['payment_method'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['bank_name'] != $tempCustomer['bank_name']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "bank_name" von "' . $user['bank_name'] . '" in "' . $tempCustomer['bank_name'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['IBAN'] != $tempCustomer['IBAN']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "IBAN" von "' . $user['IBAN'] . '" in "' . $tempCustomer['IBAN'] . '" angefordert.<br />';
-            $count++;
-        }
-        if ($user['BIC'] != $tempCustomer['BIC']) {
-            $responseText .= 'Der Kundin hat eine Änderung des "BIC" von "' . $user['BIC'] . '" in "' . $tempCustomer['BIC'] . '" angefordert.<br />';
-            $count++;
+
+        if ($tempCustomer) {
+            if ($user['name'] != $tempCustomer['name']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "name" von "' . $user['name'] . '" in "' . $tempCustomer['name'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['first_name'] != $tempCustomer['first_name']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "first_name" von "' . $user['first_name'] . '" in "' . $tempCustomer['first_name'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['email'] != $tempCustomer['email']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "email" von "' . $user['email'] . '" in "' . $tempCustomer['email'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['company'] != $tempCustomer['company']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "company" von "' . $user['company'] . '" in "' . $tempCustomer['company'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['company_addition'] != $tempCustomer['company_addition']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "company_addition" von "' . $user['company_addition'] . '" in "' . $tempCustomer['company_addition'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['street_number'] != $tempCustomer['street_number']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "street_number" von "' . $user['street_number'] . '" in "' . $tempCustomer['street_number'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['postal_code'] != $tempCustomer['postal_code']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "postal_code" von "' . $user['postal_code'] . '" in "' . $tempCustomer['postal_code'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['location'] != $tempCustomer['location']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "location" von "' . $user['location'] . '" in "' . $tempCustomer['location'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['country'] != $tempCustomer['country']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "country" von "' . $user['country'] . '" in "' . $tempCustomer['country'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['website'] != $tempCustomer['website']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "websitewebsite" von "' . $user['name'] . '" in "' . $tempCustomer['name'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['phone'] != $tempCustomer['phone']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "phone" von "' . $user['phone'] . '" in "' . $tempCustomer['phone'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['mobile'] != $tempCustomer['mobile']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "mobile" von "' . $user['mobile'] . '" in "' . $tempCustomer['mobile'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['tax_number'] != $tempCustomer['tax_number']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "tax_number" von "' . $user['tax_number'] . '" in "' . $tempCustomer['tax_number'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['vat_number'] != $tempCustomer['vat_number']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "vat_number" von "' . $user['vat_number'] . '" in "' . $tempCustomer['vat_number'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['register_number'] != $tempCustomer['register_number']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "register_number" von "' . $user['register_number'] . '" in "' . $tempCustomer['register_number'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['kd_group'] != $tempCustomer['kd_group']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "kd_group" von "' . $user['kd_group'] . '" in "' . $tempCustomer['kd_group'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['kd_category'] != $tempCustomer['kd_category']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "kd_category" von "' . $user['kd_category'] . '" in "' . $tempCustomer['kd_category'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['payment_method'] != $tempCustomer['payment_method']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "payment_method" von "' . $user['payment_method'] . '" in "' . $tempCustomer['payment_method'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['bank_name'] != $tempCustomer['bank_name']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "bank_name" von "' . $user['bank_name'] . '" in "' . $tempCustomer['bank_name'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['IBAN'] != $tempCustomer['IBAN']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "IBAN" von "' . $user['IBAN'] . '" in "' . $tempCustomer['IBAN'] . '" angefordert.<br />';
+                $count++;
+            }
+            if ($user['BIC'] != $tempCustomer['BIC']) {
+                $responseText .= 'Der Kundin hat eine Änderung des "BIC" von "' . $user['BIC'] . '" in "' . $tempCustomer['BIC'] . '" angefordert.<br />';
+                $count++;
+            }
         }
         $responseText = substr($responseText, 0, strlen($responseText) - 2);
 
@@ -551,4 +571,36 @@ class AdminController extends Controller
         ]);
         $add_customer->save();
     }
+    public function CustomerSearchTable(Request $request)
+    {
+        $customers = User::orderBy('id', 'desc')->where('user_type', 'customer')
+            ->where(function ($query) use ($request) {
+                $query->where('customer_number', 'LIKE', '%' . $request->search_filter . '%')
+                    ->orWhere('name', 'LIKE', '%' . $request->search_filter . '%')
+                    ->orWhere('company', 'LIKE', '%' . $request->search_filter . '%')
+                    ->orWhere('postal_code', 'LIKE', '%' . $request->search_filter . '%');
+            })->get();
+        $html = '';
+        if (count($customers) > 0) {
+            foreach ($customers as $item) {
+                $html .= '<tr><td>' . $item->customer_number . '</td>' .
+                    '<td>' . $item->company . '</td>' .
+                    '<td>' . $item->name . '</td>' .
+                    '<td>' . $item->phone . '</td>' .
+                    '<td>' . $item->email . '</td>' .
+                    '<td>' . $item->street_number . '</td>' .
+                    '<td>' . $item->postal_code . '</td>' .
+                    '<td>' . $item->location . '</td>' .
+                    '<td>' . $item->country . '</td></tr>';
+            }
+        } else {
+            $html .= '<tr><td colspan="9" class="text-center">No data</td></tr>';
+        }
+        $data['id'] = count($customers) > 0 ? $customers[0]->id : null;
+        $data['customer_number'] = count($customers) > 0 ? $customers[0]->customer_number : null;
+        $data['ordered_from'] = count($customers) > 0 ? $customers[0]->name : null;
+        $data['html'] = $html;
+        echo json_encode($data);
+    }
+
 }

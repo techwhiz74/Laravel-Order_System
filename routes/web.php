@@ -19,6 +19,8 @@ Route::get('/admin', [AdminController::class, 'goAdminLogin'])->name('admin');
 Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepage');
 Route::post('/import-data', [OrderController::class, 'importData'])->name('import-data');
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
+Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
+Route::post('/admin-upload', [OrderController::class, 'adminFileUpload'])->name('admin-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
 // admin Route
@@ -40,6 +42,7 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/get-customer-profile', [AdminController::class, 'GetCustomerProfile'])->name('admin-get-customer-profile');
     Route::post('/change-profile', [AdminController::class, 'ChangeProfile'])->name('admin-change-profile');
     Route::post('/add-customer', [AdminController::class, 'AddCustomer'])->name('admin-add-customer');
+    Route::get('/customer-search-table', [AdminController::class, 'CustomerSearchTable'])->name('admin-customer-search-table');
 });
 
 //customer route
@@ -57,6 +60,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/view-orders', [OrderController::class, 'viewOrder'])->name('customer-vieworders');
     Route::get('/order_detail', [OrderController::class, 'OrderDetail'])->name('customer-order_detail');
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
+    Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
     Route::get('/order-details/{id}', [OrderController::class, 'orderDetails']);
     Route::get('/get-order-detail', [OrderController::class, 'getOrderDetail'])->name('customer-get-order-detail');

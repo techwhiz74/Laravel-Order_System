@@ -106,8 +106,8 @@
 
     .field-group {
         border: 1px solid black;
-        padding: 3px;
-        margin: 0px 5px 5px 5px;
+        padding: 5px;
+        margin: 0;
     }
 
     .field-caption {

@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body" style="font-size: 13px; font-family:'Inter';">
                 <div class="container" style="padding: 10px">
-                    <div style="padding: 10px 70px 10px 70px;">
+                    <div class="order_detail_div1">
                         <input type="hidden" id="detail_id">
                         <div class="row">
                             <div class="col-6">
@@ -68,65 +68,76 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                <div class="form-group form_dv_wrap" style="display: flex;">
                                     <p style="width:120px; margin:0">
                                         <strong>{{ __('home.special instructions') }}</strong>
                                     </p>
                                     <div id="detail_special_instructions"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:50px; padding:2px 10px; display:flex; align-items:center;">
+                                        style="background-color: #fff; width:calc(100% - 120px); height:100px; padding:2px 10px;">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style=" border: 1px solid #ccc; border-radius:5px; display:flex; padding:10px; height:250px;">
-                        <div class="col-3">
-                            <ul class="nav nav-tabs flex-column"
-                                style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
-                                <li class="nav-item" style="height: 50px">
-                                    <button id="subfolder_structure1" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Originaldatei</button>
-                                </li>
-                                <li class="nav-item" style="height: 50px">
-                                    <button id="subfolder_structure2" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Stickprogramm</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button id="subfolder_structure3" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-top: -5px; margin-left:5px; text-align:left;"> Stickprogramm
-                                            Änderung</div>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-9 responsive-table">
+                    <div class="order_detail_div2">
+                        <div class="col-12">
                             <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
                                 <button class="btn btn-primary btn-sm" onclick="multipleDownload()"
                                     style="background-color:#c3ac6d; border:none; font-size:13px;"><i
                                         class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                             </div>
-                            <table id="order_detail" class="table table-striped" style="width:100%; font-size:13px;">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center;">
-                                            {{ __('home.customer_number') }}</th>
-                                        <th style="text-align: center">{{ __('home.order_number') }}</th>
-                                        <th style="text-align: center">{{ __('home.index') }}</th>
-                                        <th style="text-align: center">{{ __('home.extension') }}</th>
-                                        <th style="text-align: center">{{ __('home.download') }}</th>
+                        </div>
+                        <div class="col-12" style="display:flex;">
+                            <div class="col-3">
+                                <ul class="nav nav-tabs flex-column"
+                                    style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
+                                    <li class="nav-item" style="height: 50px">
+                                        <button id="subfolder_structure1" class="order_detail_folder_button"><i
+                                                class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                            Originaldatei</button>
+                                    </li>
+                                    <li class="nav-item" style="height: 50px">
+                                        <button id="subfolder_structure2" class="order_detail_folder_button"><i
+                                                class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                            Stickprogramm</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="subfolder_structure3" class="order_detail_folder_button">
+                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                            <div style="margin-left:5px; text-align:left;">
+                                                Stickprogramm Änderung</div>
+                                        </button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button id="subfolder_structure4" class="order_detail_folder_button"
+                                            style="display: flex;">
+                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                            <div style="margin-left:5px; text-align:left;">
+                                                Änderungsdateien Kunde</div>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-9 responsive-table">
 
-                                    </tr>
-                                </thead>
-                                <tbody style="text-align: center"></tbody>
-                            </table>
+                                <table id="order_detail" class="table table-striped"
+                                    style="width:100%; font-size:13px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">
+                                                {{ __('home.customer_number') }}</th>
+                                            <th style="text-align: center">{{ __('home.order_number') }}</th>
+                                            <th style="text-align: center">{{ __('home.index') }}</th>
+                                            <th style="text-align: center">{{ __('home.extension') }}</th>
+                                            <th style="text-align: center">{{ __('home.download') }}</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody style="text-align: center"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -146,6 +157,7 @@
         $('#subfolder_structure1').hide();
         $('#subfolder_structure2').hide();
         $('#subfolder_structure3').hide();
+        $('#subfolder_structure4').hide();
         $.ajax({
             url: '{{ __('routes.customer-get-order-detail') }}',
             type: 'GET',
@@ -185,6 +197,8 @@
                         $('#subfolder_structure2').show();
                     } else if (item == "Stickprogramm Änderung") {
                         $('#subfolder_structure3').show();
+                    } else if (item == "Änderungsdateien Kunde") {
+                        $('#subfolder_structure4').show();
                     }
                 })
             },
@@ -246,21 +260,15 @@
     }
 
     $('#subfolder_structure1').click(function() {
-        $('#subfolder_structure1').css('background-color', '#CD853F ');
-        $('#subfolder_structure2').css('background-color', '#c4ae79');
-        $('#subfolder_structure3').css('background-color', '#c4ae79');
         openOrderDetailModal($('#detail_id').val(), 'Originaldatei');
     });
     $('#subfolder_structure2').click(function() {
-        $('#subfolder_structure1').css('background-color', '#c4ae79');
-        $('#subfolder_structure2').css('background-color', '#CD853F ');
-        $('#subfolder_structure3').css('background-color', '#c4ae79');
         openOrderDetailModal($('#detail_id').val(), 'Stickprogramm');
     });
     $('#subfolder_structure3').click(function() {
-        $('#subfolder_structure1').css('background-color', '#c4ae79');
-        $('#subfolder_structure2').css('background-color', '#c4ae79');
-        $('#subfolder_structure3').css('background-color', '#CD853F ');
         openOrderDetailModal($('#detail_id').val(), 'Stickprogramm Änderung');
+    });
+    $('#subfolder_structure4').click(function() {
+        openOrderDetailModal($('#detail_id').val(), 'Änderungsdateien Kunde');
     });
 </script>

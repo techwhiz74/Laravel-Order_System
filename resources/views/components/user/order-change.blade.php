@@ -2,30 +2,76 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_detail') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_change') }}</h5>
                 <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
             </div>
-            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:300px; overflow:auto;">
-                <div class="row">
-                    <div class="container">
+            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:600px; overflow:auto;">
+                <div class="container" style="padding: 20px">
+                    <form action="" id="order_change_form">
+                        <input type="hidden" name="order_id" value="" />
+                        <div style="display: flex">
+                            <div class="col-2">Änderungswünsche</div>
+                            <div class="col-10">
+                                <textarea name="order_change_textarea" placeholder="Änderungswünsche" style="height: 150px"></textarea>
+                            </div>
+                        </div><br>
+                        <div style="display: flex">
+                            <div class="col-2">{{ __('home.data_upload') }}</div>
+                            <div class="col-10">
+                                <div id="fileupload_em_ex" action="" method="POST" enctype="multipart/form-data">
+                                    <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                                    <noscript><input type="hidden" name="redirect" value="" /></noscript>
+                                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                    <div class="row fileupload-buttonbar">
+                                        <div class="col-lg-7">
+                                            <!-- The fileinput-button span is used to style the file input field as button -->
+                                            <span class="fileinput-button">
+                                                <i class="glyphicon glyphicon-plus"></i>
+                                                <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                <input type="file" name="files[]" multiple
+                                                    accept=".jpg, .png, .pdf, .ai, .dst" />
+                                            </span>
+                                            <button type="submit" class="btn btn-primary start"
+                                                style="visibility: hidden;">
+                                                <i class="glyphicon glyphicon-upload"></i>
+                                                <span>Start Upload</span>
+                                            </button>
+                                            <button type="reset" class="upload_cacel_btn">
+                                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                                <span style="font-size: 13px;">{{ __('home.cancel_upload') }}</span>
+                                            </button>
+                                            <!-- The global file processing state -->
+                                            <span class="fileupload-process"></span>
+                                        </div>
+                                        <div class="order_form_file_upload">
+                                            {{ __('home.validation_file_upload') }}
+                                        </div>
+                                        <!-- The global progress state -->
+                                        <div class="col-lg-5 fileupload-progress fade">
+                                            <!-- The global progress bar -->
+                                            <div class="progress progress-striped active" role="progressbar"
+                                                aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-success" style="width: 0%;">
+                                                </div>
+                                            </div>
+                                            <!-- The extended global progress state -->
+                                            {{-- <div class="progress-extended">&nbsp;</div> --}}
+                                        </div>
+                                    </div>
+                                    <!-- The table listing the files available for upload/download -->
+                                    <table role="presentation" class="table table-striped" id="order_form_upload_list">
+                                        <tbody class="files"></tbody>
+                                    </table>
 
-                        <div class="responsive-table">
-                            <table id="order_change" class="table table-striped" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>{{ __('home.customer_number') }}</th>
-                                        <th>{{ __('home.order_number') }}</th>
-                                        <th>{{ __('home.index') }}</th>
-                                        <th>{{ __('home.extension') }}</th>
-                                        <th>{{ __('home.edit') }}</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
+                                </div>
+                            </div>
+                        </div><br>
+                        <div style="display: flex; justify-content:flex-end">
+                            <div>
+                                <button type="submit" class="order_change_submit">Hochladen</button>
+                            </div>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -33,90 +79,10 @@
 </div>
 
 <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    function handleEditClick(id) {
-        $("#index_span" + id).hide();
-        $("#index_input" + id).show();
-        $("#button_edit" + id).hide();
-        $("#button_save" + id).show();
-    }
-
-    function handleSaveClick(id) {
-        $.ajax({
-            url: "{{ __('routes.customer-order-file-index-change') }}",
-            type: 'POST',
-            data: {
-                id: id,
-                index: $("#index_input" + id).val()
-            },
-            success: (result) => {
-                console.log(result);
-                if (result) {
-                    console.log(result);
-                    $("#index_span" + id).text(result.index);
-                    $("#index_span" + id).show();
-                    $("#index_input" + id).hide();
-                    $("#button_edit" + id).show();
-                    $("#button_save" + id).hide();
-
-                }
-            },
-            error: (err) => {
-                console.error(err);
-            }
-        })
-    }
-
     function openOrderChangeModal(id) {
-        var detail_table;
-        detail_table = $('#order_change').DataTable({
-            responsive: true,
-            language: {
-
-            },
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: "{{ __('routes.customer-order_change') }}",
-                data: function(d) {
-                    d.id = id;
-                }
-            },
-
-            columns: [{
-                    data: 'customer_number',
-                    name: 'customer_number'
-                },
-
-                {
-                    data: 'order_number',
-                    name: 'order_number'
-                },
-                {
-                    data: 'index',
-                    name: 'index'
-                },
-                {
-                    data: 'extension',
-                    name: 'extension'
-                },
-
-                {
-                    data: 'edit',
-                    name: 'edit',
-                    orderable: false,
-                    searchable: false
-                },
-
-            ]
-        });
-
-        $('#order_change_popup').modal("toggle");
-        detail_table.destroy();
+        $('#order_change_popup').modal("show");
+        $('[name=order_id]').val(id);
+        $('#order_change_popup').find('[name=order_change_textarea]').val('');
+        $('#order_change_popup').find('#order_form_upload_list tr').hide();
     }
 </script>

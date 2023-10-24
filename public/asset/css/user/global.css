@@ -20,6 +20,10 @@ section {
   max-width: 1503px !important;
 }
 
+.div_flex {
+  display: flex;
+}
+
 
 /*//////////////////Header////////////////////*/
 
@@ -589,7 +593,7 @@ section {
   font-weight: 700;
   letter-spacing: 0;
   line-height: 1.1em;
-  margin-left: 200px;
+  margin-left: 10vw;
   text-transform: none;
 }
 
@@ -762,6 +766,7 @@ section {
 } */
 
 #view-order thead,
+#order_detail thead,
 #customer_staffs thead,
 #customer_dashboard_table1 thead,
 #customer_dashboard_table2 thead,
@@ -779,7 +784,8 @@ section {
 #ve_freelancer_yellow_table thead,
 #ve_freelancer_red_table thead,
 #ve_freelancer_all_table thead,
-#admin_customer_list_table thead {
+#admin_customer_list_table thead,
+#admin_customer_search_table thead {
   background: #c4ae79;
   color: #fff;
   vertical-align: middle;
@@ -1596,6 +1602,20 @@ select#status-filter:focus-visible {
 
 }
 
+.order_detail_div1 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.order_detail_div2 {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  height: 350px;
+}
+
 .order_detail_folder_button {
   background-color: #c4ae79;
   color: #fff !important;
@@ -1604,6 +1624,9 @@ select#status-filter:focus-visible {
   border: none;
   padding: 10px 13px;
   font-weight: 900;
+  display: flex;
+  align-items: center;
+  line-height: 1;
 }
 
 #order_change_popup .modal-dialog {
@@ -1670,7 +1693,7 @@ select#status-filter:focus-visible {
 }
 
 .customer_profile_page {
-  padding: 0px 0px 0px 12px !important;
+  padding: 0 !important;
 }
 
 .customer_profile_page .form_dv_wrap {
@@ -2482,7 +2505,7 @@ select#status-filter:focus-visible {
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 0px;
+  border: 1px solid rgb(133, 184, 203);
   font-size: 13px;
   padding: 0px 1em;
   white-space: nowrap;
@@ -2499,7 +2522,7 @@ select#status-filter:focus-visible {
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 0px;
+  border: 1px solid rgb(133, 184, 203);
   font-size: 13px;
   padding: 0px 1em;
   white-space: nowrap;
@@ -2508,8 +2531,7 @@ select#status-filter:focus-visible {
 }
 
 .order_fome_container {
-  border-radius: 5px;
-  padding: 40px 200px;
+  padding: 40px 10vw;
 }
 
 #order_submit_form {
@@ -2573,13 +2595,12 @@ label {
   -o-appearance: none;
   appearance: none;
   position: relative;
-  top: 13.33333px;
+  top: 5px;
   right: 0;
   bottom: 0;
   left: 0;
-  height: 30px;
-  width: 30px;
-  transition: all 0.15s ease-out 0s;
+  height: 20px;
+  width: 20px;
   background: #cbd1d8;
   border: none;
   color: #fff;
@@ -2596,12 +2617,12 @@ label {
 }
 
 .option-input:checked {
-  background: #40e0d0;
+  background: #c4ae79;
 }
 
 .option-input:checked::before {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   display: flex;
   content: '\f00c';
   font-size: 13px;
@@ -2613,10 +2634,7 @@ label {
 }
 
 .option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
-  background: #40e0d0;
+
   content: '';
   display: block;
   position: relative;
@@ -2629,6 +2647,13 @@ label {
 
 .option-input.radio::after {
   border-radius: 50%;
+}
+
+#order_view_delete_ok {
+  background: none;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 0 3px;
 }
 
 @keyframes click-wave {
@@ -2950,29 +2975,6 @@ td {
 
 }
 
-.request_profile_message {
-  text-align: center;
-  margin-top: 50px !important;
-  font-size: 13px;
-  color: #ff0000;
-  display: none;
-}
-
-.request_profile_success_message {
-  text-align: center;
-  margin-top: 50px !important;
-  font-size: 13px;
-  color: #ff0000;
-  display: none;
-}
-
-.request_profile_refuse_message {
-  text-align: center;
-  margin-top: 50px !important;
-  font-size: 13px;
-  color: #ff0000;
-  display: none;
-}
 
 .accept_request_profile_button,
 .cancel_request_profile_button {
@@ -3007,4 +3009,36 @@ td {
 
 .register_input :focus {
   border-bottom: 1px solid #ff0000;
+}
+
+/* customer order form upload table */
+#order_form_upload_list {
+  font-size: 13px;
+}
+
+#order_form_upload_list .button {
+  background-color: #ff0000;
+}
+
+.order_change_submit {
+  color: white;
+  background-color: #c3ac6d;
+  border: none;
+  border-radius: 0;
+  padding: 8px 8px;
+}
+
+
+
+#adminTableSearchInput {
+  font-size: 13px;
+  height: 40px;
+  background-image: url('/asset/images/search-solid.svg');
+  background-size: 20px;
+  background-position: 99%;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 40px;
+  padding: 6px 59px 6px 8px;
+  border: 1px solid rgb(133, 184, 203);
 }

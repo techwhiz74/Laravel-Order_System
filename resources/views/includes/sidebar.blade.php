@@ -63,6 +63,7 @@
                     </div>
                 </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li style="margin-right: 50px;">
                     <div class="sidebar-div" type="button">
@@ -110,7 +111,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li>
+                <li style="margin-right: 50px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_add_customer" id="admin_add_customer1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -124,6 +125,7 @@
                     </div>
                 </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -170,7 +172,23 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>
+                                    {{ __('home.order_standard') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li style="margin-right: 50px;">
                     <div class="sidebar-div" type="button">
@@ -217,7 +235,23 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li style="margin-right: 50px;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>{{ __('home.order_express') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li style="margin-right: 50px;">
                     <div class="sidebar-div" type="button">
@@ -262,7 +296,24 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup3"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
+                                    style="width: 29px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>{{ __('home.order_standard') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -280,7 +331,24 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li style="margin-right: 50px;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
+                                    style="width: 29px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>{{ __('home.order_express') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -299,6 +367,7 @@
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -358,10 +427,8 @@
 
             @if (auth()->user()->user_type == 'customer')
                 <x-user.order_form_em_standard />
-            @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                {{-- <x-freelancer.freelancer-profile /> --}}
-            @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                {{-- <x-freelancer.vector.ve_freelancer_green /> --}}
+            @elseif (auth()->user()->user_type == 'admin')
+                <x-admin.admin_order_form />
             @endif
         </div>
     </div>

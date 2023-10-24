@@ -1,7 +1,3 @@
-@php
-    $serial = 1;
-@endphp
-
 <style>
     * {
         box-sizing: border-box;
@@ -32,7 +28,7 @@
         display: inline-block;
     }
 
-    .order_form_submit {
+    .admin_order_form_submit {
         background: #c4ae79 !important;
         color: #fff !important;
         height: 40px !important;
@@ -252,7 +248,8 @@
     .order_form_validation_size,
     .order_form_validation_products,
     .order_form_file_upload,
-    .order_form_validation_checkbox {
+    .order_form_validation_checkbox,
+    .admin_search_customer_validation {
         color: red;
         font-style: italic;
         font-size: 13px;
@@ -276,12 +273,42 @@
         <h1 id="order_form_title">{{ __('home.orderform_title') }}</h1>
         <p></p>
     </div>
-    <div class="order_fome_container">
+    <div class="order_fome_container" style="padding-top:10px !important;">
+        <div style="margin-block: 10px;">
+            <div class="SearchInputWrapper">
+                <input type="text" id="adminTableSearchInput" placeholder="Eingang Kundennr, Name, Firma, ZIP">
+            </div>
+            <div class="admin_search_customer_validation">
+                Suchen Sie einen Kunden, der bestellen muss
+            </div>
+
+
+            <div class="responsive-table">
+                <table id="admin_customer_search_table" class="table table-striped"
+                    style="width:100%; font-size:13px; display:none; margin-bottom:0 !important;">
+                    <thead>
+                        <tr>
+                            <th>{{ __('home.customer_number') }}</th>
+                            <th>{{ __('home.company') }}</th>
+                            <th>{{ __('home.name') }}</th>
+                            <th>{{ __('home.phone') }}</th>
+                            <th>{{ __('home.email') }}</th>
+                            <th>{{ __('home.street_number') }}</th>
+                            <th>{{ __('home.postal_code') }}</th>
+                            <th>{{ __('home.location') }}</th>
+                            <th>{{ __('home.country') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
         <form id="order_submit_form" action="">
             <input type="hidden" name="type">
             <input type="hidden" name="deliver_time">
-            <input type="hidden" name="customer_number" value="{{ auth()->user()->customer_number }}" />
-            <input type="hidden" name="ordered_from" value="{{ auth()->user()->name }}" />
+            <input type="hidden" name="customer_number" value="" />
+            <input type="hidden" name="ordered_from" value="" />
+            <input type="hidden" name="searched_id" value="" />
             <div class="row">
                 <div class="col-20">
                     <label class="order_form_lavel" for="projectname">{{ __('home.projectname') }} <span
@@ -624,7 +651,7 @@
                 </div>
                 <div class="col-80">
                     <!-- The file upload form used as target for the file upload widget -->
-                    <div id="fileupload" action="" method="POST" enctype="multipart/form-data">
+                    <div id="admin_fileupload" action="" method="POST" enctype="multipart/form-data">
                         <!-- Redirect browsers with JavaScript disabled to the origin page -->
                         <noscript><input type="hidden" name="redirect" value="" /></noscript>
                         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -659,11 +686,8 @@
                                     <div class="progress-bar progress-bar-success" style="width: 0%;">
                                     </div>
                                 </div>
-                                <!-- The extended global progress state -->
-                                {{-- <div class="progress-extended">&nbsp;</div> --}}
                             </div>
                         </div>
-                        <!-- The table listing the files available for upload/download -->
                         <table role="presentation" class="table table-striped" id="order_form_upload_list">
                             <tbody class="files"></tbody>
                         </table>
@@ -695,7 +719,7 @@
 
             <div class="row" style="display: flex; justify-content:flex-end">
                 <div>
-                    <button type="button" class="order_form_submit">{{ __('home.submit') }}</button>
+                    <button type="button" class="admin_order_form_submit">{{ __('home.submit') }}</button>
                 </div>
             </div>
         </form>
@@ -709,5 +733,38 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+    });
+
+    $(function() {
+        $("#admin_customer_search_table").hide();
+
+        function getCustomers(keyword) {
+            $.ajax({
+                url: '{{ __('routes.admin-customer-search-table') }}',
+                type: 'GET',
+                data: {
+                    search_filter: keyword
+                },
+                success: (result) => {
+                    var obj = JSON.parse(result);
+                    $('[name=searched_id]').val(obj.id);
+                    $('[name=customer_number]').val(obj.customer_number);
+                    $('[name=ordered_from]').val(obj.ordered_from);
+                    $("#admin_customer_search_table tbody").html(obj.html);
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            })
+        }
+        $('#adminTableSearchInput').keyup(function() {
+            if ($('#adminTableSearchInput').val() != '') {
+                $("#admin_customer_search_table").show();
+                getCustomers($('#adminTableSearchInput').val());
+            } else {
+                $("#admin_customer_search_table").hide();
+            }
+        });
+
     });
 </script>

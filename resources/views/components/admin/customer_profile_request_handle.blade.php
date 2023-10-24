@@ -44,7 +44,7 @@
                 console.log('The customer\'s profile has been changed');
                 $('#admin_customer_profile_request_handle_popup').modal("hide");
                 $('#customer_list_table_reload_button').trigger('click');
-                $('.request_profile_success_message').show();
+
             },
             error: (err) => {
                 console.error(err);
@@ -59,7 +59,6 @@
             succcess: () => {
                 $('#admin_customer_profile_request_handle_popup').modal("hide");
                 $('#customer_list_table_reload_button').trigger('click');
-                $('.request_profile_refuse_message').show();
             },
             error: (err) => {
                 console.error('error!');

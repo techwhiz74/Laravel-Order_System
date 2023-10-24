@@ -60,7 +60,7 @@
 
         </div> --}}
         @auth
-            @if (@auth()->user()->user_type == 'customer')
+            @if (auth()->user()->user_type == 'customer' && auth()->user()->id)
                 <div class="customer_dashboard">
                     <div class="col-lg-6 col-md-12" style="padding-right: 2vw;">
                         <div>
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                 </div>
-            @elseif (@auth()->user()->user_type == 'admin')
+            @elseif (auth()->user()->user_type == 'admin')
             @endif
         @else
             <div class="container-fluid p-0">

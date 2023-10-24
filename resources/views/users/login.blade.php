@@ -66,16 +66,17 @@
                                 <p> {{ __('home.login_lines') }}</p>
                             </div>
                             <div class="form_dv">
-                                <label for="e1">E-mail</label>
-                                <input type="email" placeholder="Email*" id="e1" name="email" required>
+                                <label for="e1">E-Mail-Adresse</label>
+                                <input type="email" placeholder="E-Mail-Adresse*" id="e1" name="email"
+                                    required>
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
 
                             <div class="form_dv">
-                                <label for="p1">Password</label>
-                                <input type="password" placeholder="Password*" id="p1"
+                                <label for="p1">Passwort</label>
+                                <input type="password" placeholder="Passwort*" id="p1"
                                     autocomplete="new-password" name="password" required>
                                 @if ($errors->has('password'))
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
@@ -99,7 +100,7 @@
                                         alt="empty">
                                 </div>
                                 <div class="copy_right_txt">
-                                    <p>Copyright 2023 Lion Werbung</p>
+                                    <p>Copyright Lion Werbe GmbH</p>
                                 </div>
                             </div>
                         </form>

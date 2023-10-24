@@ -554,6 +554,8 @@
       var button = $(e.currentTarget),
         template = button.closest('.template-upload'),
         data = template.data('data');
+
+      console.log(data);
       button.prop('disabled', true);
       if (($('[name=project_name]').val() != "") && ($(
         '[name=size]').val() != "") && ($('#selected_products')
@@ -568,6 +570,20 @@
             $('#customer_dahsboard_table_reload_button').trigger('click');
             $('#order_form_success_popup').modal('show');
           }, 4000);
+        }
+      }
+
+      // case of order change
+      if (($('[name=order_id]').val() != "") && ($(
+        '[name=order_change_textarea]').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            $('#btn_table_refresh').trigger('click');
+            $('#customer_dahsboard_table_reload_button').trigger('click');
+          }, 3000);
         }
       }
     },
