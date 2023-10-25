@@ -22,8 +22,10 @@ return [
     'customer-order-file-index-change' => '/de/customer/order-file-index-change',
     'customer-get-order-detail' => '/de/customer/get-order-detail',
     'customer-orderfile-information' => '/de/customer/orderfile-information',
-    'customer-dashboard-table1' => '/de/customer/dashboard-table1',
-    'customer-dashboard-table2' => '/de/customer/dashboard-table2',
+    'customer-dashboard-green-table' => '/de/customer/dashboard-green-table',
+    'customer-dashboard-red-table' => '/de/customer/dashboard-red-table',
+    'customer-dashboard-yellow-table' => '/de/customer/dashboard-yellow-table',
+    'customer-dashboard-blue-table' => '/de/customer/dashboard-blue-table',
 
 
 
@@ -100,6 +102,8 @@ return [
     'embroidery-freelancer-yellow-dashboard' => '/de/freelancer/embroidery-freelancer-yellow-dashboard',
     'embroidery-freelancer-red-dashboard' => '/de/freelancer/embroidery-freelancer-red-dashboard',
     'embroidery-freelancer-blue-dashboard' => '/de/freelancer/embroidery-freelancer-blue-dashboard',
+    'embroidery-freelancer-get-request-detail' => '/de/freelancer/embroidery-freelancer-get-request-detail',
+    'embroidery-freelancer-order_detail' => '/de/freelancer/embroidery-freelancer-order_detail',
 
     'vector-freelancer-green' => '/de/freelancer/vector-freelancer-green',
     'vector-freelancer-yellow' => '/de/freelancer/vector-freelancer-yellow',

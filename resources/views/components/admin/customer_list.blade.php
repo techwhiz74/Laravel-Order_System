@@ -23,7 +23,7 @@
                         <th>{{ __('home.kd_group') }}</th>
                         <th>{{ __('home.kd_category') }}</th>
                         <th style="max-width: 70px !important; text-align:center;">{{ __('home.edit') }}</th>
-                        <th style="max-width: 60px !important; text-align:center;">{{ __('home.request') }}</th>
+                        <th style="max-width: 70px !important; text-align:center;">{{ __('home.request') }}</th>
                     </tr>
                 </thead>
                 <tbody></tbody>

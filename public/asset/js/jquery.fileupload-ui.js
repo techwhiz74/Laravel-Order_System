@@ -583,6 +583,24 @@
           setTimeout(() => {
             $('#btn_table_refresh').trigger('click');
             $('#customer_dahsboard_table_reload_button').trigger('click');
+            toastr.success(
+              "Ihre Nachricht wurde erfolgreich übertragen und die Dateien wurden erfolgreich hochgeladen");
+          }, 3000);
+        }
+      }
+      // case of freelancer
+      if (($('#freelancer_request_id').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            em_freelancer_all_table.ajax.reload();
+            em_freelancer_blue_table.ajax.reload();
+            $('#em_freelancer_table_reload_btn').trigger('click');
+            $('#freelancer_subfolder_structure4').show();
+            toastr.success(
+              "Dateien erfolgreich hochgeladen");
           }, 3000);
         }
       }

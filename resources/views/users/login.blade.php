@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="logo_img">
                                     <a href="{{ asset('/') }}">
-                                        <img src="http://127.0.0.1:8000/asset/images/lion_werbe_gmbh_logo.webp"
+                                        <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}"
                                             alt="empty">
                                     </a>
                                 </div>
@@ -90,14 +90,13 @@
                                 <div class="resig_lnkk">
                                     <p>{{ __('home.no_account_yet') }}</p>
                                     <a href="{{ __('routes.customer-register') }}" style="padding: 0px 20px;"><i
-                                            class="fa-solid fa-user-plus fa-lg"></i></a>
+                                            class="fa-solid fa-user-plus fa-lg" style="color: #c3ac6d"></i></a>
                                 </div>
                             </div>
 
                             <div class="footerrr">
                                 <div class="fttrr_img">
-                                    <img src="http://127.0.0.1:8000/asset/images/lion_werbe_gmbh_logo.webp"
-                                        alt="empty">
+                                    <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty">
                                 </div>
                                 <div class="copy_right_txt">
                                     <p>Copyright Lion Werbe GmbH</p>

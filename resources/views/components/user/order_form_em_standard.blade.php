@@ -672,19 +672,18 @@
                 </div>
             </div>
             <div style="display: flex;">
-                <input type="checkbox" id="order_form_checkbox" style="width:60px; height:20px;" />
+                <input type="checkbox" id="order_form_checkbox" style="width:40px; height:20px;" />
                 <div style="margin-left: 20px;">
-                    <label for="order_form_checkbox" style="line-height:normal;">MIT DER ZUSTIMMUNG
-                        BESTÄTIGST DU, DASS DU DURCH DEN UPLOAD WEDER GEGEN
-                        GELTENDES
-                        RECHT, COPYRIGHT RECHTE ODER RECHTE DRITTER VERSTÖSST.
-                        MIT DER ZUSTIMMUNG BESTÄTIGST DU DIE AKTUELLE PREISLISTE UND DEREN EVENTUELLEN AUFPREISE.
-                        DIE PREISE SIND FIXIERT UND WERDEN IM NACHGANG NICHT VERHANDELT. DIES SPEZIELL BEI DER
-                        DURCHFÜHRUNG VON STICKPROGRAMMEN VON BILDERN UND ILLUSTRATIONEN.
-                        (sollten Sie unsicher sein ob eine Vorlage ein Bild oder Illustration ist, können Sie dies gerne
-                        im
-                        Vorfeld bei uns
-                        erfragen)</label>
+                    <label for="order_form_checkbox" style="line-height:normal; font-size:11px !important;">Mit der
+                        Zustimmung bestätigen Sie,
+                        dass Sie durch den Upload Ihrer Dateien, weder gegen geltendes Recht, Copyright
+                        Rechte oder Rechte Dritter verstoßen.<br />
+                        Mit der Zustimmung akzeptieren Sie die aktuell gültige Preisliste und deren Aufpreise. Diese
+                        Preise sind fixiert und werden
+                        nicht im Nachgang verhandelt. Dies gilt speziell für die Durchführung von Bildern und
+                        Illustrationen. (Sollten Sie unsicher
+                        sein, ob Ihre Vorlage ein Bild oder Illustration ist, können Sie dies gerne im Vorfeld bei uns
+                        per E-Mail erfragen)</label>
                     <div class="order_form_validation_checkbox">
                         {{ __('home.validation_checkbox') }}
                     </div>

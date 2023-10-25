@@ -17,7 +17,7 @@
                 //echo $currentPath;
                 // Remove existing language prefix if present
                 $currentPathWithoutLang = preg_replace('/^(en|de)\//', '', $currentPath);
-                
+
                 if ($currentLocale === 'en') {
                     $currentLanguage = 'English';
                 } elseif ($currentLocale === 'de') {
@@ -25,7 +25,7 @@
                 } else {
                     $currentLanguage = $currentLocale;
                 }
-                
+
                 // Generate URLs for language switches
                 $enUrl = 'en/';
                 $deUrl = 'de/';
@@ -101,7 +101,8 @@
                         @endif
                     @else
                         <a href="{{ __('routes.customer-login') }}">
-                            <img src="{{ asset('asset/images/right-to-bracket-duotone.svg') }}" alt="" />
+                            <img src="{{ asset('asset/images/LoginIcon.svg') }}" alt=""
+                                style="margin: 5px 0 0 5px;" />
                         </a>
                     @endauth
 

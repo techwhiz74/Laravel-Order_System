@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\OrderChange;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
@@ -310,7 +311,8 @@ class OrderController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -332,8 +334,8 @@ class OrderController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -346,7 +348,7 @@ class OrderController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info"></i></button>';
+                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -407,7 +409,6 @@ class OrderController extends Controller
                 ->rawColumns(['customer_number', 'order_number', 'download'])
                 ->make(true);
         }
-
     }
 
     public function multiple($id)
@@ -440,11 +441,11 @@ class OrderController extends Controller
     }
 
 
-    public function DashboardTable1(Request $request)
+    public function DashboardGreenTable(Request $request)
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->whereIn('status', ['Offen', 'In Bearbeitung'])->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Offen')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -468,8 +469,8 @@ class OrderController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -478,7 +479,7 @@ class OrderController extends Controller
                 ->make(true);
         }
     }
-    public function DashboardTable2(Request $request)
+    public function DashboardRedTable(Request $request)
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
@@ -496,8 +497,8 @@ class OrderController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -515,6 +516,81 @@ class OrderController extends Controller
                 ->make(true);
         }
     }
+    public function DashboardYellowTable(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'In Bearbeitung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+    public function DashboardBlueTable(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Änderung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+
 
     public function fileUpload(Request $request)
     {
@@ -620,7 +696,7 @@ class OrderController extends Controller
         $order_change->message = $order_change_message;
         $order_change->save();
 
-        $order->status = 'Offen';
+        $order->status = 'Änderung';
         $order->save();
         $files = $request->file("files");
         $uploadDir = 'public/';
@@ -754,6 +830,7 @@ class OrderController extends Controller
         }
         return "OK!";
     }
+
 
     public function OrderChange(Request $request)
     {

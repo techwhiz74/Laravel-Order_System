@@ -91,24 +91,24 @@
                             <div class="col-3">
                                 <ul class="nav nav-tabs flex-column"
                                     style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
-                                    <li class="nav-item" style="height: 50px">
+                                    <li class="nav-item" style="margin-bottom:10px;">
                                         <button id="subfolder_structure1" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Originaldatei</button>
                                     </li>
-                                    <li class="nav-item" style="height: 50px">
+                                    <li class="nav-item" style="margin-bottom:10px;">
                                         <button id="subfolder_structure2" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Stickprogramm</button>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-bottom:10px;">
                                         <button id="subfolder_structure3" class="order_detail_folder_button">
                                             <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             <div style="margin-left:5px; text-align:left;">
                                                 Stickprogramm Änderung</div>
                                         </button>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-bottom:10px;">
                                         <button id="subfolder_structure4" class="order_detail_folder_button"
                                             style="display: flex;">
                                             <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>

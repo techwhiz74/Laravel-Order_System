@@ -137,6 +137,7 @@
 <script src="{{ asset('asset/js/demo.js') }}"></script>
 <script src="{{ asset('asset/js/demo_em_ex.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin.js') }}"></script>
+<script src="{{ asset('asset/js/demo_freelancer.js') }}"></script>
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
 <script>
@@ -240,6 +241,7 @@
         $('#customer_staff_create_popup').modal("hide");
         $('#admin_customer_profile_edit_popup').modal("hide");
         $('#admin_customer_profile_request_handle_popup').modal("hide");
+        $('#em_freelancer_request_popup').modal("hide");
     }
     $(document).on({
         ajaxStart: function() {

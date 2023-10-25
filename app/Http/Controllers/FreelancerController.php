@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\OrderChange;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -368,18 +369,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -427,18 +428,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -486,18 +487,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -510,6 +511,79 @@ class FreelancerController extends Controller
                     return $deliver_time;
                 })
                 ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->make(true);
+        }
+    }
+    public function EmbroideryFreelancerBlueTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Änderung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $date = $row->created_at->format('d.m.Y');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('action', function ($row) {
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    return $btn;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = "EXPRESS ";
+                    }
+                    return $deliver_time;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
                 ->make(true);
         }
     }
@@ -545,18 +619,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -568,7 +642,21 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
                 ->make(true);
         }
     }
@@ -599,8 +687,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -636,8 +724,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -673,8 +761,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -683,6 +771,93 @@ class FreelancerController extends Controller
                 ->make(true);
         }
     }
+    public function EmbroideryFreelancerBlueDashboardTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Änderung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+
+                ->rawColumns(['order', 'status', 'art', 'request'])
+                ->make(true);
+        }
+    }
+    public function getRequestDetail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('id'));
+        $order_change = OrderChange::where('order_number', $order->order_number)->first();
+        $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
+        return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads]);
+    }
+    public function OrderDetail(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->orderBy('order_id', 'desc')->get();
+            if ($request->type == 'Stickprogramm') {
+                $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
+            }
+            return DataTables::of($change_data)->addIndexColumn()
+                ->editColumn('customer_number', function ($row) {
+                    $customer_number = $row->order->customer_number;
+                    return $customer_number;
+                })
+                ->editColumn('order_number', function ($row) {
+                    $order_number = $row->order->order_number;
+                    return $order_number;
+                })
+
+                ->addColumn('download', function ($row) {
+
+                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    return $btn;
+                })
+
+                ->rawColumns(['customer_number', 'order_number', 'download'])
+                ->make(true);
+        }
+    }
+
     public function VectorFreelancerGreenTable(Request $request)
     {
         if ($request->ajax()) {
@@ -715,18 +890,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -774,18 +949,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -833,18 +1008,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -892,18 +1067,18 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -946,8 +1121,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -955,6 +1130,59 @@ class FreelancerController extends Controller
                 ->rawColumns(['order', 'status', 'art'])
                 ->make(true);
         }
+    }
+    public function FreelancerFileUpload(Request $request)
+    {
+        $freelancer_request_id = $request->post('freelancer_request_id');
+        $order = Order::findOrfail($freelancer_request_id);
+
+        $order->status = "Ausgeliefert";
+        $order->save();
+        OrderChange::where('order_number', $order->order_number)->delete();
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Stickprogramm Änderung/';
+        $path = $uploadDir . $filePath;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
     }
     public function VectorFreelancerYellowDashboardTable(Request $request)
     {
@@ -983,8 +1211,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1020,8 +1248,8 @@ class FreelancerController extends Controller
                         $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
-                    } else {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
                     }
                     return $status;
                 })

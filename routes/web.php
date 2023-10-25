@@ -20,6 +20,7 @@ Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepag
 Route::post('/import-data', [OrderController::class, 'importData'])->name('import-data');
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
 Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
+Route::post('/freelancer-upload', [FreelancerController::class, 'FreelancerFileUpload'])->name('freelancer-upload');
 Route::post('/admin-upload', [OrderController::class, 'adminFileUpload'])->name('admin-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
@@ -66,8 +67,10 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/get-order-detail', [OrderController::class, 'getOrderDetail'])->name('customer-get-order-detail');
     Route::post('/order-file-index-change', [OrderController::class, 'changeOrderIndex'])->name('customer-order-file-index-change');
     Route::post('/orderfile-information', [OrderController::class, 'getOrderFileInformation'])->name('customer-orderfile-information');
-    Route::get('/dashboard-table1', [OrderController::class, 'DashboardTable1'])->name('customer-dashboard-table1');
-    Route::get('/dashboard-table2', [OrderController::class, 'DashboardTable2'])->name('customer-dashboard-table2');
+    Route::get('/dashboard-green-table', [OrderController::class, 'DashboardGreenTable'])->name('customer-dashboard-green-table');
+    Route::get('/dashboard-red-table', [OrderController::class, 'DashboardRedTable'])->name('customer-dashboard-red-table');
+    Route::get('/dashboard-yellow-table', [OrderController::class, 'DashboardYellowTable'])->name('customer-dashboard-yellow-table');
+    Route::get('/dashboard-blue-table', [OrderController::class, 'DashboardBlueTable'])->name('customer-dashboard-blue-table');
 
     Route::get('/profile', [CustomerController::class, 'CustomerProfile']);
     Route::post('/profile-update', [CustomerController::class, 'profileUpdate']);
@@ -146,6 +149,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/embroidery-freelancer-yellow-dashboard', [FreelancerController::class, 'EmbroideryFreelancerYellowDashboardTable'])->name('embroidery-freelancer-yellow-dashboard');
     Route::get('/embroidery-freelancer-red-dashboard', [FreelancerController::class, 'EmbroideryFreelancerRedDashboardTable'])->name('embroidery-freelancer-red-dashboard');
     Route::get('/embroidery-freelancer-blue-dashboard', [FreelancerController::class, 'EmbroideryFreelancerBlueDashboardTable'])->name('embroidery-freelancer-blue-dashboard');
+    Route::get('/embroidery-freelancer-get-request-detail', [FreelancerController::class, 'getRequestDetail'])->name('embroidery-freelancer-get-request-detail');
+    Route::get('/embroidery-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('embroidery-freelancer-order_detail');
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
     Route::get('/vector-freelancer-yellow', [FreelancerController::class, 'VectorFreelancerYellowTable'])->name('vector-freelancer-yellow');

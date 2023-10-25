@@ -589,15 +589,16 @@
 
     });
     $(function() {
-        var table;
-        table = $('#customer_dashboard_table1').DataTable({
+        var customer_dahsboard_green_table;
+        customer_dahsboard_green_table = $('#customer_dashboard_green_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
-                url: "{{ __('routes.customer-dashboard-table1') }}",
+                url: "{{ __('routes.customer-dashboard-green-table') }}",
                 type: "get",
             },
             order: [
@@ -626,19 +627,20 @@
             ],
         })
         $('#customer_dahsboard_table_reload_button').click(function() {
-            table.ajax.reload();
+            customer_dahsboard_green_table.ajax.reload();
         });
     })
     $(function() {
-        var table;
-        table = $('#customer_dashboard_table2').DataTable({
+        var customer_dahsboard_red_table;
+        customer_dahsboard_red_table = $('#customer_dashboard_red_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
-                url: "{{ __('routes.customer-dashboard-table2') }}",
+                url: "{{ __('routes.customer-dashboard-red-table') }}",
                 type: "get",
             },
             order: [
@@ -669,17 +671,106 @@
         })
 
         $('#customer_dahsboard_table_reload_button').click(function() {
-            table.ajax.reload();
+            customer_dahsboard_red_table.ajax.reload();
         });
     })
     $(function() {
-        var table;
-        table = $('#em_freelancer_green_dashboard_table').DataTable({
+        var customer_dahsboard_yellow_table;
+        customer_dahsboard_yellow_table = $('#customer_dashboard_yellow_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
+            ajax: {
+                url: "{{ __('routes.customer-dashboard-yellow-table') }}",
+                type: "get",
+            },
+            order: [
+                [2, 'desc']
+            ],
+            columns: [{
+                    data: 'art',
+                    name: 'art'
+                },
+                {
+                    data: 'deliver_time',
+                    name: 'deliver_time'
+                },
+                {
+                    data: 'order',
+                    name: 'order'
+                },
+                {
+                    data: 'project_name',
+                    name: 'project_name'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+            ],
+
+        })
+
+        $('#customer_dahsboard_table_reload_button').click(function() {
+            customer_dahsboard_yellow_table.ajax.reload();
+        });
+    })
+    $(function() {
+        var customer_dahsboard_blue_table;
+        customer_dahsboard_blue_table = $('#customer_dashboard_blue_table').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            searching: false,
+            paginate: false,
+            info: false,
+            ajax: {
+                url: "{{ __('routes.customer-dashboard-blue-table') }}",
+                type: "get",
+            },
+            order: [
+                [2, 'desc']
+            ],
+            columns: [{
+                    data: 'art',
+                    name: 'art'
+                },
+                {
+                    data: 'deliver_time',
+                    name: 'deliver_time'
+                },
+                {
+                    data: 'order',
+                    name: 'order'
+                },
+                {
+                    data: 'project_name',
+                    name: 'project_name'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+            ],
+
+        })
+
+        $('#customer_dahsboard_table_reload_button').click(function() {
+            customer_dahsboard_blue_table.ajax.reload();
+        });
+    })
+    $(function() {
+        var em_freelancer_green_dash_table;
+        em_freelancer_green_dash_table = $('#em_freelancer_green_dashboard_table').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            searching: false,
+            paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-green-dashboard') }}",
                 type: "get",
@@ -710,15 +801,19 @@
             ],
 
         })
+        $('#em_freelancer_table_reload_btn').click(function() {
+            em_freelancer_green_dash_table.ajax.reload();
+        })
     })
     $(function() {
-        var table;
-        table = $('#em_freelancer_yellow_dashboard_table').DataTable({
+        var em_freelancer_yellow_dash_table;
+        em_freelancer_yellow_dash_table = $('#em_freelancer_yellow_dashboard_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -749,15 +844,19 @@
             ],
 
         })
+        $('#em_freelancer_table_reload_btn').click(function() {
+            em_freelancer_yellow_dash_table.ajax.reload();
+        })
     })
     $(function() {
-        var table;
-        table = $('#em_freelancer_red_dashboard_table').DataTable({
+        var em_freelancer_red_dash_table;
+        em_freelancer_red_dash_table = $('#em_freelancer_red_dashboard_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-red-dashboard') }}",
                 type: "get",
@@ -788,6 +887,58 @@
             ],
 
         })
+        $('#em_freelancer_table_reload_btn').click(function() {
+            em_freelancer_red_dash_table.ajax.reload();
+        })
+    })
+    $(function() {
+        var em_freelancer_blue_dash_table;
+        em_freelancer_blue_dash_table = $('#em_freelancer_blue_dashboard_table').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            searching: false,
+            paginate: false,
+            info: false,
+            ajax: {
+                url: "{{ __('routes.embroidery-freelancer-blue-dashboard') }}",
+                type: "get",
+            },
+            order: [
+                [2, 'desc']
+            ],
+            columns: [{
+                    data: 'art',
+                    name: 'art'
+                },
+                {
+                    data: 'deliver_time',
+                    name: 'deliver_time'
+                },
+                {
+                    data: 'order',
+                    name: 'order'
+                },
+                {
+                    data: 'project_name',
+                    name: 'project_name'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
+                    data: 'request',
+                    name: 'request',
+                    orderable: false,
+                    searchable: false
+                }
+            ],
+
+        })
+        $('#em_freelancer_table_reload_btn').click(function() {
+            em_freelancer_blue_dash_table.ajax.reload();
+        })
     })
     $(function() {
         var table;
@@ -797,6 +948,7 @@
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-green-dashboard') }}",
                 type: "get",
@@ -836,6 +988,7 @@
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -875,6 +1028,7 @@
             serverSide: true,
             searching: false,
             paginate: false,
+            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-red-dashboard') }}",
                 type: "get",

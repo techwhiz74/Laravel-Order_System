@@ -16,10 +16,14 @@
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
                             <th>{{ __('home.order_from') }}</th>
-                            <th style="min-width: 250px !important">{{ __('home.project') }}</th>
+                            <th style="min-width: 350px !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
-                            <th style="max-width: 110px !important">{{ __('home.detail') }}</th>
-                            <th style="max-width: 110px !important">{{ __('home.change') }}</th>
+                            <th style="max-width: 110px !important; text-align:center !important;">
+                                {{ __('home.detail') }}</th>
+                            <th style="max-width: 110px !important; text-align:center !important;">
+                                {{ __('home.change') }}</th>
+                            <th style="max-width: 110px !important; text-align:center !important;">
+                                {{ __('home.request') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -32,8 +36,6 @@
 
 </section>
 
-{{-- @include('components.freelancer.order-detail')
-@include('components.freelancer.order-change') --}}
 
 <script>
     $.ajaxSetup({
@@ -42,10 +44,10 @@
         }
     });
 
-    var table;
+    var em_freelancer_all_table;
 
     $(function() {
-        table = $('#em_freelancer_all_table').DataTable({
+        em_freelancer_all_table = $('#em_freelancer_all_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -106,6 +108,12 @@
                 {
                     data: 'action',
                     name: 'action',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'request',
+                    name: 'request',
                     orderable: false,
                     searchable: false
                 }

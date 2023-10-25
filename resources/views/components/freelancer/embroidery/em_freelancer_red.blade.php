@@ -18,8 +18,10 @@
                             <th>{{ __('home.order_from') }}</th>
                             <th style="min-width: 250px !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
-                            <th style="max-width: 110px !important">{{ __('home.detail') }}</th>
-                            <th style="max-width: 110px !important">{{ __('home.change') }}</th>
+                            <th style="max-width: 110px !important; text-align:center !important;">
+                                {{ __('home.detail') }}</th>
+                            <th style="max-width: 110px !important; text-align:center !important;">
+                                {{ __('home.change') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -32,8 +34,6 @@
 
 </section>
 
-{{-- @include('components.freelancer.order-detail')
-@include('components.freelancer.order-change') --}}
 
 <script>
     $.ajaxSetup({
@@ -42,10 +42,10 @@
         }
     });
 
-    var table;
+    var em_freelancer_red_table;
 
     $(function() {
-        table = $('#em_freelancer_red_table').DataTable({
+        em_freelancer_red_table = $('#em_freelancer_red_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -108,7 +108,7 @@
                     name: 'action',
                     orderable: false,
                     searchable: false
-                }
+                },
             ]
         });
     });
