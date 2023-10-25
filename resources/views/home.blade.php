@@ -18,7 +18,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="max-width: 350px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -38,7 +38,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="max-width: 350px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -60,7 +60,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="max-width: 350px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -80,7 +80,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="max-width: 350px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>

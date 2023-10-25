@@ -765,6 +765,5 @@
                 $("#admin_customer_search_table").hide();
             }
         });
-
     });
 </script>

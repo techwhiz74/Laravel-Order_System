@@ -21,7 +21,7 @@ Route::post('/import-data', [OrderController::class, 'importData'])->name('impor
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
 Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
 Route::post('/freelancer-upload', [FreelancerController::class, 'FreelancerFileUpload'])->name('freelancer-upload');
-Route::post('/admin-upload', [OrderController::class, 'adminFileUpload'])->name('admin-upload');
+Route::post('/admin-upload', [AdminController::class, 'adminFileUpload'])->name('admin-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
 // admin Route
