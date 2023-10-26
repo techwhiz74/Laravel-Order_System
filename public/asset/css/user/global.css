@@ -853,7 +853,7 @@ section {
 }
 
 .dataTables_info {
-  color: rgb(0, 56, 118);
+  color: #767676;
   font-size: 13px;
   white-space: pre-line;
   text-align: center;

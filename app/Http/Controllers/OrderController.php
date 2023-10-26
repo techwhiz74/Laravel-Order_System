@@ -284,24 +284,59 @@ class OrderController extends Controller
 
         if ($request->ajax()) {
             $data = Order::orderBy('id', 'desc')
-                ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
+                ->where('user_id', $authuser->id)
+                ->where(function ($query) use ($request) {
+                    $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                        ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                })->get();
             if ($request->start_date_filter == '') {
                 if ($request->end_date_filter == '') {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')->get();
+                        ->where('user_id', $authuser->id)
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })->get();
                 } else {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
                         ->where('created_at', '<=', date('Y-m-d', strtotime($request->end_date_filter)))->get();
                 }
             } else {
                 if ($request->end_date_filter == '') {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
                         ->where('created_at', '>=', date('Y-m-d', strtotime($request->start_date_filter)))->get();
                 } else {
                     $data = Order::orderBy('id', 'desc')
-                        ->where('user_id', $authuser->id)->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->where('user_id', $authuser->id)
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
                         ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime($request->end_date_filter))])->get();
                 }
             }

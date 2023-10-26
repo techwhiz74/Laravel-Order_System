@@ -4,7 +4,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Fonts -->
-<title> Lion|Werbung</title>
+<title> Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
 
 <link rel="stylesheet" href="{{ asset('asset/css/user/global.css') }}">
 

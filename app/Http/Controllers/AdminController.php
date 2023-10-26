@@ -612,7 +612,6 @@ class AdminController extends Controller
         $products = $request->post('products');
         $special_instructions = $request->post('special_instructions');
         $customer_number = $request->post('customer_number');
-        $ordered_from = $request->post('ordered_from');
         $searched_id = $request->post('searched_id');
         $last_order = Order::orderBy('order_number', 'desc')->first();
 
@@ -622,15 +621,14 @@ class AdminController extends Controller
             ->where('deliver_time', $deliver_time)
             ->where('width_height', $width_height)
             ->where('products', $products)
-            ->where('special_instructions', $special_instructions)
-            ->where('ordered_from', $ordered_from)->first();
+            ->where('special_instructions', $special_instructions)->first();
 
         if ($order == null) {
             $order = new Order();
             $order->customer_number = $customer_number;
             $order->order_number = $last_order == null ? '0001' : sprintf('%04s', $last_order->order_number + 1);
             $order->project_name = $project_name;
-            $order->ordered_from = $ordered_from;
+            $order->ordered_from = "Lion Werbe GmbH";
             $order->status = 'Offen';
             $order->type = $type;
             $order->size = $size;
