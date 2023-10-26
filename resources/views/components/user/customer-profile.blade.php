@@ -1,13 +1,13 @@
 @php
     $user = auth()->user();
-    
+
     $currentLocale = app()->getLocale();
     $currentPath = Request::path();
     $languagePrefix = $currentLocale . '/';
     //echo $currentPath;
     // Remove existing language prefix if present
     $currentPathWithoutLang = preg_replace('/^(en|de)\//', '', $currentPath);
-    
+
     if ($currentLocale === 'en') {
         $currentLanguage = 'English';
     } elseif ($currentLocale === 'de') {
@@ -15,7 +15,7 @@
     } else {
         $currentLanguage = $currentLocale;
     }
-    
+
     // Generate URLs for language switches
     $enUrl = 'en/';
     $deUrl = 'de/';
@@ -25,7 +25,7 @@
         $enUrl = 'en/' . $currentPathWithoutLang;
         $deUrl = 'de/' . $currentPathWithoutLang;
     }
-    
+
 @endphp
 <style>
     .card {
@@ -349,8 +349,21 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.country') }}</label>
-                                    <input type="text" name="profile_country" class="form-control"
-                                        value="{{ @$user->country }}">
+                                    <select name="profile_country" class="form-control">
+                                        <option value="Deutschland"
+                                            {{ @$user->country == 'Deutschland' ? 'selected' : '' }}>Deutschland
+                                        </option>
+                                        <option value="Österreich"
+                                            {{ @$user->country == 'Österreich' ? 'selected' : '' }}>Österreich
+                                        </option>
+                                        <option value="Schweiz" {{ @$user->country == 'Schweiz' ? 'selected' : '' }}>
+                                            Schweiz</option>
+                                        <option value="Italien" {{ @$user->country == 'Italien' ? 'selected' : '' }}>
+                                            Italien</option>
+                                        <option value="Niederlande"
+                                            {{ @$user->country == 'Niederlande' ? 'selected' : '' }}>Niederlande
+                                        </option>
+                                    </select>
                                     @if ($errors->has('country'))
                                         <span class="text-danger">{{ __('home.requiredMessage') }}<i
                                                 class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
@@ -435,22 +448,46 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_group') }} </label>
-                                    <input type="text" name="profile_kd_group" class="form-control"
-                                        value="{{ @$user->kd_group }}">
+                                    <select name="profile_kd_group" class="form-control">
+                                        <option value="Wiederverkäufer"
+                                            {{ @$user->kd_group == 'Wiederverkäufer' ? 'selected' : '' }}>
+                                            Wiederverkäufer
+                                        </option>
+                                        <option value="Endkunde"
+                                            {{ @$user->kd_group == 'Endkunde' ? 'selected' : '' }}>Endkunde
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_category') }} </label>
-                                    <input type="text" name="profile_kd_category" class="form-control"
-                                        value="{{ @$user->kd_category }}">
+                                    <select name="profile_kd_category" class="form-control">
+                                        <option value="Stickprogramme & Vektordateien"
+                                            {{ @$user->kd_category == 'Stickprogramme & Vektordateien' ? 'selected' : '' }}>
+                                            Stickprogramme & Vektordateien
+                                        </option>
+                                        <option value="Standard"
+                                            {{ @$user->kd_category == 'Standard' ? 'selected' : '' }}>Standard
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.payment_method') }} </label>
-                                    <input type="text" name="profile_payment_method" class="form-control"
-                                        value="{{ @$user->payment_method }}">
+                                    <select name="profile_payment_method" class="form-control">
+                                        <option value="Sofort ohne Abzug"
+                                            {{ @$user->payment_method == 'Sofort ohne Abzug' ? 'selected' : '' }}>
+                                            Sofort ohne Abzug
+                                        </option>
+                                        <option value="Lastschrift"
+                                            {{ @$user->payment_method == 'Lastschrift' ? 'selected' : '' }}>Lastschrift
+                                        </option>
+                                        <option value="Vorkasse"
+                                            {{ @$user->payment_method == 'Vorkasse' ? 'selected' : '' }}>
+                                            Vorkasse</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">

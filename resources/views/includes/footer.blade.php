@@ -596,7 +596,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.customer-dashboard-green-table') }}",
                 type: "get",
@@ -638,7 +637,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.customer-dashboard-red-table') }}",
                 type: "get",
@@ -682,7 +680,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.customer-dashboard-yellow-table') }}",
                 type: "get",
@@ -726,7 +723,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.customer-dashboard-blue-table') }}",
                 type: "get",
@@ -770,7 +766,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-green-dashboard') }}",
                 type: "get",
@@ -813,7 +808,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -856,7 +850,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-red-dashboard') }}",
                 type: "get",
@@ -899,7 +892,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-blue-dashboard') }}",
                 type: "get",
@@ -948,7 +940,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-green-dashboard') }}",
                 type: "get",
@@ -988,7 +979,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -1028,7 +1018,6 @@
             serverSide: true,
             searching: false,
             paginate: false,
-            info: false,
             ajax: {
                 url: "{{ __('routes.vector-freelancer-red-dashboard') }}",
                 type: "get",

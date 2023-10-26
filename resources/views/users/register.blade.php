@@ -221,7 +221,13 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.country') }} <span
                                                 class="reqiurd">*</span></label>
-                                        <input type="text" class="register_input" name="country">
+                                        <select name="country" class="register_input">
+                                            <option value="Deutschland">Deutschland</option>
+                                            <option value="Österreich">Österreich</option>
+                                            <option value="Schweiz">Schweiz</option>
+                                            <option value="Italien">Italien</option>
+                                            <option value="Niederlande">Niederlande</option>
+                                        </select>
                                         @if ($errors->has('country'))
                                             <span class="text-danger">{{ __('home.country') }}
                                                 {{ __('home.required') }}<i class="fa fa-exclamation-circle"
@@ -286,19 +292,40 @@
                                 <div class="col-md-12">
                                     <div class="">
                                         <label for="c1">{{ __('home.kd_group') }} </label>
-                                        <input type="text" class="register_input" name="kd_group">
+                                        <select name="kd_group" class="register_input">
+                                            <option value="Wiederverkäufer">
+                                                Wiederverkäufer
+                                            </option>
+                                            <option value="Endkunde">Endkunde
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="">
                                         <label for="c1">{{ __('home.kd_category') }} </label>
-                                        <input type="text" class="register_input" name="kd_category">
+                                        <select name="kd_category" class="register_input">
+                                            <option value="Stickprogramme & Vektordateien">
+                                                Stickprogramme & Vektordateien
+                                            </option>
+                                            <option value="Standard">Standard
+                                            </option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="">
                                         <label for="c1">{{ __('home.payment_method') }} </label>
-                                        <input type="text" class="register_input" name="payment_method">
+                                        <select name="payment_method" class="register_input">
+                                            <option value="Sofort ohne Abzug">
+                                                Sofort ohne Abzug
+                                            </option>
+                                            <option value="Lastschrift">
+                                                Lastschrift
+                                            </option>
+                                            <option value="Vorkasse">
+                                                Vorkasse</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
