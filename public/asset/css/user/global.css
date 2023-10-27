@@ -821,10 +821,13 @@ section {
 #em_freelancer_yellow_table.table>:not(caption)>*>*,
 #em_freelancer_red_table.table>:not(caption)>*>*,
 #em_freelancer_all_table.table>:not(caption)>*>*,
+#em_freelancer_blue_table.table>:not(caption)>*>*,
 #ve_freelancer_green_table.table>:not(caption)>*>*,
 #ve_freelancer_yellow_table.table>:not(caption)>*>*,
 #ve_freelancer_red_table.table>:not(caption)>*>*,
-#ve_freelancer_all_table.table>:not(caption)>*>* {
+#ve_freelancer_all_table.table>:not(caption)>*>*,
+#ve_freelancer_blue_table.table>:not(caption)>*>*,
+#admin_customer_list_table.table>:not(caption)>*>* {
   padding: 12px;
 }
 

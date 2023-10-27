@@ -11,18 +11,18 @@
                 <table id="em_freelancer_all_table" class="table table-striped" style="width:100%; font-size:13px;">
                     <thead>
                         <tr>
-                            <th style="max-width: 110px !important">{{ __('home.order_type') }}</th>
+                            <th style="max-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
                             <th>{{ __('home.delivery_time') }}</th>
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
                             <th>{{ __('home.order_from') }}</th>
-                            <th style="min-width: 350px !important">{{ __('home.project') }}</th>
+                            <th style="min-width: 500px !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
-                            <th style="max-width: 110px !important; text-align:center !important;">
+                            <th style="max-width: 70px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
-                            <th style="max-width: 110px !important; text-align:center !important;">
+                            <th style="max-width: 80px !important; text-align:center !important;">
                                 {{ __('home.change') }}</th>
-                            <th style="max-width: 110px !important; text-align:center !important;">
+                            <th style="max-width: 90px !important; text-align:center !important;">
                                 {{ __('home.request') }}</th>
                         </tr>
                     </thead>

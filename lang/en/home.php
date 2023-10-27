@@ -125,7 +125,7 @@ return [
     'project' => 'Project',
     'status' => 'Status',
 
-    'search_placeholder' => 'e.g. Project etc.',
+    'search_placeholder' => 'e.g. Deliver time, Order, Date, Project name',
     'search' => 'Search',
     'start_date' => 'Start Date',
     'end_date' => 'End Date',

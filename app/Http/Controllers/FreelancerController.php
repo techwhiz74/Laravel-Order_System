@@ -353,10 +353,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -375,12 +375,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -412,10 +412,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -434,12 +434,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -471,10 +471,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -493,12 +493,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -530,10 +530,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -552,12 +552,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -603,10 +603,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -625,12 +625,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -672,10 +672,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -709,10 +709,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -746,10 +746,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -783,10 +783,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -874,10 +874,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -896,12 +896,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -933,10 +933,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -955,12 +955,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -992,10 +992,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -1014,12 +1014,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1051,10 +1051,10 @@ class FreelancerController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -1073,12 +1073,12 @@ class FreelancerController extends Controller
                     return $status;
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary" style="color:#c4ae79 !important;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><i class="fa-solid fa-circle-info" style="color:#c4ae79;"></i></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1106,10 +1106,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -1196,10 +1196,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })
@@ -1233,10 +1233,10 @@ class FreelancerController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
                     }
                     return $type;
                 })

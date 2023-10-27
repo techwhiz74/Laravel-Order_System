@@ -20,8 +20,6 @@
                         <th>{{ __('home.postal_code') }}</th>
                         <th>{{ __('home.location') }}</th>
                         <th>{{ __('home.country') }}</th>
-                        <th>{{ __('home.kd_group') }}</th>
-                        <th>{{ __('home.kd_category') }}</th>
                         <th style="max-width: 70px !important; text-align:center;">{{ __('home.edit') }}</th>
                         <th style="max-width: 70px !important; text-align:center;">{{ __('home.request') }}</th>
                     </tr>
@@ -103,15 +101,6 @@
                     data: 'country',
                     name: 'country',
                 },
-                {
-                    data: 'kd_group',
-                    name: 'kd_group',
-                },
-                {
-                    data: 'kd_category',
-                    name: 'kd_category',
-                },
-
                 {
                     data: 'edit',
                     name: 'edit',

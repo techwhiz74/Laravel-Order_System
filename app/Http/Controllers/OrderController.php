@@ -377,7 +377,7 @@ class OrderController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if ($row->status == "Ausgeliefert") {
-                        $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><i class="fa-solid fa-pen-to-square text-primary"></i></button>';
+                        $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
                     }
                     return $btn;
                 })

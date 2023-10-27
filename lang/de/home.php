@@ -127,7 +127,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'project' => 'Projektname',
     'status' => 'Status',
 
-    'search_placeholder' => 'z.B. Projekname etc.',
+    'search_placeholder' => 'z.B. Lieferzeit, Auftrag, Datum, Projekname',
     'search' => 'Suchen',
     'start_date' => 'Startdatum',
     'end_date' => 'Endtermin',
