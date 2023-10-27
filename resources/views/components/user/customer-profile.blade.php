@@ -449,6 +449,7 @@
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_group') }} </label>
                                     <select name="profile_kd_group" class="form-control">
+                                        <option value=""></option>
                                         <option value="Wiederverkäufer"
                                             {{ @$user->kd_group == 'Wiederverkäufer' ? 'selected' : '' }}>
                                             Wiederverkäufer
@@ -463,6 +464,7 @@
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_category') }} </label>
                                     <select name="profile_kd_category" class="form-control">
+                                        <option value=""></option>
                                         <option value="Stickprogramme & Vektordateien"
                                             {{ @$user->kd_category == 'Stickprogramme & Vektordateien' ? 'selected' : '' }}>
                                             Stickprogramme & Vektordateien
@@ -477,6 +479,7 @@
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.payment_method') }} </label>
                                     <select name="profile_payment_method" class="form-control">
+                                        <option value=""></option>
                                         <option value="Sofort ohne Abzug"
                                             {{ @$user->payment_method == 'Sofort ohne Abzug' ? 'selected' : '' }}>
                                             Sofort ohne Abzug

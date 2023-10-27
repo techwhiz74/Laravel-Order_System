@@ -89,7 +89,7 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'login_lines' => 'Log in to Manage and Create Your Custom Orders',
-    'register_lines' => 'Get Started with Custom Orders: Sign Up Today',
+    'register_lines' => 'Please note that we only supply embroidery and advertising customers. In case you If you are an end customer, please contact your local partner.',
     'backToHome' => ' Back To Home Page',
     'already_have_account' => 'Already have an account?',
     'no_account_yet' => 'No account yet?',
@@ -114,6 +114,8 @@ return [
     'bank_name' => 'Bank name',
     'IBAN' => 'IBAN',
     'BIC' => 'BIC',
+    'upload' => 'Upload business license',
+
 
     //Orders form
     'overview_of_orders' => 'OVERVIEW OF ORDERS',
@@ -248,6 +250,7 @@ return [
     'customer_parameters_sidebar' => 'CUSTOMER PARAMETER',
 
     //customer staff
+    'firstName' => 'First name',
     'email_address' => 'Email-Address',
     'created_on' => 'Created On',
 

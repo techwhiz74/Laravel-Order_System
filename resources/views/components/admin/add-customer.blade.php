@@ -311,7 +311,13 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.country') }}</label>
-                                    <input type="text" name="add_country" class="form-control" value="">
+                                    <select name="add_country" class="form-control">
+                                        <option value="Deutschland">Deutschland</option>
+                                        <option value="Österreich">Österreich</option>
+                                        <option value="Schweiz">Schweiz</option>
+                                        <option value="Italien">Italien</option>
+                                        <option value="Niederlande">Niederlande</option>
+                                    </select>
                                     @if ($errors->has('country'))
                                         <span class="text-danger">{{ __('home.requiredMessage') }}<i
                                                 class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
@@ -401,21 +407,43 @@
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_group') }} </label>
-                                    <input type="text" name="add_kd_group" class="form-control" value="">
+                                    <select name="add_kd_group" class="form-control">
+                                        <option value=""></option>
+                                        <option value="Wiederverkäufer">
+                                            Wiederverkäufer
+                                        </option>
+                                        <option value="Endkunde">Endkunde
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.kd_category') }} </label>
-                                    <input type="text" name="add_kd_category" class="form-control"
-                                        value="">
+                                    <select name="add_kd_category" class="form-control">
+                                        <option value=""></option>
+                                        <option value="Stickprogramme & Vektordateien">
+                                            Stickprogramme & Vektordateien
+                                        </option>
+                                        <option value="Standard">Standard
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">
                                 <div class="form-group form_dv_wrap">
                                     <label>{{ __('home.payment_method') }} </label>
-                                    <input type="text" name="add_payment_method" class="form-control"
-                                        value="">
+                                    <select name="add_payment_method" class="form-control">
+                                        <option value=""></option>
+                                        <option value="Sofort ohne Abzug">
+                                            Sofort ohne Abzug
+                                        </option>
+                                        <option value="Lastschrift">
+                                            Lastschrift
+                                        </option>
+                                        <option value="Vorkasse">
+                                            Vorkasse</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12">

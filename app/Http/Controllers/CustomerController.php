@@ -83,9 +83,9 @@ class CustomerController extends Controller
                 'postal_code' => 'required',
                 'location' => 'required',
                 'country' => 'required',
-                'website' => 'required',
+                'website' => 'nullable',
                 'phone' => 'required',
-                'mobile' => 'required',
+                'mobile' => 'nullable',
                 'password' => 'required|min:6',
                 'confirm_password' => 'required|same:password',
                 'tax_number' => 'nullable',
@@ -97,6 +97,7 @@ class CustomerController extends Controller
                 'bank_name' => 'nullable',
                 'IBAN' => 'nullable',
                 'BIC' => 'nullable',
+                'upload' => 'required',
 
             ],
             [

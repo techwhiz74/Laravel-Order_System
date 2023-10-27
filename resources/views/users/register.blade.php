@@ -82,6 +82,16 @@
                 max-width: 110px;
             }
         }
+
+        form button {
+            position: relative;
+            overflow: hidden;
+            color: #fff;
+            background-color: #c3ac6d;
+            border: none;
+            border-radius: 0;
+            padding: 9px 10px;
+        }
     </style>
 </head>
 
@@ -109,8 +119,7 @@
                                 </div>
                                 <div class="logo_img">
                                     <a href="{{ asset('/') }}">
-                                        <img src="http://127.0.0.1:8000/asset/images/lion_werbe_gmbh_logo.webp"
-                                            alt="empty">
+                                        <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty">
                                     </a>
                                 </div>
                             </div>
@@ -119,6 +128,30 @@
                                 <p>{{ __('home.register_lines') }}</p>
                             </div>
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.company') }}<span class="reqiurd">*</span>
+                                        </label>
+                                        <input type="text" class="register_input" name="company">
+                                        @if ($errors->has('company'))
+                                            <span class="text-danger">{{ __('home.company') }}
+                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
+                                                    aria-hidden="true"></i></span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.company_addition') }}<span
+                                                class="reqiurd">*</span></label>
+                                        <input type="text" class="register_input" name="company_addition">
+                                        @if ($errors->has('company_addition'))
+                                            <span class="text-danger">{{ __('home.company_addition') }}
+                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
+                                                    aria-hidden="true"></i></span>
+                                        @endif
+                                    </div>
+                                </div>
                                 <div class="col-md-12">
                                     <div class="">
                                         <label for="t1">{{ __('home.name') }}<span
@@ -155,32 +188,6 @@
                                         @endif
                                     </div>
                                 </div>
-
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.company') }}<span class="reqiurd">*</span>
-                                        </label>
-                                        <input type="text" class="register_input" name="company">
-                                        @if ($errors->has('company'))
-                                            <span class="text-danger">{{ __('home.company') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.company_addition') }}<span
-                                                class="reqiurd">*</span></label>
-                                        <input type="text" class="register_input" name="company_addition">
-                                        @if ($errors->has('company_addition'))
-                                            <span class="text-danger">{{ __('home.company_addition') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
-                                        @endif
-                                    </div>
-                                </div>
-
                                 <div class="col-md-12">
                                     <div class="">
                                         <label for="c1">{{ __('home.street_number') }} <span
@@ -237,14 +244,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="">
-                                        <label for="c1">{{ __('home.website') }} <span
-                                                class="reqiurd">*</span></label>
+                                        <label for="c1">{{ __('home.website') }}</label>
                                         <input type="text" class="register_input" name="website">
-                                        @if ($errors->has('website'))
-                                            <span class="text-danger">{{ __('home.website') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
-                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -261,14 +263,8 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="">
-                                        <label for="c1">{{ __('home.mobile') }} <span
-                                                class="reqiurd">*</span></label>
+                                        <label for="c1">{{ __('home.mobile') }}</label>
                                         <input type="text" class="register_input" name="mobile">
-                                        @if ($errors->has('mobile'))
-                                            <span class="text-danger">{{ __('home.mobile') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
-                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -293,6 +289,7 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.kd_group') }} </label>
                                         <select name="kd_group" class="register_input">
+                                            <option value=""></option>
                                             <option value="Wiederverkäufer">
                                                 Wiederverkäufer
                                             </option>
@@ -305,6 +302,7 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.kd_category') }} </label>
                                         <select name="kd_category" class="register_input">
+                                            <option value=""></option>
                                             <option value="Stickprogramme & Vektordateien">
                                                 Stickprogramme & Vektordateien
                                             </option>
@@ -317,6 +315,7 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.payment_method') }} </label>
                                         <select name="payment_method" class="register_input">
+                                            <option value=""></option>
                                             <option value="Sofort ohne Abzug">
                                                 Sofort ohne Abzug
                                             </option>
@@ -328,22 +327,36 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="register_bank_name">
                                     <div class="">
                                         <label for="c1">{{ __('home.bank_name') }} </label>
                                         <input type="text" class="register_input" name="bank_name">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="register_IBAN">
                                     <div class="">
                                         <label for="c1">{{ __('home.IBAN') }} </label>
                                         <input type="text" class="register_input" name="IBAN">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12" id="register_BIC">
                                     <div class="">
                                         <label for="c1">{{ __('home.BIC') }} </label>
                                         <input type="text" class="register_input" name="BIC">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.upload') }} <span
+                                                class="reqiurd">*</span></label>
+                                        <input type="file" class="form-control" name="upload"
+                                            aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+                                            style="font-size:13px; margin:5px 0;">
+                                        @if ($errors->has('upload'))
+                                            <span class="text-danger">{{ __('home.upload') }}
+                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
+                                                    aria-hidden="true"></i></span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -380,18 +393,18 @@
                                     <button type="submit">{{ __('home.register') }}</button>
                                 </div>
                                 <div class="resig_lnkk">
-                                    <p>{{ __('home.already_have_account') }}</p>
-                                    <a href="{{ __('routes.customer-login') }}">{{ __('home.login') }}</a>
+                                    <p>{{ __('home.already_have_account') }} </p>
+                                    <a href="{{ __('routes.customer-login') }}"
+                                        style="color: #000; margin-left:10px;">{{ __('home.login') }}</a>
                                 </div>
                             </div>
 
                             <div class="footerrr">
                                 <div class="fttrr_img">
-                                    <img src="http://127.0.0.1:8000/asset/images/lion_werbe_gmbh_logo.webp"
-                                        alt="empty">
+                                    <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty">
                                 </div>
                                 <div class="copy_right_txt">
-                                    <p>Copyright 2023 Lion Werbung</p>
+                                    <p>Copyright Lion Werbe GmbH</p>
                                 </div>
                             </div>
                         </form>
@@ -404,5 +417,23 @@
 
 
 </body>
+<script>
+    $(function() {
+        $('#register_bank_name').hide();
+        $('#register_IBAN').hide();
+        $('#register_BIC').hide();
+        $('[name=payment_method]').change(function() {
+            if ($(this).val() == "Lastschrift") {
+                $('#register_bank_name').show();
+                $('#register_IBAN').show();
+                $('#register_BIC').show();
+            } else {
+                $('#register_bank_name').hide();
+                $('#register_IBAN').hide();
+                $('#register_BIC').hide();
+            }
+        })
+    })
+</script>
 
 </html>

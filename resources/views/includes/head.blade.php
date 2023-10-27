@@ -242,6 +242,7 @@
         $('#admin_customer_profile_edit_popup').modal("hide");
         $('#admin_customer_profile_request_handle_popup').modal("hide");
         $('#em_freelancer_request_popup').modal("hide");
+        $('#register_upload_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {

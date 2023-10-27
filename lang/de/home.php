@@ -11,7 +11,7 @@ return [
     'information_embroidery' => 'Informationen Stickprogramme',
     'price_vector' => 'Preisliste Vektordateien',
     'information_vector' => 'Informationen Vektordateien',
-    'change_password' => 'Kennwort Andern',
+    'change_password' => 'Passwort ändern',
     'logout' => 'Ausloggen',
     //sidebar
     'minimize' => 'Minimieren',
@@ -89,7 +89,8 @@ return [
     'login' => 'Anmeldung',
     'register' => 'Registrieren',
     'login_lines' => 'Melden Sie sich an, um Ihre benutzerdefinierten Bestellungen zu verwalten und zu erstellen',
-    'register_lines' => 'Beginnen Sie mit kundenspezifischen Bestellungen: Melden Sie sich noch heute an',
+    'register_lines' => 'Bitte beachten Sie, dass wir ausschließlich Stickereien und Kunden aus der Werbebranche beliefern. Sofern Sie
+Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'backToHome' => 'Zurück zur Startseite',
     'already_have_account' => 'Sie haben bereits ein Konto?',
     'no_account_yet' => 'Noch keinen Account?',
@@ -114,6 +115,9 @@ return [
     'bank_name' => 'Bankname',
     'IBAN' => 'IBAN',
     'BIC' => 'BIC',
+    'upload' => 'Gewerbenachweis hochladen',
+
+
 
     //Orders form
     'overview_of_orders' => 'Auftrag Gesamtübersicht',
@@ -256,8 +260,10 @@ return [
     'customer_parameters_sidebar' => 'KUNDEN PARAMETER',
 
     //customer staff
-    'email_address' => 'E-mail-Address',
-    'created_on' => 'Hinzungfugt am',
+    'lastName' => 'Nachname',
+    'firstName' => 'Vorname',
+    'email_address' => 'E-Mail-Adresse',
+    'created_on' => 'Hinzugefügt am',
 
     //Embroidery Information
     'information' => 'INFORMATIONEN',

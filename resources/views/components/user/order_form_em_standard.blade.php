@@ -672,7 +672,7 @@
                 </div>
             </div>
             <div style="display: flex;">
-                <input type="checkbox" id="order_form_checkbox" style="width:40px; height:20px;" />
+                <input type="checkbox" id="order_form_checkbox" style="width:30px; height:20px;" />
                 <div style="margin-left: 20px;">
                     <label for="order_form_checkbox" style="line-height:normal; font-size:11px !important;">Mit der
                         Zustimmung bestätigen Sie,

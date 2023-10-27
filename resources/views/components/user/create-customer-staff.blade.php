@@ -40,7 +40,8 @@
                                     style="width:100% !important;">
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
+                        <div class="col-xs-12 col-sm-12 col-md-12"
+                            style="margin: 5px 0; display:flex; justify-content:flex-end;">
                             <button type="submit" id="customer_staff_create_submit">Submit</button>
                         </div>
                 </form>

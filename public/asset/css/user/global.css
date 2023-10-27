@@ -1736,6 +1736,27 @@ select#status-filter:focus-visible {
   height: 100px;
 }
 
+#register_upload_popup .modal-dialog {
+  background-color: rgba(227, 222, 222, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+#register_upload_popup .modal-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .customer_profile_page {
   padding: 0 !important;
 }
