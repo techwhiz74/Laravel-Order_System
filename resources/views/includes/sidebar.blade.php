@@ -371,7 +371,24 @@
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
-                        <div lion-pop-id="customer_parameters" id="customer_parameters1" class="lion_pop_btn">
+                        <div lion-pop-id="customer_parameters_em" id="customer_parameters_em1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/gears-duotone.svg') }}" style="width: 39px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>{{ __('home.customer_parameters_sidebar') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            @elseif (auth()->user()->user_type == 'admin')
+            @endif
+            @if (auth()->user()->user_type == 'customer')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="customer_parameters_ve" id="customer_parameters_ve1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/gears-duotone.svg') }}" style="width: 39px;" />
                             </div>
@@ -432,11 +449,19 @@
             @endif
         </div>
     </div>
-    <div id="customer_parameters" class="lion_popup_wrrpr">
+    <div id="customer_parameters_em" class="lion_popup_wrrpr" style="overflow-y: hidden;">
         <div class="lion_popup_dv">
 
             @if (auth()->user()->user_type == 'customer')
-                <x-user.customer_parameters />
+                <x-user.customer_parameters_em />
+            @endif
+        </div>
+    </div>
+    <div id="customer_parameters_ve" class="lion_popup_wrrpr" style="overflow-y: hidden;">
+        <div class="lion_popup_dv">
+
+            @if (auth()->user()->user_type == 'customer')
+                <x-user.customer_parameters_ve />
             @endif
         </div>
     </div>
@@ -495,6 +520,7 @@
             @endif
         </div>
     </div>
+
     @include('components.freelancer.embroidery.em_freelancer_request')
     @include('components.freelancer.embroidery.free-order-detail')
     <div id="admin_customer_list" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">

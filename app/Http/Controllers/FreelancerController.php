@@ -378,7 +378,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -386,7 +386,7 @@ class FreelancerController extends Controller
                     if ($row->deliver_time == "STANDARD") {
                         $deliver_time = "STANDARD";
                     } else if ($row->deliver_time == "EXPRESS") {
-                        $deliver_time = "EXPRESS ";
+                        $deliver_time = '<div style="color:red;" class="blink">EXPRESS</div>';
                     }
                     return $deliver_time;
                 })
@@ -434,7 +434,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -442,7 +442,7 @@ class FreelancerController extends Controller
                     if ($row->deliver_time == "STANDARD") {
                         $deliver_time = "STANDARD";
                     } else if ($row->deliver_time == "EXPRESS") {
-                        $deliver_time = "EXPRESS ";
+                        $deliver_time = '<div style="color:red;" class="blink">EXPRESS</div>';
                     }
                     return $deliver_time;
                 })
@@ -490,7 +490,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -546,7 +546,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -616,7 +616,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -884,7 +884,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -940,7 +940,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -996,7 +996,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1052,7 +1052,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {

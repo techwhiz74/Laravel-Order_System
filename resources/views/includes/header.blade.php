@@ -70,7 +70,27 @@
                     </button>
                     <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0">
-                            @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                            @if (auth()->user())
+                                @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                                    <li class="nav-item  menu_list" style="padding: 0px 10px;">
+                                        <a class="nav-link" style="font-size: 16px;"
+                                            href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
+                                    </li>
+                                    <li class="nav-item  menu_list" style="padding: 0px 10px;">
+                                        <a class="nav-link" style="font-size: 16px;"
+                                            href="javascript:contentViewer(1);">{{ __('home.prices_embroidery') }}</a>
+                                    </li>
+                                    <li class="nav-item menu_list" style="padding: 0px 10px;">
+                                        <a class="nav-link" style="font-size: 16px;"
+                                            href="javascript:contentViewer(2);">{{ __('home.information_vector') }}</a>
+                                    </li>
+                                    <li class="nav-item  menu_list" style="padding: 0px 10px;">
+                                        <a class="nav-link" style="font-size: 16px;"
+                                            href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
+                                    </li>
+                                @elseif(auth()->user()->user_type == 'freelancer')
+                                @endif
+                            @else
                                 <li class="nav-item  menu_list" style="padding: 0px 10px;">
                                     <a class="nav-link" style="font-size: 16px;"
                                         href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
@@ -87,8 +107,8 @@
                                     <a class="nav-link" style="font-size: 16px;"
                                         href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
                                 </li>
-                            @elseif(auth()->user()->user_type == 'freelancer')
                             @endif
+
                         </ul>
                     </div>
                 </div>
@@ -117,7 +137,8 @@
                             <li>
                                 <!-- <a href="#">Change Password</a> -->
                                 @if (@auth()->user()->user_type == 'admin')
-                                    <a href="{{ __('routes.admin-changepassword') }}">{{ __('home.change_password') }}</a>
+                                    <a
+                                        href="{{ __('routes.admin-changepassword') }}">{{ __('home.change_password') }}</a>
                                 @elseif(@auth()->user()->user_type == 'freelancer')
                                     <a
                                         href="{{ __('routes.freelancer-changepassword') }}">{{ __('home.change_password') }}</a>

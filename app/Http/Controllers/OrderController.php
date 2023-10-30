@@ -407,7 +407,7 @@ class OrderController extends Controller
                             $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="showOrderRequest(' . $row->id . ')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="showOrderRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';

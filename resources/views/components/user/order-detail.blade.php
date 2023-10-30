@@ -143,7 +143,6 @@
         </div>
     </div>
 </div>
-
 <script>
     $.ajaxSetup({
         headers: {
@@ -165,6 +164,7 @@
                 id
             },
             success: (data) => {
+                console.log(data);
                 var folderArray = [];
                 data.detail.map((item, index) => {
                     item = item.split('/')[3];
@@ -215,7 +215,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ __('routes.customer-order_detail') }}",
+                url: '{{ __('routes.customer-order_detail') }}',
                 data: function(d) {
                     d.id = id;
                     d.type = type;

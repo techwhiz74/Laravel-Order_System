@@ -151,7 +151,7 @@
         }
     });
 
-    function openOrderDetailModal(id, type) {
+    function freeOpenOrderDetailModal(id, type) {
         var free_detail_table;
         $('#free_detail_id').val(id);
         $('#free_subfolder_structure1').hide();

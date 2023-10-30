@@ -57,7 +57,7 @@
         // general options
         selectAll: false, // add select all option
         selectGroup: false, // select entire optgroup
-        minHeight: 200,   // minimum height of option overlay
+        minHeight: 100,   // minimum height of option overlay
         maxHeight: null,  // maximum height of option overlay
         maxWidth: null,  // maximum width of option overlay (or selector)
         maxPlaceholderWidth: null,  // maximum width of placeholder button

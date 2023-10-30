@@ -1049,4 +1049,9 @@
 
         })
     })
+
+    function showAllOrder() {
+        console.log("sdf");
+        $('#view_order_popup1').trigger('click');
+    }
 </script>
