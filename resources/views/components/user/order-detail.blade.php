@@ -96,26 +96,12 @@
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Originaldatei</button>
                                     </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
+                                    <li class="nav-item">
                                         <button id="subfolder_structure2" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Stickprogramm</button>
                                     </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure3" class="order_detail_folder_button">
-                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            <div style="margin-left:5px; text-align:left;">
-                                                Stickprogramm Änderung</div>
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure4" class="order_detail_folder_button"
-                                            style="display: flex;">
-                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            <div style="margin-left:5px; text-align:left;">
-                                                Änderungsdateien Kunde</div>
-                                        </button>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="col-9 responsive-table">
@@ -155,8 +141,7 @@
         $('#detail_id').val(id);
         $('#subfolder_structure1').hide();
         $('#subfolder_structure2').hide();
-        $('#subfolder_structure3').hide();
-        $('#subfolder_structure4').hide();
+
         $.ajax({
             url: '{{ __('routes.customer-get-order-detail') }}',
             type: 'GET',
@@ -195,10 +180,6 @@
                         $('#subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
                         $('#subfolder_structure2').show();
-                    } else if (item == "Stickprogramm Änderung") {
-                        $('#subfolder_structure3').show();
-                    } else if (item == "Änderungsdateien Kunde") {
-                        $('#subfolder_structure4').show();
                     }
                 })
             },
@@ -263,11 +244,5 @@
     });
     $('#subfolder_structure2').click(function() {
         openOrderDetailModal($('#detail_id').val(), 'Stickprogramm');
-    });
-    $('#subfolder_structure3').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Stickprogramm Änderung');
-    });
-    $('#subfolder_structure4').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Änderungsdateien Kunde');
     });
 </script>

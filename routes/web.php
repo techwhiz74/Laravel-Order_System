@@ -60,12 +60,14 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/logout', [CustomerController::class, 'customerLogout']);
     Route::get('/view-orders', [OrderController::class, 'viewOrder'])->name('customer-vieworders');
     Route::get('/order_detail', [OrderController::class, 'OrderDetail'])->name('customer-order_detail');
+    Route::get('/req-order_detail', [OrderController::class, 'OrderDetail'])->name('req-customer-order_detail');
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
     // Route::get('/order-details/{id}', [OrderController::class, 'orderDetails']);
     Route::get('/get-order-detail', [OrderController::class, 'getOrderDetail'])->name('customer-get-order-detail');
+    Route::get('/req-get-order-detail', [OrderController::class, 'getOrderDetail'])->name('req-customer-get-order-detail');
     Route::post('/order-file-index-change', [OrderController::class, 'changeOrderIndex'])->name('customer-order-file-index-change');
     Route::post('/orderfile-information', [OrderController::class, 'getOrderFileInformation'])->name('customer-orderfile-information');
     Route::get('/dashboard-green-table', [OrderController::class, 'DashboardGreenTable'])->name('customer-dashboard-green-table');

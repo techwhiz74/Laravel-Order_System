@@ -8,24 +8,23 @@
     }
 
     .order_form_input,
-    textarea,
-    .ms-options-wrap>button,
-    .ms-options-wrap>button:focus {
+    textarea {
         width: 100%;
         height: 40px;
         padding: 12px;
-        border: 1px solid #ccc;
         display: flex;
         margin: auto;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+        outline: none;
     }
 
-    .ms-options-wrap * {
-        font-size: 16px;
+    .order_form_input:focus {
+        border: 1px solid #888;
     }
 
-    .ms-res-ctn {
-        top: 100%;
-        left: 0;
+    textarea:focus {
+        border: 1px solid #888;
     }
 
     .order_form_lavel {
@@ -60,7 +59,7 @@
         width: 100%;
         min-height: 100%;
         background-color: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect_em_ex div {
@@ -71,7 +70,7 @@
         min-height: 100%;
         background-color: #fff;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect::after {
@@ -82,13 +81,6 @@
         display: none;
     }
 
-    /* .order_form_submit:hover {
-        background-color: #45a049;
-    }
-
-    .order_form_submit_em_ex:hover {
-        background-color: #45a049;
-    } */
 
 
     .col-20 {
@@ -120,45 +112,6 @@
         margin-top: -4px;
     }
 
-    .ms-options-wrap>.ms-options>ul input[type="checkbox"] {
-        margin: auto 5px auto 0;
-        position: static;
-    }
-
-    .ms-ctn .ms-sel-ctn {
-        margin-left: -7px;
-        padding-left: 10px;
-    }
-
-    .ms-ctn .ms-trigger .ms-trigger-ico {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        vertical-align: bottom;
-        border-top: 4px solid #333;
-        border-right: 4px solid transparent;
-        border-left: 4px solid transparent;
-        content: "";
-        margin-left: 8px;
-        margin-top: 15px;
-    }
-
-    .ms-res-ctn .ms-res-item {
-        line-height: 25px;
-        text-align: left;
-        padding: 2px 15px;
-        color: #666;
-        cursor: pointer;
-    }
-
-    .clear-products-button {
-        position: absolute;
-        right: 10px;
-        top: 0;
-        height: 100%;
-        border: none;
-        background-color: transparent;
-    }
 
     .product-item-menu {
         position: absolute;
@@ -173,8 +126,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .product-item-menu_em_ex {
@@ -190,8 +141,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .order_form_file_uplaod_command {
@@ -214,9 +163,7 @@
         font-size: 13px
     }
 
-    #order_form_anotherOrderButton:hover {
-        background-color: #c3ac6f;
-    }
+
 
     .btn-success {
         color: #fff;
@@ -225,9 +172,6 @@
         border-radius: 0;
     }
 
-    .btn-success :hover {
-        background-color: #c3ac6d !important;
-    }
 
     .upload_cacel_btn {
         margin-left: -120px;
@@ -247,18 +191,7 @@
         width: 80px;
     }
 
-    .order_form_validation_deliver_time,
-    .order_form_validation_projectname,
-    .order_form_validation_size,
-    .order_form_validation_products,
-    .order_form_file_upload,
-    .order_form_validation_checkbox {
-        color: red;
-        font-style: italic;
-        font-size: 13px;
-        display: none;
-        margin-bottom: 10px;
-    }
+
 
 
     /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
@@ -594,7 +527,7 @@
                                 </div>
                                 <div style="display: flex; justify-content: flex-end; margin-top: 20px">
                                     <button type="button" id="close_project_menu" class="btn btn-secondary "
-                                        style="width:200px; height: 30px; padding: 0; background-color:c3ac6d; border:none; border-radius:0; font-size:13px;glyphicon glyphicon-upload">{{ __('home.close') }}</button>
+                                        style="width:200px; height: 30px; padding: 0; background-color: #c3ac6d; border:none; border-radius:0; font-size:13px;glyphicon glyphicon-upload">{{ __('home.close') }}</button>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <section class="customer_parameters_ve_section">
     <div class="pagetitle">
-        <h1>{{ __('home.customer_parameters') }}</h1>
+        <h1>{{ __('home.customer_ve_parameters') }}</h1>
         <p></p>
     </div>
     <div class="order_fome_container">

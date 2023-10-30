@@ -377,7 +377,7 @@ class OrderController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
-                    if ($row->status == "Ausgeliefert") {
+                    if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
                         $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
                     }
                     return $btn;
@@ -493,7 +493,7 @@ class OrderController extends Controller
     public function OrderRequest($locale, $id)
     {
         $order = Order::find($id);
-        $order_change = OrderChange::where('order_number', $order->order_number)->first();
+        $order_change = OrderChange::where('order_number', $order->order_number)->get();
         return response()->json($order_change);
     }
 
@@ -501,7 +501,7 @@ class OrderController extends Controller
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Offen')->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Offen')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -539,7 +539,7 @@ class OrderController extends Controller
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Ausgeliefert')->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Ausgeliefert')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -576,7 +576,7 @@ class OrderController extends Controller
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'In Bearbeitung')->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'In Bearbeitung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -613,7 +613,7 @@ class OrderController extends Controller
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Änderung')->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Änderung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -744,7 +744,7 @@ class OrderController extends Controller
         $order = Order::findOrfail($order_id);
         $customer = User::findOrfail($order->user_id);
 
-        OrderChange::where('order_number', $order->order_number)->delete();
+        OrderChange::where('message', $order_change_message)->delete();
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;

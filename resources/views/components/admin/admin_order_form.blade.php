@@ -10,7 +10,7 @@
         width: 100%;
         height: 40px;
         padding: 12px;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd !important;
         display: flex;
         margin: auto;
     }
@@ -56,7 +56,7 @@
         width: 100%;
         min-height: 100%;
         background-color: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect_em_ex div {
@@ -67,7 +67,7 @@
         min-height: 100%;
         background-color: #fff;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect::after {
@@ -169,8 +169,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .product-item-menu_em_ex {
@@ -186,8 +184,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .order_form_file_uplaod_command {

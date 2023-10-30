@@ -594,7 +594,7 @@ class CustomerController extends Controller
                     $edit = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="editEmployee(' . $row->id . ')" style="border:none; background-color:none;"><i
+                                <button onclick="editEmployee(' . $row->id . ')" style="border:none; background-color:inherit;"><i
                                         class="fa-solid fa-pen-to-square" style="color:#c4ae79;"></i></button>
                             </div>
                         </div>';

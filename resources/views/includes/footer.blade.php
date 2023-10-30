@@ -258,11 +258,11 @@
             $('#order_form_products').css("display", "block");
             $('#order_form_anotherOrderButton').trigger('click');
             $('.order_form_validation_projectname').hide();
-            $('[name=project_name]').css("border", "1px solid #ccc");
+            $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_validation_size').hide();
-            $('[name=size]').css("border", "1px solid #ccc");
+            $('[name=size]').css("border", "1px solid #ddd");
             $('.order_form_validation_products').hide();
-            $('#selected_products').css("border", "1px solid #ccc");
+            $('#selected_products').css("border", "1px solid #ddd");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
@@ -278,11 +278,11 @@
             $('#order_form_products').css("display", "block");
             $('#order_form_anotherOrderButton').trigger('click');
             $('.order_form_validation_projectname').hide();
-            $('[name=project_name]').css("border", "1px solid #ccc");
+            $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_validation_size').hide();
-            $('[name=size]').css("border", "1px solid #ccc");
+            $('[name=size]').css("border", "1px solid #ddd");
             $('.order_form_validation_products').hide();
-            $('#selected_products').css("border", "1px solid #ccc");
+            $('#selected_products').css("border", "1px solid #ddd");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
@@ -298,7 +298,7 @@
             $('#order_form_products').css("display", "none");
             $('#order_form_anotherOrderButton').trigger('click');
             $('.order_form_validation_projectname').hide();
-            $('[name=project_name]').css("border", "1px solid #ccc");
+            $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_file_upload').hide();
             $('[name=size]').val("24");
             $('.order_form_validation_checkbox').hide();
@@ -314,7 +314,7 @@
             $('#order_form_products').css("display", "none");
             $('#order_form_anotherOrderButton').trigger('click');
             $('.order_form_validation_projectname').hide();
-            $('[name=project_name]').css("border", "1px solid #ccc");
+            $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_file_upload').hide();
             $('[name=size]').val("24");
             $('.order_form_validation_checkbox').hide();
@@ -536,18 +536,18 @@
         $("[name=project_name]").keyup(function(e) {
             if ($(this).val() != "") {
                 $('.order_form_validation_projectname').hide();
-                $('[name=project_name]').css("border", "1px solid #ccc");
+                $('[name=project_name]').css("border", "1px solid #ddd");
             }
         });
         $("#input_number_format").keyup(function(e) {
             if ($(this).val() != "") {
                 $('.order_form_validation_size').hide();
-                $('[name=size]').css("border", "1px solid #ccc");
+                $('[name=size]').css("border", "1px solid #ddd");
             }
         });
         $('.product-multiselect').click(function(e) {
             $('.order_form_validation_products').hide();
-            $('#selected_products').css("border", "1px solid #ccc");
+            $('#selected_products').css("border", "1px solid #ddd");
         });
         $('.fileinput-button').click(function(e) {
             $('.order_form_file_upload').hide();

@@ -247,7 +247,8 @@ return [
 
     //customer-parameters
     'customer_parameters' => 'Customer Parameter',
-    'customer_parameters_sidebar' => 'CUSTOMER PARAMETER',
+    'customer_parameters_em_sidebar' => 'CUSTOMER EM PARAMETER',
+    'customer_parameters_ve_sidebar' => 'CUSTOMER VE PARAMETER',
 
     //customer staff
     'firstName' => 'First name',

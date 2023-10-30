@@ -82,7 +82,7 @@
                     <div class="order_detail_div2">
                         <div class="col-12">
                             <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
-                                <button class="btn btn-primary btn-sm" onclick="multipleDownload()"
+                                <button class="btn btn-primary btn-sm" onclick="freeMultipleDownload()"
                                     style="background-color:#c3ac6d; border:none; font-size:13px;"><i
                                         class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                             </div>
@@ -102,13 +102,6 @@
                                             Stickprogramm</button>
                                     </li>
                                     <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="free_subfolder_structure3" class="order_detail_folder_button">
-                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            <div style="margin-left:5px; text-align:left;">
-                                                Stickprogramm Änderung</div>
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
                                         <button id="free_subfolder_structure4" class="order_detail_folder_button"
                                             style="display: flex;">
                                             <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
@@ -116,9 +109,16 @@
                                                 Änderungsdateien Kunde</div>
                                         </button>
                                     </li>
+                                    <li class="nav-item" style="margin-bottom:10px;">
+                                        <button id="free_subfolder_structure3" class="order_detail_folder_button">
+                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                            <div style="margin-left:5px; text-align:left;">
+                                                Stickprogramm Änderung</div>
+                                        </button>
+                                    </li>
                                 </ul>
                             </div>
-                            <div class="col-9 responsive-table">
+                            <div class="col-9 responsive-table" style="height: 300px;">
 
                                 <table id="free_order_detail" class="table table-striped"
                                     style="width:100%; font-size:13px;">
@@ -256,19 +256,19 @@
         free_detail_table.destroy();
     }
 
-    function multipleDownload() {
+    function freeMultipleDownload() {
         window.location.href = '{{ url('multi-download') }}/' + $('#free_detail_id').val();
     }
     $('#free_subfolder_structure1').click(function() {
-        openOrderDetailModal($('#free_detail_id').val(), 'Originaldatei');
+        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Originaldatei');
     });
     $('#free_subfolder_structure2').click(function() {
-        openOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm');
+        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm');
     });
     $('#free_subfolder_structure3').click(function() {
-        openOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm Änderung');
+        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm Änderung');
     });
     $('#free_subfolder_structure4').click(function() {
-        openOrderDetailModal($('#free_detail_id').val(), 'Änderungsdateien Kunde');
+        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Änderungsdateien Kunde');
     });
 </script>

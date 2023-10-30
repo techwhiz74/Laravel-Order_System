@@ -151,6 +151,11 @@
         display: inline !important;
         width: calc(100% - 100px) !important;
         font-size: 13px;
+        border: 1px solid #ddd !important;
+    }
+
+    .form-group .form-control :focus {
+        border: 1px solid #888 !important;
     }
 
     @media screen and (max-width: 992px) {

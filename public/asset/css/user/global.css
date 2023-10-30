@@ -111,7 +111,7 @@ section {
 .menu_list .dropdown-menu a {
   color: black !important;
   padding: 10px 0px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
 }
 
 .menu_list .dropdown-menu a:hover {
@@ -224,7 +224,7 @@ section {
   padding: .375rem .75rem;
   margin: 15px 0;
   display: inline-block;
-  border: 1px solid #00000075;
+  border: 1px solid #ddd;
   font-family: "Inter", "Helvetica", monospace;
   font-size: 13px;
   color: #777;
@@ -233,11 +233,6 @@ section {
 }
 
 
-.form_dv input[type=email],
-.form_dv input[type=text],
-.form_dv input[type=password]:focus {
-  outline: none;
-}
 
 .submit_btn button {
   background-color: #c3ac6d;
@@ -260,6 +255,27 @@ section {
 
 
 /* updated code of login page */
+.backbutton {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-size: 14px;
+}
+
+.backbutton:hover {
+  background-color: #ddd;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
 
 .login_section {
   padding: 0 !important;
@@ -581,7 +597,7 @@ section {
 }
 
 .profile_wrap {
-  border: 1px solid black;
+  border: 1px solid #ddd;
   padding: 5px;
   background: #e9e9e9;
   margin-top: 10px;
@@ -626,15 +642,16 @@ section {
   margin-bottom: 7px;
 }
 
-.form_dv_wrap .form-control:focus {
-  outline: none !important;
-  box-shadow: none !important;
-  border: none !important;
+.form_dv_wrap .form-control {
+  border-radius: 0 !important;
 }
 
-.form_dv_wrap .form-control {
-  border: none !important;
+.form_dv_wrap .form-control:focus {
+  /* outline: none !important; */
+  box-shadow: none !important;
+  border: 1px solid #888 !important;
 }
+
 
 .upload_btn button:focus:not(:focus-visible) {
   outline: 0;
@@ -731,7 +748,7 @@ section {
 .action .menu ul li {
   list-style: none;
   padding: 10px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #ddd;
   display: flex;
   align-items: center;
 }
@@ -777,6 +794,7 @@ section {
 #view-order thead,
 #order_detail thead,
 #free_order_detail thead,
+#req_order_detail thead,
 #freelancer_order_detail thead,
 #customer_staffs thead,
 #customer_dashboard_green_table thead,
@@ -1015,7 +1033,7 @@ div#view-order_length label select:focus-visible {
   outline-offset: unset !important;
   margin-left: 10px;
   background: white;
-  border: 1px solid #767676;
+  border: 1px solid #ddd;
   padding: 0;
   font-weight: 400;
   border-radius: 2px;
@@ -1453,7 +1471,7 @@ select#status-filter:focus-visible {
   border: 1px solid #111;
   background-color: #ccc;
   height: 100%;
-  padding: 8px 5px 5px 5px;
+  padding: 8px 0 5px 0;
   width: 80px;
 }
 
@@ -1468,8 +1486,9 @@ select#status-filter:focus-visible {
   padding-right: 0;
   font-size: 16px;
   min-height: 40px; */
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
+  font-family: monospace;
 }
 
 .sidebar-nav li a:focus-visible,
@@ -1666,21 +1685,34 @@ select#status-filter:focus-visible {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 300px;
 }
 
 .order_detail_div1 {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
   padding: 10px;
   margin-bottom: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .order_detail_div2 {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #ddd;
   padding: 10px;
   height: 350px;
+  border-radius: 5px;
+}
+
+.order_form_validation_deliver_time,
+.order_form_validation_projectname,
+.order_form_validation_size,
+.order_form_validation_products,
+.order_form_file_upload,
+.order_form_validation_checkbox {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
+  display: none;
+  margin-bottom: 10px;
 }
 
 .order_detail_folder_button {
@@ -1782,7 +1814,7 @@ select#status-filter:focus-visible {
 .request_information {
   width: 100%;
   padding: 20px;
-  border: 1px solid;
+  border: 1px solid#ddd;
 
 }
 
@@ -2219,6 +2251,7 @@ select#status-filter:focus-visible {
 
 .responsive-table {
   overflow-x: auto;
+  overflow-y: auto;
 }
 
 
@@ -2577,7 +2610,14 @@ select#status-filter:focus-visible {
   width: 100%;
   min-height: 40px;
   padding: 6px 59px 6px 8px;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid #ddd;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+}
+
+#tableSearchInput:focus {
+  border: 1px solid #888;
 }
 
 .DatePickerWrapperStart {
@@ -2593,7 +2633,14 @@ select#status-filter:focus-visible {
   width: 100%;
   min-height: 40px;
   padding: 6px 8px;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid #ddd;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+}
+
+#tableDatepickerInputStart:focus {
+  border: 1px solid #888;
 }
 
 .DatePickerWrapperEnd {
@@ -2609,7 +2656,14 @@ select#status-filter:focus-visible {
   width: 100%;
   min-height: 40px;
   padding: 6px 8px;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid #ddd;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+}
+
+#tableDatepickerInputEnd:focus {
+  border: 1px solid #888;
 }
 
 .controlGroup2 {
@@ -2625,7 +2679,7 @@ select#status-filter:focus-visible {
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid r#ddd;
   font-size: 13px;
   padding: 0px 1em;
   white-space: nowrap;
@@ -2642,12 +2696,18 @@ select#status-filter:focus-visible {
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid #ddd;
   font-size: 13px;
   padding: 0px 1em;
   white-space: nowrap;
-  color: rgb(0, 56, 118);
   transition: background-color 0.2s linear 0s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  outline: none;
+}
+
+.tableCloumnBtton:focus {
+  border: 1px solid #888;
 }
 
 .order_fome_container {
@@ -2827,7 +2887,6 @@ label {
   font-size: 13px;
   padding: 0px 5px;
   white-space: nowrap;
-  color: rgb(0, 56, 118);
   transition: background-color 0.2s linear 0s;
 }
 
@@ -3168,7 +3227,7 @@ td {
   width: 100%;
   min-height: 40px;
   padding: 6px 59px 6px 8px;
-  border: 1px solid rgb(133, 184, 203);
+  border: 1px solid #ddd;
 }
 
 .ms-options-wrap>.ms-options>ul label {
@@ -3195,11 +3254,31 @@ td {
 }
 
 .blink {
-  animation: blinker 1s linear infinite;
+  animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
   50% {
     opacity: 0;
   }
+}
+
+#order_rquest_text1,
+#order_rquest_text2,
+#order_rquest_text3,
+#order_rquest_text4 {
+  height: 150px;
+}
+
+.request_li {
+  padding: 8px 14px;
+  border-right: 1px solid #ddd;
+}
+
+.request_li:hover {
+  background-color: #ddd;
+}
+
+.request_li:focus {
+  background-color: #ddd;
 }

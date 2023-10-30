@@ -1,6 +1,6 @@
 <section class="customer_parameters_em_section">
     <div class="pagetitle">
-        <h1>{{ __('home.customer_parameters') }}</h1>
+        <h1>{{ __('home.customer_em_parameters') }}</h1>
         <p></p>
     </div>
     <div class="order_fome_container">

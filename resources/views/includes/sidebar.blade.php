@@ -29,7 +29,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>NEUE AUFTRÄGE</p>
+                                <p>NEUE<br>AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>NEUE AUFTRÄGE</p>
+                                <p>NEUE<br>AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -151,8 +151,8 @@
                                 <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px; ">
-                                <p style="font-size:7px !important;">ABGESCHLOSSENE AUFTRÄGE</p>
+                            <div style="height: 40%;padding: 3px 0; ">
+                                <p>ABGESCHLOSSENE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -165,8 +165,8 @@
                                 <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
-                                <p style="font-size:7px !important;">ABGESCHLOSSENE AUFTRÄGE</p>
+                            <div style="height: 40%;padding: 3px 0;">
+                                <p>ABGESCHLOSSENE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="em_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 42px;" />
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
@@ -225,7 +225,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="ve_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 42px;" />
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
@@ -261,10 +261,9 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>{{ __('home.all_order') }}</p>
+                                <p>ALLE<br>AUFTRAGE</p>
                             </div>
                         </div>
-
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
@@ -276,7 +275,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>ALLE AUFTRÄGE</p>
+                                <p>ALLE<br>AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -290,7 +289,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>ALLE AUFTRÄGE</p>
+                                <p>ALLE<br>AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -355,7 +354,7 @@
                         <div lion-pop-id="login_information" id="login_information1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/users-between-lines-duotone.svg') }}"
-                                    style="width: 39px;" />
+                                    style="width: 41px;" />
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
@@ -373,11 +372,11 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="customer_parameters_em" id="customer_parameters_em1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/gears-duotone.svg') }}" style="width: 39px;" />
+                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
-                                <p>{{ __('home.customer_parameters_sidebar') }}</p>
+                            <div style="height: 40%;padding: 3px 0;">
+                                <p>{{ __('home.customer_parameters_em_sidebar') }}</p>
                             </div>
                         </div>
 
@@ -390,11 +389,12 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="customer_parameters_ve" id="customer_parameters_ve1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/gears-duotone.svg') }}" style="width: 39px;" />
+                                <img src="{{ asset('asset/images/grip-vertical-sharp-solid.svg') }}"
+                                    style="width: 20px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
-                                <p>{{ __('home.customer_parameters_sidebar') }}</p>
+                            <div style="height: 40%;padding: 3px 0;">
+                                <p>{{ __('home.customer_parameters_ve_sidebar') }}</p>
                             </div>
                         </div>
 

@@ -10,7 +10,7 @@
         width: 100%;
         height: 40px;
         padding: 12px;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd !important;
         display: flex;
         margin: auto;
     }
@@ -56,7 +56,7 @@
         width: 100%;
         min-height: 100%;
         background-color: #fff;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect_em_ex div {
@@ -67,7 +67,7 @@
         min-height: 100%;
         background-color: #fff;
         border-radius: 5px;
-        border: 1px solid #ccc;
+        border: 1px solid #ddd;
     }
 
     .dropdown-toggle.product-multiselect::after {
@@ -169,8 +169,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .product-item-menu_em_ex {
@@ -186,8 +184,6 @@
         list-style: none;
         background-color: #fff;
         background-clip: padding-box;
-        border: 1px solid rgba(0, 0, 0, .15);
-        border-radius: 0.25rem;
     }
 
     .order_form_file_uplaod_command {
@@ -271,8 +267,8 @@
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: rgb(244, 244, 244)">
-            <button type="button" style="font-size: 18px; border:none; background:none;" onclick="hideModal()"><i
-                    class="fa-solid fa-left-long" style="display: flex;"></i></button>
+            <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
+                    style="display: flex;"></i></button>
 
             <div class="pagetitle" style="margin-left: 10vw; margin-top:10px !important;">
                 <h1>Änderungsanforderungen</h1>
@@ -280,7 +276,7 @@
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 20vw">
 
-                <div class="request_information" style="height: 400px; overflow:auto;">
+                <div class="request_information" style="height: 400px;">
                     <div id="request_information_text"></div>
                     <div class="col-12" style="display:flex;">
                         <div class="col-3">
@@ -314,7 +310,7 @@
 
                             </ul>
                         </div>
-                        <div class="col-9 responsive-table">
+                        <div class="col-9 responsive-table" style="height: 250px;">
 
                             <table id="freelancer_order_detail" class="table table-striped"
                                 style="width:100%; font-size:13px; ">

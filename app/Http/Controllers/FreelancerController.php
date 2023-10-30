@@ -565,7 +565,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -635,7 +635,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -649,7 +649,7 @@ class FreelancerController extends Controller
     public function EmbroideryFreelancerGreenDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Offen')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Offen')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -686,7 +686,7 @@ class FreelancerController extends Controller
     public function EmbroideryFreelancerYellowDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'In Bearbeitung')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'In Bearbeitung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -723,7 +723,7 @@ class FreelancerController extends Controller
     public function EmbroideryFreelancerRedDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Ausgeliefert')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Ausgeliefert')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -760,7 +760,7 @@ class FreelancerController extends Controller
     public function EmbroideryFreelancerBlueDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Änderung')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('status', 'Änderung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -796,7 +796,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
