@@ -492,9 +492,7 @@ class OrderController extends Controller
     }
     public function OrderRequest($locale, $id)
     {
-
         $order = Order::find($id);
-
         $order_change = OrderChange::where('order_number', $order->order_number)->first();
         return response()->json($order_change);
     }

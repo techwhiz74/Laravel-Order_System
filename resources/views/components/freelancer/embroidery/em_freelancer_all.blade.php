@@ -33,7 +33,6 @@
 
 </section>
 
-
 <script>
     $.ajaxSetup({
         headers: {

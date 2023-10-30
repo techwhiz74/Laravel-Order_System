@@ -64,7 +64,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
-    Route::get('/order-details/{id}', [OrderController::class, 'orderDetails']);
+    // Route::get('/order-details/{id}', [OrderController::class, 'orderDetails']);
     Route::get('/get-order-detail', [OrderController::class, 'getOrderDetail'])->name('customer-get-order-detail');
     Route::post('/order-file-index-change', [OrderController::class, 'changeOrderIndex'])->name('customer-order-file-index-change');
     Route::post('/orderfile-information', [OrderController::class, 'getOrderFileInformation'])->name('customer-orderfile-information');
@@ -132,6 +132,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     // delivery Files
     Route::get('/upload-files/{id}', [DeliveryFileController::class, 'DeliveryPage']);
     Route::POST('/upload-delivery-files', [DeliveryFileController::class, 'UploadDeliveryFiles']);
+    Route::get('/free-order-detail', [FreelancerController::class, 'FreelancerOrderDetail'])->name('freelancer-order-detail');
+    Route::get('/free-get-order-detail', [FreelancerController::class, 'FreelancergetOrderDetail'])->name('freelancer-get-order-detail');
 
 
     Route::get('/profile', [FreelancerController::class, 'freelancerProfile']);

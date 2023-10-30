@@ -204,12 +204,12 @@ class FreelancerController extends Controller
         return view('freelancer.orders.vieworders');
     }
 
-    public function orderDetails($locale, $id)
-    {
-        $authuser = auth()->user()->id;
-        $order = Order::with('Order_address', 'Orderfile_uploads', 'Orderfile_formats')->where('id', $id)->first();
-        return view('common.orderdetails', compact('order'));
-    }
+    // public function orderDetails($locale, $id)
+    // {
+    //     $authuser = auth()->user()->id;
+    //     $order = Order::with('Order_address', 'Orderfile_uploads', 'Orderfile_formats')->where('id', $id)->first();
+    //     return view('common.orderdetails', compact('order'));
+    // }
 
     public function downloadAddressFIle(Request $request)
     {
@@ -1231,5 +1231,39 @@ class FreelancerController extends Controller
                 ->rawColumns(['order', 'status', 'art'])
                 ->make(true);
         }
+    }
+    public function FreelancerOrderDetail(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->orderBy('order_id', 'desc')->get();
+            if ($request->type == 'Stickprogramm') {
+                $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
+            }
+            return DataTables::of($change_data)->addIndexColumn()
+                ->editColumn('customer_number', function ($row) {
+                    $customer_number = $row->order->customer_number;
+                    return $customer_number;
+                })
+                ->editColumn('order_number', function ($row) {
+                    $order_number = $row->order->order_number;
+                    return $order_number;
+                })
+
+                ->addColumn('download', function ($row) {
+
+                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    return $btn;
+                })
+
+                ->rawColumns(['customer_number', 'order_number', 'download'])
+                ->make(true);
+        }
+    }
+    public function FreelancergetOrderDetail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('id'));
+        $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
+        return response()->json(['order' => $order, 'detail' => $order_file_uploads]);
     }
 }

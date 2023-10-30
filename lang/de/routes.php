@@ -94,6 +94,9 @@ return [
     'freelancer-delete-files' => '/de/freelancer/deletefiles/',
     'freelancer-filter-data' => '/de/freelancer/filter-data/',
 
+    'freelancer-get-order-detail' => '/de/freelancer/free-get-order-detail',
+    'freelancer-order-detail' => '/de/freelancer/free-order-detail',
+
     'embroidery-freelancer-green' => '/de/freelancer/embroidery-freelancer-green',
     'embroidery-freelancer-yellow' => '/de/freelancer/embroidery-freelancer-yellow',
     'embroidery-freelancer-red' => '/de/freelancer/embroidery-freelancer-red',

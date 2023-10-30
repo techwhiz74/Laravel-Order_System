@@ -31,9 +31,6 @@
 
 </section>
 
-{{-- @include('components.freelancer.order-detail')
-@include('components.freelancer.order-change') --}}
-
 <script>
     $.ajaxSetup({
         headers: {

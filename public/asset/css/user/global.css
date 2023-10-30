@@ -1617,6 +1617,27 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
+#free_order_detail_popup .modal-dialog {
+  background-color: rgba(227, 222, 222, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+#free_order_detail_popup .modal-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 #order_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
@@ -3152,7 +3173,6 @@ td {
 }
 
 .order_form_input,
-textarea,
 .ms-options-wrap>button,
 .ms-options-wrap>button:focus {
   width: 100%;

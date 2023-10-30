@@ -1,4 +1,4 @@
-<div class="modal fade" id="order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="free_order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: rgb(244, 244, 244)">
             <div class="modal-header">
@@ -8,7 +8,7 @@
             <div class="modal-body" style="font-size: 13px; font-family:'Inter';">
                 <div class="container" style="padding: 10px">
                     <div class="order_detail_div1">
-                        <input type="hidden" id="detail_id">
+                        <input type="hidden" id="free_detail_id">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -92,24 +92,24 @@
                                 <ul class="nav nav-tabs flex-column"
                                     style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
                                     <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure1" class="order_detail_folder_button"><i
+                                        <button id="free_subfolder_structure1" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Originaldatei</button>
                                     </li>
                                     <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure2" class="order_detail_folder_button"><i
+                                        <button id="free_subfolder_structure2" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Stickprogramm</button>
                                     </li>
                                     <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure3" class="order_detail_folder_button">
+                                        <button id="free_subfolder_structure3" class="order_detail_folder_button">
                                             <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             <div style="margin-left:5px; text-align:left;">
                                                 Stickprogramm Änderung</div>
                                         </button>
                                     </li>
                                     <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="subfolder_structure4" class="order_detail_folder_button"
+                                        <button id="free_subfolder_structure4" class="order_detail_folder_button"
                                             style="display: flex;">
                                             <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             <div style="margin-left:5px; text-align:left;">
@@ -120,7 +120,7 @@
                             </div>
                             <div class="col-9 responsive-table">
 
-                                <table id="order_detail" class="table table-striped"
+                                <table id="free_order_detail" class="table table-striped"
                                     style="width:100%; font-size:13px;">
                                     <thead>
                                         <tr>
@@ -152,14 +152,14 @@
     });
 
     function openOrderDetailModal(id, type) {
-        var detail_table;
-        $('#detail_id').val(id);
-        $('#subfolder_structure1').hide();
-        $('#subfolder_structure2').hide();
-        $('#subfolder_structure3').hide();
-        $('#subfolder_structure4').hide();
+        var free_detail_table;
+        $('#free_detail_id').val(id);
+        $('#free_subfolder_structure1').hide();
+        $('#free_subfolder_structure2').hide();
+        $('#free_subfolder_structure3').hide();
+        $('#free_subfolder_structure4').hide();
         $.ajax({
-            url: '{{ __('routes.customer-get-order-detail') }}',
+            url: '{{ __('routes.freelancer-get-order-detail') }}',
             type: 'GET',
             data: {
                 id
@@ -173,14 +173,15 @@
                     }
                 });
                 console.log(folderArray);
-                $('#order_detail_popup').find('#detail_customer_number').text(data.order.customer_number);
-                $('#detail_id').val(data.order.id);
-                $('#order_detail_popup').find('#detail_order_number').text(data.order.order_number);
-                $('#order_detail_popup').find('#detail_project_name').text(data.order.project_name);
-                $('#order_detail_popup').find('#detail_size').text(data.order.size);
-                $('#order_detail_popup').find('#detail_width_height').text(data.order.width_height);
-                $('#order_detail_popup').find('#detail_final_product').text(data.order.products);
-                $('#order_detail_popup').find('#detail_special_instructions').text(data
+                $('#free_order_detail_popup').find('#detail_customer_number').text(data.order
+                    .customer_number);
+                $('#free_detail_id').val(data.order.id);
+                $('#free_order_detail_popup').find('#detail_order_number').text(data.order.order_number);
+                $('#free_order_detail_popup').find('#detail_project_name').text(data.order.project_name);
+                $('#free_order_detail_popup').find('#detail_size').text(data.order.size);
+                $('#free_order_detail_popup').find('#detail_width_height').text(data.order.width_height);
+                $('#free_order_detail_popup').find('#detail_final_product').text(data.order.products);
+                $('#free_order_detail_popup').find('#detail_special_instructions').text(data
                     .order.special_instructions);
                 $data_type = data.order.type;
                 if ($data_type == "Vector") {
@@ -192,13 +193,13 @@
                 }
                 folderArray.forEach((item) => {
                     if (item == "Originaldatei") {
-                        $('#subfolder_structure1').show();
+                        $('#free_subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
-                        $('#subfolder_structure2').show();
+                        $('#free_subfolder_structure2').show();
                     } else if (item == "Stickprogramm Änderung") {
-                        $('#subfolder_structure3').show();
+                        $('#free_subfolder_structure3').show();
                     } else if (item == "Änderungsdateien Kunde") {
-                        $('#subfolder_structure4').show();
+                        $('#free_subfolder_structure4').show();
                     }
                 })
             },
@@ -207,7 +208,7 @@
             }
         })
 
-        detail_table = $('#order_detail').DataTable({
+        free_detail_table = $('#free_order_detail').DataTable({
             responsive: true,
             language: {
 
@@ -215,7 +216,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ __('routes.customer-order_detail') }}",
+                url: '{{ __('routes.freelancer-order-detail') }}',
                 data: function(d) {
                     d.id = id;
                     d.type = type;
@@ -251,23 +252,23 @@
             ]
         });
 
-        $('#order_detail_popup').modal("show");
-        detail_table.destroy();
+        $('#free_order_detail_popup').modal("show");
+        free_detail_table.destroy();
     }
 
     function multipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('#detail_id').val();
+        window.location.href = '{{ url('multi-download') }}/' + $('#free_detail_id').val();
     }
-    $('#subfolder_structure1').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Originaldatei');
+    $('#free_subfolder_structure1').click(function() {
+        openOrderDetailModal($('#free_detail_id').val(), 'Originaldatei');
     });
-    $('#subfolder_structure2').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Stickprogramm');
+    $('#free_subfolder_structure2').click(function() {
+        openOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm');
     });
-    $('#subfolder_structure3').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Stickprogramm Änderung');
+    $('#free_subfolder_structure3').click(function() {
+        openOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm Änderung');
     });
-    $('#subfolder_structure4').click(function() {
-        openOrderDetailModal($('#detail_id').val(), 'Änderungsdateien Kunde');
+    $('#free_subfolder_structure4').click(function() {
+        openOrderDetailModal($('#free_detail_id').val(), 'Änderungsdateien Kunde');
     });
 </script>

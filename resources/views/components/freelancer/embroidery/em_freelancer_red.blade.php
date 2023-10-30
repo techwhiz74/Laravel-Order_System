@@ -31,7 +31,6 @@
 
 </section>
 
-
 <script>
     $.ajaxSetup({
         headers: {
