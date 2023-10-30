@@ -32,6 +32,16 @@
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 <link rel="stylesheet" href="{{ asset('asset/css/jquery.fileupload.css') }}" />
 <link rel="stylesheet" href="{{ asset('asset/css/jquery.fileupload-ui.css') }}" />
+{{-- <link rel="stylesheet"
+    href="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/css/bootstrap-multiselect.css"
+    type="text/css"> --}}
+<link rel="stylesheet"
+    href="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/css/prettify.css"
+    type="text/css">
+
+
+
+
 <!-- CSS adjustments for browsers with JavaScript disabled -->
 <noscript>
     <link rel="stylesheet" href="{{ asset('asset/css/jquery.fileupload-noscript.css') }}" />
@@ -42,6 +52,7 @@
 <!-- blueimp Gallery styles -->
 <link rel="stylesheet" href="{{ asset('asset/css/fastselect.min.css') }}">
 <link href="{{ asset('asset/css/magicsuggest.css') }}" rel="stylesheet" />
+
 <style>
     .overlay {
         display: none;
@@ -85,6 +96,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script type="text/javascript"
+    src="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/js/bootstrap-multiselect.js">
+</script>
+<script type="text/javascript"
+    src="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/js/prettify.js">
+</script>
+
 <script>
     $.ajaxSetup({
         headers: {
@@ -243,6 +261,7 @@
         $('#admin_customer_profile_request_handle_popup').modal("hide");
         $('#em_freelancer_request_popup').modal("hide");
         $('#register_upload_popup').modal('hide');
+        $('#order_request_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {

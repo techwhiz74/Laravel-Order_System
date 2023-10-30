@@ -100,10 +100,7 @@
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 70px !important; text-align:center;">{{ __('home.detail') }}</th>
                             <th style="max-width: 80px !important; text-align:center;">{{ __('home.change') }}</th>
-                            {{-- <th style="max-width: 100px !important;"><input type="checkbox" name="select_all"
-                                    id="select_all">
-                                <span><button type="button" id="order_view_delete_ok">Sure</button></span>
-                            </th> --}}
+                            <th style="max-width: 90px !important; text-align:center;">{{ __('home.request') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -117,7 +114,7 @@
 </section>
 @include('components.user.order-detail')
 @include('components.user.order-change')
-
+@include('components.user.order-reqeust')
 
 
 <script>
@@ -304,12 +301,12 @@
                     orderable: false,
                     searchable: false
                 },
-                // {
-                //     data: 'delete',
-                //     name: 'delete',
-                //     orderable: false,
-                //     searchable: false
-                // }
+                {
+                    data: 'request',
+                    name: 'request',
+                    orderable: false,
+                    searchable: false
+                },
             ],
 
         });

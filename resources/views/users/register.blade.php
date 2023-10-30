@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Sign up</title>
+    <title>Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -110,7 +110,8 @@
                             </a>
                         </div>
 
-                        <form action="{{ __('routes.customer-registration') }}" method="POST" style="font-size: 13px;">
+                        <form action="{{ __('routes.customer-registration') }}" method="POST" style="font-size: 13px;"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="heading_logo">
@@ -142,14 +143,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="">
-                                        <label for="c1">{{ __('home.company_addition') }}<span
-                                                class="reqiurd">*</span></label>
+                                        <label for="c1">{{ __('home.company_addition') }}</label>
                                         <input type="text" class="register_input" name="company_addition">
-                                        @if ($errors->has('company_addition'))
-                                            <span class="text-danger">{{ __('home.company_addition') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
-                                        @endif
+
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -283,32 +279,6 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.register_number') }} </label>
                                         <input type="text" class="register_input" name="register_number">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.kd_group') }} </label>
-                                        <select name="kd_group" class="register_input">
-                                            <option value=""></option>
-                                            <option value="Wiederverkäufer">
-                                                Wiederverkäufer
-                                            </option>
-                                            <option value="Endkunde">Endkunde
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.kd_category') }} </label>
-                                        <select name="kd_category" class="register_input">
-                                            <option value=""></option>
-                                            <option value="Stickprogramme & Vektordateien">
-                                                Stickprogramme & Vektordateien
-                                            </option>
-                                            <option value="Standard">Standard
-                                            </option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

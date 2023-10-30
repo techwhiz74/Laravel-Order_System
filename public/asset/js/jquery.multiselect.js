@@ -8,7 +8,7 @@
  *
  * Usage:
  *     $('select[multiple]').multiselect();
- *     $('select[multiple]').multiselect({ texts: { placeholder: 'Select options' } });
+ *     $('select[multiple]').multiselect({ texts: { placeholder: '' } });
  *     $('select[multiple]').multiselect('reload');
  *     $('select[multiple]').multiselect( 'loadOptions', [{
  *         name   : 'Option Name 1',
@@ -45,10 +45,10 @@
 
         // plugin texts
         texts: {
-            placeholder: 'Select options', // text to use in dummy input
+            placeholder: '', // text to use in dummy input
             search: 'Search',         // search input placeholder text
             searchNoResult: 'No results',     // search results not found text
-            selectedOptions: ' selected',      // selected suffix text
+            selectedOptions: ' ausgewählt',      // selected suffix text
             selectAll: 'Select all',     // select all text
             unselectAll: 'Unselect all',   // unselect all text
             noneSelected: 'None Selected'   // None selected text
@@ -145,7 +145,7 @@
             $(instance.element).addClass('jqmsLoaded ms-list-' + instance.listNumber).data('plugin_multiselect-instance', instance);
 
             // add option container
-            $(instance.element).after('<div id="ms-list-' + instance.listNumber + '" class="ms-options-wrap"><button type="button"><span>None Selected</span></button><div class="ms-options"><ul></ul></div></div>');
+            $(instance.element).after('<div id="ms-list-' + instance.listNumber + '" class="ms-options-wrap"><button type="button"><span style="font-size:13px;">None Selected</span></button><div class="ms-options"><ul></ul></div></div>');
 
             var placeholder = $(instance.element).siblings('#ms-list-' + instance.listNumber + '.ms-options-wrap').find('> button:first-child');
             var optionsWrap = $(instance.element).siblings('#ms-list-' + instance.listNumber + '.ms-options-wrap').find('> .ms-options');
@@ -580,7 +580,7 @@
                     // setup container
                     if (appendContainer) {
                         container.addClass('optgroup');
-                        container.append('<span class="label">' + thisOption.label + '</span>');
+                        container.append('<span class="label" style="font-size:13px;">' + thisOption.label + '</span>');
                         container.find('> .label').css({
                             clear: 'both'
                         });

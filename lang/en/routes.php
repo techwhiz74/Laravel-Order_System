@@ -19,6 +19,7 @@ return [
     'customer-toggle-status' => '/en/customer/toggle-status',
     'customer-order_detail' => '/en/customer/order_detail',
     'customer-order_change' => '/en/customer/order_change',
+    'customer-order_request' => '/en/customer/order_request/',
     'customer-order-file-index-change' => '/en/customer/order-file-index-change',
     'customer-get-order-detail' => '/en/customer/get-order-detail',
     'customer-orderfile-information' => '/en/customer/orderfile-information',

@@ -688,7 +688,6 @@
                         {{ __('home.validation_checkbox') }}
                     </div>
                 </div>
-
             </div>
             <br>
 

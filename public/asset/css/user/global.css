@@ -1617,6 +1617,28 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
+#order_request_popup .modal-dialog {
+  background-color: rgba(227, 222, 222, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+#order_request_popup .modal-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+}
+
 .order_detail_div1 {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -3117,4 +3139,28 @@ td {
   min-height: 40px;
   padding: 6px 59px 6px 8px;
   border: 1px solid rgb(133, 184, 203);
+}
+
+.ms-options-wrap>.ms-options>ul label {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0px 4px 0px 20px !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.order_form_input,
+textarea,
+.ms-options-wrap>button,
+.ms-options-wrap>button:focus {
+  width: 100%;
+  height: 35px !important;
+  padding: 12px;
+  border: none !important;
+  display: flex;
+  margin: auto;
+  display: flex;
+  align-items: center;
 }

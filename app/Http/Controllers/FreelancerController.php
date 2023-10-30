@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\DeliveryFile;
 use Illuminate\Support\Facades\Validator;
+use DateTimeZone;
 
 
 
@@ -347,7 +348,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -374,10 +376,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -392,7 +390,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -406,7 +404,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -433,10 +432,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -451,7 +446,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -465,7 +460,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -492,10 +488,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -510,7 +502,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -524,7 +516,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -551,10 +544,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -576,14 +565,14 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
                     }
                     return $req;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
                 ->make(true);
         }
     }
@@ -597,7 +586,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -624,10 +614,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -649,14 +635,14 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
                     }
                     return $req;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
                 ->make(true);
         }
     }
@@ -810,7 +796,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -868,7 +854,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -895,10 +882,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -913,7 +896,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -927,7 +910,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -954,10 +938,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -972,7 +952,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -986,7 +966,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -1013,10 +994,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -1031,7 +1008,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }
@@ -1045,7 +1022,8 @@ class FreelancerController extends Controller
                     return $order;
                 })
                 ->editColumn('date', function ($row) {
-                    $date = $row->created_at->format('d.m.Y');
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
                     return $date;
                 })
                 ->addColumn('type', function ($row) {
@@ -1072,10 +1050,6 @@ class FreelancerController extends Controller
                     }
                     return $status;
                 })
-                ->addColumn('action', function ($row) {
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button></div>';
-                    return $btn;
-                })
                 ->addColumn('detail', function ($row) {
 
                     $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
@@ -1090,7 +1064,7 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
                 ->make(true);
         }
     }

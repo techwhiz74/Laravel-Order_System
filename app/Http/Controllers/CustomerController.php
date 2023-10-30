@@ -78,7 +78,7 @@ class CustomerController extends Controller
                 'first_name' => 'required',
                 'email' => 'required|email|unique:users',
                 'company' => 'required',
-                'company_addition' => 'required',
+                'company_addition' => 'nullable',
                 'street_number' => 'required',
                 'postal_code' => 'required',
                 'location' => 'required',
@@ -91,8 +91,6 @@ class CustomerController extends Controller
                 'tax_number' => 'nullable',
                 'vat_number' => 'nullable',
                 'register_number' => 'nullable',
-                'kd_group' => 'nullable',
-                'kd_category' => 'nullable',
                 'payment_method' => 'nullable',
                 'bank_name' => 'nullable',
                 'IBAN' => 'nullable',
@@ -109,42 +107,56 @@ class CustomerController extends Controller
                 'confirm_password.same' => __('home.password_confirm_val')
             ]
         );
-
-        $data = $request->all();
-        $userid = User::create([
-            // 'customer_number' => $data['customer_number'],
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'company' => $data['company'],
-            'company_addition' => $data['company_addition'],
-            'first_name' => $data['first_name'],
-            'street_number' => $data['street_number'],
-            'postal_code' => $data['postal_code'],
-            'location' => $data['location'],
-            'country' => $data['country'],
-            'website' => $data['website'],
-            'phone' => $data['phone'],
-            'mobile' => $data['mobile'],
-            'tax_number' => $data['tax_number'],
-            'vat_number' => $data['vat_number'],
-            'register_number' => $data['register_number'],
-            'kd_group' => $data['kd_group'],
-            'kd_category' => $data['kd_category'],
-            'payment_method' => $data['payment_method'],
-            'bank_name' => $data['bank_name'],
-            'IBAN' => $data['IBAN'],
-            'BIC' => $data['BIC'],
-            'password' => Hash::make($data['password']),
-            'user_type' => 'customer',
-            'image' => 'https://upload-files-cos.s3.amazonaws.com/6-profile1693225145-1692011047-2021-10-20.jpg',
-        ]);
-        $update = User::where('id', $userid->id)->update([
-            'org_id' => $userid->id
-        ]);
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect('/')->with('message', 'You have Successfully loggedin');
+        $file = $request->file('upload');
+        // var_dump($request->post());
+        // die();
+        $upload_dir = 'public/';
+        $folder = $request->name . '-' . $request->email;
+        $path = $upload_dir . $folder;
+        $filename = $file->getClientOriginalName();
+        if (strlen($file->getClientOriginalName()) != 1) {
+            Storage::makeDirectory($upload_dir);
+            if ($file->storePubliclyAs($path, $filename)) {
+                $data = $request->all();
+                $data['upload'] = $path . '/' . $filename;
+                $userid = User::create([
+                    // 'customer_number' => $data['customer_number'],
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'company' => $data['company'],
+                    'company_addition' => $data['company_addition'],
+                    'first_name' => $data['first_name'],
+                    'street_number' => $data['street_number'],
+                    'postal_code' => $data['postal_code'],
+                    'location' => $data['location'],
+                    'country' => $data['country'],
+                    'website' => $data['website'],
+                    'phone' => $data['phone'],
+                    'mobile' => $data['mobile'],
+                    'tax_number' => $data['tax_number'],
+                    'vat_number' => $data['vat_number'],
+                    'register_number' => $data['register_number'],
+                    'payment_method' => $data['payment_method'],
+                    'bank_name' => $data['bank_name'],
+                    'IBAN' => $data['IBAN'],
+                    'BIC' => $data['BIC'],
+                    'password' => Hash::make($data['password']),
+                    'user_type' => 'customer',
+                    'image' => 'https://upload-files-cos.s3.amazonaws.com/6-profile1693225145-1692011047-2021-10-20.jpg',
+                    'upload_url' => $data['upload'],
+                ]);
+                $update = User::where('id', $userid->id)->update([
+                    'org_id' => $userid->id
+                ]);
+                $credentials = $request->only('email', 'password');
+                if (Auth::attempt($credentials)) {
+                    return redirect('/')->with('message', 'You have Successfully loggedin');
+                }
+            } else {
+                return redirect('/')->withErrors('Failed login');
+            }
         }
+
     }
 
     public function customerLogout()

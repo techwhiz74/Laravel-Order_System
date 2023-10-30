@@ -292,6 +292,7 @@ class OrderController extends Controller
                         ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
                         ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
                 })->get();
+            $order_changes = OrderChange::orderBy('id', 'desc')->get();
             if ($request->start_date_filter == '') {
                 if ($request->end_date_filter == '') {
                     $data = Order::orderBy('id', 'desc')
@@ -399,7 +400,22 @@ class OrderController extends Controller
                     $delete = '<input class="overview_td_checkbox" type="checkbox" value="' . $row->id . '"/>';
                     return $delete;
                 })
-                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'delete'])
+                ->addColumn('request', function ($row) use ($order_changes) {
+                    $req = '';
+                    foreach ($order_changes as $order_change) {
+                        if ($order_change->order_number == $row->order_number) {
+                            $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="showOrderRequest(' . $row->id . ')" style="border:none; background-color:none;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                        }
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'delete', 'request'])
                 ->make(true);
         }
 
@@ -474,7 +490,14 @@ class OrderController extends Controller
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
         return response()->json(['order' => $order, 'detail' => $order_file_uploads]);
     }
+    public function OrderRequest($locale, $id)
+    {
 
+        $order = Order::find($id);
+
+        $order_change = OrderChange::where('order_number', $order->order_number)->first();
+        return response()->json($order_change);
+    }
 
     public function DashboardGreenTable(Request $request)
     {

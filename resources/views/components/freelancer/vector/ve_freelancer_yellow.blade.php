@@ -15,13 +15,10 @@
                             <th>{{ __('home.delivery_time') }}</th>
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
-                            <th>{{ __('home.order_from') }}</th>
                             <th style="min-width: 500px !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 110px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
-                            <th style="max-width: 110px !important; text-align:center !important;">
-                                {{ __('home.change') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -86,10 +83,6 @@
                     name: 'date'
                 },
                 {
-                    data: 'ordered_from',
-                    name: 'ordered_from'
-                },
-                {
                     data: 'project_name',
                     name: 'project_name'
                 },
@@ -104,13 +97,6 @@
                     orderable: false,
                     searchable: false
                 },
-
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false
-                }
             ]
         });
     });

@@ -61,6 +61,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/view-orders', [OrderController::class, 'viewOrder'])->name('customer-vieworders');
     Route::get('/order_detail', [OrderController::class, 'OrderDetail'])->name('customer-order_detail');
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
+    Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
     Route::get('/order-details/{id}', [OrderController::class, 'orderDetails']);

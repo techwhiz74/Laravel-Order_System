@@ -29,7 +29,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Neue Aufträge</p>
+                                <p>NEUE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Neue Aufträge</p>
+                                <p>NEUE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Aufträge in Arbeit</p>
+                                <p>AUFTRÄGE IN ARBEIT</p>
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Aufträge in Arbeit</p>
+                                <p>AUFTRÄGE IN ARBEIT</p>
                             </div>
                         </div>
 
@@ -151,8 +151,8 @@
                                 <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
-                                <p>Abgeschlossene Aufträge</p>
+                            <div style="height: 40%;padding: 3px; ">
+                                <p style="font-size:7px !important;">ABGESCHLOSSENE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Abgeschlossene Aufträge</p>
+                                <p style="font-size:7px !important;">ABGESCHLOSSENE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Aufträge Änderungen</p>
+                                <p>AUFTRÄGE ÄNDERUNGEN</p>
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Aufträge Änderungen</p>
+                                <p>AUFTRÄGE ÄNDERUNGEN</p>
                             </div>
                         </div>
                     </div>
@@ -276,7 +276,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Alle Aufträge</p>
+                                <p>ALLE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>Alle Aufträge</p>
+                                <p>ALLE AUFTRÄGE</p>
                             </div>
                         </div>
                     </div>
