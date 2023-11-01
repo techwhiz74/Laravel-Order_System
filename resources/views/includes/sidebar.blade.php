@@ -522,7 +522,8 @@
     </div>
 
     @include('components.freelancer.embroidery.em_freelancer_request')
-    @include('components.freelancer.embroidery.free-order-detail')
+    @include('components.freelancer.vector.ve_freelancer_request')
+    @include('components.freelancer.free-order-detail')
     <div id="admin_customer_list" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
         <div class="lion_popup_dv">
             @if (auth()->user()->user_type == 'admin')

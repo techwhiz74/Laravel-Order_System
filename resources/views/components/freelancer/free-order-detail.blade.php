@@ -91,30 +91,15 @@
                             <div class="col-3">
                                 <ul class="nav nav-tabs flex-column"
                                     style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
-                                    <li class="nav-item" style="margin-bottom:10px;">
+                                    <li class="nav-item">
                                         <button id="free_subfolder_structure1" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Originaldatei</button>
                                     </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
+                                    <li class="nav-item">
                                         <button id="free_subfolder_structure2" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Stickprogramm</button>
-                                    </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="free_subfolder_structure4" class="order_detail_folder_button"
-                                            style="display: flex;">
-                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            <div style="margin-left:5px; text-align:left;">
-                                                Änderungsdateien Kunde</div>
-                                        </button>
-                                    </li>
-                                    <li class="nav-item" style="margin-bottom:10px;">
-                                        <button id="free_subfolder_structure3" class="order_detail_folder_button">
-                                            <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            <div style="margin-left:5px; text-align:left;">
-                                                Stickprogramm Änderung</div>
-                                        </button>
                                     </li>
                                 </ul>
                             </div>
@@ -156,8 +141,6 @@
         $('#free_detail_id').val(id);
         $('#free_subfolder_structure1').hide();
         $('#free_subfolder_structure2').hide();
-        $('#free_subfolder_structure3').hide();
-        $('#free_subfolder_structure4').hide();
         $.ajax({
             url: '{{ __('routes.freelancer-get-order-detail') }}',
             type: 'GET',
@@ -196,10 +179,6 @@
                         $('#free_subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
                         $('#free_subfolder_structure2').show();
-                    } else if (item == "Stickprogramm Änderung") {
-                        $('#free_subfolder_structure3').show();
-                    } else if (item == "Änderungsdateien Kunde") {
-                        $('#free_subfolder_structure4').show();
                     }
                 })
             },
@@ -264,11 +243,5 @@
     });
     $('#free_subfolder_structure2').click(function() {
         freeOpenOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm');
-    });
-    $('#free_subfolder_structure3').click(function() {
-        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Stickprogramm Änderung');
-    });
-    $('#free_subfolder_structure4').click(function() {
-        freeOpenOrderDetailModal($('#free_detail_id').val(), 'Änderungsdateien Kunde');
     });
 </script>

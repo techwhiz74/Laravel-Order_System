@@ -30,6 +30,18 @@
                 </div>
             </div>
             <div class="controlGroup2">
+                {{-- <div class="dropdown">
+                    <button class="tableFilterBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="fas fa-file-import" style="margin-right:8px"></i>
+                        <span>{{ __('home.import') }}</span>
+                    </button>
+                    <div class="dropdown-menu megamenu" role="menu" style="width:230px; padding:15px;">
+                        <div class="form-group">
+                            <input type="file" style="width: 100% !important" class="form-control"
+                                id="upload_customer" multiple webkitdirectory />
+                        </div>
+                    </div>
+                </div> --}}
                 <div class="tableColumn dropdown">
                     <button class="tableCloumnBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <img src="/asset/images/tableColumn.svg" class="columnImage" alt="">
@@ -90,7 +102,7 @@
                 <table id="view-order" class="table table-striped" style="width:100%; font-size:13px;">
                     <thead>
                         <tr>
-                            <th style="max-width: 110px !important; text-align:center;">{{ __('home.order_type') }}
+                            <th style="max-width: 80px !important; text-align:center;">{{ __('home.order_type') }}
                             </th>
                             <th>{{ __('home.delivery_time') }}</th>
                             <th>{{ __('home.order') }}</th>

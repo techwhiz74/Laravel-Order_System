@@ -15,14 +15,14 @@ $(function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
-    $('#freelancer_fileupload').fileupload({
+    $('#embroidery_fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: '/freelancer-upload'
+        url: '/embroidery-upload'
     });
 
     // Enable iframe cross-domain access via redirect option:
-    $('#freelancer_fileupload').fileupload(
+    $('#embroidery_fileupload').fileupload(
         'option',
         'redirect',
         window.location.href.replace(/\/[^/]*$/, '/cors/result.html?%s')
@@ -30,7 +30,7 @@ $(function () {
 
     if (window.location.hostname === 'blueimp.github.io') {
         // Demo settings:
-        $('#freelancer_fileupload').fileupload('option', {
+        $('#embroidery_fileupload').fileupload('option', {
             url: '//jquery-file-upload.appspot.com/',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
@@ -49,18 +49,18 @@ $(function () {
             }).fail(function () {
                 $('<div class="alert alert-danger"></div>')
                     .text('Upload server currently unavailable - ' + new Date())
-                    .appendTo('#freelancer_fileupload');
+                    .appendTo('#embroidery_fileupload');
             });
         }
     } else {
         // Load existing files:
-        $('#freelancer_fileupload').addClass('fileupload-processing');
+        $('#embroidery_fileupload').addClass('fileupload-processing');
         $.ajax({
             // Uncomment the following to send cross-domain cookies:
             //xhrFields: {withCredentials: true},
-            url: $('#freelancer_fileupload').fileupload('option', 'url'),
+            url: $('#embroidery_fileupload').fileupload('option', 'url'),
             dataType: 'json',
-            context: $('#freelancer_fileupload')[0],
+            context: $('#embroidery_fileupload')[0],
         })
             .always(function () {
                 $(this).removeClass('fileupload-processing');

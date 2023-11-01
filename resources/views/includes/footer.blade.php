@@ -933,8 +933,8 @@
         })
     })
     $(function() {
-        var table;
-        table = $('#ve_freelancer_green_dashboard_table').DataTable({
+        var ve_freelancer_green_dash_table;
+        ve_freelancer_green_dash_table = $('#ve_freelancer_green_dashboard_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -970,10 +970,13 @@
             ],
 
         })
+        $('#ve_freelancer_table_reload_btn').click(function() {
+            ve_freelancer_green_dash_table.ajax.reload();
+        })
     })
     $(function() {
-        var table;
-        table = $('#ve_freelancer_yellow_dashboard_table').DataTable({
+        var ve_freelancer_yellow_dash_table;
+        ve_freelancer_yellow_dash_table = $('#ve_freelancer_yellow_dashboard_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -1009,10 +1012,13 @@
             ],
 
         })
+        $('#ve_freelancer_table_reload_btn').click(function() {
+            ve_freelancer_yellow_dash_table.ajax.reload();
+        })
     })
     $(function() {
-        var table;
-        table = $('#ve_freelancer_red_dashboard_table').DataTable({
+        var ve_freelancer_red_dash_table;
+        ve_freelancer_red_dash_table = $('#ve_freelancer_red_dashboard_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -1048,10 +1054,69 @@
             ],
 
         })
+        $('#ve_freelancer_table_reload_btn').click(function() {
+            ve_freelancer_red_dash_table.ajax.reload();
+        })
+    })
+    $(function() {
+        var ve_freelancer_blue_dash_table;
+        ve_freelancer_blue_dash_table = $('#ve_freelancer_blue_dashboard_table').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            searching: false,
+            paginate: false,
+            ajax: {
+                url: "{{ __('routes.vector-freelancer-blue-dashboard') }}",
+                type: "get",
+            },
+            order: [
+                [2, 'desc']
+            ],
+            columns: [{
+                    data: 'art',
+                    name: 'art'
+                },
+                {
+                    data: 'deliver_time',
+                    name: 'deliver_time'
+                },
+                {
+                    data: 'order',
+                    name: 'order'
+                },
+                {
+                    data: 'project_name',
+                    name: 'project_name'
+                },
+                {
+                    data: 'status',
+                    name: 'status'
+                },
+                {
+                    data: 'request',
+                    name: 'request',
+                    orderable: false,
+                    searchable: false
+                }
+            ],
+
+        })
+        $('#ve_freelancer_table_reload_btn').click(function() {
+            ve_freelancer_blue_dash_table.ajax.reload();
+        })
     })
 
     function showAllOrder() {
         console.log("sdf");
         $('#view_order_popup1').trigger('click');
+    }
+
+    function freelancerEmbroideryShowAllOrder() {
+        $('#em_freelancer_all').trigger('click');
+    }
+
+    function freelancerVectorShowAllOrder() {
+        $('#ve_freelancer_all').trigger('click');
     }
 </script>

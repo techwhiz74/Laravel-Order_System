@@ -19,6 +19,8 @@
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 110px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
+                            <th style="max-width: 90px !important; text-align:center !important;">
+                                {{ __('home.request') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -97,6 +99,12 @@
                     orderable: false,
                     searchable: false
                 },
+                {
+                    data: 'request',
+                    name: 'request',
+                    orderable: false,
+                    searchable: false
+                }
             ]
         });
     });

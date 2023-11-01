@@ -91,7 +91,7 @@
                             <div class="col-3">
                                 <ul class="nav nav-tabs flex-column"
                                     style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
-                                    <li class="nav-item" style="margin-bottom:10px;">
+                                    <li class="nav-item">
                                         <button id="subfolder_structure1" class="order_detail_folder_button"><i
                                                 class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                             Originaldatei</button>

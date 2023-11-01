@@ -493,7 +493,7 @@ class OrderController extends Controller
     public function OrderRequest($locale, $id)
     {
         $order = Order::find($id);
-        $order_change = OrderChange::where('order_number', $order->order_number)->get();
+        $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->get();
         return response()->json($order_change);
     }
 
@@ -744,12 +744,18 @@ class OrderController extends Controller
         $order = Order::findOrfail($order_id);
         $customer = User::findOrfail($order->user_id);
 
+
         OrderChange::where('message', $order_change_message)->delete();
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
         $order_change->message = $order_change_message;
+        if ($order->type == "Embroidery") {
+            $order_change->changed_from = "customer_em";
+        } else if ($order->type == "Vector") {
+            $order_change->changed_from = "customer_ve";
+        }
         $order_change->save();
 
         $order->status = 'Änderung';
@@ -757,14 +763,16 @@ class OrderController extends Controller
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
-            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Änderungsdateien Kunde/';
-        $path = $uploadDir . $filePath;
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        $folderName = 'Änderungsdateien Kunde' . ($folderCount) . '/';
+        $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
                 $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
                 if ($exist_file != null) {
                     $filePathArray = explode('/', $exist_file->base_url);
                     $fileNameArray = explode('-', $filePathArray[4]);
@@ -777,7 +785,7 @@ class OrderController extends Controller
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $index;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
                         echo "The file " . $fileName . " has been uploaded";
                     } else
@@ -788,7 +796,7 @@ class OrderController extends Controller
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $key + 1;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
                         echo "The file " . $fileName . " has been uploaded";
                     } else

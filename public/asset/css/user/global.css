@@ -794,6 +794,7 @@ section {
 #view-order thead,
 #order_detail thead,
 #free_order_detail thead,
+#vector_order_detail thead,
 #req_order_detail thead,
 #freelancer_order_detail thead,
 #customer_staffs thead,
@@ -808,6 +809,7 @@ section {
 #ve_freelancer_green_dashboard_table thead,
 #ve_freelancer_yellow_dashboard_table thead,
 #ve_freelancer_red_dashboard_table thead,
+#ve_freelancer_blue_dashboard_table thead,
 #em_freelancer_green_table thead,
 #em_freelancer_yellow_table thead,
 #em_freelancer_red_table thead,
@@ -816,6 +818,7 @@ section {
 #ve_freelancer_green_table thead,
 #ve_freelancer_yellow_table thead,
 #ve_freelancer_red_table thead,
+#ve_freelancer_blue_table thead,
 #ve_freelancer_all_table thead,
 #admin_customer_list_table thead,
 #admin_customer_search_table thead {
@@ -1477,16 +1480,7 @@ select#status-filter:focus-visible {
 
 .sidebar-nav li a,
 .sidebar-nav li p {
-  /* display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  text-decoration: none;
-  color: #333;
-  text-align: start;
-  padding-right: 0;
-  font-size: 16px;
-  min-height: 40px; */
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1;
   font-family: monospace;
 }
@@ -1726,6 +1720,7 @@ select#status-filter:focus-visible {
   display: flex;
   align-items: center;
   line-height: 1;
+  margin-bottom: 10px;
 }
 
 #order_change_popup .modal-dialog {
@@ -1791,7 +1786,8 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -80%);
 }
 
-#em_freelancer_request_popup .modal-dialog {
+#em_freelancer_request_popup .modal-dialog,
+#ve_freelancer_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1803,7 +1799,8 @@ select#status-filter:focus-visible {
   margin-top: 0;
 }
 
-#em_freelancer_request_popup .modal-content {
+#em_freelancer_request_popup .modal-content,
+#ve_freelancer_request_popup .modal-content {
   max-width: 100%;
   height: 100%;
   margin: 0;
@@ -3207,7 +3204,8 @@ td {
   padding: 8px 8px;
 }
 
-.freelancer_upload_submit {
+.embroidery_upload_submit,
+.vector_upload_submit {
   color: white;
   background-color: #c3ac6d;
   border: none;

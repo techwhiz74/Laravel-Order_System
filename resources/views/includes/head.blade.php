@@ -155,7 +155,8 @@
 <script src="{{ asset('asset/js/demo.js') }}"></script>
 <script src="{{ asset('asset/js/demo_em_ex.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin.js') }}"></script>
-<script src="{{ asset('asset/js/demo_freelancer.js') }}"></script>
+<script src="{{ asset('asset/js/demo_embroidery.js') }}"></script>
+<script src="{{ asset('asset/js/demo_vector.js') }}"></script>
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
 <script>
@@ -263,6 +264,7 @@
         $('#register_upload_popup').modal('hide');
         $('#order_request_popup').modal('hide');
         $('#free_order_detail_popup').modal("hide");
+        $('#ve_freelancer_request_popup').modal("hide");
     }
     $(document).on({
         ajaxStart: function() {

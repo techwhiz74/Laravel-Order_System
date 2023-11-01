@@ -565,7 +565,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -635,7 +635,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -796,7 +796,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="FreelancerDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -811,7 +811,7 @@ class FreelancerController extends Controller
     public function getRequestDetail(Request $request)
     {
         $order = Order::findOrfail($request->get('id'));
-        $order_change = OrderChange::where('order_number', $order->order_number)->first();
+        $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first();
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
         return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads]);
     }
@@ -1012,6 +1012,76 @@ class FreelancerController extends Controller
                 ->make(true);
         }
     }
+    public function VectorFreelancerBlueTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Änderung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = "EXPRESS ";
+                    }
+                    return $deliver_time;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->make(true);
+        }
+    }
     public function VectorFreelancerAllTable(Request $request)
     {
         if ($request->ajax()) {
@@ -1064,14 +1134,28 @@ class FreelancerController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
                 ->make(true);
         }
     }
     public function VectorFreelancerGreenDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Offen')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Offen')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1105,25 +1189,37 @@ class FreelancerController extends Controller
                 ->make(true);
         }
     }
-    public function FreelancerFileUpload(Request $request)
+    public function EmbroideryFileUpload(Request $request)
     {
-        $freelancer_request_id = $request->post('freelancer_request_id');
+        $freelancer_request_id = $request->post('embroidery_request_id');
         $order = Order::findOrfail($freelancer_request_id);
+        $customer = User::findOrfail($order->user_id);
+        $customer_message = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'customer_em')->orderBy('id', 'desc')->first()->message;
 
-        $order->status = "Ausgeliefert";
-        $order->save();
-        OrderChange::where('order_number', $order->order_number)->delete();
+        // $order->status = "Ausgeliefert";
+        // $order->save();
+        $order_change = OrderChange::where('changed_from', 'freelancer_em')->where('message', $customer_message)->delete();
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->changed_from = "freelancer_em";
+        $order_change->message = $customer_message;
+        $order_change->save();
+
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
-            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Stickprogramm Änderung/';
-        $path = $uploadDir . $filePath;
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_em')->count();
+        $folderName = 'Stickprogramm Änderung' . ($folderCount) . '/';
+        $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
                 $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
                 if ($exist_file != null) {
                     $filePathArray = explode('/', $exist_file->base_url);
                     $fileNameArray = explode('-', $filePathArray[4]);
@@ -1136,7 +1232,7 @@ class FreelancerController extends Controller
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $index;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
                         echo "The file " . $fileName . " has been uploaded";
                     } else
@@ -1147,7 +1243,72 @@ class FreelancerController extends Controller
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $key + 1;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
+    }
+    public function VectorFileUpload(Request $request)
+    {
+        $freelancer_request_id = $request->post('vector_request_id');
+        $order = Order::findOrfail($freelancer_request_id);
+        $customer = User::findOrfail($order->user_id);
+        $customer_message = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'customer_ve')->orderBy('id', 'desc')->first()->message;
+
+        // $order->status = "Ausgeliefert";
+        // $order->save();
+        $order_change = OrderChange::where('changed_from', 'freelancer_ve')->where('message', $customer_message)->delete();
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->changed_from = "freelancer_ve";
+        $order_change->message = $customer_message;
+        $order_change->save();
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_ve')->count();
+        $folderName = 'Vektordatei Änderung' . ($folderCount) . '/';
+        $path = $uploadDir . $filePath . $folderName;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
                         echo "The file " . $fileName . " has been uploaded";
                     } else
@@ -1161,7 +1322,7 @@ class FreelancerController extends Controller
     public function VectorFreelancerYellowDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'In Bearbeitung')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'In Bearbeitung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1198,7 +1359,7 @@ class FreelancerController extends Controller
     public function VectorFreelancerRedDashboardTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Ausgeliefert')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Ausgeliefert')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1229,6 +1390,57 @@ class FreelancerController extends Controller
                 })
 
                 ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+    public function VectorFreelancerBlueDashboardTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('status', 'Änderung')->take(5)->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+
+                ->rawColumns(['order', 'status', 'art', 'request'])
                 ->make(true);
         }
     }

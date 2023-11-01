@@ -119,6 +119,8 @@ return [
     'vector-freelancer-yellow-dashboard' => '/de/freelancer/vector-freelancer-yellow-dashboard',
     'vector-freelancer-red-dashboard' => '/de/freelancer/vector-freelancer-red-dashboard',
     'vector-freelancer-blue-dashboard' => '/de/freelancer/vector-freelancer-blue-dashboard',
+    'vector-freelancer-get-request-detail' => '/de/freelancer/vector-freelancer-get-request-detail',
+    'vector-freelancer-order_detail' => '/de/freelancer/vector-freelancer-order_detail',
 
 
 

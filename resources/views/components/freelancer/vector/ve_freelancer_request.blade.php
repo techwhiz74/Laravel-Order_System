@@ -263,7 +263,7 @@
         }
     }
 </style>
-<div class="modal fade" id="em_freelancer_request_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="ve_freelancer_request_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: rgb(244, 244, 244)">
@@ -283,17 +283,17 @@
                             <ul class="nav nav-tabs flex-column"
                                 style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure1" class="order_detail_folder_button"><i
+                                    <button id="vector_subfolder_structure1" class="order_detail_folder_button"><i
                                             class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         Originaldatei</button>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure2" class="order_detail_folder_button"><i
+                                    <button id="vector_subfolder_structure2" class="order_detail_folder_button"><i
                                             class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         Stickprogramm</button>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure3" class="order_detail_folder_button"
+                                    <button id="vector_subfolder_structure3" class="order_detail_folder_button"
                                         style="display: flex;">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
@@ -301,7 +301,7 @@
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure4" class="order_detail_folder_button">
+                                    <button id="vector_subfolder_structure4" class="order_detail_folder_button">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
                                             Stickprogramm Änderung</div>
@@ -312,7 +312,7 @@
                         </div>
                         <div class="col-9 responsive-table" style="height: 250px;">
 
-                            <table id="embroidery_order_detail" class="table table-striped"
+                            <table id="vector_order_detail" class="table table-striped"
                                 style="width:100%; font-size:13px; ">
                                 <thead>
                                     <tr>
@@ -331,10 +331,10 @@
                     </div>
                 </div>
                 <div class="request_information" style="margin-top: 10px;">
-                    <form action="" id="embroidery_uplaod_form">
-                        <input type="hidden" name="embroidery_request_id" value="" />
+                    <form action="" id="vector_uplaod_form">
+                        <input type="hidden" name="vector_request_id" value="" />
                         <div style="display: flex">
-                            <div id="embroidery_fileupload" action="" method="POST" enctype="multipart/form-data">
+                            <div id="vector_fileupload" action="" method="POST" enctype="multipart/form-data">
                                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                 <noscript><input type="hidden" name="redirect" value="" /></noscript>
                                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -380,7 +380,7 @@
                         </div><br>
                         <div style="display: flex; justify-content:flex-end">
                             <div>
-                                <button type="submit" class="embroidery_upload_submit">Hochladen</button>
+                                <button type="submit" class="vector_upload_submit">Hochladen</button>
                             </div>
                         </div>
                     </form>
@@ -396,16 +396,16 @@
         }
     });
 
-    function EmbroideryDetailRequest(id, type) {
+    function VectorDetailRequest(id, type) {
 
-        var embroidery_detail_table;
-        $('[name=embroidery_request_id]').val(id);
-        $('#embroidery_subfolder_structure1').hide();
-        $('#embroidery_subfolder_structure2').hide();
-        $('#embroidery_subfolder_structure3').hide();
-        $('#embroidery_subfolder_structure4').hide();
+        var vector_detail_table;
+        $('[name=vector_request_id]').val(id);
+        $('#vector_subfolder_structure1').hide();
+        $('#vector_subfolder_structure2').hide();
+        $('#vector_subfolder_structure3').hide();
+        $('#vector_subfolder_structure4').hide();
         $.ajax({
-            url: '{{ __('routes.embroidery-freelancer-get-request-detail') }}',
+            url: '{{ __('routes.vector-freelancer-get-request-detail') }}',
             type: 'GET',
             data: {
                 id
@@ -418,19 +418,19 @@
                         folderArray.push(item);
                     }
                 });
-                $('#em_freelancer_request_popup').find('#request_information_text').text(data.order_change
+                $('#ve_freelancer_request_popup').find('#request_information_text').text(data.order_change
                     .message);
-                $('[name=embroidery_request_id]').val(data.order.id);
+                $('[name=vector_request_id]').val(data.order.id);
 
                 folderArray.forEach((item) => {
                     if (item == "Originaldatei") {
-                        $('#embroidery_subfolder_structure1').show();
+                        $('#vector_subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
-                        $('#embroidery_subfolder_structure2').show();
+                        $('#vector_subfolder_structure2').show();
                     } else if (item == "Änderungsdateien Kunde") {
-                        $('#embroidery_subfolder_structure3').show();
+                        $('#vector_subfolder_structure3').show();
                     } else if (item == "Stickprogramm Änderung") {
-                        $('#embroidery_subfolder_structure4').show();
+                        $('#vector_subfolder_structure4').show();
                     }
                 })
 
@@ -441,7 +441,7 @@
         })
         $('#order_form_upload_list tr').remove();
 
-        embroidery_detail_table = $('#embroidery_order_detail').DataTable({
+        vector_detail_table = $('#vector_order_detail').DataTable({
             responsive: true,
             language: {
 
@@ -449,7 +449,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ __('routes.embroidery-freelancer-order_detail') }}",
+                url: '{{ __('routes.vector-freelancer-order_detail') }}',
                 data: function(d) {
                     d.id = id;
                     d.type = type;
@@ -484,29 +484,29 @@
             ]
         });
 
-        $('#em_freelancer_request_popup').modal('show');
-        embroidery_detail_table.destroy();
+        $('#ve_freelancer_request_popup').modal('show');
+        vector_detail_table.destroy();
     }
-    $('#embroidery_subfolder_structure1').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Originaldatei');
+    $('#vector_subfolder_structure1').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Originaldatei');
     });
-    $('#embroidery_subfolder_structure2').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm');
+    $('#vector_subfolder_structure2').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm');
     });
-    $('#embroidery_subfolder_structure3').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde');
+    $('#vector_subfolder_structure3').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde');
     });
-    $('#embroidery_subfolder_structure4').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung');
+    $('#vector_subfolder_structure4').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung');
     });
 
-    $('#embroidery_uplaod_form').submit(function(e) {
+    $('#vector_uplaod_form').submit(function(e) {
         e.preventDefault();
     })
-    $('.embroidery_upload_submit').click(function(e) {
+    $('.vector_upload_submit').click(function(e) {
         e.preventDefault();
         var freelancer_request_data = new FormData();
-        freelancer_request_data.append('embroidery_request_id', $('[name=embroidery_request_id]').val());
-        $('#embroidery_fileupload').find('.fileupload-buttonbar .start').trigger('click');
+        freelancer_request_data.append('vector_request_id', $('[name=vector_request_id]').val());
+        $('#vector_fileupload').find('.fileupload-buttonbar .start').trigger('click');
     });
 </script>

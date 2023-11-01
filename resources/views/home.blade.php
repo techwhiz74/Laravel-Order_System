@@ -18,7 +18,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 400px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -42,7 +42,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 400px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -68,7 +68,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 400px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -92,7 +92,7 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 400px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
@@ -122,12 +122,18 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerEmbroideryShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12" style="padding-left: 2vw;">
@@ -142,12 +148,18 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerEmbroideryShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -164,12 +176,18 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerEmbroideryShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12" style="padding-left: 2vw;">
@@ -192,6 +210,12 @@
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerEmbroideryShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -199,6 +223,7 @@
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
                 <div class="vector_freelancer_dashboard">
                     <div style="display: flex; height:31vh;">
+                        <button style="display: none;" id="ve_freelancer_table_reload_btn"></button>
                         <div class="col-lg-6 col-md-12" style="padding-right: 2vw;">
                             <div>
                                 <h3><strong>Neue Offene Bestellungen</strong></h3>
@@ -211,12 +236,18 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerVectorShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12" style="padding-left: 2vw;">
@@ -231,12 +262,18 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerVectorShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -253,17 +290,46 @@
                                             <th style="padding-left:20px;">{{ __('home.art') }}</th>
                                             <th>{{ __('home.delivery_time') }}</th>
                                             <th>{{ __('home.order') }}</th>
-                                            <th style="min-width: 450px !important;">{{ __('home.project') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
                                             <th>{{ __('home.status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerVectorShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-12" style="padding-left: 2vw;">
                             <div>
                                 <h3><strong>Änderungsanforderungen</strong></h3>
+                            </div>
+                            <div class="responsive-table" style=" max-height:27.5vh; overflow-y:auto;">
+                                <table id="ve_freelancer_blue_dashboard_table" class="table table-striped"
+                                    style="width:100%; font-size:13px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="padding-left:20px;">{{ __('home.art') }}</th>
+                                            <th>{{ __('home.delivery_time') }}</th>
+                                            <th>{{ __('home.order') }}</th>
+                                            <th style="min-width: 350px !important;">{{ __('home.project') }}</th>
+                                            <th>{{ __('home.status') }}</th>
+                                            <th style="max-width: 110px !important; text-align:center;">
+                                                {{ __('home.request') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                                <div style="display: flex; justify-content:flex-end; margin-top: -19px; margin-right:10px;">
+                                    <button class="customer_dashboard_all_button"
+                                        onClick="freelancerVectorShowAllOrder()">Alle
+                                        Aufträge
+                                        anzeigen</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -20,7 +20,8 @@ Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepag
 Route::post('/import-data', [OrderController::class, 'importData'])->name('import-data');
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
 Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
-Route::post('/freelancer-upload', [FreelancerController::class, 'FreelancerFileUpload'])->name('freelancer-upload');
+Route::post('/embroidery-upload', [FreelancerController::class, 'EmbroideryFileUpload'])->name('embroidery-upload');
+Route::post('/vector-upload', [FreelancerController::class, 'VectorFileUpload'])->name('vector-upload');
 Route::post('/admin-upload', [AdminController::class, 'adminFileUpload'])->name('admin-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
@@ -166,5 +167,6 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/vector-freelancer-yellow-dashboard', [FreelancerController::class, 'VectorFreelancerYellowDashboardTable'])->name('vector-freelancer-yellow-dashboard');
     Route::get('/vector-freelancer-red-dashboard', [FreelancerController::class, 'VectorFreelancerRedDashboardTable'])->name('vector-freelancer-red-dashboard');
     Route::get('/vector-freelancer-blue-dashboard', [FreelancerController::class, 'VectorFreelancerBlueDashboardTable'])->name('vector-freelancer-blue-dashboard');
-
+    Route::get('/vector-freelancer-get-request-detail', [FreelancerController::class, 'getRequestDetail'])->name('vector-freelancer-get-request-detail');
+    Route::get('/vector-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('vector-freelancer-order_detail');
 });

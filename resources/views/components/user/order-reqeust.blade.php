@@ -43,30 +43,65 @@
                     <div class="col-12" style="display:flex;">
                         <div class="col-3">
                             <ul class="nav nav-tabs flex-column"
-                                style="background-color: none; width:70%; border-bottom:none; padding-left:0px;">
-                                <li class="nav-item" style="margin-bottom:10px;">
-                                    <button id="req_subfolder_structure1" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Originaldatei</button>
-                                </li>
-                                <li class="nav-item" style="margin-bottom:10px;">
-                                    <button id="req_subfolder_structure2" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Stickprogramm</button>
-                                </li>
-                                <li class="nav-item" style="margin-bottom:10px;">
-                                    <button id="req_subfolder_structure4" class="order_detail_folder_button"
+                                style="background-color: none; width:95%; border-bottom:none; padding-left:0px;">
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure3_1" class="order_detail_folder_button"
                                         style="display: flex;">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde</div>
+                                            Änderungsdateien Kunde1</div>
                                     </button>
                                 </li>
-                                <li class="nav-item" style="margin-bottom:10px;">
-                                    <button id="req_subfolder_structure3" class="order_detail_folder_button">
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure3_2" class="order_detail_folder_button"
+                                        style="display: flex;">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung</div>
+                                            Änderungsdateien Kunde2</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure3_3" class="order_detail_folder_button"
+                                        style="display: flex;">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Änderungsdateien Kunde3</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure3_4" class="order_detail_folder_button"
+                                        style="display: flex;">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Änderungsdateien Kunde4</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure4_1" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung1</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure4_2" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung2</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure4_3" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung3</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="req_subfolder_structure4_4" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung4</div>
                                     </button>
                                 </li>
                             </ul>
@@ -97,14 +132,23 @@
 </div>
 
 <script>
+    var selector = '#change1';
+
     function showOrderRequest(id, type) {
+        if (type == null) {
+            type = 'Originaldatei';
+            selector = '#change1';
+        }
         var req_detail_table;
         $('#req_detail_id').val(id);
-        $('#req_subfolder_structure1').hide();
-        $('#req_subfolder_structure2').hide();
-        $('#req_subfolder_structure3').hide();
-        $('#req_subfolder_structure4').hide();
-        $('#change1').trigger('click');
+        $('#req_subfolder_structure3_1').hide();
+        $('#req_subfolder_structure3_2').hide();
+        $('#req_subfolder_structure3_3').hide();
+        $('#req_subfolder_structure3_4').hide();
+        $('#req_subfolder_structure4_1').hide();
+        $('#req_subfolder_structure4_2').hide();
+        $('#req_subfolder_structure4_3').hide();
+        $('#req_subfolder_structure4_4').hide();
         $('#order_rquest_text2').hide();
         $('#order_rquest_text3').hide();
         $('#order_rquest_text4').hide();
@@ -195,22 +239,94 @@
                 $('#req_detail_id').val(data.order.id);
                 $data_type = data.order.type;
 
-                folderArray.forEach((item) => {
-                    if (item == "Originaldatei") {
-                        $('#req_subfolder_structure1').show();
-                    } else if (item == "Stickprogramm") {
-                        $('#req_subfolder_structure2').show();
-                    } else if (item == "Stickprogramm Änderung") {
-                        $('#req_subfolder_structure3').show();
-                    } else if (item == "Änderungsdateien Kunde") {
-                        $('#req_subfolder_structure4').show();
-                    }
-                })
+                console.log(folderArray);
+
+                $("#change1").click(() => {
+                    selector = "#change1";
+                    $('#req_subfolder_structure3_1').hide();
+                    $('#req_subfolder_structure3_2').hide();
+                    $('#req_subfolder_structure3_3').hide();
+                    $('#req_subfolder_structure3_4').hide();
+                    $('#req_subfolder_structure4_1').hide();
+                    $('#req_subfolder_structure4_2').hide();
+                    $('#req_subfolder_structure4_3').hide();
+                    $('#req_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde1") {
+                            $('#req_subfolder_structure3_1').show();
+                        } else if (item == "Stickprogramm Änderung1") {
+                            $('#req_subfolder_structure4_1').show();
+                        }
+                    });
+                });
+                $("#change2").click(() => {
+                    selector = "#change2";
+                    $('#req_subfolder_structure3_1').hide();
+                    $('#req_subfolder_structure3_2').hide();
+                    $('#req_subfolder_structure3_3').hide();
+                    $('#req_subfolder_structure3_4').hide();
+                    $('#req_subfolder_structure4_1').hide();
+                    $('#req_subfolder_structure4_2').hide();
+                    $('#req_subfolder_structure4_3').hide();
+                    $('#req_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde2") {
+                            $('#req_subfolder_structure3_2').show();
+                        } else if (item == "Stickprogramm Änderung2") {
+                            $('#req_subfolder_structure4_2').show();
+                        }
+                    });
+                });
+                $("#change3").click(() => {
+                    selector = "#change3";
+                    $('#req_subfolder_structure3_1').hide();
+                    $('#req_subfolder_structure3_2').hide();
+                    $('#req_subfolder_structure3_3').hide();
+                    $('#req_subfolder_structure3_4').hide();
+                    $('#req_subfolder_structure4_1').hide();
+                    $('#req_subfolder_structure4_2').hide();
+                    $('#req_subfolder_structure4_3').hide();
+                    $('#req_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde3") {
+                            $('#req_subfolder_structure3_3').show();
+                        } else if (item == "Stickprogramm Änderung3") {
+                            $('#req_subfolder_structure4_3').show();
+                        }
+                    });
+                });
+                $("#change4").click(() => {
+                    selector = "#change3";
+                    $('#req_subfolder_structure3_1').hide();
+                    $('#req_subfolder_structure3_2').hide();
+                    $('#req_subfolder_structure3_3').hide();
+                    $('#req_subfolder_structure3_4').hide();
+                    $('#req_subfolder_structure4_1').hide();
+                    $('#req_subfolder_structure4_2').hide();
+                    $('#req_subfolder_structure4_3').hide();
+                    $('#req_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde4") {
+                            $('#req_subfolder_structure3_4').show();
+                        } else if (item == "Stickprogramm Änderung4") {
+                            $('#req_subfolder_structure4_4').show();
+                        }
+                    });
+                });
+
+
+                $(selector).trigger('click');
             },
             error: () => {
                 console.error('err');
             }
+
         })
+
 
         req_detail_table = $('#req_order_detail').DataTable({
             responsive: true,
@@ -257,22 +373,36 @@
         });
 
         $('#order_detail_popup').modal("show");
+
         req_detail_table.destroy();
+
     }
 
     function req_multipleDownload() {
         window.location.href = '{{ url('multi-download') }}/' + $('#req_detail_id').val();
     }
-    $('#req_subfolder_structure1').click(function() {
-        showOrderRequest($('#req_detail_id').val(), 'Originaldatei');
+    $('#req_subfolder_structure3_1').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde1');
     });
-    $('#req_subfolder_structure2').click(function() {
-        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm');
+    $('#req_subfolder_structure3_2').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde2');
     });
-    $('#req_subfolder_structure3').click(function() {
-        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm Änderung');
+    $('#req_subfolder_structure3_3').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde3');
     });
-    $('#req_subfolder_structure4').click(function() {
-        showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde');
+    $('#req_subfolder_structure3_4').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde4');
+    });
+    $('#req_subfolder_structure4_1').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm Änderung1');
+    });
+    $('#req_subfolder_structure4_2').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm Änderung2');
+    });
+    $('#req_subfolder_structure4_3').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm Änderung3');
+    });
+    $('#req_subfolder_structure4_4').click(function() {
+        showOrderRequest($('#req_detail_id').val(), 'Stickprogramm Änderung4');
     });
 </script>
