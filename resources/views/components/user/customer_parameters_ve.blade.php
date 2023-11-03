@@ -18,7 +18,7 @@
                                 <select name="parameter_need_embroidery_files" multiple>
                                     <option value="Adobe Illustrator (*.AI)">Adobe Illustrator (*.AI)</option>
                                     <option value="Adobe PDF (*.PDF)">Adobe PDF (*.PDF)</option>
-                                    <option value="PNG (*.PNG)">PNG (*.PNG)</option>
+                                    <option value="Illustrator EPS (*.EPS)">Illustrator EPS (*.EPS)</option>
                                     <option value="Illustrator Template (*.AIT)">Illustrator Template (*.AIT)</option>
                                     <option value="SVG (*.SVG)">SVG (*.SVG)</option>
                                     <option value="SVG komprimiert (*.SVGZ)">SVG komprimiert (*.SVGZ)</option>

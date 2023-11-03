@@ -63,7 +63,7 @@ return [
     'addresses' => 'Addressen',
     'contact_person' => 'Ansprechpartner',
     'further_information' => 'Weitere Information',
-    'add' => 'Hinzufügen',
+    'add' => 'Mitarbeiter hinzufügen',
     'edit' => 'Bearbeiten',
     'request' => 'Änderung',
     'delete' => 'Löschen',

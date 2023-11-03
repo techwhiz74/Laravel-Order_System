@@ -811,9 +811,10 @@ class FreelancerController extends Controller
     public function getRequestDetail(Request $request)
     {
         $order = Order::findOrfail($request->get('id'));
-        $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first();
+        $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'asc')->get();
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
-        return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads]);
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads, 'change_count' => $folderCount]);
     }
     public function OrderDetail(Request $request)
     {
@@ -1188,6 +1189,67 @@ class FreelancerController extends Controller
                 ->rawColumns(['order', 'status', 'art'])
                 ->make(true);
         }
+    }
+    public function JobFileUpload(Request $request)
+    {
+        $order_id = $request->post('free_detail_id');
+        $order = Order::findOrfail($order_id);
+
+        $order->status = 'In Bearbeitung';
+        $order->save();
+
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+
+        if ($order->type == 'Embroidery') {
+            $filePath = $order->customer_number . '/' .
+                $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Stickprogramm/';
+        } else if ($order->type == 'Vector') {
+            $filePath = $order->customer_number . '/' .
+                $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Vektordatei/';
+        }
+
+        $path = $uploadDir . $filePath;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
     }
     public function EmbroideryFileUpload(Request $request)
     {

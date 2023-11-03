@@ -81,7 +81,7 @@
                             <select name="parameter_cutting_options" class="form-control"
                                 style="width: calc(100% - 205px) !important;">
                                 <option value="Fadenschnitte setzen">Fadenschnitte setzen</option>
-                                <option value="Keine Fadenschnitte setzenc">Keine Fadenschnitte setzenc</option>
+                                <option value="Keine Fadenschnitte setzen">Keine Fadenschnitte setzen</option>
                             </select>
                         </div>
                     </div>

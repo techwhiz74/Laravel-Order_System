@@ -15,7 +15,7 @@
                             <th>{{ __('home.delivery_time') }}</th>
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
-                            <th style="min-width: 500px !important">{{ __('home.project') }}</th>
+                            <th style="min-width: 33% !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 110px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
@@ -38,10 +38,10 @@
         }
     });
 
-    var table;
+    var em_freelancer_yellow_table;
 
     $(function() {
-        table = $('#em_freelancer_yellow_table').DataTable({
+        em_freelancer_yellow_table = $('#em_freelancer_yellow_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,

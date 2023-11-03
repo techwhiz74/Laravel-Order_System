@@ -11,16 +11,16 @@
                     <div class="container-fluid" style="padding: 0">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="request_li" type="button" id="change1">
-                                1. Änderung
+                                Änderung 1
                             </li>
                             <li class="request_li" type="button" id="change2">
-                                2. Änderung
+                                Änderung 2
                             </li>
                             <li class="request_li" type="button" id="change3">
-                                3. Änderung
+                                Änderung 3
                             </li>
                             <li class="request_li" type="button" id="change4">
-                                4. Änderung
+                                Änderung 4
                             </li>
                         </ul>
                     </div>
@@ -45,64 +45,100 @@
                             <ul class="nav nav-tabs flex-column"
                                 style="background-color: none; width:95%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure3_1" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde1</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure3_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure3_2" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde2</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure3_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure3_3" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde3</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure3_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure3_4" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde4</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure3_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure4_1" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung1</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure4_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure4_2" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung2</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure4_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure4_3" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung3</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure4_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="req_subfolder_structure4_4" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung4</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="req_subfolder_structure4_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -121,7 +157,7 @@
 
                                     </tr>
                                 </thead>
-                                <tbody style="text-align: center"></tbody>
+                                <tbody style="text-align: center !important;"></tbody>
                             </table>
                         </div>
                     </div>
@@ -136,7 +172,7 @@
 
     function showOrderRequest(id, type) {
         if (type == null) {
-            type = 'Originaldatei';
+            type = 'Änderungsdateien Kunde1';
             selector = '#change1';
         }
         var req_detail_table;
@@ -191,6 +227,7 @@
             $('#change2').css('background', '#eee');
             $('#change3').css('background', '#eee');
             $('#change4').css('background', '#ddd');
+
         });
         $('#order_rquest_text1').text("");
         $('#order_rquest_text2').text("");
@@ -230,16 +267,38 @@
             },
             success: (data) => {
                 var folderArray = [];
+
                 data.detail.map((item, index) => {
                     item = item.split('/')[3];
-                    if (folderArray.filter((el) => el == item).length == 0) {
-                        folderArray.push(item);
+                    if (folderArray.filter((el) => el === item).length === 0) {
+                        if (item.match(/^(Änderungsdateien Kunde|Stickprogramm Änderung)\d/)) {
+                            folderArray.push(item);
+                        }
                     }
                 });
-                $('#req_detail_id').val(data.order.id);
-                $data_type = data.order.type;
-
                 console.log(folderArray);
+                console.log(data.change_count);
+                if (data.change_count == 1) {
+                    $('#change1').show();
+                    $('#change2').hide();
+                    $('#change3').hide();
+                    $('#change4').hide();
+                } else if (data.change_count == 2) {
+                    $('#change1').show();
+                    $('#change2').show();
+                    $('#change3').hide();
+                    $('#change4').hide();
+                } else if (data.change_count == 3) {
+                    $('#change1').show();
+                    $('#change2').show();
+                    $('#change3').show();
+                    $('#change4').hide();
+                }
+
+
+                $('#req_detail_id').val(data.order.id);
+
+
 
                 $("#change1").click(() => {
                     selector = "#change1";
@@ -259,6 +318,10 @@
                             $('#req_subfolder_structure4_1').show();
                         }
                     });
+                    // if (!$('#req_subfolder_structure3_1').is(':visible') && !$(
+                    //         '#req_subfolder_structure4_1').is(':visible')) {
+                    //     $('#req_order_detail tbody').remove();
+                    // }
                 });
                 $("#change2").click(() => {
                     selector = "#change2";
@@ -278,6 +341,11 @@
                             $('#req_subfolder_structure4_2').show();
                         }
                     });
+
+                    // if (!$('#req_subfolder_structure3_2').is(':visible') && !$(
+                    //         '#req_subfolder_structure4_2').is(':visible')) {
+                    //     $('#req_order_detail tbody').remove();
+                    // }
                 });
                 $("#change3").click(() => {
                     selector = "#change3";
@@ -297,9 +365,13 @@
                             $('#req_subfolder_structure4_3').show();
                         }
                     });
+                    // if (!$('#req_subfolder_structure3_3').is(':visible') && !$(
+                    //         '#req_subfolder_structure4_3').is(':visible')) {
+                    //     $('#req_order_detail tbody').remove();
+                    // }
                 });
                 $("#change4").click(() => {
-                    selector = "#change3";
+                    selector = "#change4";
                     $('#req_subfolder_structure3_1').hide();
                     $('#req_subfolder_structure3_2').hide();
                     $('#req_subfolder_structure3_3').hide();
@@ -316,6 +388,10 @@
                             $('#req_subfolder_structure4_4').show();
                         }
                     });
+                    // if (!$('#req_subfolder_structure3_4').is(':visible') && !$(
+                    //         '#req_subfolder_structure4_4').is(':visible')) {
+                    //     $('#req_order_detail tbody').remove();
+                    // }
                 });
 
 
@@ -383,6 +459,7 @@
     }
     $('#req_subfolder_structure3_1').click(function() {
         showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde1');
+
     });
     $('#req_subfolder_structure3_2').click(function() {
         showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde2');

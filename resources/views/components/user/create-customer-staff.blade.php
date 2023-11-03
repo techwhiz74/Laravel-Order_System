@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <div style="display: flex; justify-content:space-between; width:100% !important">
                     <div style="margin-left: 65px">
-                        <h3 style="margin:auto"><strong>Add Staff</strong></h3>
+                        <h4 style="margin:auto"><strong>Mitarbeiter bearbeiten</strong></h4>
                     </div>
                     <div>
                         <button type="button" class="close" style="font-size: 22px; margin-right:10px"
@@ -21,28 +21,28 @@
                     <div class="row" style="font-size: 13px; font-family:Inter; margin-bottom:10px;">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>Staff Name, Vorname:</strong>
+                                <strong>Name, Vorname</strong>
                                 <input type="text" id="name" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>Staff Email, Address:</strong>
+                                <strong>E-Mail-Adresse</strong>
                                 <input type="email" id="email" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>Password:</strong>
+                                <strong>Passwort</strong>
                                 <input type="password" id="password" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12"
                             style="margin: 5px 0; display:flex; justify-content:flex-end;">
-                            <button type="submit" id="customer_staff_create_submit">Submit</button>
+                            <button type="submit" id="customer_staff_create_submit">Absenden</button>
                         </div>
                 </form>
 

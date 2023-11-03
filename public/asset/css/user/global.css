@@ -57,7 +57,13 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 100px;
+  width: 100%;
+}
+
+.hearder_information {
+  display: flex;
+  margin: auto;
+  line-height: 1;
 }
 
 .menu_list a {
@@ -86,6 +92,7 @@ section {
 .menu_list {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .menu_list:hover .dropdown-menu {
@@ -794,9 +801,9 @@ section {
 #view-order thead,
 #order_detail thead,
 #free_order_detail thead,
+#embroidery_order_detail thead,
 #vector_order_detail thead,
 #req_order_detail thead,
-#freelancer_order_detail thead,
 #customer_staffs thead,
 #customer_dashboard_green_table thead,
 #customer_dashboard_red_table thead,
@@ -1639,27 +1646,6 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
-#free_order_detail_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#free_order_detail_popup .modal-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 #order_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
@@ -1685,15 +1671,12 @@ select#status-filter:focus-visible {
   border: 1px solid #ddd;
   padding: 10px;
   margin-bottom: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
 
 .order_detail_div2 {
   border: 1px solid #ddd;
   padding: 10px;
   height: 350px;
-  border-radius: 5px;
 }
 
 .order_form_validation_deliver_time,
@@ -1786,19 +1769,21 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -80%);
 }
 
+#free_order_detail_popup .modal-dialog,
 #em_freelancer_request_popup .modal-dialog,
 #ve_freelancer_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
-  height: 100%;
-  position: fixed;
+  height: calc(100% - 110px);
   left: 0;
   right: 0;
   max-width: 100%;
   top: 110px;
   margin-top: 0;
+  overflow-y: auto;
 }
 
+#free_order_detail_popup .modal-content,
 #em_freelancer_request_popup .modal-content,
 #ve_freelancer_request_popup .modal-content {
   max-width: 100%;
@@ -1813,11 +1798,6 @@ select#status-filter:focus-visible {
   padding: 20px;
   border: 1px solid#ddd;
 
-}
-
-#request_information_text {
-  font-size: 13px;
-  height: 100px;
 }
 
 #register_upload_popup .modal-dialog {
@@ -1960,7 +1940,7 @@ select#status-filter:focus-visible {
 
 #wrapper.full_height #sidebar-wrapper {
   position: absolute;
-  margin-top: 110px;
+  margin-top: 106px;
 }
 
 
@@ -2116,6 +2096,7 @@ select#status-filter:focus-visible {
 .contact_header .dropdown {
   display: flex;
   align-items: center;
+  font-size: 15px;
 }
 
 .contact_header .contact_nav {
@@ -3082,9 +3063,8 @@ td {
   color: #fff !important;
   border: 0;
   border-radius: 0;
-  font-size: 14px;
-  padding: 5px 10px;
-  width: 100px;
+  font-size: 13px;
+  padding: 8px 12px;
   margin: 0 5px;
   text-align: center;
 }
@@ -3196,7 +3176,8 @@ td {
   background-color: #ff0000;
 }
 
-.order_change_submit {
+.order_change_submit,
+.freelancer_job_start_submit {
   color: white;
   background-color: #c3ac6d;
   border: none;
@@ -3204,6 +3185,7 @@ td {
   padding: 8px 8px;
 }
 
+.freelancer_job_start_submit,
 .embroidery_upload_submit,
 .vector_upload_submit {
   color: white;
@@ -3268,6 +3250,17 @@ td {
   height: 150px;
 }
 
+#em_order_rquest_text1,
+#em_order_rquest_text2,
+#em_order_rquest_text3,
+#em_order_rquest_text4,
+#ve_order_rquest_text1,
+#ve_order_rquest_text2,
+#ve_order_rquest_text3,
+#ve_order_rquest_text4 {
+  height: 100px;
+}
+
 .request_li {
   padding: 8px 14px;
   border-right: 1px solid #ddd;
@@ -3279,4 +3272,48 @@ td {
 
 .request_li:focus {
   background-color: #ddd;
+}
+
+.folder_button {
+  background-color: #c3ac6d;
+  height: 82px;
+  padding: 8px 0 5px 0;
+  width: 96px;
+  margin-bottom: 5px;
+}
+
+.folder_button p {
+  font-size: 9px;
+  font-family: monospace;
+  text-align: center;
+  line-height: 1;
+}
+
+.job_button {
+  background-color: #c4ae79;
+  color: #fff !important;
+  text-align: center;
+  border: none;
+  padding: 10px 13px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.freelancer_job_div {
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#freelacner_job_upload_div {
+  height: 350px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+  overflow-y: auto;
 }

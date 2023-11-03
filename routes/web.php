@@ -20,6 +20,7 @@ Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepag
 Route::post('/import-data', [OrderController::class, 'importData'])->name('import-data');
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
 Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
+Route::post('/freelancer-job-upload', [FreelancerController::class, 'JobFileUpload'])->name('freelancer-job-upload');
 Route::post('/embroidery-upload', [FreelancerController::class, 'EmbroideryFileUpload'])->name('embroidery-upload');
 Route::post('/vector-upload', [FreelancerController::class, 'VectorFileUpload'])->name('vector-upload');
 Route::post('/admin-upload', [AdminController::class, 'adminFileUpload'])->name('admin-upload');

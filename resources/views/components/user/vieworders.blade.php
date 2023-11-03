@@ -108,7 +108,7 @@
                             <th>{{ __('home.order') }}</th>
                             <th>{{ __('home.date') }}</th>
                             <th>{{ __('home.order_from') }}</th>
-                            <th style="min-width: 500px !important">{{ __('home.project') }}</th>
+                            <th style="min-width: 33% !important">{{ __('home.project') }}</th>
                             <th>{{ __('home.status') }}</th>
                             <th style="max-width: 70px !important; text-align:center;">{{ __('home.detail') }}</th>
                             <th style="max-width: 80px !important; text-align:center;">{{ __('home.change') }}</th>
@@ -244,7 +244,9 @@
     $(function() {
         $(".datepicker").datepicker({
             autoclose: true,
-            orientation: 'bottom'
+            orientation: 'bottom',
+            format: 'dd.mm.yyyy', // German date format
+            language: 'de', // German language
         });
         viewOrderTable = $('#view-order').DataTable({
             responsive: true,

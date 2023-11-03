@@ -62,7 +62,6 @@
                                     <table role="presentation" class="table table-striped" id="order_form_upload_list">
                                         <tbody class="files"></tbody>
                                     </table>
-
                                 </div>
                             </div>
                         </div><br>

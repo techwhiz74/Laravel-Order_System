@@ -488,7 +488,8 @@ class OrderController extends Controller
     {
         $order = Order::findOrfail($request->get('id'));
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
-        return response()->json(['order' => $order, 'detail' => $order_file_uploads]);
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        return response()->json(['order' => $order, 'detail' => $order_file_uploads, 'change_count' => $folderCount]);
     }
     public function OrderRequest($locale, $id)
     {

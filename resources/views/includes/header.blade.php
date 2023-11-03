@@ -38,8 +38,7 @@
             @endphp
             <div class="dropdown">
                 <div class="language_p">
-                    <p style="margin-bottom: 0 !important; margin-right:10px;"><a
-                            href="{{ __('routes.customer-register') }}"
+                    <p style="margin-bottom: 0 !important; margin-right:10px;"><a href="/"
                             style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
                     </p>
                 </div>
@@ -69,23 +68,23 @@
                         <span class="navbar-toggler-icon menu_icon"><i class="fa-solid fa-bars"></i></span>
                     </button>
                     <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
-                        <ul class="navbar-nav mb-2 mb-lg-0">
+                        <ul class="navbar-nav mb-2 mb-lg-0 hearder_information">
                             @if (auth()->user())
                                 @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
                                     <li class="nav-item  menu_list" style="padding: 0px 10px;">
-                                        <a class="nav-link" style="font-size: 16px;"
+                                        <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
                                     </li>
                                     <li class="nav-item  menu_list" style="padding: 0px 10px;">
-                                        <a class="nav-link" style="font-size: 16px;"
+                                        <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(1);">{{ __('home.prices_embroidery') }}</a>
                                     </li>
                                     <li class="nav-item menu_list" style="padding: 0px 10px;">
-                                        <a class="nav-link" style="font-size: 16px;"
+                                        <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(2);">{{ __('home.information_vector') }}</a>
                                     </li>
                                     <li class="nav-item  menu_list" style="padding: 0px 10px;">
-                                        <a class="nav-link" style="font-size: 16px;"
+                                        <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
                                     </li>
                                 @elseif(auth()->user()->user_type == 'freelancer')

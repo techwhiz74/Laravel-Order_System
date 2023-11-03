@@ -81,30 +81,44 @@
                     </div>
                     <div class="order_detail_div2">
                         <div class="col-12">
-                            <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
+                            <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
                                 <button class="btn btn-primary btn-sm" onclick="multipleDownload()"
                                     style="background-color:#c3ac6d; border:none; font-size:13px;"><i
                                         class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                             </div>
                         </div>
                         <div class="col-12" style="display:flex;">
-                            <div class="col-3">
+                            <div class="col-2">
                                 <ul class="nav nav-tabs flex-column"
-                                    style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
+                                    style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                     <li class="nav-item">
-                                        <button id="subfolder_structure1" class="order_detail_folder_button"><i
-                                                class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            Originaldatei</button>
+                                        <div class="folder_button" type="button" id="subfolder_structure1">
+                                            <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                    style="width: 37px;">
+                                            </div>
+                                            <div style="height: 40%;padding: 3px 0;">
+                                                <p style="padding-top: 6px;">
+                                                    ORIGINALDATEI</p>
+                                            </div>
+                                        </div>
                                     </li>
                                     <li class="nav-item">
-                                        <button id="subfolder_structure2" class="order_detail_folder_button"><i
-                                                class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                            Stickprogramm</button>
+                                        <div class="folder_button" type="button" id="subfolder_structure2">
+                                            <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                    style="width: 37px;">
+                                            </div>
+                                            <div style="height: 40%;padding: 3px 0;">
+                                                <p style="padding-top: 6px;">
+                                                    STICKPROGRAMM</p>
+                                            </div>
+                                        </div>
                                     </li>
 
                                 </ul>
                             </div>
-                            <div class="col-9 responsive-table">
+                            <div class="col-10 responsive-table">
 
                                 <table id="order_detail" class="table table-striped"
                                     style="width:100%; font-size:13px;">

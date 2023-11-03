@@ -276,35 +276,103 @@
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 20vw">
 
-                <div class="request_information" style="height: 400px;">
-                    <div id="request_information_text"></div>
+                <div class="request_information" style="height: 450px;">
+                    <div>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+                            style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
+                            <div class="container-fluid" style="padding: 0">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="request_li" type="button" id="ve_change1">
+                                        1. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="ve_change2">
+                                        2. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="ve_change3">
+                                        3. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="ve_change4">
+                                        4. Änderung
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="order_detail_div1">
+                            <div id="ve_order_rquest_text1"></div>
+                            <div id="ve_order_rquest_text2"></div>
+                            <div id="ve_order_rquest_text3"></div>
+                            <div id="ve_order_rquest_text4"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
+                            <button class="btn btn-primary btn-sm" onclick="vector_multipleDownload()"
+                                style="background-color:#c3ac6d; border:none; font-size:13px;"><i
+                                    class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+                        </div>
+                    </div>
                     <div class="col-12" style="display:flex;">
                         <div class="col-3">
                             <ul class="nav nav-tabs flex-column"
-                                style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
+                                style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure1" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Originaldatei</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button id="vector_subfolder_structure2" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Stickprogramm</button>
-                                </li>
-                                <li class="nav-item">
-                                    <button id="vector_subfolder_structure3" class="order_detail_folder_button"
+                                    <button id="vector_subfolder_structure3_1" class="order_detail_folder_button"
                                         style="display: flex;">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde</div>
+                                            Änderungsdateien Kunde1</div>
                                     </button>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure4" class="order_detail_folder_button">
+                                    <button id="vector_subfolder_structure3_2" class="order_detail_folder_button"
+                                        style="display: flex;">
                                         <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
                                         <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung</div>
+                                            Änderungsdateien Kunde2</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure3_3" class="order_detail_folder_button"
+                                        style="display: flex;">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Änderungsdateien Kunde3</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure3_4" class="order_detail_folder_button"
+                                        style="display: flex;">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Änderungsdateien Kunde4</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure4_1" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung1</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure4_2" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung2</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure4_3" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung3</div>
+                                    </button>
+                                </li>
+                                <li class="nav-item">
+                                    <button id="vector_subfolder_structure4_4" class="order_detail_folder_button">
+                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
+                                        <div style="margin-left:5px; text-align:left;">
+                                            Stickprogramm Änderung4</div>
                                     </button>
                                 </li>
 
@@ -395,15 +463,71 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    var selector = '#ve_change1';
 
-    function VectorDetailRequest(id, type) {
-
+    function VectorDetailRequest(id, type = 'Änderungsdateien Kunde1') {
+        if (type == 'Originaldatei') {
+            type = 'Änderungsdateien Kunde1';
+            selector = '#ve_change1';
+        }
         var vector_detail_table;
         $('[name=vector_request_id]').val(id);
-        $('#vector_subfolder_structure1').hide();
-        $('#vector_subfolder_structure2').hide();
-        $('#vector_subfolder_structure3').hide();
-        $('#vector_subfolder_structure4').hide();
+        $('#vector_subfolder_structure3_1').hide();
+        $('#vector_subfolder_structure3_2').hide();
+        $('#vector_subfolder_structure3_3').hide();
+        $('#vector_subfolder_structure3_4').hide();
+        $('#vector_subfolder_structure4_1').hide();
+        $('#vector_subfolder_structure4_2').hide();
+        $('#vector_subfolder_structure4_3').hide();
+        $('#vector_subfolder_structure4_4').hide();
+        $('#ve_order_rquest_text2').hide();
+        $('#ve_order_rquest_text3').hide();
+        $('#ve_order_rquest_text4').hide();
+        $('#ve_change1').click(function() {
+            $('#ve_order_rquest_text1').show();
+            $('#ve_order_rquest_text2').hide();
+            $('#ve_order_rquest_text3').hide();
+            $('#ve_order_rquest_text4').hide();
+            $('#ve_change1').css('background', '#ddd');
+            $('#ve_change2').css('background', '#eee');
+            $('#ve_change3').css('background', '#eee');
+            $('#ve_change4').css('background', '#eee');
+        });
+        $('#ve_change2').click(function() {
+            $('#ve_order_rquest_text1').hide();
+            $('#ve_order_rquest_text2').show();
+            $('#ve_order_rquest_text3').hide();
+            $('#ve_order_rquest_text4').hide();
+            $('#ve_change1').css('background', '#eee');
+            $('#ve_change2').css('background', '#ddd');
+            $('#ve_change3').css('background', '#eee');
+            $('#ve_change4').css('background', '#eee');
+        });
+        $('#ve_change3').click(function() {
+            $('#ve_order_rquest_text1').hide();
+            $('#ve_order_rquest_text2').hide();
+            $('#ve_order_rquest_text3').show();
+            $('#ve_order_rquest_text4').hide();
+            $('#ve_change1').css('background', '#eee');
+            $('#ve_change2').css('background', '#eee');
+            $('#ve_change3').css('background', '#ddd');
+            $('#ve_change4').css('background', '#eee');
+        });
+        $('#ve_change4').click(function() {
+            $('#ve_order_rquest_text1').hide();
+            $('#ve_order_rquest_text2').hide();
+            $('#ve_order_rquest_text3').hide();
+            $('#ve_order_rquest_text4').show();
+            $('#ve_change1').css('background', '#eee');
+            $('#ve_change2').css('background', '#eee');
+            $('#ve_change3').css('background', '#eee');
+            $('#ve_change4').css('background', '#ddd');
+        });
+        $('#ve_order_rquest_text1').text("");
+        $('#ve_order_rquest_text2').text("");
+        $('#ve_order_rquest_text3').text("");
+        $('#ve_order_rquest_text4').text("");
+
         $.ajax({
             url: '{{ __('routes.vector-freelancer-get-request-detail') }}',
             type: 'GET',
@@ -411,6 +535,22 @@
                 id
             },
             success: (data) => {
+                if (data.order_change[0]) {
+                    console.log("1q");
+                    $('#ve_order_rquest_text1').text(data.order_change[0].message);
+                }
+                if (data.order_change[1]) {
+                    console.log("2q");
+                    $('#ve_order_rquest_text2').text(data.order_change[1].message);
+                }
+                if (data.order_change[2]) {
+                    console.log("3q");
+                    $('#ve_order_rquest_text3').text(data.order_change[2].message);
+                }
+                if (data.order_change[3]) {
+                    $('#ve_order_rquest_text4').text(data.order_change[3].message);
+                }
+
                 var folderArray = [];
                 data.detail.map((item, index) => {
                     item = item.split('/')[3];
@@ -418,21 +558,104 @@
                         folderArray.push(item);
                     }
                 });
-                $('#ve_freelancer_request_popup').find('#request_information_text').text(data.order_change
-                    .message);
+
                 $('[name=vector_request_id]').val(data.order.id);
 
-                folderArray.forEach((item) => {
-                    if (item == "Originaldatei") {
-                        $('#vector_subfolder_structure1').show();
-                    } else if (item == "Stickprogramm") {
-                        $('#vector_subfolder_structure2').show();
-                    } else if (item == "Änderungsdateien Kunde") {
-                        $('#vector_subfolder_structure3').show();
-                    } else if (item == "Stickprogramm Änderung") {
-                        $('#vector_subfolder_structure4').show();
+                $("#ve_change1").click(() => {
+                    selector = "#ve_change1";
+                    $('#vector_subfolder_structure3_1').hide();
+                    $('#vector_subfolder_structure3_2').hide();
+                    $('#vector_subfolder_structure3_3').hide();
+                    $('#vector_subfolder_structure3_4').hide();
+                    $('#vector_subfolder_structure4_1').hide();
+                    $('#vector_subfolder_structure4_2').hide();
+                    $('#vector_subfolder_structure4_3').hide();
+                    $('#vector_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde1") {
+                            $('#vector_subfolder_structure3_1').show();
+                        } else if (item == "Stickprogramm Änderung1") {
+                            $('#vector_subfolder_structure4_1').show();
+                        }
+                    });
+                    if (!$('#vector_subfolder_structure3_1').is(':visible') && !$(
+                            '#vector_subfolder_structure4_1').is(':visible')) {
+                        $('#vector_order_detail tbody').remove();
                     }
-                })
+                });
+                $("#ve_change2").click(() => {
+                    selector = "#ve_change2";
+                    $('#vector_subfolder_structure3_1').hide();
+                    $('#vector_subfolder_structure3_2').hide();
+                    $('#vector_subfolder_structure3_3').hide();
+                    $('#vector_subfolder_structure3_4').hide();
+                    $('#vector_subfolder_structure4_1').hide();
+                    $('#vector_subfolder_structure4_2').hide();
+                    $('#vector_subfolder_structure4_3').hide();
+                    $('#vector_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde2") {
+                            $('#vector_subfolder_structure3_2').show();
+                        } else if (item == "Stickprogramm Änderung2") {
+                            $('#vector_subfolder_structure4_2').show();
+                        }
+                    });
+                    if (!$('#vector_subfolder_structure3_2').is(':visible') && !$(
+                            '#vector_subfolder_structure4_2').is(':visible')) {
+                        $('#vector_order_detail tbody').remove();
+                    }
+                });
+                $("#ve_change3").click(() => {
+                    selector = "#ve_change3";
+                    $('#vector_subfolder_structure3_1').hide();
+                    $('#vector_subfolder_structure3_2').hide();
+                    $('#vector_subfolder_structure3_3').hide();
+                    $('#vector_subfolder_structure3_4').hide();
+                    $('#vector_subfolder_structure4_1').hide();
+                    $('#vector_subfolder_structure4_2').hide();
+                    $('#vector_subfolder_structure4_3').hide();
+                    $('#vector_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde3") {
+                            $('#vector_subfolder_structure3_3').show();
+                        } else if (item == "Stickprogramm Änderung3") {
+                            $('#vector_subfolder_structure4_3').show();
+                        }
+                    });
+                    if (!$('#vector_subfolder_structure3_3').is(':visible') && !$(
+                            '#vector_subfolder_structure4_3').is(':visible')) {
+                        $('#vector_order_detail tbody').remove();
+                    }
+                });
+                $("#ve_change4").click(() => {
+                    selector = "#ve_change4";
+                    $('#vector_subfolder_structure3_1').hide();
+                    $('#vector_subfolder_structure3_2').hide();
+                    $('#vector_subfolder_structure3_3').hide();
+                    $('#vector_subfolder_structure3_4').hide();
+                    $('#vector_subfolder_structure4_1').hide();
+                    $('#vector_subfolder_structure4_2').hide();
+                    $('#vector_subfolder_structure4_3').hide();
+                    $('#vector_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde4") {
+                            $('#vector_subfolder_structure3_4').show();
+                        } else if (item == "Stickprogramm Änderung4") {
+                            $('#vector_subfolder_structure4_4').show();
+                        }
+                    });
+                    if (!$('#vector_subfolder_structure3_4').is(':visible') && !$(
+                            '#vector_subfolder_structure4_4').is(':visible')) {
+                        $('#vector_order_detail tbody').remove();
+                    }
+                });
+
+
+                $(selector).trigger('click');
 
             },
             error: () => {
@@ -487,17 +710,33 @@
         $('#ve_freelancer_request_popup').modal('show');
         vector_detail_table.destroy();
     }
-    $('#vector_subfolder_structure1').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Originaldatei');
+
+    function vector_multipleDownload() {
+        window.location.href = '{{ url('multi-download') }}/' + $('[name=vector_request_id]').val();
+    }
+    $('#vector_subfolder_structure3_1').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde1');
     });
-    $('#vector_subfolder_structure2').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm');
+    $('#vector_subfolder_structure3_2').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde2');
     });
-    $('#vector_subfolder_structure3').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde');
+    $('#vector_subfolder_structure3_3').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde3');
     });
-    $('#vector_subfolder_structure4').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung');
+    $('#vector_subfolder_structure3_4').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde4');
+    });
+    $('#vector_subfolder_structure4_1').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung1');
+    });
+    $('#vector_subfolder_structure4_2').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung2');
+    });
+    $('#vector_subfolder_structure4_3').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung3');
+    });
+    $('#vector_subfolder_structure4_4').click(function() {
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung4');
     });
 
     $('#vector_uplaod_form').submit(function(e) {

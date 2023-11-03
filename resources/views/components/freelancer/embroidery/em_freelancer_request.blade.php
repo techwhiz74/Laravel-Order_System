@@ -276,36 +276,140 @@
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 20vw">
 
-                <div class="request_information" style="height: 400px;">
-                    <div id="request_information_text"></div>
+                <div class="request_information" style="height: 450px;">
+                    <div>
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+                            style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
+                            <div class="container-fluid" style="padding: 0">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="request_li" type="button" id="em_change1">
+                                        1. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="em_change2">
+                                        2. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="em_change3">
+                                        3. Änderung
+                                    </li>
+                                    <li class="request_li" type="button" id="em_change4">
+                                        4. Änderung
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="order_detail_div1">
+                            <div id="em_order_rquest_text1"></div>
+                            <div id="em_order_rquest_text2"></div>
+                            <div id="em_order_rquest_text3"></div>
+                            <div id="em_order_rquest_text4"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
+                            <button class="btn btn-primary btn-sm" onclick="embroidery_multipleDownload()"
+                                style="background-color:#c3ac6d; border:none; font-size:13px;"><i
+                                    class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+                        </div>
+                    </div>
                     <div class="col-12" style="display:flex;">
                         <div class="col-3">
                             <ul class="nav nav-tabs flex-column"
-                                style="background-color: rgb(244, 244, 244); width:70%; border-bottom:none; padding-left:0px;">
+                                style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure1" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Originaldatei</button>
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure3_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure2" class="order_detail_folder_button"><i
-                                            class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        Stickprogramm</button>
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure3_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure3" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure3_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="embroidery_subfolder_structure4" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure3_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure4_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure4_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure4_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="folder_button" type="button" id="embroidery_subfolder_structure4_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.STICKPROGRAMM ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
 
                             </ul>
@@ -334,7 +438,8 @@
                     <form action="" id="embroidery_uplaod_form">
                         <input type="hidden" name="embroidery_request_id" value="" />
                         <div style="display: flex">
-                            <div id="embroidery_fileupload" action="" method="POST" enctype="multipart/form-data">
+                            <div id="embroidery_fileupload" action="" method="POST"
+                                enctype="multipart/form-data">
                                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                 <noscript><input type="hidden" name="redirect" value="" /></noscript>
                                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -395,15 +500,71 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    var selector = '#em_change1';
 
-    function EmbroideryDetailRequest(id, type) {
-
+    function EmbroideryDetailRequest(id, type = 'Änderungsdateien Kunde1') {
+        if (type == 'Originaldatei') {
+            type = 'Änderungsdateien Kunde1';
+            selector = '#em_change1';
+        }
         var embroidery_detail_table;
         $('[name=embroidery_request_id]').val(id);
-        $('#embroidery_subfolder_structure1').hide();
-        $('#embroidery_subfolder_structure2').hide();
-        $('#embroidery_subfolder_structure3').hide();
-        $('#embroidery_subfolder_structure4').hide();
+        $('#embroidery_subfolder_structure3_1').hide();
+        $('#embroidery_subfolder_structure3_2').hide();
+        $('#embroidery_subfolder_structure3_3').hide();
+        $('#embroidery_subfolder_structure3_4').hide();
+        $('#embroidery_subfolder_structure4_1').hide();
+        $('#embroidery_subfolder_structure4_2').hide();
+        $('#embroidery_subfolder_structure4_3').hide();
+        $('#embroidery_subfolder_structure4_4').hide();
+        $('#em_order_rquest_text2').hide();
+        $('#em_order_rquest_text3').hide();
+        $('#em_order_rquest_text4').hide();
+        $('#em_change1').click(function() {
+            $('#em_order_rquest_text1').show();
+            $('#em_order_rquest_text2').hide();
+            $('#em_order_rquest_text3').hide();
+            $('#em_order_rquest_text4').hide();
+            $('#em_change1').css('background', '#ddd');
+            $('#em_change2').css('background', '#eee');
+            $('#em_change3').css('background', '#eee');
+            $('#em_change4').css('background', '#eee');
+        });
+        $('#em_change2').click(function() {
+            $('#em_order_rquest_text1').hide();
+            $('#em_order_rquest_text2').show();
+            $('#em_order_rquest_text3').hide();
+            $('#em_order_rquest_text4').hide();
+            $('#em_change1').css('background', '#eee');
+            $('#em_change2').css('background', '#ddd');
+            $('#em_change3').css('background', '#eee');
+            $('#em_change4').css('background', '#eee');
+        });
+        $('#em_change3').click(function() {
+            $('#em_order_rquest_text1').hide();
+            $('#em_order_rquest_text2').hide();
+            $('#em_order_rquest_text3').show();
+            $('#em_order_rquest_text4').hide();
+            $('#em_change1').css('background', '#eee');
+            $('#em_change2').css('background', '#eee');
+            $('#em_change3').css('background', '#ddd');
+            $('#em_change4').css('background', '#eee');
+        });
+        $('#em_change4').click(function() {
+            $('#em_order_rquest_text1').hide();
+            $('#em_order_rquest_text2').hide();
+            $('#em_order_rquest_text3').hide();
+            $('#em_order_rquest_text4').show();
+            $('#em_change1').css('background', '#eee');
+            $('#em_change2').css('background', '#eee');
+            $('#em_change3').css('background', '#eee');
+            $('#em_change4').css('background', '#ddd');
+        });
+        $('#em_order_rquest_text1').text("");
+        $('#em_order_rquest_text2').text("");
+        $('#em_order_rquest_text3').text("");
+        $('#em_order_rquest_text4').text("");
+
         $.ajax({
             url: '{{ __('routes.embroidery-freelancer-get-request-detail') }}',
             type: 'GET',
@@ -411,6 +572,22 @@
                 id
             },
             success: (data) => {
+                if (data.order_change[0]) {
+                    console.log("1q");
+                    $('#em_order_rquest_text1').text(data.order_change[0].message);
+                }
+                if (data.order_change[1]) {
+                    console.log("2q");
+                    $('#em_order_rquest_text2').text(data.order_change[1].message);
+                }
+                if (data.order_change[2]) {
+                    console.log("3q");
+                    $('#em_order_rquest_text3').text(data.order_change[2].message);
+                }
+                if (data.order_change[3]) {
+                    $('#em_order_rquest_text4').text(data.order_change[3].message);
+                }
+
                 var folderArray = [];
                 data.detail.map((item, index) => {
                     item = item.split('/')[3];
@@ -418,21 +595,106 @@
                         folderArray.push(item);
                     }
                 });
-                $('#em_freelancer_request_popup').find('#request_information_text').text(data.order_change
-                    .message);
+                console.log(folderArray);
+                console.log(data.change_count);
+                if (data.change_count == 1) {
+                    $('#em_change1').show();
+                    $('#em_change2').hide();
+                    $('#em_change3').hide();
+                    $('#em_change4').hide();
+                } else if (data.change_count == 2) {
+                    $('#em_change1').show();
+                    $('#em_change2').show();
+                    $('#em_change3').hide();
+                    $('#em_change4').hide();
+                } else if (data.change_count == 3) {
+                    $('#em_change1').show();
+                    $('#em_change2').show();
+                    $('#em_change3').show();
+                    $('#em_change4').hide();
+                }
+
                 $('[name=embroidery_request_id]').val(data.order.id);
 
-                folderArray.forEach((item) => {
-                    if (item == "Originaldatei") {
-                        $('#embroidery_subfolder_structure1').show();
-                    } else if (item == "Stickprogramm") {
-                        $('#embroidery_subfolder_structure2').show();
-                    } else if (item == "Änderungsdateien Kunde") {
-                        $('#embroidery_subfolder_structure3').show();
-                    } else if (item == "Stickprogramm Änderung") {
-                        $('#embroidery_subfolder_structure4').show();
-                    }
-                })
+                $("#em_change1").click(() => {
+                    selector = "#em_change1";
+                    $('#embroidery_subfolder_structure3_1').hide();
+                    $('#embroidery_subfolder_structure3_2').hide();
+                    $('#embroidery_subfolder_structure3_3').hide();
+                    $('#embroidery_subfolder_structure3_4').hide();
+                    $('#embroidery_subfolder_structure4_1').hide();
+                    $('#embroidery_subfolder_structure4_2').hide();
+                    $('#embroidery_subfolder_structure4_3').hide();
+                    $('#embroidery_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde1") {
+                            $('#embroidery_subfolder_structure3_1').show();
+                        } else if (item == "Stickprogramm Änderung1") {
+                            $('#embroidery_subfolder_structure4_1').show();
+                        }
+                    });
+                });
+                $("#em_change2").click(() => {
+                    selector = "#em_change2";
+                    $('#embroidery_subfolder_structure3_1').hide();
+                    $('#embroidery_subfolder_structure3_2').hide();
+                    $('#embroidery_subfolder_structure3_3').hide();
+                    $('#embroidery_subfolder_structure3_4').hide();
+                    $('#embroidery_subfolder_structure4_1').hide();
+                    $('#embroidery_subfolder_structure4_2').hide();
+                    $('#embroidery_subfolder_structure4_3').hide();
+                    $('#embroidery_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde2") {
+                            $('#embroidery_subfolder_structure3_2').show();
+                        } else if (item == "Stickprogramm Änderung2") {
+                            $('#embroidery_subfolder_structure4_2').show();
+                        }
+                    });
+                });
+                $("#em_change3").click(() => {
+                    selector = "#em_change3";
+                    $('#embroidery_subfolder_structure3_1').hide();
+                    $('#embroidery_subfolder_structure3_2').hide();
+                    $('#embroidery_subfolder_structure3_3').hide();
+                    $('#embroidery_subfolder_structure3_4').hide();
+                    $('#embroidery_subfolder_structure4_1').hide();
+                    $('#embroidery_subfolder_structure4_2').hide();
+                    $('#embroidery_subfolder_structure4_3').hide();
+                    $('#embroidery_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde3") {
+                            $('#embroidery_subfolder_structure3_3').show();
+                        } else if (item == "Stickprogramm Änderung3") {
+                            $('#embroidery_subfolder_structure4_3').show();
+                        }
+                    });
+                });
+                $("#em_change4").click(() => {
+                    selector = "#em_change4";
+                    $('#embroidery_subfolder_structure3_1').hide();
+                    $('#embroidery_subfolder_structure3_2').hide();
+                    $('#embroidery_subfolder_structure3_3').hide();
+                    $('#embroidery_subfolder_structure3_4').hide();
+                    $('#embroidery_subfolder_structure4_1').hide();
+                    $('#embroidery_subfolder_structure4_2').hide();
+                    $('#embroidery_subfolder_structure4_3').hide();
+                    $('#embroidery_subfolder_structure4_4').hide();
+
+                    folderArray.forEach((item) => {
+                        if (item == "Änderungsdateien Kunde4") {
+                            $('#embroidery_subfolder_structure3_4').show();
+                        } else if (item == "Stickprogramm Änderung4") {
+                            $('#embroidery_subfolder_structure4_4').show();
+                        }
+                    });
+                });
+
+
+                $(selector).trigger('click');
 
             },
             error: () => {
@@ -487,17 +749,34 @@
         $('#em_freelancer_request_popup').modal('show');
         embroidery_detail_table.destroy();
     }
-    $('#embroidery_subfolder_structure1').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Originaldatei');
+
+    function embroidery_multipleDownload() {
+        window.location.href = '{{ url('multi-download') }}/' + $('[name=embroidery_request_id]').val();
+    }
+
+    $('#embroidery_subfolder_structure3_1').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde1');
     });
-    $('#embroidery_subfolder_structure2').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm');
+    $('#embroidery_subfolder_structure3_2').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde2');
     });
-    $('#embroidery_subfolder_structure3').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde');
+    $('#embroidery_subfolder_structure3_3').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde3');
     });
-    $('#embroidery_subfolder_structure4').click(function() {
-        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung');
+    $('#embroidery_subfolder_structure3_4').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Änderungsdateien Kunde4');
+    });
+    $('#embroidery_subfolder_structure4_1').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung1');
+    });
+    $('#embroidery_subfolder_structure4_2').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung2');
+    });
+    $('#embroidery_subfolder_structure4_3').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung3');
+    });
+    $('#embroidery_subfolder_structure4_4').click(function() {
+        EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung4');
     });
 
     $('#embroidery_uplaod_form').submit(function(e) {

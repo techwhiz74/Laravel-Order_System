@@ -95,6 +95,8 @@
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/locales/bootstrap-datepicker.de.min.js">
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script type="text/javascript"
     src="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/js/bootstrap-multiselect.js">
@@ -155,6 +157,7 @@
 <script src="{{ asset('asset/js/demo.js') }}"></script>
 <script src="{{ asset('asset/js/demo_em_ex.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin.js') }}"></script>
+<script src="{{ asset('asset/js/demo_job.js') }}"></script>
 <script src="{{ asset('asset/js/demo_embroidery.js') }}"></script>
 <script src="{{ asset('asset/js/demo_vector.js') }}"></script>
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>

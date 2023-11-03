@@ -573,7 +573,7 @@
         }
       }
 
-      // case of order change
+      // case of customer order change, red to blue
       if (($('[name=order_id]').val() != "") && ($(
         '[name=order_change_textarea]').val() != "")) {
         if (data && data.submit) {
@@ -588,6 +588,27 @@
           }, 3000);
         }
       }
+      // case of freelancer start job, green to yellow
+      if (($('[name=free_detail_id]').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            $('#em_freelancer_table_reload_btn').trigger('click');
+            $('#ve_freelancer_table_reload_btn').trigger('click');
+            em_freelancer_all_table.ajax.reload();
+            em_freelancer_green_table.ajax.reload();
+            em_freelancer_yellow_table.ajax.reload();
+            ve_freelancer_all_table.ajax.reload();
+            ve_freelancer_green_table.ajax.reload();
+            ve_freelancer_yellow_table.ajax.reload();
+            $('#freelancer_job_end_div').show();
+            toastr.success(
+              "Dateien erfolgreich hochgeladen");
+          }, 3000);
+        }
+      }
       // case of embroidery freelancer
       if (($('#embroidery_request_id').val() != "")) {
         if (data && data.submit) {
@@ -595,10 +616,7 @@
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
-            em_freelancer_all_table.ajax.reload();
-            em_freelancer_blue_table.ajax.reload();
             $('#em_freelancer_table_reload_btn').trigger('click');
-            $('#embroidery_subfolder_structure4').show();
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);
@@ -611,10 +629,7 @@
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
-            ve_freelancer_all_table.ajax.reload();
-            ve_freelancer_blue_table.ajax.reload();
             $('#ve_freelancer_table_reload_btn').trigger('click');
-            $('#vector_subfolder_structure4').show();
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);

@@ -443,7 +443,7 @@
         <div class="lion_popup_dv">
 
             @if (auth()->user()->user_type == 'customer')
-                <x-user.order_form_em_standard />
+                <x-user.order_form />
             @elseif (auth()->user()->user_type == 'admin')
                 <x-admin.admin_order_form />
             @endif

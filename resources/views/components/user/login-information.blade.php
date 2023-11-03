@@ -29,12 +29,6 @@
                             <div class="submit_btn" id="customer_staff_create_button" type="button">
                                 {{ __('home.add') }}
                             </div>
-                            <div class="submit_btn" id="customer_staff_edit_button" type="button">
-                                {{ __('home.edit') }}
-                            </div>
-                            <div class="submit_btn" id="customer_staff_delete_button" type="button">
-                                {{ __('home.delete') }}
-                            </div>
                         </div>
                     </div>
                 </div>
