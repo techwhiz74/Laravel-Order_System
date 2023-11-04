@@ -596,14 +596,17 @@
           template.css('opacity', '1');
           setTimeout(() => {
             $('#em_freelancer_table_reload_btn').trigger('click');
+            $('#em_freelancer_all_table_reload_button').trigger('click');
+            $('#em_freelancer_green_table_reload_button').trigger('click');
+            $('#em_freelancer_yellow_table_reload_button').trigger('click');
+            $('#em_freelancer_red_table_reload_button').trigger('click');
             $('#ve_freelancer_table_reload_btn').trigger('click');
-            em_freelancer_all_table.ajax.reload();
-            em_freelancer_green_table.ajax.reload();
-            em_freelancer_yellow_table.ajax.reload();
-            ve_freelancer_all_table.ajax.reload();
-            ve_freelancer_green_table.ajax.reload();
-            ve_freelancer_yellow_table.ajax.reload();
-            $('#freelancer_job_end_div').show();
+            $('#ve_freelancer_all_table_reload_button').trigger('click');
+            $('#ve_freelancer_green_table_reload_button').trigger('click');
+            $('#ve_freelancer_yellow_table_reload_button').trigger('click');
+            $('#ve_freelancer_red_table_reload_button').trigger('click');
+            $('#free_subfolder_structure2').trigger('click');
+            $('#free_subfolder_structure3').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);
@@ -617,6 +620,9 @@
           template.css('opacity', '1');
           setTimeout(() => {
             $('#em_freelancer_table_reload_btn').trigger('click');
+            $('#em_freelancer_all_table_reload_button').trigger('click');
+            $('#em_freelancer_red_table_reload_button').trigger('click');
+            $('#em_freelancer_blue_table_reload_button').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);
@@ -630,6 +636,9 @@
           template.css('opacity', '1');
           setTimeout(() => {
             $('#ve_freelancer_table_reload_btn').trigger('click');
+            $('#ve_freelancer_all_table_reload_button').trigger('click');
+            $('#ve_freelancer_red_table_reload_button').trigger('click');
+            $('#ve_freelancer_blue_table_reload_button').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);

@@ -5,20 +5,20 @@
     </div>
     <div>
         <div style="margin-top: 40px;">
-
+            <button id="ve_freelancer_blue_table_reload_button" style="display: none"></button>
             <div class="responsive-table">
                 <table id="ve_freelancer_blue_table" class="table table-striped" style="width:100%; font-size:13px;">
                     <thead>
                         <tr>
-                            <th style="max-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
-                            <th>{{ __('home.delivery_time') }}</th>
-                            <th>{{ __('home.order') }}</th>
-                            <th>{{ __('home.date') }}</th>
-                            <th style="min-width: 35% !important">{{ __('home.project') }}</th>
-                            <th>{{ __('home.status') }}</th>
-                            <th style="max-width: 70px !important; text-align:center !important;">
+                            <th style="min-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
+                            <th style="min-width: 100px !important;">{{ __('home.delivery_time') }}</th>
+                            <th style="min-width: 150px !important;">{{ __('home.order') }}</th>
+                            <th style="min-width: 150px !important;">{{ __('home.date') }}</th>
+                            <th>{{ __('home.project') }}</th>
+                            <th style="min-width: 150px !important;">{{ __('home.status') }}</th>
+                            <th style="min-width: 70px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
-                            <th style="max-width: 90px !important; text-align:center !important;">
+                            <th style="min-width: 90px !important; text-align:center !important;">
                                 {{ __('home.request') }}</th>
                         </tr>
                     </thead>
@@ -101,5 +101,8 @@
                 }
             ]
         });
+        $('#ve_freelancer_blue_table_reload_button').click(function() {
+            ve_freelancer_blue_table.ajax.reload();
+        })
     });
 </script>

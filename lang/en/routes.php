@@ -109,6 +109,8 @@ return [
     'embroidery-freelancer-blue-dashboard' => '/en/freelancer/embroidery-freelancer-blue-dashboard',
     'embroidery-freelancer-get-request-detail' => '/en/freelancer/embroidery-freelancer-get-request-detail',
     'embroidery-freelancer-order_detail' => '/en/freelancer/embroidery-freelancer-order_detail',
+    'embroidery-freelancer-startjob' => '/en/freelancer/embroidery-freelancer-startjob',
+    'embroidery-freelancer-endjob' => '/en/freelancer/embroidery-freelancer-endjob',
 
 
 

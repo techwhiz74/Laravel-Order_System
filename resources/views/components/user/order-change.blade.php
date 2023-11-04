@@ -36,11 +36,7 @@
                                                 <i class="glyphicon glyphicon-upload"></i>
                                                 <span>Start Upload</span>
                                             </button>
-                                            <button type="reset" class="upload_cacel_btn">
-                                                <i class="glyphicon glyphicon-ban-circle"></i>
-                                                <span style="font-size: 13px;">{{ __('home.cancel_upload') }}</span>
-                                            </button>
-                                            <!-- The global file processing state -->
+
                                             <span class="fileupload-process"></span>
                                         </div>
                                         <div class="order_form_file_upload">

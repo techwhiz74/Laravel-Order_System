@@ -144,7 +144,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::POST('/profile-update', [FreelancerController::class, 'Profileupdate']);
     Route::get('/change-password', [FreelancerController::class, 'changePassword']);
     Route::POST('/change-password-update', [FreelancerController::class, 'updatePassword']);
-    Route::get('/deletefiles/{id}/{orderid}/', [FreelancerController::class, 'DeleteFile']);
+    Route::get('/deletefiles/{id}', [FreelancerController::class, 'DeleteFile']);
     Route::get('/filter-data', [FreelancerController::class, 'filtersData']);
 
     Route::get('/embroidery-freelancer-green', [FreelancerController::class, 'EmbroideryFreelancerGreenTable'])->name('embroidery-freelancer-green');
@@ -158,6 +158,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/embroidery-freelancer-blue-dashboard', [FreelancerController::class, 'EmbroideryFreelancerBlueDashboardTable'])->name('embroidery-freelancer-blue-dashboard');
     Route::get('/embroidery-freelancer-get-request-detail', [FreelancerController::class, 'getRequestDetail'])->name('embroidery-freelancer-get-request-detail');
     Route::get('/embroidery-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('embroidery-freelancer-order_detail');
+    Route::get('/embroidery-freelancer-startjob', [FreelancerController::class, 'StartJob'])->name('embroidery-freelancer-startjob');
+    Route::get('/embroidery-freelancer-endjob', [FreelancerController::class, 'EndJob'])->name('embroidery-freelancer-endjob');
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
     Route::get('/vector-freelancer-yellow', [FreelancerController::class, 'VectorFreelancerYellowTable'])->name('vector-freelancer-yellow');

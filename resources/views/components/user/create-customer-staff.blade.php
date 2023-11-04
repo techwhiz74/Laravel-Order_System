@@ -5,7 +5,7 @@
             <div class="modal-header">
                 <div style="display: flex; justify-content:space-between; width:100% !important">
                     <div style="margin-left: 65px">
-                        <h4 style="margin:auto"><strong>Mitarbeiter bearbeiten</strong></h4>
+                        <h4 style="margin:auto" id="staff_popup_title"></h4>
                     </div>
                     <div>
                         <button type="button" class="close" style="font-size: 22px; margin-right:10px"
@@ -92,6 +92,7 @@
             url: '{{ __('routes.employer-getemployee') }}' + id,
             type: 'GET',
             success: (result) => {
+                $('#staff_popup_title').text("Mitarbeiter bearbeiten")
                 $('#name').val(result.name);
                 $('#email').val(result.email);
             },

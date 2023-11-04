@@ -568,7 +568,9 @@
                 $(this).val('');
         });
         $('#customer_staff_create_button').click(function() {
+
             $('#customer_staff_create_popup').modal('show');
+            $('#staff_popup_title').text("Mitarbeiter hinzufügen")
             $('#employee_id').val('');
             $('#name').val('');
             $('#email').val('');
@@ -1131,9 +1133,4 @@
     function freelancerVectorShowAllOrder() {
         $('#ve_freelancer_all').trigger('click');
     }
-    $(function() {
-        $('.upload_cacel_btn').click(function() {
-            $('#order_form_upload_list tbody').remove();
-        })
-    })
 </script>

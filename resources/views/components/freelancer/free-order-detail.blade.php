@@ -186,30 +186,6 @@
         background-clip: padding-box;
     }
 
-    .order_form_file_uplaod_command {
-        color: #c3ac6d;
-        text-align: center;
-        font-size: 20px;
-    }
-
-    #order_form_anotherOrderButton {
-        background-color: #c3ac6d;
-        color: white;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 300px;
-        float: right;
-        margin-top: 50px;
-        margin-right: 160px;
-        font-size: 13px
-    }
-
-    #order_form_anotherOrderButton:hover {
-        background-color: #c3ac6f;
-    }
-
     .btn-success {
         color: #fff;
         background-color: #c3ac6d;
@@ -221,14 +197,6 @@
         background-color: #c3ac6d !important;
     }
 
-    .upload_cacel_btn {
-        margin-left: -120px;
-        color: white;
-        background-color: #c3ac6d;
-        border: none;
-        border-radius: 0;
-        padding: 7px 10px;
-    }
 
     .upload_table_button {
         color: white;
@@ -274,82 +242,200 @@
                 <p></p>
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 10vw">
-                <div class="order_detail_div1">
+                <div class="col-12" style="display: flex">
+                    <div class="col-6" style="padding-right: 2.5px">
+                        <div class="order_detail_div1">
+                            <div style="height: 50px; font-size:18px;">Bestelldetails Information</div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                        <p style="width:120px; margin:0">
+                                            <strong>{{ __('home.customer_number') }}</strong>
+                                        </p>
+                                        <div id="detail_customer_number" class="order_detail_input_div_element"
+                                            style="width:calc(100% - 120px);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                        <p style="width:120px; margin:0"><strong>{{ __('home.order_number') }}</strong>
+                                        </p>
+                                        <div id="detail_order_number" class="order_detail_input_div_element"
+                                            style="width:calc(100% - 120px);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                        <p style="width:120px; margin:0"><strong>{{ __('home.projectname') }}</strong>
+                                        </p>
+                                        <div id="detail_project_name" class="order_detail_input_div_element"
+                                            style="width:calc(100% - 120px);">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group form_dv_wrap order_size"
+                                        style="display: flex; align-items:center">
+                                        <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
+                                        </p>
+                                        <div id="detail_size" class="order_detail_input_div_element"
+                                            style="width:65px;">
+                                        </div>
+                                        <span style="margin-left: 5px;">mm</span>
+                                        <div id="detail_width_height" class="order_detail_input_div_element"
+                                            style="width:110px; margin-left:28px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group form_dv_wrap order_final_product"
+                                        style="display: flex; align-items:center">
+                                        <p style="width:120px; margin:0"><strong>{{ __('home.fianl_product') }}</strong>
+                                        </p>
+                                        <div id="detail_final_product" class="order_detail_input_div_element"
+                                            style="width:calc(100% - 120px);">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group form_dv_wrap" style="display: flex;">
+                                        <p style="width:120px; margin:0">
+                                            <strong>{{ __('home.special instructions') }}</strong>
+                                        </p>
+                                        <div id="detail_special_instructions" class="order_detail_input_div_element"
+                                            style="width:calc(100% - 120px); height:130px !important; align-items:flex-start !important;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6" style="padding-left: 2.5px">
+                        <div class="order_detail_div1">
+                            <div style="height: 50px; font-size:18px;">Parameter</div>
+                            <div id="embroidery_parameter_div">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.yarn_information') }}</p>
+                                            <div id="yarn_information" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.need_embroidery_files') }}</p>
+                                            <div id="need_embroidery_files" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.cutting_options') }}</p>
+                                            <div id="cutting_options" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.special_cutting_options') }}
+                                            </p>
+                                            <div id="special_cutting_options"class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.needle_instructions') }}</p>
+                                            <div id="needle_instructions" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.standard_instructions') }}
+                                            </p>
+                                            <div id="standard_instructions" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">
+                                                {{ __('home.special_standard_instructions') }}</p>
+                                            <div id="special_standard_instructions"
+                                                class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="vector_parameter_div">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.required_vector_file') }}</p>
+                                            <div id="required_vector_file" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap"
+                                            style="display: flex; align-items:center">
+                                            <p style="width:200px; margin:0">{{ __('home.required_image_file') }}</p>
+                                            <div id="required_image_file" class="order_detail_input_div_element"
+                                                style="width:calc(100% - 120px);">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                <p style="width:120px; margin:0"><strong>{{ __('home.customer_number') }}</strong>
-                                </p>
-                                <div id="detail_customer_number"
-                                    style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                <p style="width:120px; margin:0"><strong>{{ __('home.order_number') }}</strong>
-                                </p>
-                                <div id="detail_order_number"
-                                    style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                <p style="width:120px; margin:0"><strong>{{ __('home.projectname') }}</strong>
-                                </p>
-                                <div id="detail_project_name"
-                                    style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group form_dv_wrap order_size" style="display: flex; align-items:center">
-                                <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
-                                </p>
-                                <div id="detail_size"
-                                    style="background-color: #fff; width:110px; height:25px; padding:2px 10px;">
-                                </div>
-                                <span style="margin-left: 10px;">mm</span>
-                                <div id="detail_width_height"
-                                    style="background-color: #fff; width:110px; height:25px; padding:2px 10px; margin-left:25px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group form_dv_wrap order_final_product"
-                                style="display: flex; align-items:center">
-                                <p style="width:120px; margin:0"><strong>{{ __('home.fianl_product') }}</strong>
-                                </p>
-                                <div id="detail_final_product"
-                                    style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group form_dv_wrap" style="display: flex;">
-                                <p style="width:120px; margin:0">
-                                    <strong>{{ __('home.special instructions') }}</strong>
-                                </p>
-                                <div id="detail_special_instructions"
-                                    style="background-color: #fff; width:calc(100% - 120px); height:100px; padding:2px 10px;">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12" style="display: flex">
                     <div class="col-6" style="padding-right: 2.5px">
-                        <div class="order_detail_div2" style="height:400px !important;">
-                            <div class="col-12">
-                                <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
+                        <div class="order_detail_div2">
+                            <div class="col-12"
+                                style="display: flex; justify-content:space-between; margin-bottom:10px;">
+                                <div style="font-size:18px;">View Folder Structure</div>
+                                <div>
                                     <button class="btn btn-primary btn-sm" onclick="freeMultipleDownload()"
                                         style="background-color:#c3ac6d; border:none; font-size:13px;"><i
                                             class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
@@ -385,10 +471,22 @@
                                                 </div>
                                             </div>
                                         </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="free_subfolder_structure3">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p style="padding-top: 6px;">
+                                                        VEKTORDATEI</p>
+                                                </div>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
-                                <div class="responsive-table" style="height: 350px;">
-
+                                <div class="responsive-table" style="height: 350px; width:100%;">
                                     <table id="free_order_detail" class="table table-striped"
                                         style="width:100%; font-size:13px;">
                                         <thead>
@@ -399,7 +497,7 @@
                                                 <th style="text-align: center">{{ __('home.index') }}</th>
                                                 <th style="text-align: center">{{ __('home.extension') }}</th>
                                                 <th style="text-align: center">{{ __('home.download') }}</th>
-
+                                                <th style="text-align: center">{{ __('home.delete') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center"></tbody>
@@ -410,64 +508,74 @@
                     </div>
                     <div class="col-6" style="padding-left: 2.5px;">
                         <div class="freelancer_job_div">
-                            <div id="freelancer_job_start_div">
-                                <button onclick="StartJob()" class="job_button">Job starten</button>
+                            <div id="green_job">
+                                <div style="height: 50px; font-size:18px;">Start Job</div>
+                                <div id="freelancer_job_start_div">
+                                    <button onclick="StartJob()" class="job_button">Job starten</button>
+                                </div>
+
                             </div>
-                            <div id="freelacner_job_upload_div">
-                                <form action="" id="freelancer_job_start_form">
-                                    <input type="hidden" name="free_detail_id" value="">
-                                    <div style="display: flex">
-                                        <div id="freelancer_job_upload" action="" method="POST"
-                                            enctype="multipart/form-data">
-                                            <noscript><input type="hidden" name="redirect"
-                                                    value="" /></noscript>
-                                            <div class="row fileupload-buttonbar">
-                                                <div class="col-lg-7">
-                                                    <span class="fileinput-button">
-                                                        <i class="glyphicon glyphicon-plus"></i>
-                                                        <span
-                                                            style="font-size: 13px;">{{ __('home.add_file') }}...</span>
-                                                        <input type="file" name="files[]" multiple
-                                                            accept=".jpg, .png, .pdf, .ai, .dst" />
-                                                    </span>
-                                                    <button type="submit" class="btn btn-primary start"
-                                                        style="visibility: hidden;">
-                                                        <i class="glyphicon glyphicon-upload"></i>
-                                                        <span>Start Upload</span>
-                                                    </button>
-                                                    <button type="reset" class="upload_cacel_btn">
-                                                        <i class="glyphicon glyphicon-ban-circle"></i>
-                                                        <span
-                                                            style="font-size: 13px;">{{ __('home.cancel_upload') }}</span>
-                                                    </button>
-                                                    <span class="fileupload-process"></span>
-                                                </div>
-                                                <div class="col-lg-5 fileupload-progress fade">
-                                                    <div class="progress progress-striped active" role="progressbar"
-                                                        aria-valuemin="0" aria-valuemax="100">
-                                                        <div class="progress-bar progress-bar-success"
-                                                            style="width: 0%;">
+                            <div id="yellow_job">
+                                <div style="height: 50px; font-size:18px;">Update Job</div>
+                                <div style="display: flex; flex-direction:column; justify-content:space-between">
+                                    <div id="freelancer_job_update_div">
+                                        <button onclick="UpdateJob()" class="job_button">Dateien hochladen</button>
+                                    </div>
+                                    <div id="freelacner_job_upload_div">
+                                        <form action="" id="freelancer_job_start_form">
+                                            <input type="hidden" name="free_detail_id" value="">
+                                            <div style="display: flex">
+                                                <div id="freelancer_job_upload" action="" method="POST"
+                                                    enctype="multipart/form-data"
+                                                    style="width: 100%; overflow-x:hidden; overflow-y:auto;">
+                                                    <noscript><input type="hidden" name="redirect"
+                                                            value="" /></noscript>
+                                                    <div class="row fileupload-buttonbar">
+                                                        <div class="col-lg-7">
+                                                            <span class="fileinput-button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                                <span
+                                                                    style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                                <input type="file" name="files[]" multiple
+                                                                    accept=".jpg, .png, .pdf, .ai, .dst" />
+                                                            </span>
+                                                            <button type="submit" class="btn btn-primary start"
+                                                                style="visibility: hidden;">
+                                                                <i class="glyphicon glyphicon-upload"></i>
+                                                                <span>Start Upload</span>
+                                                            </button>
+
+                                                            <span class="fileupload-process"></span>
+                                                        </div>
+                                                        <div class="col-lg-5 fileupload-progress fade">
+                                                            <div class="progress progress-striped active"
+                                                                role="progressbar" aria-valuemin="0"
+                                                                aria-valuemax="100">
+                                                                <div class="progress-bar progress-bar-success"
+                                                                    style="width: 0%;">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <table role="presentation" class="table table-striped"
+                                                        id="order_form_upload_list">
+                                                        <tbody class="files"></tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div><br>
+                                            <div style="display: flex; justify-content:flex-end">
+                                                <div>
+                                                    <button type="submit"
+                                                        class="freelancer_job_start_submit">Hochladen</button>
                                                 </div>
                                             </div>
-                                            <table role="presentation" class="table table-striped"
-                                                id="order_form_upload_list">
-                                                <tbody class="files"></tbody>
-                                            </table>
-
-                                        </div>
-                                    </div><br>
-                                    <div style="display: flex; justify-content:flex-end">
-                                        <div>
-                                            <button type="submit"
-                                                class="freelancer_job_start_submit">Hochladen</button>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
-                            </div>
-                            <div id="freelancer_job_end_div">
-                                <button onclick="EndJob()" class="job_button">Job abschließen</button>
+                                    <div id="freelancer_job_end_div">
+                                        <button onclick="EndJob()" class="job_button">Job abschließen</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -476,7 +584,7 @@
         </div>
     </div>
 </div>
-
+@include('components.freelancer.alert_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -484,14 +592,23 @@
         }
     });
 
+    var free_detail_table;
+
     function freeOpenOrderDetailModal(id, type) {
-        $('#freelancer_job_start_div').hide();
+        $('#freelancer_job_update_div').show();
         $('#freelacner_job_upload_div').hide();
         $('#freelancer_job_end_div').hide();
-        var free_detail_table;
+        $('#green_job').hide();
+        $('#yellow_job').hide();
+
+        $('#embroidery_parameter_div').hide();
+        $('#vector_parameter_div').hide();
+
+
         $('[name=free_detail_id]').val(id);
         $('#free_subfolder_structure1').hide();
         $('#free_subfolder_structure2').hide();
+        $('#free_subfolder_structure3').hide();
         $.ajax({
             url: '{{ __('routes.freelancer-get-order-detail') }}',
             type: 'GET',
@@ -508,9 +625,14 @@
                 });
 
                 if (data.order.status == 'Offen') {
-                    $('#freelancer_job_start_div').show();
+                    $('#green_job').show();
                 } else if (data.order.status == 'In Bearbeitung') {
-                    $('#freelancer_job_end_div').show();
+                    $('#yellow_job').show();
+                    folderArray.forEach((item) => {
+                        if (item == "Stickprogramm" || item == "Vektordatei") {
+                            $('#freelancer_job_end_div').show();
+                        }
+                    })
                 }
 
                 console.log(folderArray);
@@ -528,15 +650,19 @@
                 if ($data_type == "Vector") {
                     $('.order_size').hide();
                     $('.order_final_product').hide();
+                    $('#vector_parameter_div').show();
                 } else {
                     $('.order_size').show();
                     $('.order_final_product').show();
+                    $('#embroidery_parameter_div').show();
                 }
                 folderArray.forEach((item) => {
                     if (item == "Originaldatei") {
                         $('#free_subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
                         $('#free_subfolder_structure2').show();
+                    } else if (item == "Vektordatei") {
+                        $('#free_subfolder_structure3').show();
                     }
                 })
             },
@@ -585,6 +711,12 @@
                     orderable: false,
                     searchable: false
                 },
+                {
+                    data: 'delete',
+                    name: 'delete',
+                    orderable: false,
+                    searchable: false
+                },
 
             ]
         });
@@ -602,13 +734,46 @@
     $('#free_subfolder_structure2').click(function() {
         freeOpenOrderDetailModal($('[name=free_detail_id]').val(), 'Stickprogramm');
     });
+    $('#free_subfolder_structure3').click(function() {
+        freeOpenOrderDetailModal($('[name=free_detail_id]').val(), 'Vektordatei');
+    });
 
 
 
     function StartJob() {
-        console.log('function clicked');
-        $('#freelacner_job_upload_div').show();
+        console.log($('[name=free_detail_id]').val());
+        $.ajax({
+            url: '{{ __('routes.embroidery-freelancer-startjob') }}',
+            type: 'GET',
+            data: {
+                start_job_id: $('[name=free_detail_id]').val()
+            },
+            success: () => {
+                $('#em_freelancer_table_reload_btn').trigger('click');
+                $('#em_freelancer_all_table_reload_button').trigger('click');
+                $('#em_freelancer_green_table_reload_button').trigger('click');
+                $('#em_freelancer_yellow_table_reload_button').trigger('click');
+                $('#em_freelancer_red_table_reload_button').trigger('click');
+                $('#ve_freelancer_table_reload_btn').trigger('click');
+                $('#ve_freelancer_all_table_reload_button').trigger('click');
+                $('#ve_freelancer_green_table_reload_button').trigger('click');
+                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
+                $('#ve_freelancer_red_table_reload_button').trigger('click');
+                toastr.success(
+                    "Der Status änderte sich von grün auf gelb");
+            },
+            error: () => {
+                console.error("error");
+            }
+        })
     }
+
+    function UpdateJob() {
+        $('#freelacner_job_upload_div').show();
+        $('#freelancer_job_end_div').show();
+        $('#freelancer_job_update_div').hide();
+    }
+
     $('#freelancer_job_start_form').submit(function(e) {
         e.preventDefault();
     })
@@ -618,4 +783,53 @@
         freelancer_job_data.append('free_detail_id', $('[name=free_detail_id]').val());
         $('#freelancer_job_upload').find('.fileupload-buttonbar .start').trigger('click');
     })
+
+    function EndJob() {
+        $.ajax({
+            url: '{{ __('routes.embroidery-freelancer-endjob') }}',
+            type: 'GET',
+            data: {
+                end_job_id: $('[name=free_detail_id]').val()
+            },
+            success: () => {
+                $('#em_freelancer_table_reload_btn').trigger('click');
+                $('#em_freelancer_all_table_reload_button').trigger('click');
+                $('#em_freelancer_green_table_reload_button').trigger('click');
+                $('#em_freelancer_yellow_table_reload_button').trigger('click');
+                $('#em_freelancer_red_table_reload_button').trigger('click');
+                $('#ve_freelancer_table_reload_btn').trigger('click');
+                $('#ve_freelancer_all_table_reload_button').trigger('click');
+                $('#ve_freelancer_green_table_reload_button').trigger('click');
+                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
+                $('#ve_freelancer_red_table_reload_button').trigger('click');
+
+                toastr.success(
+                    "Der Status änderte sich von gelb auf rot");
+            },
+            error: () => {
+                console.error("error");
+            }
+        })
+    }
+
+    function DeleteFile(id) {
+        console.log(id);
+        $.ajax({
+            url: '{{ __('routes.freelancer-delete-files') }}' + id,
+            type: 'GET',
+            success: () => {
+                $('#free_subfolder_structure2').trigger('click');
+                $('#free_subfolder_structure3').trigger('click');
+            },
+            error: () => {
+                console.log("error");
+                DeleteErrorAlert();
+            }
+        })
+    }
+
+    function DeleteErrorAlert() {
+        console.log("asdf");
+        $('#delete_error').modal('show');
+    }
 </script>

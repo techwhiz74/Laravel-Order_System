@@ -102,14 +102,13 @@
                 <table id="view-order" class="table table-striped" style="width:100%; font-size:13px;">
                     <thead>
                         <tr>
-                            <th style="max-width: 80px !important; text-align:center;">{{ __('home.order_type') }}
-                            </th>
-                            <th>{{ __('home.delivery_time') }}</th>
-                            <th>{{ __('home.order') }}</th>
-                            <th>{{ __('home.date') }}</th>
-                            <th>{{ __('home.order_from') }}</th>
-                            <th style="min-width: 33% !important">{{ __('home.project') }}</th>
-                            <th>{{ __('home.status') }}</th>
+                            <th style="min-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
+                            <th style="min-width: 100px !important;">{{ __('home.delivery_time') }}</th>
+                            <th style="min-width: 140px !important;">{{ __('home.order') }}</th>
+                            <th style="min-width: 140px !important;">{{ __('home.date') }}</th>
+                            <th style="min-width: 140px !important;">{{ __('home.order_from') }}</th>
+                            <th>{{ __('home.project') }}</th>
+                            <th style="min-width: 140px !important;">{{ __('home.status') }}</th>
                             <th style="max-width: 70px !important; text-align:center;">{{ __('home.detail') }}</th>
                             <th style="max-width: 80px !important; text-align:center;">{{ __('home.change') }}</th>
                             <th style="max-width: 90px !important; text-align:center;">{{ __('home.request') }}</th>

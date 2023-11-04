@@ -269,6 +269,10 @@
         $('#free_order_detail_popup').modal("hide");
         $('#ve_freelancer_request_popup').modal("hide");
     }
+
+    function hideAlertModal() {
+        $('#delete_error').modal('hide');
+    }
     $(document).on({
         ajaxStart: function() {
             $("body").addClass("loading");

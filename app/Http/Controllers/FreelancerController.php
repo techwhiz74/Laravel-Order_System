@@ -312,28 +312,6 @@ class FreelancerController extends Controller
         }
     }
 
-    public function DeleteFile($locale, $id, $orderid)
-    {
-        $indexToDelete = $id;
-        $ordersid = $orderid;
-
-        $deleteFile = DeliveryFile::where('order_id', $orderid)->first();
-        $deliveryFiles = json_decode($deleteFile->delivery_files);
-        if ($indexToDelete >= 0 && $indexToDelete < count($deliveryFiles)) {
-            unset($deliveryFiles[$indexToDelete]);
-            $deliveryFiles = array_values($deliveryFiles);
-            $update = DeliveryFile::where('order_id', $orderid)->update([
-                'delivery_files' => $deliveryFiles,
-            ]);
-        } else {
-            return response()->json([
-                'message' => 'Not Deleted',
-            ]);
-        }
-        return back()->with('success', 'File Deleted Successfully');
-    }
-
-
     public function filtersData()
     {
         dd('ok');
@@ -839,7 +817,6 @@ class FreelancerController extends Controller
                     $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
                     return $btn;
                 })
-
                 ->rawColumns(['customer_number', 'order_number', 'download'])
                 ->make(true);
         }
@@ -1526,12 +1503,28 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    return $btn;
+                })
+                ->addColumn('delete', function ($row) {
+                    $btn = '<button onClick = DeleteFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
                     return $btn;
                 })
 
-                ->rawColumns(['customer_number', 'order_number', 'download'])
+
+                ->rawColumns(['customer_number', 'order_number', 'download', 'delete'])
                 ->make(true);
+        }
+    }
+    public function DeleteFile($local, $id)
+    {
+        $delete_file = Order_file_upload::findOrfail($id);
+        $folder = explode('/', $delete_file->base_url)[3];
+
+        if ($folder == "Stickprogramm" || $folder == "Vektordatei") {
+            $delete_file->delete();
+        } else {
+            return response()->json(['message' => 'Error'], 500);
         }
     }
     public function FreelancergetOrderDetail(Request $request)
@@ -1539,5 +1532,25 @@ class FreelancerController extends Controller
         $order = Order::findOrfail($request->get('id'));
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
         return response()->json(['order' => $order, 'detail' => $order_file_uploads]);
+    }
+    public function StartJob(Request $request)
+    {
+        $order = Order::findOrfail($request->get('start_job_id'));
+        $order->status = "In Bearbeitung";
+        $order->save();
+    }
+    public function EndJob(Request $request)
+    {
+        $order = Order::findOrfail($request->get('end_job_id'));
+        $order_upload = Order_file_upload::where('order_id', $request->get('end_job_id'))->pluck('base_url');
+        $base_url_array = explode('","', $order_upload);
+        foreach ($base_url_array as $base_url) {
+            $folderArray = explode('\/', $base_url);
+            $folder = $folderArray[3];
+            if ($folder == 'Stickprogramm' || $folder == 'Vektordatei') {
+                $order->status = "Ausgeliefert";
+                $order->save();
+            }
+        }
     }
 }

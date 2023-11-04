@@ -314,7 +314,7 @@ class OrderController extends Controller
                                 ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
                                 ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
                         })
-                        ->where('created_at', '<=', date('Y-m-d', strtotime($request->end_date_filter)))->get();
+                        ->where('created_at', '<=', date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter))))->get();
                 }
             } else {
                 if ($request->end_date_filter == '') {
@@ -338,7 +338,7 @@ class OrderController extends Controller
                                 ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
                                 ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
                         })
-                        ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime($request->end_date_filter))])->get();
+                        ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter)))])->get();
                 }
             }
             return DataTables::of($data)->addIndexColumn()

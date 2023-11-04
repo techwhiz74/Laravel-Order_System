@@ -143,25 +143,8 @@
         background-clip: padding-box;
     }
 
-    .order_form_file_uplaod_command {
-        color: #c3ac6d;
-        text-align: center;
-        font-size: 20px;
-    }
 
-    #order_form_anotherOrderButton {
-        background-color: #c3ac6d;
-        color: white;
-        padding: 10px 14px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        width: 300px;
-        float: right;
-        margin-top: 50px;
-        margin-right: 160px;
-        font-size: 13px
-    }
+
 
 
 
@@ -172,15 +155,6 @@
         border-radius: 0;
     }
 
-
-    .upload_cacel_btn {
-        margin-left: -120px;
-        color: white;
-        background-color: #c3ac6d;
-        border: none;
-        border-radius: 0;
-        padding: 7px 10px;
-    }
 
     .upload_table_button {
         color: white;
@@ -574,11 +548,7 @@
                                     <i class="glyphicon glyphicon-upload"></i>
                                     <span>Start Upload</span>
                                 </button>
-                                <button type="reset" class="upload_cacel_btn">
-                                    <i class="glyphicon glyphicon-ban-circle"></i>
-                                    <span style="font-size: 13px;">{{ __('home.cancel_upload') }}</span>
-                                </button>
-                                <!-- The global file processing state -->
+
                                 <span class="fileupload-process"></span>
                             </div>
                             <div class="order_form_file_upload">

@@ -1646,6 +1646,7 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
+
 #order_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
@@ -1671,12 +1672,22 @@ select#status-filter:focus-visible {
   border: 1px solid #ddd;
   padding: 10px;
   margin-bottom: 5px;
+  height: 300px;
+  line-height: 1;
 }
 
 .order_detail_div2 {
   border: 1px solid #ddd;
   padding: 10px;
   height: 350px;
+}
+
+.order_detail_input_div_element {
+  height: 25px;
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
 }
 
 .order_form_validation_deliver_time,
@@ -1740,12 +1751,66 @@ select#status-filter:focus-visible {
 }
 
 #order_form_success_popup .modal-content {
-  max-width: 1000px;
+  max-width: 500px;
   margin: 0 auto;
+  height: 150px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#order_form_success_popup .modal-body {
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.order_form_file_uplaod_command {
+  color: #c3ac6d;
+  text-align: center;
+  font-size: 16px !important;
+}
+
+#order_form_anotherOrderButton {
+  color: white;
+  background-color: #c3ac6d;
+  border: none;
+  border-radius: 0;
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+#delete_error .modal-dialog {
+  background-color: rgba(227, 222, 222, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 0;
+  margin-top: 0;
+}
+
+#delete_error .modal-content {
+  max-width: 500px;
+  margin: 0 auto;
+  position: absolute;
+  height: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#delete_error .modal-body {
+  padding: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
 }
 
 #customer_staff_create_popup .modal-dialog {
@@ -1774,13 +1839,13 @@ select#status-filter:focus-visible {
 #ve_freelancer_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
-  height: calc(100% - 110px);
+  height: calc(100% - 105px);
   left: 0;
   right: 0;
   max-width: 100%;
-  top: 110px;
+  top: 105px;
   margin-top: 0;
-  overflow-y: auto;
+  overflow-y: hidden;
 }
 
 #free_order_detail_popup .modal-content,
@@ -3186,6 +3251,7 @@ td {
 }
 
 .freelancer_job_start_submit,
+.freelancer_job_update_submit,
 .embroidery_upload_submit,
 .vector_upload_submit {
   color: white;
@@ -3304,16 +3370,27 @@ td {
 .freelancer_job_div {
   border: 1px solid #ddd;
   padding: 10px;
-  height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: 350px;
 }
 
 #freelacner_job_upload_div {
-  height: 350px;
+  height: 250px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   padding: 5px 0;
   overflow-y: auto;
+}
+
+#freelancer_job_end_div {
+  position: absolute;
+  margin-top: 250px;
+}
+
+.modal_close_btn {
+  color: white;
+  background-color: #c3ac6d;
+  border: none;
+  border-radius: 0;
+  padding: 6px 10px;
+  font-size: 13px;
 }
