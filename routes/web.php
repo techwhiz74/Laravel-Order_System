@@ -146,6 +146,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::POST('/change-password-update', [FreelancerController::class, 'updatePassword']);
     Route::get('/deletefiles/{id}', [FreelancerController::class, 'DeleteFile']);
     Route::get('/filter-data', [FreelancerController::class, 'filtersData']);
+    Route::get('/parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-parameter');
 
     Route::get('/embroidery-freelancer-green', [FreelancerController::class, 'EmbroideryFreelancerGreenTable'])->name('embroidery-freelancer-green');
     Route::get('/embroidery-freelancer-yellow', [FreelancerController::class, 'EmbroideryFreelancerYellowTable'])->name('embroidery-freelancer-yellow');

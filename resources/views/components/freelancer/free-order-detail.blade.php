@@ -497,7 +497,8 @@
                                                 <th style="text-align: center">{{ __('home.index') }}</th>
                                                 <th style="text-align: center">{{ __('home.extension') }}</th>
                                                 <th style="text-align: center">{{ __('home.download') }}</th>
-                                                <th style="text-align: center">{{ __('home.delete') }}</th>
+                                                <th style="text-align: center">
+                                                    {{ __('home.delete') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center"></tbody>
@@ -584,7 +585,9 @@
         </div>
     </div>
 </div>
-@include('components.freelancer.alert_modal')
+@include('components.freelancer.start_job_confirm_modal')
+@include('components.freelancer.delete_confirm_modal')
+@include('components.freelancer.end_job_confirm_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -603,7 +606,7 @@
 
         $('#embroidery_parameter_div').hide();
         $('#vector_parameter_div').hide();
-
+        $('#order_form_upload_list tr').remove();
 
         $('[name=free_detail_id]').val(id);
         $('#free_subfolder_structure1').hide();
@@ -659,6 +662,7 @@
                 folderArray.forEach((item) => {
                     if (item == "Originaldatei") {
                         $('#free_subfolder_structure1').show();
+
                     } else if (item == "Stickprogramm") {
                         $('#free_subfolder_structure2').show();
                     } else if (item == "Vektordatei") {
@@ -723,6 +727,30 @@
 
         $('#free_order_detail_popup').modal("show");
         free_detail_table.destroy();
+
+        //customer parameter information
+        $.ajax({
+            url: '{{ __('routes.freelnacer-parameter') }}',
+            type: 'GET',
+            data: {
+                id: $('[name=free_detail_id]').val()
+            },
+            success: (data) => {
+                console.log(data);
+                $('#yarn_information').text(data.parameter1);
+                $('#need_embroidery_files').text(data.parameter2);
+                $('#cutting_options').text(data.parameter3);
+                $('#special_cutting_options').text(data.parameter4);
+                $('#needle_instructions').text(data.parameter5);
+                $('#standard_instructions').text(data.parameter6);
+                $('#special_standard_instructions').text(data.parameter7);
+                $('#required_vector_file').text(data.parameter8);
+                $('#required_image_file').text(data.parameter9);
+            },
+            error: () => {
+                console.error('error');
+            }
+        })
     }
 
     function freeMultipleDownload() {
@@ -741,31 +769,36 @@
 
 
     function StartJob() {
-        console.log($('[name=free_detail_id]').val());
-        $.ajax({
-            url: '{{ __('routes.embroidery-freelancer-startjob') }}',
-            type: 'GET',
-            data: {
-                start_job_id: $('[name=free_detail_id]').val()
-            },
-            success: () => {
-                $('#em_freelancer_table_reload_btn').trigger('click');
-                $('#em_freelancer_all_table_reload_button').trigger('click');
-                $('#em_freelancer_green_table_reload_button').trigger('click');
-                $('#em_freelancer_yellow_table_reload_button').trigger('click');
-                $('#em_freelancer_red_table_reload_button').trigger('click');
-                $('#ve_freelancer_table_reload_btn').trigger('click');
-                $('#ve_freelancer_all_table_reload_button').trigger('click');
-                $('#ve_freelancer_green_table_reload_button').trigger('click');
-                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
-                $('#ve_freelancer_red_table_reload_button').trigger('click');
-                toastr.success(
-                    "Der Status änderte sich von grün auf gelb");
-            },
-            error: () => {
-                console.error("error");
-            }
+        StartJobConfirmAlert();
+        $('#start_job_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.embroidery-freelancer-startjob') }}',
+                type: 'GET',
+                data: {
+                    start_job_id: $('[name=free_detail_id]').val()
+                },
+                success: () => {
+                    $('#em_freelancer_table_reload_btn').trigger('click');
+                    $('#em_freelancer_all_table_reload_button').trigger('click');
+                    $('#em_freelancer_green_table_reload_button').trigger('click');
+                    $('#em_freelancer_yellow_table_reload_button').trigger('click');
+                    $('#em_freelancer_red_table_reload_button').trigger('click');
+                    $('#ve_freelancer_table_reload_btn').trigger('click');
+                    $('#ve_freelancer_all_table_reload_button').trigger('click');
+                    $('#ve_freelancer_green_table_reload_button').trigger('click');
+                    $('#ve_freelancer_yellow_table_reload_button').trigger('click');
+                    $('#ve_freelancer_red_table_reload_button').trigger('click');
+                    $('#green_job').hide();
+                    $('#start_job_confirm_popup').modal('hide');
+                    toastr.success(
+                        "Der Status änderte sich von grün auf gelb");
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
         })
+
     }
 
     function UpdateJob() {
@@ -785,51 +818,66 @@
     })
 
     function EndJob() {
-        $.ajax({
-            url: '{{ __('routes.embroidery-freelancer-endjob') }}',
-            type: 'GET',
-            data: {
-                end_job_id: $('[name=free_detail_id]').val()
-            },
-            success: () => {
-                $('#em_freelancer_table_reload_btn').trigger('click');
-                $('#em_freelancer_all_table_reload_button').trigger('click');
-                $('#em_freelancer_green_table_reload_button').trigger('click');
-                $('#em_freelancer_yellow_table_reload_button').trigger('click');
-                $('#em_freelancer_red_table_reload_button').trigger('click');
-                $('#ve_freelancer_table_reload_btn').trigger('click');
-                $('#ve_freelancer_all_table_reload_button').trigger('click');
-                $('#ve_freelancer_green_table_reload_button').trigger('click');
-                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
-                $('#ve_freelancer_red_table_reload_button').trigger('click');
-
-                toastr.success(
-                    "Der Status änderte sich von gelb auf rot");
-            },
-            error: () => {
-                console.error("error");
-            }
+        EndJobConfirmAlert();
+        $('#end_job_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.embroidery-freelancer-endjob') }}',
+                type: 'GET',
+                data: {
+                    end_job_id: $('[name=free_detail_id]').val()
+                },
+                success: () => {
+                    $('#em_freelancer_table_reload_btn').trigger('click');
+                    $('#em_freelancer_all_table_reload_button').trigger('click');
+                    $('#em_freelancer_green_table_reload_button').trigger('click');
+                    $('#em_freelancer_yellow_table_reload_button').trigger('click');
+                    $('#em_freelancer_red_table_reload_button').trigger('click');
+                    $('#ve_freelancer_table_reload_btn').trigger('click');
+                    $('#ve_freelancer_all_table_reload_button').trigger('click');
+                    $('#ve_freelancer_green_table_reload_button').trigger('click');
+                    $('#ve_freelancer_yellow_table_reload_button').trigger('click');
+                    $('#ve_freelancer_red_table_reload_button').trigger('click');
+                    $('#yellow_job').hide();
+                    $('#end_job_confirm_popup').modal('hide');
+                    toastr.success(
+                        "Der Status änderte sich von gelb auf rot");
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
         })
+
     }
 
     function DeleteFile(id) {
+        DeleteConfirmAlert();
         console.log(id);
-        $.ajax({
-            url: '{{ __('routes.freelancer-delete-files') }}' + id,
-            type: 'GET',
-            success: () => {
-                $('#free_subfolder_structure2').trigger('click');
-                $('#free_subfolder_structure3').trigger('click');
-            },
-            error: () => {
-                console.log("error");
-                DeleteErrorAlert();
-            }
+        $('#delete_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.freelancer-delete-files') }}' + id,
+                type: 'GET',
+                success: () => {
+                    $('#free_subfolder_structure1').trigger('click');
+                    $('#delete_confirm_popup').modal('hide');
+                },
+                error: () => {
+                    console.log("error");
+                }
+            })
         })
     }
 
-    function DeleteErrorAlert() {
-        console.log("asdf");
-        $('#delete_error').modal('show');
+    function StartJobConfirmAlert() {
+        console.log("sadf");
+        $('#start_job_confirm_popup').modal('show');
+    }
+
+    function DeleteConfirmAlert() {
+        $('#delete_confirm_popup').modal('show');
+    }
+
+    function EndJobConfirmAlert() {
+        $('#end_job_confirm_popup').modal('show');
     }
 </script>

@@ -26,6 +26,7 @@ use DateTimeZone;
 use DataTables;
 
 use App\Models\Order_file_upload;
+use App\Models\Customer_parameter;
 use Illuminate\Support\Env;
 
 use function PHPUnit\Framework\returnCallback;
@@ -1491,6 +1492,7 @@ class FreelancerController extends Controller
             if ($request->type == 'Stickprogramm') {
                 $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
             }
+
             return DataTables::of($change_data)->addIndexColumn()
                 ->editColumn('customer_number', function ($row) {
                     $customer_number = $row->order->customer_number;
@@ -1506,8 +1508,15 @@ class FreelancerController extends Controller
                     $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
                     return $btn;
                 })
-                ->addColumn('delete', function ($row) {
-                    $btn = '<button onClick = DeleteFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                ->addColumn('delete', function ($row) use ($change_data) {
+                    $btn = '';
+                    foreach ($change_data as $change_item) {
+                        $folder = explode('/', $change_item->base_url)[3];
+                        if ($folder == "Stickprogramm" || $folder == "Vektordatei") {
+                            $btn = '<button onClick = DeleteFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                        }
+                    }
+
                     return $btn;
                 })
 
@@ -1519,13 +1528,7 @@ class FreelancerController extends Controller
     public function DeleteFile($local, $id)
     {
         $delete_file = Order_file_upload::findOrfail($id);
-        $folder = explode('/', $delete_file->base_url)[3];
-
-        if ($folder == "Stickprogramm" || $folder == "Vektordatei") {
-            $delete_file->delete();
-        } else {
-            return response()->json(['message' => 'Error'], 500);
-        }
+        $delete_file->delete();
     }
     public function FreelancergetOrderDetail(Request $request)
     {
@@ -1553,4 +1556,11 @@ class FreelancerController extends Controller
             }
         }
     }
+    public function Parameter(Request $request)
+    {
+        $order = Order::findOrfail($request->get("id"));
+        $parameter = Customer_parameter::where('customer_id', $order->user_id)->first();
+        return response()->json($parameter);
+    }
+
 }

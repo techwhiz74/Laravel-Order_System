@@ -605,8 +605,7 @@
             $('#ve_freelancer_green_table_reload_button').trigger('click');
             $('#ve_freelancer_yellow_table_reload_button').trigger('click');
             $('#ve_freelancer_red_table_reload_button').trigger('click');
-            $('#free_subfolder_structure2').trigger('click');
-            $('#free_subfolder_structure3').trigger('click');
+            $('#free_subfolder_structure1').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);

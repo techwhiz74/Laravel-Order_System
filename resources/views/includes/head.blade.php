@@ -271,7 +271,9 @@
     }
 
     function hideAlertModal() {
-        $('#delete_error').modal('hide');
+        $('#start_job_confirm_popup').modal('hide');
+        $('#delete_confirm_popup').modal('hide');
+        $('#end_job_confirm_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {

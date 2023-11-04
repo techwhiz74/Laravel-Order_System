@@ -94,6 +94,7 @@ return [
     'freelancer-change-password' => '/en/freelancer/change-password-update',
     'freelancer-delete-files' => '/en/freelancer/deletefiles/',
     'freelancer-filter-data' => '/en/freelancer/filter-data/',
+    'freelnacer-parameter' => '/en/freelancer/parameter',
 
     'freelancer-get-order-detail' => '/en/freelancer/free-get-order-detail',
     'freelancer-order-detail' => '/en/freelancer/free-order-detail',
