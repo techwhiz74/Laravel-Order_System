@@ -246,7 +246,7 @@
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 20vw">
 
-                <div class="request_information" style="height: 450px;">
+                <div class="request_information" style="height: 400px;">
                     <div>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light"
                             style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
@@ -267,7 +267,7 @@
                                 </ul>
                             </div>
                         </nav>
-                        <div class="order_detail_div1">
+                        <div class="order_detail_div1" style="height: 100px !important;">
                             <div id="ve_order_rquest_text1"></div>
                             <div id="ve_order_rquest_text2"></div>
                             <div id="ve_order_rquest_text3"></div>
@@ -282,73 +282,109 @@
                         </div>
                     </div>
                     <div class="col-12" style="display:flex;">
-                        <div class="col-3">
+                        <div style="margin-right: 20px;">
                             <ul class="nav nav-tabs flex-column"
                                 style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure3_1" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde1</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure3_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure3_2" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde2</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure3_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure3_3" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde3</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure3_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure3_4" class="order_detail_folder_button"
-                                        style="display: flex;">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Änderungsdateien Kunde4</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure3_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.ÄNDERUNGSDATEIEN KUNDE</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure4_1" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung1</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure4_1">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                1.VEKTORDATEI ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure4_2" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung2</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure4_2">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                2.VEKTORDATEI ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure4_3" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung3</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure4_3">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                3.VEKTORDATEI ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="vector_subfolder_structure4_4" class="order_detail_folder_button">
-                                        <i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i>
-                                        <div style="margin-left:5px; text-align:left;">
-                                            Stickprogramm Änderung4</div>
-                                    </button>
+                                    <div class="folder_button" type="button" id="vector_subfolder_structure4_4">
+                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                style="width: 37px;">
+                                        </div>
+                                        <div style="height: 40%;padding: 3px 0;">
+                                            <p>
+                                                4.VEKTORDATEI ÄNDERUNG</p>
+                                        </div>
+                                    </div>
                                 </li>
 
                             </ul>
                         </div>
-                        <div class="col-9 responsive-table" style="height: 250px;">
+                        <div class="responsive-table" style="height: 200px; width:100%;">
 
                             <table id="vector_order_detail" class="table table-striped"
                                 style="width:100%; font-size:13px; ">
@@ -369,10 +405,12 @@
                     </div>
                 </div>
                 <div class="request_information" style="margin-top: 10px;">
-                    <form action="" id="vector_uplaod_form">
+                    <form action="" id="vector_uplaod_form"
+                        style="height: 230px; display:flex; flex-direction:column; justify-content:space-between;">
                         <input type="hidden" name="vector_request_id" value="" />
-                        <div style="display: flex">
-                            <div id="vector_fileupload" action="" method="POST" enctype="multipart/form-data">
+                        <div style="display: flex; overflow-y:auto;">
+                            <div id="vector_fileupload" action="" method="POST" enctype="multipart/form-data"
+                                style="width: 98%;">
                                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                 <noscript><input type="hidden" name="redirect" value="" /></noscript>
                                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -431,7 +469,7 @@
     });
     var selector = '#ve_change1';
 
-    function VectorDetailRequest(id, type = 'Änderungsdateien Kunde1') {
+    function VectorDetailRequest(id, type) {
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
             selector = '#ve_change1';
@@ -524,7 +562,24 @@
                         folderArray.push(item);
                     }
                 });
+                console.log(folderArray);
 
+                if (data.change_count == 1) {
+                    $('#ve_change1').show();
+                    $('#ve_change2').hide();
+                    $('#ve_change3').hide();
+                    $('#ve_change4').hide();
+                } else if (data.change_count == 2) {
+                    $('#ve_change1').show();
+                    $('#ve_change2').show();
+                    $('#ve_change3').hide();
+                    $('#ve_change4').hide();
+                } else if (data.change_count == 3) {
+                    $('#ve_change1').show();
+                    $('#ve_change2').show();
+                    $('#ve_change3').show();
+                    $('#ve_change4').hide();
+                }
                 $('[name=vector_request_id]').val(data.order.id);
 
                 $("#ve_change1").click(() => {
@@ -541,14 +596,11 @@
                     folderArray.forEach((item) => {
                         if (item == "Änderungsdateien Kunde1") {
                             $('#vector_subfolder_structure3_1').show();
-                        } else if (item == "Stickprogramm Änderung1") {
+                        } else if (item == "Vektordatei Änderung1") {
                             $('#vector_subfolder_structure4_1').show();
                         }
                     });
-                    if (!$('#vector_subfolder_structure3_1').is(':visible') && !$(
-                            '#vector_subfolder_structure4_1').is(':visible')) {
-                        $('#vector_order_detail tbody').remove();
-                    }
+
                 });
                 $("#ve_change2").click(() => {
                     selector = "#ve_change2";
@@ -564,14 +616,11 @@
                     folderArray.forEach((item) => {
                         if (item == "Änderungsdateien Kunde2") {
                             $('#vector_subfolder_structure3_2').show();
-                        } else if (item == "Stickprogramm Änderung2") {
+                        } else if (item == "Vektordatei Änderung2") {
                             $('#vector_subfolder_structure4_2').show();
                         }
                     });
-                    if (!$('#vector_subfolder_structure3_2').is(':visible') && !$(
-                            '#vector_subfolder_structure4_2').is(':visible')) {
-                        $('#vector_order_detail tbody').remove();
-                    }
+
                 });
                 $("#ve_change3").click(() => {
                     selector = "#ve_change3";
@@ -587,14 +636,11 @@
                     folderArray.forEach((item) => {
                         if (item == "Änderungsdateien Kunde3") {
                             $('#vector_subfolder_structure3_3').show();
-                        } else if (item == "Stickprogramm Änderung3") {
+                        } else if (item == "Vektordatei Änderung3") {
                             $('#vector_subfolder_structure4_3').show();
                         }
                     });
-                    if (!$('#vector_subfolder_structure3_3').is(':visible') && !$(
-                            '#vector_subfolder_structure4_3').is(':visible')) {
-                        $('#vector_order_detail tbody').remove();
-                    }
+
                 });
                 $("#ve_change4").click(() => {
                     selector = "#ve_change4";
@@ -610,14 +656,10 @@
                     folderArray.forEach((item) => {
                         if (item == "Änderungsdateien Kunde4") {
                             $('#vector_subfolder_structure3_4').show();
-                        } else if (item == "Stickprogramm Änderung4") {
+                        } else if (item == "Vektordatei Änderung4") {
                             $('#vector_subfolder_structure4_4').show();
                         }
                     });
-                    if (!$('#vector_subfolder_structure3_4').is(':visible') && !$(
-                            '#vector_subfolder_structure4_4').is(':visible')) {
-                        $('#vector_order_detail tbody').remove();
-                    }
                 });
 
 
@@ -693,16 +735,16 @@
         VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde4');
     });
     $('#vector_subfolder_structure4_1').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung1');
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Vektordatei Änderung1');
     });
     $('#vector_subfolder_structure4_2').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung2');
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Vektordatei Änderung2');
     });
     $('#vector_subfolder_structure4_3').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung3');
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Vektordatei Änderung3');
     });
     $('#vector_subfolder_structure4_4').click(function() {
-        VectorDetailRequest($('[name=vector_request_id]').val(), 'Stickprogramm Änderung4');
+        VectorDetailRequest($('[name=vector_request_id]').val(), 'Vektordatei Änderung4');
     });
 
     $('#vector_uplaod_form').submit(function(e) {

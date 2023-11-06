@@ -740,18 +740,24 @@ class OrderController extends Controller
     {
         $order_id = $request->post('order_id');
         $order_change_message = $request->post('order_change_textarea');
+        $time = $request->post('time');
 
 
         $order = Order::findOrfail($order_id);
         $customer = User::findOrfail($order->user_id);
 
 
-        OrderChange::where('message', $order_change_message)->delete();
+        OrderChange::where('time', $time)->delete();
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
         $order_change->message = $order_change_message;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
         if ($order->type == "Embroidery") {
             $order_change->changed_from = "customer_em";
         } else if ($order->type == "Vector") {

@@ -7,15 +7,15 @@
             </div>
             <div class="modal-body" style="font-size: 13px; font-family:'Inter';">
                 <div class="container" style="padding: 10px">
-                    <div class="order_detail_div1">
+                    <div class="order_detail_div1" style="height: 220px !important;">
                         <input type="hidden" id="detail_id">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                     <p style="width:120px; margin:0"><strong>{{ __('home.customer_number') }}</strong>
                                     </p>
-                                    <div id="detail_customer_number"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
+                                    <div id="detail_customer_number" class="order_detail_input_div_element"
+                                        style="width:calc(100% - 120px);">
                                     </div>
                                 </div>
                             </div>
@@ -23,8 +23,8 @@
                                 <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                     <p style="width:120px; margin:0"><strong>{{ __('home.order_number') }}</strong>
                                     </p>
-                                    <div id="detail_order_number"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
+                                    <div id="detail_order_number" class="order_detail_input_div_element"
+                                        style="width:calc(100% - 120px);">
                                     </div>
                                 </div>
                             </div>
@@ -34,8 +34,8 @@
                                 <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                     <p style="width:120px; margin:0"><strong>{{ __('home.projectname') }}</strong>
                                     </p>
-                                    <div id="detail_project_name"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
+                                    <div id="detail_project_name" class="order_detail_input_div_element"
+                                        style="width:calc(100% - 120px);">
                                     </div>
                                 </div>
                             </div>
@@ -44,12 +44,11 @@
                                     style="display: flex; align-items:center">
                                     <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
                                     </p>
-                                    <div id="detail_size"
-                                        style="background-color: #fff; width:110px; height:25px; padding:2px 10px;">
+                                    <div id="detail_size" class="order_detail_input_div_element" style="width:110px;">
                                     </div>
                                     <span style="margin-left: 10px;">mm</span>
-                                    <div id="detail_width_height"
-                                        style="background-color: #fff; width:110px; height:25px; padding:2px 10px; margin-left:25px">
+                                    <div id="detail_width_height" class="order_detail_input_div_element"
+                                        style="width:165px; margin-left:25px">
                                     </div>
                                 </div>
                             </div>
@@ -60,8 +59,8 @@
                                     style="display: flex; align-items:center">
                                     <p style="width:120px; margin:0"><strong>{{ __('home.fianl_product') }}</strong>
                                     </p>
-                                    <div id="detail_final_product"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:25px; padding:2px 10px;">
+                                    <div id="detail_final_product" class="order_detail_input_div_element"
+                                        style="width:calc(100% - 120px);">
                                     </div>
                                 </div>
                             </div>
@@ -72,8 +71,8 @@
                                     <p style="width:120px; margin:0">
                                         <strong>{{ __('home.special instructions') }}</strong>
                                     </p>
-                                    <div id="detail_special_instructions"
-                                        style="background-color: #fff; width:calc(100% - 120px); height:100px; padding:2px 10px;">
+                                    <div id="detail_special_instructions" class="order_detail_input_div_element"
+                                        style="width:calc(100% - 120px); height:100px !important; align-items:flex-start;">
                                     </div>
                                 </div>
                             </div>

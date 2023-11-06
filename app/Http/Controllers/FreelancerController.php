@@ -1234,17 +1234,12 @@ class FreelancerController extends Controller
         $freelancer_request_id = $request->post('embroidery_request_id');
         $order = Order::findOrfail($freelancer_request_id);
         $customer = User::findOrfail($order->user_id);
-        $customer_message = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'customer_em')->orderBy('id', 'desc')->first()->message;
 
-        // $order->status = "Ausgeliefert";
-        // $order->save();
-        $order_change = OrderChange::where('changed_from', 'freelancer_em')->where('message', $customer_message)->delete();
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
         $order_change->changed_from = "freelancer_em";
-        $order_change->message = $customer_message;
         $order_change->save();
 
         $files = $request->file("files");
@@ -1299,17 +1294,12 @@ class FreelancerController extends Controller
         $freelancer_request_id = $request->post('vector_request_id');
         $order = Order::findOrfail($freelancer_request_id);
         $customer = User::findOrfail($order->user_id);
-        $customer_message = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'customer_ve')->orderBy('id', 'desc')->first()->message;
 
-        // $order->status = "Ausgeliefert";
-        // $order->save();
-        $order_change = OrderChange::where('changed_from', 'freelancer_ve')->where('message', $customer_message)->delete();
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
         $order_change->changed_from = "freelancer_ve";
-        $order_change->message = $customer_message;
         $order_change->save();
 
         $files = $request->file("files");

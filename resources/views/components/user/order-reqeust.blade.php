@@ -25,7 +25,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="order_detail_div1">
+                <div class="order_detail_div1" style="height: 170px !important;">
                     <input type="hidden" id="req_detail_id">
                     <div id="order_rquest_text1"></div>
                     <div id="order_rquest_text2"></div>

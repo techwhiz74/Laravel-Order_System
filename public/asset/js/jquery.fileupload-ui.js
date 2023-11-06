@@ -574,8 +574,7 @@
       }
 
       // case of customer order change, red to blue
-      if (($('[name=order_id]').val() != "") && ($(
-        '[name=order_change_textarea]').val() != "")) {
+      if (($('[name=order_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -622,6 +621,7 @@
             $('#em_freelancer_all_table_reload_button').trigger('click');
             $('#em_freelancer_red_table_reload_button').trigger('click');
             $('#em_freelancer_blue_table_reload_button').trigger('click');
+            $('#embroidery_subfolder_structure3_1').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);
@@ -638,6 +638,7 @@
             $('#ve_freelancer_all_table_reload_button').trigger('click');
             $('#ve_freelancer_red_table_reload_button').trigger('click');
             $('#ve_freelancer_blue_table_reload_button').trigger('click');
+            $('#vector_subfolder_structure3_1').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
           }, 3000);

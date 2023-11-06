@@ -5,19 +5,21 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_change') }}</h5>
                 <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
             </div>
-            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:600px; overflow:auto;">
+            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:570px;">
                 <div class="container" style="padding: 20px">
                     <form action="" id="order_change_form">
                         <input type="hidden" name="order_id" value="" />
+                        <input type="hidden" name="time" value="" />
                         <div style="display: flex">
                             <div class="col-2">Änderungswünsche</div>
                             <div class="col-10">
                                 <textarea name="order_change_textarea" placeholder="Änderungswünsche" style="height: 150px"></textarea>
                             </div>
-                        </div><br>
-                        <div style="display: flex">
+                        </div>
+                        <div style="display: flex; height: 300px; margin-top:5px;">
                             <div class="col-2">{{ __('home.data_upload') }}</div>
-                            <div class="col-10">
+                            <div class="col-10"
+                                style="border: 1px solid #ddd; heigh:200px; padding:20px; overflow-y:auto">
                                 <div id="fileupload_em_ex" action="" method="POST" enctype="multipart/form-data">
                                     <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                     <noscript><input type="hidden" name="redirect" value="" /></noscript>
@@ -60,8 +62,8 @@
                                     </table>
                                 </div>
                             </div>
-                        </div><br>
-                        <div style="display: flex; justify-content:flex-end">
+                        </div>
+                        <div style="display: flex; justify-content:flex-end; margin-top:5px;">
                             <div>
                                 <button type="submit" class="order_change_submit">Hochladen</button>
                             </div>
@@ -74,10 +76,14 @@
 </div>
 
 <script>
+    $(function() {
+        $('[name=time]').val(new Date());
+    })
+
     function openOrderChangeModal(id) {
         $('#order_change_popup').modal("show");
         $('[name=order_id]').val(id);
         $('#order_change_popup').find('[name=order_change_textarea]').val('');
-        $('#order_change_popup').find('#order_form_upload_list tr').hide();
+        $('#order_change_popup').find('#order_form_upload_list tr').remove();
     }
 </script>

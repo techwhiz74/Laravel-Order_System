@@ -246,7 +246,7 @@
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 20vw">
 
-                <div class="request_information" style="height: 450px;">
+                <div class="request_information" style="height: 400px;">
                     <div>
                         <nav class="navbar navbar-expand-lg navbar-light bg-light"
                             style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
@@ -267,7 +267,7 @@
                                 </ul>
                             </div>
                         </nav>
-                        <div class="order_detail_div1">
+                        <div class="order_detail_div1" style="height: 100px !important">
                             <div id="em_order_rquest_text1"></div>
                             <div id="em_order_rquest_text2"></div>
                             <div id="em_order_rquest_text3"></div>
@@ -282,7 +282,7 @@
                         </div>
                     </div>
                     <div class="col-12" style="display:flex;">
-                        <div class="col-3">
+                        <div style="margin-right: 20px;">
                             <ul class="nav nav-tabs flex-column"
                                 style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                 <li class="nav-item">
@@ -384,7 +384,7 @@
 
                             </ul>
                         </div>
-                        <div class="col-9 responsive-table" style="height: 250px;">
+                        <div class="responsive-table" style="height: 200px; width:100%">
 
                             <table id="embroidery_order_detail" class="table table-striped"
                                 style="width:100%; font-size:13px; ">
@@ -405,11 +405,12 @@
                     </div>
                 </div>
                 <div class="request_information" style="margin-top: 10px;">
-                    <form action="" id="embroidery_uplaod_form">
+                    <form action="" id="embroidery_uplaod_form"
+                        style="height: 230px; display:flex; flex-direction:column; justify-content:space-between;">
                         <input type="hidden" name="embroidery_request_id" value="" />
-                        <div style="display: flex">
+                        <div style="display: flex; overflow-y:auto;">
                             <div id="embroidery_fileupload" action="" method="POST"
-                                enctype="multipart/form-data">
+                                enctype="multipart/form-data" style="width: 98%;">
                                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                 <noscript><input type="hidden" name="redirect" value="" /></noscript>
                                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -468,7 +469,7 @@
     });
     var selector = '#em_change1';
 
-    function EmbroideryDetailRequest(id, type = 'Änderungsdateien Kunde1') {
+    function EmbroideryDetailRequest(id, type) {
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
             selector = '#em_change1';
@@ -562,7 +563,7 @@
                     }
                 });
                 console.log(folderArray);
-                console.log(data.change_count);
+                console.log("change_count", data.change_count);
                 if (data.change_count == 1) {
                     $('#em_change1').show();
                     $('#em_change2').hide();
