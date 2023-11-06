@@ -588,6 +588,7 @@
 @include('components.freelancer.start_job_confirm_modal')
 @include('components.freelancer.delete_confirm_modal')
 @include('components.freelancer.end_job_confirm_modal')
+@include('components.freelancer.end_job_error_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -843,7 +844,8 @@
                         "Der Status änderte sich von gelb auf rot");
                 },
                 error: () => {
-                    console.error("error");
+                    $('#end_job_confirm_popup').modal('hide');
+                    EndJobError();
                 }
             })
         })
@@ -879,5 +881,9 @@
 
     function EndJobConfirmAlert() {
         $('#end_job_confirm_popup').modal('show');
+    }
+
+    function EndJobError() {
+        $('#end_job_error_popup').modal('show');
     }
 </script>

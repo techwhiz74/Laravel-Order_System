@@ -95,6 +95,8 @@ return [
     'freelancer-delete-files' => '/de/freelancer/deletefiles/',
     'freelancer-filter-data' => '/de/freelancer/filter-data/',
     'freelnacer-parameter' => '/de/freelancer/parameter',
+    'freelnacer-embroidery-parameter' => '/de/freelancer/embroidery-parameter',
+    'freelnacer-vector-parameter' => '/de/freelancer/vector-parameter',
 
     'freelancer-get-order-detail' => '/de/freelancer/free-get-order-detail',
     'freelancer-order-detail' => '/de/freelancer/free-order-detail',
@@ -112,6 +114,7 @@ return [
     'embroidery-freelancer-order_detail' => '/de/freelancer/embroidery-freelancer-order_detail',
     'embroidery-freelancer-startjob' => '/de/freelancer/embroidery-freelancer-startjob',
     'embroidery-freelancer-endjob' => '/de/freelancer/embroidery-freelancer-endjob',
+    'embroidery-freelancer-endchange' => '/de/freelancer/embroidery-freelancer-endchange',
 
 
     'vector-freelancer-green' => '/de/freelancer/vector-freelancer-green',
@@ -125,6 +128,7 @@ return [
     'vector-freelancer-blue-dashboard' => '/de/freelancer/vector-freelancer-blue-dashboard',
     'vector-freelancer-get-request-detail' => '/de/freelancer/vector-freelancer-get-request-detail',
     'vector-freelancer-order_detail' => '/de/freelancer/vector-freelancer-order_detail',
+    'vector-freelancer-endchange' => '/de/freelancer/vector-freelancer-endchange',
 
 
 

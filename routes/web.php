@@ -147,6 +147,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/deletefiles/{id}', [FreelancerController::class, 'DeleteFile']);
     Route::get('/filter-data', [FreelancerController::class, 'filtersData']);
     Route::get('/parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-parameter');
+    Route::get('/embroidery-parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-embroidery-parameter');
+    Route::get('/vector-parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-vector-parameter');
 
     Route::get('/embroidery-freelancer-green', [FreelancerController::class, 'EmbroideryFreelancerGreenTable'])->name('embroidery-freelancer-green');
     Route::get('/embroidery-freelancer-yellow', [FreelancerController::class, 'EmbroideryFreelancerYellowTable'])->name('embroidery-freelancer-yellow');
@@ -161,6 +163,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/embroidery-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('embroidery-freelancer-order_detail');
     Route::get('/embroidery-freelancer-startjob', [FreelancerController::class, 'StartJob'])->name('embroidery-freelancer-startjob');
     Route::get('/embroidery-freelancer-endjob', [FreelancerController::class, 'EndJob'])->name('embroidery-freelancer-endjob');
+    Route::get('/embroidery-freelancer-endchange', [FreelancerController::class, 'EmbroideryEndChange'])->name('embroidery-freelancer-endchange');
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
     Route::get('/vector-freelancer-yellow', [FreelancerController::class, 'VectorFreelancerYellowTable'])->name('vector-freelancer-yellow');
@@ -173,4 +176,5 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/vector-freelancer-blue-dashboard', [FreelancerController::class, 'VectorFreelancerBlueDashboardTable'])->name('vector-freelancer-blue-dashboard');
     Route::get('/vector-freelancer-get-request-detail', [FreelancerController::class, 'getRequestDetail'])->name('vector-freelancer-get-request-detail');
     Route::get('/vector-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('vector-freelancer-order_detail');
+    Route::get('/vector-freelancer-endchange', [FreelancerController::class, 'VectorEndChange'])->name('vector-freelancer-endchange');
 });

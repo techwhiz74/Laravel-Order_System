@@ -610,17 +610,13 @@
           }, 3000);
         }
       }
-      // case of embroidery freelancer
-      if (($('#embroidery_request_id').val() != "")) {
+      // // case of embroidery freelancer
+      if (($('[name=embroidery_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
-            $('#em_freelancer_table_reload_btn').trigger('click');
-            $('#em_freelancer_all_table_reload_button').trigger('click');
-            $('#em_freelancer_red_table_reload_button').trigger('click');
-            $('#em_freelancer_blue_table_reload_button').trigger('click');
             $('#embroidery_subfolder_structure3_1').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");
@@ -628,16 +624,12 @@
         }
       }
       // case of vector freelancer
-      if (($('#vector_request_id').val() != "")) {
+      if (($('[name=vector_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
-            $('#ve_freelancer_table_reload_btn').trigger('click');
-            $('#ve_freelancer_all_table_reload_button').trigger('click');
-            $('#ve_freelancer_red_table_reload_button').trigger('click');
-            $('#ve_freelancer_blue_table_reload_button').trigger('click');
             $('#vector_subfolder_structure3_1').trigger('click');
             toastr.success(
               "Dateien erfolgreich hochgeladen");

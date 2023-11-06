@@ -1234,13 +1234,21 @@ class FreelancerController extends Controller
         $freelancer_request_id = $request->post('embroidery_request_id');
         $order = Order::findOrfail($freelancer_request_id);
         $customer = User::findOrfail($order->user_id);
+        $time = $request->post('embroidery_time');
+
+        OrderChange::where('time', $time)->delete();
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_em' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_em' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
         $order_change->changed_from = "freelancer_em";
         $order_change->save();
+
 
         $files = $request->file("files");
         $uploadDir = 'public/';
@@ -1294,11 +1302,18 @@ class FreelancerController extends Controller
         $freelancer_request_id = $request->post('vector_request_id');
         $order = Order::findOrfail($freelancer_request_id);
         $customer = User::findOrfail($order->user_id);
+        $time = $request->post('vector_time');
+
+        OrderChange::where('time', $time)->delete();
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_em' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_ve' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
         $order_change->order_number = $order->order_number;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
         $order_change->changed_from = "freelancer_ve";
         $order_change->save();
 
@@ -1544,6 +1559,32 @@ class FreelancerController extends Controller
                 $order->status = "Ausgeliefert";
                 $order->save();
             }
+            // else {
+            //     return response()->json(['message' => 'Error'], 500);
+            // }
+        }
+    }
+    public function EmbroideryEndChange(Request $request)
+    {
+        $order = Order::findOrfail($request->get('end_change_id'));
+        $order_change_count = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_em')->count();
+        if ($order_change_count > 0) {
+            $order->status = 'Ausgeliefert';
+            $order->save();
+        } else {
+            return response()->json(['message' => 'Error'], 500);
+        }
+    }
+    public function VectorEndChange(Request $request)
+    {
+        $order = Order::findOrfail($request->get('ve_end_change_id'));
+        $order_change_count = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_ve')->count();
+        if ($order_change_count > 0) {
+            $order->status = 'Ausgeliefert';
+            $order->save();
+            OrderChange::where('order_number', $order->order_number)->delete();
+        } else {
+            return response()->json(['message' => 'Error'], 500);
         }
     }
     public function Parameter(Request $request)
@@ -1552,5 +1593,4 @@ class FreelancerController extends Controller
         $parameter = Customer_parameter::where('customer_id', $order->user_id)->first();
         return response()->json($parameter);
     }
-
 }

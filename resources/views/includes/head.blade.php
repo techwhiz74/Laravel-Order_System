@@ -274,6 +274,13 @@
         $('#start_job_confirm_popup').modal('hide');
         $('#delete_confirm_popup').modal('hide');
         $('#end_job_confirm_popup').modal('hide');
+        $('#end_job_error_popup').modal('hide');
+        $('#start_change_confirm_popup').modal('hide');
+        $('#end_change_confirm_popup').modal('hide');
+        $('#end_change_error_popup').modal('hide');
+        $('#ve_start_change_confirm_popup').modal('hide');
+        $('#ve_end_change_confirm_popup').modal('hide');
+        $('#ve_end_change_error_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {
