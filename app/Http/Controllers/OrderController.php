@@ -473,8 +473,6 @@ class OrderController extends Controller
             $files = Storage::allFiles('public/' . $folder);
             foreach ($files as $key => $file) {
                 $relativeNameInZipFile = basename('public/' . $folder . $file);
-                // var_dump($relativeNameInZipFile, storage_path('app/public/' . $folder . $file), $file, $folder);
-                // die();
                 $filePathArray = explode('/', $file);
                 $zip->addFile(storage_path('app/' . $file), $filePathArray[3] . '/' . $relativeNameInZipFile);
             }

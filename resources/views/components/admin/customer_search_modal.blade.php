@@ -7,7 +7,7 @@
                         <input type="text" id="CustomerTableSearchInput"
                             placeholder="Eingang Kundennr, Name, Firma, ZIP">
                     </div>
-
+                    <input name="seleted_customer_button" type="hidden"></button>
                     <div class="responsive-table">
                         <button style="display: none;" id="customer_search_table_reload_button"></button>
                         <table id="customer_search_table" class="table table-striped"
@@ -24,6 +24,7 @@
                                     <th>{{ __('home.postal_code') }}</th>
                                     <th>{{ __('home.location') }}</th>
                                     <th>{{ __('home.country') }}</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -59,10 +60,16 @@
                 },
                 success: (result) => {
                     var obj = JSON.parse(result);
+                    console.log(result);
                     $('[name=searched_id]').val(obj.id);
                     $('[name=customer_number]').val(obj.customer_number);
                     $('[name=ordered_from]').val(obj.ordered_from);
                     $("#customer_search_table tbody").html(obj.html);
+                    if ($('[name=selected_customer]:checked')) {
+                        $('[name=seleted_customer_button]').val($(
+                            '[name=selected_customer]:checked').val());
+
+                    }
                     $customer_search_result = obj.customer_number + "\u00A0\u00A0\u00A0\u00A0" + obj
                         .company + "\u00A0\u00A0\u00A0\u00A0" + obj
                         .ordered_from + "\u00A0\u00A0\u00A0\u00A0" +
@@ -85,6 +92,7 @@
             }
         });
         $('#customer_search_result').click(function() {
+            console.log($('[name=seleted_customer_button]').val());
             $('#adminTableSearchInput').text($customer_search_result);
             $('#customer_search_popup').modal('hide');
         })

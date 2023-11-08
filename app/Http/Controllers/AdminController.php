@@ -593,23 +593,14 @@ class AdminController extends Controller
                     '<td>' . $item->street_number . '</td>' .
                     '<td>' . $item->postal_code . '</td>' .
                     '<td>' . $item->location . '</td>' .
-                    '<td>' . $item->country . '</td></tr>';
+                    '<td>' . $item->country . '</td>' .
+                    '<td style="max-width:50px !important;"><input type="radio" name="selected_customer" value="' . $item->id . '"></td></tr>';
+                $data['id'] = $item->id;
+                $data['html'] = $html;
             }
         } else {
             $html .= '<tr><td colspan="9" class="text-center">No data</td></tr>';
         }
-        $data['id'] = count($customers) > 0 ? $customers[0]->id : null;
-        $data['customer_number'] = count($customers) > 0 ? $customers[0]->customer_number : null;
-        $data['company'] = count($customers) > 0 ? $customers[0]->company : null;
-        $data['ordered_from'] = count($customers) > 0 ? $customers[0]->name : null;
-        $data['first_name'] = count($customers) > 0 ? $customers[0]->first_name : null;
-        $data['phone'] = count($customers) > 0 ? $customers[0]->phone : null;
-        $data['email'] = count($customers) > 0 ? $customers[0]->email : null;
-        $data['street_number'] = count($customers) > 0 ? $customers[0]->street_number : null;
-        $data['postal_code'] = count($customers) > 0 ? $customers[0]->postal_code : null;
-        $data['location'] = count($customers) > 0 ? $customers[0]->location : null;
-        $data['country'] = count($customers) > 0 ? $customers[0]->country : null;
-        $data['html'] = $html;
         echo json_encode($data);
     }
     public function adminFileUpload(Request $request)
