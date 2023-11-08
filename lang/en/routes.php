@@ -147,6 +147,7 @@ return [
     'admin-view-orders' => '/en/admin/admin-view-orders',
 
     'admin-customer-list' => '/en/admin/customer-list',
+    'admin-customer-search' => '/en/admin/customer-search',
     'admin-get-differences' => '/en/admin/get-differences/',
     'admin-accept-change' => '/en/admin/accept-change/',
     'admin-decline-change' => '/en/admin/decline-change/',
@@ -154,6 +155,9 @@ return [
     'admin-change-profile' => '/en/admin/change-profile/',
     'admin-add-customer' => '/en/admin/add-customer',
     'admin-customer-search-table' => '/en/admin/customer-search-table',
+    'admin-confirm-profile' => '/en/admin/confirm-profile',
+    'admin-decline-profile' => '/en/admin/decline-profile',
+
 
 
 

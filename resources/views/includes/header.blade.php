@@ -70,7 +70,7 @@
                     <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
                         <ul class="navbar-nav mb-2 mb-lg-0 hearder_information">
                             @if (auth()->user())
-                                @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                                @if (auth()->user()->user_type == 'customer')
                                     <li class="nav-item  menu_list" style="padding: 0px 10px;">
                                         <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
@@ -87,7 +87,7 @@
                                         <a class="nav-link" style="font-size: 15px;"
                                             href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
                                     </li>
-                                @elseif(auth()->user()->user_type == 'freelancer')
+                                @elseif(auth()->user()->user_type == 'freelancer' || auth()->user()->user_type == 'admin')
                                 @endif
                             @else
                                 <li class="nav-item  menu_list" style="padding: 0px 10px;">

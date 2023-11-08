@@ -243,32 +243,12 @@
     <div class="order_fome_container" style="padding-top:10px !important;">
         <div style="margin-block: 10px;">
             <div class="SearchInputWrapper">
-                <input type="text" id="adminTableSearchInput" placeholder="Eingang Kundennr, Name, Firma, ZIP">
+                <div id="adminTableSearchInput">Kunden suchen</div>
             </div>
             <div class="admin_search_customer_validation">
                 Suchen Sie einen Kunden, der bestellen muss
             </div>
 
-
-            <div class="responsive-table">
-                <table id="admin_customer_search_table" class="table table-striped"
-                    style="width:100%; font-size:13px; display:none; margin-bottom:0 !important;">
-                    <thead>
-                        <tr>
-                            <th>{{ __('home.customer_number') }}</th>
-                            <th>{{ __('home.company') }}</th>
-                            <th>{{ __('home.name') }}</th>
-                            <th>{{ __('home.phone') }}</th>
-                            <th>{{ __('home.email') }}</th>
-                            <th>{{ __('home.street_number') }}</th>
-                            <th>{{ __('home.postal_code') }}</th>
-                            <th>{{ __('home.location') }}</th>
-                            <th>{{ __('home.country') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
         </div>
         <form id="order_submit_form" action="">
             <input type="hidden" name="type">
@@ -545,8 +525,7 @@
                                         {{ __('home.knit headband') }}
                                     </div>
                                     <div>
-                                        <input type="checkbox" value="{{ __('home.sweatshirt') }}"
-                                            name="example" />
+                                        <input type="checkbox" value="{{ __('home.sweatshirt') }}" name="example" />
                                         {{ __('home.sweatshirt') }}
                                     </div>
                                     <div>
@@ -658,25 +637,6 @@
                     </div>
                 </div>
             </div>
-            <div style="display: flex;">
-                <input type="checkbox" id="order_form_checkbox" style="width:30px; height:20px;" />
-                <div style="margin-left: 20px;">
-                    <label for="order_form_checkbox" style="line-height:normal; font-size:11px !important;">Mit der
-                        Zustimmung bestätigen Sie,
-                        dass Sie durch den Upload Ihrer Dateien, weder gegen geltendes Recht, Copyright
-                        Rechte oder Rechte Dritter verstoßen.<br />
-                        Mit der Zustimmung akzeptieren Sie die aktuell gültige Preisliste und deren Aufpreise. Diese
-                        Preise sind fixiert und werden
-                        nicht im Nachgang verhandelt. Dies gilt speziell für die Durchführung von Bildern und
-                        Illustrationen. (Sollten Sie unsicher
-                        sein, ob Ihre Vorlage ein Bild oder Illustration ist, können Sie dies gerne im Vorfeld bei uns
-                        per E-Mail erfragen)</label>
-                    <div class="order_form_validation_checkbox">
-                        {{ __('home.validation_checkbox') }}
-                    </div>
-                </div>
-            </div>
-
             <br>
 
             <div class="row" style="display: flex; justify-content:flex-end">
@@ -690,6 +650,7 @@
 
 </section>
 @include('components.user.order_form_success')
+@include('components.admin.customer_search_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -698,34 +659,8 @@
     });
 
     $(function() {
-        $("#admin_customer_search_table").hide();
-
-        function getCustomers(keyword) {
-            $.ajax({
-                url: '{{ __('routes.admin-customer-search-table') }}',
-                type: 'GET',
-                data: {
-                    search_filter: keyword
-                },
-                success: (result) => {
-                    var obj = JSON.parse(result);
-                    $('[name=searched_id]').val(obj.id);
-                    $('[name=customer_number]').val(obj.customer_number);
-                    $('[name=ordered_from]').val(obj.ordered_from);
-                    $("#admin_customer_search_table tbody").html(obj.html);
-                },
-                error: (err) => {
-                    console.log(err);
-                }
-            })
-        }
-        $('#adminTableSearchInput').keyup(function() {
-            if ($('#adminTableSearchInput').val() != '') {
-                $("#admin_customer_search_table").show();
-                getCustomers($('#adminTableSearchInput').val());
-            } else {
-                $("#admin_customer_search_table").hide();
-            }
-        });
+        $('#adminTableSearchInput').click(function() {
+            $('#customer_search_popup').modal('show');
+        })
     });
 </script>

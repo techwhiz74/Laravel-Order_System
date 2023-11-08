@@ -150,12 +150,15 @@ return [
     'admin-view-orders' => '/de/admin/admin-view-orders',
 
     'admin-customer-list' => '/de/admin/customer-list',
+    'admin-customer-search' => '/de/admin/customer-search',
     'admin-get-differences' => '/de/admin/get-differences/',
     'admin-accept-change' => '/de/admin/accept-change/',
     'admin-decline-change' => '/de/admin/decline-change/',
     'admin-get-customer-profile' => '/de/admin/get-customer-profile',
     'admin-change-profile' => '/de/admin/change-profile/',
     'admin-add-customer' => '/de/admin/add-customer',
-    'admin-customer-search-table' => '/de/admin/customer-search-table'
+    'admin-customer-search-table' => '/de/admin/customer-search-table',
+    'admin-confirm-profile' => '/de/admin/confirm-profile',
+    'admin-decline-profile' => '/de/admin/decline-profile',
 
 ];

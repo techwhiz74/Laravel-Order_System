@@ -60,45 +60,51 @@
                                 {{ __('home.backToHome') }}
                             </a>
                         </div>
+
                         <form method="POST" auto-complete="off" action="{{ __('routes.admin-sign-in') }}">
-                            <div class="login_heading">
-                                <h1>Admin Login</h1>
+                            @csrf
+                            <div class="heading_logo">
+                                <div class="login_heading">
+                                    <h1>Administrator Login</h1>
+                                </div>
+
+                            </div>
+                            <div class="cred_txt">
+                                <p> {{ __('home.login_lines') }}</p>
+                            </div>
+                            <div class="form_dv">
+                                <label for="e1">E-Mail-Adresse</label>
+                                <input type="email" placeholder="E-Mail-Adresse*" id="e1" name="email"
+                                    required>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
 
-                            @csrf
-                            <div class="row">
-                                <div class="form_dv">
-                                    <input type="email" placeholder="Email*" class="form-control" name="email" />
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ $errors->first('email') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
+                            <div class="form_dv">
+                                <label for="p1">Passwort</label>
+                                <input type="password" placeholder="Passwort*" id="p1"
+                                    autocomplete="new-password" name="password" required>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
+                            </div>
 
-                                <!-- Password input -->
-                                <div class="form_dv">
-                                    <input type="password" id="form3Example4" class="form-control"
-                                        autocomplete="new-password" name="password" />
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ $errors->first('password') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-
-                                <!-- Checkbox -->
-                                <!-- <div class="form-check d-flex subscribe-checkbox">
-                                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                                    <label class="form-check-label" for="form2Example33">
-                                        Subscribe to our newsletter
-                                    </label>
-                                </div> -->
-
-                                <!-- Submit button -->
+                            <div class="lgg_resi">
                                 <div class="submit_btn">
-                                    <button type="submit">
-                                        Sign in
-                                    </button>
+                                    <button type="submit">{{ __('home.login') }}</button>
                                 </div>
+
+                            </div>
+
+                            <div class="footerrr">
+                                <div class="fttrr_img">
+                                    <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty">
+                                </div>
+                                <div class="copy_right_txt">
+                                    <p>Copyright Lion Werbe GmbH</p>
+                                </div>
+                            </div>
                         </form>
 
                     </div>

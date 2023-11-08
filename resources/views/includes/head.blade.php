@@ -91,7 +91,7 @@
 <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
@@ -268,6 +268,7 @@
         $('#order_request_popup').modal('hide');
         $('#free_order_detail_popup').modal("hide");
         $('#ve_freelancer_request_popup').modal("hide");
+        $('#customer_search_popup').modal('hide');
     }
 
     function hideAlertModal() {

@@ -1,4 +1,4 @@
-<section class="admin_customer_list_section">
+<div class="admin_customer_list_section">
     <div class="pagetitle">
         <h1 style="margin-left: 0 !important">Kundenliste</h1>
         <p></p>
@@ -7,7 +7,7 @@
     <div style="margin-top: 40px;">
 
         <div class="responsive-table">
-            <table id="admin_customer_list_table" class="table table-striped" style="width:100%; font-size:13px;">
+            <table id="admin_customer_list_table" class="table table-striped" style="width:100%; font-size:11.5px;">
                 <thead>
                     <tr>
                         <th>{{ __('home.customer_number') }}</th>
@@ -20,15 +20,16 @@
                         <th>{{ __('home.postal_code') }}</th>
                         <th>{{ __('home.location') }}</th>
                         <th>{{ __('home.country') }}</th>
-                        <th style="max-width: 70px !important; text-align:center;">{{ __('home.edit') }}</th>
-                        <th style="max-width: 70px !important; text-align:center;">{{ __('home.request') }}</th>
+                        <th style="max-width: 50px !important; text-align:center;"><img
+                                src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon"></th>
+                        <th style="max-width: 50px !important; text-align:center;"></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
     </div>
-</section>
+</div>
 @include('components.admin.customer_profile_edit')
 @include('components.admin.customer_profile_request_handle')
 <script>
@@ -44,7 +45,7 @@
             responsive: true,
             processing: true,
             serverSide: true,
-            searching: false,
+            searching: true,
             language: {
                 paginate: {
                     next: '<i class="fa-solid fa-chevron-right"></i>', // or '→'

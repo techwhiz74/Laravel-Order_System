@@ -216,7 +216,7 @@
 </style>
 <section class="admin_add_customer_section">
     <div class="pagetitle">
-        <h1>Kunde Erfassen</h1>
+        <h1>Kunde erfassen</h1>
         <p></p>
     </div>
     <div class="order_fome_container">
@@ -477,8 +477,7 @@
                         <div class="row">
                             <div class="col-12 ">
                                 <div class="upload_btn">
-                                    <button class="btn btn-primary btn-block" type="submit">KUNDE
-                                        ERFASSEN</button>
+                                    <button class="btn btn-primary btn-block" type="submit">Kunde erfassen</button>
                                 </div>
                             </div>
                         </div>

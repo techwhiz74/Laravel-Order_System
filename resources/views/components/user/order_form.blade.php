@@ -596,7 +596,7 @@
 
             <div class="row" style="display: flex; justify-content:flex-end">
                 <div>
-                    <button type="button" class="order_form_submit">{{ __('home.submit') }}</button>
+                    <button type="submit" class="order_form_submit">{{ __('home.submit') }}</button>
                 </div>
             </div>
         </form>

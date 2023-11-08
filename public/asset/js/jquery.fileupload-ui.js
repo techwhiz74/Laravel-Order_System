@@ -574,7 +574,7 @@
       }
 
       // case of customer order change, red to blue
-      if (($('[name=order_id]').val() != "")) {
+      else if (($('[name=order_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -588,7 +588,7 @@
         }
       }
       // case of freelancer start job, green to yellow
-      if (($('[name=free_detail_id]').val() != "")) {
+      else if (($('[name=free_detail_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -611,7 +611,7 @@
         }
       }
       // // case of embroidery freelancer
-      if (($('[name=embroidery_request_id]').val() != "")) {
+      else if (($('[name=embroidery_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -623,8 +623,8 @@
           }, 3000);
         }
       }
-      // case of vector freelancer
-      if (($('[name=vector_request_id]').val() != "")) {
+      // // case of vector freelancer
+      else if (($('#[name=vector_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');

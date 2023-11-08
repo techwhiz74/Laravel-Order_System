@@ -266,6 +266,9 @@
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
+            $('.admin_search_customer_validation').hide();
+            $('.SearchInputWrapper').css("border", "1px solid #ddd");
+            $('#customer_search_popup').modal('hide');
 
         });
         $('#order_form_em_standard_popup2').click(function() {
@@ -286,6 +289,9 @@
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("");
             $('.order_form_file_upload').hide();
+            $('.admin_search_customer_validation').hide();
+            $('.SearchInputWrapper').css("border", "1px solid #ddd");
+            $('#customer_search_popup').modal('hide');
 
         });
         $('#order_form_em_standard_popup3').click(function() {
@@ -303,6 +309,9 @@
             $('[name=size]').val("24");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
+            $('.admin_search_customer_validation').hide();
+            $('.SearchInputWrapper').css("border", "1px solid #ddd");
+            $('#customer_search_popup').modal('hide');
         });
         $('#order_form_em_standard_popup4').click(function() {
             typeInput.val('Vector');
@@ -319,6 +328,9 @@
             $('[name=size]').val("24");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
+            $('.admin_search_customer_validation').hide();
+            $('.SearchInputWrapper').css("border", "1px solid #ddd");
+            $('#customer_search_popup').modal('hide');
         });
         $('#view_order_popup1').click(function() {
             $('#order_detail_popup').hide();
@@ -335,7 +347,7 @@
             $('[name=products]').val(products.join(', '));
         });
 
-        $(popup).find('#order_submit_form').submit(function(e) {
+        $('#order_submit_form').submit(function(e) {
             e.preventDefault();
             $('.product-items-menu').show();
         });
@@ -394,7 +406,7 @@
             $('#fileupload').val('');
             $('.template-upload').remove();
             $('#admin_customer_search_table tr').remove();
-            $('#adminTableSearchInput').val('');
+            $('#adminTableSearchInput').text('Kunden suchen');
             $('#order_form_checkbox').prop("checked", false);
             $('.order_form_anotherOrder').hide();
             $('.product-select-items input[type=checkbox]').prop('checked', false);
@@ -413,28 +425,28 @@
             data.append('ordered_from', $('[name=ordered_from]').val());
         });
         $('.admin_order_form_submit').click(function() {
-            var data = new FormData();
-            data.append('project_name', $('[name=project_name]').val());
-            data.append('size', $('[name=size]').val());
-            data.append('width_height', $('[name=width_height]:checked').val());
-            data.append('products', $('[name=products]').val());
-            data.append('special_instructions', $('[name=special_instructions]').val());
-            data.append('type', typeInput);
-            data.append('deliver_time', deliverTimeInput);
-            data.append('customer_number', $('[name=customer_number]').val());
-            data.append('ordered_from', $('[name=ordered_from]').val());
-            data.append('searched_id', $('[name=searched_id]').val());
+            var admin_upload = new FormData();
+            admin_upload.append('project_name', $('[name=project_name]').val());
+            admin_upload.append('size', $('[name=size]').val());
+            admin_upload.append('width_height', $('[name=width_height]:checked').val());
+            admin_upload.append('products', $('[name=products]').val());
+            admin_upload.append('special_instructions', $('[name=special_instructions]').val());
+            admin_upload.append('type', typeInput);
+            admin_upload.append('deliver_time', deliverTimeInput);
+            admin_upload.append('customer_number', $('[name=customer_number]').val());
+            admin_upload.append('ordered_from', $('[name=ordered_from]').val());
+            admin_upload.append('searched_id', $('[name=searched_id]').val());
         });
         $('.admin_order_form_submit').click(function(e) {
             e.preventDefault();
             if (($('[name=project_name]').val() != "") && ($(
                     '[name=size]').val() != "") && ($('#selected_products')
                     .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
-                    '#order_form_checkbox').is(':checked')) && ($('#admin_customer_search_table tr')
-                    .length != 1)) {
+                        '#adminTableSearchInput').text() !=
+                    "Kunden suchen")) {
                 $('.fileupload-buttonbar .start').trigger('click');
             }
-            if ($('#admin_customer_search_table tr').length == 1) {
+            if ($('#adminTableSearchInput').text() == "Kunden suchen") {
                 $('.admin_search_customer_validation').show();
                 $('.SearchInputWrapper').css("border", "1px solid red");
             }
@@ -511,7 +523,7 @@
                     '[name=size]').val() != "") && ($('#selected_products')
                     .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
                     '#order_form_checkbox').is(':checked'))) {
-                $('.fileupload-buttonbar .start').trigger('click');
+                $('#order_submit_form').find('.fileupload-buttonbar .start').trigger('click');
             }
 
             if ($('[name=project_name]').val() == "") {

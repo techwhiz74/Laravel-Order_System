@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Order_file_upload;
 
 
 
@@ -278,42 +279,41 @@ class AdminController extends Controller
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
             $temp_data = TempCustomer::orderBy('id', 'desc')->get();
-            $order_changes = OrderChange::orderBy('id', 'desc')->get();
+            // $order_changes = OrderChange::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->addColumn('edit', function ($row) {
                     $edit = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="editCustomerProfile(' . $row->id . ')" style="border:none; background-color:none;"><i
-                                        class="fa-solid fa-pen-to-square" style="color:#c4ae79;"></i></button>
+                                <button onclick="editCustomerProfile(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
                             </div>
                         </div>';
                     return $edit;
                 })
-                ->addColumn('request', function ($row) use ($temp_data, $order_changes) {
+                ->addColumn('request', function ($row) use ($temp_data) {
                     $req = '';
                     foreach ($temp_data as $temp) {
                         if ($temp->customer_id == $row->id) {
                             $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                                        <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
                                     </div>
                                 </div>
                             ';
                         }
                     }
-                    foreach ($order_changes as $order_change) {
-                        if ($order_change->customer_id == $row->id) {
-                            $req = '
-                                <div class="d-flex" style="gap:20px;">
-                                    <div style="display: flex; margin:auto;">
-                                        <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:none;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
-                                    </div>
-                                </div>
-                            ';
-                        }
-                    }
+                    // foreach ($order_changes as $order_change) {
+                    //     if ($order_change->customer_id == $row->id) {
+                    //         $req = '
+                    //             <div class="d-flex" style="gap:20px;">
+                    //                 <div style="display: flex; margin:auto;">
+                    //                     <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
+                    //                 </div>
+                    //             </div>
+                    //         ';
+                    //     }
+                    // }
                     return $req;
                 })
                 ->rawColumns(['edit', 'request'])
@@ -325,14 +325,14 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($id);
         $tempCustomer = TempCustomer::where('customer_id', $id)->orderBy('id', 'desc')->first();
-        $order_changes = OrderChange::where('customer_id', $id)->orderBy('id', 'desc')->get();
+        // $order_changes = OrderChange::where('customer_id', $id)->orderBy('id', 'desc')->get();
 
         $responseText = '';
         $count = 0;
 
-        foreach ($order_changes as $order_change) {
-            $responseText .= '"' . $order_change["customer_name"] . '" hat eine Nachricht zu Bestellnummer ' . $order_change['order_number'] . ' gesendet: „' . $order_change['message'] . '“<br />';
-        }
+        // foreach ($order_changes as $order_change) {
+        //     $responseText .= '"' . $order_change["customer_name"] . '" hat eine Nachricht zu Bestellnummer ' . $order_change['order_number'] . ' gesendet: „' . $order_change['message'] . '“<br />';
+        // }
 
         if ($tempCustomer) {
             if ($user['name'] != $tempCustomer['name']) {
@@ -425,31 +425,31 @@ class AdminController extends Controller
         echo $responseText;
     }
 
-    public function acceptChangeRequest($locale, $id)
+    public function acceptChangeRequest(Request $request)
     {
-        $user = User::findOrFail($id);
-        $tempCustomer = TempCustomer::where('customer_id', $id)->orderBy('id', 'desc')->first();
-        $user->name = $tempCustomer->name;
-        $user->first_name = $tempCustomer->first_name;
-        $user->email = $tempCustomer->email;
-        $user->company = $tempCustomer->company;
-        $user->company_addition = $tempCustomer->company_addition;
-        $user->street_number = $tempCustomer->street_number;
-        $user->postal_code = $tempCustomer->postal_code;
-        $user->location = $tempCustomer->location;
-        $user->country = $tempCustomer->country;
-        $user->website = $tempCustomer->website;
-        $user->phone = $tempCustomer->phone;
-        $user->mobile = $tempCustomer->mobile;
-        $user->tax_number = $tempCustomer->tax_number;
-        $user->vat_number = $tempCustomer->vat_number;
-        $user->register_number = $tempCustomer->register_number;
-        $user->kd_group = $tempCustomer->kd_group;
-        $user->kd_category = $tempCustomer->kd_category;
-        $user->payment_method = $tempCustomer->payment_method;
-        $user->bank_name = $tempCustomer->bank_name;
-        $user->IBAN = $tempCustomer->IBAN;
-        $user->BIC = $tempCustomer->BIC;
+        $user = User::findOrFail($request->post('id'));
+        $tempCustomer = TempCustomer::where('customer_id', $request->post('id'))->orderBy('id', 'desc')->first();
+        $user->name = $request->post('name');
+        $user->first_name = $request->post('first_name');
+        $user->email = $request->post('email');
+        $user->company = $request->post('company');
+        $user->company_addition = $request->post('company_addition');
+        $user->street_number = $request->post('street_number');
+        $user->postal_code = $request->post('postal_code');
+        $user->location = $request->post('location');
+        $user->country = $request->post('country');
+        $user->website = $request->post('website');
+        $user->phone = $request->post('phone');
+        $user->mobile = $request->post('mobile');
+        $user->tax_number = $request->post('tax_number');
+        $user->vat_number = $request->post('vat_number');
+        $user->register_number = $request->post('register_number');
+        $user->kd_group = $request->post('kd_group');
+        $user->kd_category = $request->post('kd_category');
+        $user->payment_method = $request->post('payment_method');
+        $user->bank_name = $request->post('bank_name');
+        $user->IBAN = $request->post('IBAN');
+        $user->BIC = $request->post('BIC');
         $user->save();
         $tempCustomer->delete();
         return 'successfully changed!';
@@ -462,7 +462,8 @@ class AdminController extends Controller
     public function GetCustomerProfile(Request $request)
     {
         $profile = User::findOrfail($request->get('id'));
-        return response()->json([$profile]);
+        $temp = TempCustomer::where('customer_id', $request->get('id'))->first();
+        return response()->json(['profile' => $profile, 'temp' => $temp]);
     }
 
     public function ChangeProfile(Request $request)
@@ -586,6 +587,7 @@ class AdminController extends Controller
                 $html .= '<tr><td>' . $item->customer_number . '</td>' .
                     '<td>' . $item->company . '</td>' .
                     '<td>' . $item->name . '</td>' .
+                    '<td>' . $item->first_name . '</td>' .
                     '<td>' . $item->phone . '</td>' .
                     '<td>' . $item->email . '</td>' .
                     '<td>' . $item->street_number . '</td>' .
@@ -598,7 +600,15 @@ class AdminController extends Controller
         }
         $data['id'] = count($customers) > 0 ? $customers[0]->id : null;
         $data['customer_number'] = count($customers) > 0 ? $customers[0]->customer_number : null;
+        $data['company'] = count($customers) > 0 ? $customers[0]->company : null;
         $data['ordered_from'] = count($customers) > 0 ? $customers[0]->name : null;
+        $data['first_name'] = count($customers) > 0 ? $customers[0]->first_name : null;
+        $data['phone'] = count($customers) > 0 ? $customers[0]->phone : null;
+        $data['email'] = count($customers) > 0 ? $customers[0]->email : null;
+        $data['street_number'] = count($customers) > 0 ? $customers[0]->street_number : null;
+        $data['postal_code'] = count($customers) > 0 ? $customers[0]->postal_code : null;
+        $data['location'] = count($customers) > 0 ? $customers[0]->location : null;
+        $data['country'] = count($customers) > 0 ? $customers[0]->country : null;
         $data['html'] = $html;
         echo json_encode($data);
     }
@@ -688,5 +698,17 @@ class AdminController extends Controller
         }
         return "OK!";
     }
-
+    public function ConfirmProfile(Request $request)
+    {
+        $id = $request->post('admin_confirm_profile_id');
+        $customer_number = $request->post('customer_number');
+        $user = User::findOrfail($id);
+        $user->customer_number = $customer_number;
+        $user->save();
+    }
+    public function DeclineProfile(Request $request)
+    {
+        $id = $request->post('admin_decline_profile_id');
+        User::findOrfail($id)->delete();
+    }
 }

@@ -39,13 +39,16 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/update-password', [AdminController::class, 'updatePassword']);
     Route::get('/profile', [AdminController::class, 'adminProfile']);
     Route::get('/get-differences/{id}', [AdminController::class, 'getDifferences']);
-    Route::post('/accept-change/{id}', [AdminController::class, 'acceptChangeRequest']);
+    Route::post('/accept-change', [AdminController::class, 'acceptChangeRequest']);
     Route::post('/decline-change/{id}', [AdminController::class, 'declineChangeRequest']);
     Route::get('/customer-list', [AdminController::class, 'CustomerList'])->name('admin-customer-list');
+    Route::get('/customer-search', [AdminController::class, 'CustomerList'])->name('admin-customer-search');
     Route::get('/get-customer-profile', [AdminController::class, 'GetCustomerProfile'])->name('admin-get-customer-profile');
     Route::post('/change-profile', [AdminController::class, 'ChangeProfile'])->name('admin-change-profile');
     Route::post('/add-customer', [AdminController::class, 'AddCustomer'])->name('admin-add-customer');
     Route::get('/customer-search-table', [AdminController::class, 'CustomerSearchTable'])->name('admin-customer-search-table');
+    Route::post('/confirm-profile', [AdminController::class, 'ConfirmProfile'])->name('admin-confirm-profile');
+    Route::post('/decline-profile', [AdminController::class, 'DeclineProfile'])->name('admin-decline-profile');
 });
 
 //customer route

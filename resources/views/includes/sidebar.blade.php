@@ -57,7 +57,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>KUNDENLISTE</p>
+                                <p>AKTUELLE<br />KUNDENLISTE</p>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>KUNDE ERFASSEN</p>
+                                <p>KUNDE<br />ERFASSEN</p>
                             </div>
                         </div>
                     </div>
