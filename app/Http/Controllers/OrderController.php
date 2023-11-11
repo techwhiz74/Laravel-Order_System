@@ -12,6 +12,7 @@ use App\Models\category;
 use App\Models\Order_address;
 use App\Models\Order_file_format;
 use App\Models\Order_file_upload;
+use App\Rules\ExcludeFileTypes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -462,17 +463,37 @@ class OrderController extends Controller
         }
     }
 
-    public function multiple($id)
+    public function multiple(Request $request, $id)
     {
+        //     $zip = new ZipArchive();
+        //     $order = Order::findOrFail($id);
+        //     $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        //     $files = Order_file_upload::where('order_id', $id)->get();
+        //     $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '.zip';
+        //     if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
+        //         $files = Storage::allFiles('public/' . $folder);
+        //         foreach ($files as $key => $file) {
+        //             $relativeNameInZipFile = basename('public/' . $folder . $file);
+        //             $filePathArray = explode('/', $file);
+        //             $zip->addFile(storage_path('app/' . $file), $filePathArray[3] . '/' . $relativeNameInZipFile);
+        //         }
+        //         $zip->close();
+        //     }
+
+        //     return response()->download(storage_path('app/public/' . $folder . $fileName));
+        // }
+        // public function donwloadByFolder(Request $request) {
         $zip = new ZipArchive();
         $order = Order::findOrFail($id);
-        $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
-        $files = Order_file_upload::where('order_id', $id)->get();
+        $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/' . $request->get('type') . '/';
+        $files = Order_file_upload::where('order_id', $id)->where('base_url', 'LIKE', '%' . $folder . '%')->get();
         $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '.zip';
         if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
             $files = Storage::allFiles('public/' . $folder);
             foreach ($files as $key => $file) {
                 $relativeNameInZipFile = basename('public/' . $folder . $file);
+                // var_dump($relativeNameInZipFile, storage_path('app/public/' . $folder . $file), $file, $folder);
+                // die();
                 $filePathArray = explode('/', $file);
                 $zip->addFile(storage_path('app/' . $file), $filePathArray[3] . '/' . $relativeNameInZipFile);
             }
@@ -481,6 +502,7 @@ class OrderController extends Controller
 
         return response()->download(storage_path('app/public/' . $folder . $fileName));
     }
+
 
     public function getOrderDetail(Request $request)
     {
@@ -689,6 +711,9 @@ class OrderController extends Controller
             $order->save();
         }
 
+        $request->validate([
+            'file' => ['required', 'file', new ExcludeFileTypes],
+        ]);
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
@@ -843,6 +868,38 @@ class OrderController extends Controller
         }
 
     }
+
+    public function OrderChangeText(Request $request)
+    {
+        $order_id = $request->post('order_id');
+        $order_change_message = $request->post('order_change_textarea');
+        $time = $request->post('time');
+
+
+        $order = Order::findOrfail($order_id);
+        $customer = User::findOrfail($order->user_id);
+
+
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->message = $order_change_message;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
+        if ($order->type == "Embroidery") {
+            $order_change->changed_from = "customer_em";
+        } else if ($order->type == "Vector") {
+            $order_change->changed_from = "customer_ve";
+        }
+        $order_change->save();
+
+        $order->status = 'Änderung';
+        $order->save();
+    }
     // public function changeOrderIndex(Request $request)
     // {
     //     $order_file_upload = Order_file_upload::findOrFail($request->post('id'));
@@ -872,8 +929,6 @@ class OrderController extends Controller
             $customer_number = $folders[0];
             $second_folder = $folders[1];
             $second_folder_array = explode('-', $second_folder);
-            // var_dump($folder);
-            // die();
             $order_number = $second_folder_array[1];
             $project_name = $second_folder_array[2];
             $ordered_from = 'Mustermann';

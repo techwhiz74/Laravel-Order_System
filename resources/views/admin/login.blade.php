@@ -61,7 +61,7 @@
                             </a>
                         </div>
 
-                        <form method="POST" auto-complete="off" action="{{ __('routes.admin-sign-in') }}">
+                        <form method="GET" auto-complete="off" action="{{ __('routes.admin-sign-in') }}">
                             @csrf
                             <div class="heading_logo">
                                 <div class="login_heading">

@@ -169,12 +169,14 @@
 
 <script>
     var selector = '#change1';
+    var folderType = 'Änderungsdateien Kunde1';
 
     function showOrderRequest(id, type) {
         if (type == null) {
             type = 'Änderungsdateien Kunde1';
             selector = '#change1';
         }
+        folderType = type;
         var req_detail_table;
         $('#req_detail_id').val(id);
         $('#req_subfolder_structure3_1').hide();
@@ -455,7 +457,7 @@
     }
 
     function req_multipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('#req_detail_id').val();
+        window.location.href = '{{ url('multi-download') }}/' + $('#req_detail_id').val() + '?type=' + folderType;
     }
     $('#req_subfolder_structure3_1').click(function() {
         showOrderRequest($('#req_detail_id').val(), 'Änderungsdateien Kunde1');

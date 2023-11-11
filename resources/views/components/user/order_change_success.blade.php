@@ -1,4 +1,5 @@
-<div class="modal fade" id="order_form_success_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="order_change_success_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -9,9 +10,9 @@
                 </div>
                 <div class="row">
                     <div style="text-align:center;">
-                        <button id="order_form_anotherOrderButton"
-                            class="modal_close_btn">{{ __('home.order_form_AnotherOrder') }}</button>
-                        <button type="button" class="modal_close_btn" onclick="hideModal()">SCHLIESSEN</button>
+                        <button id="order_change_anotherOrderButton" class="modal_close_btn">EINE ANDERE BESTELLUNG
+                            ÄNDERN</button>
+                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
                     </div>
                 </div>
             </div>

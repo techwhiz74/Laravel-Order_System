@@ -3,9 +3,9 @@
 
 
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav" style="margin-left:75px">
+        <ul class="sidebar-nav" style="margin-left:6vw; padding:0 !important;">
             @if (auth()->user()->user_type == 'customer')
-                <li>
+                <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
                             class="lion_pop_btn">
@@ -21,7 +21,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li>
+                <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_green" id="em_freelancer_green" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -35,7 +35,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li>
+                <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_green" id="ve_freelancer_green" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -49,7 +49,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li>
+                <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_customer_list" id="admin_customer_list1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -365,6 +365,19 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li style="padding-left: 0 !important;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_green" id="admin_green1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>NEUE<br>AUFTRÄGE</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             @endif
 
             @if (auth()->user()->user_type == 'customer')
@@ -383,7 +396,22 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_yellow" id="admin_yellow1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>AUFTRÄGE IN ARBEIT</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
             @endif
+
             @if (auth()->user()->user_type == 'customer')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -401,6 +429,88 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_red" id="admin_red1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px 0; ">
+                                <p>ABGESCHLOSSENE AUFTRÄGE</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_blue" id="admin_blue1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>AUFTRÄGE ÄNDERUNGEN</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->user_type == 'admin')
+                <li style="margin-right: 50px;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_all" id="admin_all1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>ALLE<br>AUFTRÄGE</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_customer_parameters_em" id="admin_customer_parameters_em1"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px 0;">
+                                <p>{{ __('home.customer_parameters_em_sidebar') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            @endif
+
+            @if (auth()->user()->user_type == 'admin')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_customer_parameters_ve" id="admin_customer_parameters_ve1"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/grip-vertical-sharp-solid.svg') }}"
+                                    style="width: 20px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px 0;">
+                                <p>{{ __('home.customer_parameters_ve_sidebar') }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
             @endif
 
         </ul>
@@ -521,9 +631,7 @@
         </div>
     </div>
 
-    @include('components.freelancer.embroidery.em_freelancer_request')
-    @include('components.freelancer.vector.ve_freelancer_request')
-    @include('components.freelancer.free-order-detail')
+    {{-- admin popup --}}
     <div id="admin_customer_list" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
         <div class="lion_popup_dv">
             @if (auth()->user()->user_type == 'admin')
@@ -538,4 +646,58 @@
             @endif
         </div>
     </div>
+    <div id="admin_green" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_green />
+            @endif
+        </div>
+    </div>
+    <div id="admin_yellow" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_yellow />
+            @endif
+        </div>
+    </div>
+    <div id="admin_red" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_red />
+            @endif
+        </div>
+    </div>
+    <div id="admin_blue" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_blue />
+            @endif
+        </div>
+    </div>
+    <div id="admin_all" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_all />
+            @endif
+        </div>
+    </div>
+    <div id="admin_customer_parameters_em" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_customer_parameters_em />
+            @endif
+        </div>
+    </div>
+    <div id="admin_customer_parameters_ve" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin_customer_parameters_ve />
+            @endif
+        </div>
+    </div>
+
+    @include('components.freelancer.embroidery.em_freelancer_request')
+    @include('components.freelancer.vector.ve_freelancer_request')
+    @include('components.freelancer.free-order-detail')
+    @include('components.admin.admin-order-detail')
 </div>

@@ -231,7 +231,7 @@
         }
     }
 </style>
-<div class="modal fade" id="free_order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="admin_order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: rgb(244, 244, 244)">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
@@ -252,7 +252,7 @@
                                         <p style="width:120px; margin:0">
                                             <strong>{{ __('home.customer_number') }}</strong>
                                         </p>
-                                        <div id="detail_customer_number" class="order_detail_input_div_element"
+                                        <div id="admin_detail_customer_number" class="order_detail_input_div_element"
                                             style="width:calc(100% - 120px);">
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                         <p style="width:120px; margin:0"><strong>{{ __('home.order_number') }}</strong>
                                         </p>
-                                        <div id="detail_order_number" class="order_detail_input_div_element"
+                                        <div id="admin_detail_order_number" class="order_detail_input_div_element"
                                             style="width:calc(100% - 120px);">
                                         </div>
                                     </div>
@@ -272,7 +272,7 @@
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                         <p style="width:120px; margin:0"><strong>{{ __('home.projectname') }}</strong>
                                         </p>
-                                        <div id="detail_project_name" class="order_detail_input_div_element"
+                                        <div id="admin_detail_project_name" class="order_detail_input_div_element"
                                             style="width:calc(100% - 120px);">
                                         </div>
                                     </div>
@@ -282,11 +282,11 @@
                                         style="display: flex; align-items:center">
                                         <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
                                         </p>
-                                        <div id="detail_size" class="order_detail_input_div_element"
+                                        <div id="admin_detail_size" class="order_detail_input_div_element"
                                             style="width:65px;">
                                         </div>
                                         <span style="margin-left: 5px;">mm</span>
-                                        <div id="detail_width_height" class="order_detail_input_div_element"
+                                        <div id="admin_detail_width_height" class="order_detail_input_div_element"
                                             style="width:110px; margin-left:28px">
                                         </div>
                                     </div>
@@ -298,7 +298,7 @@
                                         style="display: flex; align-items:center">
                                         <p style="width:120px; margin:0"><strong>{{ __('home.fianl_product') }}</strong>
                                         </p>
-                                        <div id="detail_final_product" class="order_detail_input_div_element"
+                                        <div id="admin_detail_final_product" class="order_detail_input_div_element"
                                             style="width:calc(100% - 120px);">
                                         </div>
                                     </div>
@@ -310,7 +310,8 @@
                                         <p style="width:120px; margin:0">
                                             <strong>{{ __('home.special instructions') }}</strong>
                                         </p>
-                                        <div id="detail_special_instructions" class="order_detail_input_div_element"
+                                        <div id="admin_detail_special_instructions"
+                                            class="order_detail_input_div_element"
                                             style="width:calc(100% - 120px); height:130px !important; align-items:flex-start !important;">
                                         </div>
                                     </div>
@@ -321,12 +322,12 @@
                     <div class="col-6" style="padding-left: 2.5px">
                         <div class="order_detail_div1">
                             <div style="height: 50px; font-size:18px;">Kunden-Parameter</div>
-                            <div id="embroidery_parameter_div">
+                            <div id="admin_embroidery_parameter_div">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.yarn_information') }}</p>
-                                            <div id="yarn_information" class="order_detail_input_div_element"
+                                            <div id="admin_yarn_information" class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -336,7 +337,7 @@
                                     <div class="col-12">
                                         <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.need_embroidery_files') }}</p>
-                                            <div id="need_embroidery_files" class="order_detail_input_div_element"
+                                            <div id="admin_need_embroidery_files" class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -346,7 +347,7 @@
                                     <div class="col-12">
                                         <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.cutting_options') }}</p>
-                                            <div id="cutting_options" class="order_detail_input_div_element"
+                                            <div id="admin_cutting_options" class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -358,7 +359,7 @@
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.special_cutting_options') }}
                                             </p>
-                                            <div id="special_cutting_options"class="order_detail_input_div_element"
+                                            <div id="admin_special_cutting_options"class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -369,7 +370,7 @@
                                         <div class="form-group form_dv_wrap"
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.needle_instructions') }}</p>
-                                            <div id="needle_instructions" class="order_detail_input_div_element"
+                                            <div id="admin_needle_instructions" class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -381,7 +382,8 @@
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.standard_instructions') }}
                                             </p>
-                                            <div id="standard_instructions" class="order_detail_input_div_element"
+                                            <div id="admin_standard_instructions"
+                                                class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -393,7 +395,7 @@
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">
                                                 {{ __('home.special_standard_instructions') }}</p>
-                                            <div id="special_standard_instructions"
+                                            <div id="admin_special_standard_instructions"
                                                 class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
@@ -401,13 +403,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="vector_parameter_div">
+                            <div id="admin_vector_parameter_div">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group form_dv_wrap"
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.required_vector_file') }}</p>
-                                            <div id="required_vector_file" class="order_detail_input_div_element"
+                                            <div id="admin_required_vector_file"
+                                                class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -418,7 +421,7 @@
                                         <div class="form-group form_dv_wrap"
                                             style="display: flex; align-items:center">
                                             <p style="width:200px; margin:0">{{ __('home.required_image_file') }}</p>
-                                            <div id="required_image_file" class="order_detail_input_div_element"
+                                            <div id="admin_required_image_file" class="order_detail_input_div_element"
                                                 style="width:calc(100% - 120px);">
                                             </div>
                                         </div>
@@ -436,7 +439,7 @@
                                 style="display: flex; justify-content:space-between; margin-bottom:10px;">
                                 <div style="font-size:18px;">Dateiübersicht</div>
                                 <div>
-                                    <button class="btn btn-primary btn-sm" onclick="freeMultipleDownload()"
+                                    <button class="btn btn-primary btn-sm" onclick="adminMultipleDownload()"
                                         style="background-color:#c3ac6d; border:none; font-size:13px;"><i
                                             class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                                 </div>
@@ -446,7 +449,8 @@
                                     <ul class="nav nav-tabs flex-column"
                                         style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
                                         <li class="nav-item">
-                                            <div class="folder_button" type="button" id="free_subfolder_structure1">
+                                            <div class="folder_button" type="button"
+                                                id="admin_subfolder_structure1">
                                                 <div
                                                     style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                     <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
@@ -459,7 +463,8 @@
                                             </div>
                                         </li>
                                         <li class="nav-item">
-                                            <div class="folder_button" type="button" id="free_subfolder_structure2">
+                                            <div class="folder_button" type="button"
+                                                id="admin_subfolder_structure2">
                                                 <div
                                                     style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                     <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
@@ -472,7 +477,8 @@
                                             </div>
                                         </li>
                                         <li class="nav-item">
-                                            <div class="folder_button" type="button" id="free_subfolder_structure3">
+                                            <div class="folder_button" type="button"
+                                                id="admin_subfolder_structure3">
                                                 <div
                                                     style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                     <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
@@ -487,7 +493,7 @@
                                     </ul>
                                 </div>
                                 <div class="responsive-table" style="height: 300px; width:100%;">
-                                    <table id="free_order_detail" class="table table-striped"
+                                    <table id="admin_order_detail" class="table table-striped"
                                         style="width:100%; font-size:13px;">
                                         <thead>
                                             <tr>
@@ -509,24 +515,25 @@
                     </div>
                     <div class="col-6" style="padding-left: 2.5px;">
                         <div class="freelancer_job_div">
-                            <div id="green_job">
+                            <div id="admin_green_job">
                                 <div style="height: 50px; font-size:18px;">Aktivität-Übersicht</div>
                                 <div id="freelancer_job_start_div">
-                                    <button onclick="StartJob()" class="job_button">Job starten</button>
+                                    <button onclick="AdminStartJob()" class="job_button">Job starten</button>
                                 </div>
 
                             </div>
-                            <div id="yellow_job">
+                            <div id="admin_yellow_job">
                                 <div style="height: 50px; font-size:18px;">Aktivität-Übersicht</div>
                                 <div style="display: flex; flex-direction:column; justify-content:space-between">
-                                    <div id="freelancer_job_update_div">
-                                        <button onclick="UpdateJob()" class="job_button">Dateien hochladen</button>
+                                    <div id="admin_job_update_div">
+                                        <button onclick="AdminUpdateJob()" class="job_button">Dateien
+                                            hochladen</button>
                                     </div>
-                                    <div id="freelacner_job_upload_div">
-                                        <form action="" id="freelancer_job_start_form">
-                                            <input type="hidden" name="free_detail_id" value="">
+                                    <div id="admin_job_upload_div">
+                                        <form action="" id="admin_job_start_form">
+                                            <input type="hidden" name="admin_detail_id" value="">
                                             <div style="display: flex">
-                                                <div id="freelancer_job_upload" action="" method="POST"
+                                                <div id="admin_job_upload" action="" method="POST"
                                                     enctype="multipart/form-data"
                                                     style="width: 100%; overflow-x:hidden; overflow-y:auto;">
                                                     <noscript><input type="hidden" name="redirect"
@@ -568,7 +575,7 @@
                                             <div style="display: flex; justify-content:flex-end">
                                                 <div>
                                                     <button type="submit"
-                                                        class="freelancer_job_start_submit">Hochladen</button>
+                                                        class="admin_job_start_submit">Hochladen</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -595,26 +602,27 @@
         }
     });
 
-    var free_detail_table;
+    var admin_detail_table;
     var folderType = 'Originaldatei';
 
-    function freeOpenOrderDetailModal(id, type) {
+    function AdminOpenOrderDetailModal(id, type) {
+        $('#admin_order_detail_popup').modal("show");
         folderType = type;
-        $('#freelancer_job_update_div').show();
-        $('#freelacner_job_upload_div').hide();
-        $('#green_job').hide();
-        $('#yellow_job').hide();
+        $('#admin_job_update_div').show();
+        $('#admin_job_upload_div').hide();
+        $('#admin_green_job').hide();
+        $('#admin_yellow_job').hide();
 
-        $('#embroidery_parameter_div').hide();
-        $('#vector_parameter_div').hide();
+        $('#admin_embroidery_parameter_div').hide();
+        $('#admin_vector_parameter_div').hide();
         $('#order_form_upload_list tr').remove();
 
-        $('[name=free_detail_id]').val(id);
-        $('#free_subfolder_structure1').hide();
-        $('#free_subfolder_structure2').hide();
-        $('#free_subfolder_structure3').hide();
+        $('[name=admin_detail_id]').val(id);
+        $('#admin_subfolder_structure1').hide();
+        $('#admin_subfolder_structure2').hide();
+        $('#admin_subfolder_structure3').hide();
         $.ajax({
-            url: '{{ __('routes.freelancer-get-order-detail') }}',
+            url: '{{ __('routes.admin-get-order-detail') }}',
             type: 'GET',
             data: {
                 id
@@ -629,9 +637,9 @@
                 });
 
                 if (data.order.status == 'Offen') {
-                    $('#green_job').show();
+                    $('#admin_green_job').show();
                 } else if (data.order.status == 'In Bearbeitung') {
-                    $('#yellow_job').show();
+                    $('#admin_yellow_job').show();
                     // folderArray.forEach((item) => {
                     //     if (item == "Stickprogramm" || item == "Vektordatei") {
                     //         $('#freelancer_job_end_div').show();
@@ -640,34 +648,38 @@
                 }
 
                 console.log(folderArray);
-                $('#free_order_detail_popup').find('#detail_customer_number').text(data.order
+                $('#admin_order_detail_popup').find('#admin_detail_customer_number').text(data.order
                     .customer_number);
-                $('[name=free_detail_id]').val(data.order.id);
-                $('#free_order_detail_popup').find('#detail_order_number').text(data.order.order_number);
-                $('#free_order_detail_popup').find('#detail_project_name').text(data.order.project_name);
-                $('#free_order_detail_popup').find('#detail_size').text(data.order.size);
-                $('#free_order_detail_popup').find('#detail_width_height').text(data.order.width_height);
-                $('#free_order_detail_popup').find('#detail_final_product').text(data.order.products);
-                $('#free_order_detail_popup').find('#detail_special_instructions').text(data
+                $('[name=admin_detail_id]').val(data.order.id);
+                $('#admin_order_detail_popup').find('#admin_detail_order_number').text(data.order
+                    .order_number);
+                $('#admin_order_detail_popup').find('#admin_detail_project_name').text(data.order
+                    .project_name);
+                $('#admin_order_detail_popup').find('#admin_detail_size').text(data.order.size);
+                $('#admin_order_detail_popup').find('#admin_detail_width_height').text(data.order
+                    .width_height);
+                $('#admin_order_detail_popup').find('#admin_detail_final_product').text(data.order
+                    .products);
+                $('#admin_order_detail_popup').find('#admin_detail_special_instructions').text(data
                     .order.special_instructions);
                 $data_type = data.order.type;
                 if ($data_type == "Vector") {
                     $('.order_size').hide();
                     $('.order_final_product').hide();
-                    $('#vector_parameter_div').show();
+                    $('#admin_vector_parameter_div').show();
                 } else {
                     $('.order_size').show();
                     $('.order_final_product').show();
-                    $('#embroidery_parameter_div').show();
+                    $('#admin_embroidery_parameter_div').show();
                 }
                 folderArray.forEach((item) => {
                     if (item == "Originaldatei") {
-                        $('#free_subfolder_structure1').show();
+                        $('#admin_subfolder_structure1').show();
 
                     } else if (item == "Stickprogramm") {
-                        $('#free_subfolder_structure2').show();
+                        $('#admin_subfolder_structure2').show();
                     } else if (item == "Vektordatei") {
-                        $('#free_subfolder_structure3').show();
+                        $('#admin_subfolder_structure3').show();
                     }
                 })
             },
@@ -676,7 +688,7 @@
             }
         })
 
-        free_detail_table = $('#free_order_detail').DataTable({
+        admin_detail_table = $('#admin_order_detail').DataTable({
             responsive: true,
             language: {
 
@@ -684,7 +696,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ __('routes.freelancer-order-detail') }}',
+                url: '{{ __('routes.admin-order-detail') }}',
                 data: function(d) {
                     d.id = id;
                     d.type = type;
@@ -726,27 +738,27 @@
             ]
         });
 
-        $('#free_order_detail_popup').modal("show");
-        free_detail_table.destroy();
+        $('#admin_order_detail_popup').modal("show");
+        admin_detail_table.destroy();
 
         //customer parameter information
         $.ajax({
             url: '{{ __('routes.freelnacer-parameter') }}',
             type: 'GET',
             data: {
-                id: $('[name=free_detail_id]').val()
+                id: $('[name=admin_detail_id]').val()
             },
             success: (data) => {
                 console.log(data);
-                $('#yarn_information').text(data.parameter1);
-                $('#need_embroidery_files').text(data.parameter2);
-                $('#cutting_options').text(data.parameter3);
-                $('#special_cutting_options').text(data.parameter4);
-                $('#needle_instructions').text(data.parameter5);
-                $('#standard_instructions').text(data.parameter6);
-                $('#special_standard_instructions').text(data.parameter7);
-                $('#required_vector_file').text(data.parameter8);
-                $('#required_image_file').text(data.parameter9);
+                $('#admin_yarn_information').text(data.parameter1);
+                $('#admin_need_embroidery_files').text(data.parameter2);
+                $('#admin_cutting_options').text(data.parameter3);
+                $('#admin_special_cutting_options').text(data.parameter4);
+                $('#admin_needle_instructions').text(data.parameter5);
+                $('#admin_standard_instructions').text(data.parameter6);
+                $('#admin_special_standard_instructions').text(data.parameter7);
+                $('#admin_required_vector_file').text(data.parameter8);
+                $('#admin_required_image_file').text(data.parameter9);
             },
             error: () => {
                 console.error('error');
@@ -754,30 +766,30 @@
         })
     }
 
-    function freeMultipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('[name=free_detail_id]').val() + '?type=' +
+    function adminMultipleDownload() {
+        window.location.href = '{{ url('multi-download') }}/' + $('[name=admin_detail_id]').val() + '?type=' +
             folderType;
     }
-    $('#free_subfolder_structure1').click(function() {
-        freeOpenOrderDetailModal($('[name=free_detail_id]').val(), 'Originaldatei');
+    $('#admin_subfolder_structure1').click(function() {
+        AdminOpenOrderDetailModal($('[name=admin_detail_id]').val(), 'Originaldatei');
     });
-    $('#free_subfolder_structure2').click(function() {
-        freeOpenOrderDetailModal($('[name=free_detail_id]').val(), 'Stickprogramm');
+    $('#admin_subfolder_structure2').click(function() {
+        AdminOpenOrderDetailModal($('[name=admin_detail_id]').val(), 'Stickprogramm');
     });
-    $('#free_subfolder_structure3').click(function() {
-        freeOpenOrderDetailModal($('[name=free_detail_id]').val(), 'Vektordatei');
+    $('#admin_subfolder_structure3').click(function() {
+        AdminOpenOrderDetailModal($('[name=admin_detail_id]').val(), 'Vektordatei');
     });
 
 
 
-    function StartJob() {
+    function AdminStartJob() {
         StartJobConfirmAlert();
         $('#start_job_confirm').click(function() {
             $.ajax({
                 url: '{{ __('routes.embroidery-freelancer-startjob') }}',
                 type: 'GET',
                 data: {
-                    start_job_id: $('[name=free_detail_id]').val()
+                    start_job_id: $('[name=admin_detail_id]').val()
                 },
                 success: () => {
                     $('#em_freelancer_table_reload_btn').trigger('click');
@@ -790,7 +802,7 @@
                     $('#ve_freelancer_green_table_reload_button').trigger('click');
                     $('#ve_freelancer_yellow_table_reload_button').trigger('click');
                     $('#ve_freelancer_red_table_reload_button').trigger('click');
-                    $('#green_job').hide();
+                    $('#admin_green_job').hide();
                     $('#start_job_confirm_popup').modal('hide');
                     $('#start_job_success_popup').modal('show');
                 },
@@ -802,20 +814,20 @@
 
     }
 
-    function UpdateJob() {
-        $('#freelacner_job_upload_div').show();
+    function AdminUpdateJob() {
+        $('#admin_job_upload_div').show();
         // $('#freelancer_job_end_div').show();
-        $('#freelancer_job_update_div').hide();
+        $('#admin_job_update_div').hide();
     }
 
-    $('#freelancer_job_start_form').submit(function(e) {
+    $('#admin_job_start_form').submit(function(e) {
         e.preventDefault();
     })
-    $('.freelancer_job_start_submit').click(function(e) {
+    $('.admin_job_start_submit').click(function(e) {
         e.preventDefault();
         var freelancer_job_data = new FormData();
-        freelancer_job_data.append('free_detail_id', $('[name=free_detail_id]').val());
-        $('#freelancer_job_upload').find('.fileupload-buttonbar .start').trigger('click');
+        freelancer_job_data.append('admin_detail_id', $('[name=admin_detail_id]').val());
+        $('#admin_job_upload').find('.fileupload-buttonbar .start').trigger('click');
     })
 
     function EndJob() {
@@ -823,7 +835,7 @@
             url: '{{ __('routes.embroidery-freelancer-endjob') }}',
             type: 'GET',
             data: {
-                end_job_id: $('[name=free_detail_id]').val()
+                end_job_id: $('[name=admin_detail_id]').val()
             },
             success: () => {
                 $('#em_freelancer_table_reload_btn').trigger('click');
@@ -836,7 +848,7 @@
                 $('#ve_freelancer_green_table_reload_button').trigger('click');
                 $('#ve_freelancer_yellow_table_reload_button').trigger('click');
                 $('#ve_freelancer_red_table_reload_button').trigger('click');
-                $('#yellow_job').hide();
+                $('#admin_yellow_job').hide();
                 $('#free_upload_success_popup').modal('hide');
                 setTimeout(() => {
                     $('#end_job_success_popup').modal('show');
@@ -858,7 +870,7 @@
                 url: '{{ __('routes.freelancer-delete-files') }}' + id,
                 type: 'GET',
                 success: () => {
-                    $('#free_subfolder_structure1').trigger('click');
+                    $('#admin_subfolder_structure1').trigger('click');
                     $('#delete_confirm_popup').modal('hide');
                 },
                 error: () => {

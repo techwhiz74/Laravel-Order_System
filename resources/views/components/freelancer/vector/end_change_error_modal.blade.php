@@ -8,7 +8,7 @@
                         die Dateien hoch.
                     </div>
                 </div>
-                <div class="row" style="text-align:end;">
+                <div class="row" style="text-align:center;">
                     <div>
                         <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Habe Es</button>
                     </div>

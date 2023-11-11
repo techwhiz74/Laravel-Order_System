@@ -31,7 +31,7 @@
                                                 <i class="glyphicon glyphicon-plus"></i>
                                                 <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
                                                 <input type="file" name="files[]" multiple
-                                                    accept=".jpg, .png, .pdf, .ai, .dst" />
+                                                    id="order_change_file_input" />
                                             </span>
                                             <button type="submit" class="btn btn-primary start"
                                                 style="visibility: hidden;">
@@ -74,10 +74,51 @@
         </div>
     </div>
 </div>
-
+@include('components.user.order_change_success')
 <script>
     $(function() {
         $('[name=time]').val(new Date());
+
+        // order-change message and file upload form
+        $('#order_change_form').submit(function(e) {
+            e.preventDefault();
+        });
+        $('.order_change_submit').click(function(e) {
+            e.preventDefault();
+            if ($('#order_form_upload_list tr').length != 0) {
+                var data = new FormData();
+                data.append('order_id', $('[name=order_id]').val());
+                data.append('order_change_textarea', $('[name=order_change_textarea]').val());
+                $('#fileupload_em_ex').find('.fileupload-buttonbar .start').trigger('click');
+            } else if ($('#order_form_upload_list tr').length == 0 && $('[name=order_change_textarea]')
+                .val() != '') {
+                var customer_order_change_data = new FormData();
+                customer_order_change_data.append('order_id', $('[name=order_id]').val());
+                customer_order_change_data.append('order_change_textarea', $(
+                    '[name=order_change_textarea]').val());
+                customer_order_change_data.append('time', $('[name=time]').val());
+
+                $.ajax({
+                    url: '{{ __('routes.customer-order-change-text') }}',
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    data: customer_order_change_data,
+                    success: () => {
+                        $('#btn_table_refresh').trigger('click');
+                        $('#customer_dahsboard_table_reload_button').trigger(
+                            'click');
+                        setTimeout(() => {
+                            $('#order_change_success_popup').modal('show');
+                        }, 1000);
+                    },
+                    error: () => {
+                        console.error("error");
+                    }
+                })
+            }
+
+        });
     })
 
     function openOrderChangeModal(id) {
@@ -86,4 +127,25 @@
         $('#order_change_popup').find('[name=order_change_textarea]').val('');
         $('#order_change_popup').find('#order_form_upload_list tr').remove();
     }
+    $(function() {
+        $('#order_change_file_input').on('change', function() {
+            var files = $(this)[0].files;
+            for (var i = 0; i < files.length; i++) {
+                var fileName = files[i].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                var fileSize = files[i].size;
+                if ($.inArray(fileExtension, ['exe', 'bat']) !== -1) {
+                    alert('You cannot upload .exe or .bat files');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+                if (fileSize > 25 * 1024 * 1024) {
+                    alert('File size should not exceed 25 MB');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+            }
+        });
+
+    })
 </script>

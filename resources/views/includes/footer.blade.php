@@ -171,7 +171,7 @@
                   {% if (!i) { %}
                       <button class="upload_table_button cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
-                          <span style="font-size:13px;">Stornieren</span>
+                          <span style="font-size:13px;">Abbrechen</span>
                       </button>
                   {% } %}
               </td>
@@ -411,6 +411,12 @@
             $('.order_form_anotherOrder').hide();
             $('.product-select-items input[type=checkbox]').prop('checked', false);
         });
+        $('#order_change_anotherOrderButton').click(function() {
+            $('#order_change_popup').modal('hide');
+            $('#order_form_upload_list tr').remove();
+            $('[name=order_change_textarea]').val("");
+            $('#order_change_success_popup').modal('hide');
+        });
         //order form submit button
         $('.order_form_submit').click(function() {
             var data = new FormData();
@@ -589,19 +595,9 @@
             $('#password').val('');
         });
 
-        // order-change message and file upload form
-        $('#order_change_form').submit(function(e) {
-            e.preventDefault();
-        });
-        $('.order_change_submit').click(function(e) {
-            e.preventDefault();
-            var data = new FormData();
-            data.append('order_id', $('[name=order_id]').val());
-            data.append('order_change_textarea', $('[name=order_form]').val());
-            $('#fileupload_em_ex').find('.fileupload-buttonbar .start').trigger('click');
-        });
 
     });
+
     $(function() {
         var customer_dahsboard_green_table;
         customer_dahsboard_green_table = $('#customer_dashboard_green_table').DataTable({

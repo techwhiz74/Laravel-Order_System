@@ -569,7 +569,7 @@
             $('#btn_table_refresh').trigger('click');
             $('#customer_dahsboard_table_reload_button').trigger('click');
             $('#order_form_success_popup').modal('show');
-          }, 4000);
+          }, 3000);
         }
       }
 
@@ -580,15 +580,15 @@
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
+            console.log("uplaod seccess");
             $('#btn_table_refresh').trigger('click');
             $('#customer_dahsboard_table_reload_button').trigger('click');
-            toastr.success(
-              "Ihre Nachricht wurde erfolgreich übertragen und die Dateien wurden erfolgreich hochgeladen");
+            $('#order_change_success_popup').modal('show');
           }, 3000);
         }
       }
       // case of freelancer start job, green to yellow
-      else if (($('[name=free_detail_id]').val() != "")) {
+      if (($('[name=free_detail_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -605,8 +605,8 @@
             $('#ve_freelancer_yellow_table_reload_button').trigger('click');
             $('#ve_freelancer_red_table_reload_button').trigger('click');
             $('#free_subfolder_structure1').trigger('click');
-            toastr.success(
-              "Dateien erfolgreich hochgeladen");
+            $('#free_upload_success_popup').modal('show');
+
           }, 3000);
         }
       }
@@ -618,21 +618,19 @@
           template.css('opacity', '1');
           setTimeout(() => {
             $('#embroidery_subfolder_structure3_1').trigger('click');
-            toastr.success(
-              "Dateien erfolgreich hochgeladen");
+            $('#em_upload_success_popup').modal('show');
           }, 3000);
         }
       }
       // // case of vector freelancer
-      else if (($('#[name=vector_request_id]').val() != "")) {
+      else if (($('[name=vector_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
             $('#vector_subfolder_structure3_1').trigger('click');
-            toastr.success(
-              "Dateien erfolgreich hochgeladen");
+            $('#ve_upload_success_popup').modal('show');
           }, 3000);
         }
       }

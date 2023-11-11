@@ -1,5 +1,5 @@
 <header class="contact_header">
-    <div class="container contact_cont_head" style="z-index: 100000; min-width:100%; margin:0;">
+    <div class="container contact_cont_head" style="z-index: 100000; min-width:100%; padding:0 !important;">
         <div class="contact_nav">
             <nav class="nav">
                 <ul class="nav-list">
@@ -57,7 +57,7 @@
 
 <header class="lion_nav_wrap">
     <nav class="navbar navbar-expand-lg bg-body-tertiary nav_wrap_dv">
-        <div class="container-fluid" style="margin: 0 5.9vw;">
+        <div class="container-fluid" style="margin-left: 6vw; padding:0 !important; max-width:88vw;">
             <div class="lion_nav">
                 <a class="logo_img" href="/"><img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}"
                         alt="empty"></a>

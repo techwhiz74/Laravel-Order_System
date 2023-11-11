@@ -607,8 +607,7 @@
                                 <span class="fileinput-button">
                                     <i class="glyphicon glyphicon-plus"></i>
                                     <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
-                                    <input type="file" name="files[]" multiple
-                                        accept=".jpg, .png, .pdf, .ai, .dst" />
+                                    <input type="file" name="files[]" id="admin_order_form_file_input" />
                                 </span>
                                 <button type="submit" class="btn btn-primary start" style="visibility: hidden;">
                                     <i class="glyphicon glyphicon-upload"></i>
@@ -663,4 +662,25 @@
             $('#customer_search_popup').modal('show');
         })
     });
+    $(function() {
+        $('#admin_order_form_file_input').on('change', function() {
+            var files = $(this)[0].files;
+            for (var i = 0; i < files.length; i++) {
+                var fileName = files[i].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                var fileSize = files[i].size;
+                if ($.inArray(fileExtension, ['exe', 'bat']) !== -1) {
+                    alert('You cannot upload .exe or .bat files');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+                if (fileSize > 25 * 1024 * 1024) {
+                    alert('File size should not exceed 25 MB');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+            }
+        });
+
+    })
 </script>

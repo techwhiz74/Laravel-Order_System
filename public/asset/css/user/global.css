@@ -34,10 +34,8 @@ section {
 
 .lion_nav {
   width: 100%;
-  max-width: 1700px;
-  margin: auto;
   display: flex;
-  padding: 6px 5px;
+  padding: 6px 5px 6px 0;
   align-items: center;
 }
 
@@ -705,7 +703,6 @@ section {
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
-  margin-right: 15px;
 }
 
 .action .profile img {
@@ -827,7 +824,14 @@ section {
 #ve_freelancer_blue_table thead,
 #ve_freelancer_all_table thead,
 #admin_customer_list_table thead,
-#customer_search_table thead {
+#customer_search_table thead,
+#admin_green_table thead,
+#admin_yellow_table thead,
+#admin_red_table thead,
+#admin_blue_table thead,
+#admin_all_table thead,
+#admin_parameter_em_table thead,
+#admin_parameter_ve_table thead {
   background: #c4ae79;
   color: #fff;
   vertical-align: middle;
@@ -856,20 +860,29 @@ section {
 #ve_freelancer_yellow_table.table>:not(caption)>*>*,
 #ve_freelancer_red_table.table>:not(caption)>*>*,
 #ve_freelancer_all_table.table>:not(caption)>*>*,
-#ve_freelancer_blue_table.table>:not(caption)>*>* {
+#ve_freelancer_blue_table.table>:not(caption)>*>*,
+#admin_green_table.table>:not(caption)>*>*,
+#admin_yellow_table.table>:not(caption)>*>*,
+#admin_red_table.table>:not(caption)>*>*,
+#admin_all_table.table>:not(caption)>*>*,
+#admin_blue_table.table>:not(caption)>*>* {
   padding: 12px;
 }
 
 
 #admin_customer_list_table_filter input,
-#customer_search_table_filter input {
+#customer_search_table_filter input,
+#admin_parameter_em_table_filter input,
+#admin_parameter_ve_table_filter input {
   width: 100% !important;
   padding: 2px 10px !important;
   font-size: 13px;
 }
 
 #admin_customer_list_table_filter label,
-#customer_search_table_filter label {
+#customer_search_table_filter label,
+#admin_parameter_em_table_filter label,
+#admin_parameter_ve_table_filter label {
   width: 100%;
   margin-bottom: 5px;
 }
@@ -1173,7 +1186,14 @@ div#view-order_length label select:focus-visible {
 .em_freelancer_all_section .container,
 .ve_freelancer_all_section .container,
 .admin_customer_list_section .container,
-.admin_add_customer_section .container {
+.admin_add_customer_section .container,
+.admin_all_section .container,
+.admin_green_section .container,
+.admin_yellow_section .container,
+.admin_blue_section .container,
+.admin_red_section .container,
+.admin_parameter_em_section .container,
+.admin_parameter_ve_section .container {
   position: absolute;
   padding-left: 0;
 }
@@ -1754,7 +1774,8 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
-#order_form_success_popup .modal-dialog {
+#order_form_success_popup .modal-dialog,
+#order_change_success_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1766,7 +1787,8 @@ select#status-filter:focus-visible {
   margin-top: 0;
 }
 
-#order_form_success_popup .modal-content {
+#order_form_success_popup .modal-content,
+#order_change_success_popup .modal-content {
   max-width: 500px;
   margin: 0 auto;
   height: 150px;
@@ -1776,7 +1798,8 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
-#order_form_success_popup .modal-body {
+#order_form_success_popup .modal-body,
+#order_change_success_popup .modal-body {
   padding: 20px !important;
   display: flex;
   flex-direction: column;
@@ -1800,13 +1823,17 @@ select#status-filter:focus-visible {
 }
 
 #delete_confirm_popup .modal-dialog,
-#end_job_confirm_popup .modal-dialog,
+#end_job_success_popup .modal-dialog,
 #start_job_confirm_popup .modal-dialog,
+#start_job_success_popup .modal-dialog,
+#free_upload_success_popup .modal-dialog,
 #end_job_error_popup .modal-dialog,
 #start_change_confirm_popup .modal-dialog,
 #end_change_confirm_popup .modal-dialog,
 #end_change_error_popup .modal-dialog,
 #ve_start_change_confirm_popup .modal-dialog,
+#em_upload_success_popup .modal-dialog,
+#ve_upload_success_popup .modal-dialog,
 #ve_end_change_confirm_popup .modal-dialog,
 #ve_end_change_error_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
@@ -1821,13 +1848,17 @@ select#status-filter:focus-visible {
 }
 
 #delete_confirm_popup .modal-content,
-#end_job_confirm_popup .modal-content,
+#end_job_success_popup .modal-content,
 #start_job_confirm_popup .modal-content,
+#start_job_success_popup .modal-content,
+#free_upload_success_popup .modal-content,
 #end_job_error_popup .modal-content,
 #start_change_confirm_popup .modal-content,
 #end_change_confirm_popup .modal-content,
 #end_change_error_popup .modal-content,
 #ve_start_change_confirm_popup .modal-content,
+#em_upload_success_popup .modal-content,
+#ve_upload_success_popup .modal-content,
 #ve_end_change_confirm_popup .modal-content,
 #ve_end_change_error_popup .modal-content {
   max-width: 500px;
@@ -1840,13 +1871,17 @@ select#status-filter:focus-visible {
 }
 
 #delete_confirm_popup .modal-body,
-#end_job_confirm_popup .modal-body,
+#end_job_success_popup .modal-body,
 #start_job_confirm_popup .modal-body,
+#start_job_success_popup .modal-body,
+#free_upload_success_popup .modal-body,
 #end_job_error_popup .modal-body,
 #start_change_confirm_popup .modal-body,
 #end_change_confirm_popup .modal-body,
 #end_change_error_popup .modal-body,
 #ve_start_change_confirm_popup .modal-body,
+#em_upload_success_popup .modal-body,
+#ve_upload_success_popup .modal-body,
 #ve_end_change_confirm_popup .modal-body,
 #ve_end_change_error_popup .modal-body {
   padding: 40px 20px 20px 20px !important;
@@ -1921,7 +1956,8 @@ select#status-filter:focus-visible {
 
 #free_order_detail_popup .modal-dialog,
 #em_freelancer_request_popup .modal-dialog,
-#ve_freelancer_request_popup .modal-dialog {
+#ve_freelancer_request_popup .modal-dialog,
+#admin_order_detail_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: calc(100% - 105px);
@@ -1935,12 +1971,34 @@ select#status-filter:focus-visible {
 
 #free_order_detail_popup .modal-content,
 #em_freelancer_request_popup .modal-content,
-#ve_freelancer_request_popup .modal-content {
+#ve_freelancer_request_popup .modal-content,
+#admin_order_detail_popup .modal-content {
   max-width: 100%;
   height: 100%;
   margin: 0;
   position: absolute;
   padding: 20px;
+}
+
+#admin_customer_parameters_em_popup .modal-dialog,
+#admin_customer_parameters_ve_popup .modal-dialog {
+  background-color: rgba(227, 222, 222, 0.5);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 0;
+  margin-top: 0;
+  overflow-y: hidden;
+}
+
+#admin_customer_parameters_em_popup .modal-content,
+#admin_customer_parameters_ve_popup .modal-content {
+  max-width: 100%;
+  height: 100%;
+  margin: 0;
+  position: absolute;
 }
 
 .request_information {
@@ -2007,7 +2065,7 @@ select#status-filter:focus-visible {
   /* position: sticky; */
   width: 100%;
   height: 100px;
-  padding: 13px;
+  padding: 13px 0;
 }
 
 #wrapper svg {
@@ -2254,7 +2312,8 @@ select#status-filter:focus-visible {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  margin: 0 5.7vw;
+  margin-left: 6vw;
+  max-width: 88vw;
 }
 
 .language_p h4 {
@@ -2294,7 +2353,7 @@ select#status-filter:focus-visible {
 }
 
 .contact_header .btn {
-  padding: 0 20px 0px 8px !important;
+  padding: 0 0 0px 8px !important;
   font-weight: 400;
   font-size: 15px;
 }
@@ -2319,7 +2378,7 @@ select#status-filter:focus-visible {
 }
 
 .contact_header .nav-list li {
-  padding: 0 15px;
+  padding-right: 30px;
 }
 
 .nav-list li a,
@@ -2807,13 +2866,11 @@ select#status-filter:focus-visible {
   border-radius: 2px;
   background-color: rgb(255, 255, 255);
   text-align: center;
-  border: 1px solid r#ddd;
+  border: 1px solid #ddd;
   font-size: 13px;
   padding: 0px 1em;
   white-space: nowrap;
-  color: rgb(0, 56, 118);
   transition: background-color 0.2s linear 0s;
-  margin-right: 10px;
 }
 
 .tableCloumnBtton {
@@ -3327,18 +3384,11 @@ td {
 }
 
 .order_change_submit,
-.freelancer_job_start_submit {
-  color: white;
-  background-color: #c3ac6d;
-  border: none;
-  border-radius: 0;
-  padding: 8px 8px;
-}
-
 .freelancer_job_start_submit,
 .freelancer_job_update_submit,
 .embroidery_upload_submit,
-.vector_upload_submit {
+.vector_upload_submit,
+.admin_job_start_submit {
   color: white;
   background-color: #c3ac6d;
   border: none;
@@ -3473,12 +3523,10 @@ td {
 .job_button {
   background-color: #c4ae79;
   color: #fff !important;
-  text-align: center;
   border: none;
   padding: 10px 13px;
   font-weight: 900;
   display: flex;
-  align-items: center;
   line-height: 1;
 }
 

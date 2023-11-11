@@ -609,7 +609,7 @@
                                                                 <span
                                                                     style="font-size: 13px;">{{ __('home.add_file') }}...</span>
                                                                 <input type="file" name="files[]" multiple
-                                                                    accept=".jpg, .png, .pdf, .ai, .dst" />
+                                                                    id="em_freelancer_change_file_input" />
                                                             </span>
                                                             <button type="submit" class="btn btn-primary start"
                                                                 style="visibility: hidden;">
@@ -665,6 +665,7 @@
 </div>
 @include('components.freelancer.embroidery.start_change_confirm_modal')
 @include('components.freelancer.embroidery.end_change_confirm_modal')
+@include('components.freelancer.embroidery.change_upload_success_modal')
 @include('components.freelancer.embroidery.end_change_error_modal')
 <script>
     $.ajaxSetup({
@@ -673,8 +674,10 @@
         }
     });
     var selector = '#em_change1';
+    var folderType = 'Änderungsdateien Kunde1';
 
     function EmbroideryDetailRequest(id, type) {
+        folderType = type;
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
             selector = '#em_change1';
@@ -967,7 +970,8 @@
 
 
     function embroidery_multipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('[name=embroidery_request_id]').val();
+        window.location.href = '{{ url('multi-download') }}/' + $('[name=embroidery_request_id]').val() + '?type=' +
+            folderType;
     }
 
     $('#embroidery_subfolder_structure3_1').click(function() {
@@ -1058,4 +1062,25 @@
     function EndChangeError() {
         $('#end_change_error_popup').modal('show');
     }
+    $(function() {
+        $('#em_freelancer_change_file_input').on('change', function() {
+            var files = $(this)[0].files;
+            for (var i = 0; i < files.length; i++) {
+                var fileName = files[i].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                var fileSize = files[i].size;
+                if ($.inArray(fileExtension, ['exe', 'bat']) !== -1) {
+                    alert('You cannot upload .exe or .bat files');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+                if (fileSize > 25 * 1024 * 1024) {
+                    alert('File size should not exceed 25 MB');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+            }
+        });
+
+    })
 </script>

@@ -20,6 +20,7 @@ return [
     'customer-order_detail' => '/en/customer/order_detail',
     'customer-req-order_detail' => '/en/customer/req-order_detail',
     'customer-order_change' => '/en/customer/order_change',
+    'customer-order-change-text' => '/en/customer/order-change-text',
     'customer-order_request' => '/en/customer/order_request/',
     'customer-order-file-index-change' => '/en/customer/order-file-index-change',
     'customer-get-order-detail' => '/en/customer/get-order-detail',
@@ -155,8 +156,22 @@ return [
     'admin-change-profile' => '/en/admin/change-profile/',
     'admin-add-customer' => '/en/admin/add-customer',
     'admin-customer-search-table' => '/en/admin/customer-search-table',
+    'admin-customer-searched-result' => '/en/admin/customer-searched-result',
     'admin-confirm-profile' => '/en/admin/confirm-profile',
     'admin-decline-profile' => '/en/admin/decline-profile',
+
+    'admin-parameter-em-table' => '/en/admin/parameter-em-table',
+    'admin-parameter-ve-table' => '/en/admin/parameter-ve-table',
+    'admin-parameter-em' => '/en/admin/parameter-em',
+    'admin-parameter-ve' => '/en/admin/parameter-ve',
+    'admin-green-table' => '/en/admin/green-table',
+    'admin-yellow-table' => '/en/admin/yellow-table',
+    'admin-red-table' => '/en/admin/red-table',
+    'admin-blue-table' => '/en/admin/blue-table',
+    'admin-all-table' => '/en/admin/all-table',
+    'admin-get-order-detail' => '/en/admin/get-order-detail',
+    'admin-order-detail' => '/en/admin/order-detail',
+
 
 
 

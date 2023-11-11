@@ -29,7 +29,7 @@ Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('
 // admin Route
 Route::middleware([LoginMiddleware::class . ':admin'])->prefix('{locale}/admin')->group(function () {
     Route::get('/login', [AdminController::class, 'adminloginpage'])->name('admin-login');
-    Route::post('/signin', [AdminController::class, 'adminLogin'])->name('admin-signin');
+    Route::get('/signin', [AdminController::class, 'adminLogin'])->name('admin-signin');
 });
 Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')->group(function () {
     Route::get('/logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
@@ -47,8 +47,20 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/change-profile', [AdminController::class, 'ChangeProfile'])->name('admin-change-profile');
     Route::post('/add-customer', [AdminController::class, 'AddCustomer'])->name('admin-add-customer');
     Route::get('/customer-search-table', [AdminController::class, 'CustomerSearchTable'])->name('admin-customer-search-table');
+    Route::get('/customer-searched-result', [AdminController::class, 'CustomerSearchResult'])->name('admin-customer-searched-result');
     Route::post('/confirm-profile', [AdminController::class, 'ConfirmProfile'])->name('admin-confirm-profile');
     Route::post('/decline-profile', [AdminController::class, 'DeclineProfile'])->name('admin-decline-profile');
+    Route::get('/parameter-em-table', [AdminController::class, 'EmParameterTable'])->name('admin-parameter-em-table');
+    Route::get('/parameter-ve-table', [AdminController::class, 'VeParameterTable'])->name('admin-parameter-ve-table');
+    Route::get('/parameter-em', [AdminController::class, 'EmParameter'])->name('admin-parameter-em');
+    Route::get('/parameter-ve', [AdminController::class, 'VeParameter'])->name('admin-parameter-ve');
+    Route::get('/green-table', [AdminController::class, 'AdminGreenTable'])->name('admin-green-table');
+    Route::get('/yellow-table', [AdminController::class, 'AdminYellowTable'])->name('admin-yellow-table');
+    Route::get('/red-table', [AdminController::class, 'AdminRedTable'])->name('admin-red-table');
+    Route::get('/blue-table', [AdminController::class, 'AdminBlueTable'])->name('admin-blue-table');
+    Route::get('/all-table', [AdminController::class, 'AdminAllTable'])->name('admin-all-table');
+    Route::get('/get-order-detail', [FreelancerController::class, 'FreelancergetOrderDetail'])->name('admin-get-order-detail');
+    Route::get('/order-detail', [FreelancerController::class, 'FreelancerOrderDetail'])->name('admin-order-detail');
 });
 
 //customer route
@@ -67,6 +79,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/order_detail', [OrderController::class, 'OrderDetail'])->name('customer-order_detail');
     Route::get('/req-order_detail', [OrderController::class, 'OrderDetail'])->name('req-customer-order_detail');
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
+    Route::post('/order-change-text', [OrderController::class, 'OrderChangeText'])->name('customer-order-change-text');
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');

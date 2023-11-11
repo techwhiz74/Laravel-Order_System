@@ -10,7 +10,7 @@
     <div>
         <div class="tableControl">
             <div class="controlGroup1">
-                <div class="SearchInputWrapper">
+                <div>
                     <label>{{ __('home.search') }}</label>
                     <input type="text" id="tableSearchInput" placeholder="{{ __('home.search_placeholder') }}">
                 </div>
@@ -30,18 +30,6 @@
                 </div>
             </div>
             <div class="controlGroup2">
-                {{-- <div class="dropdown">
-                    <button class="tableFilterBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <i class="fas fa-file-import" style="margin-right:8px"></i>
-                        <span>{{ __('home.import') }}</span>
-                    </button>
-                    <div class="dropdown-menu megamenu" role="menu" style="width:230px; padding:15px;">
-                        <div class="form-group">
-                            <input type="file" style="width: 100% !important" class="form-control"
-                                id="upload_customer" multiple webkitdirectory />
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="tableColumn dropdown">
                     <button class="tableCloumnBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         <img src="/asset/images/tableColumn.svg" class="columnImage" alt="">
@@ -372,39 +360,4 @@
             }
         })
     })
-
-
-
-    $("#upload_customer").change(function(e) {
-        var files = e.target.files;
-        var data = new FormData();
-        var paths = "";
-
-
-        for (var i in files) {
-            if (i < files.length) {
-                paths += files[i].webkitRelativePath + "###";
-                data.append(i, files[i]);
-            }
-        }
-
-        data.append('paths', paths);
-
-        $.ajax({
-            url: '{{ route('import-data') }}',
-            type: 'POST',
-            contentType: false,
-            processData: false,
-            data: data,
-            success: () => {
-                console.log("success!");
-                viewOrderTable.ajax.reload();
-                $('#customer_dahsboard_table_reload_button').trigger('click');
-
-            },
-            error: () => {
-                console.error("error!");
-            }
-        });
-    });
 </script>

@@ -4,13 +4,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Werden Sie diesen Job beginnen?
+                        Möchten Sie den Job jetzt beginnen?
                     </div>
                 </div>
-                <div class="row" style="text-align:end;">
+                <div class="row" style="text-align:center;">
                     <div>
                         <button type="button" class="modal_close_btn" id="start_job_confirm">BESTÄTIGEN</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">STORNIEREN</button>
+                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
                     </div>
                 </div>
             </div>

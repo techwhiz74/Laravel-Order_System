@@ -149,11 +149,15 @@
         }
     });
 
+    var folderType = 'Originaldatei';
+
     function openOrderDetailModal(id, type) {
         var detail_table;
         $('#detail_id').val(id);
         $('#subfolder_structure1').hide();
         $('#subfolder_structure2').hide();
+
+        folderType = type;
 
         $.ajax({
             url: '{{ __('routes.customer-get-order-detail') }}',
@@ -250,7 +254,7 @@
     }
 
     function multipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('#detail_id').val();
+        window.location.href = '{{ url('multi-download') }}/' + $('#detail_id').val() + '?type=' + folderType;
     }
     $('#subfolder_structure1').click(function() {
         openOrderDetailModal($('#detail_id').val(), 'Originaldatei');

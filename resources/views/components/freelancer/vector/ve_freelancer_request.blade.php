@@ -527,7 +527,7 @@
                                                                 <span
                                                                     style="font-size: 13px;">{{ __('home.add_file') }}...</span>
                                                                 <input type="file" name="files[]" multiple
-                                                                    accept=".jpg, .png, .pdf, .ai, .dst" />
+                                                                    id="ve_freelancer_change_file_input" />
                                                             </span>
                                                             <button type="submit" class="btn btn-primary start"
                                                                 style="visibility: hidden;">
@@ -577,6 +577,7 @@
 </div>
 @include('components.freelancer.vector.start_change_confirm_modal')
 @include('components.freelancer.vector.end_change_confirm_modal')
+@include('components.freelancer.vector.change_upload_success_modal')
 @include('components.freelancer.vector.end_change_error_modal')
 
 <script>
@@ -586,8 +587,10 @@
         }
     });
     var selector = '#ve_change1';
+    var folderType = 'Änderungsdateien Kunde1';
 
     function VectorDetailRequest(id, type) {
+        folderType = type;
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
             selector = '#ve_change1';
@@ -873,7 +876,8 @@
     }
 
     function vector_multipleDownload() {
-        window.location.href = '{{ url('multi-download') }}/' + $('[name=vector_request_id]').val();
+        window.location.href = '{{ url('multi-download') }}/' + $('[name=vector_request_id]').val() + '?type=' +
+            folderType;
     }
     $('#vector_subfolder_structure3_1').click(function() {
         VectorDetailRequest($('[name=vector_request_id]').val(), 'Änderungsdateien Kunde1');
@@ -962,4 +966,25 @@
     function VectorEndChangeError() {
         $('#ve_end_change_error_popup').modal('show');
     }
+    $(function() {
+        $('#ve_freelancer_change_file_input').on('change', function() {
+            var files = $(this)[0].files;
+            for (var i = 0; i < files.length; i++) {
+                var fileName = files[i].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                var fileSize = files[i].size;
+                if ($.inArray(fileExtension, ['exe', 'bat']) !== -1) {
+                    alert('You cannot upload .exe or .bat files');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+                if (fileSize > 25 * 1024 * 1024) {
+                    alert('File size should not exceed 25 MB');
+                    $('#order_form_upload_list tr').remove();
+                    return;
+                }
+            }
+        });
+
+    })
 </script>

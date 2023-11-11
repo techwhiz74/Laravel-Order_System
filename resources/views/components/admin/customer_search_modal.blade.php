@@ -50,6 +50,7 @@
 
     $(function() {
         var $customer_search_result = "";
+        var selectedId = '';
 
         function getCustomers(keyword) {
             $.ajax({
@@ -60,23 +61,15 @@
                 },
                 success: (result) => {
                     var obj = JSON.parse(result);
-                    console.log(result);
-                    $('[name=searched_id]').val(obj.id);
-                    $('[name=customer_number]').val(obj.customer_number);
-                    $('[name=ordered_from]').val(obj.ordered_from);
-                    $("#customer_search_table tbody").html(obj.html);
-                    if ($('[name=selected_customer]:checked')) {
-                        $('[name=seleted_customer_button]').val($(
-                            '[name=selected_customer]:checked').val());
+                    console.log(obj);
 
-                    }
-                    $customer_search_result = obj.customer_number + "\u00A0\u00A0\u00A0\u00A0" + obj
-                        .company + "\u00A0\u00A0\u00A0\u00A0" + obj
-                        .ordered_from + "\u00A0\u00A0\u00A0\u00A0" +
-                        obj.first_name + "\u00A0\u00A0\u00A0\u00A0" + obj.street_number +
-                        "\u00A0\u00A0\u00A0\u00A0" + obj.postal_code + "\u00A0\u00A0\u00A0\u00A0" +
-                        obj.location + "\u00A0\u00A0\u00A0\u00A0" +
-                        obj.email;
+                    $("#customer_search_table tbody").html(obj.html);
+
+                    $('[name=selected_customer]').on('change', function() {
+                        selectedId = $(this).val();
+
+                    });
+
                 },
                 error: (err) => {
                     console.log(err);
@@ -91,10 +84,37 @@
                 $("#customer_search_table").show();
             }
         });
+
         $('#customer_search_result').click(function() {
-            console.log($('[name=seleted_customer_button]').val());
-            $('#adminTableSearchInput').text($customer_search_result);
-            $('#customer_search_popup').modal('hide');
+
+            console.log("selectedId", selectedId);
+            $.ajax({
+                url: '{{ __('routes.admin-customer-searched-result') }}',
+                type: 'GET',
+                data: {
+                    id: selectedId
+                },
+                success: (result) => {
+                    console.log(result);
+                    $('#adminTableSearchInput').text(result.customer_number +
+                        "\u00A0\u00A0\u00A0\u00A0" + result
+                        .company + "\u00A0\u00A0\u00A0\u00A0" + result
+                        .ordered_from + "\u00A0\u00A0\u00A0\u00A0" +
+                        result.first_name + "\u00A0\u00A0\u00A0\u00A0" + result
+                        .street_number +
+                        "\u00A0\u00A0\u00A0\u00A0" + result.postal_code +
+                        "\u00A0\u00A0\u00A0\u00A0" +
+                        result.location + "\u00A0\u00A0\u00A0\u00A0" +
+                        result.email);
+                    $('[name=searched_id]').val(result.id);
+                    $('[name=customer_number]').val(result.customer_number);
+                    $('[name=ordered_from]').val(result.name);
+                    $('#customer_search_popup').modal('hide');
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
         })
     });
 </script>

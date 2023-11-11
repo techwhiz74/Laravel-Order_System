@@ -16,6 +16,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Order_file_upload;
+use App\Models\Customer_parameter;
+use DateTimeZone;
 
 
 
@@ -603,6 +605,11 @@ class AdminController extends Controller
         }
         echo json_encode($data);
     }
+    public function CustomerSearchResult(Request $request)
+    {
+        $customer = User::findOrfail($request->get('id'));
+        return response()->json($customer);
+    }
     public function adminFileUpload(Request $request)
     {
         $type = $request->post('type');
@@ -701,5 +708,359 @@ class AdminController extends Controller
     {
         $id = $request->post('admin_decline_profile_id');
         User::findOrfail($id)->delete();
+    }
+    public function EmParameterTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->addColumn('parameter', function ($row) {
+                    $parameter = '
+                        <div class="d-flex" style="gap:20px;">
+                            <div style="display: flex; margin:auto;">
+                                <button onclick="openEmParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
+                            </div>
+                        </div>';
+                    return $parameter;
+                })
+                ->rawColumns(['parameter'])
+                ->make(true);
+        }
+    }
+    public function VeParameterTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->addColumn('parameter', function ($row) {
+                    $parameter = '
+                        <div class="d-flex" style="gap:20px;">
+                            <div style="display: flex; margin:auto;">
+                                <button onclick="openVeParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
+                            </div>
+                        </div>';
+                    return $parameter;
+                })
+                ->rawColumns(['parameter'])
+                ->make(true);
+        }
+    }
+    public function EmParameter(Request $request)
+    {
+        $parameter = Customer_parameter::where('customer_id', $request->get('id'))->first();
+        return response()->json($parameter);
+    }
+    public function VeParameter(Request $request)
+    {
+        $parameter = Customer_parameter::where('customer_id', $request->get('id'))->first();
+        return response()->json($parameter);
+    }
+    public function AdminGreenTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Offen')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = '<div style="color:red;" class="blink">EXPRESS</div>';
+                    }
+                    return $deliver_time;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->make(true);
+        }
+    }
+    public function AdminYellowTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'In Bearbeitung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = '<div style="color:red;" class="blink">EXPRESS</div>';
+                    }
+                    return $deliver_time;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->make(true);
+        }
+    }
+    public function AdminRedTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Ausgeliefert')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = "EXPRESS ";
+                    }
+                    return $deliver_time;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->make(true);
+        }
+    }
+    public function AdminBlueTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Änderung')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = "EXPRESS ";
+                    }
+                    return $deliver_time;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->make(true);
+        }
+    }
+    public function AdminAllTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('detail', function ($row) {
+
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    return $btn;
+                })
+                ->addColumn('deliver_time', function ($row) {
+                    $deliver_time = '';
+                    if ($row->deliver_time == "STANDARD") {
+                        $deliver_time = "STANDARD";
+                    } else if ($row->deliver_time == "EXPRESS") {
+                        $deliver_time = "EXPRESS ";
+                    }
+                    return $deliver_time;
+                })
+                ->addColumn('request', function ($row) {
+                    $req = '';
+
+                    if ($row->status == 'Änderung') {
+                        $req = '
+                                <div class="d-flex" style="gap:20px;">
+                                    <div style="display: flex; margin:auto;">
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                    </div>
+                                </div>
+                            ';
+                    }
+                    return $req;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->make(true);
+        }
     }
 }

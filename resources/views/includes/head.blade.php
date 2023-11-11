@@ -269,12 +269,17 @@
         $('#free_order_detail_popup').modal("hide");
         $('#ve_freelancer_request_popup').modal("hide");
         $('#customer_search_popup').modal('hide');
+        $('#admin_customer_parameters_em_popup').modal('hide');
+        $('#admin_customer_parameters_ve_popup').modal('hide');
+        $('#admin_order_detail_popup').modal("hide");
+
+
     }
 
     function hideAlertModal() {
         $('#start_job_confirm_popup').modal('hide');
         $('#delete_confirm_popup').modal('hide');
-        $('#end_job_confirm_popup').modal('hide');
+        $('#end_job_success_popup').modal('hide');
         $('#end_job_error_popup').modal('hide');
         $('#start_change_confirm_popup').modal('hide');
         $('#end_change_confirm_popup').modal('hide');
@@ -282,6 +287,11 @@
         $('#ve_start_change_confirm_popup').modal('hide');
         $('#ve_end_change_confirm_popup').modal('hide');
         $('#ve_end_change_error_popup').modal('hide');
+        $('#order_change_success_popup').modal('hide');
+        $('#start_job_success_popup').modal('hide');
+        $('#free_upload_success_popup').modal('hide');
+        $('#em_upload_success_popup').modal('hide');
+        $('#ve_upload_success_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {
