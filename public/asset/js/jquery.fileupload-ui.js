@@ -634,6 +634,21 @@
           }, 3000);
         }
       }
+      if (($('[name=admin_detail_id]').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            $('#admin_all_table_reload_button').trigger('click');
+            $('#admin_yellow_table_reload_button').trigger('click');
+            $('#admin_red_table_reload_button').trigger('click');
+            $('#admin_subfolder_structure1').trigger('click');
+            $('#admin_upload_success_popup').modal('show');
+
+          }, 3000);
+        }
+      }
     },
 
     _cancelHandler: function (e) {

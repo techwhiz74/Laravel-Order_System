@@ -24,6 +24,7 @@ Route::post('/freelancer-job-upload', [FreelancerController::class, 'JobFileUplo
 Route::post('/embroidery-upload', [FreelancerController::class, 'EmbroideryFileUpload'])->name('embroidery-upload');
 Route::post('/vector-upload', [FreelancerController::class, 'VectorFileUpload'])->name('vector-upload');
 Route::post('/admin-upload', [AdminController::class, 'adminFileUpload'])->name('admin-upload');
+Route::post('/admin-job-upload', [AdminController::class, 'JobFileUpload'])->name('admin-job-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
 // admin Route
@@ -61,6 +62,9 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/all-table', [AdminController::class, 'AdminAllTable'])->name('admin-all-table');
     Route::get('/get-order-detail', [FreelancerController::class, 'FreelancergetOrderDetail'])->name('admin-get-order-detail');
     Route::get('/order-detail', [FreelancerController::class, 'FreelancerOrderDetail'])->name('admin-order-detail');
+    Route::get('/parameter', [FreelancerController::class, 'Parameter'])->name('admin-parameter');
+    Route::get('/startjob', [FreelancerController::class, 'StartJob'])->name('admin-startjob');
+    Route::get('/endjob', [FreelancerController::class, 'EndJob'])->name('admin-endjob');
 });
 
 //customer route

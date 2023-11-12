@@ -160,6 +160,8 @@
 <script src="{{ asset('asset/js/demo_job.js') }}"></script>
 <script src="{{ asset('asset/js/demo_embroidery.js') }}"></script>
 <script src="{{ asset('asset/js/demo_vector.js') }}"></script>
+<script src="{{ asset('asset/js/demo_admin_job.js') }}"></script>
+
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
 <script>
@@ -292,6 +294,10 @@
         $('#free_upload_success_popup').modal('hide');
         $('#em_upload_success_popup').modal('hide');
         $('#ve_upload_success_popup').modal('hide');
+        $('#admin_start_job_confirm_popup').modal('hide');
+        $('#admin_start_job_success_popup').modal('hide');
+        $('#admin_upload_success_popup').modal('hide');
+        $('#admin_end_job_success_popup').modal('hide');
     }
     $(document).on({
         ajaxStart: function() {

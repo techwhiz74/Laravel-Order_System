@@ -171,6 +171,11 @@ return [
     'admin-all-table' => '/en/admin/all-table',
     'admin-get-order-detail' => '/en/admin/get-order-detail',
     'admin-order-detail' => '/en/admin/order-detail',
+    'admin-parameter' => '/en/admin/parameter',
+    'admin-startjob' => '/en/admin/startjob',
+    'admin-endjob' => '/en/admin/endjob',
+
+
 
 
 

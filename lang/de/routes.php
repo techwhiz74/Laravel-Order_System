@@ -174,5 +174,8 @@ return [
     'admin-all-table' => '/de/admin/all-table',
     'admin-get-order-detail' => '/de/admin/get-order-detail',
     'admin-order-detail' => '/de/admin/order-detail',
+    'admin-parameter' => '/de/admin/parameter',
+    'admin-startjob' => '/de/admin/startjob',
+    'admin-endjob' => '/de/admin/endjob',
 
 ];

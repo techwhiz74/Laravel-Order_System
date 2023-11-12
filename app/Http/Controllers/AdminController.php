@@ -1063,4 +1063,66 @@ class AdminController extends Controller
                 ->make(true);
         }
     }
+    public function JobFileUpload(Request $request)
+    {
+        $order_id = $request->post('admin_detail_id');
+        $order = Order::findOrfail($order_id);
+
+
+        $order->status = 'In Bearbeitung';
+        $order->save();
+
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+
+        if ($order->type == 'Embroidery') {
+            $filePath = $order->customer_number . '/' .
+                $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Stickprogramm/';
+        } else if ($order->type == 'Vector') {
+            $filePath = $order->customer_number . '/' .
+                $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Vektordatei/';
+        }
+
+        $path = $uploadDir . $filePath;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
+    }
 }

@@ -589,12 +589,10 @@
         </div>
     </div>
 </div>
-@include('components.freelancer.start_job_confirm_modal')
-@include('components.freelancer.start_job_success_modal')
-@include('components.freelancer.free_upload_success_modal')
-@include('components.freelancer.delete_confirm_modal')
-@include('components.freelancer.end_job_success_modal')
-@include('components.freelancer.end_job_error_modal')
+@include('components.admin.start_job_confirm_modal')
+@include('components.admin.start_job_success_modal')
+@include('components.admin.detail_upload_success_modal')
+@include('components.admin.end_job_success_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -628,6 +626,7 @@
                 id
             },
             success: (data) => {
+                console.log(data);
                 var folderArray = [];
                 data.detail.map((item, index) => {
                     item = item.split('/')[3];
@@ -743,7 +742,7 @@
 
         //customer parameter information
         $.ajax({
-            url: '{{ __('routes.freelnacer-parameter') }}',
+            url: '{{ __('routes.admin-parameter') }}',
             type: 'GET',
             data: {
                 id: $('[name=admin_detail_id]').val()
@@ -783,28 +782,21 @@
 
 
     function AdminStartJob() {
-        StartJobConfirmAlert();
-        $('#start_job_confirm').click(function() {
+        AdminStartJobConfirmAlert();
+        $('#admin_start_job_confirm').click(function() {
             $.ajax({
-                url: '{{ __('routes.embroidery-freelancer-startjob') }}',
+                url: '{{ __('routes.admin-startjob') }}',
                 type: 'GET',
                 data: {
                     start_job_id: $('[name=admin_detail_id]').val()
                 },
                 success: () => {
-                    $('#em_freelancer_table_reload_btn').trigger('click');
-                    $('#em_freelancer_all_table_reload_button').trigger('click');
-                    $('#em_freelancer_green_table_reload_button').trigger('click');
-                    $('#em_freelancer_yellow_table_reload_button').trigger('click');
-                    $('#em_freelancer_red_table_reload_button').trigger('click');
-                    $('#ve_freelancer_table_reload_btn').trigger('click');
-                    $('#ve_freelancer_all_table_reload_button').trigger('click');
-                    $('#ve_freelancer_green_table_reload_button').trigger('click');
-                    $('#ve_freelancer_yellow_table_reload_button').trigger('click');
-                    $('#ve_freelancer_red_table_reload_button').trigger('click');
+                    $('#admin_all_table_reload_button').trigger('click');
+                    $('#admin_green_table_reload_button').trigger('click');
+                    $('#admin_yellow_table_reload_button').trigger('click');
                     $('#admin_green_job').hide();
-                    $('#start_job_confirm_popup').modal('hide');
-                    $('#start_job_success_popup').modal('show');
+                    $('#admin_start_job_confirm_popup').modal('hide');
+                    $('#admin_start_job_success_popup').modal('show');
                 },
                 error: () => {
                     console.error("error");
@@ -816,7 +808,6 @@
 
     function AdminUpdateJob() {
         $('#admin_job_upload_div').show();
-        // $('#freelancer_job_end_div').show();
         $('#admin_job_update_div').hide();
     }
 
@@ -825,41 +816,34 @@
     })
     $('.admin_job_start_submit').click(function(e) {
         e.preventDefault();
-        var freelancer_job_data = new FormData();
-        freelancer_job_data.append('admin_detail_id', $('[name=admin_detail_id]').val());
+        var admin_job_data = new FormData();
+        admin_job_data.append('admin_detail_id', $('[name=admin_detail_id]').val());
         $('#admin_job_upload').find('.fileupload-buttonbar .start').trigger('click');
     })
 
-    function EndJob() {
+    function AdminEndJob() {
         $.ajax({
-            url: '{{ __('routes.embroidery-freelancer-endjob') }}',
+            url: '{{ __('routes.admin-endjob') }}',
             type: 'GET',
             data: {
                 end_job_id: $('[name=admin_detail_id]').val()
             },
             success: () => {
-                $('#em_freelancer_table_reload_btn').trigger('click');
-                $('#em_freelancer_all_table_reload_button').trigger('click');
-                $('#em_freelancer_green_table_reload_button').trigger('click');
-                $('#em_freelancer_yellow_table_reload_button').trigger('click');
-                $('#em_freelancer_red_table_reload_button').trigger('click');
-                $('#ve_freelancer_table_reload_btn').trigger('click');
-                $('#ve_freelancer_all_table_reload_button').trigger('click');
-                $('#ve_freelancer_green_table_reload_button').trigger('click');
-                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
-                $('#ve_freelancer_red_table_reload_button').trigger('click');
+                $('#admin_all_table_reload_button').trigger('click');
+                $('#admin_yellow_table_reload_button').trigger('click');
+                $('#admin_red_table_reload_button').trigger('click');
+
                 $('#admin_yellow_job').hide();
-                $('#free_upload_success_popup').modal('hide');
+                $('#admin_upload_success_popup').modal('hide');
                 setTimeout(() => {
-                    $('#end_job_success_popup').modal('show');
+                    $('#admin_end_job_success_popup').modal('show');
                 }, 1000);
             },
             error: () => {
-                $('#end_job_success_popup').modal('hide');
+                $('#admin_end_job_success_popup').modal('hide');
                 EndJobError();
             }
         })
-
     }
 
     function DeleteFile(id) {
@@ -880,9 +864,8 @@
         })
     }
 
-    function StartJobConfirmAlert() {
-        console.log("sadf");
-        $('#start_job_confirm_popup').modal('show');
+    function AdminStartJobConfirmAlert() {
+        $('#admin_start_job_confirm_popup').modal('show');
     }
 
     function DeleteConfirmAlert() {

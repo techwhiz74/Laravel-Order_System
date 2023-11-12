@@ -1173,6 +1173,7 @@ class FreelancerController extends Controller
         $order_id = $request->post('free_detail_id');
         $order = Order::findOrfail($order_id);
 
+
         $order->status = 'In Bearbeitung';
         $order->save();
 

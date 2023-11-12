@@ -831,7 +831,8 @@ section {
 #admin_blue_table thead,
 #admin_all_table thead,
 #admin_parameter_em_table thead,
-#admin_parameter_ve_table thead {
+#admin_parameter_ve_table thead,
+#admin_order_detail thead {
   background: #c4ae79;
   color: #fff;
   vertical-align: middle;
@@ -1835,7 +1836,11 @@ select#status-filter:focus-visible {
 #em_upload_success_popup .modal-dialog,
 #ve_upload_success_popup .modal-dialog,
 #ve_end_change_confirm_popup .modal-dialog,
-#ve_end_change_error_popup .modal-dialog {
+#ve_end_change_error_popup .modal-dialog,
+#admin_start_job_confirm_popup .modal-dialog,
+#admin_start_job_success_popup .modal-dialog,
+#admin_upload_success_popup .modal-dialog,
+#admin_end_job_success_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1860,7 +1865,11 @@ select#status-filter:focus-visible {
 #em_upload_success_popup .modal-content,
 #ve_upload_success_popup .modal-content,
 #ve_end_change_confirm_popup .modal-content,
-#ve_end_change_error_popup .modal-content {
+#ve_end_change_error_popup .modal-content,
+#admin_start_job_confirm_popup .modal-content,
+#admin_start_job_success_popup .modal-content,
+#admin_upload_success_popup .modal-content,
+#admin_end_job_success_popup .modal-content {
   max-width: 500px;
   margin: 0 auto;
   position: absolute;
@@ -1883,7 +1892,11 @@ select#status-filter:focus-visible {
 #em_upload_success_popup .modal-body,
 #ve_upload_success_popup .modal-body,
 #ve_end_change_confirm_popup .modal-body,
-#ve_end_change_error_popup .modal-body {
+#ve_end_change_error_popup .modal-body,
+#admin_start_job_confirm_popup .modal-body,
+#admin_start_job_success_popup .modal-body,
+#admin_upload_success_popup .modal-body,
+#admin_end_job_success_popup .modal-body {
   padding: 40px 20px 20px 20px !important;
   display: flex;
   flex-direction: column;
