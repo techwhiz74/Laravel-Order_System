@@ -833,7 +833,8 @@ section {
 #admin_parameter_em_table thead,
 #admin_parameter_ve_table thead,
 #admin_order_detail thead,
-#admin_change_order_detail thead {
+#admin_change_order_detail thead,
+#customer_searched_tooltip_table thead {
   background: #c4ae79;
   color: #fff;
   vertical-align: middle;
@@ -3596,4 +3597,32 @@ td {
 
 .admin_customer_profile_input:focus {
   border-color: #555 !important;
+}
+
+.tooltiptext {
+  position: absolute;
+  background-color: #fff;
+  width: 54.7vw;
+  border: 1px solid #aaa;
+}
+
+input[name="selected_customer"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #ddd;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+input[name="selected_customer"]:focus-within::after {
+  /* Display the custom checkbox icon (checkmark) */
+  content: '\2713';
+  font-size: 12px;
+  color: #fff;
+  background-color: #c3ac6d;
+  font-weight: 900;
+  scale: 1.5 1;
 }

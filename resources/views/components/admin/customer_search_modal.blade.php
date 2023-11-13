@@ -49,6 +49,7 @@
     });
 
     $(function() {
+        $('.tooltiptext').hide();
         var $customer_search_result = "";
         var selectedId = '';
 
@@ -97,15 +98,23 @@
                 success: (result) => {
                     console.log(result);
                     $('#adminTableSearchInput').text(result.customer_number +
-                        "\u00A0\u00A0\u00A0\u00A0" + result
-                        .company + "\u00A0\u00A0\u00A0\u00A0" + result
-                        .ordered_from + "\u00A0\u00A0\u00A0\u00A0" +
-                        result.first_name + "\u00A0\u00A0\u00A0\u00A0" + result
-                        .street_number +
-                        "\u00A0\u00A0\u00A0\u00A0" + result.postal_code +
-                        "\u00A0\u00A0\u00A0\u00A0" +
-                        result.location + "\u00A0\u00A0\u00A0\u00A0" +
-                        result.email);
+                        "\u00A0\u00A0\u00A0\u00A0" + result.company);
+
+                    $('#customer_serched_result_customer_number').text(result
+                        .customer_number);
+                    $('#customer_serched_result_company').text(result.company);
+                    $('#customer_serched_result_name').text(result.name);
+                    $('#customer_serched_result_first_name').text(result.first_name);
+                    $('#customer_serched_result_street_number').text(result.street_number);
+                    $('#customer_serched_result_postal_code').text(result.postal_code);
+                    $('#customer_serched_result_location').text(result.location);
+
+                    $(".SearchInputWrapper").hover(function() {
+                        console.log('hovered');
+                        $('.tooltiptext').show();
+                    }, function() {
+                        $('.tooltiptext').hide();
+                    });
                     $('[name=searched_id]').val(result.id);
                     $('[name=customer_number]').val(result.customer_number);
                     $('[name=ordered_from]').val(result.name);

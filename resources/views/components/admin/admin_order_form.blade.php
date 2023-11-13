@@ -243,7 +243,37 @@
     <div class="order_fome_container" style="padding-top:10px !important;">
         <div style="margin-block: 10px;">
             <div class="SearchInputWrapper">
-                <div id="adminTableSearchInput">Kunden suchen</div>
+                <div id="adminTableSearchInput">
+                    <div class="tooltip">Kunden suchen
+                    </div>
+                </div>
+                <div class="tooltiptext">
+                    <table class="table table-striped" style="font-size:11.5px; margin-bottom:0 !important;"
+                        id="customer_searched_tooltip_table">
+                        <thead>
+                            <tr>
+                                <th>Kundennr</th>
+                                <th>Firma</th>
+                                <th>Name</th>
+                                <th>Vorname</th>
+                                <th>Straße, Nr.</th>
+                                <th>Postleitzahl</th>
+                                <th>Ort</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="customer_serched_result_customer_number"></td>
+                                <td id="customer_serched_result_company"></td>
+                                <td id="customer_serched_result_name"></td>
+                                <td id="customer_serched_result_first_name"></td>
+                                <td id="customer_serched_result_street_number"></td>
+                                <td id="customer_serched_result_postal_code"></td>
+                                <td id="customer_serched_result_location"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="admin_search_customer_validation">
                 Suchen Sie einen Kunden, der bestellen muss
@@ -319,7 +349,8 @@
                             <div class="row product-select-items" style="font-size: 13px;">
                                 <div class="col-20">
                                     <div>
-                                        <input type="checkbox" value="{{ __('home.working pants') }}" name="example" />
+                                        <input type="checkbox" value="{{ __('home.working pants') }}"
+                                            name="example" />
                                         {{ __('home.working pants') }}
                                     </div>
                                     <div>
