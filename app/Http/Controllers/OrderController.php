@@ -711,9 +711,6 @@ class OrderController extends Controller
             $order->save();
         }
 
-        $request->validate([
-            'file' => ['required', 'file', new ExcludeFileTypes],
-        ]);
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .

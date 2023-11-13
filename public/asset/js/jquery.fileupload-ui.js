@@ -657,7 +657,6 @@
           setTimeout(() => {
             $('#admin_change_subfolder_structure3_1').trigger('click');
             $('#admin_change_upload_success_popup').modal('show');
-
           }, 3000);
         }
       }

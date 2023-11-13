@@ -545,7 +545,7 @@
                                                                 <span
                                                                     style="font-size: 13px;">{{ __('home.add_file') }}...</span>
                                                                 <input type="file" name="files[]" multiple
-                                                                    id="freelancer_detail_file_input" />
+                                                                    id="admin_detail_file_input" />
                                                             </span>
                                                             <button type="submit" class="btn btn-primary start"
                                                                 style="visibility: hidden;">
@@ -877,7 +877,7 @@
         $('#end_job_error_popup').modal('show');
     }
     $(function() {
-        $('#freelancer_detail_file_input').on('change', function() {
+        $('#admin_detail_file_input').on('change', function() {
             var files = $(this)[0].files;
             for (var i = 0; i < files.length; i++) {
                 var fileName = files[i].name;

@@ -628,7 +628,7 @@
                                 <div style="display: flex; flex-direction:column; justify-content:space-between">
                                     <div id="admin_change_upload_div">
                                         <form action="" id="admin_change_uplaod_form"
-                                            style="height: 230px; display:flex; flex-direction:column; justify-content:space-between;">
+                                            style="height: 280px; display:flex; flex-direction:column; justify-content:space-between;">
                                             <input type="hidden" name="admin_change_id" value="" />
                                             <input type="hidden" name="admin_change_time" value="" />
                                             <div style="display: flex; overflow-y:auto;">
@@ -646,7 +646,7 @@
                                                                 <span
                                                                     style="font-size: 13px;">{{ __('home.add_file') }}...</span>
                                                                 <input type="file" name="files[]" multiple
-                                                                    id="em_freelancer_change_file_input" />
+                                                                    id="admin_change_file_input" />
                                                             </span>
                                                             <button type="submit" class="btn btn-primary start"
                                                                 style="visibility: hidden;">
@@ -1114,7 +1114,7 @@
         $('#admin_yellow_change').hide();
     }
     $(function() {
-        $('#em_freelancer_change_file_input').on('change', function() {
+        $('#admin_change_file_input').on('change', function() {
             var files = $(this)[0].files;
             for (var i = 0; i < files.length; i++) {
                 var fileName = files[i].name;
