@@ -161,6 +161,7 @@
 <script src="{{ asset('asset/js/demo_embroidery.js') }}"></script>
 <script src="{{ asset('asset/js/demo_vector.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin_job.js') }}"></script>
+<script src="{{ asset('asset/js/demo_admin_change.js') }}"></script>
 
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
@@ -274,7 +275,7 @@
         $('#admin_customer_parameters_em_popup').modal('hide');
         $('#admin_customer_parameters_ve_popup').modal('hide');
         $('#admin_order_detail_popup').modal("hide");
-
+        $('#admin_change_popup').modal('hide');
 
     }
 
@@ -298,6 +299,9 @@
         $('#admin_start_job_success_popup').modal('hide');
         $('#admin_upload_success_popup').modal('hide');
         $('#admin_end_job_success_popup').modal('hide');
+        $('#admin_start_change_confirm_popup').modal('hide');
+        $('#admin_change_upload_success_popup').modal('hide');
+
     }
     $(document).on({
         ajaxStart: function() {

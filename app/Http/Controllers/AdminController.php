@@ -982,7 +982,7 @@ class AdminController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -1052,7 +1052,7 @@ class AdminController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
                                     </div>
                                 </div>
                             ';
@@ -1124,5 +1124,88 @@ class AdminController extends Controller
             }
         }
         return "OK!";
+    }
+    public function ChangeFileUpload(Request $request)
+    {
+        $freelancer_request_id = $request->post('admin_change_id');
+        $order = Order::findOrfail($freelancer_request_id);
+        $customer = User::findOrfail($order->user_id);
+        $time = $request->post('admin_change_time');
+
+        OrderChange::where('time', $time)->delete();
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
+        if ($order->type == 'Embroidery') {
+            $order_change->changed_from = "freelancer_em";
+        } else {
+            $order_change->changed_from = "freelancer_ve";
+        }
+        $order_change->save();
+
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_em')->count();
+        $folderName = 'Stickprogramm Änderung' . ($folderCount) . '/';
+        $path = $uploadDir . $filePath . $folderName;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storePubliclyAs($path, $fileName)) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                        $order_file_upload->save();
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+        return "OK!";
+    }
+    public function EndChange(Request $request)
+    {
+        $order = Order::findOrfail($request->get('end_change_id'));
+        $order_change_count = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
+        if ($order_change_count > 0) {
+            $order->status = 'Ausgeliefert';
+            $order->save();
+        } else {
+            return response()->json(['message' => 'Error'], 500);
+        }
     }
 }

@@ -700,4 +700,5 @@
     @include('components.freelancer.vector.ve_freelancer_request')
     @include('components.freelancer.free-order-detail')
     @include('components.admin.admin-order-detail')
+    @include('components.admin.admin_order_change')
 </div>

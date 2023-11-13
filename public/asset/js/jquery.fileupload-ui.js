@@ -649,6 +649,18 @@
           }, 3000);
         }
       }
+      else if (($('[name=admin_change_id]').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            $('#admin_change_subfolder_structure3_1').trigger('click');
+            $('#admin_change_upload_success_popup').modal('show');
+
+          }, 3000);
+        }
+      }
     },
 
     _cancelHandler: function (e) {

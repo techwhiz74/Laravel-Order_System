@@ -174,6 +174,14 @@ return [
     'admin-parameter' => '/en/admin/parameter',
     'admin-startjob' => '/en/admin/startjob',
     'admin-endjob' => '/en/admin/endjob',
+    'admin-get-request-detail' => '/en/admin/get-request-detail',
+    'admin_change-parameter' => '/en/admin/change-parameter',
+    'admin-change-order_detail' => '/en/admin/change-order_detail',
+    'admin-endchange' => '/en/admin/endchange',
+
+
+
+
 
 
 

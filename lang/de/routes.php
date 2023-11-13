@@ -177,5 +177,8 @@ return [
     'admin-parameter' => '/de/admin/parameter',
     'admin-startjob' => '/de/admin/startjob',
     'admin-endjob' => '/de/admin/endjob',
-
+    'admin-get-request-detail' => '/de/admin/get-request-detail',
+    'admin-change-parameter' => '/de/admin/change-parameter',
+    'admin-change-order_detail' => '/de/admin/change-order_detail',
+    'admin-endchange' => '/de/admin/endchange',
 ];
