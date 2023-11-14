@@ -583,7 +583,9 @@ class AdminController extends Controller
                     ->orWhere('company', 'LIKE', '%' . $request->search_filter . '%')
                     ->orWhere('postal_code', 'LIKE', '%' . $request->search_filter . '%');
             })->get();
+
         $html = '';
+        $data = [];
         if (count($customers) > 0) {
             foreach ($customers as $item) {
                 $html .= '<tr><td>' . $item->customer_number . '</td>' .
@@ -596,12 +598,13 @@ class AdminController extends Controller
                     '<td>' . $item->postal_code . '</td>' .
                     '<td>' . $item->location . '</td>' .
                     '<td>' . $item->country . '</td>' .
-                    '<td style="max-width:50px !important;"><input type="radio" name="selected_customer" value="' . $item->id . '"></td></tr>';
+                    '<td style="max-width:50px !important;"><input type="checkbox" name="selected_customer" value="' . $item->id . '"></td></tr>';
                 $data['id'] = $item->id;
                 $data['html'] = $html;
             }
         } else {
-            $html .= '<tr><td colspan="9" class="text-center">No data</td></tr>';
+            $html .= '<tr><td colspan="11" class="text-center">Keine Daten</td></tr>';
+            $data['html'] = $html;
         }
         echo json_encode($data);
     }

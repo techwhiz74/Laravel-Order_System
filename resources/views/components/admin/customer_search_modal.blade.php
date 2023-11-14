@@ -68,7 +68,7 @@
 
                     $('[name=selected_customer]').on('change', function() {
                         selectedId = $(this).val();
-
+                        $('[name=selected_customer]').not(this).prop('checked', false);
                     });
 
                 },

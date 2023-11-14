@@ -3602,7 +3602,7 @@ td {
 .tooltiptext {
   position: absolute;
   background-color: #fff;
-  width: 54.7vw;
+  width: calc(100% - 44vw);
   border: 1px solid #aaa;
 }
 
@@ -3617,7 +3617,7 @@ input[name="selected_customer"] {
   justify-content: center;
 }
 
-input[name="selected_customer"]:focus-within::after {
+input[name="selected_customer"]:checked::before {
   /* Display the custom checkbox icon (checkmark) */
   content: '\2713';
   font-size: 12px;
