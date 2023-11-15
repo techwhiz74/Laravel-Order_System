@@ -19,6 +19,7 @@
                             <th style="min-width: 150px !important;">{{ __('home.status') }}</th>
                             <th style="min-width: 110px !important; text-align:center !important;">
                                 {{ __('home.detail') }}</th>
+                            <th style="min-width: 80px !important; text-align:center;">{{ __('home.change') }}</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -91,6 +92,12 @@
                 {
                     data: 'detail',
                     name: 'detail',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'action',
+                    name: 'action',
                     orderable: false,
                     searchable: false
                 },

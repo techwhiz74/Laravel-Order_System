@@ -850,7 +850,8 @@ section {
 
 #view-order.table>:not(caption)>*>*,
 #customer_staffs.table>:not(caption)>*>*,
-#customer_search_table.table>:not(caption)>*>* {
+#customer_search_table.table>:not(caption)>*>*,
+#admin_all_table.table>:not(caption)>*>* {
   padding: 10px;
 }
 
@@ -867,7 +868,6 @@ section {
 #admin_green_table.table>:not(caption)>*>*,
 #admin_yellow_table.table>:not(caption)>*>*,
 #admin_red_table.table>:not(caption)>*>*,
-#admin_all_table.table>:not(caption)>*>*,
 #admin_blue_table.table>:not(caption)>*>* {
   padding: 12px;
 }
@@ -889,6 +889,7 @@ section {
   width: 100%;
   margin-bottom: 5px;
 }
+
 
 #view-order .btn-secondary,
 #customer_staffs .btn-secondary {
@@ -1756,7 +1757,8 @@ select#status-filter:focus-visible {
   margin-bottom: 10px;
 }
 
-#order_change_popup .modal-dialog {
+#order_change_popup .modal-dialog,
+#admin_request_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1768,11 +1770,12 @@ select#status-filter:focus-visible {
   margin-top: 0;
 }
 
-#order_change_popup .modal-content {
+#order_change_popup .modal-content,
+#admin_request_popup .modal-content {
   max-width: 1000px;
   margin: 0 auto;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -1845,7 +1848,11 @@ select#status-filter:focus-visible {
 #admin_end_job_success_popup .modal-dialog,
 #admin_start_change_confirm_popup .modal-dialog,
 #admin_change_upload_success_popup .modal-dialog,
-#admin_end_change_success_popup .modal-dialog {
+#admin_end_change_success_popup .modal-dialog,
+#delete_order_confirm_popup .modal-dialog,
+#admin_request_success_popup .modal-dialog,
+#admin_delete_detail_file_confirm_popup .modal-dialog,
+#admin_delete_change_file_confirm_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1877,7 +1884,11 @@ select#status-filter:focus-visible {
 #admin_end_job_success_popup .modal-content,
 #admin_start_change_confirm_popup .modal-content,
 #admin_change_upload_success_popup .modal-content,
-#admin_end_change_success_popup .modal-content {
+#admin_end_change_success_popup .modal-content,
+#delete_order_confirm_popup .modal-content,
+#admin_request_success_popup .modal-content,
+#admin_delete_detail_file_confirm_popup .modal-content,
+#admin_delete_change_file_confirm_popup .modal-content {
   max-width: 500px;
   margin: 0 auto;
   position: absolute;
@@ -1907,7 +1918,11 @@ select#status-filter:focus-visible {
 #admin_end_job_success_popup .modal-body,
 #admin_start_change_confirm_popup .modal-body,
 #admin_change_upload_success_popup .modal-body,
-#admin_end_change_success_popup .modal-body {
+#admin_end_change_success_popup .modal-body,
+#delete_order_confirm_popup .modal-body,
+#admin_request_success_popup .modal-body,
+#admin_delete_detail_file_confirm_popup .modal-body,
+#admin_delete_change_file_confirm_popup .modal-body {
   padding: 40px 20px 20px 20px !important;
   display: flex;
   flex-direction: column;
@@ -2815,7 +2830,8 @@ select#status-filter:focus-visible {
   justify-content: flex-end;
 }
 
-#tableSearchInput {
+#tableSearchInput,
+#adminAllTableSearchInput {
   background-image: url('/asset/images/search-solid.svg');
   background-size: 20px;
   background-position: 96%;
@@ -2833,12 +2849,17 @@ select#status-filter:focus-visible {
   border: 1px solid #888;
 }
 
+#adminAllTableSearchInput:focus {
+  border: 1px solid #888;
+}
+
 .DatePickerWrapperStart {
   width: 150px;
   margin-left: 10px;
 }
 
-#tableDatepickerInputStart {
+#tableDatepickerInputStart,
+#adminTableDatepickerInputStart {
   background-image: url('/asset/images/datePicker.svg');
   background-size: 20px;
   background-position: 96%;
@@ -2856,12 +2877,17 @@ select#status-filter:focus-visible {
   border: 1px solid #888;
 }
 
+#adminTableDatepickerInputStart:focus {
+  border: 1px solid #888;
+}
+
 .DatePickerWrapperEnd {
   width: 150px;
   margin-left: 10px;
 }
 
-#tableDatepickerInputEnd {
+#tableDatepickerInputEnd,
+#adminTableDatepickerInputEnd {
   background-image: url('/asset/images/datePicker.svg');
   background-size: 20px;
   background-position: 96%;
@@ -2876,6 +2902,10 @@ select#status-filter:focus-visible {
 }
 
 #tableDatepickerInputEnd:focus {
+  border: 1px solid #888;
+}
+
+#adminTableDatepickerInputEnd:focus {
   border: 1px solid #888;
 }
 
@@ -2925,7 +2955,8 @@ select#status-filter:focus-visible {
   padding: 40px 10vw;
 }
 
-#order_submit_form {
+#order_submit_form,
+#admin_order_submit_form {
   border: 1px solid;
   padding: 20px;
   font-size: 13px;
@@ -3415,7 +3446,8 @@ td {
 .embroidery_upload_submit,
 .vector_upload_submit,
 .admin_job_start_submit,
-.admin_change_upload_submit {
+.admin_change_upload_submit,
+.admin_request_submit {
   color: white;
   background-color: #c3ac6d;
   border: none;

@@ -176,8 +176,15 @@ return [
     'admin-endjob' => '/en/admin/endjob',
     'admin-get-request-detail' => '/en/admin/get-request-detail',
     'admin_change-parameter' => '/en/admin/change-parameter',
-    'admin-change-order_detail' => '/en/admin/change-order_detail',
+    'admin-change-order-detail' => '/en/admin/change-order-detail',
     'admin-endchange' => '/en/admin/endchange',
+    'admin-delete-order' => '/en/admin/delete-order',
+    'admin-request-text' => '/en/admin/request-text',
+    'admin-detail-delete-file' => '/en/admin/detail-delete-file/',
+    'admin-change_delete_file' => '/en/admin/change_delete_file/',
+
+
+
 
 
 

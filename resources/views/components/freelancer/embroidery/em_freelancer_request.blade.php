@@ -1006,6 +1006,8 @@
     })
     $('.embroidery_upload_submit').click(function(e) {
         e.preventDefault();
+        $('[name=free_detail_id]').val("");
+        $('[name=vector_request_id]').val("");
         var freelancer_request_data = new FormData();
         freelancer_request_data.append('embroidery_request_id', $('[name=embroidery_request_id]').val());
         freelancer_request_data.append('embroidery_time', $('[name=embroidery_time]').val());

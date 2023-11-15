@@ -813,6 +813,8 @@
     })
     $('.freelancer_job_start_submit').click(function(e) {
         e.preventDefault();
+        $('[name=embroidery_request_id]').val("");
+        $('[name=vector_request_id]').val("");
         var freelancer_job_data = new FormData();
         freelancer_job_data.append('free_detail_id', $('[name=free_detail_id]').val());
         $('#freelancer_job_upload').find('.fileupload-buttonbar .start').trigger('click');

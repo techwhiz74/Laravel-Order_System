@@ -179,6 +179,10 @@ return [
     'admin-endjob' => '/de/admin/endjob',
     'admin-get-request-detail' => '/de/admin/get-request-detail',
     'admin-change-parameter' => '/de/admin/change-parameter',
-    'admin-change-order_detail' => '/de/admin/change-order_detail',
+    'admin-change-order-detail' => '/de/admin/change-order-detail',
     'admin-endchange' => '/de/admin/endchange',
+    'admin-delete-order' => '/de/admin/delete-order',
+    'admin-request-text' => '/de/admin/request-text',
+    'admin-detail-delete-file' => '/de/admin/detail-delete-file/',
+    'admin-change_delete_file' => '/de/admin/change_delete_file/',
 ];

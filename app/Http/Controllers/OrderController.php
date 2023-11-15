@@ -454,7 +454,7 @@ class OrderController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
                     return $btn;
                 })
 
@@ -897,13 +897,6 @@ class OrderController extends Controller
         $order->status = 'Änderung';
         $order->save();
     }
-    // public function changeOrderIndex(Request $request)
-    // {
-    //     $order_file_upload = Order_file_upload::findOrFail($request->post('id'));
-    //     $order_file_upload->index = $request->post('index');
-    //     $order_file_upload->save();
-    //     return response()->json($order_file_upload);
-    // }
 
     public function importData(Request $request)
     {

@@ -557,6 +557,8 @@
 
       console.log(data);
       button.prop('disabled', true);
+
+
       if (($('[name=project_name]').val() != "") && ($(
         '[name=size]').val() != "") && ($('#selected_products')
           .text() != "")) {
@@ -569,12 +571,14 @@
             $('#btn_table_refresh').trigger('click');
             $('#customer_dahsboard_table_reload_button').trigger('click');
             $('#order_form_success_popup').modal('show');
+            $('#admin_green_table_reload_button').trigger('click');
+            $('#admin_all_table_reload_button').trigger('click');
           }, 3000);
         }
       }
 
       // case of customer order change, red to blue
-      else if (($('[name=order_id]').val() != "")) {
+      if (($('[name=order_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -606,12 +610,11 @@
             $('#ve_freelancer_red_table_reload_button').trigger('click');
             $('#free_subfolder_structure1').trigger('click');
             $('#free_upload_success_popup').modal('show');
-
           }, 3000);
         }
       }
       // // case of embroidery freelancer
-      else if (($('[name=embroidery_request_id]').val() != "")) {
+      if (($('[name=embroidery_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -623,7 +626,7 @@
         }
       }
       // // case of vector freelancer
-      else if (($('[name=vector_request_id]').val() != "")) {
+      if (($('[name=vector_request_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -634,22 +637,19 @@
           }, 3000);
         }
       }
+
       if (($('[name=admin_detail_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
           template.css('opacity', '1');
           setTimeout(() => {
-            $('#admin_all_table_reload_button').trigger('click');
-            $('#admin_yellow_table_reload_button').trigger('click');
-            $('#admin_red_table_reload_button').trigger('click');
             $('#admin_subfolder_structure1').trigger('click');
             $('#admin_upload_success_popup').modal('show');
-
           }, 3000);
         }
       }
-      else if (($('[name=admin_change_id]').val() != "")) {
+      if (($('[name=admin_change_id]').val() != "")) {
         if (data && data.submit) {
           data.submit();
           template.addClass('in');
@@ -657,6 +657,19 @@
           setTimeout(() => {
             $('#admin_change_subfolder_structure3_1').trigger('click');
             $('#admin_change_upload_success_popup').modal('show');
+          }, 3000);
+        }
+      }
+      if (($('[name=admin_request_id]').val() != "")) {
+        if (data && data.submit) {
+          data.submit();
+          template.addClass('in');
+          template.css('opacity', '1');
+          setTimeout(() => {
+            $('#admin_all_table_reload_button').trigger('click');
+            $('#admin_red_table_reload_button').trigger('click');
+            $('#admin_blue_table_reload_button').trigger('click');
+            $('#admin_request_success_popup').modal('show');
           }, 3000);
         }
       }

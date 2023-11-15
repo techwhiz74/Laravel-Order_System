@@ -604,7 +604,7 @@
                                                 <th style="text-align: center">{{ __('home.index') }}</th>
                                                 <th style="text-align: center">{{ __('home.extension') }}</th>
                                                 <th style="text-align: center">{{ __('home.download') }}</th>
-
+                                                <th style="text-align: center">{{ __('home.delete') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody style="text-align: center"></tbody>
@@ -701,6 +701,7 @@
 @include('components.admin.start_change_confirm_modal')
 @include('components.admin.change_upload_success_modal')
 @include('components.admin.end_change_success_modal')
+@include('components.admin.delete_change_file_confirm_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -959,7 +960,8 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: "{{ __('routes.admin-change-order_detail') }}",
+                url: '{{ __('routes.admin-change-order-detail') }}',
+                type: 'GET',
                 data: function(d) {
                     d.id = id;
                     d.type = type;
@@ -988,6 +990,12 @@
                 {
                     data: 'download',
                     name: 'download',
+                    orderable: false,
+                    searchable: false
+                },
+                {
+                    data: 'delete',
+                    name: 'delete',
                     orderable: false,
                     searchable: false
                 },
@@ -1059,6 +1067,8 @@
     })
     $('.admin_change_upload_submit').click(function(e) {
         e.preventDefault();
+        $('[name=admin_detail_id]').val("");
+        $('[name=admin_request_id]').val("");
         var admin_change_data = new FormData();
         admin_change_data.append('admin_change_id', $('[name=admin_change_id]').val());
         admin_change_data.append('admin_change_time', $('[name=admin_change_time]').val());
@@ -1073,6 +1083,24 @@
             $('#admin_start_change_confirm_popup').modal('hide');
         })
 
+    }
+
+    function AdminChangeDeleteFile(id) {
+        $('#admin_delete_change_file_confirm_popup').modal('show');
+        console.log(id);
+        $('#admin_delete_change_file_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.admin-change_delete_file') }}' + id,
+                type: 'GET',
+                success: () => {
+                    $('#admin_change_subfolder_structure3_1').trigger('click');
+                    $('#admin_delete_change_file_confirm_popup').modal('hide');
+                },
+                error: () => {
+                    console.log("error");
+                }
+            })
+        })
     }
 
     function AdminChangeEndChange() {
@@ -1111,6 +1139,7 @@
 
     function EndChangeSuccess() {
         $('#admin_end_change_success_popup').modal('hide');
+        $('#admin_green_change').hide();
         $('#admin_yellow_change').hide();
     }
     $(function() {

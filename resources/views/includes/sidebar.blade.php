@@ -701,4 +701,5 @@
     @include('components.freelancer.free-order-detail')
     @include('components.admin.admin-order-detail')
     @include('components.admin.admin_order_change')
+    @include('components.admin.admin_order_request')
 </div>

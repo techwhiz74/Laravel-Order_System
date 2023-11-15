@@ -9,7 +9,7 @@
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" class="modal_close_btn" id="delete_confirm">BESTÄTIGEN</button>
+                        <button type="button" class="modal_close_btn" id="delete_confirm">Bestätigen</button>
                         <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
                     </div>
                 </div>

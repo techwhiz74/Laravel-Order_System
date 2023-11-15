@@ -38,9 +38,16 @@
             @endphp
             <div class="dropdown">
                 <div class="language_p">
-                    <p style="margin-bottom: 0 !important; margin-right:10px;"><a href="/"
-                            style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
-                    </p>
+                    @if (auth()->user())
+                        <p style="margin-bottom: 0 !important; margin-right:10px;"><a
+                                style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
+                        </p>
+                    @else
+                        <p style="margin-bottom: 0 !important; margin-right:10px;"><a
+                                href="{{ __('routes.customer-register') }}"
+                                style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
+                        </p>
+                    @endif
                 </div>
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ $currentLanguage }} <i class="fa-solid fa-language"></i>

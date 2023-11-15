@@ -663,38 +663,17 @@ class AdminController extends Controller
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
+                $fileName = $file->getClientOriginalName();
 
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -922,7 +901,14 @@ class AdminController extends Controller
                     }
                     return $deliver_time;
                 })
-                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time'])
+                ->addColumn('action', function ($row) {
+                    $btn = '';
+                    if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
+                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
+                    }
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'action'])
                 ->make(true);
         }
     }
@@ -998,8 +984,62 @@ class AdminController extends Controller
     }
     public function AdminAllTable(Request $request)
     {
+
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->get();
+            $data = Order::orderBy('id', 'desc')
+                ->where(function ($query) use ($request) {
+                    $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                        ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                        ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                })->get();
+            $order_changes = OrderChange::orderBy('id', 'desc')->get();
+            if ($request->start_date_filter == '') {
+                if ($request->end_date_filter == '') {
+                    $data = Order::orderBy('id', 'desc')
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })->get();
+                } else {
+                    $data = Order::orderBy('id', 'desc')
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
+                        ->where('created_at', '<=', date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter))))->get();
+                }
+            } else {
+                if ($request->end_date_filter == '') {
+                    $data = Order::orderBy('id', 'desc')
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
+                        ->where('created_at', '>=', date('Y-m-d', strtotime($request->start_date_filter)))->get();
+                } else {
+                    $data = Order::orderBy('id', 'desc')
+                        ->where(function ($query) use ($request) {
+                            $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
+                                ->orWhere('deliver_time', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhere('ordered_from', 'LIKE', '%' . $request->order_filter . '%')
+                                ->orWhereRaw("DATE_FORMAT(created_at, '%d.%m.%Y %H:%i') LIKE ?", ['%' . $request->order_filter . '%']);
+                        })
+                        ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter)))])->get();
+                }
+            }
+
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1013,10 +1053,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<button style="border:none; background:inherit; display:block; margin:auto;"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:18px"></button>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<button style="border:none; background:inherit; display:block; margin:auto;"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:18px"></button>';
                     }
                     return $type;
                 })
@@ -1034,9 +1074,16 @@ class AdminController extends Controller
                     }
                     return $status;
                 })
+                ->addColumn('action', function ($row) {
+                    $btn = '';
+                    if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
+                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
+                    }
+                    return $btn;
+                })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1047,6 +1094,10 @@ class AdminController extends Controller
                         $deliver_time = "EXPRESS ";
                     }
                     return $deliver_time;
+                })
+                ->addColumn('delete', function ($row) {
+                    $delete = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="deleteOrder(' . $row->id . ')"><img src="' . asset('asset/images/trash-solid.svg') . '" alt="order-delete-icon" ></button>';
+                    return $delete;
                 })
                 ->addColumn('request', function ($row) {
                     $req = '';
@@ -1062,9 +1113,16 @@ class AdminController extends Controller
                     }
                     return $req;
                 })
-                ->rawColumns(['order', 'date', 'detail', 'status', 'type', 'deliver_time', 'request'])
+                ->rawColumns(['order', 'action', 'date', 'detail', 'status', 'type', 'deliver_time', 'delete', 'request'])
                 ->make(true);
         }
+
+    }
+    public function DeleteOrder(Request $request)
+    {
+        $delete_id = $request->post('delete_id');
+        $order = Order::findOrfail($delete_id);
+        $order->delete();
     }
     public function JobFileUpload(Request $request)
     {
@@ -1078,7 +1136,6 @@ class AdminController extends Controller
 
         $files = $request->file("files");
         $uploadDir = 'public/';
-
         if ($order->type == 'Embroidery') {
             $filePath = $order->customer_number . '/' .
                 $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Stickprogramm/';
@@ -1086,44 +1143,22 @@ class AdminController extends Controller
             $filePath = $order->customer_number . '/' .
                 $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Vektordatei/';
         }
-
         $path = $uploadDir . $filePath;
         foreach ($files as $key => $file) {
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
+                $fileName = $file->getClientOriginalName();
 
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -1164,38 +1199,17 @@ class AdminController extends Controller
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
+                $fileName = $file->getClientOriginalName();
 
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -1209,6 +1223,161 @@ class AdminController extends Controller
             $order->save();
         } else {
             return response()->json(['message' => 'Error'], 500);
+        }
+    }
+    public function RequestText(Request $request)
+    {
+        $order_id = $request->post('admin_request_id');
+        $order_change_message = $request->post('admin_order_request_text');
+        $time = $request->post('admin_request_time');
+
+        $order = Order::findOrfail($order_id);
+        $customer = User::findOrfail($order->user_id);
+
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->message = $order_change_message;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
+        if ($order->type == "Embroidery") {
+            $order_change->changed_from = "customer_em";
+        } else if ($order->type == "Vector") {
+            $order_change->changed_from = "customer_ve";
+        }
+        $order_change->save();
+
+        $order->status = 'Änderung';
+        $order->save();
+    }
+    public function RequestFileUpload(Request $request)
+    {
+        $order_id = $request->post('admin_request_id');
+        $order_change_message = $request->post('admin_order_request_text');
+        $time = $request->post('admin_request_time');
+
+
+        $order = Order::findOrfail($order_id);
+        $customer = User::findOrfail($order->user_id);
+
+
+        OrderChange::where('time', $time)->delete();
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+
+        $order_change = new OrderChange();
+        $order_change->customer_id = $order->user_id;
+        $order_change->customer_name = $customer->name;
+        $order_change->order_number = $order->order_number;
+        $order_change->message = $order_change_message;
+        $order_change->change_number = $change_number + 1;
+        $order_change->time = $time;
+        if ($order->type == "Embroidery") {
+            $order_change->changed_from = "customer_em";
+        } else if ($order->type == "Vector") {
+            $order_change->changed_from = "customer_ve";
+        }
+        $order_change->save();
+
+        $order->status = 'Änderung';
+        $order->save();
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        $folderName = 'Änderungsdateien Kunde' . ($folderCount) . '/';
+        $path = $uploadDir . $filePath . $folderName;
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $file->getClientOriginalName();
+
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
+            }
+        }
+    }
+    public function AdminOrderDetail(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->orderBy('order_id', 'desc')->get();
+            if ($request->type == 'Stickprogramm') {
+                $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
+            }
+
+            return DataTables::of($change_data)->addIndexColumn()
+                ->editColumn('customer_number', function ($row) {
+                    $customer_number = $row->order->customer_number;
+                    return $customer_number;
+                })
+                ->editColumn('order_number', function ($row) {
+                    $order_number = $row->order->order_number;
+                    return $order_number;
+                })
+
+                ->addColumn('download', function ($row) {
+
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    return $btn;
+                })
+                ->addColumn('delete', function ($row) use ($change_data) {
+                    $btn = '';
+                    foreach ($change_data as $change_item) {
+                        $btn = '<button onClick = AdminDeleteFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                    }
+
+                    return $btn;
+                })
+
+
+                ->rawColumns(['customer_number', 'order_number', 'download', 'delete'])
+                ->make(true);
+        }
+    }
+    public function AdminChangeOrderDetail(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->orderBy('order_id', 'desc')->get();
+            if ($request->type == 'Stickprogramm') {
+                $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
+            }
+
+            return DataTables::of($change_data)->addIndexColumn()
+                ->editColumn('customer_number', function ($row) {
+                    $customer_number = $row->order->customer_number;
+                    return $customer_number;
+                })
+                ->editColumn('order_number', function ($row) {
+                    $order_number = $row->order->order_number;
+                    return $order_number;
+                })
+
+                ->addColumn('download', function ($row) {
+
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    return $btn;
+                })
+                ->addColumn('delete', function ($row) {
+                    $btn = '<button onClick = AdminChangeDeleteFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                    return $btn;
+                })
+                ->rawColumns(['customer_number', 'order_number', 'download', 'delete'])
+                ->make(true);
         }
     }
 }

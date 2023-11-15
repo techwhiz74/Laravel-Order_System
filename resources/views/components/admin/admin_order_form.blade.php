@@ -280,7 +280,7 @@
             </div>
 
         </div>
-        <form id="order_submit_form" action="">
+        <form id="admin_order_submit_form" action="">
             <input type="hidden" name="type">
             <input type="hidden" name="deliver_time">
             <input type="hidden" name="customer_number" value="" />
@@ -638,7 +638,7 @@
                                 <span class="fileinput-button">
                                     <i class="glyphicon glyphicon-plus"></i>
                                     <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
-                                    <input type="file" name="files[]" id="admin_order_form_file_input" />
+                                    <input type="file" name="files[]" multiple id="admin_order_form_file_input" />
                                 </span>
                                 <button type="submit" class="btn btn-primary start" style="visibility: hidden;">
                                     <i class="glyphicon glyphicon-upload"></i>

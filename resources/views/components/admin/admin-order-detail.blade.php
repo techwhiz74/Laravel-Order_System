@@ -593,6 +593,7 @@
 @include('components.admin.start_job_success_modal')
 @include('components.admin.detail_upload_success_modal')
 @include('components.admin.end_job_success_modal')
+@include('components.admin.delete_detail_file_confirm_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -816,6 +817,8 @@
     })
     $('.admin_job_start_submit').click(function(e) {
         e.preventDefault();
+        $('[name=admin_change_id]').val("");
+        $('[name=admin_request_id]').val("");
         var admin_job_data = new FormData();
         admin_job_data.append('admin_detail_id', $('[name=admin_detail_id]').val());
         $('#admin_job_upload').find('.fileupload-buttonbar .start').trigger('click');
@@ -832,10 +835,9 @@
                 $('#admin_all_table_reload_button').trigger('click');
                 $('#admin_yellow_table_reload_button').trigger('click');
                 $('#admin_red_table_reload_button').trigger('click');
-
                 $('#admin_yellow_job').hide();
-                $('#admin_upload_success_popup').modal('hide');
                 setTimeout(() => {
+                    $('#admin_upload_success_popup').modal('hide');
                     $('#admin_end_job_success_popup').modal('show');
                 }, 1000);
             },
@@ -846,16 +848,16 @@
         })
     }
 
-    function DeleteFile(id) {
-        DeleteConfirmAlert();
+    function AdminDeleteFile(id) {
+        $('#admin_delete_detail_file_confirm_popup').modal('show');
         console.log(id);
-        $('#delete_confirm').click(function() {
+        $('#admin_delete_detail_file_confirm').click(function() {
             $.ajax({
-                url: '{{ __('routes.freelancer-delete-files') }}' + id,
+                url: '{{ __('routes.admin-detail-delete-file') }}' + id,
                 type: 'GET',
                 success: () => {
                     $('#admin_subfolder_structure1').trigger('click');
-                    $('#delete_confirm_popup').modal('hide');
+                    $('#admin_delete_detail_file_confirm_popup').modal('hide');
                 },
                 error: () => {
                     console.log("error");
@@ -867,11 +869,6 @@
     function AdminStartJobConfirmAlert() {
         $('#admin_start_job_confirm_popup').modal('show');
     }
-
-    function DeleteConfirmAlert() {
-        $('#delete_confirm_popup').modal('show');
-    }
-
 
     function EndJobError() {
         $('#end_job_error_popup').modal('show');

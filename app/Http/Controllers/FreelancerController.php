@@ -815,7 +815,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
                     return $btn;
                 })
                 ->rawColumns(['customer_number', 'order_number', 'download'])
@@ -1194,38 +1194,17 @@ class FreelancerController extends Controller
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
+                $fileName = $file->getClientOriginalName();
 
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -1262,38 +1241,16 @@ class FreelancerController extends Controller
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
-
+                $fileName = $file->getClientOriginalName();
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -1329,38 +1286,16 @@ class FreelancerController extends Controller
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
-                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
-                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . $folderName . '%')->orderBy('base_url', 'desc')->first();
-                if ($exist_file != null) {
-                    $filePathArray = explode('/', $exist_file->base_url);
-                    $fileNameArray = explode('-', $filePathArray[4]);
-                    $fileExtensionArray = explode('.', $fileNameArray[2]);
-                    $index = $fileExtensionArray[0];
-                    $index = $index + 1;
-                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $index;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
-                        $order_file_upload = new Order_file_upload();
-                        $order_file_upload->order_id = $order->id;
-                        $order_file_upload->index = $key + 1;
-                        $order_file_upload->extension = $file->getClientOriginalExtension();
-                        $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
-                        $order_file_upload->save();
-                        echo "The file " . $fileName . " has been uploaded";
-                    } else
-                        echo "Error";
-                }
-
+                $fileName = $file->getClientOriginalName();
+                if ($file->storePubliclyAs($path, $fileName)) {
+                    $order_file_upload = new Order_file_upload();
+                    $order_file_upload->order_id = $order->id;
+                    $order_file_upload->extension = $file->getClientOriginalExtension();
+                    $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
+                    $order_file_upload->save();
+                    echo "The file " . $fileName . " has been uploaded";
+                } else
+                    echo "Error";
             }
         }
         return "OK!";
@@ -1511,7 +1446,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download="' . $row->order->customer_number . '-' . $row->order->order_number . '-' . $row->index . '"><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) use ($change_data) {

@@ -912,6 +912,8 @@
     })
     $('.vector_upload_submit').click(function(e) {
         e.preventDefault();
+        $('[name=free_detail_id]').val("");
+        $('[name=embroidery_request_id]').val("");
         var freelancer_ve_request_data = new FormData();
         freelancer_ve_request_data.append('vector_request_id', $('[name=vector_request_id]').val());
         freelancer_ve_request_data.append('vector_time', $('[name=vector_time]').val());

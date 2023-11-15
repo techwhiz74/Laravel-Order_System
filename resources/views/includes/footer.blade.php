@@ -351,6 +351,10 @@
             e.preventDefault();
             $('.product-items-menu').show();
         });
+        $('#admin_order_submit_form').submit(function(e) {
+            e.preventDefault();
+            $('.product-items-menu').show();
+        });
         //manual input fiels in multi select
         $('#manualInput').keyup(function(e) {
             var inputValue = $(this).val().trim();
@@ -450,7 +454,7 @@
                     .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
                         '#adminTableSearchInput').text() !=
                     "Kunden suchen")) {
-                $('.fileupload-buttonbar .start').trigger('click');
+                $('#admin_order_submit_form').find('.fileupload-buttonbar .start').trigger('click');
             }
             if ($('#adminTableSearchInput').text() == "Kunden suchen") {
                 $('.admin_search_customer_validation').show();

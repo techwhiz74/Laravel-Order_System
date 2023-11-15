@@ -26,6 +26,7 @@ Route::post('/vector-upload', [FreelancerController::class, 'VectorFileUpload'])
 Route::post('/admin-upload', [AdminController::class, 'adminFileUpload'])->name('admin-upload');
 Route::post('/admin-job-upload', [AdminController::class, 'JobFileUpload'])->name('admin-job-upload');
 Route::post('/admin-change-upload', [AdminController::class, 'ChangeFileUpload'])->name('admin-change-upload');
+Route::post('/admin-request-upload', [AdminController::class, 'RequestFileUpload'])->name('admin-request-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
 
 // admin Route
@@ -62,14 +63,18 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/blue-table', [AdminController::class, 'AdminBlueTable'])->name('admin-blue-table');
     Route::get('/all-table', [AdminController::class, 'AdminAllTable'])->name('admin-all-table');
     Route::get('/get-order-detail', [FreelancerController::class, 'FreelancergetOrderDetail'])->name('admin-get-order-detail');
-    Route::get('/order-detail', [FreelancerController::class, 'FreelancerOrderDetail'])->name('admin-order-detail');
+    Route::get('/order-detail', [AdminController::class, 'AdminOrderDetail'])->name('admin-order-detail');
     Route::get('/parameter', [FreelancerController::class, 'Parameter'])->name('admin-parameter');
     Route::get('/startjob', [FreelancerController::class, 'StartJob'])->name('admin-startjob');
     Route::get('/endjob', [FreelancerController::class, 'EndJob'])->name('admin-endjob');
     Route::get('/get-request-detail', [FreelancerController::class, 'getRequestDetail'])->name('admin-get-request-detail');
     Route::get('/change-parameter', [FreelancerController::class, 'Parameter'])->name('admin-change-parameter');
-    Route::get('/change-order_detail', [FreelancerController::class, 'OrderDetail'])->name('admin-change-order_detail');
+    Route::get('/change-order-detail', [AdminController::class, 'AdminChangeOrderDetail'])->name('admin-change-order-detail');
     Route::get('/endchange', [AdminController::class, 'EndChange'])->name('admin-endchange');
+    Route::post('/delete-order', [AdminController::class, 'DeleteOrder'])->name('admin-delete-order');
+    Route::post('/request-text', [AdminController::class, 'RequestText'])->name('admin-request-text');
+    Route::get('/detail-delete-file/{id}', [FreelancerController::class, 'DeleteFile']);
+    Route::get('/change_delete_file/{id}', [FreelancerController::class, 'DeleteFile']);
 });
 
 //customer route
