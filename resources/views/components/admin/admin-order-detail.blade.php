@@ -532,7 +532,7 @@
                                     <div id="admin_job_upload_div">
                                         <form action="" id="admin_job_start_form">
                                             <input type="hidden" name="admin_detail_id" value="">
-                                            <div style="display: flex">
+                                            <div style="display: flex; height:225px;">
                                                 <div id="admin_job_upload" action="" method="POST"
                                                     enctype="multipart/form-data"
                                                     style="width: 100%; overflow-x:hidden; overflow-y:auto;">
