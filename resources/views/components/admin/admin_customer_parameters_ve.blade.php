@@ -5,7 +5,7 @@
     </div>
     <button style="display: none;" id="admin_parameter_ve_table_reload_button"></button>
     <div style="margin-top: 40px;">
-
+        <input type="hidden" name="admin_ve_parameter_customer_id">
         <div class="responsive-table">
             <table id="admin_parameter_ve_table" class="table table-striped" style="width:100%; font-size:11.5px;">
                 <thead>
@@ -115,20 +115,25 @@
 
     function openVeParameter(id) {
         $.ajax({
-            url: '{{ __('routes.admin-parameter-em') }}',
+            url: '{{ __('routes.admin-parameter-ve') }}',
             type: 'GET',
             data: {
                 id
             },
             success: (result) => {
-                $('[name=admin_parameter_require_vector_file]').val(result.parameter8);
-                $('[name=admin_parameter_require_image_file]').val(result.parameter9);
+                $('[name=admin_ve_parameter_customer_id]').val(result[0].customer_id);
+                $('[name=admin_parameter_require_vector_file]').val(result[0].parameter8);
+                $('[name=admin_parameter_require_image_file]').val(result[0].parameter9);
                 $('#admin_customer_parameters_ve_popup').modal('show');
+                if (result[1] != null) {
+                    $('#admin_ve_parameter_buttons').show();
+                    $('[name=admin_parameter_require_vector_file]').val(result[1].parameter8);
+                    $('[name=admin_parameter_require_image_file]').val(result[1].parameter9);
+                }
             },
             error: () => {
                 console.error("error");
             }
         })
-
     }
 </script>

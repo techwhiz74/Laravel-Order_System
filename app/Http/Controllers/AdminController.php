@@ -16,8 +16,20 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Order_file_upload;
-use App\Models\Customer_parameter;
+use App\Models\CustomerEmParameter;
+use App\Models\CustomerVeParameter;
+use App\Models\TempCustomerEmParameter;
+use App\Models\TempCustomerVeParameter;
 use DateTimeZone;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ConfirmRegisterMail;
+use App\Mail\DeclineRegisterMail;
+use App\Mail\ChangeProfileConfirmMail;
+use App\Mail\ChangeProfileDeclineMail;
+use App\Mail\ChangeEmParameterConfirmMail;
+use App\Mail\ChangeVeParameterConfirmMail;
+use App\Mail\ChangeEmParameterDeclineMail;
+use App\Mail\ChangeVeParameterDeclineMail;
 
 
 
@@ -456,10 +468,34 @@ class AdminController extends Controller
         $tempCustomer->delete();
         return 'successfully changed!';
     }
+    public function AcceptProfileChangeMail(Request $request)
+    {
+        $customer = User::findOrfail($request->input('customer_id'));
+        $recipient_customer = $customer->email;
+        try {
+            Mail::to($recipient_customer)->send(new ChangeProfileConfirmMail($customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
     public function declineChangeRequest($locale, $id)
     {
         $user = TempCustomer::where('customer_id', $id)->orderBy('id', 'desc')->first();
         $user->delete();
+    }
+    public function DeclineProfileChangeMail(Request $request)
+    {
+        $customer = User::findOrfail($request->input('customer_id'));
+        $recipient_customer = $customer->email;
+        try {
+            Mail::to($recipient_customer)->send(new ChangeProfileDeclineMail($customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
     public function GetCustomerProfile(Request $request)
     {
@@ -686,23 +722,51 @@ class AdminController extends Controller
         $user->customer_number = $customer_number;
         $user->save();
     }
+    public function ConfirmProfileMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $recipient_customer = $customer->email;
+        Mail::to($recipient_customer)->send(new ConfirmRegisterMail($customer));
+    }
     public function DeclineProfile(Request $request)
     {
         $id = $request->post('admin_decline_profile_id');
         User::findOrfail($id)->delete();
     }
+    public function DeclineProfileMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $recipient_customer = $customer->email;
+        try {
+            Mail::to($recipient_customer)->send(new DeclineRegisterMail($customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+
+
+    }
     public function EmParameterTable(Request $request)
     {
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
+            $parameter_lists = CustomerEmparameter::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
-                ->addColumn('parameter', function ($row) {
-                    $parameter = '
+                ->addColumn('parameter', function ($row) use ($parameter_lists) {
+                    $parameter = '';
+                    foreach ($parameter_lists as $parameter_list) {
+                        if ($parameter_list->customer_id == $row->id) {
+                            $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
                                 <button onclick="openEmParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
                             </div>
                         </div>';
+                        }
+
+                    }
+
                     return $parameter;
                 })
                 ->rawColumns(['parameter'])
@@ -713,14 +777,22 @@ class AdminController extends Controller
     {
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
+            $parameter_lists = CustomerVeparameter::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
-                ->addColumn('parameter', function ($row) {
-                    $parameter = '
+                ->addColumn('parameter', function ($row) use ($parameter_lists) {
+                    $parameter = '';
+                    foreach ($parameter_lists as $parameter_list) {
+                        if ($parameter_list->customer_id == $row->id) {
+                            $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
                                 <button onclick="openVeParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
                             </div>
                         </div>';
+                        }
+
+                    }
+
                     return $parameter;
                 })
                 ->rawColumns(['parameter'])
@@ -729,13 +801,108 @@ class AdminController extends Controller
     }
     public function EmParameter(Request $request)
     {
-        $parameter = Customer_parameter::where('customer_id', $request->get('id'))->first();
-        return response()->json($parameter);
+        $parameter = CustomerEmParameter::where('customer_id', $request->get('id'))->first();
+        $temp_parameter = TempCustomerEmParameter::where('customer_id', $request->get('id'))->first();
+        return response()->json([$parameter, $temp_parameter]);
     }
     public function VeParameter(Request $request)
     {
-        $parameter = Customer_parameter::where('customer_id', $request->get('id'))->first();
-        return response()->json($parameter);
+        $parameter = CustomerVeParameter::where('customer_id', $request->get('id'))->first();
+        $temp_parameter = TempCustomerVeParameter::where('customer_id', $request->get('id'))->first();
+        return response()->json([$parameter, $temp_parameter]);
+    }
+    public function EmParameterConfirm(Request $request)
+    {
+        $parameter = CustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
+        $test_parameter = TempCustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
+        $parameter->parameter1 = $test_parameter->parameter1;
+        $parameter->parameter2 = $test_parameter->parameter2;
+        $parameter->parameter3 = $test_parameter->parameter3;
+        $parameter->parameter4 = $test_parameter->parameter4;
+        $parameter->parameter5 = $test_parameter->parameter5;
+        $parameter->parameter6 = $test_parameter->parameter6;
+        $parameter->parameter7 = $test_parameter->parameter7;
+        $parameter->save();
+        $test_parameter->delete();
+    }
+    public function VeParameterConfirm(Request $request)
+    {
+        $parameter = CustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
+        $test_parameter = TempCustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
+        $parameter->parameter8 = $test_parameter->parameter8;
+        $parameter->parameter9 = $test_parameter->parameter9;
+        $parameter->save();
+        $test_parameter->delete();
+    }
+    public function EmParameterDecline(Request $request)
+    {
+        $test_parameter = TempCustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
+        $parameter = CustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
+        $test_parameter->delete();
+        $parameter->delete();
+    }
+    public function VeParameterDecline(Request $request)
+    {
+        $test_parameter = TempCustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
+        $parameter = CustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
+        $test_parameter->delete();
+        $parameter->delete();
+    }
+    public function EmParameterConfirmMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $parameter = CustomerEmParameter::where('customer_id', $request->get('customer_id'))->first();
+        $recipient_customer = $customer->email;
+
+        try {
+            Mail::to($recipient_customer)->send(new ChangeEmParameterConfirmMail($customer, $parameter));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function VeParameterConfirmMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $parameter = CustomerVeParameter::where('customer_id', $request->get('customer_id'))->first();
+        $recipient_customer = $customer->email;
+
+        try {
+            Mail::to($recipient_customer)->send(new ChangeVeParameterConfirmMail($customer, $parameter));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function EmParameterDeclineMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $parameter = CustomerEmParameter::where('customer_id', $request->get('customer_id'))->first();
+        $recipient_customer = $customer->email;
+
+        try {
+            Mail::to($recipient_customer)->send(new ChangeEmParameterDeclineMail($customer, $parameter));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function VeParameterDeclineMail(Request $request)
+    {
+        $customer = User::findOrfail($request->get('customer_id'));
+        $parameter = CustomerVeParameter::where('customer_id', $request->get('customer_id'))->first();
+        $recipient_customer = $customer->email;
+
+        try {
+            Mail::to($recipient_customer)->send(new ChangeVeParameterDeclineMail($customer, $parameter));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
     public function AdminGreenTable(Request $request)
     {

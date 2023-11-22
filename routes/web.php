@@ -43,7 +43,9 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/profile', [AdminController::class, 'adminProfile']);
     Route::get('/get-differences/{id}', [AdminController::class, 'getDifferences']);
     Route::post('/accept-change', [AdminController::class, 'acceptChangeRequest']);
+    Route::get('/accept-change-mail', [AdminController::class, 'AcceptProfileChangeMail']);
     Route::post('/decline-change/{id}', [AdminController::class, 'declineChangeRequest']);
+    Route::get('/decline-change-mail', [AdminController::class, 'DeclineProfileChangeMail']);
     Route::get('/customer-list', [AdminController::class, 'CustomerList'])->name('admin-customer-list');
     Route::get('/customer-search', [AdminController::class, 'CustomerList'])->name('admin-customer-search');
     Route::get('/get-customer-profile', [AdminController::class, 'GetCustomerProfile'])->name('admin-get-customer-profile');
@@ -52,7 +54,9 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/customer-search-table', [AdminController::class, 'CustomerSearchTable'])->name('admin-customer-search-table');
     Route::get('/customer-searched-result', [AdminController::class, 'CustomerSearchResult'])->name('admin-customer-searched-result');
     Route::post('/confirm-profile', [AdminController::class, 'ConfirmProfile'])->name('admin-confirm-profile');
+    Route::get('/confirm-profile-mail', [AdminController::class, 'ConfirmProfileMail'])->name('admin-confirm-profile-mail');
     Route::post('/decline-profile', [AdminController::class, 'DeclineProfile'])->name('admin-decline-profile');
+    Route::get('/decline-profile-mail', [AdminController::class, 'DeclineProfileMail'])->name('admin-decline-profile-mail');
     Route::get('/parameter-em-table', [AdminController::class, 'EmParameterTable'])->name('admin-parameter-em-table');
     Route::get('/parameter-ve-table', [AdminController::class, 'VeParameterTable'])->name('admin-parameter-ve-table');
     Route::get('/parameter-em', [AdminController::class, 'EmParameter'])->name('admin-parameter-em');
@@ -75,6 +79,14 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/request-text', [AdminController::class, 'RequestText'])->name('admin-request-text');
     Route::get('/detail-delete-file/{id}', [FreelancerController::class, 'DeleteFile']);
     Route::get('/change_delete_file/{id}', [FreelancerController::class, 'DeleteFile']);
+    Route::post('/change-em-parameter-confirm', [AdminController::class, 'EmParameterConfirm'])->name('admin-change-em-parameter-confirm');
+    Route::post('/change-ve-parameter-confirm', [AdminController::class, 'VeParameterConfirm'])->name('admin-change-ve-parameter-confirm');
+    Route::get('/change-em-parameter-confirm-mail', [AdminController::class, 'EmParameterConfirmMail'])->name('admin-change-em-parameter-confirm-mail');
+    Route::get('/change-ve-parameter-confirm-mail', [AdminController::class, 'VeParameterConfirmMail'])->name('admin-change-ve-parameter-confirm-mail');
+    Route::post('/change-em-parameter-decline', [AdminController::class, 'EmParameterDecline'])->name('admin-change-em-parameter-decline');
+    Route::post('/change-ve-parameter-decline', [AdminController::class, 'VeParameterDecline'])->name('admin-change-ve-parameter-decline');
+    Route::get('/change-em-parameter-decline-mail', [AdminController::class, 'EmParameterDeclineMail'])->name('admin-change-em-parameter-decline-mail');
+    Route::get('/change-ve-parameter-decline-mail', [AdminController::class, 'VeParameterDeclineMail'])->name('admin-change-ve-parameter-decline-mail');
 });
 
 //customer route
@@ -94,6 +106,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/req-order_detail', [OrderController::class, 'OrderDetail'])->name('req-customer-order_detail');
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
     Route::post('/order-change-text', [OrderController::class, 'OrderChangeText'])->name('customer-order-change-text');
+    Route::get('/order-request-mail', [OrderController::class, 'OrderRequestMail'])->name('customer-order-request-mail');
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
@@ -109,6 +122,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
 
     Route::get('/profile', [CustomerController::class, 'CustomerProfile']);
     Route::post('/profile-update', [CustomerController::class, 'profileUpdate']);
+    Route::get('/profile-update-mail', [CustomerController::class, 'profileUpdateMail']);
 
 
     Route::get('/embroidery-information', [OrderController::class, 'EmbroideryInformation'])->name('embroidery-information')->withoutMiddleware([RoleMiddleware::class . ':customer']);
@@ -146,6 +160,15 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::delete('/deleteemployee/{id}', [CustomerController::class, 'deleteEmployee']);
     Route::get('/employee-profile', [CustomerController::class, 'EmployeeProfile']);
     Route::get('/employee-staffs-table', [CustomerController::class, 'EmployeeTable'])->name('employee-staffs-table');
+
+    Route::get('/order-form-mail', [OrderController::class, 'CustomerOrderFormMail'])->name('customer-order-form-mail');
+    Route::get('/get-em-parameter', [CustomerController::class, 'GetEmParameter'])->name('customer-get-em-parameter');
+    Route::get('/get-ve-parameter', [CustomerController::class, 'GetVeParameter'])->name('customer-get-ve-parameter');
+    Route::post('/em-parameter-change', [CustomerController::class, 'ChangeEmParameter'])->name('customer-em-parameter-change');
+    Route::get('/em-parameter-change-mail', [CustomerController::class, 'ChangeEmParameterMail'])->name('customer-em-parameter-change-mail');
+    Route::post('/ve-parameter-change', [CustomerController::class, 'ChangeVeParameter'])->name('customer-ve-parameter-change');
+    Route::get('/ve-parameter-change-mail', [CustomerController::class, 'ChangeVeParameterMail'])->name('customer-ve-parameter-change-mail');
+
 });
 
 

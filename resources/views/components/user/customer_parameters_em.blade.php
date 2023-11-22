@@ -15,6 +15,7 @@
                             </label>
                             <select name="parameter_yarn_information" class="form-control"
                                 style="width: calc(100% - 205px) !important;">
+                                <option value=""></option>
                                 <option value="Madeira 40 / 60 PolyNeon">Madeira 40 / 60 PolyNeon</option>
                                 <option value="Madeira Classic">Madeira Classic</option>
                                 <option value="Madeira Frosted">Madeira Frosted</option>
@@ -80,6 +81,7 @@
                             </label>
                             <select name="parameter_cutting_options" class="form-control"
                                 style="width: calc(100% - 205px) !important;">
+                                <option value=""></option>
                                 <option value="Fadenschnitte setzen">Fadenschnitte setzen</option>
                                 <option value="Keine Fadenschnitte setzen">Keine Fadenschnitte setzen</option>
                             </select>
@@ -91,6 +93,7 @@
                             </label>
                             <select name="parameter_special_cutting_options" class="form-control"
                                 style="width: calc(100% - 205px) !important;">
+                                <option value=""></option>
                                 <option value="Fadenschnitte werden durch Lion Werbe GmbH bestimmt">Fadenschnitte
                                     werden
                                     durch Lion Werbe GmbH bestimmt</option>
@@ -106,6 +109,7 @@
                             </label>
                             <select name="parameter_needle_instructions" class="form-control"
                                 style="width: calc(100% - 205px) !important;">
+                                <option value=""></option>
                                 <option value="Bitte bei der Farbbelegung mit der Nadel 1 beginnen">Bitte bei der
                                     Farbbelegung mit der Nadel 1 beginnen</option>
                                 <option value="Freie Belegung der Nadelzuweisungen">Freie Belegung der Nadelzuweisungen
@@ -117,7 +121,7 @@
                         <div class="form-group form_dv_wrap">
                             <label style="width: 200px;">{{ __('home.standard_instructions') }}
                             </label>
-                            <input type="text" name="country" class="form-control"
+                            <input type="text" name="parameter_standard_instructions" class="form-control"
                                 style="width: calc(100% - 205px) !important;" value="">
                         </div>
                     </div>
@@ -125,7 +129,7 @@
                         <div class="form-group form_dv_wrap">
                             <label style="width: 200px;">{{ __('home.special_standard_instructions') }}
                             </label>
-                            <textarea type="text" name="country" class="form-control"
+                            <textarea type="text" name="parameter_special_standard_instructions" class="form-control"
                                 style="height:70px !important;; width: calc(100% - 205px) !important; vertical-align:top;" value=""></textarea>
                         </div>
                     </div>
@@ -135,10 +139,8 @@
 
             <div class="col-12 ">
                 <div class="upload_btn">
-                    @if (@auth()->user()->user_type == 'customer')
-                        <button class="btn btn-primary btn-block"
-                            type="submit">{{ __('home.request_change') }}</button>
-                    @endif
+                    <button class="btn btn-primary btn-block" type="submit"
+                        id="customer_em_parameter_submit">{{ __('home.request_change') }}</button>
                 </div>
             </div>
         </div>
@@ -153,4 +155,60 @@
             // buttonWidth: '300px'
         });
     });
+    $(function() {
+        $('#customer_parameters_em1').click(function() {
+            $.ajax({
+                url: '{{ __('routes.customer-get-em-parameter') }}',
+                type: 'get',
+                success: (parameter) => {
+                    $('[name=parameter_yarn_information]').val(parameter.parameter1);
+                    $('[name=parameter_need_embroidery_files]').val(parameter.parameter2);
+                    $('[name=parameter_cutting_options]').val(parameter.parameter3);
+                    $('[name=parameter_special_cutting_options]').val(parameter.parameter4);
+                    $('[name=parameter_needle_instructions]').val(parameter.parameter5);
+                    $('[name=parameter_standard_instructions]').val(parameter.parameter6);
+                    $('[name=parameter_special_standard_instructions]').val(parameter
+                        .parameter7);
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
+        $('#customer_em_parameter_submit').click(function() {
+            var em_parameter_data = new FormData();
+            em_parameter_data.append('parameter1', $('[name=parameter_yarn_information]').val());
+            em_parameter_data.append('parameter2', $('[name=parameter_need_embroidery_files]').val()
+                .join(', '));
+            em_parameter_data.append('parameter3', $('[name=parameter_cutting_options]').val());
+            em_parameter_data.append('parameter4', $('[name=parameter_special_cutting_options]').val());
+            em_parameter_data.append('parameter5', $('[name=parameter_needle_instructions]').val());
+            em_parameter_data.append('parameter6', $('[name=parameter_standard_instructions]').val());
+            em_parameter_data.append('parameter7', $('[name=parameter_special_standard_instructions]')
+                .val());
+            $.ajax({
+                url: '{{ __('routes.customer-em-parameter-change') }}',
+                type: 'post',
+                data: em_parameter_data,
+                contentType: false,
+                processData: false,
+                success: () => {
+                    $('#customer_em_parameter_submit').hide();
+                    $.ajax({
+                        url: '{{ __('routes.customer-em-parameter-change-mail') }}',
+                        type: 'get',
+                        success: () => {
+                            console.log("success");
+                        },
+                        error: () => {
+                            console.error("error");
+                        }
+                    })
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
+    })
 </script>

@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderSubmitMail;
 use App\Mail\OrderUpdateEmail;
+use App\Mail\OrderFormMail;
+use App\Mail\OrderFormCustomerMail;
+use App\Mail\OrderFormFreelancerMail;
+use App\Mail\OrderRequestAdmin;
+use App\Mail\OrderRequestCustomer;
+use App\Mail\OrderRequestFreelancerMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\File;
 use DataTables;
@@ -281,6 +287,7 @@ class OrderController extends Controller
     public function viewOrder(Request $request)
     {
 
+
         $authuser = auth()->user();
 
         if ($request->ajax()) {
@@ -342,6 +349,10 @@ class OrderController extends Controller
                         ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter)))])->get();
                 }
             }
+
+
+
+
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -691,6 +702,9 @@ class OrderController extends Controller
             ->where('special_instructions', $special_instructions)
             ->where('ordered_from', $ordered_from)->first();
 
+
+
+
         if ($order == null) {
             $order = new Order();
             $order->customer_number = $customer_number;
@@ -709,13 +723,16 @@ class OrderController extends Controller
             $order->assigned_to = 4;
             $order->org_id = auth()->user()->id;
             $order->save();
+
         }
+
 
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
             $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Originaldatei/';
         $path = $uploadDir . $filePath;
+
         foreach ($files as $key => $file) {
             // Check whether the current entity is an actual file or a folder (With a . for a name)
             if (strlen($file->getClientOriginalName()) != 1) {
@@ -736,6 +753,7 @@ class OrderController extends Controller
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                         $order_file_upload->save();
+
                         echo "The file " . $fileName . " has been uploaded";
                     } else
                         echo "Error";
@@ -747,6 +765,7 @@ class OrderController extends Controller
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                         $order_file_upload->save();
+
                         echo "The file " . $fileName . " has been uploaded";
                     } else
                         echo "Error";
@@ -754,7 +773,57 @@ class OrderController extends Controller
 
             }
         }
-        return "OK!";
+    }
+    public function CustomerOrderFormMail(Request $request)
+    {
+
+        $project_name = $request->input('project_name');
+        $size = $request->input('size');
+        $width_height = $request->input('width_height');
+        $products = $request->input('products');
+        $special_instructions = $request->input('special_instructions');
+
+        $order = Order::where('project_name', $project_name)
+            ->where('size', $size)
+            ->where('width_height', $width_height)
+            ->where('products', $products)
+            ->where('special_instructions', $special_instructions)->first();
+
+
+
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        if ($order->type == 'Embroidery') {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first()->email;
+        } else {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '2')->first()->email;
+        }
+        $recipient_customer = auth()->user()->email;
+
+        $customer = auth()->user();
+
+
+        $files = [];
+        $attachmanet_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+        foreach ($attachmanet_files as $attachmant) {
+            $customer_number = explode('/', $attachmant)[1];
+            $project_name = explode('/', $attachmant)[2];
+            $folder_name = explode('/', $attachmant)[3];
+            $filename = explode('/', $attachmant)[4];
+            if ($folder_name == 'Originaldatei') {
+                $files[] = 'public/' . $customer_number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+            }
+        }
+
+        $order['user'] = Auth::user();
+        try {
+            Mail::to($recipient_admin)->send(new OrderFormMail($order, $customer, $files));
+            Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $files));
+            Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $files));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
     public function fileUploadChange(Request $request)
     {
@@ -787,6 +856,8 @@ class OrderController extends Controller
 
         $order->status = 'Änderung';
         $order->save();
+
+
         $files = $request->file("files");
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
@@ -896,6 +967,60 @@ class OrderController extends Controller
 
         $order->status = 'Änderung';
         $order->save();
+    }
+    public function OrderRequestMail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('order_id'));
+        $customer = User::findOrfail($order->user_id);
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        if ($order->type == 'Embroidery') {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first()->email;
+        } else {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '2')->first()->email;
+        }
+        $recipient_customer = $customer->email;
+        $sender = $customer->email;
+
+
+        $files = [];
+        $folder_name = [];
+        $attachment_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+        foreach ($attachment_files as $attachmant) {
+            $folder_name[] = explode('/', $attachmant)[3];
+        }
+        $maxFolderNumber = -1;
+
+        foreach ($folder_name as $name) {
+            if (strpos($name, 'Änderungsdateien Kunde') === 0) {
+                $folderNumber = (int) substr($name, strlen('Änderungsdateien Kunde'));
+                if ($folderNumber > $maxFolderNumber) {
+                    $maxFolderNumber = $folderNumber;
+                }
+            }
+        }
+        foreach ($attachment_files as $attachmant) {
+            $customer_Number = explode('/', $attachmant)[1];
+            $project_name = explode('/', $attachmant)[2];
+            $folder_name = explode('/', $attachmant)[3];
+            $filename = explode('/', $attachmant)[4];
+            if (strpos($folder_name, 'Änderungsdateien Kunde') === 0) {
+                $folderNumber = (int) substr($folder_name, strlen('Änderungsdateien Kunde'));
+
+                if ($folderNumber == $maxFolderNumber) {
+                    $files[] = 'public/' . $customer_Number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+                }
+            }
+        }
+
+        try {
+            Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $files));
+            Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $files));
+            Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $files));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
 
     public function importData(Request $request)

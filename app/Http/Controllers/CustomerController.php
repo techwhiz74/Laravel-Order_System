@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\TempCustomer;
+use App\Models\CustomerEmParameter;
+use App\Models\CustomerVeParameter;
+use App\Models\TempCustomerEmParameter;
+use App\Models\TempCustomerVeParameter;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\User;
@@ -17,6 +23,15 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use App\Mail\inviteEmployeeMail;
+use App\Mail\CustomerRegisterMail;
+use App\Mail\CustomerRegisterCustomerMail;
+use App\Mail\ChangeProfileAdminMail;
+use App\Mail\ChangeProfileCustomerMail;
+use App\Mail\ChangeEmParameterAdminMail;
+use App\Mail\ChangeEmParameterCustomerMail;
+use App\Mail\ChangeVeParameterAdminMail;
+use App\Mail\ChangeVeParameterCustomerMail;
+
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Illuminate\Support\Facades\Validator;
@@ -108,19 +123,18 @@ class CustomerController extends Controller
             ]
         );
         $file = $request->file('upload');
-        // var_dump($request->post());
-        // die();
         $upload_dir = 'public/';
         $folder = $request->name . '-' . $request->email;
         $path = $upload_dir . $folder;
         $filename = $file->getClientOriginalName();
+        $files = [];
         if (strlen($file->getClientOriginalName()) != 1) {
             Storage::makeDirectory($upload_dir);
             if ($file->storePubliclyAs($path, $filename)) {
                 $data = $request->all();
                 $data['upload'] = $path . '/' . $filename;
+                $files[] = 'public/' . $folder . '/' . $filename;
                 $userid = User::create([
-                    // 'customer_number' => $data['customer_number'],
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'company' => $data['company'],
@@ -150,6 +164,13 @@ class CustomerController extends Controller
                 ]);
                 $credentials = $request->only('email', 'password');
                 if (Auth::attempt($credentials)) {
+                    $recipient_admin = User::where('user_type', 'admin')->first()->email;
+                    $recipient_customer = auth()->user()->email;
+                    $data['user'] = Auth::user();
+                    Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
+                    Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+
+                    $authuser = auth()->user();
                     return redirect('/')->with('message', 'You have Successfully loggedin');
                 }
             } else {
@@ -255,83 +276,152 @@ class CustomerController extends Controller
         $profile_upload->IBAN = $IBAN;
         $profile_upload->BIC = $BIC;
         $profile_upload->save();
+
         return "ok";
+    }
+    public function profileUpdateMail(Request $request)
+    {
+        $customer = User::findOrfail($request->input("customer_id"));
+        $temp_customer = TempCustomer::where('customer_id', $customer->id)->first();
 
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = $customer->email;
+        try {
+            Mail::to($recipient_admin)->send(new ChangeProfileAdminMail($customer, $temp_customer));
+            Mail::to($recipient_customer)->send(new ChangeProfileCustomerMail($customer, $temp_customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function GetEmParameter(Request $request)
+    {
+        $customer = auth()->user();
+        $parameter = CustomerEmParameter::where('customer_id', $customer->id)->first();
+        return response()->json($parameter);
+    }
+    public function GetVeParameter(Request $request)
+    {
+        $customer = auth()->user();
+        $parameter = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        return response()->json($parameter);
+    }
+    public function ChangeEmParameter(Request $request)
+    {
+        $parameter1 = $request->post('parameter1');
+        $parameter2 = $request->post('parameter2');
+        $parameter3 = $request->post('parameter3');
+        $parameter4 = $request->post('parameter4');
+        $parameter5 = $request->post('parameter5');
+        $parameter6 = $request->post('parameter6');
+        $parameter7 = $request->post('parameter7');
+        $customer = auth()->user();
+        $exist_parameter = CustomerEmParameter::where('customer_id', $customer->id)->first();
+        if ($exist_parameter == null) {
+            $parameter = new CustomerEmParameter();
+            $parameter->customer_id = $customer->id;
+            $parameter->parameter1 = "";
+            $parameter->parameter2 = "";
+            $parameter->parameter3 = "";
+            $parameter->parameter4 = "";
+            $parameter->parameter5 = "";
+            $parameter->parameter6 = "";
+            $parameter->parameter7 = "";
+            $parameter->save();
+            $temp_parameter_double = new TempCustomerEmParameter();
+            $temp_parameter_double->parameter_id = $parameter->id;
+            $temp_parameter_double->customer_id = $customer->id;
+            $temp_parameter_double->parameter1 = $parameter1;
+            $temp_parameter_double->parameter2 = $parameter2;
+            $temp_parameter_double->parameter3 = $parameter3;
+            $temp_parameter_double->parameter4 = $parameter4;
+            $temp_parameter_double->parameter5 = $parameter5;
+            $temp_parameter_double->parameter6 = $parameter6;
+            $temp_parameter_double->parameter7 = $parameter7;
+            $temp_parameter_double->save();
+        } else {
+            TempCustomerEmParameter::where('parameter_id', $exist_parameter->id)->orderBy('id', 'desc')->delete();
+            $temp_parameter = new TempCustomerEmParameter();
+            $temp_parameter->parameter_id = $exist_parameter->id;
+            $temp_parameter->customer_id = $customer->id;
+            $temp_parameter->parameter1 = $parameter1;
+            $temp_parameter->parameter2 = $parameter2;
+            $temp_parameter->parameter3 = $parameter3;
+            $temp_parameter->parameter4 = $parameter4;
+            $temp_parameter->parameter5 = $parameter5;
+            $temp_parameter->parameter6 = $parameter6;
+            $temp_parameter->parameter7 = $parameter7;
+            $temp_parameter->save();
+        }
 
+    }
+    public function ChangeEmParameterMail(Request $request)
+    {
+        $customer = auth()->user();
+        $parameter_old = CustomerEmParameter::where('customer_id', $customer->id)->first();
+        $parameter_new = TempCustomerEmParameter::where('parameter_id', $parameter_old->id)->first();
 
-        // var_dump($request->all());
-        // die();
-        // $validator = Validator::make(
-        //     $request->all(),
-        //     [
-        //         'name' => 'required',
-        //         'first_name' => 'required',
-        //         'email' => 'required|email',
-        //         'company' => 'required',
-        //         'company_addition' => 'required',
-        //         'street_number' => 'required',
-        //         'postal_code' => 'required',
-        //         'location' => 'required',
-        //         'country' => 'required',
-        //         'website' => 'required',
-        //         'phone' => 'required',
-        //         'mobile' => 'required',
-        //         'tax_number' => 'nullable',
-        //         'vat_number' => 'nullable',
-        //         'register_number' => 'nullable',
-        //         'kd_group' => 'nullable',
-        //         'kd_category' => 'nullable',
-        //         'payment_method' => 'nullable',
-        //         'bank_name' => 'nullable',
-        //         'IBAN' => 'nullable',
-        //         'BIC' => 'nullable',
-        //     ],
-        //     [
-        //         'email.required' => __('home.email') . ' ' . __('home.required'),
-        //     ]
-        // );
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = auth()->user()->email;
 
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //         ->withErrors($validator)
-        //         ->withInput()
-        //         ->with('sidebar', true);
-        // }
+        $customer = auth()->user();
+        try {
+            Mail::to($recipient_admin)->send(new ChangeEmParameterAdminMail($parameter_old, $parameter_new, $customer));
+            Mail::to($recipient_customer)->send(new ChangeEmParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function ChangeVeParameter(Request $request)
+    {
+        $parameter8 = $request->post('parameter8');
+        $parameter9 = $request->post('parameter9');
 
-        // $user = new TempCustomer();
-        // // $address = $request->address;
-        // // if ($request->hasFile('image')) {
-        // //     $file = $request->file('image');
-        // //     $filename = time() . '-' . $file->getClientOriginalName();
-        // //     $destination = $user->id . '-profile' . $filename;
-        // //     $path = Storage::disk('s3')->put($destination, file_get_contents($file));
-        // //     $imageUrl = Storage::disk('s3')->url($destination);
-        // //     $user->image = $imageUrl;
-        // // }
-        // $user->name = $request->name;
-        // $user->first_name = $request->first_name;
-        // $user->email = $request->email;
-        // $user->company = $request->company;
-        // $user->company_addition = $request->company_addition;
-        // $user->street_number = $request->street_number;
-        // $user->postal_code = $request->postal_code;
-        // $user->location = $request->location;
-        // $user->country = $request->country;
-        // $user->website = $request->website;
-        // $user->phone = $request->phone;
-        // $user->mobile = $request->mobile;
-        // $user->tax_number = $request->tax_number;
-        // $user->vat_number = $request->vat_number;
-        // $user->register_number = $request->register_number;
-        // $user->kd_group = $request->kd_group;
-        // $user->kd_category = $request->kd_category;
-        // $user->payment_method = $request->payment_method;
-        // $user->bank_name = $request->bank_name;
-        // $user->IBAN = $request->IBAN;
-        // $user->BIC = $request->BIC;
+        $customer = auth()->user();
+        $exist_parameter = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        if ($exist_parameter == null) {
+            $parameter = new CustomerVeParameter();
+            $parameter->customer_id = $customer->id;
+            $parameter->parameter8 = "";
+            $parameter->parameter9 = "";
+            $parameter->save();
+            $temp_parameter_double = new TempCustomerVeParameter();
+            $temp_parameter_double->parameter_id = $parameter->id;
+            $temp_parameter_double->customer_id = $customer->id;
+            $temp_parameter_double->parameter8 = $parameter8;
+            $temp_parameter_double->parameter9 = $parameter9;
+            $temp_parameter_double->save();
+        } else {
+            TempCustomerVeParameter::where('parameter_id', $exist_parameter->id)->orderBy('id', 'desc')->delete();
+            $temp_parameter = new TempCustomerVeParameter();
+            $temp_parameter->parameter_id = $exist_parameter->id;
+            $temp_parameter->customer_id = $customer->id;
+            $temp_parameter->parameter8 = $parameter8;
+            $temp_parameter->parameter9 = $parameter9;
+            $temp_parameter->save();
+        }
 
-        // $user->save();
-        // return redirect()->back()->with('success', 'Profile was updated. Please wait for acceptation of admin');
+    }
+    public function ChangeVeParameterMail(Request $request)
+    {
+        $customer = auth()->user();
+        $parameter_old = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        $parameter_new = TempCustomerVeParameter::where('parameter_id', $parameter_old->id)->first();
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = auth()->user()->email;
+
+        $customer = auth()->user();
+        try {
+            Mail::to($recipient_admin)->send(new ChangeVeParameterAdminMail($parameter_old, $parameter_new, $customer));
+            Mail::to($recipient_customer)->send(new ChangeVeParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
 
     public function files($locale, $id)

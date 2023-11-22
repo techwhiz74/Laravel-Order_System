@@ -12,6 +12,7 @@ return [
     'customerupdate-password' => '/en/customer/update-password',
     'customer-profile' => '/en/customer/profile',
     'customer-profileupdate' => '/en/customer/profile-update',
+    'customer-profileupdate-mail' => '/en/customer/profile-update-mail',
 
 
     'customer-vieworders' => '/en/customer/view-orders',
@@ -21,6 +22,7 @@ return [
     'customer-req-order_detail' => '/en/customer/req-order_detail',
     'customer-order_change' => '/en/customer/order_change',
     'customer-order-change-text' => '/en/customer/order-change-text',
+    'customer-order-request-mail' => '/en/customer/order-request-mail',
     'customer-order_request' => '/en/customer/order_request/',
     'customer-order-file-index-change' => '/en/customer/order-file-index-change',
     'customer-get-order-detail' => '/en/customer/get-order-detail',
@@ -30,14 +32,6 @@ return [
     'customer-dashboard-red-table' => '/en/customer/dashboard-red-table',
     'customer-dashboard-yellow-table' => '/en/customer/dashboard-yellow-table',
     'customer-dashboard-blue-table' => '/en/customer/dashboard-blue-table',
-
-
-
-
-
-
-
-
 
 
 
@@ -64,6 +58,16 @@ return [
 
     'invite-employee' => '/en/customer/invite-employee/',
     'send-invite' => '/en/customer/send-invite',
+
+    'customer-order-form-mail' => '/en/customer/order-form-mail',
+    'customer-get-em-parameter' => '/en/customer/get-em-parameter',
+    'customer-get-ve-parameter' => '/en/customer/get-ve-parameter',
+    'customer-em-parameter-change' => '/en/customer/em-parameter-change',
+    'customer-em-parameter-change-mail' => '/en/customer/em-parameter-change-mail',
+    'customer-ve-parameter-change' => '/en/customer/ve-parameter-change',
+    'customer-ve-parameter-change-mail' => '/en/customer/ve-parameter-change-mail',
+
+
     // Employer
     'employer-setPassword' => '/en/customer/setpassword/',
     'employer-Passwordupdate' => '/en/customer/employer-password-update/',
@@ -151,14 +155,18 @@ return [
     'admin-customer-search' => '/en/admin/customer-search',
     'admin-get-differences' => '/en/admin/get-differences/',
     'admin-accept-change' => '/en/admin/accept-change/',
+    'admin-accept-change-mail' => '/en/admin/accept-change-mail/',
     'admin-decline-change' => '/en/admin/decline-change/',
+    'admin-decline-change-mail' => '/en/admin/decline-change-mail/',
     'admin-get-customer-profile' => '/en/admin/get-customer-profile',
     'admin-change-profile' => '/en/admin/change-profile/',
     'admin-add-customer' => '/en/admin/add-customer',
     'admin-customer-search-table' => '/en/admin/customer-search-table',
     'admin-customer-searched-result' => '/en/admin/customer-searched-result',
     'admin-confirm-profile' => '/en/admin/confirm-profile',
+    'admin-confirm-profile-mail' => '/en/admin/confirm-profile-mail',
     'admin-decline-profile' => '/en/admin/decline-profile',
+    'admin-decline-profile-mail' => '/en/admin/decline-profile-mail',
 
     'admin-parameter-em-table' => '/en/admin/parameter-em-table',
     'admin-parameter-ve-table' => '/en/admin/parameter-ve-table',
@@ -182,6 +190,14 @@ return [
     'admin-request-text' => '/en/admin/request-text',
     'admin-detail-delete-file' => '/en/admin/detail-delete-file/',
     'admin-change_delete_file' => '/en/admin/change_delete_file/',
+    'admin-change-em-parameter-confirm' => '/en/admin/change-em-parameter-confirm',
+    'admin-change-ve-parameter-confirm' => '/en/admin/change-ve-parameter-confirm',
+    'admin-change-em-parameter-confirm-mail' => '/en/admin/change-em-parameter-confirm-mail',
+    'admin-change-ve-parameter-confirm-mail' => '/en/admin/change-ve-parameter-confirm-mail',
+    'admin-change-em-parameter-decline' => '/en/admin/change-em-parameter-decline',
+    'admin-change-ve-parameter-decline' => '/en/admin/change-ve-parameter-decline',
+    'admin-change-em-parameter-decline-mail' => '/en/admin/change-em-parameter-decline-mail',
+    'admin-change-ve-parameter-decline-mail' => '/en/admin/change-ve-parameter-decline-mail',
 
 
 

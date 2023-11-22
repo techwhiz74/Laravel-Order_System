@@ -183,6 +183,7 @@
         <h1 id="order_form_title">{{ __('home.orderform_title') }}</h1>
         <p></p>
     </div>
+    <button style="display: none" id="customer_order_form_mail" type="button"></button>
     <div class="order_fome_container">
         <form id="order_submit_form" action="">
             <input type="hidden" name="type">

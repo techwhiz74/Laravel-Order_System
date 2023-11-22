@@ -12,6 +12,7 @@ return [
     'customerupdate-password' => '/de/customer/update-password',
     'customer-profile' => '/de/customer/profile',
     'customer-profileupdate' => '/de/customer/profile-update',
+    'customer-profileupdate-mail' => '/de/customer/profile-update-mail',
 
 
     'customer-vieworders' => '/de/customer/view-orders',
@@ -21,6 +22,7 @@ return [
     'customer-req-order_detail' => '/de/customer/req-order_detail',
     'customer-order_change' => '/de/customer/order_change',
     'customer-order-change-text' => '/de/customer/order-change-text',
+    'customer-order-request-mail' => '/de/customer/order-request-mail',
     'customer-order_request' => '/de/customer/order_request/',
     'customer-order-file-index-change' => '/de/customer/order-file-index-change',
     'customer-req-get-order-detail' => '/de/customer/req-get-order-detail',
@@ -29,11 +31,6 @@ return [
     'customer-dashboard-red-table' => '/de/customer/dashboard-red-table',
     'customer-dashboard-yellow-table' => '/de/customer/dashboard-yellow-table',
     'customer-dashboard-blue-table' => '/de/customer/dashboard-blue-table',
-
-
-
-
-
 
 
     'customer-embroidery-information' => '/de/customer/embroidery-information/',
@@ -59,6 +56,16 @@ return [
 
     'invite-employee' => '/de/customer/invite-employee/',
     'send-invite' => '/de/customer/send-invite',
+
+    'customer-order-form-mail' => '/de/customer/order-form-mail',
+    'customer-get-em-parameter' => '/de/customer/get-em-parameter',
+    'customer-get-ve-parameter' => '/de/customer/get-ve-parameter',
+    'customer-em-parameter-change' => '/de/customer/em-parameter-change',
+    'customer-em-parameter-change-mail' => '/de/customer/em-parameter-change-mail',
+    'customer-ve-parameter-change' => '/de/customer/ve-parameter-change',
+    'customer-ve-parameter-change-mail' => '/de/customer/ve-parameter-change-mail',
+
+
     // Employer
     'employer-setPassword' => '/de/customer/setpassword/',
     'employer-Passwordupdate' => '/de/customer/employer-password-update/',
@@ -154,14 +161,18 @@ return [
     'admin-customer-search' => '/de/admin/customer-search',
     'admin-get-differences' => '/de/admin/get-differences/',
     'admin-accept-change' => '/de/admin/accept-change/',
+    'admin-accept-change-mail' => '/de/admin/accept-change-mail/',
     'admin-decline-change' => '/de/admin/decline-change/',
+    'admin-decline-change-mail' => '/de/admin/decline-change-mail/',
     'admin-get-customer-profile' => '/de/admin/get-customer-profile',
     'admin-change-profile' => '/de/admin/change-profile/',
     'admin-add-customer' => '/de/admin/add-customer',
     'admin-customer-search-table' => '/de/admin/customer-search-table',
     'admin-customer-searched-result' => '/de/admin/customer-searched-result',
     'admin-confirm-profile' => '/de/admin/confirm-profile',
+    'admin-confirm-profile-mail' => '/de/admin/confirm-profile-mail',
     'admin-decline-profile' => '/de/admin/decline-profile',
+    'admin-decline-profile-mail' => '/de/admin/decline-profile-mail',
 
     'admin-parameter-em-table' => '/de/admin/parameter-em-table',
     'admin-parameter-ve-table' => '/de/admin/parameter-ve-table',
@@ -185,4 +196,12 @@ return [
     'admin-request-text' => '/de/admin/request-text',
     'admin-detail-delete-file' => '/de/admin/detail-delete-file/',
     'admin-change_delete_file' => '/de/admin/change_delete_file/',
+    'admin-change-em-parameter-confirm' => '/de/admin/change-em-parameter-confirm',
+    'admin-change-ve-parameter-confirm' => '/de/admin/change-ve-parameter-confirm',
+    'admin-change-em-parameter-confirm-mail' => '/de/admin/change-em-parameter-confirm-mail',
+    'admin-change-ve-parameter-confirm-mail' => '/de/admin/change-ve-parameter-confirm-mail',
+    'admin-change-em-parameter-decline' => '/de/admin/change-em-parameter-decline',
+    'admin-change-ve-parameter-decline' => '/de/admin/change-ve-parameter-decline',
+    'admin-change-em-parameter-decline-mail' => '/de/admin/change-em-parameter-decline-mail',
+    'admin-change-ve-parameter-decline-mail' => '/de/admin/change-ve-parameter-decline-mail',
 ];

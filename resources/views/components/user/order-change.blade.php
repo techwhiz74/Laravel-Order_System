@@ -5,6 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_change') }}</h5>
                 <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
             </div>
+            <button type="button" style="display: none" id="order_request_mail"></button>
             <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:570px;">
                 <div class="container" style="padding: 20px">
                     <form action="" id="order_change_form">
@@ -110,6 +111,7 @@
                             'click');
                         setTimeout(() => {
                             $('#order_change_success_popup').modal('show');
+                            $('#order_request_mail').trigger('click');
                         }, 1000);
                     },
                     error: () => {
@@ -117,8 +119,22 @@
                     }
                 })
             }
-
         });
+        $('#order_request_mail').one('click', function() {
+            $.ajax({
+                url: '{{ __('routes.customer-order-request-mail') }}',
+                type: 'get',
+                data: {
+                    order_id: $('[name=order_id]').val()
+                },
+                success: () => {
+                    console.log("success");
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
     })
 
     function openOrderChangeModal(id) {

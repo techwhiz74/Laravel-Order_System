@@ -8,24 +8,24 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 
-
-class OrderSubmitMail extends Mailable
+class OrderRequestCustomer extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $data;
-
-
+    public $order;
+    public $customer;
+    public $files;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($order, $customer, $files)
     {
-        $this->data = $data;
+        $this->order = $order;
+        $this->customer = $customer;
+        $this->files = $files;
     }
 
     /**
@@ -36,8 +36,8 @@ class OrderSubmitMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
-            subject: 'OrderId #' . $this->data['order_id'] . ' | You have received a new order',
+            from: "info@lionwerbung.de",
+            subject: 'Order Request',
         );
     }
 
@@ -49,9 +49,11 @@ class OrderSubmitMail extends Mailable
     public function content()
     {
         return new Content(
-            html: 'email.order-submit',
+            html: 'email.order-request-customer',
             with: [
-                'data' => $this->data,
+                'order' => $this->order,
+                'customer' => $this->customer,
+                'files' => $this->files,
             ],
         );
     }
@@ -63,6 +65,10 @@ class OrderSubmitMail extends Mailable
      */
     public function attachments()
     {
-        return [];
+        $attachments = [];
+        foreach ($this->files as $file) {
+            $attachments[] = Attachment::fromStorage($file);
+        }
+        return $attachments;
     }
 }

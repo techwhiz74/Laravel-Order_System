@@ -8,24 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
-class inviteEmployeeMail extends Mailable
+
+class DeclineRegisterMail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $customer;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public $data;
-    public $inviteLink;
-
-    public $customer;
-    public function __construct($data, $inviteLink,$customer)
+    public function __construct($customer)
     {
-        $this->data = $data;
-        $this->inviteLink = $inviteLink;
         $this->customer = $customer;
     }
 
@@ -37,9 +31,8 @@ class inviteEmployeeMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-
-            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
-                subject: 'You have got an invitation from'.$this->customer['name'],
+            from: 'info@lionwerbung.de',
+            subject: 'Decline Register',
         );
     }
 
@@ -51,16 +44,11 @@ class inviteEmployeeMail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'email.invite-employee',
+            html: 'email.decline_register',
             with: [
-                'data' => $this->data,
-                'customer' =>$this->customer,
-                'inviteLink'=> $this->inviteLink,
+                'customer' => $this->customer->id,
             ],
-
         );
-
-
     }
 
     /**

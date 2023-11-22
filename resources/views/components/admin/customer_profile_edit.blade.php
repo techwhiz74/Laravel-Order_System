@@ -542,52 +542,52 @@
             success: (response) => {
                 console.log("profile", response.profile);
                 console.log("temp", response.temp);
-                if (response.temp == null) {
-                    $('[name=admin_change_profile_id]').val(response.profile.id);
-                    $('[name=admin_customer_number]').val(response.profile.customer_number);
-                    $('[name=admin_name]').val(response.profile.name);
-                    $('[name=admin_name]').css('animation', 'none');
-                    $('[name=admin_first_name]').val(response.profile.first_name);
-                    $('[name=admin_first_name]').css('animation', 'none');
-                    $('[name=admin_email]').val(response.profile.email);
-                    $('[name=admin_email]').css('animation', 'none');
-                    $('[name=admin_company]').val(response.profile.company);
-                    $('[name=admin_company]').css('animation', 'none');
-                    $('[name=admin_company_addition]').val(response.profile.company_addition);
-                    $('[name=admin_company_addition]').css('animation', 'none');
-                    $('[name=admin_street_number]').val(response.profile.street_number);
-                    $('[name=admin_street_number]').css('animation', 'none');
-                    $('[name=admin_postal_code]').val(response.profile.postal_code);
-                    $('[name=admin_postal_code]').css('animation', 'none');
-                    $('[name=admin_location]').val(response.profile.location);
-                    $('[name=admin_location]').css('animation', 'none');
-                    $('[name=admin_country]').val(response.profile.country);
-                    $('[name=admin_country]').css('animation', 'none');
-                    $('[name=admin_website]').val(response.profile.website);
-                    $('[name=admin_website]').css('animation', 'none');
-                    $('[name=admin_phone]').val(response.profile.phone);
-                    $('[name=admin_phone]').css('animation', 'none');
-                    $('[name=admin_mobile]').val(response.profile.mobile);
-                    $('[name=admin_mobile]').css('animation', 'none');
-                    $('[name=admin_tax_number]').val(response.profile.tax_number);
-                    $('[name=admin_tax_number]').css('animation', 'none');
-                    $('[name=admin_vat_number]').val(response.profile.vat_number);
-                    $('[name=admin_vat_number]').css('animation', 'none');
-                    $('[name=admin_register_number]').val(response.profile.register_number);
-                    $('[name=admin_register_number]').css('animation', 'none');
-                    $('[name=admin_kd_group]').val(response.profile.kd_group);
-                    $('[name=admin_kd_group]').css('animation', 'none');
-                    $('[name=admin_kd_category]').val(response.profile.kd_category);
-                    $('[name=admin_kd_category]').css('animation', 'none');
-                    $('[name=admin_payment_method]').val(response.profile.payment_method);
-                    $('[name=admin_payment_method]').css('animation', 'none');
-                    $('[name=admin_bank_name]').val(response.profile.bank_name);
-                    $('[name=admin_bank_name]').css('animation', 'none');
-                    $('[name=admin_IBAN]').val(response.profile.IBAN);
-                    $('[name=admin_IBAN]').css('animation', 'none');
-                    $('[name=admin_BIC]').val(response.profile.BIC);
-                    $('[name=admin_BIC]').css('animation', 'none');
-                } else {
+                $('[name=admin_change_profile_id]').val(response.profile.id);
+                $('[name=admin_customer_number]').val(response.profile.customer_number);
+                $('[name=admin_name]').val(response.profile.name);
+                $('[name=admin_name]').css('animation', 'none');
+                $('[name=admin_first_name]').val(response.profile.first_name);
+                $('[name=admin_first_name]').css('animation', 'none');
+                $('[name=admin_email]').val(response.profile.email);
+                $('[name=admin_email]').css('animation', 'none');
+                $('[name=admin_company]').val(response.profile.company);
+                $('[name=admin_company]').css('animation', 'none');
+                $('[name=admin_company_addition]').val(response.profile.company_addition);
+                $('[name=admin_company_addition]').css('animation', 'none');
+                $('[name=admin_street_number]').val(response.profile.street_number);
+                $('[name=admin_street_number]').css('animation', 'none');
+                $('[name=admin_postal_code]').val(response.profile.postal_code);
+                $('[name=admin_postal_code]').css('animation', 'none');
+                $('[name=admin_location]').val(response.profile.location);
+                $('[name=admin_location]').css('animation', 'none');
+                $('[name=admin_country]').val(response.profile.country);
+                $('[name=admin_country]').css('animation', 'none');
+                $('[name=admin_website]').val(response.profile.website);
+                $('[name=admin_website]').css('animation', 'none');
+                $('[name=admin_phone]').val(response.profile.phone);
+                $('[name=admin_phone]').css('animation', 'none');
+                $('[name=admin_mobile]').val(response.profile.mobile);
+                $('[name=admin_mobile]').css('animation', 'none');
+                $('[name=admin_tax_number]').val(response.profile.tax_number);
+                $('[name=admin_tax_number]').css('animation', 'none');
+                $('[name=admin_vat_number]').val(response.profile.vat_number);
+                $('[name=admin_vat_number]').css('animation', 'none');
+                $('[name=admin_register_number]').val(response.profile.register_number);
+                $('[name=admin_register_number]').css('animation', 'none');
+                $('[name=admin_kd_group]').val(response.profile.kd_group);
+                $('[name=admin_kd_group]').css('animation', 'none');
+                $('[name=admin_kd_category]').val(response.profile.kd_category);
+                $('[name=admin_kd_category]').css('animation', 'none');
+                $('[name=admin_payment_method]').val(response.profile.payment_method);
+                $('[name=admin_payment_method]').css('animation', 'none');
+                $('[name=admin_bank_name]').val(response.profile.bank_name);
+                $('[name=admin_bank_name]').css('animation', 'none');
+                $('[name=admin_IBAN]').val(response.profile.IBAN);
+                $('[name=admin_IBAN]').css('animation', 'none');
+                $('[name=admin_BIC]').val(response.profile.BIC);
+                $('[name=admin_BIC]').css('animation', 'none');
+
+                if (response.temp != null) {
                     if (response.profile.name != response.temp.name) {
                         $('[name=admin_name]').val(response.temp.name);
                         $('[name=admin_name]').css({
@@ -780,39 +780,70 @@
         })
     })
     $('#confirm_customer_button').click(function() {
-        var confirm_profile_data = new FormData();
-        confirm_profile_data.append('customer_number', $('[name=admin_customer_number]').val());
-        confirm_profile_data.append('admin_confirm_profile_id', $('[name=admin_change_profile_id]').val())
-        $.ajax({
-            url: '{{ __('routes.admin-confirm-profile') }}',
-            type: 'post',
-            data: confirm_profile_data,
-            processData: false,
-            contentType: false,
-            success: () => {
-                $('#admin_customer_profile_edit_popup').hide();
-                $('#customer_list_table_reload_button').trigger('click');
-            },
-            error: () => {
-                console.error('error');
-            }
-        })
+        if ($('[name=admin_customer_number]').val() != null && $('[name=admin_customer_number]').val() !==
+            "") {
+            var confirm_profile_data = new FormData();
+            confirm_profile_data.append('customer_number', $('[name=admin_customer_number]').val());
+            confirm_profile_data.append('admin_confirm_profile_id', $('[name=admin_change_profile_id]')
+                .val())
+            $.ajax({
+                url: '{{ __('routes.admin-confirm-profile') }}',
+                type: 'post',
+                data: confirm_profile_data,
+                processData: false,
+                contentType: false,
+                success: () => {
+                    $('#admin_customer_profile_edit_popup').hide();
+                    $('#customer_list_table_reload_button').trigger('click');
+                    $.ajax({
+                        url: '{{ __('routes.admin-confirm-profile-mail') }}',
+                        type: 'get',
+                        data: {
+                            customer_id: $('[name=admin_change_profile_id]').val()
+                        },
+                        success: () => {
+                            console.log("send email successfully");
+                        },
+                        error: () => {
+                            console.error("error");
+                        }
+                    })
+                },
+                error: () => {
+                    console.error('error');
+                }
+            });
+        }
     })
     $('#decline_customer_button').click(function() {
         $.ajax({
-            url: '{{ __('routes.admin-decline-profile') }}',
-            type: 'post',
+            url: '{{ __('routes.admin-decline-profile-mail') }}',
+            type: 'get',
             data: {
-                admin_decline_profile_id: $('[name=admin_change_profile_id]').val()
+                customer_id: $('[name=admin_change_profile_id]').val()
             },
             success: () => {
-                $('#admin_customer_profile_edit_popup').hide();
-                $('#customer_list_table_reload_button').trigger('click');
+                console.log("send email successfully");
+                $.ajax({
+                    url: '{{ __('routes.admin-decline-profile') }}',
+                    type: 'post',
+                    data: {
+                        admin_decline_profile_id: $('[name=admin_change_profile_id]')
+                            .val()
+                    },
+                    success: () => {
+                        $('#admin_customer_profile_edit_popup').hide();
+                        $('#customer_list_table_reload_button').trigger('click');
+                    },
+                    error: () => {
+                        console.error("error");
+                    }
+                });
             },
             error: () => {
                 console.error("error");
             }
-        })
+        });
     })
     $('#customer_accept').click(function() {
         var customer_accept_data = new FormData();
@@ -848,7 +879,19 @@
                 console.log('The customer\'s profile has been changed');
                 $('#admin_customer_profile_edit_popup').modal("hide");
                 $('#customer_list_table_reload_button').trigger('click');
-
+                $.ajax({
+                    url: '{{ __('routes.admin-accept-change-mail') }}',
+                    type: 'get',
+                    data: {
+                        customer_id: $('[name=admin_change_profile_id]').val()
+                    },
+                    success: () => {
+                        console.log("success");
+                    },
+                    error: () => {
+                        console.error('error');
+                    }
+                })
             },
             error: (err) => {
                 console.error(err);
@@ -860,9 +903,22 @@
         $.ajax({
             url: '{{ __('routes.admin-decline-change') }}' + id,
             type: 'post',
-            succcess: () => {
+            success: () => {
                 $('#admin_customer_profile_edit_popup').modal("hide");
                 $('#customer_list_table_reload_button').trigger('click');
+                $.ajax({
+                    url: '{{ __('routes.admin-decline-change-mail') }}',
+                    type: 'get',
+                    data: {
+                        customer_id: $('[name=admin_change_profile_id]').val()
+                    },
+                    success: () => {
+                        console.log("success");
+                    },
+                    error: () => {
+                        console.error('error');
+                    }
+                })
             },
             error: (err) => {
                 console.error('error!');

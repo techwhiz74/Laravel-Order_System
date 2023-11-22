@@ -1775,7 +1775,7 @@ select#status-filter:focus-visible {
   max-width: 1000px;
   margin: 0 auto;
   position: absolute;
-  top: 60%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

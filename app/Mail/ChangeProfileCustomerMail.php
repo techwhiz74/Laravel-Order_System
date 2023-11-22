@@ -8,23 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
 
-
-class OrderUpdateEmail extends Mailable
+class ChangeProfileCustomerMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $data;
-
+    public $customer;
+    public $temp_customer;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($customer, $temp_customer)
     {
-        $this->data = $data;
+        $this->customer = $customer;
+        $this->temp_customer = $temp_customer;
     }
 
     /**
@@ -35,8 +33,8 @@ class OrderUpdateEmail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: new Address(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME')),
-            subject: 'OrderId #' . $this->data['order_id'] . ' | You have some updates in this order',
+            from: "info@lionwerbung.de",
+            subject: 'Change Customer Profile',
         );
     }
 
@@ -48,10 +46,11 @@ class OrderUpdateEmail extends Mailable
     public function content()
     {
         return new Content(
-            html: 'email.order-update',
+            html: 'email.change-profile-customer',
             with: [
-                'data' => $this->data,
-            ],
+                'customer' => $this->temp_customer,
+                'temp_customer' => $this->customer->id,
+            ]
         );
     }
 

@@ -53,11 +53,11 @@
                             </fieldset>
                             <div class="row">
                                 <div class="col-12 ">
-                                    <div class="upload_btn">
-                                        @if (@auth()->user()->user_type == 'customer')
-                                            <button class="btn btn-primary btn-block"
-                                                type="submit">{{ __('home.request_change') }}</button>
-                                        @endif
+                                    <div class="upload_btn" id="admin_ve_parameter_buttons" style="display: none">
+                                        <button class="btn btn-primary btn-block" type="submit"
+                                            id="admin_ve_parameter_confirm">Bestätigen</button>
+                                        <button class="btn btn-primary btn-block" type="submit"
+                                            id="admin_ve_parameter_decline">Ablehnen</button>
                                     </div>
                                 </div>
                             </div>
@@ -83,4 +83,64 @@
             // buttonWidth: '300px'
         });
     });
+    $(function() {
+        $('#admin_ve_parameter_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.admin-change-ve-parameter-confirm') }}',
+                type: 'post',
+                data: {
+                    customer_id: $('[name=admin_ve_parameter_customer_id]').val()
+                },
+                success: () => {
+                    $('#admin_ve_parameter_buttons').hide();
+                    $.ajax({
+                        url: '{{ __('routes.admin-change-ve-parameter-confirm-mail') }}',
+                        type: 'get',
+                        data: {
+                            customer_id: $('[name=admin_ve_parameter_customer_id]')
+                                .val()
+                        },
+                        success: () => {
+                            console.log("success");
+                        },
+                        error: () => {
+                            console.error("error");
+                        }
+                    })
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
+        $('#admin_ve_parameter_decline').click(function() {
+            $.ajax({
+                url: '{{ __('routes.admin-change-ve-parameter-decline') }}',
+                type: 'post',
+                data: {
+                    customer_id: $('[name=admin_ve_parameter_customer_id]').val()
+                },
+                success: () => {
+                    $('#admin_ve_parameter_buttons').hide();
+                    $.ajax({
+                        url: '{{ __('routes.admin-change-ve-parameter-decline-mail') }}',
+                        type: 'get',
+                        data: {
+                            customer_id: $('[name=admin_ve_parameter_customer_id]')
+                                .val()
+                        },
+                        success: () => {
+                            console.log("success");
+                        },
+                        error: () => {
+                            console.error("error");
+                        }
+                    })
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
+    })
 </script>

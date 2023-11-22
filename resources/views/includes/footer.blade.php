@@ -306,7 +306,7 @@
             $('.order_form_validation_projectname').hide();
             $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_file_upload').hide();
-            $('[name=size]').val("24");
+            $('[name=size]').val("");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
             $('.admin_search_customer_validation').hide();
@@ -325,7 +325,7 @@
             $('.order_form_validation_projectname').hide();
             $('[name=project_name]').css("border", "1px solid #ddd");
             $('.order_form_file_upload').hide();
-            $('[name=size]').val("24");
+            $('[name=size]').val("");
             $('.order_form_validation_checkbox').hide();
             $('#selected_products').text("No Products");
             $('.admin_search_customer_validation').hide();
@@ -434,6 +434,26 @@
             data.append('customer_number', $('[name=customer_number]').val());
             data.append('ordered_from', $('[name=ordered_from]').val());
         });
+        $('#customer_order_form_mail').one('click', function() {
+            var order_form_mail_data = {
+                project_name: $('[name=project_name]').val(),
+                size: $('[name=size]').val(),
+                width_height: $('[name=width_height]:checked').val(),
+                products: $('[name=products]').val(),
+                special_instructions: $('[name=special_instructions]').val()
+            };
+            $.ajax({
+                url: '{{ __('routes.customer-order-form-mail') }}',
+                type: 'get',
+                data: order_form_mail_data,
+                success: () => {
+                    console.log('Success');
+                },
+                error: () => {
+                    console.error('error');
+                }
+            })
+        });
         $('.admin_order_form_submit').click(function() {
             var admin_upload = new FormData();
             admin_upload.append('project_name', $('[name=project_name]').val());
@@ -449,8 +469,7 @@
         });
         $('.admin_order_form_submit').click(function(e) {
             e.preventDefault();
-            if (($('[name=project_name]').val() != "") && ($(
-                    '[name=size]').val() != "") && ($('#selected_products')
+            if (($('[name=project_name]').val() != "") && ($('#selected_products')
                     .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
                         '#adminTableSearchInput').text() !=
                     "Kunden suchen")) {
@@ -515,13 +534,24 @@
                 success: () => {
                     toastr.success(
                         "Warten Sie auf die Genehmigung durch den Administrator");
-                    $('#customer_list_table_reload_button').trigger('click');
+                    $.ajax({
+                        url: '{{ __('routes.customer-profileupdate-mail') }}',
+                        type: 'get',
+                        data: {
+                            customer_id: $('[name=customer_id]').val()
+                        },
+                        success: () => {
+                            console.log("success");
+                        },
+                        error: () => {
+                            console.error("error");
+                        }
+                    })
                 },
                 error: () => {
                     console.error("error!");
                 }
             })
-
         });
 
 
@@ -529,8 +559,7 @@
         $('.order_form_submit').click(function(e) {
             e.preventDefault();
 
-            if (($('[name=project_name]').val() != "") && ($(
-                    '[name=size]').val() != "") && ($('#selected_products')
+            if (($('[name=project_name]').val() != "") && ($('#selected_products')
                     .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
                     '#order_form_checkbox').is(':checked'))) {
                 $('#order_submit_form').find('.fileupload-buttonbar .start').trigger('click');
