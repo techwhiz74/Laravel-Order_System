@@ -30,6 +30,10 @@ class Order extends Model
     }
     public function Orderfile_uploads()
     {
-        return $this->hasOne(Order_file_upload::class);
+        return $this->hasMany(Order_file_upload::class, 'order_id', 'id');
+    }
+    public function OrderChange()
+    {
+        return $this->hasMany(OrderChange::class, 'order_number', 'order_number');
     }
 }

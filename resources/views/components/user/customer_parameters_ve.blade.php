@@ -15,14 +15,45 @@
                             <label style="width: 200px;">{{ __('home.required_vector_file') }}
                             </label>
                             <div style="width: calc(100% - 205px) !important;">
-                                <select name="parameter_required_vector_file" multiple>
-                                    <option value="Adobe Illustrator (*.AI)">Adobe Illustrator (*.AI)</option>
-                                    <option value="Adobe PDF (*.PDF)">Adobe PDF (*.PDF)</option>
-                                    <option value="Illustrator EPS (*.EPS)">Illustrator EPS (*.EPS)</option>
-                                    <option value="Illustrator Template (*.AIT)">Illustrator Template (*.AIT)</option>
-                                    <option value="SVG (*.SVG)">SVG (*.SVG)</option>
-                                    <option value="SVG komprimiert (*.SVGZ)">SVG komprimiert (*.SVGZ)</option>
-                                </select>
+                                @if (auth()->user()->user_type == 'customer')
+                                    @if (auth()->user()->customerVeParameter)
+                                        <select name="parameter_required_vector_file" multiple>
+                                            <option value="Adobe Illustrator (*.AI)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'Adobe Illustrator (*.AI)') ? 'selected' : '' }}>
+                                                Adobe Illustrator (*.AI)</option>
+                                            <option value="Adobe PDF (*.PDF)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'Adobe PDF (*.PDF)') ? 'selected' : '' }}>
+                                                Adobe PDF (*.PDF)</option>
+                                            <option value="Illustrator EPS (*.EPS)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'Illustrator EPS (*.EPS)') ? 'selected' : '' }}>
+                                                Illustrator EPS (*.EPS)</option>
+                                            <option value="Illustrator Template (*.AIT)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'Illustrator Template (*.AIT)') ? 'selected' : '' }}>
+                                                Illustrator Template (*.AIT)</option>
+                                            <option value="SVG (*.SVG)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'SVG (*.SVG)') ? 'selected' : '' }}>
+                                                SVG (*.SVG)</option>
+                                            <option value="SVG komprimiert (*.SVGZ)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter8, 'SVG komprimiert (*.SVGZ)') ? 'selected' : '' }}>
+                                                SVG komprimiert (*.SVGZ)</option>
+                                        </select>
+                                    @else
+                                        <select name="parameter_required_vector_file" multiple>
+                                            <option value="Adobe Illustrator (*.AI)">
+                                                Adobe Illustrator (*.AI)</option>
+                                            <option value="Adobe PDF (*.PDF)">
+                                                Adobe PDF (*.PDF)</option>
+                                            <option value="Illustrator EPS (*.EPS)">
+                                                Illustrator EPS (*.EPS)</option>
+                                            <option value="Illustrator Template (*.AIT)">
+                                                Illustrator Template (*.AIT)</option>
+                                            <option value="SVG (*.SVG)">
+                                                SVG (*.SVG)</option>
+                                            <option value="SVG komprimiert (*.SVGZ)">
+                                                SVG komprimiert (*.SVGZ)</option>
+                                        </select>
+                                    @endif
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -31,13 +62,41 @@
                             <label style="width: 200px;">{{ __('home.required_image_file') }}
                             </label>
                             <div style="width: calc(100% - 205px) !important;">
-                                <select name="parameter_required_image_file" multiple>
-                                    <option value="BMP (*.BMP)">BMP (*.BMP)</option>
-                                    <option value="JPEG (*.JPG)">JPEG (*.JPG)</option>
-                                    <option value="PNG (*.PNG)">PNG (*.PNG)</option>
-                                    <option value="TIFF (*.TIF)">TIFF (*.TIF)</option>
-                                    <option value="WebP (*.WEBP)">WebP (*.WEBP)</option>
-                                </select>
+                                @if (auth()->user()->user_type == 'customer')
+                                    @if (auth()->user()->customerVeParameter)
+                                        <select name="parameter_required_image_file" multiple>
+                                            <option value="BMP (*.BMP)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter9, 'BMP (*.BMP)') ? 'selected' : '' }}>
+                                                BMP (*.BMP)</option>
+                                            <option value="JPEG (*.JPG)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter9, 'JPEG (*.JPG)') ? 'selected' : '' }}>
+                                                JPEG (*.JPG)
+                                            </option>
+                                            <option value="PNG (*.PNG)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter9, 'PNG (*.PNG)') ? 'selected' : '' }}>
+                                                PNG (*.PNG)</option>
+                                            <option value="TIFF (*.TIF)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter9, 'TIFF (*.TIF)') ? 'selected' : '' }}>
+                                                TIFF (*.TIF)</option>
+                                            <option value="WebP (*.WEBP)"
+                                                {{ str_contains(auth()->user()->customerVeParameter->parameter9, 'WebP (*.WEBP)') ? 'selected' : '' }}>
+                                                WebP (*.WEBP)
+                                            </option>
+                                        </select>
+                                    @else
+                                        <select name="parameter_required_image_file" multiple>
+                                            <option value="BMP (*.BMP)">BMP (*.BMP)</option>
+                                            <option value="JPEG (*.JPG)">JPEG (*.JPG)
+                                            </option>
+                                            <option value="PNG (*.PNG)">PNG (*.PNG)</option>
+                                            <option value="TIFF (*.TIF)">
+                                                TIFF (*.TIF)</option>
+                                            <option value="WebP (*.WEBP)">WebP (*.WEBP)
+                                            </option>
+                                        </select>
+                                    @endif
+                                @endif
+
                             </div>
                         </div>
                     </div>
@@ -72,14 +131,26 @@
                 url: '{{ __('routes.customer-get-ve-parameter') }}',
                 type: 'get',
                 success: (parameter) => {
-                    $('[name=parameter_required_vector_file]').val(parameter.parameter8);
-                    $('[name=parameter_required_image_file]').val(parameter.parameter9);
+                    var vectorFiles = parameter.parameter8.split(', ');
+                    var imageFiles = parameter.parameter9.split(', ');
+                    vectorFiles.forEach(item => {
+                        console.log(item);
+                        $('[name=parameter_required_vector_file]').find(
+                            'option[value="' + item + '"]').attr('selected',
+                            'selected');
+                    });
+                    imageFiles.forEach(item => {
+                        console.log(item);
+                        $('[name=parameter_required_image_file]').find(
+                            'option[value="' + item + '"]').attr('selected',
+                            'selected');
+                    });
                 },
                 error: () => {
                     console.error("error");
                 }
-            })
-        })
+            });
+        });
         $('#customer_ve_parameter_submit').click(function() {
             var ve_parameter_data = new FormData();
             ve_parameter_data.append('parameter8', $('[name=parameter_required_vector_file]').val()

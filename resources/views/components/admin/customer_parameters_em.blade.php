@@ -36,7 +36,7 @@
                                         </label>
                                         <div style="width: calc(100% - 205px) !important;">
                                             <select name="admin_parameter_need_embroidery_files" multiple>
-                                                <option value="Tajima (*.DST)">Tajima (*.DST)</option>
+                                                <option value="Tajima (*.DST)" checked>Tajima (*.DST)</option>
                                                 <option value="Tajima (*.TBF)">Tajima (*.TBF)</option>
                                                 <option value="Tajima Barudan (*.DSB)">Tajima Barudan (*.DSB)</option>
                                                 <option value="Tajima (*.T01)">Tajima (*.T01)</option>

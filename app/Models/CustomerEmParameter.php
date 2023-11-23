@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class CustomerEmParameter extends Model
 {
     use HasFactory;
+    public function tempCustomerEmParameter()
+    {
+        return $this->hasOne(TempCustomerEmParameter::class, 'parameter_id', 'id');
+    }
 }
+

@@ -46,4 +46,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function customerEmParameter()
+    {
+        return $this->hasOne(CustomerEmParameter::class, 'customer_id', 'id');
+    }
+    public function customerVeParameter()
+    {
+        return $this->hasOne(CustomerVeParameter::class, 'customer_id', 'id');
+    }
+    public function tempCustomer()
+    {
+        return $this->hasOne(TempCustomer::class, 'customer_id', 'id');
+    }
 }

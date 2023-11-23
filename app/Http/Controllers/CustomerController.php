@@ -45,7 +45,11 @@ class CustomerController extends Controller
     //
     public function homePage()
     {
-        return view('home');
+        $em_parameter = auth()->user() ? CustomerEmParameter::where('customer_id', auth()->user()->id)->first() : null;
+        $ve_parameter = auth()->user() ? CustomerVeParameter::where('customer_id', auth()->user()->id)->first() : null;
+        $admin_em_parameter = auth()->user()->user_type == 'admin' ? CustomerEmParameter::where('customer_id', auth()->user()->id)->first() : null;
+        $admin_ve_parameter = auth()->user()->user_type == 'admin' ? CustomerVeParameter::where('customer_id', auth()->user()->id)->first() : null;
+        return view('home', compact('em_parameter', 've_parameter', 'admin_em_parameter', 'admin_ve_parameter'));
     }
 
 

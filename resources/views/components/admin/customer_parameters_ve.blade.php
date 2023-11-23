@@ -21,17 +21,45 @@
                                         <label style="width: 200px;">{{ __('home.required_vector_file') }}
                                         </label>
                                         <div style="width: calc(100% - 205px) !important;">
-                                            <select name="admin_parameter_require_vector_file" multiple>
-                                                <option value="Adobe Illustrator (*.AI)">Adobe Illustrator (*.AI)
-                                                </option>
-                                                <option value="Adobe PDF (*.PDF)">Adobe PDF (*.PDF)</option>
-                                                <option value="Illustrator EPS (*.EPS)">Illustrator EPS (*.EPS)</option>
-                                                <option value="Illustrator Template (*.AIT)">Illustrator Template
-                                                    (*.AIT)</option>
-                                                <option value="SVG (*.SVG)">SVG (*.SVG)</option>
-                                                <option value="SVG komprimiert (*.SVGZ)">SVG komprimiert (*.SVGZ)
-                                                </option>
-                                            </select>
+                                            @if (auth()->user()->user_type == 'admin')
+                                                @if (auth()->user()->tempCustomerVeParameter)
+                                                    <select name="admin_parameter_require_vector_file" multiple>
+                                                        <option value="Adobe Illustrator (*.AI)">
+                                                            Adobe Illustrator (*.AI)
+                                                        </option>
+                                                        <option value="Adobe PDF (*.PDF)">
+                                                            Adobe PDF (*.PDF)</option>
+                                                        <option value="Illustrator EPS (*.EPS)">
+                                                            Illustrator EPS (*.EPS)
+                                                        </option>
+                                                        <option value="Illustrator Template (*.AIT)">
+                                                            Illustrator Template (*.AIT)</option>
+                                                        <option value="SVG (*.SVG)">
+                                                            SVG (*.SVG)</option>
+                                                        <option value="SVG komprimiert (*.SVGZ)">
+                                                            SVG komprimiert (*.SVGZ)
+                                                        </option>
+                                                    </select>
+                                                @else
+                                                    <select name="admin_parameter_require_vector_file" multiple>
+                                                        <option value="Adobe Illustrator (*.AI)">Adobe Illustrator
+                                                            (*.AI)
+                                                        </option>
+                                                        <option value="Adobe PDF (*.PDF)">Adobe PDF (*.PDF)
+                                                        </option>
+                                                        <option value="Illustrator EPS (*.EPS)">Illustrator EPS (*.EPS)
+                                                        </option>
+                                                        <option value="Illustrator Template (*.AIT)">Illustrator
+                                                            Template
+                                                            (*.AIT)</option>
+                                                        <option value="SVG (*.SVG)">SVG (*.SVG)</option>
+                                                        <option value="SVG komprimiert (*.SVGZ)">SVG komprimiert
+                                                            (*.SVGZ)
+                                                        </option>
+                                                    </select>
+                                                @endif
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
