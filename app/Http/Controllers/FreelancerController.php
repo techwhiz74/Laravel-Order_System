@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\Order;
-use App\Models\Order_address;
-use App\Models\OrderAddress;
+use App\Models\CustomerEmParameter;
+use App\Models\CustomerVeParameter;
 use Intervention\Image\Facades\Image;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Response;
@@ -305,10 +305,10 @@ class FreelancerController extends Controller
             $users = User::find(Auth::user()->id);
             $users->password = bcrypt($request->newpassword);
             $users->save();
-            session()->flash('message', 'password updated successfully');
+            session()->flash('message', 'Password updated successfully');
             return redirect(__('/'));
         } else {
-            session()->flash('message', 'old password does not matched');
+            session()->flash('message', 'Old password does not matched');
             return redirect(__('routes.freelancer-changepassword'));
         }
     }
@@ -815,7 +815,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
                     return $btn;
                 })
                 ->rawColumns(['customer_number', 'order_number', 'download'])
@@ -1526,7 +1526,8 @@ class FreelancerController extends Controller
     public function Parameter(Request $request)
     {
         $order = Order::findOrfail($request->get("id"));
-        $parameter = Customer_parameter::where('customer_id', $order->user_id)->first();
-        return response()->json($parameter);
+        $em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
+        $ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
+        return response()->json([$em_parameter, $ve_parameter]);
     }
 }

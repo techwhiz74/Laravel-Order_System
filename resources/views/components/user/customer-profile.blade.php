@@ -98,7 +98,7 @@
         font-size: 13px !important;
         color: #060617;
         font-family: "Inter", "Helvetica", monospace;
-        line-height: 1.6;
+        line-height: 1;
         width: 90px;
     }
 
@@ -309,9 +309,9 @@
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="form-group form_dv_wrap">
-                                    <label class="" style="width:65px;">{{ __('home.first_name') }}</label>
+                                    <label class="" style="width:75px;">{{ __('home.first_name') }}</label>
                                     <input type="text" name="profile_first_name" class="form-control"
-                                        style="width: calc(100% - 75px) !important;" value="{{ @$user->first_name }}">
+                                        style="width: calc(100% - 85px) !important;" value="{{ @$user->first_name }}">
                                     @if ($errors->has('first_name'))
                                         <span class="text-danger">{{ __('home.requiredMessage') }}<i
                                                 class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
@@ -342,9 +342,9 @@
                             </div>
                             <div class="col-lg-6 col-md-12" style="width: 58%; padding-left:0;">
                                 <div class="form-group form_dv_wrap">
-                                    <label style="width:30px">{{ __('home.location') }}</label>
+                                    <label style="width:60px">{{ __('home.location') }}</label>
                                     <input type="text" name="profile_location" class="form-control"
-                                        style="width: calc(100% - 40px) !important;" value="{{ @$user->location }}">
+                                        style="width: calc(100% - 70px) !important;" value="{{ @$user->location }}">
                                     @if ($errors->has('location'))
                                         <span class="text-danger">{{ __('home.requiredMessage') }}<i
                                                 class="fa fa-exclamation-circle" aria-hidden="true"></i></span>

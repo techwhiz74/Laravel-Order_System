@@ -1,7 +1,7 @@
 <section class="em_freelancer_green_section">
 
     <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">Neue Offene Bestellungen</h1>
+        <h1 style="margin-left: 0 !important">{{ __('home.dashboard_new_order') }}</h1>
         <p></p>
     </div>
     <div>

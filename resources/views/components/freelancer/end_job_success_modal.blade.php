@@ -4,12 +4,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Der Status änderte sich von gelb auf rot
+                        {{ __('home.end_job_success') }}
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="hideAlertModal()">{{ __('home.cancel') }}</button>
                     </div>
                 </div>
             </div>

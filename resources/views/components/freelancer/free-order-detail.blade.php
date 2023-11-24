@@ -238,14 +238,14 @@
                     style="display: flex;"></i></button>
 
             <div class="pagetitle" style="margin-top:10px !important;">
-                <h1>Bestelldetails</h1>
+                <h1>{{ __('home.order_detail') }}</h1>
                 <p></p>
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 10vw">
                 <div class="col-12" style="display: flex">
                     <div class="col-6" style="padding-right: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Übersicht Bestelldetails</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box1') }}</div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -320,7 +320,7 @@
                     </div>
                     <div class="col-6" style="padding-left: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Kunden-Parameter</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box2') }}</div>
                             <div id="embroidery_parameter_div">
                                 <div class="row">
                                     <div class="col-12">
@@ -434,7 +434,7 @@
                         <div class="order_detail_div2">
                             <div class="col-12"
                                 style="display: flex; justify-content:space-between; margin-bottom:10px;">
-                                <div style="font-size:18px;">Dateiübersicht</div>
+                                <div style="font-size:18px;">{{ __('home.detail_box3') }}</div>
                                 <div>
                                     <button class="btn btn-primary btn-sm" onclick="freeMultipleDownload()"
                                         style="background-color:#c3ac6d; border:none; font-size:13px;"><i
@@ -510,20 +510,23 @@
                     <div class="col-6" style="padding-left: 2.5px;">
                         <div class="freelancer_job_div">
                             <div id="green_job">
-                                <div style="height: 50px; font-size:18px;">Aktivität-Übersicht</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.detail_box4') }}</div>
                                 <div id="freelancer_job_start_div">
-                                    <button onclick="StartJob()" class="job_button">Job starten</button>
+                                    <button onclick="StartJob()"
+                                        class="job_button">{{ __('home.Job starten') }}</button>
                                 </div>
 
                             </div>
                             <div id="yellow_job">
-                                <div style="height: 50px; font-size:18px;">Aktivität-Übersicht</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.detail_box4') }}</div>
                                 <div style="display: flex; flex-direction:column; justify-content:space-between">
                                     <div id="freelancer_job_update_div">
-                                        <button onclick="UpdateJob()" class="job_button">Dateien hochladen</button>
+                                        <button onclick="UpdateJob()"
+                                            class="job_button">{{ __('home.Dateien hochladen') }}</button>
                                     </div>
                                     <div id="freelacner_job_upload_div">
-                                        <form action="" id="freelancer_job_start_form">
+                                        <form action="" id="freelancer_job_start_form"
+                                            style="height: 265px; display:flex; flex-direction:column; justify-content:space-between;">
                                             <input type="hidden" name="free_detail_id" value="">
                                             <div style="display: flex">
                                                 <div id="freelancer_job_upload" action="" method="POST"
@@ -568,7 +571,7 @@
                                             <div style="display: flex; justify-content:flex-end">
                                                 <div>
                                                     <button type="submit"
-                                                        class="freelancer_job_start_submit">Hochladen</button>
+                                                        class="freelancer_job_start_submit">{{ __('home.order_upload') }}</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -587,7 +590,6 @@
 @include('components.freelancer.free_upload_success_modal')
 @include('components.freelancer.delete_confirm_modal')
 @include('components.freelancer.end_job_success_modal')
-@include('components.freelancer.end_job_error_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -632,11 +634,6 @@
                     $('#green_job').show();
                 } else if (data.order.status == 'In Bearbeitung') {
                     $('#yellow_job').show();
-                    // folderArray.forEach((item) => {
-                    //     if (item == "Stickprogramm" || item == "Vektordatei") {
-                    //         $('#freelancer_job_end_div').show();
-                    //     }
-                    // })
                 }
 
                 console.log(folderArray);
@@ -737,16 +734,21 @@
                 id: $('[name=free_detail_id]').val()
             },
             success: (data) => {
-                console.log(data);
-                $('#yarn_information').text(data.parameter1);
-                $('#need_embroidery_files').text(data.parameter2);
-                $('#cutting_options').text(data.parameter3);
-                $('#special_cutting_options').text(data.parameter4);
-                $('#needle_instructions').text(data.parameter5);
-                $('#standard_instructions').text(data.parameter6);
-                $('#special_standard_instructions').text(data.parameter7);
-                $('#required_vector_file').text(data.parameter8);
-                $('#required_image_file').text(data.parameter9);
+                console.log(data[0]);
+                console.log(data[1]);
+                if (data[0] != null) {
+                    $('#yarn_information').text(data[0].parameter1);
+                    $('#need_embroidery_files').text(data[0].parameter2);
+                    $('#cutting_options').text(data[0].parameter3);
+                    $('#special_cutting_options').text(data[0].parameter4);
+                    $('#needle_instructions').text(data[0].parameter5);
+                    $('#standard_instructions').text(data[0].parameter6);
+                    $('#special_standard_instructions').text(data[0].parameter7);
+                }
+                if (data[1] != null) {
+                    $('#required_vector_file').text(data[1].parameter8);
+                    $('#required_image_file').text(data[1].parameter9);
+                }
             },
             error: () => {
                 console.error('error');

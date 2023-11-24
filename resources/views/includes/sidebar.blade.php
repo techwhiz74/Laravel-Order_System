@@ -29,7 +29,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>NEUE<br>AUFTRÄGE</p>
+                                <p>{{ __('home.new') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>NEUE<br>AUFTRÄGE</p>
+                                <p>{{ __('home.new') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>AUFTRÄGE IN ARBEIT</p>
+                                <p>{{ __('home.orderes in progress') }}</p>
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>AUFTRÄGE IN ARBEIT</p>
+                                <p>{{ __('home.orderes in progress') }}</p>
                             </div>
                         </div>
 
@@ -152,7 +152,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px 0; ">
-                                <p>ABGESCHLOSSENE AUFTRÄGE</p>
+                                <p>{{ __('home.completed orders') }}</p>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
-                                <p>ABGESCHLOSSENE AUFTRÄGE</p>
+                                <p>{{ __('home.completed orders') }}</p>
                             </div>
                         </div>
                     </div>
@@ -215,7 +215,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>AUFTRÄGE ÄNDERUNGEN</p>
+                                <p>{{ __('home.orders') }}<br>{{ __('home.changes') }}</p>
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>AUFTRÄGE ÄNDERUNGEN</p>
+                                <p>{{ __('home.orders') }}<br>{{ __('home.changes') }}</p>
                             </div>
                         </div>
                     </div>
@@ -275,7 +275,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>ALLE<br>AUFTRÄGE</p>
+                                <p>{{ __('home.all') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
                     </div>
@@ -289,7 +289,7 @@
                             </div>
 
                             <div style="height: 40%;padding: 3px;">
-                                <p>ALLE<br>AUFTRÄGE</p>
+                                <p>{{ __('home.all') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
                     </div>

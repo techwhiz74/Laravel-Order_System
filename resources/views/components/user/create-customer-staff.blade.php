@@ -21,28 +21,29 @@
                     <div class="row" style="font-size: 13px; font-family:Inter; margin-bottom:10px;">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>Name, Vorname</strong>
+                                <strong>{{ __('home.staff_create_name') }}</strong>
                                 <input type="text" id="name" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>E-Mail-Adresse</strong>
+                                <strong>{{ __('home.staff_create_email') }}</strong>
                                 <input type="email" id="email" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                             <div class="form-group">
-                                <strong>Passwort</strong>
+                                <strong>{{ __('home.staff_create_password') }}</strong>
                                 <input type="password" id="password" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12"
                             style="margin: 5px 0; display:flex; justify-content:flex-end;">
-                            <button type="submit" id="customer_staff_create_submit">Absenden</button>
+                            <button type="submit"
+                                id="customer_staff_create_submit">{{ __('home.staff_create_button') }}</button>
                         </div>
                 </form>
 
@@ -65,23 +66,27 @@
             data.append('name', $('#name').val());
             data.append('email', $('#email').val());
             data.append('password', $('#password').val());
-            $.ajax({
-                url: '{{ __('routes.employer-addemployee') }}',
-                type: 'POST',
-                contentType: false,
-                processData: false,
-                data: data,
-                success: (result) => {
-                    $('#customer_staff_create_popup').modal('hide');
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#password').val('');
-                    $('#employee_id').val('');
-                },
-                error: (err) => {
-                    console.log(err);
-                }
-            });
+            $confirm = window.confirm('{{ __('home.click_customer_add_employee') }}');
+            if ($confirm == true) {
+                $.ajax({
+                    url: '{{ __('routes.employer-addemployee') }}',
+                    type: 'POST',
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: (result) => {
+                        $('#customer_staff_create_popup').modal('hide');
+                        $('#name').val('');
+                        $('#email').val('');
+                        $('#password').val('');
+                        $('#employee_id').val('');
+                    },
+                    error: (err) => {
+                        console.log(err);
+                    }
+                });
+            }
+
         }
     });
 
@@ -92,7 +97,7 @@
             url: '{{ __('routes.employer-getemployee') }}' + id,
             type: 'GET',
             success: (result) => {
-                $('#staff_popup_title').text("Mitarbeiter bearbeiten")
+                $('#staff_popup_title').text("{{ __('home.staff_edit_title') }}")
                 $('#name').val(result.name);
                 $('#email').val(result.email);
             },
@@ -103,30 +108,34 @@
     }
 
     function updateEmployee() {
-        $.ajax({
-            url: '{{ __('routes.employer-updateemployee') }}',
-            type: 'POST',
-            data: {
-                id: $('#employee_id').val(),
-                name: $('#name').val(),
-                email: $('#email').val(),
-                password: $('#password').val()
-            },
-            success: (result) => {
-                $('#customer_staff_create_popup').modal('hide');
-                $('#employee_id').val('');
-                $('#name').val('');
-                $('#email').val('');
-                $('#password').val('');
-            },
-            error: (err) => {
-                console.log(err);
-            }
-        })
+        $confirm = window.confirm('{{ __('home.click_customer_add_employee') }}');
+        if ($confirm == true) {
+            $.ajax({
+                url: '{{ __('routes.employer-updateemployee') }}',
+                type: 'POST',
+                data: {
+                    id: $('#employee_id').val(),
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    password: $('#password').val()
+                },
+                success: (result) => {
+                    $('#customer_staff_create_popup').modal('hide');
+                    $('#employee_id').val('');
+                    $('#name').val('');
+                    $('#email').val('');
+                    $('#password').val('');
+                },
+                error: (err) => {
+                    console.log(err);
+                }
+            })
+        }
+
     }
 
     function deleteEmployee(id) {
-        var confirm = window.confirm('Are you sure?');
+        var confirm = window.confirm('{{ __('home.staff_delete_confirm') }}');
         if (confirm == true) {
             $.ajax({
                 url: '{{ __('routes.employer-deleteemployee') }}' + id,

@@ -315,7 +315,7 @@
                                         <input type="text" class="register_input" name="BIC">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="">
                                         <label for="c1">{{ __('home.upload') }} <span
                                                 class="reqiurd">*</span></label>
@@ -323,6 +323,20 @@
                                             aria-describedby="inputGroupFileAddon04" aria-label="Upload"
                                             style="font-size:13px; margin:5px 0;">
                                         @if ($errors->has('upload'))
+                                            <span class="text-danger">{{ __('home.upload') }}
+                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
+                                                    aria-hidden="true"></i></span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.avatar_upload') }} <span
+                                                class="reqiurd">*</span></label>
+                                        <input type="file" class="form-control" name="avatar_upload"
+                                            aria-describedby="inputGroupFileAddon04" aria-label="avatar_upload"
+                                            style="font-size:13px; margin:5px 0;">
+                                        @if ($errors->has('avatar_upload'))
                                             <span class="text-danger">{{ __('home.upload') }}
                                                 {{ __('home.required') }}<i class="fa fa-exclamation-circle"
                                                     aria-hidden="true"></i></span>

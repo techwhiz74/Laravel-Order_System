@@ -4,7 +4,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Fonts -->
-<title> Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
+<title>{{ __('home.system_title') }}</title>
 
 <link rel="stylesheet" href="{{ asset('asset/css/user/global.css') }}">
 
@@ -32,9 +32,7 @@
 <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
 <link rel="stylesheet" href="{{ asset('asset/css/jquery.fileupload.css') }}" />
 <link rel="stylesheet" href="{{ asset('asset/css/jquery.fileupload-ui.css') }}" />
-{{-- <link rel="stylesheet"
-    href="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/css/bootstrap-multiselect.css"
-    type="text/css"> --}}
+
 <link rel="stylesheet"
     href="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/css/prettify.css"
     type="text/css">
@@ -65,10 +63,6 @@
         background: rgba(255, 255, 255, 0.8) url('{{ asset('asset/images/loader.gif') }}') center no-repeat;
     }
 
-    /* body {
-        text-align: center;
-    } */
-
     /* Turn off scrollbar when body element has the loading class */
     body.loading {
         overflow: hidden;
@@ -85,14 +79,12 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
     crossorigin="anonymous"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
 <script src="{{ asset('asset/js/jquery.dataTables.min.js') }}" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
 <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/locales/bootstrap-datepicker.de.min.js">
@@ -105,13 +97,6 @@
     src="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/js/prettify.js">
 </script>
 
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>
 
 
 
@@ -123,9 +108,6 @@
     }
 </script>
 
-<!-- <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js"></script> -->
-
-<script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
 <script src="{{ asset('asset/js/jquery.multiselect.js') }}"></script>
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <script src="{{ asset('asset/js/vendor/jquery.ui.widget.js') }}"></script>
@@ -166,155 +148,17 @@
 
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        $('#header_slider').owlCarousel({
-            items: 1,
-            loop: true,
-            margin: 0,
-            autoplay: true,
-            autoplayTimeout: 6000,
-            autoplayHoverPause: true,
-            dots: false,
-            autoplaySpeed: 1500,
-            responsive: {
-                margin: 10,
-                loop: true,
-                0: {
-                    items: 1
-                },
-
-                992: {
-                    items: 1
-                },
-                1200: {
-                    items: 1
-                },
-                1400: {
-                    items: 1
-                },
-            }
-        });
-        $('select[multiple]#order_multiselect').multiselect({
-            columns: 4,
-            placeholder: '{{ __('home.order_form_multiselect_placeholder') }}',
-            search: true,
-            searchOptions: {
-                'default': 'Bitte wählen Sie das Endmaterial aus. Mehrfachauswahl möglich.'
-            },
-            selectAll: true
-        });
-    });
-</script>
 
 
+{{-- system scripts --}}
+<script src="{{ asset('asset/js/system-script/ajax-setting.js') }}"></script>
+<script src="{{ asset('asset/js/system-script/open-popup.js') }}"></script>
+<script src="{{ asset('asset/js/system-script/hide-modal.js') }}"></script>
 
-<script>
-    $(document).ready(function() {
-        $(".q1").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-
-    });
-</script>
-
-<script>
-    $(document).ready(function() {
-        $(".q2").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-
-    });
-</script>
-
-
-<script>
-    $(document).ready(function() {
-        var prevClass = '';
-        $(".lion_pop_btn").click(async function() {
-            let lionpid = $(this).attr("lion-pop-id");
-            let id = $(this).attr('id');
-
-            if ($("#" + lionpid).hasClass('active') && $("#" + lionpid).hasClass(id)) {
-                $(".lion_popup_wrrpr").removeClass("active");
-                $("#" + lionpid).removeClass(id);
-                $("#wrapper").removeClass("full_height");
-                $(".main-content-wrapper").show();
-            } else {
-                await $(".lion_popup_wrrpr").removeClass("active");
-                $(".lion_popup_wrrpr").removeClass(prevClass);
-                $("#wrapper").addClass("full_height");
-                $("#" + lionpid).addClass("active");
-                $("#" + lionpid).addClass(id);
-                prevClass = id;
-                $(".main-content-wrapper").hide();
-            }
-        });
-    });
-    $(document).ready(function() {
-        $(".lion_pop_close").click(function() {
-            $(".lion_popup_wrrpr").removeClass("active");
-            $("#wrapper").removeClass("full_height");
-        });
-    });
-
-    function hideModal() {
-        $('#order_detail_popup').modal("hide");
-        $('#order_change_popup').modal("hide");
-        $('#order_form_success_popup').modal("hide");
-        $('#customer_staff_create_popup').modal("hide");
-        $('#admin_customer_profile_edit_popup').modal("hide");
-        $('#admin_customer_profile_request_handle_popup').modal("hide");
-        $('#em_freelancer_request_popup').modal("hide");
-        $('#register_upload_popup').modal('hide');
-        $('#order_request_popup').modal('hide');
-        $('#free_order_detail_popup').modal("hide");
-        $('#ve_freelancer_request_popup').modal("hide");
-        $('#customer_search_popup').modal('hide');
-        $('#admin_customer_parameters_em_popup').modal('hide');
-        $('#admin_customer_parameters_ve_popup').modal('hide');
-        $('#admin_order_detail_popup').modal("hide");
-        $('#admin_change_popup').modal('hide');
-        $('#admin_request_popup').modal('hide');
-
-    }
-
-    function hideAlertModal() {
-        $('#start_job_confirm_popup').modal('hide');
-        $('#delete_confirm_popup').modal('hide');
-        $('#end_job_success_popup').modal('hide');
-        $('#end_job_error_popup').modal('hide');
-        $('#start_change_confirm_popup').modal('hide');
-        $('#end_change_confirm_popup').modal('hide');
-        $('#end_change_error_popup').modal('hide');
-        $('#ve_start_change_confirm_popup').modal('hide');
-        $('#ve_end_change_confirm_popup').modal('hide');
-        $('#ve_end_change_error_popup').modal('hide');
-        $('#order_change_success_popup').modal('hide');
-        $('#start_job_success_popup').modal('hide');
-        $('#free_upload_success_popup').modal('hide');
-        $('#em_upload_success_popup').modal('hide');
-        $('#ve_upload_success_popup').modal('hide');
-        $('#admin_start_job_confirm_popup').modal('hide');
-        $('#admin_start_job_success_popup').modal('hide');
-        $('#admin_upload_success_popup').modal('hide');
-        $('#admin_end_job_success_popup').modal('hide');
-        $('#admin_start_change_confirm_popup').modal('hide');
-        $('#admin_change_upload_success_popup').modal('hide');
-        $('#delete_order_confirm_popup').modal('hide');
-        $('#admin_request_success_popup').modal('hide');
-        $('#admin_delete_detail_file_confirm_popup').modal('hide');
-        $('#admin_delete_change_file_confirm_popup').modal('hide');
-
-    }
-    $(document).on({
-        ajaxStart: function() {
-            $("body").addClass("loading");
-        },
-        ajaxStop: function() {
-            $("body").removeClass("loading");
-        }
-    });
-</script>
+{{-- system function --}}
+@include('functions.order-form')
+@include('functions.add-staff')
+@include('functions.customer-profile-change')
+@include('functions.dashboard')
+@include('functions.order-form-mail')
+@include('functions.upload-template')

@@ -78,14 +78,6 @@
         display: none;
     }
 
-    /* .order_form_submit:hover {
-        background-color: #45a049;
-    }
-
-    .order_form_submit_em_ex:hover {
-        background-color: #45a049;
-    } */
-
 
     .col-20 {
         float: left;
@@ -241,14 +233,14 @@
                     style="display: flex;"></i></button>
 
             <div class="pagetitle" style="margin-top:10px !important;">
-                <h1>Änderungsanforderungen</h1>
+                <h1>{{ __('home.dashboard_change') }}</h1>
                 <p></p>
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 10vw">
                 <div class="col-12" style="display: flex">
                     <div class="col-6" style="padding-right: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Bestelldetails Information</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box1') }}</div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -311,7 +303,7 @@
                                 <div class="col-12">
                                     <div class="form-group form_dv_wrap" style="display: flex;">
                                         <p style="width:120px; margin:0">
-                                            <strong>Änderungstext</strong>
+                                            <strong>{{ __('home.change_text') }}</strong>
                                         </p>
 
                                         <div class="order_detail_div1"
@@ -328,7 +320,7 @@
                     </div>
                     <div class="col-6" style="padding-left: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Parameter</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box2') }}</div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -555,7 +547,7 @@
 
                                     </ul>
                                 </div>
-                                <div class="responsive-table" style="height: 200px; width:100%">
+                                <div class="responsive-table" style="height: 260px; width:100%">
 
                                     <table id="embroidery_order_detail" class="table table-striped"
                                         style="width:100%; font-size:13px; ">
@@ -579,19 +571,19 @@
                     <div class="col-6" style="padding-left: 2.5px;">
                         <div class="freelancer_job_div">
                             <div id="em_green_job">
-                                <div style="height: 50px; font-size:18px;">Änderung starten</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.start_change') }}</div>
                                 <div>
-                                    <button onclick="EmbroideryStartChange()" class="job_button">Änderung
-                                        starten</button>
+                                    <button onclick="EmbroideryStartChange()"
+                                        class="job_button">{{ __('home.start_change') }}</button>
                                 </div>
 
                             </div>
                             <div id="em_yellow_job">
-                                <div style="height: 50px; font-size:18px;">Änderung hochladen</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.upload_change') }}</div>
                                 <div style="display: flex; flex-direction:column; justify-content:space-between">
                                     <div id="em_change_upload_div">
                                         <form action="" id="embroidery_uplaod_form"
-                                            style="height: 230px; display:flex; flex-direction:column; justify-content:space-between;">
+                                            style="height: 265px; display:flex; flex-direction:column; justify-content:space-between;">
                                             <input type="hidden" name="embroidery_request_id" value="" />
                                             <input type="hidden" name="embroidery_time" value="" />
                                             <div style="display: flex; overflow-y:auto;">
@@ -644,18 +636,13 @@
                                             <div style="display: flex; justify-content:flex-end">
                                                 <div>
                                                     <button type="submit"
-                                                        class="embroidery_upload_submit">Hochladen</button>
+                                                        class="embroidery_upload_submit">{{ __('home.order_upload') }}</button>
                                                 </div>
                                             </div>
                                         </form>
                                     </div>
-                                    <div id="em_change_end_div">
-                                        <button onclick="EmbroideryEndChange()" class="job_button">Änderung
-                                            beenden</button>
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -664,9 +651,8 @@
     </div>
 </div>
 @include('components.freelancer.embroidery.start_change_confirm_modal')
-@include('components.freelancer.embroidery.end_change_confirm_modal')
 @include('components.freelancer.embroidery.change_upload_success_modal')
-@include('components.freelancer.embroidery.end_change_error_modal')
+@include('components.freelancer.embroidery.end_change_success_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -954,13 +940,13 @@
             },
             success: (data) => {
                 console.log(data);
-                $('#em_yarn_information').text(data.parameter1);
-                $('#em_need_embroidery_files').text(data.parameter2);
-                $('#em_cutting_options').text(data.parameter3);
-                $('#em_special_cutting_options').text(data.parameter4);
-                $('#em_needle_instructions').text(data.parameter5);
-                $('#em_standard_instructions').text(data.parameter6);
-                $('#em_special_standard_instructions').text(data.parameter7);
+                $('#em_yarn_information').text(data[0].parameter1);
+                $('#em_need_embroidery_files').text(data[0].parameter2);
+                $('#em_cutting_options').text(data[0].parameter3);
+                $('#em_special_cutting_options').text(data[0].parameter4);
+                $('#em_needle_instructions').text(data[0].parameter5);
+                $('#em_standard_instructions').text(data[0].parameter6);
+                $('#em_special_standard_instructions').text(data[0].parameter7);
             },
             error: () => {
                 console.error('error');
@@ -1025,40 +1011,31 @@
     }
 
     function EmbroideryEndChange() {
-        EndChangeConfirmAlert();
-        $('#end_change_confirm').click(function() {
-            $.ajax({
-                url: '{{ __('routes.embroidery-freelancer-endchange') }}',
-                type: 'GET',
-                data: {
-                    end_change_id: $('[name=embroidery_request_id]').val()
-                },
-                success: () => {
-                    $('#em_freelancer_table_reload_btn').trigger('click');
-                    $('#em_freelancer_all_table_reload_button').trigger('click');
-                    $('#em_freelancer_blue_table_reload_button').trigger('click');
-                    $('#em_freelancer_red_table_reload_button').trigger('click');
-                    $('#em_yellow_job').hide();
-                    $('#end_change_confirm_popup').modal('hide');
-                    toastr.success(
-                        "Der Status änderte sich von gelb auf rot");
-                },
-                error: () => {
-                    $('#end_change_confirm_popup').modal('hide');
-                    EndChangeError();
-                }
-            })
+        $.ajax({
+            url: '{{ __('routes.embroidery-freelancer-endchange') }}',
+            type: 'GET',
+            data: {
+                end_change_id: $('[name=embroidery_request_id]').val()
+            },
+            success: () => {
+                $('#em_freelancer_table_reload_btn').trigger('click');
+                $('#em_freelancer_all_table_reload_button').trigger('click');
+                $('#em_freelancer_blue_table_reload_button').trigger('click');
+                $('#em_freelancer_red_table_reload_button').trigger('click');
+                $('#em_yellow_job').hide();
+                $('#em_upload_success_popup').modal('hide');
+                $('#end_em_change_success_popup').modal('show');
+            },
+            error: () => {
+                $('#end_change_confirm_popup').modal('hide');
+                EndChangeError();
+            }
         })
-
     }
 
     function StartChangeConfirmAlert() {
         console.log("sadf");
         $('#start_change_confirm_popup').modal('show');
-    }
-
-    function EndChangeConfirmAlert() {
-        $('#end_change_confirm_popup').modal('show');
     }
 
     function EndChangeError() {

@@ -87,6 +87,10 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/change-ve-parameter-decline', [AdminController::class, 'VeParameterDecline'])->name('admin-change-ve-parameter-decline');
     Route::get('/change-em-parameter-decline-mail', [AdminController::class, 'EmParameterDeclineMail'])->name('admin-change-em-parameter-decline-mail');
     Route::get('/change-ve-parameter-decline-mail', [AdminController::class, 'VeParameterDeclineMail'])->name('admin-change-ve-parameter-decline-mail');
+    Route::get('/dashboard-green-table', [AdminController::class, 'DashboardGreenTable'])->name('admin-dashboard-green-table');
+    Route::get('/dashboard-red-table', [AdminController::class, 'DashboardRedTable'])->name('admin-dashboard-red-table');
+    Route::get('/dashboard-yellow-table', [AdminController::class, 'DashboardYellowTable'])->name('admin-dashboard-yellow-table');
+    Route::get('/dashboard-blue-table', [AdminController::class, 'DashboardBlueTable'])->name('admin-dashboard-blue-table');
 });
 
 //customer route

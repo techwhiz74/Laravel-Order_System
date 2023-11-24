@@ -1,7 +1,7 @@
 <section class="em_freelancer_all_section">
 
     <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">Alle Aufträge</h1>
+        <h1 style="margin-left: 0 !important">{{ __('home.all orders') }}</h1>
         <p></p>
     </div>
     <div>

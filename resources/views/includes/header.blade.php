@@ -3,11 +3,18 @@
         <div class="contact_nav">
             <nav class="nav">
                 <ul class="nav-list">
-                    <li><a href="#"><i class="fa-solid fa-check"></i>{{ __('home.made_in_germany') }}</a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i>{{ __('home.express_delivery_possible') }}</a>
+                    <li>
+                        <div></i>{{ __('home.made_in_germany') }}</div>
                     </li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i>{{ __('home.firstin_firstout') }}</a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i>{{ __('home.hotline') }}</a></li>
+                    <li>
+                        <div></i>{{ __('home.express_delivery_possible') }}</div>
+                    </li>
+                    <li>
+                        <div></i>{{ __('home.firstin_firstout') }}</div>
+                    </li>
+                    <li>
+                        <div></i>{{ __('home.hotline') }}</div>
+                    </li>
                 </ul>
             </nav>
             @php
@@ -52,10 +59,20 @@
                 <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ $currentLanguage }} <i class="fa-solid fa-language"></i>
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="{{ url($enUrl) }}">English</a></li>
-                    <li><a class="dropdown-item" href="{{ url($deUrl) }}">Deutsch</a></li>
-                </ul>
+                @auth()
+                    @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'freelancer')
+                        <ul class="dropdown-menu" id="convert_language">
+                            <li><a class="dropdown-item" href="{{ url($enUrl) }}">English</a></li>
+                            <li><a class="dropdown-item" href="{{ url($deUrl) }}">Deutsch</a></li>
+                        </ul>
+                    @endif
+                @else
+                    <ul class="dropdown-menu" id="convert_language">
+                        <li><a class="dropdown-item" href="{{ url($enUrl) }}">English</a></li>
+                        <li><a class="dropdown-item" href="{{ url($deUrl) }}">Deutsch</a></li>
+                    </ul>
+                @endauth
+
             </div>
         </div>
         <div>
@@ -123,11 +140,21 @@
             <div class="action align-items-center d-flex position-relative float-end" onclick="menuToggle();">
                 <div class="profile">
                     @auth
-                        @if (Auth::user()->image)
-                            <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
-                                style="width: 80px; height:80px; margin:-20px 0px 0 -22px;" />
-                        @else
-                            <i class="fa-solid fa-circle-user fa-2x" style="margin: 5px 0 0 5px;color:#fff;"></i>
+                        @if (auth()->user()->user_type == 'customer')
+                            @if (Auth::user()->image)
+                                <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
+                                    style="width: 80px; height:80px; margin:-20px 0px 0 -22px;" />
+                            @else
+                                <i class="fa-solid fa-circle-user fa-2x" style="margin: 5px 0 0 5px;color:#fff;"></i>
+                            @endif
+                        @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                            <img src="{{ asset('asset/images/embroidery_avatar.jpg') }}"
+                                style="width: 40px; height:40px;" />
+                        @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                            <img src="{{ asset('asset/images/vector_avatar.JPG') }}" style="width: 40px; height:40px;" />
+                        @elseif(auth()->user()->user_type == 'admin')
+                            <img src="{{ asset('asset/images/admin_avatar.png') }}"
+                                style="width: 40px; height:40px; margin:5px 0 0 0;" />
                         @endif
                     @else
                         <a href="{{ __('routes.customer-login') }}">

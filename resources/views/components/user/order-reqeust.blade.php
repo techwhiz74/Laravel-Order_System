@@ -11,16 +11,16 @@
                     <div class="container-fluid" style="padding: 0">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="request_li" type="button" id="change1">
-                                Änderung 1
+                                {{ __('home.request') }} 1
                             </li>
                             <li class="request_li" type="button" id="change2">
-                                Änderung 2
+                                {{ __('home.request') }} 2
                             </li>
                             <li class="request_li" type="button" id="change3">
-                                Änderung 3
+                                {{ __('home.request') }} 3
                             </li>
                             <li class="request_li" type="button" id="change4">
-                                Änderung 4
+                                {{ __('home.request') }} 4
                             </li>
                         </ul>
                     </div>

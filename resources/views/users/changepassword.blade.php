@@ -30,16 +30,18 @@
                             </div>
 
                             <div class="form_dv">
-                                <input type="password" placeholder="Aktuelles Passwort" name="oldpassword" required>
-                            </div>
-
-                            <div class="form_dv">
-                                <input type="password" placeholder="Neues Passwort" name="newpassword" required>
-                            </div>
-
-                            <div class="form_dv">
-                                <input type="password" placeholder="Neues Passwort wiederholen" name="password_confirmation"
+                                <input type="password" placeholder="{{ __('home.current_password') }}" name="oldpassword"
                                     required>
+                            </div>
+
+                            <div class="form_dv">
+                                <input type="password" placeholder="{{ __('home.new_password') }}" name="newpassword"
+                                    required>
+                            </div>
+
+                            <div class="form_dv">
+                                <input type="password" placeholder="{{ __('home.new_password_confirm') }}"
+                                    name="password_confirmation" required>
                             </div>
                             <div class="submit_btn">
                                 <button type="submit">{{ __('home.change_password') }}</button>

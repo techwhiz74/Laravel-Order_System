@@ -316,29 +316,33 @@
             em_parameter_data.append('parameter6', $('[name=parameter_standard_instructions]').val());
             em_parameter_data.append('parameter7', $('[name=parameter_special_standard_instructions]')
                 .val());
-            $.ajax({
-                url: '{{ __('routes.customer-em-parameter-change') }}',
-                type: 'post',
-                data: em_parameter_data,
-                contentType: false,
-                processData: false,
-                success: () => {
-                    $('#customer_em_parameter_submit').hide();
-                    $.ajax({
-                        url: '{{ __('routes.customer-em-parameter-change-mail') }}',
-                        type: 'get',
-                        success: () => {
-                            console.log("success");
-                        },
-                        error: () => {
-                            console.error("error");
-                        }
-                    })
-                },
-                error: () => {
-                    console.error("error");
-                }
-            })
+            var confirm = window.confirm('{{ __('home.click_customer_parameter_change') }}');
+            if (confirm == true) {
+                $.ajax({
+                    url: '{{ __('routes.customer-em-parameter-change') }}',
+                    type: 'post',
+                    data: em_parameter_data,
+                    contentType: false,
+                    processData: false,
+                    success: () => {
+                        $('#customer_em_parameter_submit').hide();
+                        $.ajax({
+                            url: '{{ __('routes.customer-em-parameter-change-mail') }}',
+                            type: 'get',
+                            success: () => {
+                                console.log("success");
+                            },
+                            error: () => {
+                                console.error("error");
+                            }
+                        })
+                    },
+                    error: () => {
+                        console.error("error");
+                    }
+                })
+            }
+
         })
     })
 </script>

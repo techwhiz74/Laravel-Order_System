@@ -12,9 +12,9 @@
                         <input type="hidden" name="order_id" value="" />
                         <input type="hidden" name="time" value="" />
                         <div style="display: flex">
-                            <div class="col-2">Änderungswünsche</div>
+                            <div class="col-2">{{ __('home.change_request') }}</div>
                             <div class="col-10">
-                                <textarea name="order_change_textarea" placeholder="Änderungswünsche" style="height: 150px"></textarea>
+                                <textarea name="order_change_textarea" placeholder="{{ __('home.change_request') }}" style="height: 150px"></textarea>
                             </div>
                         </div>
                         <div style="display: flex; height: 300px; margin-top:5px;">
@@ -66,7 +66,8 @@
                         </div>
                         <div style="display: flex; justify-content:flex-end; margin-top:5px;">
                             <div>
-                                <button type="submit" class="order_change_submit">Hochladen</button>
+                                <button type="submit"
+                                    class="order_change_submit">{{ __('home.order_upload') }}</button>
                             </div>
                         </div>
                     </form>

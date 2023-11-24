@@ -241,14 +241,14 @@
                     style="display: flex;"></i></button>
 
             <div class="pagetitle" style="margin-top:10px !important;">
-                <h1>Änderungsanforderungen</h1>
+                <h1>{{ __('home.dashboard_change') }}</h1>
                 <p></p>
             </div>
             <div style="font-size: 13px; font-family:'Inter'; padding:20px 10vw">
                 <div class="col-12" style="display: flex">
                     <div class="col-6" style="padding-right: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Bestelldetails Information</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box1') }}</div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -287,7 +287,7 @@
                                 <div class="col-12">
                                     <div class="form-group form_dv_wrap" style="display: flex;">
                                         <p style="width:120px; margin:0">
-                                            <strong>Änderungstext</strong>
+                                            <strong>{{ __('home.change_text') }}</strong>
                                         </p>
 
                                         <div class="order_detail_div1"
@@ -304,7 +304,7 @@
                     </div>
                     <div class="col-6" style="padding-left: 2.5px">
                         <div class="order_detail_div1">
-                            <div style="height: 50px; font-size:18px;">Parameter</div>
+                            <div style="height: 50px; font-size:18px;">{{ __('home.detail_box2') }}</div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
@@ -478,7 +478,7 @@
 
                                     </ul>
                                 </div>
-                                <div class="responsive-table" style="height: 200px; width:100%">
+                                <div class="responsive-table" style="height: 260px; width:100%">
 
                                     <table id="vector_order_detail" class="table table-striped"
                                         style="width:100%; font-size:13px; ">
@@ -502,17 +502,18 @@
                     <div class="col-6" style="padding-left: 2.5px;">
                         <div class="freelancer_job_div">
                             <div id="ve_green_job">
-                                <div style="height: 50px; font-size:18px;">Änderung starten</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.start_change') }}</div>
                                 <div>
-                                    <button onclick="VectorStartChange()" class="job_button">Änderung starten</button>
+                                    <button onclick="VectorStartChange()"
+                                        class="job_button">{{ __('home.start_change') }}</button>
                                 </div>
                             </div>
                             <div id="ve_yellow_job">
-                                <div style="height: 50px; font-size:18px;">Änderung hochladen</div>
+                                <div style="height: 50px; font-size:18px;">{{ __('home.upload_change') }}</div>
                                 <div style="display: flex; flex-direction:column; justify-content:space-between">
                                     <div id="ve_change_upload_div">
                                         <form action="" id="vector_uplaod_form"
-                                            style="height: 230px; display:flex; flex-direction:column; justify-content:space-between;">
+                                            style="height: 265px; display:flex; flex-direction:column; justify-content:space-between;">
                                             <input type="hidden" name="vector_request_id" value="" />
                                             <input type="hidden" name="vector_time" value="" />
                                             <div style="display: flex; overflow-y:auto;">
@@ -557,14 +558,10 @@
                                             <div style="display: flex; justify-content:flex-end">
                                                 <div>
                                                     <button type="submit"
-                                                        class="vector_upload_submit">Hochladen</button>
+                                                        class="vector_upload_submit">{{ __('home.order_upload') }}</button>
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>
-                                    <div id="ve_change_end_div">
-                                        <button onclick="VectorEndChange()" class="job_button">Änderung
-                                            beenden</button>
                                     </div>
                                 </div>
                             </div>
@@ -576,9 +573,8 @@
     </div>
 </div>
 @include('components.freelancer.vector.start_change_confirm_modal')
-@include('components.freelancer.vector.end_change_confirm_modal')
 @include('components.freelancer.vector.change_upload_success_modal')
-@include('components.freelancer.vector.end_change_error_modal')
+@include('components.freelancer.vector.end_change_success_modal')
 
 <script>
     $.ajaxSetup({
@@ -866,8 +862,8 @@
             },
             success: (data) => {
                 console.log(data);
-                $('#ve_required_vector_file').text(data.parameter8);
-                $('#ve_required_image_file').text(data.parameter9);
+                $('#ve_required_vector_file').text(data[1].parameter8);
+                $('#ve_required_image_file').text(data[1].parameter9);
             },
             error: () => {
                 console.error('error');
@@ -930,29 +926,26 @@
     }
 
     function VectorEndChange() {
-        VectorEndChangeConfirmAlert();
-        $('#ve_end_change_confirm').click(function() {
-            $.ajax({
-                url: '{{ __('routes.vector-freelancer-endchange') }}',
-                type: 'GET',
-                data: {
-                    ve_end_change_id: $('[name=vector_request_id]').val()
-                },
-                success: () => {
-                    $('#ve_freelancer_table_reload_btn').trigger('click');
-                    $('#ve_freelancer_all_table_reload_button').trigger('click');
-                    $('#ve_freelancer_blue_table_reload_button').trigger('click');
-                    $('#ve_freelancer_red_table_reload_button').trigger('click');
-                    $('#ve_yellow_job').hide();
-                    $('#ve_end_change_confirm_popup').modal('hide');
-                    toastr.success(
-                        "Der Status änderte sich von gelb auf rot");
-                },
-                error: () => {
-                    $('#ve_end_change_confirm_popup').modal('hide');
-                    VectorEndChangeError();
-                }
-            })
+        $.ajax({
+            url: '{{ __('routes.vector-freelancer-endchange') }}',
+            type: 'GET',
+            data: {
+                ve_end_change_id: $('[name=vector_request_id]').val()
+            },
+            success: () => {
+                $('#ve_freelancer_table_reload_btn').trigger('click');
+                $('#ve_freelancer_all_table_reload_button').trigger('click');
+                $('#ve_freelancer_blue_table_reload_button').trigger('click');
+                $('#ve_freelancer_red_table_reload_button').trigger('click');
+                $('#ve_yellow_job').hide();
+                $('#ve_upload_success_popup').modal('hide');
+                $('#end_ve_change_success_popup').modal('show');
+
+            },
+            error: () => {
+                $('#ve_end_change_confirm_popup').modal('hide');
+                VectorEndChangeError();
+            }
         })
     }
 
@@ -961,9 +954,6 @@
         $('#ve_start_change_confirm_popup').modal('show');
     }
 
-    function VectorEndChangeConfirmAlert() {
-        $('#ve_end_change_confirm_popup').modal('show');
-    }
 
     function VectorEndChangeError() {
         $('#ve_end_change_error_popup').modal('show');

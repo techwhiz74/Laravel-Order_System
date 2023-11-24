@@ -10,9 +10,10 @@
                 </div>
                 <div class="row">
                     <div style="text-align:center;">
-                        <button id="order_change_anotherOrderButton" class="modal_close_btn">EINE ANDERE BESTELLUNG
-                            ÄNDERN</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
+                        <button id="order_change_anotherOrderButton"
+                            class="modal_close_btn">{{ __('home.order_change_another') }}</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="hideAlertModal()">{{ __('home.cancel') }}</button>
                     </div>
                 </div>
             </div>

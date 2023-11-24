@@ -1,17 +1,17 @@
-<div class="modal fade" id="ve_end_change_confirm_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="end_em_change_success_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Werden Sie diesen Änderung abschließen?
+                        {{ __('home.end_change_success') }}
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" class="modal_close_btn" id="ve_end_change_confirm">Bestätigen</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="hideAlertModal()">{{ __('home.cancel') }}</button>
                     </div>
                 </div>
             </div>

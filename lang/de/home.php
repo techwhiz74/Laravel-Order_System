@@ -1,5 +1,6 @@
 <?php
 return [
+    'system_title' => 'Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien',
     //Header
     'made_in_germany' => 'Made in Germany',
     'express_delivery_possible' => 'Expresslieferung Möglich',
@@ -116,6 +117,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'IBAN' => 'IBAN',
     'BIC' => 'BIC',
     'upload' => 'Gewerbenachweis hochladen',
+    'avatar_upload' => 'Avatar hochladen',
 
 
 
@@ -126,6 +128,16 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_from' => 'Bestellt von',
     'project' => 'Projektname',
     'status' => 'Status',
+    'order_form_sentence' => 'Mit der
+                        Zustimmung bestätigen Sie,
+                        dass Sie durch den Upload Ihrer Dateien, weder gegen geltendes Recht, Copyright
+                        Rechte oder Rechte Dritter verstoßen.<br />
+                        Mit der Zustimmung akzeptieren Sie die aktuell gültige Preisliste und deren Aufpreise. Diese
+                        Preise sind fixiert und werden
+                        nicht im Nachgang verhandelt. Dies gilt speziell für die Durchführung von Bildern und
+                        Illustrationen. (Sollten Sie unsicher
+                        sein, ob Ihre Vorlage ein Bild oder Illustration ist, können Sie dies gerne im Vorfeld bei uns
+                        per E-Mail erfragen)',
 
     'search_placeholder' => 'z.B. Lieferzeit, Auftrag, Datum, Projekname',
     'search' => 'Suchen',
@@ -237,6 +249,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'close' => 'schließen',
     'order_form_file_uplaod_command' => 'IHR AUFTRAG WURDE ERFOLGREICH AN UNS ÜBERTRAGEN.',
     'order_form_AnotherOrder' => 'WEITEREN AUFTRAG ERFASSEN',
+    'order_change_another' => 'EINE ANDERE BESTELLUNG ÄNDERN',
 
     //order form validation
     'validation_deliver_time' => 'LIEFERZEIT ist erforderlich',
@@ -245,6 +258,10 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'validation_products' => 'Endmaterial ist erforderlich',
     'validation_file_upload' => 'Datei-Upload bestellen ist erforderlich',
     'validation_checkbox' => 'Dem müssen Sie zustimmen',
+
+    //order change
+    'change_request' => 'Änderungswünsche',
+    'order_upload' => 'Hochladen',
 
     //view-order-express
     'orderform_title' => 'Auftrag erfassen - Stickprogramme ',
@@ -266,6 +283,13 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'firstName' => 'Vorname',
     'email_address' => 'E-Mail-Adresse',
     'created_on' => 'Hinzugefügt am',
+    'staff_create_title' => 'Mitarbeiter hinzufügen',
+    'staff_edit_title' => 'Mitarbeiter bearbeiten',
+    'staff_create_name' => 'Name, Vorname',
+    'staff_create_email' => 'E-Mail-Adresse',
+    'staff_create_password' => 'Passwort',
+    'staff_create_button' => 'Absenden',
+    'staff_delete_confirm' => 'Möchten Sie dieses Mitglied aus der Mitarbeiterliste löschen?',
 
     //Embroidery Information
     'information' => 'INFORMATIONEN',
@@ -362,5 +386,61 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
 
     //customer-dashboard
     'art' => 'Art',
+    'dashboard_new_order' => 'Neue Offene Bestellungen',
+    'dashboard_complete_order' => 'Abgeschlossene Bestellungen',
+    'dashboard_progress_order' => 'Bestellungen in Arbeit',
+    'dashboard_change' => 'Änderungsanforderungen',
+    'dashboard_view_all' => 'Alle Aufträge anzeigen',
+
+    //click button confirm messages
+    'click_customer_profile_change' => 'Möchten Sie eine Anfrage an den Administrator senden, um dieses Profil zu ändern?',
+    'click_customer_parameter_change' => 'Möchten Sie eine Anfrage an den Administrator senden, um diesen Parameter zu ändern?',
+    'click_customer_add_employee' => 'Möchten Sie einen Mitarbeiter hinzufügen?',
+    'click_customer_edit_employee' => 'Möchten Sie den Mitarbeiter bearbeiten?',
+    // change password
+    'current_password' => 'Aktuelles Passwort',
+    'new_password' => 'Neues Passwort',
+    'new_password_confirm' => 'Neues Passwort wiederholen',
+    //table paginetion information
+    'pagination_info' => '1 bis 10 von 110 Einträgen anzeigen',
+
+
+
+
+
+
+
+
+
+    //freelancer
+    'new' => 'NEUE',
+    'orders' => 'AUFTRÄGE',
+    'orderes in progress' => 'AUFTRÄGE IN ARBEIT',
+    'completed orders' => 'ABGESCHLOSSENE AUFTRÄGE',
+    'changes' => 'ÄNDERUNGEN',
+    'all' => 'ALLE',
+    'all orders' => 'Alle Aufträge',
+    'detail_box1' => 'Übersicht Bestelldetails',
+    'detail_box2' => 'Kunden-Parameter',
+    'detail_box3' => 'Dateiübersicht',
+    'detail_box4' => 'Aktivität-Übersicht',
+    'Job starten' => 'Job starten',
+    'Dateien hochladen' => 'Dateien hochladen',
+    'start_job_confirm' => 'Möchten Sie den Job jetzt beginnen?',
+    'confirm' => 'Bestätigen',
+    'start_job_success' => 'Der Status änderte sich von grün auf gelb.',
+    'free_upload_job_success' => 'Dateien erfolgreich hochgeladen.
+Möchten Sie diesen Job abschließen?',
+    'free_upload_change_success' => 'Dateien erfolgreich hochgeladen.
+Möchten Sie diese Änderung abschließen?',
+    'complete_job' => 'Job abschließen',
+    'free_delete_file_confirm' => 'Möchten Sie diese Datei löschen?',
+    'end_job_success' => 'Der Status ändert sich von gelb auf rot',
+    'change_text' => 'Änderungs text',
+    'start_change' => 'Änderung starten',
+    'upload_change' => 'Änderung hochladen',
+    'end_change' => 'Änderung beenden',
+    'start_change_confirm' => 'Möchten Sie die Änderung jetzt beginnen?',
+    'end_change_success' => 'Der Status wechselt von blau auf rot',
 
 ];

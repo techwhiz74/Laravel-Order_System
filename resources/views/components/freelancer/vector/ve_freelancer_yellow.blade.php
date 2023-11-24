@@ -1,7 +1,7 @@
 <section class="ve_freelancer_yellow_section">
 
     <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">Bestellungen in Arbeit</h1>
+        <h1 style="margin-left: 0 !important">{{ __('home.dashboard_progress_order') }}</h1>
         <p></p>
     </div>
     <div>

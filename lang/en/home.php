@@ -1,5 +1,6 @@
 <?php
 return [
+    'system_title' => 'Lion Advertising GmbH | Order system embroidery programs & vector files',
 
     //Header
     'made_in_germany' => 'Made in Germany',
@@ -36,7 +37,7 @@ return [
     'employee_access' => 'EMPLOYEE ACCESS',
 
     // Profile form
-    'customer_number' => 'Customer No',
+    'customer_number' => 'Customer Number',
     'name' => 'Name',
     'first_name' => 'First Name',
     'sample_customer' => 'Customer-Information',
@@ -65,7 +66,7 @@ return [
     'further_information' => 'Further Information',
     'add' => 'Add',
     'edit' => 'Edit',
-    'request' => 'Rrequest',
+    'request' => 'Change',
     'delete' => 'Delete',
     'thread' => 'Thread',
     'file_emb' => 'Filetype needed embroideryfiles',
@@ -115,15 +116,19 @@ return [
     'IBAN' => 'IBAN',
     'BIC' => 'BIC',
     'upload' => 'Upload business license',
+    'avatar_upload' => 'Upload avatar',
+
 
 
     //Orders form
-    'overview_of_orders' => 'OVERVIEW OF ORDERS',
+    'overview_of_orders' => 'Overview Of Orders',
     'order' => 'Order',
     'date' => 'Date',
     'order_from' => 'Ordered From',
     'project' => 'Project',
     'status' => 'Status',
+    'order_form_sentence' => 'By agreeing, you confirm that by uploading your files you are not violating any applicable law, copyright rights or the rights of third parties.
+By agreeing, you accept the currently valid price list and its surcharges. These prices are fixed and will not be negotiated afterwards. This applies specifically to the execution of images and illustrations. (If you are unsure whether your template is an image or an illustration, please feel free to ask us in advance by email)',
 
     'search_placeholder' => 'e.g. Deliver time, Order, Date, Project name',
     'search' => 'Search',
@@ -225,6 +230,7 @@ return [
     'close' => 'Close',
     'order_form_file_uplaod_command' => 'YOUR ORDER HAS BEEN SUCCESSFULLY TRANSFERRED.',
     'order_form_AnotherOrder' => 'CREATE ANOTHER ORDER',
+    'order_change_another' => 'CHANGE ANOTHER ORDER',
 
     //order form validation
     'validation_deliver_time' => 'Delivery Time is Required',
@@ -234,19 +240,26 @@ return [
     'validation_file_upload' => 'File Upload is Required',
     'validation_checkbox' => 'You must agree to this',
 
+    //order change
+    'change_request' => 'Change Request',
+    'order_upload' => 'Upload',
+
+
 
     //view-order-express
     'orderform_title' => 'Create Order - Embroidery programs',
     'express_head_title' => 'Create Express Order - Embroidery Programs',
     'vecotr_standard_head_title' => 'Create Order - Vectory Programs',
     'vecotr_express_head_title' => 'Create Express Order - Vector Programs',
-    'delivery_time' => 'Delivery Time',
+    'delivery_time' => 'Delivery',
     'default' => 'DEFAULT',
     'express' => 'EXPRESS',
 
 
     //customer-parameters
     'customer_parameters' => 'Customer Parameter',
+    'customer_em_parameters' => 'Customer Parameters Embroidery Programs',
+    'customer_ve_parameters' => 'Customer Parameters Vector Files',
     'customer_parameters_em_sidebar' => 'CUSTOMER EM PARAMETER',
     'customer_parameters_ve_sidebar' => 'CUSTOMER VE PARAMETER',
 
@@ -254,6 +267,15 @@ return [
     'firstName' => 'First name',
     'email_address' => 'Email-Address',
     'created_on' => 'Created On',
+    'staff_create_title' => 'Add Employee',
+    'staff_edit_title' => 'Edit Employee',
+    'staff_create_name' => 'Name, First Name',
+    'staff_create_email' => 'E-mail Address',
+    'staff_create_password' => 'Password',
+    'staff_create_button' => 'Submit',
+    'staff_delete_confirm' => 'Would you like to delete this member from employee list?',
+
+
 
     //Embroidery Information
     'information' => 'INFORMATION',
@@ -350,5 +372,67 @@ return [
 
     //customer-dashboard
     'art' => 'Art',
+    'dashboard_new_order' => 'New Open Orders',
+    'dashboard_complete_order' => 'Completed Orders',
+    'dashboard_progress_order' => 'Orders In Progress',
+    'dashboard_change' => 'Change Requests',
+    'dashboard_view_all' => 'View All Oders',
+
+    //click button confirm messages
+    'click_customer_profile_change' => 'Would you like to send a request to admin to change this profile?',
+    'click_customer_parameter_change' => 'Would you like to send a request to admin to change this parameter?',
+    'click_customer_add_employee' => 'Would you like to add employee?',
+    'click_customer_edit_employee' => 'Would you like to edit employee?',
+
+    // change password
+    'current_password' => 'Current Password',
+    'new_password' => 'New Password',
+    'new_password_confirm' => 'Confirm New Password',
+    //table paginetion information
+    'pagination_info' => 'Showing 1 to 10 of 110 entries',
+
+
+
+
+
+    //freelancer
+    'new' => 'NEW',
+    'orders' => 'ORDERS',
+    'orderes in progress' => 'ORDERS IN PROGRESS',
+    'completed orders' => 'COMPLETED ORDERS',
+    'changes' => 'CHANGES',
+    'all' => 'ALL',
+    'all orders' => 'All Orders',
+    'detail_box1' => 'Overview of order details',
+    'detail_box2' => 'Customer parameters',
+    'detail_box3' => 'File overview',
+    'detail_box4' => 'Activity overview',
+    'Job starten' => 'Start job',
+    'Dateien hochladen' => 'Upload files',
+    'start_job_confirm' => 'Would you like to start the job now?',
+    'confirm' => 'Confirm',
+    'start_job_success' => 'The status changed from green to yellow.',
+    'free_upload_job_success' => 'Files uploaded successfully.
+Would you like to complete this job?',
+    'free_upload_change_success' => 'Files uploaded successfully.
+Would you like to complete this change?',
+    'complete_job' => 'Complete Job',
+    'free_delete_file_confirm' => 'Would you like to delete this file?',
+    'end_job_success' => 'The status changes from yellow to red',
+    'change_text' => 'Change text',
+    'start_change' => 'Start Change',
+    'upload_change' => 'Upload Change',
+    'end_change' => 'End Change',
+    'start_change_confirm' => 'Would you like to start the change now?',
+    'end_change_success' => 'The status changes from blue to red',
+
+
+
+
+
+
+
+
+
 
 ];

@@ -165,10 +165,10 @@ class AdminController extends Controller
             $users = User::find(Auth::user()->id);
             $users->password = bcrypt($request->newpassword);
             $users->save();
-            session()->flash('message', 'password updated successfully');
+            session()->flash('message', 'Password updated successfully');
             return redirect(__('/'));
         } else {
-            session()->flash('message', 'old password does not matched');
+            session()->flash('message', 'Old password does not matched');
             return redirect(__('routes.admin-changepassword'));
         }
     }
@@ -1547,4 +1547,150 @@ class AdminController extends Controller
                 ->make(true);
         }
     }
+    public function DashboardGreenTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Offen')->take(5)->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+    public function DashboardRedTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Ausgeliefert')->take(5)->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+    public function DashboardYellowTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'In Bearbeitung')->take(5)->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+    public function DashboardBlueTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('status', 'Änderung')->take(5)->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->addColumn('status', function ($row) {
+                    $status = '';
+                    if ($row->status == "Offen") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                    } else if ($row->status == "In Bearbeitung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                    } else if ($row->status == "Ausgeliefert") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                    } else if ($row->status == "Änderung") {
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                    }
+                    return $status;
+                })
+                ->addColumn('art', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                    }
+                    return $type;
+                })
+                ->rawColumns(['order', 'status', 'art'])
+                ->make(true);
+        }
+    }
+
 }

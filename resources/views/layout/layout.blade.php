@@ -7,13 +7,6 @@
 
 <body>
     @include('includes.header')
-    {{-- <div>
-        @if (Session::has('danger'))
-            <p class="alert alert-danger" style="text-align: center;">
-                {{ Session::get('danger') }}
-            </p>
-        @endif
-    </div> --}}
     @if (auth()->user())
         @include('includes.sidebar')
     @endif

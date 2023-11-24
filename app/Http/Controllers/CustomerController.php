@@ -47,9 +47,7 @@ class CustomerController extends Controller
     {
         $em_parameter = auth()->user() ? CustomerEmParameter::where('customer_id', auth()->user()->id)->first() : null;
         $ve_parameter = auth()->user() ? CustomerVeParameter::where('customer_id', auth()->user()->id)->first() : null;
-        $admin_em_parameter = auth()->user()->user_type == 'admin' ? CustomerEmParameter::where('customer_id', auth()->user()->id)->first() : null;
-        $admin_ve_parameter = auth()->user()->user_type == 'admin' ? CustomerVeParameter::where('customer_id', auth()->user()->id)->first() : null;
-        return view('home', compact('em_parameter', 've_parameter', 'admin_em_parameter', 'admin_ve_parameter'));
+        return view('home', compact('em_parameter', 've_parameter'));
     }
 
 
@@ -115,6 +113,7 @@ class CustomerController extends Controller
                 'IBAN' => 'nullable',
                 'BIC' => 'nullable',
                 'upload' => 'required',
+                'avatar_upload' => 'required',
 
             ],
             [
@@ -127,16 +126,20 @@ class CustomerController extends Controller
             ]
         );
         $file = $request->file('upload');
+        $avatar_file = $request->file('avatar_upload');
         $upload_dir = 'public/';
         $folder = $request->name . '-' . $request->email;
         $path = $upload_dir . $folder;
         $filename = $file->getClientOriginalName();
+        $avatar_filename = $avatar_file->getClientOriginalName();
         $files = [];
         if (strlen($file->getClientOriginalName()) != 1) {
             Storage::makeDirectory($upload_dir);
-            if ($file->storePubliclyAs($path, $filename)) {
+            if ($file->storePubliclyAs($path, $filename) && $avatar_file->storePubliclyAs($path, $avatar_filename)) {
                 $data = $request->all();
                 $data['upload'] = $path . '/' . $filename;
+                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                $data['avatar_upload'] = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
                 $files[] = 'public/' . $folder . '/' . $filename;
                 $userid = User::create([
                     'name' => $data['name'],
@@ -160,7 +163,7 @@ class CustomerController extends Controller
                     'BIC' => $data['BIC'],
                     'password' => Hash::make($data['password']),
                     'user_type' => 'customer',
-                    'image' => 'https://upload-files-cos.s3.amazonaws.com/6-profile1693225145-1692011047-2021-10-20.jpg',
+                    'image' => $data['avatar_upload'],
                     'upload_url' => $data['upload'],
                 ]);
                 $update = User::where('id', $userid->id)->update([
@@ -212,10 +215,10 @@ class CustomerController extends Controller
             $users = User::find(Auth::user()->id);
             $users->password = bcrypt($request->newpassword);
             $users->save();
-            session()->flash('message', 'password updated successfully');
+            session()->flash('message', 'Password updated successfully');
             return redirect(__('/'));
         } else {
-            session()->flash('message', 'old password does not matched');
+            session()->flash('message', 'Old password does not matched');
             return redirect(__('routes.customerchange-password'));
         }
     }
@@ -556,103 +559,6 @@ class CustomerController extends Controller
         return view('users.employee.editEmployee', compact('user'));
     }
 
-    // public function updateEmployee(Request $request)
-    // {
-    //     try {
-
-    //         $user = User::where('id', $request->id)->first();
-    //         $data = $request->all();
-
-    //         if ($request->input('email') != $user->email) {
-    //             $confirmed = $request->has('confirmed_email_update');
-    //             if ($confirmed == '1') {
-    //                 $customer = auth()->user();
-    //                 $email = $data['email'];
-    //                 $url = url(__('routes.employer-setPassword'));
-    //                 $max = 16;
-    //                 $randomNumber = Str::random($max);
-    //                 $link = $url . '/' . $randomNumber;
-    //                 try {
-
-    //                     if ($request->hasFile('image')) {
-    //                         $file = $request->file('image');
-    //                         $filename = time() . '-' . $file->getClientOriginalName();
-    //                         $destination = $user->id . '-profile' . $filename;
-    //                         $path = Storage::disk('s3')->put($destination, file_get_contents($file));
-    //                         $imageUrl = Storage::disk('s3')->url($destination);
-    //                     } else {
-    //                         $imageUrl = $user->image;
-    //                     }
-    //                     $user->update([
-    //                         'name' => $request->name,
-    //                         'email' => $request->email,
-    //                         'contact_no' => $request->input('number'),
-    //                         'salutation' => $request->salutation,
-    //                         'company' => $request->company,
-    //                         'address' => $request->address,
-    //                         'zip_code' => $request->zip_code,
-    //                         'place' => $request->place,
-    //                         'vat_no' => $request->vat_no,
-    //                         'site' => $request->site,
-    //                         'thread' => $request->thread,
-    //                         'emb_fileType' => $request->file_emb,
-    //                         'vec_fileType' => $request->file_vect,
-    //                         'thread_notes' => $request->thread_instruction,
-    //                         'thread_cut_notes' => $request->thread_cut,
-    //                         'needle_notes' => $request->needle_instruction,
-    //                         'font_notes' => $request->font_instruction,
-    //                         'special_notes' => $request->special_instruction,
-    //                         'emp_invite_id' => $randomNumber,
-    //                         'password' => '',
-    //                         'image' => $imageUrl
-    //                     ]);
-    //                     Mail::to($email)->send(new inviteEmployeeMail($data, $link, $customer)); // Pass $link to the mail constructor
-
-    //                     return back()->with('success', 'Profile is updated successfully and invitation mail sent to new employee !');
-    //                 } catch (\Exception $e) {
-    //                     return response()->json(['message' => 'Error sending invitation email.', 'error' => $e->getMessage()], 500);
-    //                 }
-    //             }
-    //         } else {
-    //             $address = $request->address;
-    //             if ($request->hasFile('image')) {
-    //                 $file = $request->file('image');
-    //                 $filename = time() . '-' . $file->getClientOriginalName();
-    //                 $destination = $user->id . '-profile' . $filename;
-    //                 $path = Storage::disk('s3')->put($destination, file_get_contents($file));
-    //                 $imageUrl = Storage::disk('s3')->url($destination);
-    //             } else {
-    //                 $imageUrl = $user->image;
-    //             }
-    //             $user->update([
-    //                 'name' => $request->name,
-    //                 'contact_no' => $request->input('number'),
-    //                 'salutation' => $request->salutation,
-    //                 'company' => $request->company,
-    //                 'address' => $request->address,
-    //                 'zip_code' => $request->zip_code,
-    //                 'place' => $request->place,
-    //                 'vat_no' => $request->vat_no,
-    //                 'site' => $request->site,
-    //                 'thread' => $request->thread,
-    //                 'emb_fileType' => $request->file_emb,
-    //                 'vec_fileType' => $request->file_vect,
-    //                 'thread_notes' => $request->thread_instruction,
-    //                 'thread_cut_notes' => $request->thread_cut,
-    //                 'needle_notes' => $request->needle_instruction,
-    //                 'font_notes' => $request->font_instruction,
-    //                 'special_notes' => $request->special_instruction,
-    //                 'image' => $imageUrl
-    //             ]);
-    //             return back()->with('success', 'Profile updated successfully!');
-    //         }
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'message' => 'An error occurred.',
-    //             'error' => $e->getMessage()
-    //         ], 500);
-    //     }
-    // }
 
     public function deleteEmployee($locale, $id)
     {
