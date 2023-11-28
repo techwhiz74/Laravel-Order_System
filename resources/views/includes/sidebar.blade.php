@@ -519,16 +519,9 @@
 
     <div id="profile_popup" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
         <div class="lion_popup_dv">
-            @if (auth()->user()->user_type == 'admin')
-                <x-admin.admin-profile />
-            @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <x-freelancer.freelancer-profile />
-            @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <x-freelancer.freelancer-profile />
-            @elseif(auth()->user()->user_type == 'customer')
+
+            @if (auth()->user()->user_type == 'customer')
                 <x-user.customer-profile />
-            @elseif(auth()->user()->user_type == 'employer')
-                <x-user.employer-profile />
             @endif
         </div>
     </div>

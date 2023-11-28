@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Der Status änderte sich von grün auf gelb.
+                        Der Status änderte sich von NEU auf IN BEARBEITUNG.
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">

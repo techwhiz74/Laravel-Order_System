@@ -1196,12 +1196,18 @@ class FreelancerController extends Controller
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
 
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -1242,12 +1248,18 @@ class FreelancerController extends Controller
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -1287,12 +1299,19 @@ class FreelancerController extends Controller
             if (strlen($file->getClientOriginalName()) != 1) {
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
+
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";

@@ -113,7 +113,7 @@ class CustomerController extends Controller
                 'IBAN' => 'nullable',
                 'BIC' => 'nullable',
                 'upload' => 'required',
-                'avatar_upload' => 'required',
+                'avatar_upload' => 'nullable',
 
             ],
             [
@@ -130,59 +130,120 @@ class CustomerController extends Controller
         $upload_dir = 'public/';
         $folder = $request->name . '-' . $request->email;
         $path = $upload_dir . $folder;
+        if ($avatar_file) {
+            $avatar_filename = $avatar_file->getClientOriginalName();
+        }
         $filename = $file->getClientOriginalName();
-        $avatar_filename = $avatar_file->getClientOriginalName();
         $files = [];
         if (strlen($file->getClientOriginalName()) != 1) {
             Storage::makeDirectory($upload_dir);
-            if ($file->storePubliclyAs($path, $filename) && $avatar_file->storePubliclyAs($path, $avatar_filename)) {
-                $data = $request->all();
-                $data['upload'] = $path . '/' . $filename;
-                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-                $data['avatar_upload'] = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
-                $files[] = 'public/' . $folder . '/' . $filename;
-                $userid = User::create([
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'company' => $data['company'],
-                    'company_addition' => $data['company_addition'],
-                    'first_name' => $data['first_name'],
-                    'street_number' => $data['street_number'],
-                    'postal_code' => $data['postal_code'],
-                    'location' => $data['location'],
-                    'country' => $data['country'],
-                    'website' => $data['website'],
-                    'phone' => $data['phone'],
-                    'mobile' => $data['mobile'],
-                    'tax_number' => $data['tax_number'],
-                    'vat_number' => $data['vat_number'],
-                    'register_number' => $data['register_number'],
-                    'payment_method' => $data['payment_method'],
-                    'bank_name' => $data['bank_name'],
-                    'IBAN' => $data['IBAN'],
-                    'BIC' => $data['BIC'],
-                    'password' => Hash::make($data['password']),
-                    'user_type' => 'customer',
-                    'image' => $data['avatar_upload'],
-                    'upload_url' => $data['upload'],
-                ]);
-                $update = User::where('id', $userid->id)->update([
-                    'org_id' => $userid->id
-                ]);
-                $credentials = $request->only('email', 'password');
-                if (Auth::attempt($credentials)) {
-                    $recipient_admin = User::where('user_type', 'admin')->first()->email;
-                    $recipient_customer = auth()->user()->email;
-                    $data['user'] = Auth::user();
-                    Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
-                    Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+            if ($avatar_file) {
+                if ($file->storeAs($folder, $filename, 'public') && $avatar_file->storePubliclyAs($folder, $avatar_filename, 'public')) {
+                    $data = $request->all();
+                    $data['upload'] = $path . '/' . $filename;
+                    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                    $data['avatar_upload'] = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
+                    $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
+                    $file_path = Storage::path($fullPath);
+                    echo $file_path;
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
+                    $files[] = 'public/' . $folder . '/' . $filename;
+                    $userid = User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'company' => $data['company'],
+                        'company_addition' => $data['company_addition'],
+                        'first_name' => $data['first_name'],
+                        'street_number' => $data['street_number'],
+                        'postal_code' => $data['postal_code'],
+                        'location' => $data['location'],
+                        'country' => $data['country'],
+                        'website' => $data['website'],
+                        'phone' => $data['phone'],
+                        'mobile' => $data['mobile'],
+                        'tax_number' => $data['tax_number'],
+                        'vat_number' => $data['vat_number'],
+                        'register_number' => $data['register_number'],
+                        'payment_method' => $data['payment_method'],
+                        'bank_name' => $data['bank_name'],
+                        'IBAN' => $data['IBAN'],
+                        'BIC' => $data['BIC'],
+                        'password' => Hash::make($data['password']),
+                        'user_type' => 'customer',
+                        'image' => $data['avatar_upload'],
+                        'upload_url' => $data['upload'],
+                    ]);
 
-                    $authuser = auth()->user();
-                    return redirect('/')->with('message', 'You have Successfully loggedin');
+                    $update = User::where('id', $userid->id)->update([
+                        'org_id' => $userid->id
+                    ]);
+                    $credentials = $request->only('email', 'password');
+                    if (Auth::attempt($credentials)) {
+                        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+                        $recipient_customer = auth()->user()->email;
+                        $data['user'] = Auth::user();
+                        Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
+                        Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+
+                        $authuser = auth()->user();
+                        return redirect('/')->with('message', 'You have Successfully loggedin');
+                    }
+                } else {
+                    return redirect('/')->withErrors('Failed login');
                 }
             } else {
-                return redirect('/')->withErrors('Failed login');
+                if ($file->storePubliclyAs($path, $filename)) {
+                    $data = $request->all();
+                    $data['upload'] = $path . '/' . $filename;
+                    $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                    $files[] = 'public/' . $folder . '/' . $filename;
+                    $userid = User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'company' => $data['company'],
+                        'company_addition' => $data['company_addition'],
+                        'first_name' => $data['first_name'],
+                        'street_number' => $data['street_number'],
+                        'postal_code' => $data['postal_code'],
+                        'location' => $data['location'],
+                        'country' => $data['country'],
+                        'website' => $data['website'],
+                        'phone' => $data['phone'],
+                        'mobile' => $data['mobile'],
+                        'tax_number' => $data['tax_number'],
+                        'vat_number' => $data['vat_number'],
+                        'register_number' => $data['register_number'],
+                        'payment_method' => $data['payment_method'],
+                        'bank_name' => $data['bank_name'],
+                        'IBAN' => $data['IBAN'],
+                        'BIC' => $data['BIC'],
+                        'password' => Hash::make($data['password']),
+                        'user_type' => 'customer',
+                        'upload_url' => $data['upload'],
+                    ]);
+
+                    $update = User::where('id', $userid->id)->update([
+                        'org_id' => $userid->id
+                    ]);
+                    $credentials = $request->only('email', 'password');
+                    if (Auth::attempt($credentials)) {
+                        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+                        $recipient_customer = auth()->user()->email;
+                        $data['user'] = Auth::user();
+                        Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
+                        Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+
+                        $authuser = auth()->user();
+                        return redirect('/')->with('message', 'You have Successfully loggedin');
+                    }
+                } else {
+                    return redirect('/')->withErrors('Failed login');
+                }
             }
+
         }
 
     }

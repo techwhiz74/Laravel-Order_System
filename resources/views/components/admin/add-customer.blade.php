@@ -108,6 +108,7 @@
         border: 1px solid black;
         padding: 5px;
         margin: 0;
+        font-size: 13px;
     }
 
     .field-caption {

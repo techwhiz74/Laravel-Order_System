@@ -16,6 +16,7 @@ function hideModal() {
     $('#admin_order_detail_popup').modal("hide");
     $('#admin_change_popup').modal('hide');
     $('#admin_request_popup').modal('hide');
+    $('#change_profile_success_popup').modal('hide');
 
 }
 

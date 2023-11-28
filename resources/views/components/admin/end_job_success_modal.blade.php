@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Der Status änderte sich von gelb auf rot
+                        Der Status änderte sich von IN BEARBEITUNG auf ABGESCHLOSSEN.
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">

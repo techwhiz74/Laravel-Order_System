@@ -204,6 +204,8 @@ return [
     'admin-change-ve-parameter-decline' => '/de/admin/change-ve-parameter-decline',
     'admin-change-em-parameter-decline-mail' => '/de/admin/change-em-parameter-decline-mail',
     'admin-change-ve-parameter-decline-mail' => '/de/admin/change-ve-parameter-decline-mail',
+    'admin-change-em-parameter-change' => '/de/admin/change-em-parameter-change',
+    'admin-change-ve-parameter-change' => '/de/admin/change-ve-parameter-change',
     'admin-dashboard-green-table' => '/de/admin/dashboard-green-table',
     'admin-dashboard-red-table' => '/de/admin/dashboard-red-table',
     'admin-dashboard-yellow-table' => '/de/admin/dashboard-yellow-table',

@@ -16,138 +16,268 @@
                                 <legend class="field-caption">
                                     {{ __('home.embroidery_file_information') }}</legend>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.yarn_information') }}
-                                        </label>
-                                        <select name="admin_parameter_yarn_information" class="form-control"
-                                            style="width: calc(100% - 205px) !important;">
-                                            <option value="Madeira 40 / 60 PolyNeon">Madeira 40 / 60 PolyNeon</option>
-                                            <option value="Madeira Classic">Madeira Classic</option>
-                                            <option value="Madeira Frosted">Madeira Frosted</option>
-                                            <option value="Gunold Poly40">Gunold Poly40</option>
-                                            <option value="Isacord Amann 40">Isacord Amann 40</option>
-                                            <option value="Brildor">Brildor</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center;">
-                                        <label style="width: 205px;">{{ __('home.need_embroidery_files') }}
-                                        </label>
-                                        <div style="width: calc(100% - 205px) !important;">
-                                            <select name="admin_parameter_need_embroidery_files" multiple>
-                                                <option value="Tajima (*.DST)" checked>Tajima (*.DST)</option>
-                                                <option value="Tajima (*.TBF)">Tajima (*.TBF)</option>
-                                                <option value="Tajima Barudan (*.DSB)">Tajima Barudan (*.DSB)</option>
-                                                <option value="Tajima (*.T01)">Tajima (*.T01)</option>
-                                                <option value="Tajima ZSK (*.DSZ)">Tajima ZSK (*.DSZ)</option>
-                                                <option value="Barudan FDR-3 (*.U??)">Barudan FDR-3 (*.U??)</option>
-                                                <option value="Barudan (*.U??)">Barudan (*.U??)</option>
-                                                <option value="Barudan (*.T03)">Barudan (*.T03)</option>
-                                                <option value="Happy (*.TAP)">Happy (*.TAP)</option>
-                                                <option value="ZSK TC (*.Z00)">ZSK TC (*.Z00)</option>
-                                                <option value="ZSK TC (*.Z01)">ZSK TC (*.Z01)</option>
-                                                <option value="ZSK (*.T05)">ZSK (*.T05)</option>
-                                                <option value="Melco (*.EXP)">Melco (*.EXP)</option>
-                                                <option value="Melco (*.CND)">Melco (*.CND)</option>
-                                                <option value="Brother/Babylock/Deco (*.PES)">Brother/Babylock/Deco
-                                                    (*.PES)</option>
-                                                <option value="Brother/Babylock/Deco (*.PEC)">Brother/Babylock/Deco
-                                                    (*.PEC)</option>
-                                                <option value="Toyota (*.10O)">Toyota (*.10O)</option>
-                                                <option value="Pfaff (*.KSM)">Pfaff (*.KSM)</option>
-                                                <option value="Pfaff (*.T09)">Pfaff (*.T09)</option>
-                                                <option value="Pfaff (*.PCS)">Pfaff (*.PCS)</option>
-                                                <option value="Pfaff (*.PCD)">Pfaff (*.PCD)</option>
-                                                <option value="Pfaff (*.PCQ)">Pfaff (*.PCQ)</option>
-                                                <option value="Singer (*.XXX)">Singer (*.XXX)</option>
-                                                <option value="Janome/Elna/Kenmore (*.JEF)">Janome/Elna/Kenmore (*.JEF)
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.yarn_information') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select name="admin_parameter_yarn_information" class="selectbox-control">
+                                                <option value=""></option>
+                                                <option value="Madeira 40 / 60 PolyNeon">Madeira 40 / 60 PolyNeon
                                                 </option>
-                                                <option value="Janome/Elna (*.JPX)">Janome/Elna (*.JPX)</option>
-                                                <option value="Janome/Elna/Kenmore (*.SEW)">Janome/Elna/Kenmore (*.SEW)
-                                                </option>
-                                                <option value="Husqvarna/Viking/Pfaff (*.VP3)">Husqvarna/Viking/Pfaff
-                                                    (*.VP3)
-                                                </option>
-                                                <option value="Husqvarna/Viking/Pfaff (*.SHV)">Husqvarna/Viking/Pfaff
-                                                    (*.SHV)
-                                                </option>
-                                                <option value="Husqvarna/Viking/Pfaff (*.HUS)">Husqvarna/Viking/Pfaff
-                                                    (*.HUS)
-                                                </option>
-                                                <option value="Bits & Volts (*.BRO)">Bits & Volts (*.BRO)</option>
-                                                <option value="Datastitch (*.STX)">Datastitch (*.STX)</option>
-                                                <option value="Proel DOS (*.PUM)">Proel DOS (*.PUM)</option>
-                                                <option value="Proel Win (*.PMU)">Proel Win (*.PMU)</option>
-                                                <option value="Zangs (*.T04)">Zangs (*.T04)</option>
-                                                <option value="Inbro (*.INB)">Inbro (*.INB)</option>
+                                                <option value="Madeira Classic">Madeira Classic</option>
+                                                <option value="Madeira Frosted">Madeira Frosted</option>
+                                                <option value="Gunold Poly40">Gunold Poly40</option>
+                                                <option value="Isacord Amann 40">Isacord Amann 40</option>
+                                                <option value="Brildor">Brildor</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.cutting_options') }}
-                                        </label>
-                                        <select name="admin_parameter_cutting_options" class="form-control"
-                                            style="width: calc(100% - 205px) !important;">
-                                            <option value="Fadenschnitte setzen">Fadenschnitte setzen</option>
-                                            <option value="Keine Fadenschnitte setzen">Keine Fadenschnitte setzen
-                                            </option>
-                                        </select>
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.need_embroidery_files') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="dropdown">
+                                                <div class="product-multiselect3 dropdown-toggle">
+                                                    <div id="selected_em_parameter3">
+                                                    </div>
+                                                </div>
+                                                <div class="product-item-menu3">
+                                                    <div class="row parameter-select-items-file"
+                                                        style="font-size: 13px;">
+                                                        <div>
+                                                            <input type="checkbox" value="Tajima (*.DST)" />Tajima
+                                                            (*.DST)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Tajima (*.TBF)" />Tajima
+                                                            (*.TBF)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Tajima Barudan (*.DSB)" />Tajima Barudan (*.DSB)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Tajima (*.T01)" />Tajima
+                                                            (*.T01)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Tajima ZSK (*.DSZ)" />Tajima
+                                                            ZSK (*.DSZ)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Barudan FDR-3 (*.U??)" />Barudan FDR-3 (*.U??)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Barudan (*.U??)" />Barudan
+                                                            (*.U??)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Barudan (*.T03)" />Barudan
+                                                            (*.T03)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Happy (*.TAP)" />Happy (*.TAP)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="ZSK TC (*.Z00)" />ZSK TC
+                                                            (*.Z00)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="ZSK TC (*.Z01)" />ZSK TC
+                                                            (*.Z01)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="ZSK (*.T05)" />ZSK (*.T05)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Melco (*.EXP)" />Melco (*.EXP)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Melco (*.CND)" />Melco (*.CND)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Brother/Babylock/Deco (*.PES)" />Brother/Babylock/Deco
+                                                            (*.PES)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Brother/Babylock/Deco (*.PEC)" />Brother/Babylock/Deco
+                                                            (*.PEC)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Toyota (*.10O)" />Toyota
+                                                            (*.10O)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Pfaff (*.KSM)" />Pfaff (*.KSM)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Pfaff (*.T09)" />Pfaff (*.T09)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Pfaff (*.PCS)" />Pfaff (*.PCS)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Pfaff (*.PCD)" />Pfaff (*.PCD)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Pfaff (*.PCQ)" />Pfaff (*.PCQ)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Singer (*.XXX)" />Singer
+                                                            (*.XXX)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Janome/Elna/Kenmore (*.JEF)" />Janome/Elna/Kenmore
+                                                            (*.JEF)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Janome/Elna (*.JPX)" />Janome/Elna (*.JPX)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Janome/Elna/Kenmore (*.SEW)" />Janome/Elna/Kenmore
+                                                            (*.SEW)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Husqvarna/Viking/Pfaff (*.VP3)" />Husqvarna/Viking/Pfaff
+                                                            (*.VP3)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Husqvarna/Viking/Pfaff (*.SHV)" />Husqvarna/Viking/Pfaff
+                                                            (*.SHV)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Husqvarna/Viking/Pfaff (*.HUS)" />Husqvarna/Viking/Pfaff
+                                                            (*.HUS)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Bits & Volts (*.BRO)" />Bits
+                                                            & Volts (*.BRO)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Datastitch (*.STX)" />Datastitch (*.STX)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Proel DOS (*.PUM)" />Proel
+                                                            DOS (*.PUM)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Proel Win (*.PMU)" />Proel
+                                                            Win (*.PMU)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Zangs (*.T04)" />Zangs
+                                                            (*.T04)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Inbro (*.INB)" />Inbro
+                                                            (*.INB)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.special_cutting_options') }}
-                                        </label>
-                                        <select name="admin_parameter_special_cutting_options" class="form-control"
-                                            style="width: calc(100% - 205px) !important;">
-                                            <option value="Fadenschnitte werden durch Lion Werbe GmbH bestimmt">
-                                                Fadenschnitte
-                                                werden
-                                                durch Lion Werbe GmbH bestimmt</option>
-                                            <option value="Fadenschnitte überall">Fadenschnitte überall</option>
-                                            <option value="Fadenschnitte ab 1.2mm Abstand">Fadenschnitte ab 1.2mm
-                                                Abstand</option>
-                                            <option value="Fadenschnitte ab 1.5mm Abstand">Fadenschnitte ab 1.5mm
-                                                Abstand</option>
-                                        </select>
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.cutting_options') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select name="admin_parameter_cutting_options" class="selectbox-control">
+                                                <option value=""></option>
+                                                <option value="Fadenschnitte setzen">Fadenschnitte setzen</option>
+                                                <option value="Keine Fadenschnitte setzen">Keine Fadenschnitte setzen
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.needle_instructions') }}
-                                        </label>
-                                        <select name="admin_parameter_needle_instructions" class="form-control"
-                                            style="width: calc(100% - 205px) !important;">
-                                            <option value="Bitte bei der Farbbelegung mit der Nadel 1 beginnen">Bitte
-                                                bei der
-                                                Farbbelegung mit der Nadel 1 beginnen</option>
-                                            <option value="Freie Belegung der Nadelzuweisungen">Freie Belegung der
-                                                Nadelzuweisungen
-                                            </option>
-                                        </select>
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.special_cutting_options') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select name="admin_parameter_special_cutting_options"
+                                                class="selectbox-control">
+                                                <option value=""></option>
+                                                <option value="Fadenschnitte werden durch Lion Werbe GmbH bestimmt">
+                                                    Fadenschnitte
+                                                    werden
+                                                    durch Lion Werbe GmbH bestimmt</option>
+                                                <option value="Fadenschnitte überall">Fadenschnitte überall</option>
+                                                <option value="Fadenschnitte ab 1.2mm Abstand">Fadenschnitte ab 1.2mm
+                                                    Abstand</option>
+                                                <option value="Fadenschnitte ab 1.5mm Abstand">Fadenschnitte ab 1.5mm
+                                                    Abstand</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.standard_instructions') }}
-                                        </label>
-                                        <input type="text" name="admin_parameter_standard_instructions"
-                                            class="form-control" style="width: calc(100% - 205px) !important;"
-                                            value="">
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.needle_instructions') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <select name="admin_parameter_needle_instructions"
+                                                class="selectbox-control">
+                                                <option value=""></option>
+                                                <option value="Bitte bei der Farbbelegung mit der Nadel 1 beginnen">
+                                                    Bitte
+                                                    bei der
+                                                    Farbbelegung mit der Nadel 1 beginnen</option>
+                                                <option value="Freie Belegung der Nadelzuweisungen">Freie Belegung der
+                                                    Nadelzuweisungen
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.standard_instructions') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <input type="text" name="admin_parameter_standard_instructions"
+                                                class="selectbox-control" value="">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12" style="margin-bottom:5px;">
-                                    <div class="form-group form_dv_wrap">
-                                        <label style="width: 200px;">{{ __('home.special_standard_instructions') }}
-                                        </label>
-                                        <textarea type="text" name="admin_parameter_special_standard_instructions" class="form-control"
-                                            style="height:70px !important;; width: calc(100% - 205px) !important; vertical-align:top;" value=""></textarea>
+                                    <div class="form-group form_flex">
+                                        <div class="col-3">
+                                            <label>{{ __('home.special_standard_instructions') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-9">
+                                            <textarea type="text" name="admin_parameter_special_standard_instructions" class="selectbox-control"
+                                                style="height:70px !important; vertical-align:top;" value=""></textarea>
+                                        </div>
                                     </div>
                                 </div>
-
                             </fieldset>
                         </div>
 
@@ -157,6 +287,10 @@
                                     id="admin_em_parameter_confirm">Bestätigen</button>
                                 <button class="btn btn-primary btn-block" type="submit"
                                     id="admin_em_parameter_decline">Ablehnen</button>
+                            </div>
+                            <div class="upload_btn" id="admin_em_parameter_change_buttons">
+                                <button class="btn btn-primary btn-block" type="submit"
+                                    id="admin_em_parameter_change">Ändern</button>
                             </div>
                         </div>
                     </div>
@@ -175,13 +309,64 @@
         });
     });
     $(function() {
+        $('#admin_em_parameter_change').click(function() {
+            var em_parameter_change_data = new FormData();
+            em_parameter_change_data.append('parameter1', $('[name=admin_parameter_yarn_information]')
+                .val());
+            em_parameter_change_data.append('parameter2', $('#selected_em_parameter3').text());
+            em_parameter_change_data.append('parameter3', $('[name=admin_parameter_cutting_options]')
+                .val());
+            em_parameter_change_data.append('parameter4', $(
+                '[name=admin_parameter_special_cutting_options]').val());
+            em_parameter_change_data.append('parameter5', $(
+                '[name=admin_parameter_needle_instructions]').val());
+            em_parameter_change_data.append('parameter6', $(
+                '[name=admin_parameter_standard_instructions]').val());
+            em_parameter_change_data.append('parameter7', $(
+                '[name=admin_parameter_special_standard_instructions]').val());
+            em_parameter_change_data.append('customer_id', $('[name=admin_em_parameter_customer_id]')
+                .val());
+            var confirm = window.confirm('Möchten Sie diesen Kundenstickparameter ändern?');
+            if (confirm == true) {
+                $.ajax({
+                    url: '{{ __('routes.admin-change-em-parameter-change') }}',
+                    type: 'post',
+                    data: em_parameter_change_data,
+                    contentType: false,
+                    processData: false,
+                    success: () => {
+                        $('#admin_em_parameter_buttons').hide();
+                        console.log("success");
+                    },
+                    error: () => {
+                        console.error("error");
+                    }
+                })
+            }
+        })
         $('#admin_em_parameter_confirm').click(function() {
+            var em_parameter_conform_data = new FormData();
+            em_parameter_conform_data.append('parameter1', $('[name=admin_parameter_yarn_information]')
+                .val());
+            em_parameter_conform_data.append('parameter2', $('#selected_em_parameter3').text());
+            em_parameter_conform_data.append('parameter3', $('[name=admin_parameter_cutting_options]')
+                .val());
+            em_parameter_conform_data.append('parameter4', $(
+                '[name=admin_parameter_special_cutting_options]').val());
+            em_parameter_conform_data.append('parameter5', $(
+                '[name=admin_parameter_needle_instructions]').val());
+            em_parameter_conform_data.append('parameter6', $(
+                '[name=admin_parameter_standard_instructions]').val());
+            em_parameter_conform_data.append('parameter7', $(
+                '[name=admin_parameter_special_standard_instructions]').val());
+            em_parameter_conform_data.append('customer_id', $('[name=admin_em_parameter_customer_id]')
+                .val());
             $.ajax({
                 url: '{{ __('routes.admin-change-em-parameter-confirm') }}',
                 type: 'post',
-                data: {
-                    customer_id: $('[name=admin_em_parameter_customer_id]').val()
-                },
+                data: em_parameter_conform_data,
+                contentType: false,
+                processData: false,
                 success: () => {
                     $('#admin_em_parameter_buttons').hide();
                     $.ajax({

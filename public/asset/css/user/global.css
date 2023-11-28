@@ -645,6 +645,11 @@ section {
   margin-bottom: 7px;
 }
 
+.form_flex {
+  margin-bottom: 7px;
+  display: flex;
+}
+
 .form_dv_wrap .form-control {
   border-radius: 0 !important;
 }
@@ -1783,7 +1788,8 @@ select#status-filter:focus-visible {
 }
 
 #order_form_success_popup .modal-dialog,
-#order_change_success_popup .modal-dialog {
+#order_change_success_popup .modal-dialog,
+#change_profile_success_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1796,7 +1802,8 @@ select#status-filter:focus-visible {
 }
 
 #order_form_success_popup .modal-content,
-#order_change_success_popup .modal-content {
+#order_change_success_popup .modal-content,
+#change_profile_success_popup .modal-content {
   max-width: 500px;
   margin: 0 auto;
   height: 150px;
@@ -1807,12 +1814,14 @@ select#status-filter:focus-visible {
 }
 
 #order_form_success_popup .modal-body,
-#order_change_success_popup .modal-body {
+#order_change_success_popup .modal-body,
+#change_profile_success_popup .modal-body {
   padding: 20px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 13px;
+  height: 100%;
 }
 
 .order_form_file_uplaod_command {
@@ -3643,4 +3652,74 @@ input[name="selected_customer"]:checked::before {
   background-color: #c3ac6d;
   font-weight: 900;
   scale: 1.5 1;
+}
+
+#selected_ve_parameter8,
+#selected_ve_parameter9,
+#selected_em_parameter3 {
+  padding: 12px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+
+.product-multiselect8,
+.product-multiselect9,
+.product-multiselect3 {
+  max-width: 100%;
+  overflow-y: visible;
+  text-wrap: wrap;
+  width: 100%;
+  min-height: 100%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  height: 36px;
+}
+
+.product-item-menu8,
+.product-item-menu9 {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  padding: 10px 20px;
+  line-height: 2;
+  width: 100%;
+}
+
+.product-item-menu3 {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  padding: 10px 20px;
+  line-height: 2;
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+}
+
+.selectbox-control {
+  font-size: 13px;
+  border: 1px solid #ddd !important;
+  height: 36px;
+  width: 100%;
+  padding: 0 12px;
+  appearance: none;
+}
+
+.selectbox-control:focus {
+  border: none !important;
 }

@@ -701,12 +701,18 @@ class AdminController extends Controller
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
 
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -751,21 +757,14 @@ class AdminController extends Controller
     {
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
-            $parameter_lists = CustomerEmparameter::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
-                ->addColumn('parameter', function ($row) use ($parameter_lists) {
-                    $parameter = '';
-                    foreach ($parameter_lists as $parameter_list) {
-                        if ($parameter_list->customer_id == $row->id) {
-                            $parameter = '
+                ->addColumn('parameter', function ($row) {
+                    $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
                                 <button onclick="openEmParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
                             </div>
                         </div>';
-                        }
-
-                    }
 
                     return $parameter;
                 })
@@ -777,22 +776,14 @@ class AdminController extends Controller
     {
         if ($request->ajax()) {
             $data = User::orderBy('id', 'desc')->where('user_type', 'customer')->get();
-            $parameter_lists = CustomerVeparameter::orderBy('id', 'desc')->get();
             return DataTables::of($data)->addIndexColumn()
-                ->addColumn('parameter', function ($row) use ($parameter_lists) {
-                    $parameter = '';
-                    foreach ($parameter_lists as $parameter_list) {
-                        if ($parameter_list->customer_id == $row->id) {
-                            $parameter = '
+                ->addColumn('parameter', function ($row) {
+                    $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
                                 <button onclick="openVeParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
                             </div>
                         </div>';
-                        }
-
-                    }
-
                     return $parameter;
                 })
                 ->rawColumns(['parameter'])
@@ -811,17 +802,59 @@ class AdminController extends Controller
         $temp_parameter = TempCustomerVeParameter::where('customer_id', $request->get('id'))->first();
         return response()->json([$parameter, $temp_parameter]);
     }
+    public function EmParameterChange(Request $request)
+    {
+        $parameter = CustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
+        if ($parameter) {
+            $parameter->parameter1 = $request->post('parameter1');
+            $parameter->parameter2 = $request->post('parameter2');
+            $parameter->parameter3 = $request->post('parameter3');
+            $parameter->parameter4 = $request->post('parameter4');
+            $parameter->parameter5 = $request->post('parameter5');
+            $parameter->parameter6 = $request->post('parameter6');
+            $parameter->parameter7 = $request->post('parameter7');
+            $parameter->save();
+        } else {
+            $parameter = new CustomerEmParameter();
+            $parameter->customer_id = $request->post('customer_id');
+            $parameter->parameter1 = $request->post('parameter1');
+            $parameter->parameter2 = $request->post('parameter2');
+            $parameter->parameter3 = $request->post('parameter3');
+            $parameter->parameter4 = $request->post('parameter4');
+            $parameter->parameter5 = $request->post('parameter5');
+            $parameter->parameter6 = $request->post('parameter6');
+            $parameter->parameter7 = $request->post('parameter7');
+            $parameter->save();
+        }
+
+    }
+    public function VeParameterChange(Request $request)
+    {
+        $parameter = CustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
+        if ($parameter) {
+            $parameter->parameter8 = $request->post('parameter8');
+            $parameter->parameter9 = $request->post('parameter9');
+            $parameter->save();
+        } else {
+            $parameter = new CustomerVeParameter();
+            $parameter->customer_id = $request->post('customer_id');
+            $parameter->parameter8 = $request->post('parameter8');
+            $parameter->parameter9 = $request->post('parameter9');
+            $parameter->save();
+        }
+
+    }
     public function EmParameterConfirm(Request $request)
     {
         $parameter = CustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
         $test_parameter = TempCustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
-        $parameter->parameter1 = $test_parameter->parameter1;
-        $parameter->parameter2 = $test_parameter->parameter2;
-        $parameter->parameter3 = $test_parameter->parameter3;
-        $parameter->parameter4 = $test_parameter->parameter4;
-        $parameter->parameter5 = $test_parameter->parameter5;
-        $parameter->parameter6 = $test_parameter->parameter6;
-        $parameter->parameter7 = $test_parameter->parameter7;
+        $parameter->parameter1 = $request->post('parameter1');
+        $parameter->parameter2 = $request->post('parameter2');
+        $parameter->parameter3 = $request->post('parameter3');
+        $parameter->parameter4 = $request->post('parameter4');
+        $parameter->parameter5 = $request->post('parameter5');
+        $parameter->parameter6 = $request->post('parameter6');
+        $parameter->parameter7 = $request->post('parameter7');
         $parameter->save();
         $test_parameter->delete();
     }
@@ -829,8 +862,8 @@ class AdminController extends Controller
     {
         $parameter = CustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
         $test_parameter = TempCustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
-        $parameter->parameter8 = $test_parameter->parameter8;
-        $parameter->parameter9 = $test_parameter->parameter9;
+        $parameter->parameter8 = $request->post('parameter8');
+        $parameter->parameter9 = $request->post('parameter9');
         $parameter->save();
         $test_parameter->delete();
     }
@@ -1317,12 +1350,18 @@ class AdminController extends Controller
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
 
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -1359,7 +1398,7 @@ class AdminController extends Controller
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
             $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
-        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'freelancer_em')->count();
+        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
         $folderName = 'Stickprogramm Änderung' . ($folderCount) . '/';
         $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {
@@ -1368,12 +1407,18 @@ class AdminController extends Controller
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
 
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -1465,12 +1510,18 @@ class AdminController extends Controller
                 Storage::makeDirectory($uploadDir);
                 $fileName = $file->getClientOriginalName();
 
-                if ($file->storePubliclyAs($path, $fileName)) {
+                if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                     $order_file_upload = new Order_file_upload();
                     $order_file_upload->order_id = $order->id;
                     $order_file_upload->extension = $file->getClientOriginalExtension();
                     $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                     $order_file_upload->save();
+                    $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                    $file_path = Storage::path($fullPath);
+                    chmod($file_path, 0755);
+                    $publicPath = public_path();
+                    $publicStoragePath = $publicPath . '/storage';
+                    chmod($publicStoragePath, 0755);
                     echo "The file " . $fileName . " has been uploaded";
                 } else
                     echo "Error";
@@ -1549,8 +1600,9 @@ class AdminController extends Controller
     }
     public function DashboardGreenTable(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('status', 'Offen')->take(5)->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Offen')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1586,8 +1638,9 @@ class AdminController extends Controller
     }
     public function DashboardRedTable(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('status', 'Ausgeliefert')->take(5)->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Ausgeliefert')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1622,8 +1675,9 @@ class AdminController extends Controller
     }
     public function DashboardYellowTable(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('status', 'In Bearbeitung')->take(5)->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'In Bearbeitung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1658,8 +1712,9 @@ class AdminController extends Controller
     }
     public function DashboardBlueTable(Request $request)
     {
+        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('status', 'Änderung')->take(5)->get();
+            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Änderung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;

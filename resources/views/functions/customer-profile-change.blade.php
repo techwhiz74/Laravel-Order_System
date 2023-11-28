@@ -35,8 +35,7 @@
                     processData: false,
                     data: request_profile_data,
                     success: () => {
-                        toastr.success(
-                            "Warten Sie auf die Genehmigung durch den Administrator");
+                        $('#change_profile_success_popup').modal('show');
                         $.ajax({
                             url: '{{ __('routes.customer-profileupdate-mail') }}',
                             type: 'get',

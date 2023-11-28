@@ -96,7 +96,6 @@
                                         </select>
                                     @endif
                                 @endif
-
                             </div>
                         </div>
                     </div>
@@ -131,20 +130,20 @@
                 url: '{{ __('routes.customer-get-ve-parameter') }}',
                 type: 'get',
                 success: (parameter) => {
-                    // var vectorFiles = parameter.parameter8.split(', ');
-                    // var imageFiles = parameter.parameter9.split(', ');
-                    // vectorFiles.forEach(item => {
-                    //     console.log(item);
-                    //     $('[name=parameter_required_vector_file]').find(
-                    //         'option[value="' + item + '"]').attr('selected',
-                    //         'selected');
-                    // });
-                    // imageFiles.forEach(item => {
-                    //     console.log(item);
-                    //     $('[name=parameter_required_image_file]').find(
-                    //         'option[value="' + item + '"]').attr('selected',
-                    //         'selected');
-                    // });
+                    var vectorFiles = parameter.parameter8.split(', ');
+                    var imageFiles = parameter.parameter9.split(', ');
+                    vectorFiles.forEach(item => {
+                        console.log(item);
+                        $('[name=parameter_required_vector_file]').find(
+                            'option[value="' + item + '"]').attr('selected',
+                            'selected');
+                    });
+                    imageFiles.forEach(item => {
+                        console.log(item);
+                        $('[name=parameter_required_image_file]').find(
+                            'option[value="' + item + '"]').attr('selected',
+                            'selected');
+                    });
                 },
                 error: () => {
                     console.error("error");

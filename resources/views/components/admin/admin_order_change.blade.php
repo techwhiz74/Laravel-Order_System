@@ -105,11 +105,11 @@
     }
 
     /* Clear floats after the columns */
-    .row::after {
+    /* .row::after {
         content: "";
         display: table;
         clear: both;
-    }
+    } */
 
     .order_form_check_label {
         margin-left: 10px;

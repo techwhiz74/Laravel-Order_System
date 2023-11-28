@@ -15,17 +15,17 @@ class OrderRequestFreelancerMail extends Mailable
     use Queueable, SerializesModels;
     public $order;
     public $customer;
-    public $files;
+    public $zipStoragePath;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $customer, $files)
+    public function __construct($order, $customer, $zipStoragePath)
     {
         $this->order = $order;
         $this->customer = $customer;
-        $this->files = $files;
+        $this->zipStoragePath = $zipStoragePath;
     }
 
     /**
@@ -53,7 +53,7 @@ class OrderRequestFreelancerMail extends Mailable
             with: [
                 'order' => $this->order,
                 'customer' => $this->customer,
-                'files' => $this->files,
+                'zipStoragePath' => $this->zipStoragePath,
             ]
         );
     }
@@ -66,9 +66,7 @@ class OrderRequestFreelancerMail extends Mailable
     public function attachments()
     {
         $attachments = [];
-        foreach ($this->files as $file) {
-            $attachments[] = Attachment::fromStorage($file);
-        }
+        $attachments[] = Attachment::fromStorage($this->zipStoragePath);
         return $attachments;
     }
 }

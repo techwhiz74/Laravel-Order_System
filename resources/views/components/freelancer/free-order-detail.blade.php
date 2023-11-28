@@ -105,11 +105,11 @@
     }
 
     /* Clear floats after the columns */
-    .row::after {
+    /* .row::after {
         content: "";
         display: table;
         clear: both;
-    }
+    } */
 
     .order_form_check_label {
         margin-left: 10px;
@@ -615,6 +615,17 @@
         $('#free_subfolder_structure1').hide();
         $('#free_subfolder_structure2').hide();
         $('#free_subfolder_structure3').hide();
+
+        $('#yarn_information').text("");
+        $('#need_embroidery_files').text("");
+        $('#cutting_options').text("");
+        $('#special_cutting_options').text("");
+        $('#needle_instructions').text("");
+        $('#standard_instructions').text("");
+        $('#special_standard_instructions').text("");
+        $('#required_vector_file').text("");
+        $('#required_image_file').text("");
+
         $.ajax({
             url: '{{ __('routes.freelancer-get-order-detail') }}',
             type: 'GET',
@@ -734,8 +745,6 @@
                 id: $('[name=free_detail_id]').val()
             },
             success: (data) => {
-                console.log(data[0]);
-                console.log(data[1]);
                 if (data[0] != null) {
                     $('#yarn_information').text(data[0].parameter1);
                     $('#need_embroidery_files').text(data[0].parameter2);

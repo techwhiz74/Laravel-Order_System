@@ -114,6 +114,18 @@
     });
 
     function openEmParameter(id) {
+        $('#admin_em_parameter_change_buttons').show();
+        $('#admin_em_parameter_buttons').hide();
+        $('.parameter-select-items-file').find(
+            'input').prop("checked", false);
+        $('[name=admin_parameter_yarn_information]').val("");
+        $('#selected_em_parameter3').text("");
+        $('[name=admin_parameter_cutting_options]').val("");
+        $('[name=admin_parameter_special_cutting_options]').val("");
+        $('[name=admin_parameter_needle_instructions]').val("");
+        $('[name=admin_parameter_standard_instructions]').val("");
+        $('[name=admin_parameter_special_standard_instructions]').val("");
+        $('[name=admin_em_parameter_customer_id]').val(id);
         $.ajax({
             url: '{{ __('routes.admin-parameter-em') }}',
             type: 'GET',
@@ -121,25 +133,37 @@
                 id
             },
             success: (result) => {
-                $('[name=admin_em_parameter_customer_id]').val(result[0].customer_id);
-                $('[name=admin_parameter_yarn_information]').val(result[0].parameter1);
-                $('[name=admin_parameter_need_embroidery_files]').val(result[0].parameter2);
-                $('[name=admin_parameter_cutting_options]').val(result[0].parameter3);
-                $('[name=admin_parameter_special_cutting_options]').val(result[0].parameter4);
-                $('[name=admin_parameter_needle_instructions]').val(result[0].parameter5);
-                $('[name=admin_parameter_standard_instructions]').val(result[0].parameter6);
-                $('[name=admin_parameter_special_standard_instructions]').val(result[0].parameter7);
-                $('#admin_customer_parameters_em_popup').modal('show');
-                if (result[1] != null) {
-                    $('#admin_em_parameter_buttons').show();
-                    $('[name=admin_parameter_yarn_information]').val(result[1].parameter1);
-                    $('[name=admin_parameter_need_embroidery_files]').val(result[1].parameter2);
-                    $('[name=admin_parameter_cutting_options]').val(result[1].parameter3);
-                    $('[name=admin_parameter_special_cutting_options]').val(result[1].parameter4);
-                    $('[name=admin_parameter_needle_instructions]').val(result[1].parameter5);
-                    $('[name=admin_parameter_standard_instructions]').val(result[1].parameter6);
-                    $('[name=admin_parameter_special_standard_instructions]').val(result[1].parameter7);
+                if (result[0] != null) {
+                    $('[name=admin_parameter_yarn_information]').val(result[0].parameter1);
+                    $('#selected_em_parameter3').text(result[0].parameter2);
+                    $('[name=admin_parameter_cutting_options]').val(result[0].parameter3);
+                    $('[name=admin_parameter_special_cutting_options]').val(result[0].parameter4);
+                    $('[name=admin_parameter_needle_instructions]').val(result[0].parameter5);
+                    $('[name=admin_parameter_standard_instructions]').val(result[0].parameter6);
+                    $('[name=admin_parameter_special_standard_instructions]').val(result[0].parameter7);
+                    var fileFiles0 = result[0].parameter2.split(', ');
+                    fileFiles0.forEach(item => {
+                        $('.parameter-select-items-file').find(
+                            'input[value="' + item + '"]').prop("checked", true);
+                    });
+                    if (result[1] != null) {
+                        $('#admin_em_parameter_change_buttons').hide();
+                        $('#admin_em_parameter_buttons').show();
+                        $('[name=admin_parameter_yarn_information]').val(result[1].parameter1);
+                        $('#selected_em_parameter3').text(result[1].parameter2);
+                        $('[name=admin_parameter_cutting_options]').val(result[1].parameter3);
+                        $('[name=admin_parameter_special_cutting_options]').val(result[1].parameter4);
+                        $('[name=admin_parameter_needle_instructions]').val(result[1].parameter5);
+                        $('[name=admin_parameter_standard_instructions]').val(result[1].parameter6);
+                        $('[name=admin_parameter_special_standard_instructions]').val(result[1].parameter7);
+                        var fileFiles1 = result[1].parameter2.split(', ');
+                        fileFiles1.forEach(item => {
+                            $('.parameter-select-items-file').find(
+                                'input[value="' + item + '"]').prop("checked", true);
+                        });
+                    }
                 }
+                $('#admin_customer_parameters_em_popup').modal('show');
             },
             error: () => {
                 console.error("error");

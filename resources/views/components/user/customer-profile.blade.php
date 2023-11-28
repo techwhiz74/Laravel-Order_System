@@ -137,6 +137,7 @@
         border: 1px solid black;
         padding: 5px;
         margin: 0;
+        font-size: 13px;
     }
 
     .field-caption {
@@ -534,7 +535,7 @@
         </form>
     </div>
 </section>
-
+@include('components.user.change_profile_success')
 
 @push('custom-script')
 

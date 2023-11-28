@@ -16,9 +16,9 @@ class LoginMiddleware
      */
     public function handle(Request $request, Closure $next, $role)
     {
-        if (auth()->user() && auth()->user()->user_type === $role) {
-            return redirect()->route($role . '-vieworders', ['locale' => app()->getLocale()]);
-        }
+        // if (auth()->user() && auth()->user()->user_type === $role) {
+        //     return redirect()->route($role . 'homepage', ['locale' => app()->getLocale()]);
+        // }
 
         return $next($request);
     }

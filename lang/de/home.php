@@ -250,6 +250,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_form_file_uplaod_command' => 'IHR AUFTRAG WURDE ERFOLGREICH AN UNS ÜBERTRAGEN.',
     'order_form_AnotherOrder' => 'WEITEREN AUFTRAG ERFASSEN',
     'order_change_another' => 'EINE ANDERE BESTELLUNG ÄNDERN',
+    'change_profile_success_command' => 'Ihre Kundendaten wurden erfolgreich angefordert.',
 
     //order form validation
     'validation_deliver_time' => 'LIEFERZEIT ist erforderlich',
@@ -428,19 +429,19 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'Dateien hochladen' => 'Dateien hochladen',
     'start_job_confirm' => 'Möchten Sie den Job jetzt beginnen?',
     'confirm' => 'Bestätigen',
-    'start_job_success' => 'Der Status änderte sich von grün auf gelb.',
+    'start_job_success' => 'Der Status änderte sich von NEU auf IN BEARBEITUNG.',
     'free_upload_job_success' => 'Dateien erfolgreich hochgeladen.
 Möchten Sie diesen Job abschließen?',
     'free_upload_change_success' => 'Dateien erfolgreich hochgeladen.
 Möchten Sie diese Änderung abschließen?',
     'complete_job' => 'Job abschließen',
     'free_delete_file_confirm' => 'Möchten Sie diese Datei löschen?',
-    'end_job_success' => 'Der Status ändert sich von gelb auf rot',
+    'end_job_success' => 'Der Status ändert sich von IN BEARBEITUNG auf ABGESCHLOSSEN',
     'change_text' => 'Änderungs text',
     'start_change' => 'Änderung starten',
     'upload_change' => 'Änderung hochladen',
     'end_change' => 'Änderung beenden',
     'start_change_confirm' => 'Möchten Sie die Änderung jetzt beginnen?',
-    'end_change_success' => 'Der Status wechselt von blau auf rot',
+    'end_change_success' => 'Der Status wechselt von ÄNDERUNG auf ABGESCHLOSSEN',
 
 ];

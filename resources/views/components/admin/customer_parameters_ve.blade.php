@@ -17,64 +17,87 @@
                                 <legend class="field-caption">
                                     {{ __('home.vector_file_information') }}</legend>
                                 <div class="col-lg-12 col-md-12">
-                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center;">
-                                        <label style="width: 200px;">{{ __('home.required_vector_file') }}
-                                        </label>
-                                        <div style="width: calc(100% - 205px) !important;">
-                                            @if (auth()->user()->user_type == 'admin')
-                                                @if (auth()->user()->tempCustomerVeParameter)
-                                                    <select name="admin_parameter_require_vector_file" multiple>
-                                                        <option value="Adobe Illustrator (*.AI)">
-                                                            Adobe Illustrator (*.AI)
-                                                        </option>
-                                                        <option value="Adobe PDF (*.PDF)">
-                                                            Adobe PDF (*.PDF)</option>
-                                                        <option value="Illustrator EPS (*.EPS)">
-                                                            Illustrator EPS (*.EPS)
-                                                        </option>
-                                                        <option value="Illustrator Template (*.AIT)">
-                                                            Illustrator Template (*.AIT)</option>
-                                                        <option value="SVG (*.SVG)">
-                                                            SVG (*.SVG)</option>
-                                                        <option value="SVG komprimiert (*.SVGZ)">
-                                                            SVG komprimiert (*.SVGZ)
-                                                        </option>
-                                                    </select>
-                                                @else
-                                                    <select name="admin_parameter_require_vector_file" multiple>
-                                                        <option value="Adobe Illustrator (*.AI)">Adobe Illustrator
+                                    <div class="row">
+                                        <div class="col-20">
+                                            <label style="width: 200px;">{{ __('home.required_vector_file') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-80">
+                                            <div class="dropdown">
+                                                <div class="product-multiselect8 dropdown-toggle">
+                                                    <div id="selected_ve_parameter8">
+                                                    </div>
+                                                </div>
+                                                <div class="product-item-menu8">
+                                                    <div class="row parameter-select-items-vector"
+                                                        style="font-size: 13px;">
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Adobe Illustrator (*.AI)" />Adobe
+                                                            Illustrator
                                                             (*.AI)
-                                                        </option>
-                                                        <option value="Adobe PDF (*.PDF)">Adobe PDF (*.PDF)
-                                                        </option>
-                                                        <option value="Illustrator EPS (*.EPS)">Illustrator EPS (*.EPS)
-                                                        </option>
-                                                        <option value="Illustrator Template (*.AIT)">Illustrator
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="Adobe PDF (*.PDF)" />Adobe PDF
+                                                            (*.PDF)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Illustrator EPS (*.EPS)" />Illustrator EPS
+                                                            (*.EPS)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox"
+                                                                value="Illustrator Template (*.AIT)" />Illustrator
                                                             Template
-                                                            (*.AIT)</option>
-                                                        <option value="SVG (*.SVG)">SVG (*.SVG)</option>
-                                                        <option value="SVG komprimiert (*.SVGZ)">SVG komprimiert
-                                                            (*.SVGZ)
-                                                        </option>
-                                                    </select>
-                                                @endif
-                                            @endif
-
+                                                            (*.AI)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="SVG (*.SVG)" />SVG (*.SV)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="SVG komprimiert (*.SVGZ)">SVG
+                                                            komprimiert (*.SVGZ)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12" style="margin-bottom:5px;">
-                                    <div class="form-group form_dv_wrap" style="display: flex; align-items:center;">
-                                        <label style="width: 200px;">{{ __('home.required_image_file') }}
-                                        </label>
-                                        <div style="width: calc(100% - 205px) !important;">
-                                            <select name="admin_parameter_require_image_file" multiple>
-                                                <option value="BMP (*.BMP)">BMP (*.BMP)</option>
-                                                <option value="JPEG (*.JPG)">JPEG (*.JPG)</option>
-                                                <option value="PNG (*.PNG)">PNG (*.PNG)</option>
-                                                <option value="TIFF (*.TIF)">TIFF (*.TIF)</option>
-                                                <option value="WebP (*.WEBP)">WebP (*.WEBP)</option>
-                                            </select>
+                                    <div class="row">
+                                        <div class="col-20">
+                                            <label style="width: 200px;">{{ __('home.required_image_file') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-80">
+                                            <div class="dropdown">
+                                                <div class="product-multiselect9 dropdown-toggle">
+                                                    <div id="selected_ve_parameter9">
+                                                    </div>
+                                                </div>
+                                                <div class="product-item-menu9">
+                                                    <div class="row parameter-select-items-image"
+                                                        style="font-size: 13px;">
+                                                        <div>
+                                                            <input type="checkbox" value="BMP (*.BMP)" />BMP (*.BMP)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="JPEG (*.JPG)" />JPEG (*.JPG)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="PNG (*.PNG)" />PNG (*.PNG)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="TIFF (*.TIF)" />TIFF (*.TIF)
+                                                        </div>
+                                                        <div>
+                                                            <input type="checkbox" value="WebP (*.WEBP)" />WebP (*.WEBP)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -86,6 +109,10 @@
                                             id="admin_ve_parameter_confirm">Bestätigen</button>
                                         <button class="btn btn-primary btn-block" type="submit"
                                             id="admin_ve_parameter_decline">Ablehnen</button>
+                                    </div>
+                                    <div class="upload_btn" id="admin_ve_parameter_change_buttons">
+                                        <button class="btn btn-primary btn-block" type="submit"
+                                            id="admin_ve_parameter_change">Ändern</button>
                                     </div>
                                 </div>
                             </div>
@@ -112,13 +139,42 @@
         });
     });
     $(function() {
+        $('#admin_ve_parameter_change').click(function() {
+            var ve_parameter_change_data = new FormData();
+            ve_parameter_change_data.append('parameter8', $('#selected_ve_parameter8').text());
+            ve_parameter_change_data.append('parameter9', $('#selected_ve_parameter9').text());
+            ve_parameter_change_data.append('customer_id', $('[name=admin_ve_parameter_customer_id]')
+                .val());
+            var confirm = window.confirm('Möchten Sie diesen Kundenvektorparameter ändern?');
+            if (confirm == true) {
+                $.ajax({
+                    url: '{{ __('routes.admin-change-ve-parameter-change') }}',
+                    type: 'post',
+                    data: ve_parameter_change_data,
+                    contentType: false,
+                    processData: false,
+                    success: () => {
+                        $('#admin_ve_parameter_buttons').hide();
+                        console.log("success");
+                    },
+                    error: () => {
+                        console.error("error");
+                    }
+                })
+            }
+        })
         $('#admin_ve_parameter_confirm').click(function() {
+            var ve_parameter_conform_data = new FormData();
+            ve_parameter_conform_data.append('parameter8', $('#selected_ve_parameter8').text());
+            ve_parameter_conform_data.append('parameter9', $('#selected_ve_parameter9').text());
+            ve_parameter_conform_data.append('customer_id', $('[name=admin_ve_parameter_customer_id]')
+                .val());
             $.ajax({
                 url: '{{ __('routes.admin-change-ve-parameter-confirm') }}',
                 type: 'post',
-                data: {
-                    customer_id: $('[name=admin_ve_parameter_customer_id]').val()
-                },
+                data: ve_parameter_conform_data,
+                contentType: false,
+                processData: false,
                 success: () => {
                     $('#admin_ve_parameter_buttons').hide();
                     $.ajax({

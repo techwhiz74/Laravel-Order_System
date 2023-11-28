@@ -143,7 +143,7 @@
                         @if (auth()->user()->user_type == 'customer')
                             @if (Auth::user()->image)
                                 <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
-                                    style="width: 80px; height:80px; margin:-20px 0px 0 -22px;" />
+                                    style="width: 40px; height:40px;" />
                             @else
                                 <i class="fa-solid fa-circle-user fa-2x" style="margin: 5px 0 0 5px;color:#fff;"></i>
                             @endif

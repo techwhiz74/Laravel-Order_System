@@ -464,7 +464,6 @@ class OrderController extends Controller
                 })
 
                 ->addColumn('download', function ($row) {
-
                     $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
                     return $btn;
                 })
@@ -746,25 +745,38 @@ class OrderController extends Controller
                     $index = $fileExtensionArray[0];
                     $index = $index + 1;
                     $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
+                    if ($file->storeAs($filePath, $fileName, 'public')) {
                         $order_file_upload = new Order_file_upload();
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $index;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                         $order_file_upload->save();
+                        $fullPath = '/public' . '/' . $filePath . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
 
                         echo "The file " . $fileName . " has been uploaded";
                     } else
                         echo "Error";
                 } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
+                    if ($file->storeAs($filePath, $fileName, 'public')) {
                         $order_file_upload = new Order_file_upload();
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $key + 1;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
                         $order_file_upload->save();
+
+                        $fullPath = '/public' . '/' . $filePath . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
 
                         echo "The file " . $fileName . " has been uploaded";
                     } else
@@ -801,7 +813,6 @@ class OrderController extends Controller
 
         $customer = auth()->user();
 
-
         $files = [];
         $attachmanet_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
         foreach ($attachmanet_files as $attachmant) {
@@ -814,10 +825,24 @@ class OrderController extends Controller
             }
         }
 
-        $order['user'] = Auth::user();
+        $zip = new ZipArchive();
+        $order = Order::findOrFail($order->id);
+        $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/' . $request->get('type') . '/';
+        $files = Order_file_upload::where('order_id', $order->id)->where('base_url', 'LIKE', '%' . $folder . '%')->get();
+        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '(New-Order)' . '.zip';
+        if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
+            $files = Storage::allFiles('public/' . $folder);
+            foreach ($files as $key => $file) {
+                $relativeNameInZipFile = basename('public/' . $folder . $file);
+                $filePathArray = explode('/', $file);
+                $zip->addFile(storage_path('app/' . $file), $filePathArray[3] . '/' . $relativeNameInZipFile);
+            }
+            $zip->close();
+        }
+        $zipStoragePath = 'public/' . $folder . $fileName;
         try {
             Mail::to($recipient_admin)->send(new OrderFormMail($order, $customer, $files));
-            Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $files));
+            Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $zipStoragePath));
             Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
@@ -878,24 +903,36 @@ class OrderController extends Controller
                     $index = $fileExtensionArray[0];
                     $index = $index + 1;
                     $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
-                    if ($file->storePubliclyAs($path, $fileName)) {
+                    if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                         $order_file_upload = new Order_file_upload();
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $index;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
+                        $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
                         echo "The file " . $fileName . " has been uploaded";
                     } else
                         echo "Error";
                 } else {
-                    if ($file->storePubliclyAs($path, $fileName)) {
+                    if ($file->storeAs($filePath . $folderName, $fileName, 'public')) {
                         $order_file_upload = new Order_file_upload();
                         $order_file_upload->order_id = $order->id;
                         $order_file_upload->index = $key + 1;
                         $order_file_upload->extension = $file->getClientOriginalExtension();
                         $order_file_upload->base_url = 'storage/' . $filePath . $folderName . $fileName;
                         $order_file_upload->save();
+                        $fullPath = '/public' . '/' . $filePath . $folderName . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
                         echo "The file " . $fileName . " has been uploaded";
                     } else
                         echo "Error";
@@ -1011,10 +1048,25 @@ class OrderController extends Controller
                 }
             }
         }
+        $zip = new ZipArchive();
+        $order = Order::findOrFail($order->id);
+        $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/' . $folder_name . '/';
+        $files = Order_file_upload::where('order_id', $order->id)->where('base_url', 'LIKE', '%' . $folder . '%')->get();
+        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '(Change-Request)' . '.zip';
+        if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
+            $files = Storage::allFiles('public/' . $folder);
+            foreach ($files as $key => $file) {
+                $relativeNameInZipFile = basename('public/' . $folder . $file);
+                $filePathArray = explode('/', $file);
+                $zip->addFile(storage_path('app/' . $file), $filePathArray[3] . '/' . $relativeNameInZipFile);
+            }
+            $zip->close();
+        }
+        $zipStoragePath = 'public/' . $folder . $fileName;
 
         try {
             Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $files));
-            Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $files));
+            Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $zipStoragePath));
             Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {

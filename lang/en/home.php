@@ -231,6 +231,7 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'order_form_file_uplaod_command' => 'YOUR ORDER HAS BEEN SUCCESSFULLY TRANSFERRED.',
     'order_form_AnotherOrder' => 'CREATE ANOTHER ORDER',
     'order_change_another' => 'CHANGE ANOTHER ORDER',
+    'change_profile_success_command' => 'Your customer data has been successfully requested.',
 
     //order form validation
     'validation_deliver_time' => 'Delivery Time is Required',

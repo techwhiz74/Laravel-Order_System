@@ -123,6 +123,30 @@
             $('#selected_products').text(products.join(', '));
             $('[name=products]').val(products.join(', '));
         });
+        $('.parameter-select-items-vector input[type=checkbox]').change(function() {
+            parameters = [];
+            $('.parameter-select-items-vector').find('input[type=checkbox]:checked').each(function() {
+                parameters.push($(this).val());
+            });
+            parameters = parameters.concat(inputValues);
+            $('#selected_ve_parameter8').text(parameters.join(', '));
+        });
+        $('.parameter-select-items-image input[type=checkbox]').change(function() {
+            parameters = [];
+            $('.parameter-select-items-image').find('input[type=checkbox]:checked').each(function() {
+                parameters.push($(this).val());
+            });
+            parameters = parameters.concat(inputValues);
+            $('#selected_ve_parameter9').text(parameters.join(', '));
+        });
+        $('.parameter-select-items-file input[type=checkbox]').change(function() {
+            parameters = [];
+            $('.parameter-select-items-file').find('input[type=checkbox]:checked').each(function() {
+                parameters.push($(this).val());
+            });
+            parameters = parameters.concat(inputValues);
+            $('#selected_em_parameter3').text(parameters.join(', '));
+        });
         //manual input fiels in multi select
         $('#manualInput').keyup(function(e) {
             var inputValue = $(this).val().trim();
@@ -144,6 +168,27 @@
                 $('.product-item-menu').hide();
             }
         });
+        $('.product-multiselect8.dropdown-toggle').click(function() {
+            if ($('.product-item-menu8').css("display") === "none") {
+                $('.product-item-menu8').show();
+            } else if ($('.product-item-menu8').css("display") === "block") {
+                $('.product-item-menu8').hide();
+            }
+        });
+        $('.product-multiselect9.dropdown-toggle').click(function() {
+            if ($('.product-item-menu9').css("display") === "none") {
+                $('.product-item-menu9').show();
+            } else if ($('.product-item-menu9').css("display") === "block") {
+                $('.product-item-menu9').hide();
+            }
+        });
+        $('.product-multiselect3.dropdown-toggle').click(function() {
+            if ($('.product-item-menu3').css("display") === "none") {
+                $('.product-item-menu3').show();
+            } else if ($('.product-item-menu3').css("display") === "block") {
+                $('.product-item-menu3').hide();
+            }
+        });
 
         $(document).mouseup(function(event) {
             var container = $('.product-item-menu');
@@ -153,6 +198,30 @@
                 $('.product-item-menu').css("display") === "block") {
                 // Hide the modal
                 container.hide();
+            }
+            var container8 = $('.product-item-menu8');
+            // Check if the clicked element is outside the modal
+            if (!container8.is(event.target) &&
+                container8.has(event.target).length === 0 &&
+                $('.product-item-menu8').css("display") === "block") {
+                // Hide the modal
+                container8.hide();
+            }
+            var container9 = $('.product-item-menu9');
+            // Check if the clicked element is outside the modal
+            if (!container9.is(event.target) &&
+                container9.has(event.target).length === 0 &&
+                $('.product-item-menu9').css("display") === "block") {
+                // Hide the modal
+                container9.hide();
+            }
+            var container3 = $('.product-item-menu3');
+            // Check if the clicked element is outside the modal
+            if (!container3.is(event.target) &&
+                container3.has(event.target).length === 0 &&
+                $('.product-item-menu3').css("display") === "block") {
+                // Hide the modal
+                container3.hide();
             }
         });
         //cancel button in muti select dropdown

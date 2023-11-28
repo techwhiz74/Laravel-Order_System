@@ -114,6 +114,15 @@
     });
 
     function openVeParameter(id) {
+        $('#admin_ve_parameter_change_buttons').show();
+        $('#admin_ve_parameter_buttons').hide();
+        $('.parameter-select-items-vector').find(
+            'input').prop("checked", false);
+        $('.parameter-select-items-image').find(
+            'input').prop("checked", false);
+        $('#selected_ve_parameter8').text("");
+        $('#selected_ve_parameter9').text("");
+        $('[name=admin_ve_parameter_customer_id]').val(id);
         $.ajax({
             url: '{{ __('routes.admin-parameter-ve') }}',
             type: 'GET',
@@ -121,15 +130,38 @@
                 id
             },
             success: (result) => {
-                $('[name=admin_ve_parameter_customer_id]').val(result[0].customer_id);
-                $('[name=admin_parameter_require_vector_file]').val(result[0].parameter8);
-                $('[name=admin_parameter_require_image_file]').val(result[0].parameter9);
-                $('#admin_customer_parameters_ve_popup').modal('show');
-                if (result[1] != null) {
-                    $('#admin_ve_parameter_buttons').show();
-                    $('[name=admin_parameter_require_vector_file]').val(result[1].parameter8);
-                    $('[name=admin_parameter_require_image_file]').val(result[1].parameter9);
+                if (result[0] != null) {
+                    var vectorFiles0 = result[0].parameter8.split(', ');
+                    var imageFiles0 = result[0].parameter9.split(', ');
+                    vectorFiles0.forEach(item => {
+                        $('.parameter-select-items-vector').find(
+                            'input[value="' + item + '"]').prop("checked", true);
+                    });
+                    imageFiles0.forEach(item => {
+                        $('.parameter-select-items-image').find(
+                            'input[value="' + item + '"]').prop("checked", true);
+                    });
+                    $('#selected_ve_parameter8').text(result[0].parameter8);
+                    $('#selected_ve_parameter9').text(result[0].parameter9);
+
+                    if (result[1] != null) {
+                        $('#admin_ve_parameter_change_buttons').hide();
+                        $('#admin_ve_parameter_buttons').show();
+                        var vectorFiles1 = result[1].parameter8.split(', ');
+                        var imageFiles1 = result[1].parameter9.split(', ');
+                        vectorFiles1.forEach(item => {
+                            $('.parameter-select-items-vector').find(
+                                'input[value="' + item + '"]').prop("checked", true);
+                        });
+                        imageFiles1.forEach(item => {
+                            $('.parameter-select-items-image').find(
+                                'input[value="' + item + '"]').prop("checked", true);
+                        });
+                        $('#selected_ve_parameter8').text(result[1].parameter8);
+                        $('#selected_ve_parameter9').text(result[1].parameter9);
+                    }
                 }
+                $('#admin_customer_parameters_ve_popup').modal('show');
             },
             error: () => {
                 console.error("error");

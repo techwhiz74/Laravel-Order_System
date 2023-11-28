@@ -331,8 +331,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="">
-                                        <label for="c1">{{ __('home.avatar_upload') }} <span
-                                                class="reqiurd">*</span></label>
+                                        <label for="c1">{{ __('home.avatar_upload') }}</label>
                                         <input type="file" class="form-control" name="avatar_upload"
                                             aria-describedby="inputGroupFileAddon04" aria-label="avatar_upload"
                                             style="font-size:13px; margin:5px 0;">
