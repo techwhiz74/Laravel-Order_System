@@ -430,7 +430,7 @@
                         <div class="carousel-item active" data-bs-interval="5000"
                             style="display: flex; justify-content:center">
                             <img src="{{ asset('asset/images/image_slide1.jpg') }}" class="d-block custom-width zoomable"
-                                alt="CUTTER & BUCK" width="120%" style="height: calc(100vh - 106px);">
+                                alt="CUTTER & BUCK" style="height: calc(100vh - 106px);">
                         </div>
                     </div>
                 </div>

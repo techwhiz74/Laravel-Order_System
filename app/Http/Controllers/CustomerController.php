@@ -185,8 +185,8 @@ class CustomerController extends Controller
                         $recipient_admin = User::where('user_type', 'admin')->first()->email;
                         $recipient_customer = auth()->user()->email;
                         $data['user'] = Auth::user();
-                        Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
-                        Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+                        // Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
+                        // Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
 
                         $authuser = auth()->user();
                         return redirect('/')->with('message', 'You have Successfully loggedin');

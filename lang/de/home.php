@@ -444,4 +444,8 @@ Möchten Sie diese Änderung abschließen?',
     'start_change_confirm' => 'Möchten Sie die Änderung jetzt beginnen?',
     'end_change_success' => 'Der Status wechselt von ÄNDERUNG auf ABGESCHLOSSEN',
 
+    'change1' => '1. Änderung',
+    'change2' => '2. Änderung',
+    'change3' => '3. Änderung',
+    'change4' => '4. Änderung',
 ];

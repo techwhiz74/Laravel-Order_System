@@ -277,7 +277,7 @@
                                         style="display: flex; align-items:center">
                                         <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
                                         </p>
-                                        <div id="detail_size" class="order_detail_input_div_element"
+                                        <div id="em_detail_size" class="order_detail_input_div_element"
                                             style="width:65px;">
                                         </div>
                                         <span style="margin-left: 5px;">mm</span>
@@ -406,16 +406,16 @@
                                     <div class="container-fluid" style="padding: 0">
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                             <li class="request_li" type="button" id="em_change1">
-                                                1. Änderung
+                                                {{ __('home.change1') }}
                                             </li>
                                             <li class="request_li" type="button" id="em_change2">
-                                                2. Änderung
+                                                {{ __('home.change2') }}
                                             </li>
                                             <li class="request_li" type="button" id="em_change3">
-                                                3. Änderung
+                                                {{ __('home.change3') }}
                                             </li>
                                             <li class="request_li" type="button" id="em_change4">
-                                                4. Änderung
+                                                {{ __('home.change4') }}
                                             </li>
                                         </ul>
                                     </div>
@@ -735,20 +735,21 @@
                 id
             },
             success: (data) => {
+                var en_order_change = JSON.parse(data.en_order_change);
                 if (data.order_change[0]) {
                     console.log("1q");
-                    $('#em_order_rquest_text1').text(data.order_change[0].message);
+                    $('#em_order_rquest_text1').text(en_order_change[0].message);
                 }
                 if (data.order_change[1]) {
                     console.log("2q");
-                    $('#em_order_rquest_text2').text(data.order_change[1].message);
+                    $('#em_order_rquest_text2').text(en_order_change[1].message);
                 }
                 if (data.order_change[2]) {
                     console.log("3q");
-                    $('#em_order_rquest_text3').text(data.order_change[2].message);
+                    $('#em_order_rquest_text3').text(en_order_change[2].message);
                 }
                 if (data.order_change[3]) {
-                    $('#em_order_rquest_text4').text(data.order_change[3].message);
+                    $('#em_order_rquest_text4').text(en_order_change[3].message);
                 }
 
                 var folderArray = [];
@@ -758,7 +759,12 @@
                         folderArray.push(item);
                     }
                 });
-
+                if (data.order.width_height == "Höhe") {
+                    $('#em_freelancer_request_popup').find('#em_detail_width_height').text("High");
+                } else if (data.order.width_height == "Breite") {
+                    $('#em_freelancer_request_popup').find('#em_detail_width_height').text("Width");
+                }
+                var en_order = JSON.parse(data.en_order);
 
                 $('#em_freelancer_request_popup').find('#em_detail_customer_number').text(data.order
                     .customer_number);
@@ -767,9 +773,7 @@
                 $('#em_freelancer_request_popup').find('#em_detail_project_name').text(data.order
                     .project_name);
                 $('#em_freelancer_request_popup').find('#em_detail_size').text(data.order.size);
-                $('#em_freelancer_request_popup').find('#em_detail_width_height').text(data.order
-                    .width_height);
-                $('#em_freelancer_request_popup').find('#em_detail_final_product').text(data.order
+                $('#em_freelancer_request_popup').find('#em_detail_final_product').text(en_order
                     .products);
                 console.log(folderArray);
                 console.log("change_count", data.change_count);
@@ -939,14 +943,16 @@
                 id: $('[name=embroidery_request_id]').val()
             },
             success: (data) => {
-                console.log(data);
-                $('#em_yarn_information').text(data[0].parameter1);
-                $('#em_need_embroidery_files').text(data[0].parameter2);
-                $('#em_cutting_options').text(data[0].parameter3);
-                $('#em_special_cutting_options').text(data[0].parameter4);
-                $('#em_needle_instructions').text(data[0].parameter5);
-                $('#em_standard_instructions').text(data[0].parameter6);
-                $('#em_special_standard_instructions').text(data[0].parameter7);
+                if (data[0] != null) {
+                    data_em = JSON.parse(data[0]);
+                    $('#em_yarn_information').text(data_em.parameter1);
+                    $('#em_need_embroidery_files').text(data_em.parameter2);
+                    $('#em_cutting_options').text(data_em.parameter3);
+                    $('#em_special_cutting_options').text(data_em.parameter4);
+                    $('#em_needle_instructions').text(data_em.parameter5);
+                    $('#em_standard_instructions').text(data_em.parameter6);
+                    $('#em_special_standard_instructions').text(data_em.parameter7);
+                }
             },
             error: () => {
                 console.error('error');

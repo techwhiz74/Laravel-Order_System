@@ -337,16 +337,16 @@
                                     <div class="container-fluid" style="padding: 0">
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                             <li class="request_li" type="button" id="ve_change1">
-                                                1. Änderung
+                                                {{ __('home.change1') }}
                                             </li>
                                             <li class="request_li" type="button" id="ve_change2">
-                                                2. Änderung
+                                                {{ __('home.change2') }}
                                             </li>
                                             <li class="request_li" type="button" id="ve_change3">
-                                                3. Änderung
+                                                {{ __('home.change3') }}
                                             </li>
                                             <li class="request_li" type="button" id="ve_change4">
-                                                4. Änderung
+                                                {{ __('home.change4') }}
                                             </li>
                                         </ul>
                                     </div>
@@ -658,20 +658,21 @@
                 id
             },
             success: (data) => {
+                var en_order_change = JSON.parse(data.en_order_change);
                 if (data.order_change[0]) {
                     console.log("1q");
-                    $('#ve_order_rquest_text1').text(data.order_change[0].message);
+                    $('#ve_order_rquest_text1').text(en_order_change[0].message);
                 }
                 if (data.order_change[1]) {
                     console.log("2q");
-                    $('#ve_order_rquest_text2').text(data.order_change[1].message);
+                    $('#ve_order_rquest_text2').text(en_order_change[1].message);
                 }
                 if (data.order_change[2]) {
                     console.log("3q");
-                    $('#ve_order_rquest_text3').text(data.order_change[2].message);
+                    $('#ve_order_rquest_text3').text(en_order_change[2].message);
                 }
                 if (data.order_change[3]) {
-                    $('#ve_order_rquest_text4').text(data.order_change[3].message);
+                    $('#ve_order_rquest_text4').text(en_order_change[3].message);
                 }
 
                 var folderArray = [];
@@ -861,9 +862,11 @@
                 id: $('[name=vector_request_id]').val()
             },
             success: (data) => {
-                console.log(data);
-                $('#ve_required_vector_file').text(data[1].parameter8);
-                $('#ve_required_image_file').text(data[1].parameter9);
+                if (data[1] != null) {
+                    data_ve = JSON.parse(data[1]);
+                    $('#ve_required_vector_file').text(data_ve.parameter8);
+                    $('#ve_required_image_file').text(data_ve.parameter9);
+                }
             },
             error: () => {
                 console.error('error');

@@ -451,16 +451,16 @@
                                     <div class="container-fluid" style="padding: 0">
                                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                             <li class="request_li" type="button" id="admin_change1">
-                                                1. Änderung
+                                                {{ __('home.change1') }}
                                             </li>
                                             <li class="request_li" type="button" id="admin_change2">
-                                                2. Änderung
+                                                {{ __('home.change2') }}
                                             </li>
                                             <li class="request_li" type="button" id="admin_change3">
-                                                3. Änderung
+                                                {{ __('home.change3') }}
                                             </li>
                                             <li class="request_li" type="button" id="admin_change4">
-                                                4. Änderung
+                                                {{ __('home.change4') }}
                                             </li>
                                         </ul>
                                     </div>

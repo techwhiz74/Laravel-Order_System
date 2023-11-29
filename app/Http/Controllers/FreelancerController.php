@@ -20,6 +20,7 @@ use Illuminate\Support\Str;
 use App\Models\DeliveryFile;
 use Illuminate\Support\Facades\Validator;
 use DateTimeZone;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 
 
@@ -53,7 +54,7 @@ class FreelancerController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             if (Auth::user()->user_type == "freelancer") {
-                return redirect('/');
+                return redirect('/en');
             } else {
                 Auth::logout();
                 return redirect(__('routes.freelancer-login'))->with('danger', 'Oops! You do not have the required access permission');
@@ -64,7 +65,7 @@ class FreelancerController extends Controller
 
     public function goFreelancerLogin()
     {
-        return redirect()->route('freelancer-login', ['locale' => app()->getLocale()]);
+        return redirect()->route('freelancer-login', ['locale' => 'en']);
     }
 
 
@@ -793,7 +794,12 @@ class FreelancerController extends Controller
         $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'asc')->get();
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
         $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
-        return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads, 'change_count' => $folderCount]);
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $en_order = $translator->translate($order);
+        $en_order_change = $translator->translate($order_change);
+        return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads, 'change_count' => $folderCount, 'en_order' => $en_order, 'en_order_change' => $en_order_change]);
     }
     public function OrderDetail(Request $request)
     {
@@ -1493,8 +1499,12 @@ class FreelancerController extends Controller
     public function FreelancergetOrderDetail(Request $request)
     {
         $order = Order::findOrfail($request->get('id'));
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $en_order = $translator->translate($order);
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
-        return response()->json(['order' => $order, 'detail' => $order_file_uploads]);
+        return response()->json(['order' => $order, 'detail' => $order_file_uploads, 'en_order' => $en_order]);
     }
     public function StartJob(Request $request)
     {
@@ -1545,8 +1555,13 @@ class FreelancerController extends Controller
     public function Parameter(Request $request)
     {
         $order = Order::findOrfail($request->get("id"));
-        $em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
-        $ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
+        $ge_em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
+        $ge_ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $em_parameter = $translator->translate($ge_em_parameter);
+        $ve_parameter = $translator->translate($ge_ve_parameter);
         return response()->json([$em_parameter, $ve_parameter]);
     }
 }

@@ -640,11 +640,17 @@
                         folderArray.push(item);
                     }
                 });
-
+                console.log(data.en_order);
+                var en_order = JSON.parse(data.en_order);
                 if (data.order.status == 'Offen') {
                     $('#green_job').show();
                 } else if (data.order.status == 'In Bearbeitung') {
                     $('#yellow_job').show();
+                }
+                if (data.order.width_height == "Höhe") {
+                    $('#free_order_detail_popup').find('#detail_width_height').text("High");
+                } else if (data.order.width_height == "Breite") {
+                    $('#free_order_detail_popup').find('#detail_width_height').text("Width");
                 }
 
                 console.log(folderArray);
@@ -654,10 +660,9 @@
                 $('#free_order_detail_popup').find('#detail_order_number').text(data.order.order_number);
                 $('#free_order_detail_popup').find('#detail_project_name').text(data.order.project_name);
                 $('#free_order_detail_popup').find('#detail_size').text(data.order.size);
-                $('#free_order_detail_popup').find('#detail_width_height').text(data.order.width_height);
-                $('#free_order_detail_popup').find('#detail_final_product').text(data.order.products);
-                $('#free_order_detail_popup').find('#detail_special_instructions').text(data
-                    .order.special_instructions);
+                $('#free_order_detail_popup').find('#detail_final_product').text(en_order.products);
+                $('#free_order_detail_popup').find('#detail_special_instructions').text(en_order
+                    .special_instructions);
                 $data_type = data.order.type;
                 if ($data_type == "Vector") {
                     $('.order_size').hide();
@@ -746,17 +751,19 @@
             },
             success: (data) => {
                 if (data[0] != null) {
-                    $('#yarn_information').text(data[0].parameter1);
-                    $('#need_embroidery_files').text(data[0].parameter2);
-                    $('#cutting_options').text(data[0].parameter3);
-                    $('#special_cutting_options').text(data[0].parameter4);
-                    $('#needle_instructions').text(data[0].parameter5);
-                    $('#standard_instructions').text(data[0].parameter6);
-                    $('#special_standard_instructions').text(data[0].parameter7);
+                    data_em = JSON.parse(data[0]);
+                    $('#yarn_information').text(data_em.parameter1);
+                    $('#need_embroidery_files').text(data_em.parameter2);
+                    $('#cutting_options').text(data_em.parameter3);
+                    $('#special_cutting_options').text(data_em.parameter4);
+                    $('#needle_instructions').text(data_em.parameter5);
+                    $('#standard_instructions').text(data_em.parameter6);
+                    $('#special_standard_instructions').text(data_em.parameter7);
                 }
                 if (data[1] != null) {
-                    $('#required_vector_file').text(data[1].parameter8);
-                    $('#required_image_file').text(data[1].parameter9);
+                    data_ve = JSON.parse(data[1]);
+                    $('#required_vector_file').text(data_ve.parameter8);
+                    $('#required_image_file').text(data_ve.parameter9);
                 }
             },
             error: () => {

@@ -24,7 +24,6 @@
                 //echo $currentPath;
                 // Remove existing language prefix if present
                 $currentPathWithoutLang = preg_replace('/^(en|de)\//', '', $currentPath);
-
                 if ($currentLocale === 'en') {
                     $currentLanguage = 'English';
                 } elseif ($currentLocale === 'de') {
@@ -56,17 +55,21 @@
                         </p>
                     @endif
                 </div>
-                <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    {{ $currentLanguage }} <i class="fa-solid fa-language"></i>
-                </button>
+
                 @auth()
-                    @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'freelancer')
-                        <ul class="dropdown-menu" id="convert_language">
-                            <li><a class="dropdown-item" href="{{ url($enUrl) }}">English</a></li>
-                            <li><a class="dropdown-item" href="{{ url($deUrl) }}">Deutsch</a></li>
-                        </ul>
+                    @if (auth()->user()->user_type == 'freelancer')
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            English <i class="fa-solid fa-language"></i>
+                        </button>
+                    @elseif(auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ $currentLanguage }} <i class="fa-solid fa-language"></i>
+                        </button>
                     @endif
                 @else
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ $currentLanguage }} <i class="fa-solid fa-language"></i>
+                    </button>
                     <ul class="dropdown-menu" id="convert_language">
                         <li><a class="dropdown-item" href="{{ url($enUrl) }}">English</a></li>
                         <li><a class="dropdown-item" href="{{ url($deUrl) }}">Deutsch</a></li>
