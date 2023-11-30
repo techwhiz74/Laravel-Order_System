@@ -448,4 +448,6 @@ Möchten Sie diese Änderung abschließen?',
     'change2' => '2. Änderung',
     'change3' => '3. Änderung',
     'change4' => '4. Änderung',
+
+    'free_order_count_title' => 'Job berechnen',
 ];

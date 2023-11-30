@@ -738,6 +738,17 @@
         $('#admin_change_text2').hide();
         $('#admin_change_text3').hide();
         $('#admin_change_text4').hide();
+
+        $('#admin_change_yarn_information').text("");
+        $('#admin_change_need_embroidery_files').text("");
+        $('#admin_change_cutting_options').text("");
+        $('#admin_change_special_cutting_options').text("");
+        $('#admin_change_needle_instructions').text("");
+        $('#admin_change_standard_instructions').text("");
+        $('#admin_change_special_standard_instructions').text("");
+        $('#admin_change_required_vector_file').text("");
+        $('#admin_change_required_image_file').text("");
+
         $('#admin_change1').click(function() {
             $('#admin_change_text1').show();
             $('#admin_change_text2').hide();
@@ -1013,15 +1024,19 @@
             },
             success: (data) => {
                 console.log(data);
-                $('#admin_change_yarn_information').text(data.parameter1);
-                $('#admin_change_need_embroidery_files').text(data.parameter2);
-                $('#admin_change_cutting_options').text(data.parameter3);
-                $('#admin_change_special_cutting_options').text(data.parameter4);
-                $('#admin_change_needle_instructions').text(data.parameter5);
-                $('#admin_change_standard_instructions').text(data.parameter6);
-                $('#admin_change_special_standard_instructions').text(data.parameter7);
-                $('#admin_change_required_vector_file').text(data.parameter8);
-                $('#admin_change_required_image_file').text(data.parameter9);
+                if (data[0] != null) {
+                    $('#admin_change_yarn_information').text(data[0].parameter1);
+                    $('#admin_change_need_embroidery_files').text(data[0].parameter2);
+                    $('#admin_change_cutting_options').text(data[0].parameter3);
+                    $('#admin_change_special_cutting_options').text(data[0].parameter4);
+                    $('#admin_change_needle_instructions').text(data[0].parameter5);
+                    $('#admin_change_standard_instructions').text(data[0].parameter6);
+                    $('#admin_change_special_standard_instructions').text(data[0].parameter7);
+                }
+                if (data[1] != null) {
+                    $('#admin_change_required_vector_file').text(data[1].parameter8);
+                    $('#admin_change_required_image_file').text(data[1].parameter9);
+                }
             },
             error: () => {
                 console.error('error');

@@ -111,7 +111,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_add_customer" id="admin_add_customer1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -235,7 +235,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
@@ -329,8 +329,38 @@
 
                     </div>
                 </li>
+            @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="freelancer_payment" id="em_freelancer_payment" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
+                                    style="width: 32px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>ORDER<br>COUNTING</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="freelancer_payment" id="ve_freelancer_payment" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
+                                    style="width: 32px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>ORDER<br>COUNTING</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
                             class="lion_pop_btn">
@@ -461,7 +491,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_all" id="admin_all1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -492,9 +522,6 @@
 
                     </div>
                 </li>
-            @endif
-
-            @if (auth()->user()->user_type == 'admin')
                 <li>
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_customer_parameters_ve" id="admin_customer_parameters_ve1"
@@ -508,11 +535,37 @@
                                 <p>{{ __('home.customer_parameters_ve_sidebar') }}</p>
                             </div>
                         </div>
+                    </div>
+                </li>
+                <li style="margin-left: 30px">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_em_payment" id="admin_em_payment1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
+                                    style="width: 32px;" />
+                            </div>
 
+                            <div style="height: 40%;padding: 3px;">
+                                <p>ABRECHNUNG STICKPROGRAMME</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="admin_ve_payment" id="admin_ve_payment1" class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
+                                    style="width: 32px;" />
+                            </div>
+
+                            <div style="height: 40%;padding: 3px;">
+                                <p>ABRECHNUNG VEKTORDATEIEN</p>
+                            </div>
+                        </div>
                     </div>
                 </li>
             @endif
-
         </ul>
     </div>
 
@@ -623,6 +676,15 @@
             @endif
         </div>
     </div>
+    <div id="freelancer_payment" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                <x-freelancer.embroidery.em_freelancer_payment />
+            @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                <x-freelancer.vector.ve_freelancer_payment />
+            @endif
+        </div>
+    </div>
 
     {{-- admin popup --}}
     <div id="admin_customer_list" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
@@ -685,6 +747,20 @@
         <div class="lion_popup_dv">
             @if (auth()->user()->user_type == 'admin')
                 <x-admin.admin_customer_parameters_ve />
+            @endif
+        </div>
+    </div>
+    <div id="admin_em_payment" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin-em-payment />
+            @endif
+        </div>
+    </div>
+    <div id="admin_ve_payment" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
+        <div class="lion_popup_dv">
+            @if (auth()->user()->user_type == 'admin')
+                <x-admin.admin-ve-payment />
             @endif
         </div>
     </div>

@@ -594,6 +594,7 @@
 @include('components.admin.detail_upload_success_modal')
 @include('components.admin.end_job_success_modal')
 @include('components.admin.delete_detail_file_confirm_modal')
+@include('components.admin.order-count-modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -620,6 +621,16 @@
         $('#admin_subfolder_structure1').hide();
         $('#admin_subfolder_structure2').hide();
         $('#admin_subfolder_structure3').hide();
+
+        $('#admin_yarn_information').text("");
+        $('#admin_need_embroidery_files').text("");
+        $('#admin_cutting_options').text("");
+        $('#admin_special_cutting_options').text("");
+        $('#admin_needle_instructions').text("");
+        $('#admin_standard_instructions').text("");
+        $('#admin_special_standard_instructions').text("");
+        $('#admin_required_vector_file').text("");
+        $('#admin_required_image_file').text("");
         $.ajax({
             url: '{{ __('routes.admin-get-order-detail') }}',
             type: 'GET',
@@ -750,15 +761,19 @@
             },
             success: (data) => {
                 console.log(data);
-                $('#admin_yarn_information').text(data.parameter1);
-                $('#admin_need_embroidery_files').text(data.parameter2);
-                $('#admin_cutting_options').text(data.parameter3);
-                $('#admin_special_cutting_options').text(data.parameter4);
-                $('#admin_needle_instructions').text(data.parameter5);
-                $('#admin_standard_instructions').text(data.parameter6);
-                $('#admin_special_standard_instructions').text(data.parameter7);
-                $('#admin_required_vector_file').text(data.parameter8);
-                $('#admin_required_image_file').text(data.parameter9);
+                if (data[0] != null) {
+                    $('#admin_yarn_information').text(data[0].parameter1);
+                    $('#admin_need_embroidery_files').text(data[0].parameter2);
+                    $('#admin_cutting_options').text(data[0].parameter3);
+                    $('#admin_special_cutting_options').text(data[0].parameter4);
+                    $('#admin_needle_instructions').text(data[0].parameter5);
+                    $('#admin_standard_instructions').text(data[0].parameter6);
+                    $('#admin_special_standard_instructions').text(data[0].parameter7);
+                }
+                if (data[1] != null) {
+                    $('#admin_required_vector_file').text(data[1].parameter8);
+                    $('#admin_required_image_file').text(data[1].parameter9);
+                }
             },
             error: () => {
                 console.error('error');
@@ -825,27 +840,52 @@
     })
 
     function AdminEndJob() {
-        $.ajax({
-            url: '{{ __('routes.admin-endjob') }}',
-            type: 'GET',
-            data: {
-                end_job_id: $('[name=admin_detail_id]').val()
-            },
-            success: () => {
-                $('#admin_all_table_reload_button').trigger('click');
-                $('#admin_yellow_table_reload_button').trigger('click');
-                $('#admin_red_table_reload_button').trigger('click');
-                $('#admin_yellow_job').hide();
-                setTimeout(() => {
-                    $('#admin_upload_success_popup').modal('hide');
-                    $('#admin_end_job_success_popup').modal('show');
-                }, 1000);
-            },
-            error: () => {
-                $('#admin_end_job_success_popup').modal('hide');
-                EndJobError();
-            }
+        console.log('aa');
+        $('#admin_order_count').modal('show');
+        $('#admin_order_count_confirm').click(function() {
+            var data = new FormData();
+            data.append('count_number', $('[name=admin_order_count_select]').val());
+            data.append('order_id', $('[name=admin_detail_id]').val())
+            $.ajax({
+                url: '{{ __('routes.admin-order-count') }}',
+                type: 'post',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: () => {
+                    $.ajax({
+                        url: '{{ __('routes.admin-endjob') }}',
+                        type: 'GET',
+                        data: {
+                            end_job_id: $('[name=admin_detail_id]').val()
+                        },
+                        success: () => {
+                            $('#admin_all_table_reload_button').trigger('click');
+                            $('#admin_yellow_table_reload_button').trigger('click');
+                            $('#admin_red_table_reload_button').trigger('click');
+                            $('#em_admin_payment_table_reload_button').trigger(
+                                'click');
+                            $('#ve_admin_payment_table_reload_button').trigger(
+                                'click');
+                            $('#admin_yellow_job').hide();
+                            $('#admin_order_count').modal('hide');
+                            setTimeout(() => {
+                                $('#admin_upload_success_popup').modal('hide');
+                                $('#admin_end_job_success_popup').modal('show');
+                            }, 1000);
+                        },
+                        error: () => {
+                            $('#admin_end_job_success_popup').modal('hide');
+                            EndJobError();
+                        }
+                    })
+                },
+                error: () => {
+                    console.error('error');
+                }
+            })
         })
+
     }
 
     function AdminDeleteFile(id) {

@@ -590,6 +590,7 @@
 @include('components.freelancer.free_upload_success_modal')
 @include('components.freelancer.delete_confirm_modal')
 @include('components.freelancer.end_job_success_modal')
+@include('components.freelancer.free-order-count-modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -839,34 +840,66 @@
     })
 
     function EndJob() {
-        $.ajax({
-            url: '{{ __('routes.embroidery-freelancer-endjob') }}',
-            type: 'GET',
-            data: {
-                end_job_id: $('[name=free_detail_id]').val()
-            },
-            success: () => {
-                $('#em_freelancer_table_reload_btn').trigger('click');
-                $('#em_freelancer_all_table_reload_button').trigger('click');
-                $('#em_freelancer_green_table_reload_button').trigger('click');
-                $('#em_freelancer_yellow_table_reload_button').trigger('click');
-                $('#em_freelancer_red_table_reload_button').trigger('click');
-                $('#ve_freelancer_table_reload_btn').trigger('click');
-                $('#ve_freelancer_all_table_reload_button').trigger('click');
-                $('#ve_freelancer_green_table_reload_button').trigger('click');
-                $('#ve_freelancer_yellow_table_reload_button').trigger('click');
-                $('#ve_freelancer_red_table_reload_button').trigger('click');
-                $('#yellow_job').hide();
-                $('#free_upload_success_popup').modal('hide');
-                setTimeout(() => {
-                    $('#end_job_success_popup').modal('show');
-                }, 1000);
-            },
-            error: () => {
-                $('#end_job_success_popup').modal('hide');
-                EndJobError();
-            }
+        $('#free_order_count').modal('show');
+        $('#free_order_count_confirm').click(function() {
+            var data = new FormData();
+            data.append('count_number', $('[name=free_order_count_select]').val());
+            data.append('order_id', $('[name=free_detail_id]').val())
+            $.ajax({
+                url: '{{ __('routes.freelancer-order-count') }}',
+                type: 'post',
+                data: data,
+                contentType: false,
+                processData: false,
+                success: () => {
+                    $.ajax({
+                        url: '{{ __('routes.embroidery-freelancer-endjob') }}',
+                        type: 'GET',
+                        data: {
+                            end_job_id: $('[name=free_detail_id]').val()
+                        },
+                        success: () => {
+                            $('#em_freelancer_table_reload_btn').trigger('click');
+                            $('#em_freelancer_all_table_reload_button').trigger(
+                                'click');
+                            $('#em_freelancer_green_table_reload_button').trigger(
+                                'click');
+                            $('#em_freelancer_yellow_table_reload_button').trigger(
+                                'click');
+                            $('#em_freelancer_red_table_reload_button').trigger(
+                                'click');
+                            $('#ve_freelancer_table_reload_btn').trigger('click');
+                            $('#ve_freelancer_all_table_reload_button').trigger(
+                                'click');
+                            $('#ve_freelancer_green_table_reload_button').trigger(
+                                'click');
+                            $('#ve_freelancer_yellow_table_reload_button').trigger(
+                                'click');
+                            $('#ve_freelancer_red_table_reload_button').trigger(
+                                'click');
+                            $('#em_freelancer_payment_table_reload_button').trigger(
+                                'click');
+                            $('#ve_freelancer_payment_table_reload_button').trigger(
+                                'click');
+                            $('#yellow_job').hide();
+                            $('#free_upload_success_popup').modal('hide');
+                            $('#free_order_count').modal('hide');
+                            setTimeout(() => {
+                                $('#end_job_success_popup').modal('show');
+                            }, 1000);
+                        },
+                        error: () => {
+                            $('#end_job_success_popup').modal('hide');
+                            EndJobError();
+                        }
+                    })
+                },
+                error: () => {
+                    console.error('error');
+                }
+            })
         })
+
 
     }
 

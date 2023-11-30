@@ -21,6 +21,9 @@ use App\Models\DeliveryFile;
 use Illuminate\Support\Facades\Validator;
 use DateTimeZone;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\FreelancerEmbroideryPaymentMail;
+use App\Mail\FreelancerVectorPaymentMail;
 
 
 
@@ -1563,5 +1566,97 @@ class FreelancerController extends Controller
         $em_parameter = $translator->translate($ge_em_parameter);
         $ve_parameter = $translator->translate($ge_ve_parameter);
         return response()->json([$em_parameter, $ve_parameter]);
+    }
+    public function EmbroideryFreelancerPaymentTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function VectorFreelancerPaymentTable(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function FreelancerOrderCount(Request $request)
+    {
+        $order = Order::findOrfail($request->post('order_id'));
+        $order->count_number = $request->post('count_number');
+        $order->save();
+    }
+    public function EmbroideryPaymentMail(Request $request)
+    {
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        try {
+            Mail::to($recipient_admin)->send(new FreelancerEmbroideryPaymentMail());
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function VectorPaymentMail(Request $request)
+    {
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        try {
+            Mail::to($recipient_admin)->send(new FreelancerVectorPaymentMail());
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
 }

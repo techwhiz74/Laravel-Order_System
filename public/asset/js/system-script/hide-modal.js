@@ -48,4 +48,6 @@ function hideAlertModal() {
     $('#admin_delete_change_file_confirm_popup').modal('hide');
     $('#end_em_change_success_popup').modal('hide');
     $('#end_ve_change_success_popup').modal('hide');
+    $('#free_order_count').modal('hide');
+    $('#admin_order_count').modal('hide');
 }

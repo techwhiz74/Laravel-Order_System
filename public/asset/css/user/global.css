@@ -36,17 +36,17 @@ section {
   display: flex;
   padding: 6px 5px 6px 0;
   align-items: center;
+  width: 100%;
 }
 
-.lion_list {
-  justify-content: end;
-}
 
 .lion_nav .logo_img img {
   width: 100%;
   max-width: 150px;
   max-height: 63px;
 }
+
+
 
 
 
@@ -59,14 +59,13 @@ section {
 
 .hearder_information {
   display: flex;
-  margin: auto;
   line-height: 1;
 }
 
 .menu_list a {
   font-family: "Inter", "Helvetica", monospace;
-  font-size: 13px;
-  letter-spacing: .06em;
+  font-size: 1rem;
+  /* letter-spacing: .06em; */
   font-weight: 500;
   color: white !important;
 }
@@ -89,7 +88,7 @@ section {
 .menu_list {
   display: flex;
   align-items: center;
-  text-align: center;
+  padding: 0 2vw 0 0;
 }
 
 .menu_list:hover .dropdown-menu {
@@ -166,7 +165,8 @@ section {
   font-size: 15px;
   font-weight: 400;
   margin: 0;
-  line-height: 2.52;
+  line-height: 1;
+  text-align: center;
 }
 
 .copyright_list li a {
@@ -706,14 +706,30 @@ section {
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
+  justify-content: end;
+  display: flex;
+  align-items: center;
 }
 
+.customer_login_icon {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 1000px) {
+  .customer_login_icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* 
 .action .profile img {
   position: absolute;
   top: 0;
   left: 0;
   object-fit: cover;
-}
+} */
 
 .action .menu {
   position: absolute;
@@ -796,52 +812,7 @@ section {
 /* .view_order_section {
     padding: 50px 0;
 } */
-
-#view-order thead,
-#order_detail thead,
-#free_order_detail thead,
-#embroidery_order_detail thead,
-#vector_order_detail thead,
-#req_order_detail thead,
-#customer_staffs thead,
-#customer_dashboard_green_table thead,
-#customer_dashboard_red_table thead,
-#customer_dashboard_yellow_table thead,
-#customer_dashboard_blue_table thead,
-#em_freelancer_green_dashboard_table thead,
-#em_freelancer_yellow_dashboard_table thead,
-#em_freelancer_red_dashboard_table thead,
-#em_freelancer_blue_dashboard_table thead,
-#ve_freelancer_green_dashboard_table thead,
-#ve_freelancer_yellow_dashboard_table thead,
-#ve_freelancer_red_dashboard_table thead,
-#ve_freelancer_blue_dashboard_table thead,
-#admin_dashboard_green_table thead,
-#admin_dashboard_red_table thead,
-#admin_dashboard_yellow_table thead,
-#admin_dashboard_blue_table thead,
-#em_freelancer_green_table thead,
-#em_freelancer_yellow_table thead,
-#em_freelancer_red_table thead,
-#em_freelancer_blue_table thead,
-#em_freelancer_all_table thead,
-#ve_freelancer_green_table thead,
-#ve_freelancer_yellow_table thead,
-#ve_freelancer_red_table thead,
-#ve_freelancer_blue_table thead,
-#ve_freelancer_all_table thead,
-#admin_customer_list_table thead,
-#customer_search_table thead,
-#admin_green_table thead,
-#admin_yellow_table thead,
-#admin_red_table thead,
-#admin_blue_table thead,
-#admin_all_table thead,
-#admin_parameter_em_table thead,
-#admin_parameter_ve_table thead,
-#admin_order_detail thead,
-#admin_change_order_detail thead,
-#customer_searched_tooltip_table thead {
+thead {
   background: #c4ae79;
   color: #fff;
   vertical-align: middle;
@@ -1519,7 +1490,7 @@ select#status-filter:focus-visible {
 }
 
 .sidebar-nav li {
-  padding: 0px 10px;
+  padding: 0px 8px;
   height: 100%;
 }
 
@@ -1864,7 +1835,9 @@ select#status-filter:focus-visible {
 #delete_order_confirm_popup .modal-dialog,
 #admin_request_success_popup .modal-dialog,
 #admin_delete_detail_file_confirm_popup .modal-dialog,
-#admin_delete_change_file_confirm_popup .modal-dialog {
+#admin_delete_change_file_confirm_popup .modal-dialog,
+#free_order_count .modal-dialog,
+#admin_order_count .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1902,7 +1875,9 @@ select#status-filter:focus-visible {
 #delete_order_confirm_popup .modal-content,
 #admin_request_success_popup .modal-content,
 #admin_delete_detail_file_confirm_popup .modal-content,
-#admin_delete_change_file_confirm_popup .modal-content {
+#admin_delete_change_file_confirm_popup .modal-content,
+#free_order_count .modal-content,
+#admin_order_count .modal-content {
   max-width: 500px;
   margin: 0 auto;
   position: absolute;
@@ -1938,7 +1913,9 @@ select#status-filter:focus-visible {
 #delete_order_confirm_popup .modal-body,
 #admin_request_success_popup .modal-body,
 #admin_delete_detail_file_confirm_popup .modal-body,
-#admin_delete_change_file_confirm_popup .modal-body {
+#admin_delete_change_file_confirm_popup .modal-body,
+#free_order_count .modal-body,
+#admin_order_count .modal-body {
   padding: 40px 20px 20px 20px !important;
   display: flex;
   flex-direction: column;
@@ -2364,8 +2341,7 @@ select#status-filter:focus-visible {
   justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  margin-left: 6vw;
-  max-width: 88vw;
+  margin: 0 6vw;
 }
 
 .language_p h4 {
@@ -2435,7 +2411,7 @@ select#status-filter:focus-visible {
 }
 
 .contact_header .nav-list li {
-  padding-right: 30px;
+  padding-right: 2vw;
 }
 
 .nav-list li a,
@@ -2591,221 +2567,6 @@ select#status-filter:focus-visible {
 
 }
 
-/*
-@media (max-width: 991px) {
-
-} */
-
-/* Max Width ===== 991px */
-@media (max-width: 767px) {
-
-  .customer_profile_section {
-    padding: 30px 0;
-  }
-
-
-
-
-  .copyright_list {
-    justify-content: center !important;
-  }
-
-  .profile_wrap {
-    border: 1px solid black;
-    padding: 20px;
-  }
-
-  .profile-pic-wrapper {
-    padding-top: 0;
-  }
-
-  select#status-filter {
-    width: 100%;
-    max-width: 90px;
-  }
-
-  section {
-    padding: 20px 0;
-  }
-
-  #wrapper #sidebar-wrapper {
-    width: 40px;
-  }
-
-  #wrapper #sidebar-wrapper span {
-    visibility: hidden;
-  }
-
-  #wrapper #sidebar-wrapper ul li i {
-    float: right;
-  }
-
-  .lion_popup_wrrpr {
-    padding-left: 45px;
-    padding-right: 5px;
-  }
-
-
-
-  .sidebar-nav li p {
-    margin-top: 10px;
-  }
-
-  .alert {
-    left: 30px;
-  }
-
-
-}
-
-/* Max Width ===== 767px */
-@media (max-width: 575px) {
-
-
-  .profile_wrap {
-    border: 1px solid black;
-    padding: 10px 0;
-  }
-
-  .copyright_list li p {
-    text-align: center;
-  }
-
-  .lion_nav {
-    padding: 15px 0px;
-  }
-
-  .upload-file-row span:nth-of-type(2) {
-    font-size: 13px;
-  }
-
-  .upload-file-row a.download-btn {
-    padding: 7px 15px;
-    font-size: 13px;
-  }
-
-  .upload-file-row span:last-of-type {
-    margin-right: 7px;
-  }
-
-  .lion_popup_wrrpr {
-    width: 95vw;
-  }
-
-  .nav-tabs .nav-link {
-    margin-bottom: 15px !important;
-  }
-
-  .nav-tabs .nav-link {
-    font-size: 13px;
-    padding: 10px 13px;
-  }
-
-  .project-detail ul li {
-    flex-direction: column;
-  }
-
-  .freelancer-profile-wrap {
-    padding: 20px;
-  }
-
-  .filename p {
-    font-size: 13px !important;
-  }
-}
-
-/* Max Width ===== 575px */
-@media (max-width: 450px) {
-
-  .form_dv input[type=email],
-  .form_dv input[type=text],
-  .form_dv input[type=password] {
-    font-size: 13px;
-  }
-
-  .login_heading h1 {
-    font-size: 30px;
-  }
-
-  .login_wrap {
-    padding: 40px 20px;
-    border-left: 10px solid #c4ae79;
-  }
-
-  .dataTables_info,
-  .dataTables_paginate {
-    float: unset;
-    text-align: center;
-  }
-
-  .dataTables_info {
-    margin-bottom: 10px;
-  }
-
-  .login_section .lgg_resi {
-    display: unset;
-  }
-
-  .login_section .resig_lnkk {
-    justify-content: center;
-    padding-top: 10px;
-  }
-
-  .footerrr {
-    padding-top: 20px;
-  }
-
-  .footerrr .fttrr_img {
-    margin-bottom: 5px;
-  }
-
-  .login_section .heading_logo .logo_img img,
-  .footerrr .fttrr_img img {
-    max-width: 120px;
-  }
-
-  .dataTables_length {
-    margin-left: 100px;
-  }
-
-  .padding-30 {
-    padding: 15px;
-  }
-
-
-
-  .download-files-item {
-    flex-wrap: wrap;
-  }
-
-  .download-files-item a.download-btn {
-    flex: 0 0 100%;
-  }
-}
-
-/* Max Width ===== 450px */
-
-/* sidebar css starts here */
-@media (max-width: 414px) {
-  #wrapper.toggled #page-content-wrapper {
-    position: absolute;
-    margin-right: 60px;
-  }
-
-  div#view-order_filter,
-  #freelance-datatable_filter,
-  #admin-order_filter {
-    float: unset;
-  }
-
-  .dataTables_length,
-  div#view-order_length {
-    margin-bottom: 20px;
-  }
-
-}
-
-/* Max Width ===== 400px */
 
 
 /* Order Table */
@@ -3721,4 +3482,20 @@ input[name="selected_customer"]:checked::before {
 
 .selectbox-control:focus {
   border: none !important;
+}
+
+.payment_selectbox_control {
+  font-size: 13px;
+  border: 1px solid #ddd !important;
+  width: 80%;
+  padding: 0 12px;
+  appearance: none;
+  text-align: center;
+}
+
+
+@media (max-width: 1000px) {
+  .lion_nav .logo_img img {
+    width: 100px;
+  }
 }

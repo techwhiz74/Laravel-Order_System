@@ -1747,5 +1747,82 @@ class AdminController extends Controller
                 ->make(true);
         }
     }
+    public function EmPayment(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function VePayment(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function OrderCount(Request $request)
+    {
+        $order = Order::findOrfail($request->post('order_id'));
+        $order->count_number = $request->post('count_number');
+        $order->save();
+    }
+    public function Parameter(Request $request)
+    {
+        $order = Order::findOrfail($request->get("id"));
+        $em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
+        $ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
+        return response()->json([$em_parameter, $ve_parameter]);
+    }
 
 }

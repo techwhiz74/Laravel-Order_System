@@ -105,12 +105,15 @@ return [
 
     'freelancer-get-order-detail' => '/en/freelancer/free-get-order-detail',
     'freelancer-order-detail' => '/en/freelancer/free-order-detail',
+    'freelancer-order-count' => '/en/freelancer/order-count',
+
 
     'embroidery-freelancer-green' => '/en/freelancer/embroidery-freelancer-green',
     'embroidery-freelancer-yellow' => '/en/freelancer/embroidery-freelancer-yellow',
     'embroidery-freelancer-red' => '/en/freelancer/embroidery-freelancer-red',
     'embroidery-freelancer-blue' => '/en/freelancer/embroidery-freelancer-blue',
     'embroidery-freelancer-all' => '/en/freelancer/embroidery-freelancer-all',
+    'embroidery-freelancer-payment' => '/en/freelancer/embroidery-freelancer-payment',
     'embroidery-freelancer-green-dashboard' => '/en/freelancer/embroidery-freelancer-green-dashboard',
     'embroidery-freelancer-yellow-dashboard' => '/en/freelancer/embroidery-freelancer-yellow-dashboard',
     'embroidery-freelancer-red-dashboard' => '/en/freelancer/embroidery-freelancer-red-dashboard',
@@ -120,6 +123,8 @@ return [
     'embroidery-freelancer-startjob' => '/en/freelancer/embroidery-freelancer-startjob',
     'embroidery-freelancer-endjob' => '/en/freelancer/embroidery-freelancer-endjob',
     'embroidery-freelancer-endchange' => '/en/freelancer/embroidery-freelancer-endchange',
+    'freelancer-embroidery-payment-mail' => '/en/freelancer/embroidery-payment-mail',
+
 
 
 
@@ -128,6 +133,7 @@ return [
     'vector-freelancer-red' => '/en/freelancer/vector-freelancer-red',
     'vector-freelancer-blue' => '/en/freelancer/vector-freelancer-blue',
     'vector-freelancer-all' => '/en/freelancer/vector-freelancer-all',
+    'vector-freelancer-payment' => '/en/freelancer/vector-freelancer-payment',
     'vector-freelancer-green-dashboard' => '/en/freelancer/vector-freelancer-green-dashboard',
     'vector-freelancer-yellow-dashboard' => '/en/freelancer/vector-freelancer-yellow-dashboard',
     'vector-freelancer-red-dashboard' => '/en/freelancer/vector-freelancer-red-dashboard',
@@ -135,6 +141,8 @@ return [
     'vector-freelancer-get-request-detail' => '/en/freelancer/vector-freelancer-get-request-detail',
     'vector-freelancer-order_detail' => '/en/freelancer/vector-freelancer-order_detail',
     'vector-freelancer-endchange' => '/en/freelancer/vector-freelancer-endchange',
+    'freelancer-vector-payment-mail' => '/en/freelancer/vector-payment-mail',
+
 
 
 
@@ -204,6 +212,10 @@ return [
     'admin-dashboard-red-table' => '/en/admin/dashboard-red-table',
     'admin-dashboard-yellow-table' => '/en/admin/dashboard-yellow-table',
     'admin-dashboard-blue-table' => '/en/admin/dashboard-blue-table',
+    'admin-em-payment' => '/en/admin/em-payment',
+    'admin-ve-payment' => '/en/admin/ve-payment',
+    'admin-order-count' => '/en/admin/order-count',
+
 
 
 
