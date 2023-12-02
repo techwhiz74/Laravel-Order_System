@@ -808,25 +808,26 @@ thead {
 #view-order.table>:not(caption)>*>*,
 #customer_staffs.table>:not(caption)>*>*,
 #customer_search_table.table>:not(caption)>*>*,
-#admin_all_table.table>:not(caption)>*>* {
-  padding: 10px;
-}
-
+#admin_all_table.table>:not(caption)>*>*,
 #em_freelancer_green_table.table>:not(caption)>*>*,
 #em_freelancer_yellow_table.table>:not(caption)>*>*,
 #em_freelancer_red_table.table>:not(caption)>*>*,
 #em_freelancer_all_table.table>:not(caption)>*>*,
 #em_freelancer_blue_table.table>:not(caption)>*>*,
+#em_freelancer_payment_table.table>:not(caption)>*>*,
+#em_freelancer_payment_archive_table.table>:not(caption)>*>*,
 #ve_freelancer_green_table.table>:not(caption)>*>*,
 #ve_freelancer_yellow_table.table>:not(caption)>*>*,
 #ve_freelancer_red_table.table>:not(caption)>*>*,
 #ve_freelancer_all_table.table>:not(caption)>*>*,
 #ve_freelancer_blue_table.table>:not(caption)>*>*,
+#ve_freelancer_payment_table.table>:not(caption)>*>*,
+#ve_freelancer_payment_archive_table.table>:not(caption)>*>*,
 #admin_green_table.table>:not(caption)>*>*,
 #admin_yellow_table.table>:not(caption)>*>*,
 #admin_red_table.table>:not(caption)>*>*,
 #admin_blue_table.table>:not(caption)>*>* {
-  padding: 12px;
+  padding: 10px;
 }
 
 
@@ -3598,6 +3599,23 @@ textarea:focus {
   min-width: 800px;
 }
 
+#em_freelancer_green_table,
+#em_freelancer_yellow_table,
+#em_freelancer_red_table,
+#em_freelancer_blue_table,
+#em_freelancer_all_table,
+#ve_freelancer_green_table,
+#ve_freelancer_yellow_table,
+#ve_freelancer_red_table,
+#ve_freelancer_blue_table,
+#ve_freelancer_all_table,
+#em_freelancer_payment_table,
+#em_freelancer_payment_archive_table,
+#ve_freelancer_payment_table,
+#ve_freelancer_payment_archive_table {
+  min-width: 1000px;
+}
+
 .form_dv_wrap {
   margin-bottom: 5px;
 }
@@ -3739,7 +3757,7 @@ textarea:focus {
   }
 
   .table>:not(caption)>*>* {
-    padding: 6px !important;
+    padding: 8px !important;
   }
 
   .login_heading h1 {

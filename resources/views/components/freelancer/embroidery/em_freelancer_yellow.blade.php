@@ -1,100 +1,34 @@
 <section class="page_section">
-
-    <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">{{ __('home.dashboard_progress_order') }}</h1>
-        <p></p>
-    </div>
-    <div>
-        <div style="margin-top: 40px;">
-            <button id="em_freelancer_yellow_table_reload_button" style="display: none"></button>
-            <div class="responsive-table">
-                <table id="em_freelancer_yellow_table" class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th style="min-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
-                            <th style="min-width: 100px !important;">{{ __('home.delivery_time') }}</th>
-                            <th style="min-width: 150px !important;">{{ __('home.order') }}</th>
-                            <th style="min-width: 150px !important;">{{ __('home.date') }}</th>
-                            <th>{{ __('home.project') }}</th>
-                            <th style="min-width: 150px !important;">{{ __('home.status') }}</th>
-                            <th style="min-width: 110px !important; text-align:center !important;">
-                                {{ __('home.detail') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-xl-10">
+            <div class="pagetitle">
+                {{ __('home.dashboard_progress_order') }}
             </div>
-
+            <div>
+                <div>
+                    <button id="em_freelancer_yellow_table_reload_button" style="display: none"></button>
+                    <div class="responsive-table">
+                        <table id="em_freelancer_yellow_table" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th style="text-align:center;">
+                                        {{ __('home.order_type') }}</th>
+                                    <th>{{ __('home.delivery_time') }}</th>
+                                    <th>{{ __('home.order') }}</th>
+                                    <th>{{ __('home.date') }}</th>
+                                    <th>{{ __('home.project') }}</th>
+                                    <th>{{ __('home.status') }}</th>
+                                    <th style="text-align:center !important;">
+                                        {{ __('home.detail') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        <div class="col-xl-1"></div>
     </div>
-
 </section>
-
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    var em_freelancer_yellow_table;
-
-    $(function() {
-        em_freelancer_yellow_table = $('#em_freelancer_yellow_table').DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            searching: false,
-            language: {
-                paginate: {
-                    next: '<i class="fa-solid fa-chevron-right"></i>', // or '→'
-                    previous: '<i class="fa-solid fa-chevron-left"></i>' // or '←'
-                }
-            },
-            ajax: {
-                url: "{{ __('routes.embroidery-freelancer-yellow') }}",
-                type: "get",
-            },
-
-            columns: [{
-                    data: 'type',
-                    name: 'type',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-
-                    data: 'deliver_time',
-                    name: 'deliver_time'
-                },
-                {
-                    data: 'order',
-                    name: 'order'
-                },
-                {
-                    data: 'date',
-                    name: 'date'
-                },
-                {
-                    data: 'project_name',
-                    name: 'project_name'
-                },
-                {
-                    data: 'status',
-                    name: 'status'
-                },
-
-                {
-                    data: 'detail',
-                    name: 'detail',
-                    orderable: false,
-                    searchable: false
-                },
-            ]
-        });
-        $('#em_freelancer_yellow_table_reload_button').click(function() {
-            em_freelancer_yellow_table.ajax.reload();
-        })
-    });
-</script>
