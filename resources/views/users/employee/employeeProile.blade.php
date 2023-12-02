@@ -7,9 +7,9 @@
         }
 
         /* .card .card-body {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        } */
+                padding-top: 20px;
+                padding-bottom: 20px;
+            } */
 
         .avatar-box-left {
             margin: 0px;
@@ -97,7 +97,7 @@
         }
     </style>
 
-    <section class="customer_profile_section">
+    <section class="page_section">
         <div class="container-fluid-md container-lg">
             <div class="row">
                 <div class="col-12">

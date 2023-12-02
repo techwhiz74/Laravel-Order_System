@@ -1,4 +1,4 @@
-<section class="em_freelancer_green_section">
+<section class="page_section">
 
     <div class="pagetitle">
         <h1 style="margin-left: 0 !important">{{ __('home.dashboard_new_order') }}</h1>
@@ -8,7 +8,7 @@
         <div style="margin-top: 40px;">
             <button id="em_freelancer_green_table_reload_button" style="display: none"></button>
             <div class="responsive-table">
-                <table id="em_freelancer_green_table" class="table table-striped" style="width:100%; font-size:13px;">
+                <table id="em_freelancer_green_table" class="table table-striped">
                     <thead>
                         <tr>
                             <th style="min-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
@@ -56,10 +56,6 @@
                 url: "{{ __('routes.embroidery-freelancer-green') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
-
             columns: [{
                     data: 'type',
                     name: 'type',

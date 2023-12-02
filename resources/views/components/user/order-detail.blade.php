@@ -119,8 +119,7 @@
                             </div>
                             <div class="col-10 responsive-table">
 
-                                <table id="order_detail" class="table table-striped"
-                                    style="width:100%; font-size:13px;">
+                                <table id="order_detail" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th style="text-align: center;">

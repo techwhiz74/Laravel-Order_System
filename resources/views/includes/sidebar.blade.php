@@ -1,9 +1,6 @@
 <div id="wrapper">
-
-
-
     <div id="sidebar-wrapper">
-        <ul class="sidebar-nav" style="margin-left:6vw; padding:0 !important;">
+        <ul class="sidebar-nav">
             @if (auth()->user()->user_type == 'customer')
                 <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
@@ -13,7 +10,7 @@
                                 <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>
                                     {{ __('home.order_standard') }}</p>
                             </div>
@@ -28,7 +25,7 @@
                                 <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.new') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
@@ -42,7 +39,7 @@
                                 <img src="{{ asset('asset/images/New.svg') }}" style="width:38px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.new') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
@@ -56,7 +53,7 @@
                                 <img src="{{ asset('asset/images/users-duotone.svg') }}" style="width:38px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>AKTUELLE<br />KUNDENLISTE</p>
                             </div>
                         </div>
@@ -65,7 +62,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
@@ -73,7 +70,7 @@
                                 <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
@@ -88,7 +85,7 @@
                                 <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.orderes in progress') }}</p>
                             </div>
                         </div>
@@ -103,7 +100,7 @@
                                 <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.orderes in progress') }}</p>
                             </div>
                         </div>
@@ -118,7 +115,7 @@
                                 <img src="{{ asset('asset/images/user-plus-duotone.svg') }}" style="width:38px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>KUNDE<br />ERFASSEN</p>
                             </div>
                         </div>
@@ -136,7 +133,7 @@
                                     style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_standard') }}</p>
                             </div>
                         </div>
@@ -144,7 +141,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="em_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -158,7 +155,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="ve_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -180,7 +177,7 @@
                                 <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>
                                     {{ __('home.order_standard') }}</p>
                             </div>
@@ -190,7 +187,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
                             class="lion_pop_btn">
@@ -199,7 +196,7 @@
                                     style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
@@ -207,28 +204,28 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="em_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.orders') }}<br>{{ __('home.changes') }}</p>
                             </div>
                         </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="ve_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.orders') }}<br>{{ __('home.changes') }}</p>
                             </div>
                         </div>
@@ -243,7 +240,7 @@
                                 <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
@@ -253,42 +250,42 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="view_order_popup" id="view_order_popup1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/list-radio-duotone.svg') }}" style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ALLE<br>AUFTRAGE</p>
                             </div>
                         </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="em_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.all') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 50px;">
+                <li style="margin-right: 30px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="ve_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.all') }}<br>{{ __('home.orders') }}</p>
                             </div>
                         </div>
@@ -304,7 +301,7 @@
                                     style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_standard') }}</p>
                             </div>
                         </div>
@@ -322,7 +319,7 @@
                                     style="width: 37px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.customer_master_data') }}</p>
                             </div>
                         </div>
@@ -338,7 +335,7 @@
                                     style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ORDER<br>COUNTING</p>
                             </div>
                         </div>
@@ -353,7 +350,7 @@
                                     style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ORDER<br>COUNTING</p>
                             </div>
                         </div>
@@ -369,7 +366,7 @@
                                     style="width: 29px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
@@ -387,7 +384,7 @@
                                     style="width: 41px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>{{ __('home.employee_access') }}</p>
                             </div>
                         </div>
@@ -402,7 +399,7 @@
                                 <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>NEUE<br>AUFTRÄGE</p>
                             </div>
                         </div>
@@ -433,7 +430,7 @@
                                 <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>AUFTRÄGE IN ARBEIT</p>
                             </div>
                         </div>
@@ -482,7 +479,7 @@
                                 <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>AUFTRÄGE ÄNDERUNGEN</p>
                             </div>
                         </div>
@@ -498,7 +495,7 @@
                                 <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ALLE<br>AUFTRÄGE</p>
                             </div>
                         </div>
@@ -545,7 +542,7 @@
                                     style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ABRECHNUNG STICKPROGRAMME</p>
                             </div>
                         </div>
@@ -559,7 +556,7 @@
                                     style="width: 32px;" />
                             </div>
 
-                            <div style="height: 40%;padding: 3px;">
+                            <div class="sidebar_explain">
                                 <p>ABRECHNUNG VEKTORDATEIEN</p>
                             </div>
                         </div>
@@ -572,7 +569,6 @@
 
     <div id="profile_popup" class="lion_popup_wrrpr {{ session()->has('sidebar') ? 'active' : '' }}">
         <div class="lion_popup_dv">
-
             @if (auth()->user()->user_type == 'customer')
                 <x-user.customer-profile />
             @endif
@@ -581,16 +577,8 @@
 
     <div id="view_order_popup" class="lion_popup_wrrpr">
         <div class="lion_popup_dv">
-            @if (auth()->user()->user_type == 'admin')
-                {{-- <x-admin.vieworders /> --}}
-            @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                {{-- <x-freelancer.vieworders /> --}}
-            @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                {{-- <x-freelancer.vieworders /> --}}
-            @elseif(auth()->user()->user_type == 'customer')
+            @if (auth()->user()->user_type == 'customer')
                 <x-user.vieworders />
-            @elseif(auth()->user()->user_type == 'employer')
-                {{-- <x-user.employer-vieworders /> --}}
             @endif
         </div>
     </div>
@@ -605,7 +593,7 @@
             @endif
         </div>
     </div>
-    <div id="customer_parameters_em" class="lion_popup_wrrpr" style="overflow-y: hidden;">
+    <div id="customer_parameters_em" class="lion_popup_wrrpr">
         <div class="lion_popup_dv">
 
             @if (auth()->user()->user_type == 'customer')
@@ -613,7 +601,7 @@
             @endif
         </div>
     </div>
-    <div id="customer_parameters_ve" class="lion_popup_wrrpr" style="overflow-y: hidden;">
+    <div id="customer_parameters_ve" class="lion_popup_wrrpr">
         <div class="lion_popup_dv">
 
             @if (auth()->user()->user_type == 'customer')

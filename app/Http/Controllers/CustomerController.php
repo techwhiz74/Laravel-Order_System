@@ -138,7 +138,7 @@ class CustomerController extends Controller
         if (strlen($file->getClientOriginalName()) != 1) {
             Storage::makeDirectory($upload_dir);
             if ($avatar_file) {
-                if ($file->storeAs($folder, $filename, 'public') && $avatar_file->storePubliclyAs($folder, $avatar_filename, 'public')) {
+                if ($file->storeAs($folder, $filename, 'public') && $avatar_file->storeyAs($folder, $avatar_filename, 'public')) {
                     $data = $request->all();
                     $data['upload'] = $path . '/' . $filename;
                     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
@@ -254,6 +254,35 @@ class CustomerController extends Controller
         Auth::logout();
 
         return Redirect(__('routes.customer-login'));
+    }
+    public function customerChangeAvatar()
+    {
+        return view('users.change-avatar');
+    }
+    public function customerChangEAvatarHandle(Request $request)
+    {
+        $avatar_file = $request->file('change_avatar');
+        $upload_dir = 'public/';
+        $folder = 'customer-avatar';
+        $avatar_filename = $avatar_file->getClientOriginalName();
+        if (strlen($avatar_file->getClientOriginalName()) != 1) {
+            Storage::makeDirectory($upload_dir);
+            if ($avatar_file->storeAs($folder, $avatar_filename, 'public')) {
+                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                $avatar_url = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
+                $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
+                $file_path = Storage::path($fullPath);
+                echo $file_path;
+                chmod($file_path, 0755);
+                $publicPath = public_path();
+                $publicStoragePath = $publicPath . '/storage';
+                chmod($publicStoragePath, 0755);
+                $customer = auth()->user();
+                $customer->image = $avatar_url;
+                $customer->save();
+            }
+        }
+        return redirect('/');
     }
 
     public function changePassword()

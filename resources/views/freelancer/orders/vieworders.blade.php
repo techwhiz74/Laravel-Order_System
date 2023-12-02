@@ -181,7 +181,7 @@
         }
     </style>
 
-    <section class="freelance_section">
+    <section class="page_section">
         <div class="container">
             <select id="status-filter">
                 <option value="">All</option>

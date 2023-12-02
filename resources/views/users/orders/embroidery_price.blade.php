@@ -1,4 +1,4 @@
-<section class="embroidery_price_section" id="menu_content_wrapper1">
+<section class="page_section" id="menu_content_wrapper1">
     <div>
         <div>
             <h1 class="em_price_title">

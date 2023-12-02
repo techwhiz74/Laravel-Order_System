@@ -450,4 +450,5 @@ Möchten Sie diese Änderung abschließen?',
     'change4' => '4. Änderung',
 
     'free_order_count_title' => 'Job berechnen',
+    'change_avatar' => 'Avatar ändern',
 ];

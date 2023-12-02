@@ -79,6 +79,64 @@ class FreelancerController extends Controller
 
         return Redirect(__('routes.freelancer-login'));
     }
+    public function EmChangeAvatar()
+    {
+        return view('freelancer.embroidery-change-avatar');
+    }
+    public function VeChangeAvatar()
+    {
+        return view('freelancer.vector-change-avatar');
+    }
+    public function EmChangEAvatarHandle(Request $request)
+    {
+        $avatar_file = $request->file('change_avatar');
+        $upload_dir = 'public/';
+        $folder = 'freelancer-avatar';
+        $avatar_filename = $avatar_file->getClientOriginalName();
+        if (strlen($avatar_file->getClientOriginalName()) != 1) {
+            Storage::makeDirectory($upload_dir);
+            if ($avatar_file->storeAs($folder, $avatar_filename, 'public')) {
+                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                $avatar_url = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
+                $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
+                $file_path = Storage::path($fullPath);
+                echo $file_path;
+                chmod($file_path, 0755);
+                $publicPath = public_path();
+                $publicStoragePath = $publicPath . '/storage';
+                chmod($publicStoragePath, 0755);
+                $freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first();
+                $freelancer->image = $avatar_url;
+                $freelancer->save();
+            }
+        }
+        return redirect('/en');
+    }
+    public function VeChangEAvatarHandle(Request $request)
+    {
+        $avatar_file = $request->file('change_avatar');
+        $upload_dir = 'public/';
+        $folder = 'freelancer-avatar';
+        $avatar_filename = $avatar_file->getClientOriginalName();
+        if (strlen($avatar_file->getClientOriginalName()) != 1) {
+            Storage::makeDirectory($upload_dir);
+            if ($avatar_file->storeAs($folder, $avatar_filename, 'public')) {
+                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                $avatar_url = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
+                $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
+                $file_path = Storage::path($fullPath);
+                echo $file_path;
+                chmod($file_path, 0755);
+                $publicPath = public_path();
+                $publicStoragePath = $publicPath . '/storage';
+                chmod($publicStoragePath, 0755);
+                $freelancer = User::where('user_type', 'freelancer')->where('category_id', '2')->first();
+                $freelancer->image = $avatar_url;
+                $freelancer->save();
+            }
+        }
+        return redirect('/en');
+    }
 
     public function viewOrder(Request $request)
     {
@@ -1570,7 +1628,7 @@ class FreelancerController extends Controller
     public function EmbroideryFreelancerPaymentTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->where('count_number', null)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1602,7 +1660,7 @@ class FreelancerController extends Controller
     public function VectorFreelancerPaymentTable(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->get();
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->where('count_number', null)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1657,6 +1715,70 @@ class FreelancerController extends Controller
         } catch (\Exception $e) {
             dd($e->getMessage());
             return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function EmbroideryPaymentArchive(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->whereNotNull('count_number')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function VectorPaymentArchive(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->whereNotNull('count_number')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
         }
     }
 }

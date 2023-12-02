@@ -36,6 +36,8 @@ Route::middleware([LoginMiddleware::class . ':admin'])->prefix('{locale}/admin')
 });
 Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')->group(function () {
     Route::get('/logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
+    Route::get('/change-avatar', [AdminController::class, 'adminChangEAvatar'])->name('admin-change-avatar');
+    Route::post('/change-avatar-handle', [AdminController::class, 'adminChangEAvatarHandle'])->name('admin-change-avatar-handle');
     Route::get('/admin-view-orders', [AdminController::class, 'AdminviewOrders']);
     Route::get('/order-details/{id}', [AdminController::class, 'orderDetails']);
     Route::get('/change-password', [AdminController::class, 'changePassword']);
@@ -96,6 +98,8 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/em-payment', [AdminController::class, 'EmPayment'])->name('admin-em-payment');
     Route::get('/ve-payment', [AdminController::class, 'VePayment'])->name('admin-ve-payment');
     Route::post('/order-count', [AdminController::class, 'OrderCount'])->name('admin-order-count');
+    Route::get('/embroidery-payment-archive', [AdminController::class, 'EmbroideryPaymentArchive'])->name('admin-embroidery-payment-archive');
+    Route::get('/vector-payment-archive', [AdminController::class, 'VectorPaymentArchive'])->name('admin-vector-payment-archive');
 });
 
 //customer route
@@ -110,6 +114,8 @@ Route::middleware([LoginMiddleware::class . ':customer'])->prefix('{locale}/cust
 
 Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/customer')->group(function () {
     Route::get('/logout', [CustomerController::class, 'customerLogout']);
+    Route::get('/change-avatar', [CustomerController::class, 'customerChangEAvatar'])->name('customer-change-avatar');
+    Route::post('/change-avatar-handle', [CustomerController::class, 'customerChangEAvatarHandle'])->name('customer-change-avatar-handle');
     Route::get('/view-orders', [OrderController::class, 'viewOrder'])->name('customer-vieworders');
     Route::get('/order_detail', [OrderController::class, 'OrderDetail'])->name('customer-order_detail');
     Route::get('/req-order_detail', [OrderController::class, 'OrderDetail'])->name('req-customer-order_detail');
@@ -189,6 +195,10 @@ Route::middleware([LoginMiddleware::class . ':freelancer'])->prefix('{locale}/fr
 
 Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/freelancer')->group(function () {
     Route::get('/logout', [FreelancerController::class, 'freelancerLogout'])->name('freelancer-logout');
+    Route::get('/em-change-avatar', [FreelancerController::class, 'EmChangEAvatar'])->name('freelancer-em-change-avatar');
+    Route::post('/em-change-avatar-handle', [FreelancerController::class, 'EmChangEAvatarHandle'])->name('freelancer-em-change-avatar-handle');
+    Route::get('/ve-change-avatar', [FreelancerController::class, 'VeChangEAvatar'])->name('freelancer-ve-change-avatar');
+    Route::post('/ve-change-avatar-handle', [FreelancerController::class, 'VeChangEAvatarHandle'])->name('freelancer-ve-change-avatar-handle');
     Route::get('/view-orders', [FreelancerController::class, 'viewOrder'])->name('freelancer-vieworders');
     Route::get('/order-details/{id}', [FreelancerController::class, 'orderDetails']);
     Route::POST('/downloadFile', [FreelancerController::class, 'downloadAddressFIle']);
@@ -229,6 +239,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/embroidery-freelancer-endjob', [FreelancerController::class, 'EndJob'])->name('embroidery-freelancer-endjob');
     Route::get('/embroidery-freelancer-endchange', [FreelancerController::class, 'EmbroideryEndChange'])->name('embroidery-freelancer-endchange');
     Route::get('/embroidery-payment-mail', [FreelancerController::class, 'EmbroideryPaymentMail'])->name('freelancer-embroidery-payment-mail');
+    Route::get('/embroidery-payment-archive', [FreelancerController::class, 'EmbroideryPaymentArchive'])->name('freelancer-embroidery-payment-archive');
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
     Route::get('/vector-freelancer-yellow', [FreelancerController::class, 'VectorFreelancerYellowTable'])->name('vector-freelancer-yellow');
@@ -244,5 +255,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/vector-freelancer-order_detail', [FreelancerController::class, 'OrderDetail'])->name('vector-freelancer-order_detail');
     Route::get('/vector-freelancer-endchange', [FreelancerController::class, 'VectorEndChange'])->name('vector-freelancer-endchange');
     Route::get('/vector-payment-mail', [FreelancerController::class, 'VectorPaymentMail'])->name('freelancer-vector-payment-mail');
+    Route::get('/vector-payment-archive', [FreelancerController::class, 'VectorPaymentArchive'])->name('freelancer-vector-payment-archive');
+
 
 });

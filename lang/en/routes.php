@@ -66,6 +66,8 @@ return [
     'customer-em-parameter-change-mail' => '/en/customer/em-parameter-change-mail',
     'customer-ve-parameter-change' => '/en/customer/ve-parameter-change',
     'customer-ve-parameter-change-mail' => '/en/customer/ve-parameter-change-mail',
+    'customer-change-avatar' => '/en/customer/change-avatar',
+    'customer-change-avatar-handle' => '/en/customer/change-avatar-handle',
 
 
     // Employer
@@ -106,6 +108,10 @@ return [
     'freelancer-get-order-detail' => '/en/freelancer/free-get-order-detail',
     'freelancer-order-detail' => '/en/freelancer/free-order-detail',
     'freelancer-order-count' => '/en/freelancer/order-count',
+    'freelancer-em-change-avatar' => '/en/freelancer/em-change-avatar',
+    'freelancer-em-change-avatar-handle' => '/en/freelancer/em-change-avatar-handle',
+    'freelancer-ve-change-avatar' => '/en/freelancer/ve-change-avatar',
+    'freelancer-ve-change-avatar-handle' => '/en/freelancer/ve-change-avatar-handle',
 
 
     'embroidery-freelancer-green' => '/en/freelancer/embroidery-freelancer-green',
@@ -124,6 +130,8 @@ return [
     'embroidery-freelancer-endjob' => '/en/freelancer/embroidery-freelancer-endjob',
     'embroidery-freelancer-endchange' => '/en/freelancer/embroidery-freelancer-endchange',
     'freelancer-embroidery-payment-mail' => '/en/freelancer/embroidery-payment-mail',
+    'freelancer-embroidery-payment-archive' => '/en/freelancer/embroidery-payment-archive',
+
 
 
 
@@ -142,6 +150,8 @@ return [
     'vector-freelancer-order_detail' => '/en/freelancer/vector-freelancer-order_detail',
     'vector-freelancer-endchange' => '/en/freelancer/vector-freelancer-endchange',
     'freelancer-vector-payment-mail' => '/en/freelancer/vector-payment-mail',
+    'freelancer-vector-payment-archive' => '/en/freelancer/vector-payment-archive',
+
 
 
 
@@ -215,6 +225,12 @@ return [
     'admin-em-payment' => '/en/admin/em-payment',
     'admin-ve-payment' => '/en/admin/ve-payment',
     'admin-order-count' => '/en/admin/order-count',
+    'admin-embroidery-payment-archive' => '/en/admin/embroidery-payment-archive',
+    'admin-vector-payment-archive' => '/en/admin/vector-payment-archive',
+    'admin-change-avatar' => '/en/admin/change-avatar',
+    'admin-change-avatar-handle' => '/en/admin/change-avatar-handle',
+
+
 
 
 

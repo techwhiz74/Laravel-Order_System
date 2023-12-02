@@ -541,10 +541,10 @@ class OrderController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px;"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px;"></div>';
                     }
                     return $type;
                 })
@@ -592,10 +592,10 @@ class OrderController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px;"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px;"></div>';
                     }
                     return $type;
                 })
@@ -629,10 +629,10 @@ class OrderController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px;"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px;"></div>';
                     }
                     return $type;
                 })
@@ -666,10 +666,10 @@ class OrderController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px;"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px;"></div>';
                     }
                     return $type;
                 })

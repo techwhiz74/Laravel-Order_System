@@ -165,14 +165,26 @@
                                     <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
                             @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                                <img src="{{ asset('asset/images/embroidery_avatar.jpg') }}"
-                                    style="width: 40px; height:40px;" />
+                                @if (Auth::user()->image)
+                                    <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
+                                        style="width: 40px; height:40px;" />
+                                @else
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
+                                @endif
                             @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                                <img src="{{ asset('asset/images/vector_avatar.JPG') }}"
-                                    style="width: 40px; height:40px;" />
+                                @if (Auth::user()->image)
+                                    <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
+                                        style="width: 40px; height:40px;" />
+                                @else
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
+                                @endif
                             @elseif(auth()->user()->user_type == 'admin')
-                                <img src="{{ asset('asset/images/admin_avatar.png') }}"
-                                    style="width: 40px; height:40px; margin-top:15px;" />
+                                @if (Auth::user()->image)
+                                    <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
+                                        style="width: 40px; height:40px;" />
+                                @else
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
+                                @endif
                             @endif
                         @else
                             <a href="{{ __('routes.customer-login') }}">
@@ -199,6 +211,21 @@
                                     @elseif(@auth()->user()->user_type == 'employer')
                                         <a
                                             href="{{ __('routes.customerchange-password') }}">{{ __('home.change_password') }}</a>
+                                    @endif
+                                </li>
+                                <li>
+                                    @if (@auth()->user()->user_type == 'admin')
+                                        <a
+                                            href="{{ __('routes.admin-change-avatar') }}">{{ __('home.change_avatar') }}</a>
+                                    @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                                        <a
+                                            href="{{ __('routes.freelancer-em-change-avatar') }}">{{ __('home.change_avatar') }}</a>
+                                    @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                                        <a
+                                            href="{{ __('routes.freelancer-ve-change-avatar') }}">{{ __('home.change_avatar') }}</a>
+                                    @elseif(@auth()->user()->user_type == 'customer')
+                                        <a
+                                            href="{{ __('routes.customer-change-avatar') }}">{{ __('home.change_avatar') }}</a>
                                     @endif
                                 </li>
                                 <li>

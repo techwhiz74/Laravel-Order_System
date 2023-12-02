@@ -162,3 +162,8 @@
 @include('functions.dashboard')
 @include('functions.order-form-mail')
 @include('functions.upload-template')
+@include('functions.admin-add-customer')
+@include('functions.order-view')
+@include('functions.employee-view')
+@include('functions.customer-em-parameter')
+@include('functions.customer-ve-parameter')

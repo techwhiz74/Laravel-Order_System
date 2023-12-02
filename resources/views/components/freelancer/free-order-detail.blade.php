@@ -156,36 +156,6 @@
         background-color: transparent;
     }
 
-    .product-item-menu {
-        position: absolute;
-        z-index: 1000;
-        display: none;
-        min-width: 10rem;
-        padding: 0.5rem 0;
-        margin: 0;
-        font-size: 1rem;
-        color: #212529;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
-    .product-item-menu_em_ex {
-        position: absolute;
-        z-index: 1000;
-        display: none;
-        min-width: 10rem;
-        padding: 0.5rem 0;
-        margin: 0;
-        font-size: 1rem;
-        color: #212529;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
     .btn-success {
         color: #fff;
         background-color: #c3ac6d;
@@ -487,8 +457,7 @@
                                     </ul>
                                 </div>
                                 <div class="responsive-table" style="height: 300px; width:100%;">
-                                    <table id="free_order_detail" class="table table-striped"
-                                        style="width:100%; font-size:13px;">
+                                    <table id="free_order_detail" class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th style="text-align: center;">

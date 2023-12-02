@@ -7,17 +7,17 @@
         }
 
         /* body {
-      background-color: #f1f1f1;
-    } */
+          background-color: #f1f1f1;
+        } */
         /* .error{
 
-      background-color: #fdd;
-      padding: 5px;
-      color: #ff0101;
-      width: 257px;
-      margin-top: 10px;
-      border: #f03232 2px solid;
-    } */
+          background-color: #fdd;
+          padding: 5px;
+          color: #ff0101;
+          width: 257px;
+          margin-top: 10px;
+          border: #f03232 2px solid;
+        } */
 
         .error {
             display: none;
@@ -121,9 +121,9 @@
         }
 
         /* label{
-    font-weight: 600;
-    color:gray;
-    } */
+        font-weight: 600;
+        color:gray;
+        } */
 
         #embroideryOrder h5 {
             font-size: 25px;
@@ -304,7 +304,7 @@
         </p>
     @endif
 
-    <section class="embroidery_section">
+    <section class="page_section">
         <form id="embroideryOrder" action="" enctype="multipart/form-data">
             <!-- One "tab" for each step in the form: -->
             @foreach ($ordersDetails as $data)

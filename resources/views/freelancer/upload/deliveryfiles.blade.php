@@ -14,9 +14,9 @@
             }
 
             /* .card .card-body {
-                padding-top: 20px;
-                padding-bottom: 20px;
-            } */
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                } */
 
             .avatar-box-left {
                 margin: 0px;
@@ -174,7 +174,7 @@
             }
         </style>
 
-        <section class="customer_profile_section">
+        <section class="page_section">
             <div class="padding-30">
                 <div class="row">
                     <div class="col-12">
@@ -278,24 +278,24 @@
                 </div>
 
                 <!-- <div class="row mt-5">
-                        <div class="col-12">
-                            <div class="pagetitle">
-                                <h2> Uploaded Files </h2>
+                            <div class="col-12">
+                                <div class="pagetitle">
+                                    <h2> Uploaded Files </h2>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 img-gallery">
-                            <img class="image" width="100%" src="https://images.pexels.com/photos/6462662/pexels-photo-6462662.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lamo parked on road">
-                        </div>
-                        <div class="col-md-3 img-gallery">
-                            <img class="image" width="100%" src="https://images.pexels.com/photos/5288701/pexels-photo-5288701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo on road">
-                        </div>
-                        <div class="col-md-3 img-gallery">
-                            <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
-                        </div>
-                        <div class="col-md-3 img-gallery">
-                            <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
-                        </div>
-                    </div> -->
+                            <div class="col-md-3 img-gallery">
+                                <img class="image" width="100%" src="https://images.pexels.com/photos/6462662/pexels-photo-6462662.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lamo parked on road">
+                            </div>
+                            <div class="col-md-3 img-gallery">
+                                <img class="image" width="100%" src="https://images.pexels.com/photos/5288701/pexels-photo-5288701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo on road">
+                            </div>
+                            <div class="col-md-3 img-gallery">
+                                <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
+                            </div>
+                            <div class="col-md-3 img-gallery">
+                                <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
+                            </div>
+                        </div> -->
 
             </div>
 

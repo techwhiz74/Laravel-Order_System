@@ -17,6 +17,10 @@ function hideModal() {
     $('#admin_change_popup').modal('hide');
     $('#admin_request_popup').modal('hide');
     $('#change_profile_success_popup').modal('hide');
+    $('#free_embroidery_payment_archive').modal('hide');
+    $('#free_vector_payment_archive').modal('hide');
+    $('#admin_embroidery_payment_archive').modal('hide');
+    $('#admin_vector_payment_archive').modal('hide');
 
 }
 

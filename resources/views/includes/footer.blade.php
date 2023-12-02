@@ -1,9 +1,9 @@
 <footer>
     @auth
         <div class="footer_wrap" style="background: #fff">
-            <div class="container">
+            <div class="footer">
                 <div class="row">
-                    <div class="col-md-7 col-sm-12">
+                    <div class="col-xl-8 col-12">
                         <ul class="copyright_list">
                             <li>
                                 <p>
@@ -15,9 +15,8 @@
                             </li>
                         </ul>
                     </div>
-
-                    <div class="col-md-5 col-sm-12">
-                        <ul class="copyright_list" style="justify-content: end">
+                    <div class="col-xl-4 col-12">
+                        <ul class="copyright_list copyright_list2">
                             <li>
                                 <a href="" style="color: #aaa">Datenschutzerklärung</a>
                             </li>
@@ -30,10 +29,10 @@
             </div>
         </div>
     @else
-        <div class="footer_wrap" style="margin-top: -60px;">
-            <div class="container">
+        <div class="footer_wrap" style="margin-top: -10vh;">
+            <div class="footer" style="margin-bottom:0">
                 <div class="row">
-                    <div class="col-md-7 col-sm-12">
+                    <div class="col-xl-8 col-12">
                         <ul class="copyright_list">
                             <li>
                                 <p>
@@ -46,8 +45,8 @@
                         </ul>
                     </div>
 
-                    <div class="col-md-5 col-sm-12">
-                        <ul class="copyright_list" style="justify-content: end">
+                    <div class="col-xl-4 col-12">
+                        <ul class="copyright_list copyright_list2">
                             <li>
                                 <a href="" style="color: #fff">Datenschutzerklärung</a>
                             </li>

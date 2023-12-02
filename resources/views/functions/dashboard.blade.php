@@ -12,9 +12,6 @@
                 url: "{{ __('routes.customer-dashboard-green-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -54,9 +51,6 @@
                 url: "{{ __('routes.customer-dashboard-red-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -98,9 +92,6 @@
                 url: "{{ __('routes.customer-dashboard-yellow-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -142,9 +133,6 @@
                 url: "{{ __('routes.customer-dashboard-blue-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -186,9 +174,6 @@
                 url: "{{ __('routes.embroidery-freelancer-green-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -229,9 +214,6 @@
                 url: "{{ __('routes.embroidery-freelancer-yellow-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -272,9 +254,6 @@
                 url: "{{ __('routes.embroidery-freelancer-red-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -315,9 +294,6 @@
                 url: "{{ __('routes.embroidery-freelancer-blue-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -364,9 +340,6 @@
                 url: "{{ __('routes.vector-freelancer-green-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -407,9 +380,6 @@
                 url: "{{ __('routes.vector-freelancer-yellow-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -450,9 +420,6 @@
                 url: "{{ __('routes.vector-freelancer-red-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -493,9 +460,6 @@
                 url: "{{ __('routes.vector-freelancer-blue-dashboard') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -542,9 +506,6 @@
                 url: "{{ __('routes.admin-dashboard-green-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -584,9 +545,6 @@
                 url: "{{ __('routes.admin-dashboard-red-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -628,9 +586,6 @@
                 url: "{{ __('routes.admin-dashboard-yellow-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'
@@ -672,9 +627,6 @@
                 url: "{{ __('routes.admin-dashboard-blue-table') }}",
                 type: "get",
             },
-            order: [
-                [2, 'desc']
-            ],
             columns: [{
                     data: 'art',
                     name: 'art'

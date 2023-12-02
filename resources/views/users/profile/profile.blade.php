@@ -97,7 +97,7 @@
     }
 </style>
 
-<section class="customer_profile_section">
+<section class="page_section">
     <div class="padding-30">
         <form method="POST" action="{{__('routes.customer-profileupdate')}}" enctype="multipart/form-data">
             @csrf

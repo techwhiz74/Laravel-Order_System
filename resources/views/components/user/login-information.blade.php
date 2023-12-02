@@ -1,11 +1,11 @@
-<section class="login_information_section">
-    <div class="pagetitle">
-        <h1>{{ __('home.right_top_box_name') }}</h1>
-        <p></p>
-    </div>
-    <div class="order_fome_container">
-        @if (auth()->user()->user_type == 'customer')
-            <div class="tab-content" style="height: 470px;">
+<section class="page_section">
+    <div class="row">
+        <div class="col-md-1 col-xl-2"></div>
+        <div class="col-12 col-md-10 col-xl-8">
+            <div class="pagetitle">
+                {{ __('home.right_top_box_name') }}
+            </div>
+            <div class="tab-content">
                 <div id="addresses" class="tab-pane fade in active" style="height: 100%">
                     <div class="employee-list-container"
                         style="height: 100%; display:flex; flex-direction:column; justify-content:space-between; align-items:start;">
@@ -33,68 +33,9 @@
                     </div>
                 </div>
             </div>
-        @endif
+        </div>
+        <div class="col-md-1 col-xl-2"></div>
     </div>
 
 </section>
 @include('components.user.create-customer-staff')
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    var table;
-    $(function() {
-        table = $('#customer_staffs').DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            searching: false,
-            language: {
-                paginate: {
-                    next: '<i class="fa-solid fa-chevron-right"></i>', // or '→'
-                    previous: '<i class="fa-solid fa-chevron-left"></i>' // or '←'
-                }
-            },
-            ajax: {
-                url: "{{ __('routes.employee-staffs-table') }}",
-                type: 'get',
-
-            },
-            order: [
-                [2, 'desc']
-            ],
-            columns: [{
-                    data: 'name',
-                    name: 'name',
-                },
-                {
-                    data: 'email',
-                    name: 'email',
-                },
-                {
-                    data: 'created_on',
-                    name: 'created_on',
-                },
-                {
-                    data: 'edit',
-                    name: 'edit',
-                    orderable: false,
-                    searchable: false
-                },
-                {
-                    data: 'delete',
-                    name: 'delete',
-                    orderable: false,
-                    searchable: false
-                }
-            ]
-        })
-        $('#customer_staff_create_submit').click(function() {
-            setTimeout(() => {
-                table.ajax.reload();
-            }, 1000);
-        })
-    });
-</script>

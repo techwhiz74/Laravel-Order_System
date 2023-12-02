@@ -1,4 +1,4 @@
-<section class="vector_information_section" id="menu_content_wrapper2">
+<section class="page_section" id="menu_content_wrapper2">
     <div>
         <h2 class="menu_page_title">{{ __('home.information') }}</h2>
     </div>

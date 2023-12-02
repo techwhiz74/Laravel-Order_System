@@ -156,38 +156,6 @@
         background-color: transparent;
     }
 
-    .product-item-menu {
-        position: absolute;
-        z-index: 1000;
-        display: none;
-        min-width: 10rem;
-        padding: 0.5rem 0;
-        margin: 0;
-        font-size: 1rem;
-        color: #212529;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
-    .product-item-menu_em_ex {
-        position: absolute;
-        z-index: 1000;
-        display: none;
-        min-width: 10rem;
-        padding: 0.5rem 0;
-        margin: 0;
-        font-size: 1rem;
-        color: #212529;
-        text-align: left;
-        list-style: none;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
-
-
     .btn-success {
         color: #fff;
         background-color: #c3ac6d;

@@ -1,4 +1,4 @@
-<section class="embroidery_information_section" id="menu_content_wrapper0">
+<section class="page_section" id="menu_content_wrapper0">
     <div>
         <h2 class="menu_page_title">{{ __('home.information') }}</h2>
     </div>

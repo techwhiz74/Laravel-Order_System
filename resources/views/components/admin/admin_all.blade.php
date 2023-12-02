@@ -1,4 +1,4 @@
-<section class="admin_all_section">
+<section class="page_section">
 
     <div class="pagetitle">
         <h1 style="margin-left: 0 !important">Alle Aufträge</h1>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="responsive-table">
-                <table id="admin_all_table" class="table table-striped" style="width:100%; font-size:13px;">
+                <table id="admin_all_table" class="table table-striped">
                     <thead>
                         <tr>
                             <th style="min-width: 70px !important; text-align:center;">{{ __('home.order_type') }}</th>
@@ -289,9 +289,6 @@
                     d.end_date_filter = $('#adminTableDatepickerInputEnd').val();
                 },
             },
-            order: [
-                [2, 'desc']
-            ],
 
             columns: [{
                     data: 'type',

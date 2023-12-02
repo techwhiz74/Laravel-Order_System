@@ -571,6 +571,8 @@
             $('#order_form_success_popup').modal('show');
             $('#admin_green_table_reload_button').trigger('click');
             $('#admin_all_table_reload_button').trigger('click');
+            $('#em_admin_payment_table_reload_button').trigger('click');
+            $('#ve_admin_payment_table_reload_button').trigger('click');
             $('#customer_order_form_mail').trigger('click');
           }, 3000);
         }

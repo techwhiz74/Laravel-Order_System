@@ -191,10 +191,10 @@
         }
 
         /* .no-files p {
-            font-size: 18px;
-            color: #666;
-            line-height: 1.5;
-        } */
+                font-size: 18px;
+                color: #666;
+                line-height: 1.5;
+            } */
         .no-files p {
             font-size: 16px;
             color: #777;
@@ -203,7 +203,7 @@
             margin: 0 auto;
         }
     </style>
-    <section class="customer_profile_section">
+    <section class="page_section">
         <div class="padding-30">
             <div class="row">
                 <div class="col-12">

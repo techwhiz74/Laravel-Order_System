@@ -1,4 +1,4 @@
-<div class="admin_customer_list_section">
+<div class="page_section">
     <div class="pagetitle">
         <h1 style="margin-left: 0 !important">Kundenliste</h1>
         <p></p>

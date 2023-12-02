@@ -74,6 +74,35 @@ class AdminController extends Controller
 
         return Redirect(__('routes.admin-login'));
     }
+    public function adminChangeAvatar()
+    {
+        return view('admin.change-avatar');
+    }
+    public function adminChangEAvatarHandle(Request $request)
+    {
+        $avatar_file = $request->file('change_avatar');
+        $upload_dir = 'public/';
+        $folder = 'admin-avatar';
+        $avatar_filename = $avatar_file->getClientOriginalName();
+        if (strlen($avatar_file->getClientOriginalName()) != 1) {
+            Storage::makeDirectory($upload_dir);
+            if ($avatar_file->storeAs($folder, $avatar_filename, 'public')) {
+                $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+                $avatar_url = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
+                $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
+                $file_path = Storage::path($fullPath);
+                echo $file_path;
+                chmod($file_path, 0755);
+                $publicPath = public_path();
+                $publicStoragePath = $publicPath . '/storage';
+                chmod($publicStoragePath, 0755);
+                $admin = User::where('user_type', 'admin')->first();
+                $admin->image = $avatar_url;
+                $admin->save();
+            }
+        }
+        return redirect('/');
+    }
 
     public function viewOrders(Request $request)
     {
@@ -1186,7 +1215,7 @@ class AdminController extends Controller
     {
 
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')
+            $data = Order::orderBy('created_at', 'desc')
                 ->where(function ($query) use ($request) {
                     $query->where('project_name', 'LIKE', '%' . $request->order_filter . '%')
                         ->orWhereRaw("CONCAT(customer_number, '-', order_number) LIKE ?", ['%' . $request->order_filter . '%'])
@@ -1600,9 +1629,8 @@ class AdminController extends Controller
     }
     public function DashboardGreenTable(Request $request)
     {
-        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Offen')->take(5)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('status', 'Offen')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1638,9 +1666,8 @@ class AdminController extends Controller
     }
     public function DashboardRedTable(Request $request)
     {
-        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Ausgeliefert')->take(5)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('status', 'Ausgeliefert')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1675,9 +1702,8 @@ class AdminController extends Controller
     }
     public function DashboardYellowTable(Request $request)
     {
-        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'In Bearbeitung')->take(5)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('status', 'In Bearbeitung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1712,9 +1738,8 @@ class AdminController extends Controller
     }
     public function DashboardBlueTable(Request $request)
     {
-        $authuser = auth()->user();
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('user_id', $authuser->id)->where('status', 'Änderung')->take(5)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('status', 'Änderung')->take(5)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1750,7 +1775,7 @@ class AdminController extends Controller
     public function EmPayment(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->get();
+            $data = Order::orderBy('created_at', 'desc')->where('type', 'Embroidery')->where('count_number', null)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1782,7 +1807,7 @@ class AdminController extends Controller
     public function VePayment(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->get();
+            $data = Order::orderBy('created_at', 'desc')->where('type', 'Vector')->where('count_number', null)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1823,6 +1848,70 @@ class AdminController extends Controller
         $em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
         $ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
         return response()->json([$em_parameter, $ve_parameter]);
+    }
+    public function EmbroideryPaymentArchive(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->whereNotNull('count_number')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
+    }
+    public function VectorPaymentArchive(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->whereNotNull('count_number')->get();
+            return DataTables::of($data)->addIndexColumn()
+                ->editColumn('order', function ($row) {
+                    $order = $row->customer_number . '-' . $row->order_number;
+                    return $order;
+                })
+                ->editColumn('date', function ($row) {
+                    $timezone = new DateTimeZone('Europe/Berlin');
+                    $date = $row->created_at->setTimezone($timezone)->format('d.m.Y H:i');
+                    return $date;
+                })
+                ->addColumn('type', function ($row) {
+                    $type = '';
+                    if ($row->type == "Embroidery") {
+                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+
+                    } else if ($row->type == "Vector") {
+                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                    }
+                    return $type;
+                })
+                ->addColumn('counting_number', function ($row) {
+                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                    return $btn;
+                })
+                ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
+                ->make(true);
+        }
     }
 
 }

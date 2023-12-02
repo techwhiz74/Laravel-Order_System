@@ -104,20 +104,6 @@
         border-radius: 10%;
     }
 
-    .field-group {
-        border: 1px solid black;
-        padding: 5px;
-        margin: 0;
-        font-size: 13px;
-    }
-
-    .field-caption {
-        float: none;
-        width: auto;
-        margin-left: 20px;
-        padding: 5px;
-        margin-bottom: -5px
-    }
 
     .form-group .form-control {
         display: inline !important;
@@ -209,13 +195,8 @@
     .list-group {
         margin: 5px;
     }
-
-    .submit_btn {
-        padding-right: 10px;
-        padding-bottom: 10px;
-    }
 </style>
-<section class="admin_add_customer_section">
+<section class="page_section">
     <div class="pagetitle">
         <h1>Kunde erfassen</h1>
         <p></p>

@@ -1,4 +1,4 @@
-    <section class="vector_price_section" id="menu_content_wrapper3">
+    <section class="page_section" id="menu_content_wrapper3">
         <div>
             <div>
                 <h1 class="em_price_title">

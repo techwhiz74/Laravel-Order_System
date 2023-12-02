@@ -1,4 +1,4 @@
-<div class="admin_parameter_ve_section">
+<div class="page_section">
     <div class="pagetitle">
         <h1 style="margin-left: 0 !important">{{ __('home.customer_ve_parameters') }}</h1>
         <p></p>
