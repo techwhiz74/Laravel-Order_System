@@ -1566,10 +1566,6 @@ select#status-filter:focus-visible {
   transition: opacity 0.3s linear, left 0.3s ease-out;
 }
 
-.modal {
-  overflow-y: hidden !important;
-}
-
 .modal.left.fade.in .modal-dialog {
   left: 220px;
   top: 170px;
@@ -1671,18 +1667,11 @@ select#status-filter:focus-visible {
   transform: translate(-50%, -50%);
 }
 
-.order_detail_div1 {
+.order_detail_div {
   border: 1px solid #ddd;
   padding: 10px;
-  margin-bottom: 5px;
-  height: 300px;
   line-height: 1;
-}
-
-.order_detail_div2 {
-  border: 1px solid #ddd;
-  padding: 10px;
-  height: 350px;
+  min-height: 270px;
 }
 
 .order_detail_input_div_element {
@@ -1832,7 +1821,7 @@ select#status-filter:focus-visible {
   right: 0;
   max-width: 100%;
   top: 0;
-  margin-top: 0;
+  margin: 0;
 }
 
 #delete_confirm_popup .modal-content,
@@ -1869,8 +1858,9 @@ select#status-filter:focus-visible {
   position: absolute;
   height: 150px;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  right: 0;
+  transform: translate(0, -50%);
 }
 
 #delete_confirm_popup .modal-body,
@@ -1976,16 +1966,28 @@ select#status-filter:focus-visible {
 #em_freelancer_request_popup .modal-dialog,
 #ve_freelancer_request_popup .modal-dialog,
 #admin_order_detail_popup .modal-dialog,
-#admin_change_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
+#admin_change_popup .modal-dialog,
+#admin_embroidery_payment_archive .modal-dialog,
+#admin_vector_payment_archive .modal-dialog {
+  background-color: rgb(244, 244, 244);
   width: 100%;
-  height: calc(100% - 105px);
   left: 0;
   right: 0;
   max-width: 100%;
-  top: 105px;
-  margin-top: 0;
-  overflow-y: hidden;
+  top: 110px;
+  margin: 0;
+  height: calc(100% - 110px);
+}
+
+#free_embroidery_payment_archive .modal-dialog,
+#free_vector_payment_archive .modal-dialog {
+  background-color: rgb(244, 244, 244);
+  width: 100%;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  margin: 0;
+  height: 100%;
 }
 
 #free_order_detail_popup .modal-content,
@@ -1997,27 +1999,11 @@ select#status-filter:focus-visible {
 #free_vector_payment_archive .modal-content,
 #admin_embroidery_payment_archive .modal-content,
 #admin_vector_payment_archive .modal-content {
-  max-width: 100%;
+  padding: 3vw;
   height: 100%;
-  margin: 0;
-  position: absolute;
-  padding: 20px;
 }
 
-#free_embroidery_payment_archive .modal-dialog,
-#free_vector_payment_archive .modal-dialog,
-#admin_embroidery_payment_archive .modal-dialog,
-#admin_vector_payment_archive .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-  overflow-y: hidden;
-}
+
 
 #admin_customer_parameters_em_popup .modal-dialog,
 #admin_customer_parameters_ve_popup .modal-dialog {
@@ -2159,7 +2145,7 @@ select#status-filter:focus-visible {
 .form-group .control-label,
 .form-group>label {
   font-weight: 400 !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
   color: #060617;
   font-family: "Inter", "Helvetica", monospace;
   line-height: 1;
@@ -2237,6 +2223,10 @@ select#status-filter:focus-visible {
   padding: 3vw;
 }
 
+.box_title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
 
 
 
@@ -3234,17 +3224,6 @@ td {
   height: 150px;
 }
 
-#em_order_rquest_text1,
-#em_order_rquest_text2,
-#em_order_rquest_text3,
-#em_order_rquest_text4,
-#ve_order_rquest_text1,
-#ve_order_rquest_text2,
-#ve_order_rquest_text3,
-#ve_order_rquest_text4 {
-  height: 100px;
-}
-
 .request_li {
   padding: 8px 14px;
   border-right: 1px solid #ddd;
@@ -3263,7 +3242,6 @@ td {
   height: 82px;
   padding: 8px 0 5px 0;
   width: 96px;
-  margin-bottom: 5px;
 }
 
 .folder_button p {
@@ -3289,8 +3267,13 @@ td {
   height: 350px;
 }
 
-#freelacner_job_upload_div,
-#em_change_upload_div {
+.freelancer_change_div {
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 365px;
+}
+
+#freelacner_job_upload_div {
   height: 280px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -3532,6 +3515,19 @@ input[name="selected_customer"]:checked::before {
   margin-top: -4px;
 }
 
+.order_form_validation_deliver_time,
+.order_form_validation_projectname,
+.order_form_validation_size,
+.order_form_validation_products,
+.order_form_file_upload,
+.order_form_validation_checkbox {
+  color: red;
+  font-style: italic;
+  font-size: 13px;
+  display: none;
+  margin-bottom: 10px;
+}
+
 .order_form_submit {
   background: #c4ae79 !important;
   color: #fff !important;
@@ -3618,6 +3614,54 @@ textarea:focus {
 
 .form_dv_wrap {
   margin-bottom: 5px;
+}
+
+.nav-item {
+  font-size: 8px;
+  text-align: center;
+}
+
+.modal-content {
+  border-radius: 0 !important;
+}
+
+.file_view_box {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.file_view_flex_toggle {
+  display: flex;
+}
+
+.file_view_table {
+  height: 280px;
+  width: 100%;
+}
+
+.box_file_upload_form {
+  height: 265px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box_change_file_upload_form {
+  height: 295px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.column_flex {
+  flex-direction: column;
+  border: none !important;
+}
+
+.nav-item {
+  padding: 1px;
 }
 
 
@@ -3763,4 +3807,63 @@ textarea:focus {
   .login_heading h1 {
     font-size: 28px;
   }
+
+
+
+  .file_view_flex_toggle {
+    display: block;
+  }
+
+  .file_view_table {
+    height: auto;
+  }
+
+  #freelacner_job_upload_div {
+    height: auto;
+  }
+
+  .box_file_upload_form,
+  .box_change_file_upload_form {
+    height: auto;
+  }
+
+  .freelancer_job_div,
+  .freelancer_change_div {
+    height: auto;
+  }
+
+  .column_flex {
+    flex-direction: row;
+  }
+
+  .file_view_table {
+    margin-top: 5px;
+  }
+
+  .order_detail_div {
+    min-height: auto;
+  }
+
+  #free_order_detail_popup .modal-dialog,
+  #em_freelancer_request_popup .modal-dialog,
+  #ve_freelancer_request_popup .modal-dialog,
+  #admin_order_detail_popup .modal-dialog,
+  #admin_change_popup .modal-dialog {
+    top: 91px;
+    height: 100%;
+  }
+
+  #free_order_detail_popup .modal-content,
+  #em_freelancer_request_popup .modal-content,
+  #ve_freelancer_request_popup .modal-content,
+  #admin_order_detail_popup .modal-content,
+  #admin_change_popup .modal-content,
+  #free_embroidery_payment_archive .modal-content,
+  #free_vector_payment_archive .modal-content,
+  #admin_embroidery_payment_archive .modal-content,
+  #admin_vector_payment_archive .modal-content {
+    height: auto;
+    min-height: 100%;
+  }
+
 }
