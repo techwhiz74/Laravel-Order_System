@@ -46,12 +46,12 @@
         }
 
         #register_form {
-            padding: 50px 0 !important;
+            padding: 2vw 0 !important;
         }
 
         #register_form .login_wrap {
             max-width: 60vw;
-            padding: 40px 100px;
+            padding: 4vw 5vw;
         }
 
         #register_form .back_btttn {
@@ -71,15 +71,16 @@
             padding-left: calc(var(--mdb-gutter-x)*0.5);
         }
 
-        @media (max-width: 450px) {
+        @media (max-width: 600px) {
 
             #register_form .login_wrap {
-                padding: 40px 20px;
+                padding: 3vh 3vw;
+                max-width: 100%
             }
 
             #register_form .heading_logo .logo_img img,
             .footerrr .fttrr_img img {
-                max-width: 110px;
+                max-width: 100px;
             }
         }
 
@@ -372,13 +373,21 @@
 
 
                             <div class="lgg_resi">
-                                <div class="submit_btn">
-                                    <button type="submit">{{ __('home.register') }}</button>
-                                </div>
-                                <div class="resig_lnkk">
-                                    <p>{{ __('home.already_have_account') }} </p>
-                                    <a href="{{ __('routes.customer-login') }}"
-                                        style="color: #000; margin-left:10px;">{{ __('home.login') }}</a>
+                                <div class="row">
+                                    <div class="col-12 col-md-6">
+                                        <div class="submit_btn">
+                                            <button type="submit">{{ __('home.register') }}</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6" style="display: flex; justify-content:end">
+                                        <div style="display: flex; align-items:center">
+                                            <div class="resig_lnkk">
+                                                <p>{{ __('home.already_have_account') }} </p>
+                                                <a href="{{ __('routes.customer-login') }}"
+                                                    style="color: #444; margin-left:10px; font-weight:900">{{ __('home.login') }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 

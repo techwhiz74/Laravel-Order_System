@@ -131,7 +131,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_form_sentence' => 'Mit der
                         Zustimmung bestätigen Sie,
                         dass Sie durch den Upload Ihrer Dateien, weder gegen geltendes Recht, Copyright
-                        Rechte oder Rechte Dritter verstoßen.<br />
+                        Rechte oder Rechte Dritter verstoßen.
                         Mit der Zustimmung akzeptieren Sie die aktuell gültige Preisliste und deren Aufpreise. Diese
                         Preise sind fixiert und werden
                         nicht im Nachgang verhandelt. Dies gilt speziell für die Durchführung von Bildern und

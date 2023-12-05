@@ -105,6 +105,13 @@
     function menuToggle() {
         const toggleMenu = document.querySelector(".menu");
         toggleMenu.classList.toggle("active");
+        $('.menu').show();
+        // Prevent clicks inside the menu from triggering the document click event
+        if (toggleMenu.classList.contains('active')) {
+            toggleMenu.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
+        }
     }
 </script>
 
@@ -183,3 +190,5 @@
 @include('functions.admin.order-red-view')
 @include('functions.admin.order-yellow-view')
 @include('functions.admin.order-blue-view')
+@include('functions.admin.admin-em-parameter')
+@include('functions.admin.admin-ve-parameter')

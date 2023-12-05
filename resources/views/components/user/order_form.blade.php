@@ -18,45 +18,50 @@
                     <input type="hidden" name="customer_number" value="{{ auth()->user()->customer_number }}" />
                     <input type="hidden" name="ordered_from" value="{{ auth()->user()->name }}" />
                     <div id="order_form_project_name" class="order_form_class">
-                        <div class="row">
-                            <div class="col-12 col-sm-3 col-xl-2">
-                                <label class="order_form_lavel" for="projectname">{{ __('home.projectname') }} <span
-                                        class="reqiurd">*</span></label>
-                            </div>
-                            <div class="col-12 col-sm-9 col-xl-10">
-                                <input type="text" class="order_form_input" name="project_name"
-                                    placeholder="{{ __('home.order_form-projectname_placeholder') }}">
-                                <div class="order_form_validation_projectname">
-                                    {{ __('home.validation_project_name') }}
+                        <div class="form-group form_dv_wrap">
+                            <div class="row">
+                                <div class="col-12 col-sm-3 col-xl-2">
+                                    <label class="order_form_lavel" for="projectname">{{ __('home.projectname') }} <span
+                                            class="reqiurd">*</span></label>
+                                </div>
+                                <div class="col-12 col-sm-9 col-xl-10">
+                                    <input type="text" class="form-control" name="project_name"
+                                        placeholder="{{ __('home.order_form-projectname_placeholder') }}">
+                                    <div class="order_form_validation_projectname">
+                                        {{ __('home.validation_project_name') }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="order_form_size" class="order_form_class">
-                        <div class="row">
-                            <div class="col-12 col-sm-3 col-xl-2">
-                                <label class="order_form_lavel" for="size">{{ __('home.size') }} <span
-                                        class="reqiurd">*</span>
-                                </label>
-                            </div>
-                            <div class="col-12 col-sm-9 col-xl-10">
-                                <div style="display: flex">
-                                    <div style="display: flex; width:50%">
-                                        <div style="display: flex;">
-                                            <input type="text" class="order_form_input" id="input_number_format"
-                                                name="size"><span style="display:flex; margin:auto 10px;">mm</span>
+                        <div class="form-group form_dv_wrap">
+                            <div class="row">
+                                <div class="col-12 col-sm-3 col-xl-2">
+                                    <label class="order_form_lavel" for="size">{{ __('home.size') }} <span
+                                            class="reqiurd">*</span>
+                                    </label>
+                                </div>
+                                <div class="col-12 col-sm-9 col-xl-10">
+                                    <div style="display: flex">
+                                        <div style="display: flex; width:50%">
+                                            <div style="display: flex;">
+                                                <input type="text" class="form-control" id="input_number_format"
+                                                    name="size"><span
+                                                    style="display:flex; margin:auto 10px;">mm</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div style="display:flex; margin:auto; width:50%">
-                                        <div class="input-group">
-                                            <input type="radio" id="order_form_width" name="width_height"
-                                                value="Breite" checked>
-                                            <label class="order_form_lavel" style="margin-left: 5px;"
-                                                for="Width">{{ __('home.width') }}</label>
-                                            <input type="radio" id="order_form_heght" name="width_height"
-                                                value="Höhe" style="margin-left: 20px;">
-                                            <label class="order_form_lavel" style="margin-left: 5px;"
-                                                for="Height">{{ __('home.height') }}</label>
+                                        <div style="display:flex; margin:auto; width:50%">
+                                            <div class="input-group">
+                                                <input type="radio" id="order_form_width" name="width_height"
+                                                    value="Breite" checked>
+                                                <label class="order_form_lavel" style="margin-left: 5px;"
+                                                    for="Width">{{ __('home.width') }}</label>
+                                                <input type="radio" id="order_form_heght" name="width_height"
+                                                    value="Höhe" style="margin-left: 20px;">
+                                                <label class="order_form_lavel" style="margin-left: 5px;"
+                                                    for="Height">{{ __('home.height') }}</label>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="order_form_validation_size">
@@ -350,7 +355,7 @@
                                                     {{ __('home.vest') }}
                                                 </div>
                                                 <div>
-                                                    <input id="manualInput" class="order_form_input" type="text"
+                                                    <input id="manualInput" class="form-control" type="text"
                                                         placeholder="{{ __('home.manual_input') }}"
                                                         style="height:30px; margin: 10px 0; ">
                                                 </div>
@@ -376,14 +381,16 @@
                     </div>
 
                     <div id="order_form_instruction" class="order_form_class">
-                        <div class="row">
-                            <div class="col-12 col-sm-3 col-xl-2">
-                                <label class="order_form_lavel"
-                                    for="special_instructions">{{ __('home.special instructions') }}</label>
-                            </div>
-                            <div class="col-12 col-sm-9 col-xl-10">
-                                <textarea id="order_form_textarea" name="special_instructions"
-                                    placeholder="{{ __('home.order_form_textarea_placeholder') }}" style="height:100px"></textarea>
+                        <div class="form-group form_dv_wrap">
+                            <div class="row">
+                                <div class="col-12 col-sm-3 col-xl-2">
+                                    <label class="order_form_lavel"
+                                        for="special_instructions">{{ __('home.special instructions') }}</label>
+                                </div>
+                                <div class="col-12 col-sm-9 col-xl-10">
+                                    <textarea id="order_form_textarea" name="special_instructions" class="form-control"
+                                        placeholder="{{ __('home.order_form_textarea_placeholder') }}" style="height:100px"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>

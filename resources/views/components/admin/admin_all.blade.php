@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">Alle Aufträge
+            <div class="pagetitle" style="padding-bottom: 1vw !important;">Alle Aufträge
             </div>
             <div>
                 <button id="admin_all_table_reload_button" style="display: none"></button>

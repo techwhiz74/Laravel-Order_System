@@ -12,12 +12,14 @@
                         <form action="" id="admin_request_form">
                             <input type="hidden" name="admin_request_id" value="" />
                             <input type="hidden" name="admin_request_time" value="" />
-                            <div class="row">
-                                <div class="col-12 col-md-3 form_label">
-                                    <label class="control-label">Änderungswünsche</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <textarea name="admin_order_request_text" placeholder="Änderungswünsche" style="height: 150px"></textarea>
+                            <div class="form-group form_dv_wrap">
+                                <div class="row">
+                                    <div class="col-12 col-md-3 form_label">
+                                        <label class="control-label">Änderungswünsche</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <textarea name="admin_order_request_text" class="form-control" placeholder="Änderungswünsche" style="height: 150px"></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row" style="margin-top:5px;">

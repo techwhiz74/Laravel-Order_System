@@ -1,278 +1,435 @@
 <section class="page_section">
-    <div class="pagetitle">
-        <h1>Kunde erfassen</h1>
-        <p></p>
-    </div>
-    <div class="order_fome_container">
-        <form id="admin_add_customer" action="" style="padding-right:10px;">
-            <div class="customer_profile_page">
-                <div class="div_flex">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <fieldset class="field-group row" style="margin-right: 5px !important;">
-                            <legend class="field-caption">{{ __('home.general_information') }}</legend>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="control-label">{{ __('home.customer_number') }}
-                                    </label>
-                                    <input type="text" name="add_customer_number" class="form-control"
-                                        value="">
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12"></div>
-                </div>
-                <div class="div_flex">
-                    <div class="col-lg-6 col-md-6 col-12">
-                        <fieldset class="field-group row" style="padding-bottom: 15px; margin-right:5px !important;">
-                            <legend class="field-caption">{{ __('home.customer_data') }}</legend>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.company') }} </label>
-                                    <input type="text" name="add_company" class="form-control" value="">
-                                    @if ($errors->has('company'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.company_addition') }} </label>
-                                    <input type="text" name="add_company_addition" class="form-control"
-                                        value="">
-                                    @if ($errors->has('company_addition'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="padding-right:0">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="">{{ __('home.name') }}</label>
-                                    <input type="text" name="add_name" class="form-control" value="">
-                                    @if ($errors->has('name'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="" style="width:65px;">{{ __('home.first_name') }}</label>
-                                    <input type="text" name="add_first_name" class="form-control"
-                                        style="width: calc(100% - 75px) !important;" value="">
-                                    @if ($errors->has('first_name'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.street_number') }}</label>
-                                    <input type="text" name="add_street_number" class="form-control" value="">
-                                    @if ($errors->has('street_number'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="width: 42%;">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.postal_code') }}</label>
-                                    <input type="text" name="add_postal_code" class="form-control" value="">
-                                    @if ($errors->has('postal_code'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="width: 58%; padding-left:0;">
-                                <div class="form-group form_dv_wrap">
-                                    <label style="width:30px">{{ __('home.location') }}</label>
-                                    <input type="text" name="add_location" class="form-control"
-                                        style="width: calc(100% - 40px) !important;" value="">
-                                    @if ($errors->has('location'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.country') }}</label>
-                                    <select name="add_country" class="form-control">
-                                        <option value="Deutschland">Deutschland</option>
-                                        <option value="Österreich">Österreich</option>
-                                        <option value="Schweiz">Schweiz</option>
-                                        <option value="Italien">Italien</option>
-                                        <option value="Niederlande">Niederlande</option>
-                                    </select>
-                                    @if ($errors->has('country'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="">{{ __('home.email') }}</label>
-                                    <input type="email" name="add_email" class="form-control" value="">
-                                    @if ($errors->has('email'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.website') }}</label>
-                                    <input type="text" name="add_website" class="form-control" value="">
-                                    @if ($errors->has('website'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="padding-right: 0;">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="">{{ __('home.phone') }} </label>
-                                    <input type="text" name="add_phone" class="form-control" value="">
-                                    @if ($errors->has('phone'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="" style="width:65px;">{{ __('home.mobile') }}
-                                    </label>
-                                    <input type="text" name="add_mobile" class="form-control"
-                                        style="width: calc(100% - 75px) !important;" value="">
-                                    @if ($errors->has('mobile'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label class="">{{ __('home.password') }} </label>
-                                    <input type="text" name="add_password" class="form-control" value="">
-                                    @if ($errors->has('password'))
-                                        <span class="text-danger">{{ __('home.requiredMessage') }}<i
-                                                class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
-                                    @endif
-                                </div>
-                            </div>
-                        </fieldset>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-12"
-                        style="display: flex; flex-direction:column; justify-content:space-between">
-                        <fieldset class="field-group row" style="margin-left: 5px !important;">
-                            <legend class="field-caption">{{ __('home.customer_information') }}
-                            </legend>
-                            <div class="col-lg-6 col-md-12" style="padding-right: 0">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.tax_number') }} </label>
-                                    <input type="text" name="add_tax_number" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label style="width:60px;">{{ __('home.vat_number') }} </label>
-                                    <input type="text" name="add_vat_number" class="form-control"
-                                        style="width: calc(100% - 70px) !important;" value="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="padding-right:0;">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.register_number') }} </label>
-                                    <input type="text" name="add_register_number" class="form-control"
-                                        value="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12"></div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.kd_group') }} </label>
-                                    <select name="add_kd_group" class="form-control">
-                                        <option value=""></option>
-                                        <option value="Wiederverkäufer">
-                                            Wiederverkäufer
-                                        </option>
-                                        <option value="Endkunde">Endkunde
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.kd_category') }} </label>
-                                    <select name="add_kd_category" class="form-control">
-                                        <option value=""></option>
-                                        <option value="Stickprogramme & Vektordateien">
-                                            Stickprogramme & Vektordateien
-                                        </option>
-                                        <option value="Standard">Standard
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.payment_method') }} </label>
-                                    <select name="add_payment_method" class="form-control">
-                                        <option value=""></option>
-                                        <option value="Sofort ohne Abzug">
-                                            Sofort ohne Abzug
-                                        </option>
-                                        <option value="Lastschrift">
-                                            Lastschrift
-                                        </option>
-                                        <option value="Vorkasse">
-                                            Vorkasse</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.bank_name') }} </label>
-                                    <input type="text" name="add_bank_name" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12" style="padding-right: 0; padding-bottom:10px;">
-                                <div class="form-group form_dv_wrap">
-                                    <label>{{ __('home.IBAN') }} </label>
-                                    <input type="text" name="add_IBAN" class="form-control" value="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <div class="form-group form_dv_wrap">
-                                    <label style="width:60px;">{{ __('home.BIC') }} </label>
-                                    <input type="text" name="add_BIC" class="form-control"
-                                        style="width: calc(100% - 70px) !important;" value="">
-                                </div>
-                            </div>
-                        </fieldset>
+    <div class="row">
+        <div class="col-md-1 col-xl-2"></div>
+        <div class="col-12 col-md-10 col-xl-8">
+            <div class="pagetitle">Kunde erfassen
+            </div>
+            <div style="font-size: 13px; font-family:'Inter';">
+                <form id="admin_add_customer" action="">
+                    <div class="customer_profile_page">
                         <div class="row">
-                            <div class="col-12 ">
-                                <div class="upload_btn">
-                                    <button class="btn btn-primary btn-block" type="submit">Kunde erfassen</button>
+                            <div class="col-lg-6 col-12">
+                                <fieldset class="field-group row">
+                                    <legend class="field-caption">{{ __('home.general_information') }}</legend>
+                                    <div class="col-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label class="control-label">{{ __('home.customer_number') }}
+                                                    </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_customer_number"
+                                                        class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-12"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <fieldset class="field-group row">
+                                    <legend class="field-caption">{{ __('home.customer_data') }}</legend>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.company') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_company" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('company'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.company_addition') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_company_addition"
+                                                        class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('company_addition'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.name') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_name" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('name'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.first_name') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_first_name" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('first_name'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.street_number') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_street_number" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('street_number'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.postal_code') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_postal_code" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('postal_code'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.location') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_location" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('location'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.country') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="add_country" class="form-control">
+                                                        <option value="Deutschland">Deutschland</option>
+                                                        <option value="Österreich">Österreich</option>
+                                                        <option value="Schweiz">Schweiz</option>
+                                                        <option value="Italien">Italien</option>
+                                                        <option value="Niederlande">Niederlande</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('country'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.email') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_email" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('email'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.website') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_website" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('website'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.phone') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_phone" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('phone'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.mobile') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_mobile" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('mobile'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.password') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_password" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                            @if ($errors->has('password'))
+                                                <span class="text-danger">{{ __('home.requiredMessage') }}<i
+                                                        class="fa fa-exclamation-circle"
+                                                        aria-hidden="true"></i></span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-12"
+                                style="display: flex; flex-direction:column; justify-content:space-between">
+                                <fieldset class="field-group row">
+                                    <legend class="field-caption">{{ __('home.customer_information') }}
+                                    </legend>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.tax_number') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_tax_number" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.vat_number') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_vat_number" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.register_number') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_register_number"
+                                                        class="form-control" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.kd_group') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="add_kd_group" class="form-control">
+                                                        <option value=""></option>
+                                                        <option value="Wiederverkäufer">
+                                                            Wiederverkäufer
+                                                        </option>
+                                                        <option value="Endkunde">Endkunde
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.kd_category') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="add_kd_category" class="form-control">
+                                                        <option value=""></option>
+                                                        <option value="Stickprogramme & Vektordateien">
+                                                            Stickprogramme & Vektordateien
+                                                        </option>
+                                                        <option value="Standard">Standard
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.payment_method') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <select name="add_payment_method" class="form-control">
+                                                        <option value=""></option>
+                                                        <option value="Sofort ohne Abzug">
+                                                            Sofort ohne Abzug
+                                                        </option>
+                                                        <option value="Lastschrift">
+                                                            Lastschrift
+                                                        </option>
+                                                        <option value="Vorkasse">
+                                                            Vorkasse</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-3 form_label">
+                                                    <label>{{ __('home.bank_name') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-9">
+                                                    <input type="text" name="add_bank_name" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.IBAN') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_IBAN" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="form-group form_dv_wrap">
+                                            <div class="row">
+                                                <div class="col-12 col-md-6 form_label">
+                                                    <label>{{ __('home.BIC') }} </label>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <input type="text" name="add_BIC" class="form-control"
+                                                        value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="row">
+                                    <div class="col-12 ">
+                                        <div class="upload_btn">
+                                            <button class="btn btn-primary btn-block" type="submit">Kunde
+                                                erfassen</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-
-        </form>
+        </div>
+        <div class="col-md-1 col-xl-2"></div>
     </div>
 </section>
-
 <script>
     $('#admin_add_customer').submit(function(e) {
         e.preventDefault();

@@ -1,211 +1,8 @@
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    .order_form_input,
-    textarea,
-    .ms-options-wrap>button,
-    .ms-options-wrap>button:focus {
-        width: 100%;
-        height: 40px;
-        padding: 12px;
-        border: 1px solid #ddd !important;
-        display: flex;
-        margin: auto;
-    }
-
-    .ms-options-wrap * {
-        font-size: 16px;
-    }
-
-    .ms-res-ctn {
-        top: 100%;
-        left: 0;
-    }
-
-    .order_form_lavel {
-        display: inline-block;
-    }
-
-    .admin_order_form_submit {
-        background: #c4ae79 !important;
-        color: #fff !important;
-        height: 40px !important;
-        border: 0;
-        border-radius: 0;
-        font-size: 13px;
-        padding: 6px 25px;
-        font-family: "Inter", "Helvetica", monospace;
-        float: right;
-    }
-
-
-    .dropdown-toggle.product-multiselect {
-        height: 40px;
-    }
-
-    .dropdown-toggle.product-multiselect_em_ex {
-        height: 40px;
-    }
-
-    .dropdown-toggle.product-multiselect div {
-        max-width: 100%;
-        overflow-y: visible;
-        text-wrap: wrap;
-        width: 100%;
-        min-height: 100%;
-        background-color: #fff;
-        border: 1px solid #ddd;
-    }
-
-    .dropdown-toggle.product-multiselect_em_ex div {
-        max-width: 100%;
-        overflow-y: visible;
-        text-wrap: wrap;
-        width: 100%;
-        min-height: 100%;
-        background-color: #fff;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-    }
-
-    .dropdown-toggle.product-multiselect::after {
-        display: none;
-    }
-
-    .dropdown-toggle.product-multiselect_em_ex::after {
-        display: none;
-    }
-
-    /* .order_form_submit:hover {
-        background-color: #45a049;
-    }
-
-    .order_form_submit_em_ex:hover {
-        background-color: #45a049;
-    } */
-
-
-    .col-20 {
-        float: left;
-        width: 20%;
-        margin-top: 10px;
-    }
-
-    .col-80 {
-        float: left;
-        width: 80%;
-        margin-top: 6px;
-    }
-
-    .col-lg-7 {
-        flex: 0 0 auto;
-        width: 100%;
-    }
-
-    /* Clear floats after the columns */
-    /* .row::after {
-        content: "";
-        display: table;
-        clear: both;
-    } */
-
-    .order_form_check_label {
-        margin-left: 10px;
-        margin-top: -4px;
-    }
-
-    .ms-options-wrap>.ms-options>ul input[type="checkbox"] {
-        margin: auto 5px auto 0;
-        position: static;
-    }
-
-    .ms-ctn .ms-sel-ctn {
-        margin-left: -7px;
-        padding-left: 10px;
-    }
-
-    .ms-ctn .ms-trigger .ms-trigger-ico {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        vertical-align: bottom;
-        border-top: 4px solid #333;
-        border-right: 4px solid transparent;
-        border-left: 4px solid transparent;
-        content: "";
-        margin-left: 8px;
-        margin-top: 15px;
-    }
-
-    .ms-res-ctn .ms-res-item {
-        line-height: 25px;
-        text-align: left;
-        padding: 2px 15px;
-        color: #666;
-        cursor: pointer;
-    }
-
-    .clear-products-button {
-        position: absolute;
-        right: 10px;
-        top: 0;
-        height: 100%;
-        border: none;
-        background-color: transparent;
-    }
-
-    .btn-success {
-        color: #fff;
-        background-color: #c3ac6d;
-        border: none;
-        border-radius: 0;
-    }
-
-    .btn-success :hover {
-        background-color: #c3ac6d !important;
-    }
-
-    .upload_table_button {
-        color: white;
-        background-color: #c3ac6d;
-        border: none;
-        border-radius: 0;
-        padding: 5px 8px;
-        width: 80px;
-    }
-
-    .order_form_validation_deliver_time,
-    .order_form_validation_projectname,
-    .order_form_validation_size,
-    .order_form_validation_products,
-    .order_form_file_upload,
-    .order_form_validation_checkbox,
-    .admin_search_customer_validation {
-        color: red;
-        font-style: italic;
-        font-size: 13px;
-        display: none;
-        margin-bottom: 10px;
-    }
-
-
-    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-    @media screen and (max-width: 600px) {
-
-        .col-25,
-        .col-75 {
-            width: 100%;
-            margin-top: 0;
-        }
-    }
-</style>
 <section class="page_section">
     <div class="row">
         <div class="col-md-1 col-lg-2"></div>
         <div class="col-12 col-md-10 col-lg-8">
-            <div class="pagetitle">
+            <div class="pagetitle" id="order_form_title">
                 {{ __('home.orderform_title') }}
             </div>
             <div style="margin-block: 10px;">
@@ -254,45 +51,49 @@
                 <input type="hidden" name="ordered_from" value="" />
                 <input type="hidden" name="searched_id" value="" />
                 <div id="order_form_project_name" class="order_form_class">
-                    <div class="row">
-                        <div class="col-12 col-sm-3 col-xl-2">
-                            <label class="order_form_lavel" for="projectname">{{ __('home.projectname') }} <span
-                                    class="reqiurd">*</span></label>
-                        </div>
-                        <div class="col-12 col-sm-9 col-xl-10">
-                            <input type="text" class="order_form_input" name="project_name"
-                                placeholder="{{ __('home.order_form-projectname_placeholder') }}">
-                            <div class="order_form_validation_projectname">
-                                {{ __('home.validation_project_name') }}
+                    <div class="form-group form_dv_wrap">
+                        <div class="row">
+                            <div class="col-12 col-sm-3 col-xl-2">
+                                <label class="order_form_lavel" for="projectname">{{ __('home.projectname') }} <span
+                                        class="reqiurd">*</span></label>
+                            </div>
+                            <div class="col-12 col-sm-9 col-xl-10">
+                                <input type="text" class="form-control" name="project_name"
+                                    placeholder="{{ __('home.order_form-projectname_placeholder') }}">
+                                <div class="order_form_validation_projectname">
+                                    {{ __('home.validation_project_name') }}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div id="order_form_size" class="order_form_class">
-                    <div class="row">
-                        <div class="col-12 col-sm-3 col-xl-2">
-                            <label class="order_form_lavel" for="size">{{ __('home.size') }} <span
-                                    class="reqiurd">*</span>
-                            </label>
-                        </div>
-                        <div class="col-12 col-sm-9 col-xl-10">
-                            <div style="display: flex">
+                    <div class="form-group form_dv_wrap">
+                        <div class="row">
+                            <div class="col-12 col-sm-3 col-xl-2">
+                                <label class="order_form_lavel" for="size">{{ __('home.size') }} <span
+                                        class="reqiurd">*</span>
+                                </label>
+                            </div>
+                            <div class="col-12 col-sm-9 col-xl-10">
                                 <div style="display: flex">
-                                    <div style="display: flex;">
-                                        <input type="text" class="order_form_input" id="input_number_format"
-                                            name="size"><span style="display:flex; margin:auto 10px;">mm</span>
+                                    <div style="display: flex; width:50%">
+                                        <div style="display: flex;">
+                                            <input type="text" class="form-control" id="input_number_format"
+                                                name="size"><span style="display:flex; margin:auto 10px;">mm</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div style="display:flex; margin:auto;">
-                                    <div class="input-group">
-                                        <input type="radio" id="order_form_width" name="width_height" value="Breite"
-                                            checked>
-                                        <label class="order_form_lavel" style="margin-left: 5px;"
-                                            for="Width">{{ __('home.width') }}</label>
-                                        <input type="radio" id="order_form_heght" name="width_height" value="Höhe"
-                                            style="margin-left: 20px;">
-                                        <label class="order_form_lavel" style="margin-left: 5px;"
-                                            for="Height">{{ __('home.height') }}</label>
+                                    <div style="display:flex; margin:auto; width:50%;">
+                                        <div class="input-group">
+                                            <input type="radio" id="order_form_width" name="width_height"
+                                                value="Breite" checked>
+                                            <label class="order_form_lavel" style="margin-left: 5px;"
+                                                for="Width">{{ __('home.width') }}</label>
+                                            <input type="radio" id="order_form_heght" name="width_height"
+                                                value="Höhe" style="margin-left: 20px;">
+                                            <label class="order_form_lavel" style="margin-left: 5px;"
+                                                for="Height">{{ __('home.height') }}</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="order_form_validation_size">
@@ -586,7 +387,7 @@
                                                 {{ __('home.vest') }}
                                             </div>
                                             <div>
-                                                <input id="manualInput" class="order_form_input" type="text"
+                                                <input id="manualInput" class="form-control" type="text"
                                                     placeholder="{{ __('home.manual_input') }}"
                                                     style="height:30px; margin: 10px 0; ">
                                             </div>
@@ -611,14 +412,16 @@
                 </div>
 
                 <div id="order_form_instruction" class="order_form_class">
-                    <div class="row">
-                        <div class="col-12 col-sm-3 col-xl-2">
-                            <label class="order_form_lavel"
-                                for="special_instructions">{{ __('home.special instructions') }}</label>
-                        </div>
-                        <div class="col-12 col-sm-9 col-xl-10">
-                            <textarea id="order_form_textarea" name="special_instructions"
-                                placeholder="{{ __('home.order_form_textarea_placeholder') }}" style="height:100px"></textarea>
+                    <div class="form-group form_dv_wrap">
+                        <div class="row">
+                            <div class="col-12 col-sm-3 col-xl-2">
+                                <label class="order_form_lavel"
+                                    for="special_instructions">{{ __('home.special instructions') }}</label>
+                            </div>
+                            <div class="col-12 col-sm-9 col-xl-10">
+                                <textarea id="order_form_textarea" name="special_instructions" class="form-control"
+                                    placeholder="{{ __('home.order_form_textarea_placeholder') }}" style="height:100px"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

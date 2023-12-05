@@ -57,8 +57,8 @@
                                 </div>
                                 <div class="logo_img">
                                     <a href="{{ asset('/') }}">
-                                        <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}"
-                                            alt="empty">
+                                        <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty"
+                                            class="login_logo">
                                     </a>
                                 </div>
                             </div>

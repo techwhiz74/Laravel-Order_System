@@ -1,39 +1,3 @@
-<section class="page_section">
-    <div class="row">
-        <div class="col-xl-1"></div>
-        <div class="col-12 col-xl-10">
-            <div class="pagetitle">Abrechnung Vektordateien
-            </div>
-            <div>
-                <div>
-                    <div class="responsive-table">
-                        <button id="ve_admin_payment_table_reload_button" style="display: none"></button>
-                        <table id="ve_admin_payment_table" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th style="text-align:center;">
-                                        {{ __('home.order_type') }}</th>
-                                    <th>{{ __('home.delivery_time') }}</th>
-                                    <th>{{ __('home.order') }}</th>
-                                    <th>{{ __('home.date') }}</th>
-                                    <th>{{ __('home.project') }}</th>
-                                    <th style="text-align:center !important;">
-                                        Zahl zählen</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                    <div class="upload_btn">
-                        <button class="btn btn-primary btn-block" id="admin_ve_payment_archive">Zahlungsarchiv</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-1"></div>
-    </div>
-</section>
-@include('components.admin.admin-ve-payment-archive')
 <script>
     $.ajaxSetup({
         headers: {
@@ -41,10 +5,10 @@
         }
     });
 
-    var ve_admin_payment_table;
+    var em_admin_payment_table;
 
     $(function() {
-        ve_admin_payment_table = $('#ve_admin_payment_table').DataTable({
+        em_admin_payment_table = $('#em_admin_payment_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -56,9 +20,10 @@
                 }
             },
             ajax: {
-                url: "{{ __('routes.admin-ve-payment') }}",
+                url: "{{ __('routes.admin-em-payment') }}",
                 type: "get",
             },
+
             columns: [{
                     data: 'type',
                     name: 'type',
@@ -88,16 +53,16 @@
                 },
             ]
         });
-        $('#ve_admin_payment_table_reload_button').click(function() {
-            ve_admin_payment_table.ajax.reload();
+        $('#em_admin_payment_table_reload_button').click(function() {
+            em_admin_payment_table.ajax.reload();
         })
     });
     $(function() {
-        $('#admin_ve_payment_archive').click(function() {
-            $('#admin_ve_payment_archive_table').DataTable().destroy();
-            $('#admin_vector_payment_archive').modal('show');
-            var admin_ve_payment_archive_table;
-            admin_ve_payment_archive_table = $('#admin_ve_payment_archive_table').DataTable({
+        $('#admin_em_payment_archive').click(function() {
+            $('#admin_em_payment_archive_table').DataTable().destroy();
+            $('#admin_embroidery_payment_archive').modal('show');
+            var admin_em_payment_archive_table;
+            admin_em_payment_archive_table = $('#admin_em_payment_archive_table').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -109,7 +74,7 @@
                     }
                 },
                 ajax: {
-                    url: '{{ __('routes.admin-vector-payment-archive') }}',
+                    url: '{{ __('routes.admin-embroidery-payment-archive') }}',
                     type: "get",
                 },
                 columns: [{
@@ -141,8 +106,8 @@
                     },
                 ]
             });
-            $('#admin_ve_payment_archive_table_reload_button').click(function() {
-                admin_ve_payment_archive_table.ajax.reload();
+            $('#admin_em_payment_archive_table_reload_button').click(function() {
+                admin_em_payment_archive_table.ajax.reload();
             });
         });
     })

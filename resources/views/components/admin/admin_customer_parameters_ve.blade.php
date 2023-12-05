@@ -1,32 +1,38 @@
 <div class="page_section">
-    <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">{{ __('home.customer_ve_parameters') }}</h1>
-        <p></p>
-    </div>
-    <button style="display: none;" id="admin_parameter_ve_table_reload_button"></button>
-    <div style="margin-top: 40px;">
-        <input type="hidden" name="admin_ve_parameter_customer_id">
-        <div class="responsive-table">
-            <table id="admin_parameter_ve_table" class="table table-striped" style="width:100%; font-size:11.5px;">
-                <thead>
-                    <tr>
-                        <th>{{ __('home.customer_number') }}</th>
-                        <th>{{ __('home.company') }}</th>
-                        <th>{{ __('home.name') }}</th>
-                        <th>{{ __('home.first_name') }}</th>
-                        <th>{{ __('home.phone') }}</th>
-                        <th>{{ __('home.email') }}</th>
-                        <th>{{ __('home.street_number') }}</th>
-                        <th>{{ __('home.postal_code') }}</th>
-                        <th>{{ __('home.location') }}</th>
-                        <th>{{ __('home.country') }}</th>
-                        <th style="max-width: 50px !important; text-align:center;"><img
-                                src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon"></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-xl-10">
+            <div class="pagetitle">{{ __('home.customer_ve_parameters') }}
+            </div>
+            <button style="display: none;" id="admin_parameter_ve_table_reload_button"></button>
+            <div>
+                <input type="hidden" name="admin_ve_parameter_customer_id">
+                <div class="responsive-table">
+                    <table id="admin_parameter_ve_table" class="table table-striped"
+                        style="width:100%; font-size:11.5px;">
+                        <thead>
+                            <tr>
+                                <th>{{ __('home.customer_number') }}</th>
+                                <th>{{ __('home.company') }}</th>
+                                <th>{{ __('home.name') }}</th>
+                                <th>{{ __('home.first_name') }}</th>
+                                <th>{{ __('home.phone') }}</th>
+                                <th>{{ __('home.email') }}</th>
+                                <th>{{ __('home.street_number') }}</th>
+                                <th>{{ __('home.postal_code') }}</th>
+                                <th>{{ __('home.location') }}</th>
+                                <th>{{ __('home.country') }}</th>
+                                <th style="max-width: 50px !important; text-align:center;"><img
+                                        src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        <div class="col-xl-1"></div>
     </div>
 </div>
 @include('components.admin.customer_parameters_ve')

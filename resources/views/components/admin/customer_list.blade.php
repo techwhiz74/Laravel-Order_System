@@ -1,33 +1,38 @@
 <div class="page_section">
-    <div class="pagetitle">
-        <h1 style="margin-left: 0 !important">Kundenliste</h1>
-        <p></p>
-    </div>
-    <button style="display: none;" id="customer_list_table_reload_button"></button>
-    <div style="margin-top: 40px;">
-
-        <div class="responsive-table">
-            <table id="admin_customer_list_table" class="table table-striped" style="width:100%; font-size:11.5px;">
-                <thead>
-                    <tr>
-                        <th>{{ __('home.customer_number') }}</th>
-                        <th>{{ __('home.company') }}</th>
-                        <th>{{ __('home.name') }}</th>
-                        <th>{{ __('home.first_name') }}</th>
-                        <th>{{ __('home.phone') }}</th>
-                        <th>{{ __('home.email') }}</th>
-                        <th>{{ __('home.street_number') }}</th>
-                        <th>{{ __('home.postal_code') }}</th>
-                        <th>{{ __('home.location') }}</th>
-                        <th>{{ __('home.country') }}</th>
-                        <th style="max-width: 50px !important; text-align:center;"><img
-                                src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon"></th>
-                        <th style="max-width: 50px !important; text-align:center;"></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+    <div class="row">
+        <div class="col-xl-1"></div>
+        <div class="col-12 col-xl-10">
+            <div class="pagetitle">Kundenliste
+            </div>
+            <button style="display: none;" id="customer_list_table_reload_button"></button>
+            <div>
+                <div class="responsive-table">
+                    <table id="admin_customer_list_table" class="table table-striped"
+                        style="width:100%; font-size:11.5px;">
+                        <thead>
+                            <tr>
+                                <th>{{ __('home.customer_number') }}</th>
+                                <th>{{ __('home.company') }}</th>
+                                <th>{{ __('home.name') }}</th>
+                                <th>{{ __('home.first_name') }}</th>
+                                <th>{{ __('home.phone') }}</th>
+                                <th>{{ __('home.email') }}</th>
+                                <th>{{ __('home.street_number') }}</th>
+                                <th>{{ __('home.postal_code') }}</th>
+                                <th>{{ __('home.location') }}</th>
+                                <th>{{ __('home.country') }}</th>
+                                <th style="text-align:center;"><img
+                                        src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
+                                </th>
+                                <th style="text-align:center;"></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+        <div class="col-xl-1"></div>
     </div>
 </div>
 @include('components.admin.customer_profile_edit')

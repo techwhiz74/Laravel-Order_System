@@ -5,7 +5,7 @@
             <div class="pagetitle">
                 {{ __('home.customer_em_parameters') }}
             </div>
-            <div class="order_fome_container">
+            <div>
                 <div class="row">
                     <div class="col-12">
                         <fieldset class="field-group row">

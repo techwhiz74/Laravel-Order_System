@@ -258,3 +258,33 @@
         </div>
     </nav>
 </header>
+<script>
+    $(document).ready(function() {
+        $('.navbar-nav .nav-link').on('click', function() {
+            $('#navbarSupportedContent').collapse('hide');
+        });
+        $(document).on('click', function(event) {
+            // Check if the click is outside the navbar
+            if (!$(event.target).closest('.navbar-collapse').length) {
+                // Click is outside the navbar, so collapse it
+                $('#navbarSupportedContent').collapse('hide');
+            }
+        });
+
+        // Prevent clicks inside the navbar from triggering the above document click event
+        $('.navbar-collapse').on('click', function(event) {
+            event.stopPropagation();
+        });
+        $(document).on('click', function(event) {
+            if (!$(event.target).closest('.menu').length) {
+                // Click is outside the menu, so close the menu
+                $('.menu').hide();
+            }
+        });
+
+        $('.action').on('click', function(event) {
+            event
+                .stopPropagation(); // Prevent clicks inside the action from triggering the document click event
+        });
+    });
+</script>
