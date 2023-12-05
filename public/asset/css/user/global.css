@@ -798,12 +798,6 @@ thead {
   color: #444;
 }
 
-#view-order>thead tr th,
-#view-order>thead tr td {
-  width: auto;
-  padding-left: 30px;
-}
-
 
 #view-order.table>:not(caption)>*>*,
 #customer_staffs.table>:not(caption)>*>*,
@@ -827,7 +821,7 @@ thead {
 #admin_yellow_table.table>:not(caption)>*>*,
 #admin_red_table.table>:not(caption)>*>*,
 #admin_blue_table.table>:not(caption)>*>* {
-  padding: 10px;
+  padding: 10px 4px;
 }
 
 
@@ -1618,60 +1612,15 @@ select#status-filter:focus-visible {
   color: #c4ae79 !important;
 }
 
-.employee-list {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
-
-#order_detail_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#order_detail_popup .modal-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-
-#order_request_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#order_request_popup .modal-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .order_detail_div {
   border: 1px solid #ddd;
   padding: 10px;
   line-height: 1;
   min-height: 270px;
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
 .order_detail_input_div_element {
@@ -1709,66 +1658,6 @@ select#status-filter:focus-visible {
   margin-bottom: 10px;
 }
 
-#order_change_popup .modal-dialog,
-#admin_request_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#order_change_popup .modal-content,
-#admin_request_popup .modal-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#order_form_success_popup .modal-dialog,
-#order_change_success_popup .modal-dialog,
-#change_profile_success_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#order_form_success_popup .modal-content,
-#order_change_success_popup .modal-content,
-#change_profile_success_popup .modal-content {
-  max-width: 500px;
-  margin: 0 auto;
-  height: 150px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#order_form_success_popup .modal-body,
-#order_change_success_popup .modal-body,
-#change_profile_success_popup .modal-body {
-  padding: 20px !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 13px;
-  height: 100%;
-}
-
 .order_form_file_uplaod_command {
   color: #c3ac6d;
   text-align: center;
@@ -1784,6 +1673,9 @@ select#status-filter:focus-visible {
   font-size: 13px;
 }
 
+#order_form_success_popup .modal-dialog,
+#order_change_success_popup .modal-dialog,
+#change_profile_success_popup .modal-dialog,
 #delete_confirm_popup .modal-dialog,
 #end_job_success_popup .modal-dialog,
 #end_em_change_success_popup .modal-dialog,
@@ -1824,6 +1716,9 @@ select#status-filter:focus-visible {
   margin: 0;
 }
 
+#order_form_success_popup .modal-content,
+#order_change_success_popup .modal-content,
+#change_profile_success_popup .modal-content,
 #delete_confirm_popup .modal-content,
 #end_job_success_popup .modal-content,
 #end_em_change_success_popup .modal-content,
@@ -1863,6 +1758,9 @@ select#status-filter:focus-visible {
   transform: translate(0, -50%);
 }
 
+#order_form_success_popup .modal-body,
+#order_change_success_popup .modal-body,
+#change_profile_success_popup .modal-body,
 #delete_confirm_popup .modal-body,
 #end_job_success_popup .modal-body,
 #end_em_change_success_popup .modal-body,
@@ -1967,6 +1865,7 @@ select#status-filter:focus-visible {
 #ve_freelancer_request_popup .modal-dialog,
 #admin_order_detail_popup .modal-dialog,
 #admin_change_popup .modal-dialog,
+#admin_request_popup .modal-dialog,
 #admin_embroidery_payment_archive .modal-dialog,
 #admin_vector_payment_archive .modal-dialog {
   background-color: rgb(244, 244, 244);
@@ -1979,6 +1878,9 @@ select#status-filter:focus-visible {
   height: calc(100% - 110px);
 }
 
+#order_detail_popup .modal-dialog,
+#order_change_popup .modal-dialog,
+#order_request_popup .modal-dialog,
 #free_embroidery_payment_archive .modal-dialog,
 #free_vector_payment_archive .modal-dialog {
   background-color: rgb(244, 244, 244);
@@ -1990,6 +1892,10 @@ select#status-filter:focus-visible {
   height: 100%;
 }
 
+#order_detail_popup .modal-content,
+#order_change_popup .modal-content,
+#admin_request_popup .modal-content,
+#order_request_popup .modal-content,
 #free_order_detail_popup .modal-content,
 #em_freelancer_request_popup .modal-content,
 #ve_freelancer_request_popup .modal-content,
@@ -2002,7 +1908,6 @@ select#status-filter:focus-visible {
   padding: 3vw;
   height: 100%;
 }
-
 
 
 #admin_customer_parameters_em_popup .modal-dialog,
@@ -2197,6 +2102,7 @@ select#status-filter:focus-visible {
   bottom: 0;
   transform: translate(0%, -2000%);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .lion_popup_wrrpr.active {
@@ -2453,35 +2359,6 @@ select#status-filter:focus-visible {
 }
 
 
-
-@media (max-width: 1199px) {
-
-  #view-order,
-  #freelance-datatable,
-  #admin-order {
-
-    display: block;
-  }
-
-  .nav-list li a {
-    font-size: 13px;
-  }
-
-  .language_p h4 {
-    font-size: 13px;
-  }
-
-  .language_p::before {
-    bottom: 3px;
-  }
-
-  .contact_nav ul li a i {
-    margin-right: 6px;
-    font-size: 13px;
-  }
-
-}
-
 /* Max Width ===== 1023px */
 @media (max-width: 1000px) {
 
@@ -2621,6 +2498,7 @@ select#status-filter:focus-visible {
   padding: 0px 1em;
   white-space: nowrap;
   transition: background-color 0.2s linear 0s;
+  width: 120px;
 }
 
 .tableCloumnBtton {
@@ -2639,6 +2517,7 @@ select#status-filter:focus-visible {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   outline: none;
+  width: 120px;
 }
 
 .tableCloumnBtton:focus {
@@ -3221,7 +3100,7 @@ td {
 #order_rquest_text2,
 #order_rquest_text3,
 #order_rquest_text4 {
-  height: 150px;
+  height: 100px;
 }
 
 .request_li {
@@ -3267,13 +3146,22 @@ td {
   height: 350px;
 }
 
+.order_change_upload_div {
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .freelancer_change_div {
   border: 1px solid #ddd;
   padding: 10px;
   height: 365px;
 }
 
-#freelacner_job_upload_div {
+#freelacner_job_upload_div,
+#admin_job_upload_div {
   height: 280px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
@@ -3419,7 +3307,6 @@ input[name="selected_customer"]:checked::before {
 }
 
 .dashboard_table {
-  min-width: 700px;
   overflow-x: auto;
   width: 100% !important;
 }
@@ -3595,6 +3482,7 @@ textarea:focus {
   min-width: 800px;
 }
 
+#view-order,
 #em_freelancer_green_table,
 #em_freelancer_yellow_table,
 #em_freelancer_red_table,
@@ -3609,7 +3497,7 @@ textarea:focus {
 #em_freelancer_payment_archive_table,
 #ve_freelancer_payment_table,
 #ve_freelancer_payment_archive_table {
-  min-width: 1000px;
+  /* min-width: 1100px !important; */
 }
 
 .form_dv_wrap {
@@ -3663,6 +3551,15 @@ textarea:focus {
 .nav-item {
   padding: 1px;
 }
+
+.customer_dashboard_page {
+  margin-top: 100px;
+}
+
+.dashboard_icon {
+  width: 14px;
+}
+
 
 
 
@@ -3763,7 +3660,7 @@ textarea:focus {
     background: #ffffff;
     padding: 15px;
     z-index: 10;
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   .home_image {
@@ -3801,7 +3698,7 @@ textarea:focus {
   }
 
   .table>:not(caption)>*>* {
-    padding: 8px !important;
+    padding: 8px 4px !important;
   }
 
   .login_heading h1 {
@@ -3818,7 +3715,8 @@ textarea:focus {
     height: auto;
   }
 
-  #freelacner_job_upload_div {
+  #freelacner_job_upload_div,
+  #admin_job_upload_div {
     height: auto;
   }
 
@@ -3828,7 +3726,8 @@ textarea:focus {
   }
 
   .freelancer_job_div,
-  .freelancer_change_div {
+  .freelancer_change_div,
+  .order_change_upload_div {
     height: auto;
   }
 
@@ -3848,11 +3747,16 @@ textarea:focus {
   #em_freelancer_request_popup .modal-dialog,
   #ve_freelancer_request_popup .modal-dialog,
   #admin_order_detail_popup .modal-dialog,
-  #admin_change_popup .modal-dialog {
+  #admin_change_popup .modal-dialog,
+  #admin_request_popup .modal-dialog {
     top: 91px;
     height: 100%;
   }
 
+  #order_detail_popup .modal-content,
+  #order_change_popup .modal-content,
+  #admin_request_popup .modal-content,
+  #order_request_popup .modal-content,
   #free_order_detail_popup .modal-content,
   #em_freelancer_request_popup .modal-content,
   #ve_freelancer_request_popup .modal-content,
@@ -3864,6 +3768,32 @@ textarea:focus {
   #admin_vector_payment_archive .modal-content {
     height: auto;
     min-height: 100%;
+  }
+
+  .customer_dashboard_page {
+    margin-top: 74px;
+  }
+
+  table th,
+  table td {
+    line-height: 1;
+    font-size: 10px;
+  }
+
+  .dashboard_icon {
+    width: 10px;
+  }
+
+  .status_text {
+    display: none;
+  }
+
+  .tableControl {
+    display: block;
+  }
+
+  .controlGroup2 {
+    margin-top: 5px;
   }
 
 }

@@ -1,166 +1,182 @@
 <div class="modal fade" id="order_request_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_change') }}</h5>
-                <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
-            </div>
-            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:600px; overflow:auto;">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light"
-                    style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
-                    <div class="container-fluid" style="padding: 0">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="request_li" type="button" id="change1">
-                                {{ __('home.request') }} 1
-                            </li>
-                            <li class="request_li" type="button" id="change2">
-                                {{ __('home.request') }} 2
-                            </li>
-                            <li class="request_li" type="button" id="change3">
-                                {{ __('home.request') }} 3
-                            </li>
-                            <li class="request_li" type="button" id="change4">
-                                {{ __('home.request') }} 4
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="order_detail_div1" style="height: 170px !important;">
-                    <input type="hidden" id="req_detail_id">
-                    <div id="order_rquest_text1"></div>
-                    <div id="order_rquest_text2"></div>
-                    <div id="order_rquest_text3"></div>
-                    <div id="order_rquest_text4"></div>
-                </div>
-                <div class="order_detail_div2">
-                    <div class="col-12">
-                        <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
-                            <button class="btn btn-primary btn-sm" onclick="req_multipleDownload()"
-                                style="background-color:#c3ac6d; border:none; font-size:13px;"><i
-                                    class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+        <div class="modal-content" style="padding-top:1vw !important;">
+            <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
+                    style="display: flex;"></i></button>
+            <div class="row">
+                <div class="col-xl-1"></div>
+                <div class="col-12 col-xl-10">
+                    <div class="pagetitle">
+                        {{ __('home.order_change') }}</div>
+                    <div style="font-size: 13px;">
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light"
+                            style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
+                            <div style="padding: 0">
+                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                    <li class="request_li" type="button" id="change1">
+                                        {{ __('home.request') }} 1
+                                    </li>
+                                    <li class="request_li" type="button" id="change2">
+                                        {{ __('home.request') }} 2
+                                    </li>
+                                    <li class="request_li" type="button" id="change3">
+                                        {{ __('home.request') }} 3
+                                    </li>
+                                    <li class="request_li" type="button" id="change4">
+                                        {{ __('home.request') }} 4
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="order_detail_div" style="min-height: auto !important;">
+                            <input type="hidden" id="req_detail_id">
+                            <div id="order_rquest_text1"></div>
+                            <div id="order_rquest_text2"></div>
+                            <div id="order_rquest_text3"></div>
+                            <div id="order_rquest_text4"></div>
                         </div>
-                    </div>
-                    <div class="col-12" style="display:flex;">
-                        <div class="col-3">
-                            <ul class="nav nav-tabs flex-column"
-                                style="background-color: none; width:95%; border-bottom:none; padding-left:0px;">
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure3_1">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                1.ÄNDERUNGSDATEIEN KUNDE</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure3_2">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                2.ÄNDERUNGSDATEIEN KUNDE</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure3_3">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                3.ÄNDERUNGSDATEIEN KUNDE</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure3_4">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                4.ÄNDERUNGSDATEIEN KUNDE</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure4_1">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                1.STICKPROGRAMM ÄNDERUNG</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure4_2">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                2.STICKPROGRAMM ÄNDERUNG</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure4_3">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                3.STICKPROGRAMM ÄNDERUNG</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="folder_button" type="button" id="req_subfolder_structure4_4">
-                                        <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                style="width: 37px;">
-                                        </div>
-                                        <div style="height: 40%;padding: 3px 0;">
-                                            <p>
-                                                4.STICKPROGRAMM ÄNDERUNG</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-9 responsive-table" style="height: 300px;">
+                        <div class="order_detail_div" style="margin-top: 5px;">
+                            <div class="col-12">
+                                <div style="display: flex; justify-content:flex-end; margin-bottom:10px;">
+                                    <button class="btn btn-primary btn-sm" onclick="req_multipleDownload()"
+                                        style="background-color:#c3ac6d; border:none; font-size:13px;"><i
+                                            class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+                                </div>
+                            </div>
+                            <div class="col-12 file_view_flex_toggle">
+                                <div style="margin-right: 10px;">
+                                    <ul class="nav nav-tabs column_flex"
+                                        style="background-color: none; width:95%; border-bottom:none; padding-left:0px;">
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure3_1">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        1.ÄNDERUNGSDATEIEN KUNDE</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure3_2">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        2.ÄNDERUNGSDATEIEN KUNDE</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure3_3">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        3.ÄNDERUNGSDATEIEN KUNDE</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure3_4">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        4.ÄNDERUNGSDATEIEN KUNDE</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure4_1">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        1.STICKPROGRAMM ÄNDERUNG</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button" id="req_subfolder_structure4_2">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        2.STICKPROGRAMM ÄNDERUNG</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button"
+                                                id="req_subfolder_structure4_3">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        3.STICKPROGRAMM ÄNDERUNG</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="folder_button" type="button"
+                                                id="req_subfolder_structure4_4">
+                                                <div
+                                                    style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                    <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                        style="width: 37px;">
+                                                </div>
+                                                <div style="height: 40%;padding: 3px 0;">
+                                                    <p>
+                                                        4.STICKPROGRAMM ÄNDERUNG</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="responsive-table file_view_table">
 
-                            <table id="req_order_detail" class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center;">
-                                            {{ __('home.customer_number') }}</th>
-                                        <th style="text-align: center">{{ __('home.order_number') }}</th>
-                                        <th style="text-align: center">{{ __('home.index') }}</th>
-                                        <th style="text-align: center">{{ __('home.extension') }}</th>
-                                        <th style="text-align: center">{{ __('home.download') }}</th>
+                                    <table id="req_order_detail" class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center;">
+                                                    {{ __('home.customer_number') }}</th>
+                                                <th style="text-align: center">{{ __('home.order_number') }}</th>
+                                                <th style="text-align: center">{{ __('home.index') }}</th>
+                                                <th style="text-align: center">{{ __('home.extension') }}</th>
+                                                <th style="text-align: center">{{ __('home.download') }}</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody style="text-align: center !important;"></tbody>
-                            </table>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="text-align: center !important;"></tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-1"></div>
             </div>
         </div>
     </div>

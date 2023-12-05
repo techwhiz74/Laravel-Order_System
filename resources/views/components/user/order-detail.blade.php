@@ -1,84 +1,129 @@
 <div class="modal fade" id="order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: rgb(244, 244, 244)">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_detail') }}</h5>
-                <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
-            </div>
-            <div class="modal-body" style="font-size: 13px; font-family:'Inter';">
-                <div class="container" style="padding: 10px">
-                    <div class="order_detail_div1" style="height: 220px !important;">
+        <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
+            <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
+                    style="display: flex;"></i></button>
+            <div class="row">
+                <div class="col-xl-1"></div>
+                <div class="col-12 col-xl-10">
+                    <div class="pagetitle">
+                        {{ __('home.order_detail') }}
+                    </div>
+                    <div class="order_detail_div" style="min-height: auto !important;">
                         <input type="hidden" id="detail_id">
                         <div class="row">
-                            <div class="col-6">
-                                <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                    <p style="width:120px; margin:0"><strong>{{ __('home.customer_number') }}</strong>
-                                    </p>
-                                    <div id="detail_customer_number" class="order_detail_input_div_element"
-                                        style="width:calc(100% - 120px);">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 form_label">
+                                            <label class="control-label">{{ __('home.customer_number') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div id="detail_customer_number" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                    <p style="width:120px; margin:0"><strong>{{ __('home.order_number') }}</strong>
-                                    </p>
-                                    <div id="detail_order_number" class="order_detail_input_div_element"
-                                        style="width:calc(100% - 120px);">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group form_dv_wrap" style="display: flex; align-items:center">
-                                    <p style="width:120px; margin:0"><strong>{{ __('home.projectname') }}</strong>
-                                    </p>
-                                    <div id="detail_project_name" class="order_detail_input_div_element"
-                                        style="width:calc(100% - 120px);">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group form_dv_wrap order_size"
-                                    style="display: flex; align-items:center">
-                                    <p style="width:120px; margin:0"><strong>{{ __('home.size') }}</strong>
-                                    </p>
-                                    <div id="detail_size" class="order_detail_input_div_element" style="width:110px;">
-                                    </div>
-                                    <span style="margin-left: 10px;">mm</span>
-                                    <div id="detail_width_height" class="order_detail_input_div_element"
-                                        style="width:165px; margin-left:25px">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 form_label">
+                                            <label class="control-label">{{ __('home.order_number') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div id="detail_order_number" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <div class="form-group form_dv_wrap order_final_product"
-                                    style="display: flex; align-items:center">
-                                    <p style="width:120px; margin:0"><strong>{{ __('home.fianl_product') }}</strong>
-                                    </p>
-                                    <div id="detail_final_product" class="order_detail_input_div_element"
-                                        style="width:calc(100% - 120px);">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 form_label">
+                                            <label class="control-label">{{ __('home.projectname') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div id="detail_project_name" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <div class="form-group form_dv_wrap" style="display: flex;">
-                                    <p style="width:120px; margin:0">
-                                        <strong>{{ __('home.special instructions') }}</strong>
-                                    </p>
-                                    <div id="detail_special_instructions" class="order_detail_input_div_element"
-                                        style="width:calc(100% - 120px); height:100px !important; align-items:flex-start;">
+                            <div class="col-12 col-sm-6 order_size">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 form_label">
+                                            <label class="control-label">{{ __('home.size') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-8 col-md-4">
+                                            <div id="detail_size" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
+                                        <div class="col-4 col-md-2 form_label">
+                                            <label class="control-label">mm
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 order_size">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 form_label">
+                                        </div>
+                                        <div class="col-12 col-md-6">
+                                            <div id="detail_width_height" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group form_dv_wrap order_final_product">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 form_label">
+                                            <label class="control-label">{{ __('home.fianl_product') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div id="detail_final_product" class="order_detail_input_div_element">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group form_dv_wrap">
+                                    <div class="row">
+                                        <div class="col-12 col-md-3 form_label">
+                                            <label class="control-label">{{ __('home.special instructions') }}
+                                            </label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <div id="detail_special_instructions" class="order_detail_input_div_element"
+                                                style="height:85px !important;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="order_detail_div2">
+                    <div class="order_detail_div" style="margin-top: 5px">
                         <div class="col-12">
                             <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
                                 <button class="btn btn-primary btn-sm" onclick="multipleDownload()"
@@ -86,10 +131,9 @@
                                         class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                             </div>
                         </div>
-                        <div class="col-12" style="display:flex;">
-                            <div class="col-2">
-                                <ul class="nav nav-tabs flex-column"
-                                    style="background-color: rgb(244, 244, 244); width:95%; border-bottom:none; padding-left:0px;">
+                        <div class="col-12 file_view_flex_toggle">
+                            <div style="margin-right: 10px;">
+                                <ul class="nav nav-tabs column_flex">
                                     <li class="nav-item">
                                         <div class="folder_button" type="button" id="subfolder_structure1">
                                             <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
@@ -117,8 +161,7 @@
 
                                 </ul>
                             </div>
-                            <div class="col-10 responsive-table">
-
+                            <div class="responsive-table file_view_table">
                                 <table id="order_detail" class="table table-striped">
                                     <thead>
                                         <tr>
@@ -137,6 +180,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-1"></div>
             </div>
         </div>
     </div>

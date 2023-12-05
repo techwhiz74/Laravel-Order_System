@@ -1,79 +1,92 @@
 <div class="modal fade" id="admin_request_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('home.order_change') }}</h5>
-                <button type="button" class="close" style="font-size: 22px" onclick="hideModal()">&times;</button>
-            </div>
-            <div class="modal-body" style="font-size: 13px; font-family:'Inter'; height:570px;">
-                <div class="container" style="padding: 20px">
-                    <form action="" id="admin_request_form">
-                        <input type="hidden" name="admin_request_id" value="" />
-                        <input type="hidden" name="admin_request_time" value="" />
-                        <div style="display: flex">
-                            <div class="col-2">Änderungswünsche</div>
-                            <div class="col-10">
-                                <textarea name="admin_order_request_text" placeholder="Änderungswünsche" style="height: 150px"></textarea>
-                            </div>
-                        </div>
-                        <div style="display: flex; height: 300px; margin-top:5px;">
-                            <div class="col-2">{{ __('home.data_upload') }}</div>
-                            <div class="col-10"
-                                style="border: 1px solid #ddd; heigh:200px; padding:20px; overflow-y:auto">
-                                <div id="admin_request_fileupload" action="" method="POST"
-                                    enctype="multipart/form-data">
-                                    <!-- Redirect browsers with JavaScript disabled to the origin page -->
-                                    <noscript><input type="hidden" name="redirect" value="" /></noscript>
-                                    <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
-                                    <div class="row fileupload-buttonbar">
-                                        <div class="col-lg-7">
-                                            <!-- The fileinput-button span is used to style the file input field as button -->
-                                            <span class="fileinput-button">
-                                                <i class="glyphicon glyphicon-plus"></i>
-                                                <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
-                                                <input type="file" name="files[]" multiple
-                                                    id="admin_request_file_input" />
-                                            </span>
-                                            <button type="submit" class="btn btn-primary start"
-                                                style="visibility: hidden;">
-                                                <i class="glyphicon glyphicon-upload"></i>
-                                                <span>Start Upload</span>
-                                            </button>
-
-                                            <span class="fileupload-process"></span>
-                                        </div>
-                                        <div class="order_form_file_upload">
-                                            {{ __('home.validation_file_upload') }}
-                                        </div>
-                                        <!-- The global progress state -->
-                                        <div class="col-lg-5 fileupload-progress fade">
-                                            <!-- The global progress bar -->
-                                            <div class="progress progress-striped active" role="progressbar"
-                                                aria-valuemin="0" aria-valuemax="100">
-                                                <div class="progress-bar progress-bar-success" style="width: 0%;">
-                                                </div>
-                                            </div>
-                                            <!-- The extended global progress state -->
-                                            {{-- <div class="progress-extended">&nbsp;</div> --}}
-                                        </div>
-                                    </div>
-                                    <!-- The table listing the files available for upload/download -->
-                                    <table role="presentation" class="table table-striped" id="order_form_upload_list">
-                                        <tbody class="files"></tbody>
-                                    </table>
+            <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
+                    style="display: flex;"></i></button>
+            <div class="row">
+                <div class="col-xl-1"></div>
+                <div class="col-12 col-xl-10">
+                    <div class="pagetitle">
+                        {{ __('home.order_change') }}</div>
+                    <div style="font-size:13px">
+                        <form action="" id="admin_request_form">
+                            <input type="hidden" name="admin_request_id" value="" />
+                            <input type="hidden" name="admin_request_time" value="" />
+                            <div class="row">
+                                <div class="col-12 col-md-3 form_label">
+                                    <label class="control-label">Änderungswünsche</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <textarea name="admin_order_request_text" placeholder="Änderungswünsche" style="height: 150px"></textarea>
                                 </div>
                             </div>
-                        </div>
-                        <div style="display: flex; justify-content:flex-end; margin-top:5px;">
-                            <div>
-                                <button type="submit" class="admin_request_submit">Hochladen</button>
+                            <div class="row" style="margin-top:5px;">
+                                <div class="col-12 col-md-3 form_label">
+                                    <label class="control-label">{{ __('home.data_upload') }}</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <div class="order_change_upload_div">
+                                        <div id="admin_request_fileupload" action="" method="POST"
+                                            enctype="multipart/form-data">
+                                            <!-- Redirect browsers with JavaScript disabled to the origin page -->
+                                            <noscript><input type="hidden" name="redirect" value="" /></noscript>
+                                            <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                                            <div class="row fileupload-buttonbar">
+                                                <div class="col-lg-7">
+                                                    <!-- The fileinput-button span is used to style the file input field as button -->
+                                                    <span class="fileinput-button">
+                                                        <i class="glyphicon glyphicon-plus"></i>
+                                                        <span
+                                                            style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                        <input type="file" name="files[]" multiple
+                                                            id="admin_request_file_input" />
+                                                    </span>
+                                                    <button type="submit" class="btn btn-primary start"
+                                                        style="visibility: hidden;">
+                                                        <i class="glyphicon glyphicon-upload"></i>
+                                                        <span>Start Upload</span>
+                                                    </button>
+
+                                                    <span class="fileupload-process"></span>
+                                                </div>
+                                                <div class="order_form_file_upload">
+                                                    {{ __('home.validation_file_upload') }}
+                                                </div>
+                                                <!-- The global progress state -->
+                                                <div class="col-lg-5 fileupload-progress fade">
+                                                    <!-- The global progress bar -->
+                                                    <div class="progress progress-striped active" role="progressbar"
+                                                        aria-valuemin="0" aria-valuemax="100">
+                                                        <div class="progress-bar progress-bar-success"
+                                                            style="width: 0%;">
+                                                        </div>
+                                                    </div>
+                                                    <!-- The extended global progress state -->
+                                                    {{-- <div class="progress-extended">&nbsp;</div> --}}
+                                                </div>
+                                            </div>
+                                            <!-- The table listing the files available for upload/download -->
+                                            <table role="presentation" class="table table-striped"
+                                                id="order_form_upload_list">
+                                                <tbody class="files"></tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div style="display: flex; justify-content:flex-end; margin-top:5px;">
+                                <div>
+                                    <button type="submit" class="admin_request_submit">Hochladen</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <div class="col-xl-1"></div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @include('components.admin.order_request_success')
 

@@ -41,13 +41,13 @@
                             </div>
                             <div class="col-12 col-sm-9 col-xl-10">
                                 <div style="display: flex">
-                                    <div style="display: flex">
+                                    <div style="display: flex; width:50%">
                                         <div style="display: flex;">
                                             <input type="text" class="order_form_input" id="input_number_format"
                                                 name="size"><span style="display:flex; margin:auto 10px;">mm</span>
                                         </div>
                                     </div>
-                                    <div style="display:flex; margin:auto;">
+                                    <div style="display:flex; margin:auto; width:50%">
                                         <div class="input-group">
                                             <input type="radio" id="order_form_width" name="width_height"
                                                 value="Breite" checked>

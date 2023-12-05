@@ -3,129 +3,7 @@
     @php
         $serial = 1;
     @endphp
-    <style>
-        .card {
-            background: #e9e9e9;
-            margin-bottom: 30px;
-            border: none;
-        }
 
-        /* .card .card-body {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        } */
-
-        .avatar-box-left {
-            margin: 0px;
-        }
-
-        .avatar-upload {
-            position: relative;
-            max-width: 205px;
-            margin: 10px auto;
-        }
-
-        .avatar-upload .avatar-edit {
-            position: absolute;
-            right: 12px;
-            z-index: 1;
-            top: 10px;
-        }
-
-        .avatar-box .avatar-preview {
-            border-radius: 10%;
-        }
-
-        .avatar-upload .avatar-preview {
-            width: 192px;
-            height: 192px;
-            position: relative;
-            border-radius: 100%;
-            border: 6px solid #F8F8F8;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-        }
-
-        .avatar-box .avatar-preview>div {
-            border-radius: 10%;
-            width: 100%;
-        }
-
-        .avatar-upload .avatar-preview>div {
-            width: 100%;
-            height: 100%;
-            border-radius: 100%;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        .avatar-box-left {
-            margin: 0px;
-        }
-
-        .avatar-upload {
-            position: relative;
-            max-width: 205px;
-            margin: 10px auto;
-        }
-
-        .form-group .control-label,
-        .form-group>label {
-            font-weight: 400 !important;
-            font-size: 16.8px !important;
-            color: #060617;
-            font-family: "Inter", "Helvetica", monospace;
-            line-height: 1.6;
-        }
-
-        .avatar-upload .avatar-edit input {
-            display: none;
-        }
-
-        .avatar-upload .avatar-edit input+label {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            margin-bottom: 0;
-            border-radius: 100%;
-            background: #FFFFFF;
-            border: 1px solid transparent;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-            cursor: pointer;
-            font-weight: normal;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .avatar-box .avatar-preview {
-            border-radius: 10%;
-        }
-
-        .files-box {
-            padding: .5rem !important;
-            font-weight: 500;
-        }
-
-        .download-btn {
-            background: #000 !important;
-            padding: 15px 26px !important;
-            color: #fff !important;
-            font-size: 19px;
-
-        }
-
-        input,
-        textarea {
-            margin: 0;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            border: none;
-            padding: 10px;
-            color: black;
-            font-weight: 600;
-            background: #e9e9e9;
-        }
-    </style>
     <section class="page_section">
         <div class="padding-30">
             <div class="row">
@@ -152,11 +30,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <!-- <div class="nav nav-tabs " id="nav-tab" role="tablist">
-                                    <button class="nav-link active" id="nav-project-tab" data-bs-toggle="tab" data-bs-target="#nav-project" type="button" role="tab" aria-controls="nav-project" aria-selected="true">Project</button>
-                                    <button class="nav-link" id="nav-address-tab" data-bs-toggle="tab" data-bs-target="#nav-address" type="button" role="tab" aria-controls="nav-address" aria-selected="false">Address</button>
-                                    <button class="nav-link" id="nav-format-tab" data-bs-toggle="tab" data-bs-target="#nav-format" type="button" role="tab" aria-controls="nav-format" aria-selected="false">File Format</button>
-                                    <button class="nav-link" id="nav-file-tab" data-bs-toggle="tab" data-bs-target="#nav-file" type="button" role="tab" aria-controls="nav-file" aria-selected="false">Uploaded Files</button>
-                                </div>   -->
+                                        <button class="nav-link active" id="nav-project-tab" data-bs-toggle="tab" data-bs-target="#nav-project" type="button" role="tab" aria-controls="nav-project" aria-selected="true">Project</button>
+                                        <button class="nav-link" id="nav-address-tab" data-bs-toggle="tab" data-bs-target="#nav-address" type="button" role="tab" aria-controls="nav-address" aria-selected="false">Address</button>
+                                        <button class="nav-link" id="nav-format-tab" data-bs-toggle="tab" data-bs-target="#nav-format" type="button" role="tab" aria-controls="nav-format" aria-selected="false">File Format</button>
+                                        <button class="nav-link" id="nav-file-tab" data-bs-toggle="tab" data-bs-target="#nav-file" type="button" role="tab" aria-controls="nav-file" aria-selected="false">Uploaded Files</button>
+                                    </div>   -->
                                 </nav>
                                 <div class="tab-content p-3 border bg-light" id="nav-tabContent">
                                     <div class="tab-pane fade active show" id="nav-project" role="tabpanel"

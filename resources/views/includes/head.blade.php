@@ -179,3 +179,7 @@
 @include('functions.freelancer.freelancer-vector-blue')
 @include('functions.freelancer.freelancer-embroidery-payment')
 @include('functions.freelancer.freelancer-vector-payment')
+@include('functions.admin.order-green-view')
+@include('functions.admin.order-red-view')
+@include('functions.admin.order-yellow-view')
+@include('functions.admin.order-blue-view')

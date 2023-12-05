@@ -7,172 +7,6 @@
             }
 
         @endphp
-        <style>
-            .card {
-                background: #e9e9e9;
-                border: none;
-            }
-
-            /* .card .card-body {
-                    padding-top: 20px;
-                    padding-bottom: 20px;
-                } */
-
-            .avatar-box-left {
-                margin: 0px;
-            }
-
-            .avatar-upload {
-                position: relative;
-                max-width: 205px;
-                margin: 10px auto;
-            }
-
-            .avatar-upload .avatar-edit {
-                position: absolute;
-                right: 12px;
-                z-index: 1;
-                top: 10px;
-            }
-
-            .avatar-box .avatar-preview {
-                border-radius: 10%;
-            }
-
-            .avatar-upload .avatar-preview {
-                width: 192px;
-                height: 192px;
-                position: relative;
-                border-radius: 100%;
-                border: 6px solid #F8F8F8;
-                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-            }
-
-            .avatar-box .avatar-preview>div {
-                border-radius: 10%;
-                width: 100%;
-            }
-
-            .avatar-upload .avatar-preview>div {
-                width: 100%;
-                height: 100%;
-                border-radius: 100%;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            .avatar-box-left {
-                margin: 0px;
-            }
-
-            .avatar-upload {
-                position: relative;
-                max-width: 205px;
-                margin: 10px auto;
-            }
-
-            .form-group .control-label,
-            .form-group>label {
-                font-weight: 400 !important;
-                font-size: 16.8px !important;
-                color: #060617;
-                font-family: "Inter", "Helvetica", monospace;
-                line-height: 1.6;
-            }
-
-            .avatar-upload .avatar-edit input {
-                display: none;
-            }
-
-            .avatar-upload .avatar-edit input+label {
-                display: inline-block;
-                width: 34px;
-                height: 34px;
-                margin-bottom: 0;
-                border-radius: 100%;
-                background: #FFFFFF;
-                border: 1px solid transparent;
-                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-                cursor: pointer;
-                font-weight: normal;
-                transition: all 0.2s ease-in-out;
-            }
-
-            .avatar-box .avatar-preview {
-                border-radius: 10%;
-            }
-
-            button.btn.ninja-forms-field.nf-element.btn-success.nf-fu-fileinput-button {
-                background: #000 !important;
-                padding: 16px 5px !important;
-                color: #fff !important;
-                width: 190px;
-            }
-
-            .nf-form-content .label-above .nf-field-label,
-            .nf-form-content .label-hidden .nf-field-label {
-                margin-bottom: 10px;
-                padding: 0;
-            }
-
-            .upload_btn a {
-                background: #c4ae79 !important;
-                color: #fff !important;
-                height: 50px !important;
-                border: 0;
-                border-radius: 0;
-                font-size: 16px;
-                padding: 12px 25px !important;
-                font-family: "Inter", "Helvetica", monospace;
-            }
-
-            .nf-form-content label {
-                font-size: 18px;
-                line-height: 20px;
-            }
-
-            .img-gallery>img {
-                display: block;
-                max-width: 100%;
-                height: 80%;
-                object-fit: cover;
-                border-radius: 8px;
-                transition: 0.6s ease;
-                cursor: pointer;
-            }
-
-            .img-gallery img:hover {
-                scale: 0.85;
-                box-shadow: 10px 26px 60px rgba(68, 77, 136, 0.3);
-            }
-
-            .download-btn {
-                background: #c4ae79 !important;
-                color: #fff !important;
-                height: 50px !important;
-                border: 0;
-                border-radius: 0;
-                font-size: 16px;
-                padding: 12px 25px;
-                font-family: "Inter", "Helvetica", monospace;
-                position: relative;
-                left: 20px;
-                text-decoration: none;
-                font-weight: 600;
-            }
-
-            .upload-file-row p {
-                margin: 0;
-                font-size: 17px;
-                font-weight: 500;
-            }
-
-            #delivery_files .form-control:focus {
-                box-shadow: none !important;
-                border: 1px solid #ced4da;
-            }
-        </style>
 
         <section class="page_section">
             <div class="padding-30">
@@ -278,24 +112,24 @@
                 </div>
 
                 <!-- <div class="row mt-5">
-                            <div class="col-12">
-                                <div class="pagetitle">
-                                    <h2> Uploaded Files </h2>
+                                <div class="col-12">
+                                    <div class="pagetitle">
+                                        <h2> Uploaded Files </h2>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 img-gallery">
-                                <img class="image" width="100%" src="https://images.pexels.com/photos/6462662/pexels-photo-6462662.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lamo parked on road">
-                            </div>
-                            <div class="col-md-3 img-gallery">
-                                <img class="image" width="100%" src="https://images.pexels.com/photos/5288701/pexels-photo-5288701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo on road">
-                            </div>
-                            <div class="col-md-3 img-gallery">
-                                <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
-                            </div>
-                            <div class="col-md-3 img-gallery">
-                                <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
-                            </div>
-                        </div> -->
+                                <div class="col-md-3 img-gallery">
+                                    <img class="image" width="100%" src="https://images.pexels.com/photos/6462662/pexels-photo-6462662.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Lamo parked on road">
+                                </div>
+                                <div class="col-md-3 img-gallery">
+                                    <img class="image" width="100%" src="https://images.pexels.com/photos/5288701/pexels-photo-5288701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo on road">
+                                </div>
+                                <div class="col-md-3 img-gallery">
+                                    <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
+                                </div>
+                                <div class="col-md-3 img-gallery">
+                                    <img class="image" width="100%" src="https://images.pexels.com/photos/6894430/pexels-photo-6894430.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="lambo parked">
+                                </div>
+                            </div> -->
 
             </div>
 

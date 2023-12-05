@@ -85,7 +85,7 @@
 <header class="lion_nav_wrap">
     <nav class="navbar navbar-expand-lg bg-body-tertiary nav_wrap_dv">
         <div class="container-fluid" style="margin: 0 6vw; padding:0 !important;">
-            <div class="col-sm-4 col-lg-3 col-xl-2">
+            <div class="col-4 col-lg-3 col-xl-2">
                 <div class="lion_nav">
                     @if (auth()->user())
                         @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
@@ -101,17 +101,17 @@
                     @endif
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-8 col-xl-9">
-                <div class="admin_btn">
-                    <button class="navbar-toggler nav_menu_btn" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon menu_icon"><i class="fa-solid fa-bars"></i></span>
-                    </button>
-                    <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
-                        <ul class="navbar-nav mb-2 mb-lg-0 hearder_information">
-                            @if (auth()->user())
-                                @if (auth()->user()->user_type == 'customer')
+            <div class="col-6 col-lg-8 col-xl-9">
+                @if (auth()->user())
+                    @if (auth()->user()->user_type == 'customer')
+                        <div class="admin_btn">
+                            <button class="navbar-toggler nav_menu_btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon menu_icon"><i class="fa-solid fa-bars"></i></span>
+                            </button>
+                            <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
+                                <ul class="navbar-nav mb-2 mb-lg-0 hearder_information">
                                     <li class="nav-item  menu_list">
                                         <a class="nav-link"
                                             href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
@@ -128,9 +128,20 @@
                                         <a class="nav-link"
                                             href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
                                     </li>
-                                @elseif(auth()->user()->user_type == 'freelancer' || auth()->user()->user_type == 'admin')
-                                @endif
-                            @else
+                                </ul>
+                            </div>
+                        </div>
+                    @elseif(auth()->user()->user_type == 'freelancer' || auth()->user()->user_type == 'admin')
+                    @endif
+                @else
+                    <div class="admin_btn">
+                        <button class="navbar-toggler nav_menu_btn" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon menu_icon"><i class="fa-solid fa-bars"></i></span>
+                        </button>
+                        <div class="collapse navbar-collapse lion_list" id="navbarSupportedContent">
+                            <ul class="navbar-nav mb-2 mb-lg-0 hearder_information">
                                 <li class="nav-item  menu_list">
                                     <a class="nav-link"
                                         href="javascript:contentViewer(0);">{{ __('home.information_embroidery') }}</a>
@@ -147,13 +158,13 @@
                                     <a class="nav-link"
                                         href="javascript:contentViewer(3);">{{ __('home.price_vector') }}</a>
                                 </li>
-                            @endif
-
-                        </ul>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
-            <div class="col-sm-2 col-lg-1 col-xl-1">
+
+            <div class="col-2 col-lg-1 col-xl-1">
                 <div class="action align-items-center d-flex position-relative float-end" onclick="menuToggle();">
                     <div class="profile">
                         @auth

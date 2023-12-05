@@ -25,7 +25,7 @@
                             <tbody></tbody>
                         </table>
                     </div>
-                    <div class="upload_btn">
+                    <div class="upload_btn" style="margin-top: -20px !important;">
                         <button class="btn btn-primary btn-block" id="ve_payment_archive">Archive</button>
                         <button class="btn btn-primary btn-block" id="ve_payment_mail">Payment</button>
                     </div>

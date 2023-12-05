@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">
+            <div class="pagetitle" style="padding-bottom: 1vw !important;">
                 {{ __('home.overview_of_orders') }}
             </div>
             <div>

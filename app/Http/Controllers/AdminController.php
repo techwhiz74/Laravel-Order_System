@@ -983,10 +983,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -994,13 +994,13 @@ class AdminController extends Controller
 
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1039,10 +1039,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1050,13 +1050,13 @@ class AdminController extends Controller
 
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1095,10 +1095,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1106,13 +1106,13 @@ class AdminController extends Controller
 
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1158,10 +1158,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1169,13 +1169,13 @@ class AdminController extends Controller
 
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1282,10 +1282,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<button style="border:none; background:inherit; display:block; margin:auto;"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:18px"></button>';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<button style="border:none; background:inherit; display:block; margin:auto;"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:18px"></button>';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1293,13 +1293,13 @@ class AdminController extends Controller
 
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1639,23 +1639,24 @@ class AdminController extends Controller
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
                 ->addColumn('status', function ($row) {
+
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
@@ -1674,25 +1675,26 @@ class AdminController extends Controller
                     return $order;
                 })
                 ->addColumn('status', function ($row) {
+
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1710,25 +1712,26 @@ class AdminController extends Controller
                     return $order;
                 })
                 ->addColumn('status', function ($row) {
+
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1746,25 +1749,26 @@ class AdminController extends Controller
                     return $order;
                 })
                 ->addColumn('status', function ($row) {
+
                     $status = '';
                     if ($row->status == "Offen") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div>Offen</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';
                     } else if ($row->status == "In Bearbeitung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div>In Bearbeitung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-progress"></div><div class="status_text">In Bearbeitung</div></div>';
                     } else if ($row->status == "Ausgeliefert") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div>Ausgeliefert</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-delivered"></div><div class="status_text">Ausgeliefert</div></div>';
                     } else if ($row->status == "Änderung") {
-                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div>Änderung</div></div>';
+                        $status = '<div class="status-wrapper"><div class="status-sphere-change"></div><div class="status_text">Änderung</div></div>';
                     }
                     return $status;
                 })
                 ->addColumn('art', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; margin-left:20px;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1775,7 +1779,7 @@ class AdminController extends Controller
     public function EmPayment(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('created_at', 'desc')->where('type', 'Embroidery')->where('count_number', null)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('type', 'Embroidery')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1789,10 +1793,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1807,7 +1811,7 @@ class AdminController extends Controller
     public function VePayment(Request $request)
     {
         if ($request->ajax()) {
-            $data = Order::orderBy('created_at', 'desc')->where('type', 'Vector')->where('count_number', null)->get();
+            $data = Order::orderBy('created_at', 'desc')->where('type', 'Vector')->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;
@@ -1821,10 +1825,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1866,10 +1870,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })
@@ -1898,10 +1902,10 @@ class AdminController extends Controller
                 ->addColumn('type', function ($row) {
                     $type = '';
                     if ($row->type == "Embroidery") {
-                        $type = '<img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" style="width:14px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/reel-duotone.svg') . '" alt="embroidery" class="dashboard_icon"></div>';
 
                     } else if ($row->type == "Vector") {
-                        $type = '<img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" style="width:17px; display:flex; margin:auto;">';
+                        $type = '<div style="text-align:center"><img src="' . asset('asset/images/bezier-curve-duotone.svg') . '" alt="vector" class="dashboard_icon"></div>';
                     }
                     return $type;
                 })

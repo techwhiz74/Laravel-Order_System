@@ -72,9 +72,13 @@
                                                         <label class="control-label">{{ __('home.size') }}
                                                         </label>
                                                     </div>
-                                                    <div class="col-12 col-md-6">
+                                                    <div class="col-8 col-md-4">
                                                         <div id="em_detail_size" class="order_detail_input_div_element">
                                                         </div>
+                                                    </div>
+                                                    <div class="col-4 col-md-2 form_label">
+                                                        <label class="control-label">mm
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,7 +87,6 @@
                                             <div class="form-group form_dv_wrap">
                                                 <div class="row">
                                                     <div class="col-12 col-md-6 form_label">
-                                                        <span style="margin-left: 5px;">mm</span>
                                                     </div>
                                                     <div class="col-12 col-md-6">
                                                         <div id="em_detail_width_height"

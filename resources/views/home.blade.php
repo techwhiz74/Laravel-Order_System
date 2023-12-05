@@ -3,7 +3,7 @@
     <section id="bn_sec">
         @auth
             @if (auth()->user()->user_type == 'customer' && auth()->user()->id)
-                <div class="dashboard_page" style="margin-top:0">
+                <div class="dashboard_page customer_dashboard_page">
                     <div class="row">
                         <button style="display: none;" id="customer_dahsboard_table_reload_button"></button>
                         <div class="col-12 col-xl-6" style="padding:2vw 2vw 0 2vw">
@@ -101,7 +101,7 @@
                     </div>
                 </div>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <div class="dashboard_page">
+                <div class="dashboard_page ">
                     <button style="display: none;" id="em_freelancer_table_reload_btn"></button>
                     <div class="row">
                         <div class="col-12 col-xl-6" style="padding:2vw 2vw 0 2vw">
