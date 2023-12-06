@@ -100,6 +100,7 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/order-count', [AdminController::class, 'OrderCount'])->name('admin-order-count');
     Route::get('/embroidery-payment-archive', [AdminController::class, 'EmbroideryPaymentArchive'])->name('admin-embroidery-payment-archive');
     Route::get('/vector-payment-archive', [AdminController::class, 'VectorPaymentArchive'])->name('admin-vector-payment-archive');
+    Route::post('/change-customer-avatar', [AdminController::class, 'ChangeAvatar'])->name('admin-change-customer-avatar');
 });
 
 //customer route

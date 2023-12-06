@@ -24,6 +24,8 @@
             $('[name=add_bank_name]').val("");
             $('[name=add_IBAN]').val("");
             $('[name=add_BIC]').val("");
+            $('.add_customer_validation_email').hide();
+            $('.add_customer_validation_password').hide();
         })
     })
 </script>

@@ -232,6 +232,7 @@ return [
     'admin-vector-payment-archive' => '/de/admin/vector-payment-archive',
     'admin-change-avatar' => '/de/admin/change-avatar',
     'admin-change-avatar-handle' => '/de/admin/change-avatar-handle',
+    'admin-change-customer-avatar' => '/de/admin/change-customer-avatar',
 
 
 ];

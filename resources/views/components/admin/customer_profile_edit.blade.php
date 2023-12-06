@@ -17,24 +17,36 @@
                                     <div class="col-lg-6 col-12">
                                         <fieldset class="field-group row">
                                             <legend class="field-caption">{{ __('home.general_information') }}</legend>
-                                            <div class="col-12">
+                                            <div class="col-6" style="display: flex; align-items:center;">
                                                 <div class="form-group form_dv_wrap">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-3 form_label">
+                                                        <div class="col-12 col-md-6 form_label">
                                                             <label
                                                                 class="control-label">{{ __('home.customer_number') }}
                                                             </label>
                                                         </div>
-                                                        <div class="col-12 col-md-9">
+                                                        <div class="col-12 col-md-6">
                                                             <input type="text" name="admin_customer_number"
                                                                 class="form-control" value="">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-6"
+                                                style="display: flex; justify-content:end; padding-bottom:12px">
+                                                <div class="customer_avatar">
+                                                    <div id="customer_avatar_i">
+                                                        <i class="fa-solid fa-circle-user fa-3x"
+                                                            style="color:#fff;"></i>
+                                                    </div>
+                                                    <img src="" alt="customer avatar"
+                                                        style="width:40px; height:40px" id="customer_avatar">
+                                                </div>
+                                            </div>
                                         </fieldset>
                                     </div>
-                                    <div class="col-lg-6 col-12"></div>
+                                    <div class="col-lg-6 col-12">
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6 col-12">
@@ -424,6 +436,8 @@
                                                         class="btn btn-primary btn-block">Annehmen</button>
                                                     <button type="button" id="customer_decline"
                                                         class="btn btn-primary btn-block">Ablehnen</button>
+                                                    <button class="btn btn-primary btn-block" type="button"
+                                                        id="change_customer_avatar">Avatar ändern</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -438,6 +452,7 @@
         </div>
     </div>
 </div>
+@include('components.admin.change-customer-avatar')
 <script>
     function editCustomerProfile(id) {
         $('#decline_customer_button').hide();
@@ -445,6 +460,8 @@
         $('#save_customer_button').hide();
         $('#customer_accept').hide();
         $('#customer_decline').hide();
+        $('#customer_avatar_i').show();
+        $('#customer_avatar').hide();
         $.ajax({
             url: '{{ __('routes.admin-get-customer-profile') }}',
             type: 'get',
@@ -454,6 +471,11 @@
             success: (response) => {
                 console.log("profile", response.profile);
                 console.log("temp", response.temp);
+                if (response.profile.image != "") {
+                    $('#customer_avatar').show();
+                    $('#customer_avatar_i').hide();
+                    $('#customer_avatar').attr('src', response.profile.image);
+                }
                 $('[name=admin_change_profile_id]').val(response.profile.id);
                 $('[name=admin_customer_number]').val(response.profile.customer_number);
                 $('[name=admin_name]').val(response.profile.name);
@@ -836,5 +858,30 @@
                 console.error('error!');
             }
         })
+    })
+    $('#change_customer_avatar').click(function() {
+        $('#change_customer_avatar_popup').modal('show');
+        $('#change_customer_avatar_form').submit(function(e) {
+            e.preventDefault();
+        })
+        $('#change_customer_avatar_confirm').click(function() {
+            var files = $('[name=change_customer_avatar_input]').prop("files")[0];
+            var formData = new FormData();
+            formData.append('avatar', files);
+            formData.append('customer_id', $('[name=admin_change_profile_id]').val())
+            $.ajax({
+                url: '{{ __('routes.admin-change-customer-avatar') }}',
+                type: 'POST',
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: () => {
+                    editCustomerProfile($('[name=admin_change_profile_id]').val());
+                },
+                error: () => {
+                    console.error("error");
+                }
+            });
+        });
     })
 </script>

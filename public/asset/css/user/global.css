@@ -617,7 +617,7 @@ section {
 
 .upload_btn {
   text-align: end;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .upload_btn button {
@@ -628,6 +628,7 @@ section {
   font-size: 13px;
   padding: 8px 14px;
   font-family: "Inter", "Helvetica", monospace;
+  margin-top: 5px;
 }
 
 
@@ -1642,7 +1643,9 @@ select#status-filter:focus-visible {
 .order_form_validation_products,
 .order_form_file_upload,
 .order_form_validation_checkbox,
-.admin_search_customer_validation {
+.admin_search_customer_validation,
+.add_customer_validation_email,
+.add_customer_validation_password {
   color: red;
   font-style: italic;
   font-size: 13px;
@@ -1702,6 +1705,7 @@ select#status-filter:focus-visible {
 #admin_start_job_success_popup .modal-dialog,
 #admin_upload_success_popup .modal-dialog,
 #admin_end_job_success_popup .modal-dialog,
+#change_customer_avatar_popup .modal-dialog,
 #admin_start_change_confirm_popup .modal-dialog,
 #admin_change_upload_success_popup .modal-dialog,
 #admin_end_change_success_popup .modal-dialog,
@@ -1745,6 +1749,7 @@ select#status-filter:focus-visible {
 #admin_start_job_success_popup .modal-content,
 #admin_upload_success_popup .modal-content,
 #admin_end_job_success_popup .modal-content,
+#change_customer_avatar_popup .modal-content,
 #admin_start_change_confirm_popup .modal-content,
 #admin_change_upload_success_popup .modal-content,
 #admin_end_change_success_popup .modal-content,
@@ -1758,7 +1763,7 @@ select#status-filter:focus-visible {
   margin: 0 auto;
   position: absolute;
   height: 150px;
-  top: 50%;
+  top: 40%;
   left: 0;
   right: 0;
   transform: translate(0, -50%);
@@ -1787,6 +1792,7 @@ select#status-filter:focus-visible {
 #admin_start_job_success_popup .modal-body,
 #admin_upload_success_popup .modal-body,
 #admin_end_job_success_popup .modal-body,
+#change_customer_avatar_popup .modal-body,
 #admin_start_change_confirm_popup .modal-body,
 #admin_change_upload_success_popup .modal-body,
 #admin_end_change_success_popup .modal-body,
@@ -1796,7 +1802,7 @@ select#status-filter:focus-visible {
 #admin_delete_change_file_confirm_popup .modal-body,
 #free_order_count .modal-body,
 #admin_order_count .modal-body {
-  padding: 40px 20px 20px 20px !important;
+  padding: 1vw !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -3159,6 +3165,7 @@ input[name="selected_customer"]:checked::before {
   height: 36px;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 .product-multiselect8,
@@ -3217,6 +3224,7 @@ input[name="selected_customer"]:checked::before {
   padding: 0 12px;
   appearance: none;
 }
+
 
 .selectbox-control:focus {
   border: none !important;
@@ -3515,6 +3523,20 @@ textarea:focus {
 
 .info_price_add_icon {
   padding: 0 1vw;
+}
+
+.customer_avatar {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.modal_sm_title {
+  font-size: 16px;
+  color: #555;
+  font-weight: 500;
 }
 
 

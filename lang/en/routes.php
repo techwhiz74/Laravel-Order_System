@@ -229,6 +229,8 @@ return [
     'admin-vector-payment-archive' => '/en/admin/vector-payment-archive',
     'admin-change-avatar' => '/en/admin/change-avatar',
     'admin-change-avatar-handle' => '/en/admin/change-avatar-handle',
+    'admin-change-customer-avatar' => '/en/admin/change-customer-avatar',
+
 
 
 

@@ -54,4 +54,5 @@ function hideAlertModal() {
     $('#end_ve_change_success_popup').modal('hide');
     $('#free_order_count').modal('hide');
     $('#admin_order_count').modal('hide');
+    $('#change_customer_avatar_popup').modal('hide');
 }

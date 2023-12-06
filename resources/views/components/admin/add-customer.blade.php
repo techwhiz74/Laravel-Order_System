@@ -181,11 +181,15 @@
                                         <div class="form-group form_dv_wrap">
                                             <div class="row">
                                                 <div class="col-12 col-md-3 form_label">
-                                                    <label>{{ __('home.email') }} </label>
+                                                    <label>{{ __('home.email') }} <span
+                                                            class="reqiurd">*</span></label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" name="add_email" class="form-control"
                                                         value="">
+                                                    <div class="add_customer_validation_email">
+                                                        E-Mail ist erforderlich
+                                                    </div>
                                                 </div>
                                             </div>
                                             @if ($errors->has('email'))
@@ -253,11 +257,15 @@
                                         <div class="form-group form_dv_wrap">
                                             <div class="row">
                                                 <div class="col-12 col-md-3 form_label">
-                                                    <label>{{ __('home.password') }} </label>
+                                                    <label>{{ __('home.password') }} <span
+                                                            class="reqiurd">*</span></label>
                                                 </div>
                                                 <div class="col-12 col-md-9">
                                                     <input type="text" name="add_password" class="form-control"
                                                         value="">
+                                                    <div class="add_customer_validation_password">
+                                                        Passwort wird benötigt
+                                                    </div>
                                                 </div>
                                             </div>
                                             @if ($errors->has('password'))
@@ -431,68 +439,94 @@
     </div>
 </section>
 <script>
-    $('#admin_add_customer').submit(function(e) {
-        e.preventDefault();
-        var add_customer_data = new FormData();
-        add_customer_data.append('customer_number', $('[name = add_customer_number]').val());
-        add_customer_data.append('name', $('[name = add_name]').val());
-        add_customer_data.append('first_name', $('[name = add_first_name]').val());
-        add_customer_data.append('company', $('[name = add_company]').val());
-        add_customer_data.append('company_addition', $('[name = add_company_addition]').val());
-        add_customer_data.append('street_number', $('[name = add_street_number]').val());
-        add_customer_data.append('postal_code', $('[name = add_postal_code]').val());
-        add_customer_data.append('location', $('[name = add_location]').val());
-        add_customer_data.append('country', $('[name = add_country]').val());
-        add_customer_data.append('email', $('[name = add_email]').val());
-        add_customer_data.append('website', $('[name = add_website]').val());
-        add_customer_data.append('phone', $('[name = add_phone]').val());
-        add_customer_data.append('mobile', $('[name = add_mobile]').val());
-        add_customer_data.append('tax_number', $('[name = add_tax_number]').val());
-        add_customer_data.append('vat_number', $('[name = add_vat_number]').val());
-        add_customer_data.append('register_number', $('[name = add_register_number]').val());
-        add_customer_data.append('kd_group', $('[name = add_kd_group]').val());
-        add_customer_data.append('kd_category', $('[name = add_kd_category]').val());
-        add_customer_data.append('payment_method', $('[name = add_payment_method]').val());
-        add_customer_data.append('bank_name', $('[name = add_bank_name]').val());
-        add_customer_data.append('IBAN', $('[name = add_IBAN]').val());
-        add_customer_data.append('BIC', $('[name = add_BIC]').val());
-        add_customer_data.append('password', $('[name = add_password]').val());
+    $(function() {
+        $('#admin_add_customer').submit(function(e) {
+            e.preventDefault();
+            if ($('[name=add_email]').val() != "" && $('[name=add_password]').val() != "") {
+                var add_customer_data = new FormData();
+                add_customer_data.append('customer_number', $('[name = add_customer_number]').val());
+                add_customer_data.append('name', $('[name = add_name]').val());
+                add_customer_data.append('first_name', $('[name = add_first_name]').val());
+                add_customer_data.append('company', $('[name = add_company]').val());
+                add_customer_data.append('company_addition', $('[name = add_company_addition]').val());
+                add_customer_data.append('street_number', $('[name = add_street_number]').val());
+                add_customer_data.append('postal_code', $('[name = add_postal_code]').val());
+                add_customer_data.append('location', $('[name = add_location]').val());
+                add_customer_data.append('country', $('[name = add_country]').val());
+                add_customer_data.append('email', $('[name = add_email]').val());
+                add_customer_data.append('website', $('[name = add_website]').val());
+                add_customer_data.append('phone', $('[name = add_phone]').val());
+                add_customer_data.append('mobile', $('[name = add_mobile]').val());
+                add_customer_data.append('tax_number', $('[name = add_tax_number]').val());
+                add_customer_data.append('vat_number', $('[name = add_vat_number]').val());
+                add_customer_data.append('register_number', $('[name = add_register_number]').val());
+                add_customer_data.append('kd_group', $('[name = add_kd_group]').val());
+                add_customer_data.append('kd_category', $('[name = add_kd_category]').val());
+                add_customer_data.append('payment_method', $('[name = add_payment_method]').val());
+                add_customer_data.append('bank_name', $('[name = add_bank_name]').val());
+                add_customer_data.append('IBAN', $('[name = add_IBAN]').val());
+                add_customer_data.append('BIC', $('[name = add_BIC]').val());
+                add_customer_data.append('password', $('[name = add_password]').val());
 
-        $.ajax({
-            url: '{{ __('routes.admin-add-customer') }}',
-            type: 'post',
-            contentType: false,
-            processData: false,
-            data: add_customer_data,
-            success: () => {
-                $('#customer_list_table_reload_button').trigger('click');
-                $('[name = add_customer_number]').val('');
-                $('[name = add_name]').val('');
-                $('[name = add_first_name]').val('');
-                $('[name = add_company]').val('');
-                $('[name = add_company_addition]').val('');
-                $('[name = add_street_number]').val('');
-                $('[name = add_postal_code]').val('');
-                $('[name = add_location]').val('');
-                $('[name = add_country]').val('');
-                $('[name = add_email]').val('');
-                $('[name = add_website]').val('');
-                $('[name = add_phone]').val('');
-                $('[name = add_mobile]').val('');
-                $('[name = add_tax_number]').val('');
-                $('[name = add_vat_number]').val('');
-                $('[name = add_register_number]').val('');
-                $('[name = add_kd_group]').val('');
-                $('[name = add_kd_category]').val('');
-                $('[name = add_payment_method]').val('');
-                $('[name = add_bank_name]').val('');
-                $('[name = add_IBAN]').val('');
-                $('[name = add_BIC]').val('');
-                $('[name = add_password]').val('');
-            },
-            error: (err) => {
-                console.error('error!');
+                $.ajax({
+                    url: '{{ __('routes.admin-add-customer') }}',
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    data: add_customer_data,
+                    success: () => {
+                        $('#customer_list_table_reload_button').trigger('click');
+                        $('[name = add_customer_number]').val('');
+                        $('[name = add_name]').val('');
+                        $('[name = add_first_name]').val('');
+                        $('[name = add_company]').val('');
+                        $('[name = add_company_addition]').val('');
+                        $('[name = add_street_number]').val('');
+                        $('[name = add_postal_code]').val('');
+                        $('[name = add_location]').val('');
+                        $('[name = add_country]').val('');
+                        $('[name = add_email]').val('');
+                        $('[name = add_website]').val('');
+                        $('[name = add_phone]').val('');
+                        $('[name = add_mobile]').val('');
+                        $('[name = add_tax_number]').val('');
+                        $('[name = add_vat_number]').val('');
+                        $('[name = add_register_number]').val('');
+                        $('[name = add_kd_group]').val('');
+                        $('[name = add_kd_category]').val('');
+                        $('[name = add_payment_method]').val('');
+                        $('[name = add_bank_name]').val('');
+                        $('[name = add_IBAN]').val('');
+                        $('[name = add_BIC]').val('');
+                        $('[name = add_password]').val('');
+                    },
+                    error: (err) => {
+                        console.error('error!');
+                    }
+                })
             }
-        })
+            if ($('[name=add_email]').val() == "") {
+                $('.add_customer_validation_email').show();
+                $('[name=add_email]').css("border", "1px solid red");
+            }
+            if ($('[name=add_password]').val() == "") {
+                $('.add_customer_validation_password').show();
+                $('[name=add_password]').css("border", "1px solid red");
+            }
+
+
+        });
+        $('[name=add_email]').keyup(function(e) {
+            if ($(this).val() != "") {
+                $('.add_customer_validation_email').hide();
+                $('[name=add_email]').css("border", "1px solid #ddd");
+            }
+        });
+        $('[name=add_password]').keyup(function(e) {
+            if ($(this).val() != "") {
+                $('.add_customer_validation_password').hide();
+                $('[name=add_password]').css("border", "1px solid #ddd");
+            }
+        });
     })
 </script>
