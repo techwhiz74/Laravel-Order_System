@@ -7,6 +7,7 @@
             </div>
             <div>
                 <div>
+                    <button style="display: none" id="free_ve_payment_sum_cal"></button>
                     <div class="responsive-table">
                         <button id="ve_freelancer_payment_table_reload_button" style="display: none"></button>
                         <table id="ve_freelancer_payment_table" class="table table-striped">
@@ -25,9 +26,13 @@
                             <tbody></tbody>
                         </table>
                     </div>
+                    <div style="display:flex; justify-content:end; margin: -60px 0 30px 0;">
+                        <div class="total_count_number" id="free_ve_sum">
+                        </div>
+                    </div>
                     <div class="upload_btn" style="margin-top: -20px !important;">
                         <button class="btn btn-primary btn-block" id="ve_payment_archive">Archive</button>
-                        <button class="btn btn-primary btn-block" id="ve_payment_mail">Payment</button>
+                        <button class="btn btn-primary btn-block" id="free_ve_payment_btn">Payment</button>
                     </div>
                 </div>
             </div>

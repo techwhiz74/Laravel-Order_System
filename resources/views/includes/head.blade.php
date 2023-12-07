@@ -192,3 +192,5 @@
 @include('functions.admin.order-blue-view')
 @include('functions.admin.admin-em-parameter')
 @include('functions.admin.admin-ve-parameter')
+@include('functions.admin.admin-em-payment')
+@include('functions.admin.admin-ve-payment')

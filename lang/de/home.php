@@ -151,8 +151,8 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_type' => 'Art',
     'alldownload' => 'ALLE DATEIEN DOWNLOADEN',
     'internet_order' => 'Internet Order',
-    'cancel' => 'Abbrechen',
-    'apply' => 'Anwenden',
+    'cancel' => 'ABSCHLIESSEN',
+    'apply' => 'ANWENDEN',
     'COLUMN' => 'SPALTE',
 
     'order_detail' => 'Bestelldetails',
@@ -391,7 +391,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'dashboard_complete_order' => 'Abgeschlossene Bestellungen',
     'dashboard_progress_order' => 'Bestellungen in Arbeit',
     'dashboard_change' => 'Änderungsanforderungen',
-    'dashboard_view_all' => 'Alle Aufträge anzeigen',
+    'dashboard_view_all' => 'ALLE BESTELLUNGEN ANZEIGEN',
 
     //click button confirm messages
     'click_customer_profile_change' => 'Möchten Sie eine Anfrage an den Administrator senden, um dieses Profil zu ändern?',
@@ -450,5 +450,5 @@ Möchten Sie diese Änderung abschließen?',
     'change4' => '4. Änderung',
 
     'free_order_count_title' => 'Job berechnen',
-    'change_avatar' => 'Avatar ändern',
+    'change_avatar' => 'AVATAR ANDERN',
 ];

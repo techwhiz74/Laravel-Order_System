@@ -114,7 +114,7 @@
                         <div class="col-12 col-sm-9 col-xl-10">
                             <div class="dropdown">
                                 <div class="product-multiselect dropdown-toggle" href="#">
-                                    <div id="selected_products" style="padding: 12px">
+                                    <div id="selected_products">
                                     </div>
                                 </div>
                                 <div class="product-item-menu">

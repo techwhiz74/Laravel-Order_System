@@ -133,6 +133,8 @@ return [
     'embroidery-freelancer-endchange' => '/de/freelancer/embroidery-freelancer-endchange',
     'freelancer-embroidery-payment-mail' => '/de/freelancer/embroidery-payment-mail',
     'freelancer-embroidery-payment-archive' => '/de/freelancer/embroidery-payment-archive',
+    'freelancer-em-payment-sum' => '/de/freelancer/em-payment-sum',
+    'freelancer-em-payment-handle' => '/de/freelancer/em-payment-handle',
 
 
     'vector-freelancer-green' => '/de/freelancer/vector-freelancer-green',
@@ -150,7 +152,8 @@ return [
     'vector-freelancer-endchange' => '/de/freelancer/vector-freelancer-endchange',
     'freelancer-vector-payment-mail' => '/de/freelancer/vector-payment-mail',
     'freelancer-vector-payment-archive' => '/de/freelancer/vector-payment-archive',
-
+    'freelancer-ve-payment-sum' => '/de/freelancer/ve-payment-sum',
+    'freelancer-ve-payment-handle' => '/de/freelancer/ve-payment-handle',
 
 
 
@@ -175,12 +178,12 @@ return [
     'admin-customer-list' => '/de/admin/customer-list',
     'admin-customer-search' => '/de/admin/customer-search',
     'admin-get-differences' => '/de/admin/get-differences/',
-    'admin-accept-change' => '/de/admin/accept-change/',
-    'admin-accept-change-mail' => '/de/admin/accept-change-mail/',
+    'admin-accept-change' => '/de/admin/accept-change',
+    'admin-accept-change-mail' => '/de/admin/accept-change-mail',
     'admin-decline-change' => '/de/admin/decline-change/',
-    'admin-decline-change-mail' => '/de/admin/decline-change-mail/',
+    'admin-decline-change-mail' => '/de/admin/decline-change-mail',
     'admin-get-customer-profile' => '/de/admin/get-customer-profile',
-    'admin-change-profile' => '/de/admin/change-profile/',
+    'admin-change-profile' => '/de/admin/change-profile',
     'admin-add-customer' => '/de/admin/add-customer',
     'admin-customer-search-table' => '/de/admin/customer-search-table',
     'admin-customer-searched-result' => '/de/admin/customer-searched-result',
@@ -226,7 +229,11 @@ return [
     'admin-dashboard-yellow-table' => '/de/admin/dashboard-yellow-table',
     'admin-dashboard-blue-table' => '/de/admin/dashboard-blue-table',
     'admin-em-payment' => '/de/admin/em-payment',
+    'admin-em-payment-sum' => '/de/admin/em-payment-sum',
+    'admin-em-payment-handle' => '/de/admin/em-payment-handle',
     'admin-ve-payment' => '/de/admin/ve-payment',
+    'admin-ve-payment-sum' => '/de/admin/ve-payment-sum',
+    'admin-ve-payment-handle' => '/de/admin/ve-payment-handle',
     'admin-order-count' => '/de/admin/order-count',
     'admin-embroidery-payment-archive' => '/de/admin/embroidery-payment-archive',
     'admin-vector-payment-archive' => '/de/admin/vector-payment-archive',

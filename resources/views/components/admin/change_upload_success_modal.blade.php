@@ -10,9 +10,9 @@
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" onclick="AdminChangeEndChange()" class="modal_close_btn">Änderung
-                            beenden</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
+                        <button type="button" onclick="AdminChangeEndChange()" class="modal_close_btn">ÄNDERUNG
+                            BEENDEN</button>
+                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">ABSCHLIESSEN</button>
                     </div>
                 </div>
             </div>

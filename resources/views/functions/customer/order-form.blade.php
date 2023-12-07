@@ -113,6 +113,9 @@
             $('#order_detail_popup').hide();
             $('#order_change_popup').hide();
         })
+        $('#admin_customer_list1').click(function() {
+            $('#admin_customer_profile_edit_popup').modal('hide');
+        })
 
         $('.product-select-items input[type=checkbox]').change(function() {
             products = [];
@@ -362,7 +365,7 @@
         //another order button
         $('#order_form_anotherOrderButton').click(function() {
             $('#order_form_success_popup').modal('hide');
-            $('.order_form_input').val('');
+            $('.form-control').val('');
             $('#selected_products').text('');
             $('[name=products]').val('');
             products = [];

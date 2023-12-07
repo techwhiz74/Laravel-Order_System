@@ -10,7 +10,8 @@
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" class="modal_close_btn" onclick="EndChangeSuccess()">Abbrechen</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="EndChangeSuccess()">ABSCHLIESSEN</button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,5 @@
-<div class="modal fade" id="customer_search_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="customer_search_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="height: 100% !important">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"

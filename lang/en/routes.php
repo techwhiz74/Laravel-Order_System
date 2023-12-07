@@ -131,6 +131,8 @@ return [
     'embroidery-freelancer-endchange' => '/en/freelancer/embroidery-freelancer-endchange',
     'freelancer-embroidery-payment-mail' => '/en/freelancer/embroidery-payment-mail',
     'freelancer-embroidery-payment-archive' => '/en/freelancer/embroidery-payment-archive',
+    'freelancer-em-payment-sum' => '/en/freelancer/em-payment-sum',
+    'freelancer-em-payment-handle' => '/en/freelancer/em-payment-handle',
 
 
 
@@ -151,6 +153,8 @@ return [
     'vector-freelancer-endchange' => '/en/freelancer/vector-freelancer-endchange',
     'freelancer-vector-payment-mail' => '/en/freelancer/vector-payment-mail',
     'freelancer-vector-payment-archive' => '/en/freelancer/vector-payment-archive',
+    'freelancer-ve-payment-sum' => '/en/freelancer/ve-payment-sum',
+    'freelancer-ve-payment-handle' => '/en/freelancer/ve-payment-handle',
 
 
 
@@ -172,12 +176,12 @@ return [
     'admin-customer-list' => '/en/admin/customer-list',
     'admin-customer-search' => '/en/admin/customer-search',
     'admin-get-differences' => '/en/admin/get-differences/',
-    'admin-accept-change' => '/en/admin/accept-change/',
-    'admin-accept-change-mail' => '/en/admin/accept-change-mail/',
+    'admin-accept-change' => '/en/admin/accept-change',
+    'admin-accept-change-mail' => '/en/admin/accept-change-mail',
     'admin-decline-change' => '/en/admin/decline-change/',
-    'admin-decline-change-mail' => '/en/admin/decline-change-mail/',
+    'admin-decline-change-mail' => '/en/admin/decline-change-mail',
     'admin-get-customer-profile' => '/en/admin/get-customer-profile',
-    'admin-change-profile' => '/en/admin/change-profile/',
+    'admin-change-profile' => '/en/admin/change-profile',
     'admin-add-customer' => '/en/admin/add-customer',
     'admin-customer-search-table' => '/en/admin/customer-search-table',
     'admin-customer-searched-result' => '/en/admin/customer-searched-result',
@@ -223,7 +227,11 @@ return [
     'admin-dashboard-yellow-table' => '/en/admin/dashboard-yellow-table',
     'admin-dashboard-blue-table' => '/en/admin/dashboard-blue-table',
     'admin-em-payment' => '/en/admin/em-payment',
+    'admin-em-payment-sum' => '/en/admin/em-payment-sum',
+    'admin-em-payment-handle' => '/en/admin/em-payment-handle',
     'admin-ve-payment' => '/en/admin/ve-payment',
+    'admin-ve-payment-sum' => '/en/admin/ve-payment-sum',
+    'admin-ve-payment-handle' => '/en/admin/ve-payment-handle',
     'admin-order-count' => '/en/admin/order-count',
     'admin-embroidery-payment-archive' => '/en/admin/embroidery-payment-archive',
     'admin-vector-payment-archive' => '/en/admin/vector-payment-archive',

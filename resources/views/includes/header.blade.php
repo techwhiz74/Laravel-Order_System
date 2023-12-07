@@ -173,28 +173,28 @@
                                     <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
                                         style="width: 40px; height:40px;" />
                                 @else
-                                    <i class="fa-solid fa-circle-user fa-3x" style="color:#fff;"></i>
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
                             @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
                                 @if (Auth::user()->image)
                                     <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
                                         style="width: 40px; height:40px;" />
                                 @else
-                                    <i class="fa-solid fa-circle-user fa-3x" style="color:#fff;"></i>
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
                             @elseif(auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
                                 @if (Auth::user()->image)
                                     <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
                                         style="width: 40px; height:40px;" />
                                 @else
-                                    <i class="fa-solid fa-circle-user fa-3x" style="color:#fff;"></i>
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
                             @elseif(auth()->user()->user_type == 'admin')
                                 @if (Auth::user()->image)
                                     <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
                                         style="width: 40px; height:40px;" />
                                 @else
-                                    <i class="fa-solid fa-circle-user fa-3x" style="color:#fff;"></i>
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
                             @endif
                         @else

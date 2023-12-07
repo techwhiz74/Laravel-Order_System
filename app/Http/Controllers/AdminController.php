@@ -20,6 +20,7 @@ use App\Models\CustomerEmParameter;
 use App\Models\CustomerVeParameter;
 use App\Models\TempCustomerEmParameter;
 use App\Models\TempCustomerVeParameter;
+use App\Models\TempOrder;
 use DateTimeZone;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmRegisterMail;
@@ -635,7 +636,7 @@ class AdminController extends Controller
             'email' => $email,
             'password' => Hash::make($password),
             'user_type' => 'customer',
-            'image' => 'https://upload-files-cos.s3.amazonaws.com/6-profile1693225145-1692011047-2021-10-20.jpg',
+            'image' => '',
         ]);
         $add_customer->save();
     }
@@ -1778,6 +1779,7 @@ class AdminController extends Controller
     }
     public function EmPayment(Request $request)
     {
+        $temp_order = TempOrder::orderBy('id', 'desc')->get();
         if ($request->ajax()) {
             $data = Order::orderBy('created_at', 'desc')->where('type', 'Embroidery')->get();
             return DataTables::of($data)->addIndexColumn()
@@ -1800,16 +1802,39 @@ class AdminController extends Controller
                     }
                     return $type;
                 })
-                ->addColumn('counting_number', function ($row) {
-                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                ->addColumn('counting_number', function ($row) use ($temp_order) {
+                    $btn = '';
+                    foreach ($temp_order as $temp) {
+                        if ($temp->order_id == $row->id) {
+                            $btn = '<div style="text-align:center;">' . $temp->count_number . '</div>';
+                        }
+                    }
                     return $btn;
                 })
                 ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
                 ->make(true);
         }
     }
+    public function EmPaymentSum(Request $request)
+    {
+        $temp_order = TempOrder::where('type', 'Embroidery')->get();
+        $count_numebr = $temp_order->sum('count_number');
+        return response()->json($count_numebr);
+    }
+
+    public function EmPaymentHandle(Request $request)
+    {
+        $temp_orders = TempOrder::where('type', 'Embroidery')->get();
+        foreach ($temp_orders as $temp_order) {
+            $order = Order::findOrfail($temp_order->order_id);
+            $order->count_number = $temp_order->count_number;
+            $order->save();
+            $temp_order->delete();
+        }
+    }
     public function VePayment(Request $request)
     {
+        $temp_order = TempOrder::orderBy('id', 'desc')->get();
         if ($request->ajax()) {
             $data = Order::orderBy('created_at', 'desc')->where('type', 'Vector')->get();
             return DataTables::of($data)->addIndexColumn()
@@ -1832,19 +1857,44 @@ class AdminController extends Controller
                     }
                     return $type;
                 })
-                ->addColumn('counting_number', function ($row) {
-                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                ->addColumn('counting_number', function ($row) use ($temp_order) {
+                    $btn = '';
+                    foreach ($temp_order as $temp) {
+                        if ($temp->order_id == $row->id) {
+                            $btn = '<div style="text-align:center;">' . $temp->count_number . '</div>';
+                        }
+                    }
                     return $btn;
                 })
                 ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
                 ->make(true);
         }
     }
+    public function VePaymentSum(Request $request)
+    {
+        $temp_order = TempOrder::where('type', 'Vector')->get();
+        $count_numebr = $temp_order->sum('count_number');
+        return response()->json($count_numebr);
+    }
+    public function VePaymentHandle(Request $request)
+    {
+        $temp_orders = TempOrder::where('type', 'Vector')->get();
+        foreach ($temp_orders as $temp_order) {
+            $order = Order::findOrfail($temp_order->order_id);
+            $order->count_number = $temp_order->count_number;
+            $order->save();
+            $temp_order->delete();
+        }
+    }
     public function OrderCount(Request $request)
     {
         $order = Order::findOrfail($request->post('order_id'));
-        $order->count_number = $request->post('count_number');
-        $order->save();
+        $temp_order = new TempOrder();
+        TempOrder::where('order_id', $request->post('order_id'))->delete();
+        $temp_order->order_id = $request->post('order_id');
+        $temp_order->type = $order->type;
+        $temp_order->count_number = $request->post('count_number');
+        $temp_order->save();
     }
     public function Parameter(Request $request)
     {

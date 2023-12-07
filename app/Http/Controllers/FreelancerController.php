@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Order;
 use App\Models\CustomerEmParameter;
 use App\Models\CustomerVeParameter;
+use App\Models\TempOrder;
 use Intervention\Image\Facades\Image;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Response;
@@ -1634,6 +1635,7 @@ class FreelancerController extends Controller
     }
     public function EmbroideryFreelancerPaymentTable(Request $request)
     {
+        $temp_order = TempOrder::orderBy('id', 'desc')->get();
         if ($request->ajax()) {
             $data = Order::orderBy('id', 'desc')->where('type', 'Embroidery')->get();
             return DataTables::of($data)->addIndexColumn()
@@ -1656,16 +1658,40 @@ class FreelancerController extends Controller
                     }
                     return $type;
                 })
-                ->addColumn('counting_number', function ($row) {
-                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                ->addColumn('counting_number', function ($row) use ($temp_order) {
+                    $btn = '';
+                    foreach ($temp_order as $temp) {
+                        if ($temp->order_id == $row->id) {
+                            $btn = '<div style="text-align:center;">' . $temp->count_number . '</div>';
+                        }
+                    }
                     return $btn;
                 })
                 ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
                 ->make(true);
         }
     }
+    public function EmPaymentSum(Request $request)
+    {
+        $temp_order = TempOrder::where('type', 'Embroidery')->get();
+        $count_numebr = $temp_order->sum('count_number');
+        return response()->json($count_numebr);
+    }
+
+    public function EmPaymentHandle(Request $request)
+    {
+        $temp_orders = TempOrder::where('type', 'Embroidery')->get();
+        foreach ($temp_orders as $temp_order) {
+            $order = Order::findOrfail($temp_order->order_id);
+            $order->count_number = $temp_order->count_number;
+            $order->save();
+            $temp_order->delete();
+        }
+    }
+
     public function VectorFreelancerPaymentTable(Request $request)
     {
+        $temp_order = TempOrder::orderBy('id', 'desc')->get();
         if ($request->ajax()) {
             $data = Order::orderBy('id', 'desc')->where('type', 'Vector')->get();
             return DataTables::of($data)->addIndexColumn()
@@ -1688,19 +1714,44 @@ class FreelancerController extends Controller
                     }
                     return $type;
                 })
-                ->addColumn('counting_number', function ($row) {
-                    $btn = '<div style="text-align:center;">' . $row->count_number . '</div>';
+                ->addColumn('counting_number', function ($row) use ($temp_order) {
+                    $btn = '';
+                    foreach ($temp_order as $temp) {
+                        if ($temp->order_id == $row->id) {
+                            $btn = '<div style="text-align:center;">' . $temp->count_number . '</div>';
+                        }
+                    }
                     return $btn;
                 })
                 ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
                 ->make(true);
         }
     }
+    public function VePaymentSum(Request $request)
+    {
+        $temp_order = TempOrder::where('type', 'Vector')->get();
+        $count_numebr = $temp_order->sum('count_number');
+        return response()->json($count_numebr);
+    }
+    public function VePaymentHandle(Request $request)
+    {
+        $temp_orders = TempOrder::where('type', 'Vector')->get();
+        foreach ($temp_orders as $temp_order) {
+            $order = Order::findOrfail($temp_order->order_id);
+            $order->count_number = $temp_order->count_number;
+            $order->save();
+            $temp_order->delete();
+        }
+    }
     public function FreelancerOrderCount(Request $request)
     {
         $order = Order::findOrfail($request->post('order_id'));
-        $order->count_number = $request->post('count_number');
-        $order->save();
+        $temp_order = new TempOrder();
+        TempOrder::where('order_id', $request->post('order_id'))->delete();
+        $temp_order->order_id = $request->post('order_id');
+        $temp_order->type = $order->type;
+        $temp_order->count_number = $request->post('count_number');
+        $temp_order->save();
     }
     public function EmbroideryPaymentMail(Request $request)
     {

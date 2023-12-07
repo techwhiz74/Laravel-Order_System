@@ -6,6 +6,7 @@
             </div>
             <div>
                 <div>
+                    <button style="display: none" id="admin_em_payment_sum_cal"></button>
                     <div class="responsive-table">
                         <button id="em_admin_payment_table_reload_button" style="display: none"></button>
                         <table id="em_admin_payment_table" class="table table-striped">
@@ -24,8 +25,13 @@
                             <tbody></tbody>
                         </table>
                     </div>
+                    <div style="display:flex; justify-content:end; margin: -60px 0 30px 0;">
+                        <div class="total_count_number" id="admin_em_sum">
+                        </div>
+                    </div>
                     <div class="upload_btn">
                         <button class="btn btn-primary btn-block" id="admin_em_payment_archive">Zahlungsarchiv</button>
+                        <button class="btn btn-primary btn-block" id="admin_em_payment_btn">Zahlung</button>
                     </div>
                 </div>
             </div>

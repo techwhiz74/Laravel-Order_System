@@ -62,7 +62,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
@@ -108,7 +108,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_add_customer" id="admin_add_customer1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -141,7 +141,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="em_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -155,7 +155,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="ve_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -187,7 +187,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
                             class="lion_pop_btn">
@@ -204,7 +204,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="em_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -218,7 +218,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="ve_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -232,7 +232,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
@@ -250,7 +250,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'customer')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="view_order_popup" id="view_order_popup1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -264,7 +264,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="em_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -278,7 +278,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="ve_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -357,7 +357,7 @@
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
                             class="lion_pop_btn">
@@ -488,7 +488,7 @@
             @endif
 
             @if (auth()->user()->user_type == 'admin')
-                <li style="margin-right: 30px;">
+                <li style="margin-right: 20px;">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_all" id="admin_all1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
@@ -534,7 +534,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="margin-left: 30px">
+                <li style="margin-left: 20px">
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_em_payment" id="admin_em_payment1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">

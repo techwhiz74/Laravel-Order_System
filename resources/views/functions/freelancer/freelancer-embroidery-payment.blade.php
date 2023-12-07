@@ -58,14 +58,42 @@
         });
     });
     $(function() {
-        $('#em_payment_mail').click(function() {
+        $('#em_freelancer_payment').click(function() {
+            $('#free_em_payment_sum_cal').trigger('click');
+        })
+        $('#free_em_payment_sum_cal').click(function() {
+            $.ajax({
+                url: '{{ __('routes.freelancer-em-payment-sum') }}',
+                type: 'get',
+                success: (sum) => {
+                    $('#free_em_sum').text(sum);
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
+    })
+    $(function() {
+        $('#free_em_payment_btn').click(function() {
             var confirm = window.confirm('Would you like to pay?');
             if (confirm == true) {
                 $.ajax({
-                    url: '{{ __('routes.freelancer-embroidery-payment-mail') }}',
-                    type: 'get',
+                    url: '{{ __('routes.freelancer-em-payment-handle') }}',
+                    type: 'post',
                     success: () => {
-                        console.log('success');
+                        $('#em_freelancer_payment_table_reload_button').trigger('click');
+                        $('#free_em_payment_sum_cal').trigger('click');
+                        $.ajax({
+                            url: '{{ __('routes.freelancer-embroidery-payment-mail') }}',
+                            type: 'get',
+                            success: () => {
+                                console.log('success');
+                            },
+                            error: () => {
+                                console.error('error');
+                            }
+                        })
                     },
                     error: () => {
                         console.error('error');

@@ -15,7 +15,7 @@
                                 <button type="button" class="modal_close_btn"
                                     id="change_customer_avatar_confirm">{{ __('home.change_avatar') }}</button>
                                 <button type="button" class="modal_close_btn"
-                                    onclick="hideAlertModal()">Abbrechen</button>
+                                    onclick="hideAlertModal()">ABSCHLIESSEN</button>
                             </div>
                         </div>
                     </div>

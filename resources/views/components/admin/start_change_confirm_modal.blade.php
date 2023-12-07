@@ -11,8 +11,8 @@
                 <div class="row" style="text-align:center;">
                     <div>
                         <button type="button" class="modal_close_btn"
-                            id="admin_start_change_confirm">Bestätigen</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">Abbrechen</button>
+                            id="admin_start_change_confirm">BESTÄTIGEN</button>
+                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">ABSCHLIESSEN</button>
                     </div>
                 </div>
             </div>

@@ -5,10 +5,10 @@
         }
     });
 
-    var ve_freelancer_payment_table;
+    var ve_admin_payment_table;
 
     $(function() {
-        ve_freelancer_payment_table = $('#ve_freelancer_payment_table').DataTable({
+        ve_admin_payment_table = $('#ve_admin_payment_table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -20,10 +20,9 @@
                 }
             },
             ajax: {
-                url: "{{ __('routes.vector-freelancer-payment') }}",
+                url: "{{ __('routes.admin-ve-payment') }}",
                 type: "get",
             },
-
             columns: [{
                     data: 'type',
                     name: 'type',
@@ -53,20 +52,20 @@
                 },
             ]
         });
-        $('#ve_freelancer_payment_table_reload_button').click(function() {
-            ve_freelancer_payment_table.ajax.reload();
+        $('#ve_admin_payment_table_reload_button').click(function() {
+            ve_admin_payment_table.ajax.reload();
         })
     });
     $(function() {
-        $('#ve_freelancer_payment').click(function() {
-            $('#free_ve_payment_sum_cal').trigger('click');
+        $('#admin_ve_payment1').click(function() {
+            $('#admin_ve_payment_sum_cal').trigger('click');
         })
-        $('#free_ve_payment_sum_cal').click(function() {
+        $('#admin_ve_payment_sum_cal').click(function() {
             $.ajax({
-                url: '{{ __('routes.freelancer-ve-payment-sum') }}',
+                url: '{{ __('routes.admin-ve-payment-sum') }}',
                 type: 'get',
                 success: (sum) => {
-                    $('#free_ve_sum').text(sum);
+                    $('#admin_ve_sum').text(sum);
                 },
                 error: () => {
                     console.error("error");
@@ -75,39 +74,26 @@
         })
     })
     $(function() {
-        $('#free_ve_payment_btn').click(function() {
-            var confirm = window.confirm('Would you like to pay?');
-            if (confirm == true) {
-                $.ajax({
-                    url: '{{ __('routes.freelancer-ve-payment-handle') }}',
-                    type: 'post',
-                    success: () => {
-                        $('#ve_freelancer_payment_table_reload_button').trigger('click');
-                        $('#free_ve_payment_sum_cal').trigger('click');
-                        $.ajax({
-                            url: '{{ __('routes.freelancer-vector-payment-mail') }}',
-                            type: 'get',
-                            success: () => {
-                                console.log('success');
-                            },
-                            error: () => {
-                                console.error('error');
-                            }
-                        })
-                    },
-                    error: () => {
-                        console.error('error');
-                    }
-                })
-            }
+        $('#admin_ve_payment_btn').click(function() {
+            $.ajax({
+                url: '{{ __('routes.admin-ve-payment-handle') }}',
+                type: 'post',
+                success: () => {
+                    $('#ve_admin_payment_table_reload_button').trigger('click');
+                    $('#admin_ve_payment_sum_cal').trigger('click');
+                },
+                error: () => {
+                    console.error('error');
+                }
+            })
         })
     })
     $(function() {
-        $('#ve_payment_archive').click(function() {
-            $('#ve_freelancer_payment_archive_table').DataTable().destroy();
-            $('#free_vector_payment_archive').modal('show');
-            var ve_freelancer_payment_archive_table;
-            ve_freelancer_payment_archive_table = $('#ve_freelancer_payment_archive_table').DataTable({
+        $('#admin_ve_payment_archive').click(function() {
+            $('#admin_ve_payment_archive_table').DataTable().destroy();
+            $('#admin_vector_payment_archive').modal('show');
+            var admin_ve_payment_archive_table;
+            admin_ve_payment_archive_table = $('#admin_ve_payment_archive_table').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -119,10 +105,9 @@
                     }
                 },
                 ajax: {
-                    url: '{{ __('routes.freelancer-vector-payment-archive') }}',
+                    url: '{{ __('routes.admin-vector-payment-archive') }}',
                     type: "get",
                 },
-
                 columns: [{
                         data: 'type',
                         name: 'type',
@@ -152,8 +137,8 @@
                     },
                 ]
             });
-            $('#ve_freelancer_payment_archive_table_reload_button').click(function() {
-                ve_freelancer_payment_archive_table.ajax.reload();
+            $('#admin_ve_payment_archive_table_reload_button').click(function() {
+                admin_ve_payment_archive_table.ajax.reload();
             });
         });
     })
