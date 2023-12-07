@@ -337,13 +337,13 @@
                         <div class="col-12 ">
                             <div class="upload_btn" id="admin_em_parameter_buttons" style="display: none">
                                 <button class="btn btn-primary btn-block" type="submit"
-                                    id="admin_em_parameter_confirm">Bestätigen</button>
+                                    id="admin_em_parameter_confirm">BESTÄTIGEN</button>
                                 <button class="btn btn-primary btn-block" type="submit"
-                                    id="admin_em_parameter_decline">Ablehnen</button>
+                                    id="admin_em_parameter_decline">ABLEHNEN</button>
                             </div>
                             <div class="upload_btn" id="admin_em_parameter_change_buttons">
                                 <button class="btn btn-primary btn-block" type="submit"
-                                    id="admin_em_parameter_change">Ändern</button>
+                                    id="admin_em_parameter_change">ÄNDERN</button>
                             </div>
                         </div>
                     </div>

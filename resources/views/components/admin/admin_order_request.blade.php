@@ -46,7 +46,7 @@
                                                     <button type="submit" class="btn btn-primary start"
                                                         style="visibility: hidden;">
                                                         <i class="glyphicon glyphicon-upload"></i>
-                                                        <span>Start Upload</span>
+                                                        <span>UPLOAD STARTEN</span>
                                                     </button>
 
                                                     <span class="fileupload-process"></span>
@@ -78,7 +78,7 @@
                             </div>
                             <div style="display: flex; justify-content:flex-end; margin-top:5px;">
                                 <div>
-                                    <button type="submit" class="admin_request_submit">Hochladen</button>
+                                    <button type="submit" class="admin_request_submit">HOCHLADEN</button>
                                 </div>
                             </div>
                         </form>

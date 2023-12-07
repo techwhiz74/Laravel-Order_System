@@ -482,8 +482,8 @@
                                     <div id="admin_green_change">
                                         <div class="box_title">Änderung starten</div>
                                         <div>
-                                            <button onclick="AdminStartChange()" class="job_button">Änderung
-                                                starten</button>
+                                            <button onclick="AdminStartChange()" class="job_button">ÄNDERUNG
+                                                STARTEN</button>
                                         </div>
 
                                     </div>
@@ -518,7 +518,7 @@
                                                                         class="btn btn-primary start"
                                                                         style="visibility: hidden;">
                                                                         <i class="glyphicon glyphicon-upload"></i>
-                                                                        <span>Start Upload</span>
+                                                                        <span>UPLOAD STARTEN</span>
                                                                     </button>
 
                                                                     <span class="fileupload-process"></span>
@@ -548,7 +548,7 @@
                                                     <div style="display: flex; justify-content:flex-end">
                                                         <div>
                                                             <button type="submit"
-                                                                class="admin_change_upload_submit">Hochladen</button>
+                                                                class="admin_change_upload_submit">HOCHLADEN</button>
                                                         </div>
                                                     </div>
                                                 </form>

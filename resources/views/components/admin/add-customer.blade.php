@@ -424,8 +424,8 @@
                                 <div class="row">
                                     <div class="col-12 ">
                                         <div class="upload_btn">
-                                            <button class="btn btn-primary btn-block" type="submit">Kunde
-                                                erfassen</button>
+                                            <button class="btn btn-primary btn-block" type="submit">KUNDEN
+                                                ERFASSEN</button>
                                         </div>
                                     </div>
                                 </div>

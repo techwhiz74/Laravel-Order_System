@@ -81,7 +81,7 @@
 
                             <div class="lgg_resi">
                                 <div class="submit_btn">
-                                    <button type="submit">{{ __('home.login') }}</button>
+                                    <button type="submit">{{ __('home.login_b') }}</button>
                                 </div>
 
                             </div>

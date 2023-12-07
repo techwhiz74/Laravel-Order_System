@@ -88,7 +88,9 @@ return [
     'update_profile' => 'Update Profile Photo',
     'header_reisteration_link' => "Apply for a customer account",
     'login' => 'Login',
+    'login_b' => 'Login',
     'register' => 'Register',
+    'register_b' => 'Register',
     'login_lines' => 'Log in to Manage and Create Your Custom Orders',
     'register_lines' => 'Please note that we only supply embroidery and advertising customers. In case you If you are an end customer, please contact your local partner.',
     'backToHome' => ' Back To Home Page',
@@ -412,20 +414,20 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'Dateien hochladen' => 'Upload files',
     'start_job_confirm' => 'Would you like to start the job now?',
     'confirm' => 'Confirm',
-    'start_job_success' => 'The status changed from green to yellow.',
+    'start_job_success' => 'The status changed from Offen to In Bearbeitung.',
     'free_upload_job_success' => 'Files uploaded successfully.
 Would you like to complete this job?',
     'free_upload_change_success' => 'Files uploaded successfully.
 Would you like to complete this change?',
     'complete_job' => 'Complete Job',
     'free_delete_file_confirm' => 'Would you like to delete this file?',
-    'end_job_success' => 'The status changes from yellow to red',
+    'end_job_success' => 'The status changed from In Bearbeitung to Ausgeliefert',
     'change_text' => 'Change text',
     'start_change' => 'Start Change',
     'upload_change' => 'Upload Change',
     'end_change' => 'End Change',
     'start_change_confirm' => 'Would you like to start the change now?',
-    'end_change_success' => 'The status changes from blue to red',
+    'end_change_success' => 'The status changed from Änderung to Ausgeliefert',
 
 
 

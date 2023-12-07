@@ -424,20 +424,17 @@
                                             <div class="col-12 ">
                                                 <div class="upload_btn">
                                                     <button class="btn btn-primary btn-block" type="button"
-                                                        id="confirm_customer_button">Kunde
-                                                        freischalten</button>
+                                                        id="confirm_customer_button">KUNDEN ENTSPERREN</button>
                                                     <button class="btn btn-primary btn-block" type="button"
-                                                        id="decline_customer_button">Kundenkonto
-                                                        ablehnen</button>
+                                                        id="decline_customer_button">KUNDENKONTO ABLEHNEN</button>
                                                     <button class="btn btn-primary btn-block" type="submit"
-                                                        id="save_customer_button">Kunde
-                                                        ändern</button>
+                                                        id="save_customer_button">KUNDEN ÄNDERN</button>
                                                     <button type="button" id="customer_accept"
-                                                        class="btn btn-primary btn-block">Annehmen</button>
+                                                        class="btn btn-primary btn-block">ANNEHMEN</button>
                                                     <button type="button" id="customer_decline"
-                                                        class="btn btn-primary btn-block">Ablehnen</button>
+                                                        class="btn btn-primary btn-block">ABLEHNEN</button>
                                                     <button class="btn btn-primary btn-block" type="button"
-                                                        id="change_customer_avatar">Avatar ändern</button>
+                                                        id="change_customer_avatar">AVATAR ÄNDERN</button>
                                                 </div>
                                             </div>
                                         </div>

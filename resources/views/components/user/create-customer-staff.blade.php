@@ -20,22 +20,19 @@
                     <input type="hidden" id="employee_id" value="">
                     <div class="row" style="font-size: 13px; font-family:Inter; margin-bottom:10px;">
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
-                            <div class="form-group">
-                                <strong>{{ __('home.staff_create_name') }}</strong>
+                            <div class="form-group">{{ __('home.staff_create_name') }}
                                 <input type="text" id="name" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
-                            <div class="form-group">
-                                <strong>{{ __('home.staff_create_email') }}</strong>
+                            <div class="form-group">{{ __('home.staff_create_email') }}
                                 <input type="email" id="email" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
-                            <div class="form-group">
-                                <strong>{{ __('home.staff_create_password') }}</strong>
+                            <div class="form-group">{{ __('home.staff_create_password') }}
                                 <input type="password" id="password" class="form-control" placeholder=""
                                     style="width:100% !important;">
                             </div>

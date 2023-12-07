@@ -389,7 +389,7 @@
                                     <div id="admin_green_job">
                                         <div class="box_title">Aktivität-Übersicht</div>
                                         <div id="freelancer_job_start_div">
-                                            <button onclick="AdminStartJob()" class="job_button">Job starten</button>
+                                            <button onclick="AdminStartJob()" class="job_button">JOB STARTEN</button>
                                         </div>
 
                                     </div>
@@ -398,8 +398,8 @@
                                         <div
                                             style="display: flex; flex-direction:column; justify-content:space-between">
                                             <div id="admin_job_update_div">
-                                                <button onclick="AdminUpdateJob()" class="job_button">Dateien
-                                                    hochladen</button>
+                                                <button onclick="AdminUpdateJob()" class="job_button">DATEIEN
+                                                    HOCHLADEN</button>
                                             </div>
                                             <div id="admin_job_upload_div">
                                                 <form action="" id="admin_job_start_form"
@@ -424,7 +424,7 @@
                                                                         class="btn btn-primary start"
                                                                         style="visibility: hidden;">
                                                                         <i class="glyphicon glyphicon-upload"></i>
-                                                                        <span>Start Upload</span>
+                                                                        <span>UPLOAD STARTEN</span>
                                                                     </button>
 
                                                                     <span class="fileupload-process"></span>
@@ -449,7 +449,7 @@
                                                     <div style="display: flex; justify-content:flex-end">
                                                         <div>
                                                             <button type="submit"
-                                                                class="admin_job_start_submit">Hochladen</button>
+                                                                class="admin_job_start_submit">HOCHLADEN</button>
                                                         </div>
                                                     </div>
                                                 </form>

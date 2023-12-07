@@ -23,7 +23,7 @@
                   {% if (!i && !o.options.autoUpload) { %}
                       <button class="upload_table_button start" disabled>
                           <i class="glyphicon glyphicon-upload"></i>
-                          <span style="font-size:13px;">Start</span>
+                          <span style="font-size:13px;">START</span>
                       </button>
                   {% } %}
                   {% if (!i) { %}

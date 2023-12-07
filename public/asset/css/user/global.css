@@ -1691,10 +1691,6 @@ select#status-filter:focus-visible {
   font-size: 13px;
 }
 
-.modal {
-  height: auto !important;
-}
-
 #order_form_success_popup .modal-dialog,
 #order_change_success_popup .modal-dialog,
 #change_profile_success_popup .modal-dialog,
@@ -2877,6 +2873,12 @@ td {
   background-color: #fff;
 }
 
+.ms-options-wrap>button:focus,
+.ms-options-wrap>button {
+  font-weight: normal !important;
+}
+
+
 /* customer staff */
 #customer_staff_create_button,
 #customer_staff_edit_button,
@@ -3347,7 +3349,7 @@ button {
   border: none;
   border-radius: 0;
   padding: 5px 8px;
-  width: 80px;
+  /* width: 80px; */
 }
 
 .btn-success {
@@ -3565,6 +3567,11 @@ textarea:focus {
   font-weight: 500;
 }
 
+.ms-options-wrap>button:focus,
+.ms-options-wrap>button {
+  padding: 5px 10px !important;
+}
+
 
 
 
@@ -3745,6 +3752,7 @@ textarea:focus {
   .order_detail_div {
     min-height: auto;
   }
+
 
   .modal {
     height: 100% !important;
