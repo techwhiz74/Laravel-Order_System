@@ -373,20 +373,14 @@
 
 
                             <div class="lgg_resi">
-                                <div class="row">
-                                    <div class="col-12 col-md-6">
-                                        <div class="submit_btn">
-                                            <button type="submit">{{ __('home.register_b') }}</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6" style="display: flex; justify-content:end">
-                                        <div style="display: flex; align-items:center">
-                                            <div class="resig_lnkk">
-                                                <p>{{ __('home.already_have_account') }} </p>
-                                                <a href="{{ __('routes.customer-login') }}"
-                                                    style="color: #444; margin-left:10px; font-weight:900">{{ __('home.login_b') }}</a>
-                                            </div>
-                                        </div>
+                                <div class="submit_btn">
+                                    <button type="submit">{{ __('home.register_b') }}</button>
+                                </div>
+                                <div style="display: flex; align-items:center">
+                                    <div class="resig_lnkk">
+                                        <p>{{ __('home.already_have_account') }} </p>
+                                        <a href="{{ __('routes.customer-login') }}"
+                                            style="color: #444; margin-left:10px; font-weight:900">{{ __('home.login_b') }}</a>
                                     </div>
                                 </div>
                             </div>

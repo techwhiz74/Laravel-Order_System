@@ -44,7 +44,7 @@
                                     name="password_confirmation" required>
                             </div>
                             <div class="submit_btn">
-                                <button type="submit">{{ __('home.change_password') }}</button>
+                                <button type="submit">{{ __('home.change_password_b') }}</button>
                             </div>
                         </form>
 

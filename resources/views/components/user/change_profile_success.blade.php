@@ -11,7 +11,7 @@
                 <div class="row">
                     <div style="text-align:center;">
                         <button type="button" class="modal_close_btn"
-                            onclick="hideModal()">{{ __('home.cancel') }}</button>
+                            onclick="hideModal()">{{ __('home.close') }}</button>
                     </div>
                 </div>
             </div>

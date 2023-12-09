@@ -39,7 +39,7 @@
             var confirm = window.confirm('{{ __('home.click_customer_parameter_change') }}');
             if (confirm == true) {
                 $.ajax({
-                    url: '{{ __('routes.customer - e m - p a rameter - c h ange') }}',
+                    url: '{{ __('routes.customer-em-parameter-change') }}',
                     type: 'post',
                     data: em_parameter_data,
                     contentType: false,
@@ -47,7 +47,7 @@
                     success: () => {
                         $('#customer_em_parameter_submit').hide();
                         $.ajax({
-                            url: '{{ __('routes.customer - e m - p a rameter - c h ange - m a il') }}',
+                            url: '{{ __('routes.customer-em-parameter-change-mail') }}',
                             type: 'get',
                             success: () => {
                                 console.log("success");

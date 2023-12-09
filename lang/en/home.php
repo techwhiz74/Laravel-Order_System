@@ -14,6 +14,7 @@ return [
     'price_vector' => 'Price Vector',
     'information_vector' => 'Information Vector',
     'change_password' => 'Change Password',
+    'change_password_b' => 'CHANGE PASSWORD',
     'logout' => 'Logout',
     //Sidebar
     'minimize' => 'Minimize',
@@ -88,9 +89,9 @@ return [
     'update_profile' => 'Update Profile Photo',
     'header_reisteration_link' => "Apply for a customer account",
     'login' => 'Login',
-    'login_b' => 'Login',
+    'login_b' => 'LOGIN',
     'register' => 'Register',
-    'register_b' => 'Register',
+    'register_b' => 'REGISTER',
     'login_lines' => 'Log in to Manage and Create Your Custom Orders',
     'register_lines' => 'Please note that we only supply embroidery and advertising customers. In case you If you are an end customer, please contact your local partner.',
     'backToHome' => ' Back To Home Page',
@@ -144,8 +145,9 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'order_type' => 'Type',
     'alldownload' => 'DOWNLOAD ALL FILES',
     'internet_order' => 'Internet Order',
-    'cancel' => 'Cancel',
-    'apply' => 'Apply',
+    'cancel' => 'CANCEL',
+    'complete' => 'Complete',
+    'apply' => 'APPLY',
     'COLUMN' => 'COLUMN',
 
     'order_detail' => 'Order Detail',
@@ -217,7 +219,7 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'height' => 'Height',
     'special instructions' => 'Special Instructions',
     'data_upload' => 'Data Upload',
-    'add_file' => 'Add File',
+    'add_file' => 'ADD FILES',
     'start_upload' => 'Start Upload',
     'cancel_upload' => 'Cancel Upload',
     'delete_upload' => 'Delete Upload',
@@ -229,7 +231,7 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'Files uploading failed' => 'Files uploading failed!',
     'order_form-projectname_placeholder' => 'Please fill in with clearly recognizable project names',
     'manual_input' => 'Manual Input',
-    'close' => 'Close',
+    'close' => 'CLOSE',
     'order_form_file_uplaod_command' => 'YOUR ORDER HAS BEEN SUCCESSFULLY TRANSFERRED.',
     'order_form_AnotherOrder' => 'CREATE ANOTHER ORDER',
     'order_change_another' => 'CHANGE ANOTHER ORDER',
@@ -245,7 +247,7 @@ By agreeing, you accept the currently valid price list and its surcharges. These
 
     //order change
     'change_request' => 'Change Request',
-    'order_upload' => 'Upload',
+    'order_upload' => 'UPLOAD',
 
 
 
@@ -379,20 +381,18 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'dashboard_complete_order' => 'Completed Orders',
     'dashboard_progress_order' => 'Orders In Progress',
     'dashboard_change' => 'Change Requests',
-    'dashboard_view_all' => 'View All Oders',
+    'dashboard_view_all' => 'View All Orders',
 
     //click button confirm messages
     'click_customer_profile_change' => 'Would you like to send a request to admin to change this profile?',
     'click_customer_parameter_change' => 'Would you like to send a request to admin to change this parameter?',
     'click_customer_add_employee' => 'Would you like to add employee?',
-    'click_customer_edit_employee' => 'Would you like to edit employee?',
+    'click_customer_edit_employee' => 'Would you like to update employee?',
 
     // change password
     'current_password' => 'Current Password',
     'new_password' => 'New Password',
     'new_password_confirm' => 'Confirm New Password',
-    //table paginetion information
-    'pagination_info' => 'Showing 1 to 10 of 110 entries',
 
 
 
@@ -410,23 +410,23 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'detail_box2' => 'Customer parameters',
     'detail_box3' => 'File overview',
     'detail_box4' => 'Activity overview',
-    'Job starten' => 'Start job',
-    'Dateien hochladen' => 'Upload files',
-    'start_job_confirm' => 'Would you like to start the job now?',
-    'confirm' => 'Confirm',
+    'Job starten' => 'START JOB',
+    'Dateien hochladen' => 'UPLOAD FILES',
+    'start_job_confirm' => 'Would you like to start this job now?',
+    'confirm' => 'CONFIRM',
     'start_job_success' => 'The status changed from Offen to In Bearbeitung.',
     'free_upload_job_success' => 'Files uploaded successfully.
 Would you like to complete this job?',
     'free_upload_change_success' => 'Files uploaded successfully.
 Would you like to complete this change?',
-    'complete_job' => 'Complete Job',
+    'complete_job' => 'COMPLETE JOB',
     'free_delete_file_confirm' => 'Would you like to delete this file?',
     'end_job_success' => 'The status changed from In Bearbeitung to Ausgeliefert',
     'change_text' => 'Change text',
     'start_change' => 'Start Change',
     'upload_change' => 'Upload Change',
-    'end_change' => 'End Change',
-    'start_change_confirm' => 'Would you like to start the change now?',
+    'end_change' => 'END CHANGE',
+    'start_change_confirm' => 'Would you like to start this change now?',
     'end_change_success' => 'The status changed from Änderung to Ausgeliefert',
 
 
@@ -438,6 +438,7 @@ Would you like to complete this change?',
 
     'free_order_count_title' => 'Counting this job',
     'change_avatar' => 'Change Avatar',
+    'change_avatar_b' => 'CHANGE AVATAR',
 
 
 

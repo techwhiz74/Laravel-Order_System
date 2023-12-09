@@ -1,8 +1,8 @@
 <script>
     $(function() {
-        var table;
+        var customer_staff_table;
         $(function() {
-            table = $('#customer_staffs').DataTable({
+            customer_staff_table = $('#customer_staffs').DataTable({
                 responsive: true,
                 processing: true,
                 serverSide: true,
@@ -44,10 +44,8 @@
                     }
                 ]
             })
-            $('#customer_staff_create_submit').click(function() {
-                setTimeout(() => {
-                    table.ajax.reload();
-                }, 1000);
+            $('#customer_staffs_reload_button').click(function() {
+                customer_staff_table.ajax.reload();
             })
         });
     })

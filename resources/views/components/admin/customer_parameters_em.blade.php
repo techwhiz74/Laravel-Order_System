@@ -1,7 +1,7 @@
 <div class="modal fade" id="admin_customer_parameters_em_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
+        <div class="modal-content" style="background-color: rgb(244, 244, 244); ">
             <button type="button" class="backbutton" style="margin: 20px 0 0 20px;" onclick="hideModal()"><i
                     class="fa-solid fa-left-long" style="display: flex;"></i></button>
             <div class="row">

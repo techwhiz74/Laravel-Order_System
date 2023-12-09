@@ -7,6 +7,7 @@
             </div>
             <div class="tab-content">
                 <div class="responsive-table" style="width: 100%; font-size:13px">
+                    <button style="display:none" id="customer_staffs_reload_button"></button>
                     <table id="customer_staffs" class="table table-striped">
                         <thead>
                             <tr>

@@ -30,8 +30,8 @@
                         </div>
                     </div>
                     <div class="upload_btn">
-                        <button class="btn btn-primary btn-block" id="em_payment_archive">Archive</button>
-                        <button class="btn btn-primary btn-block" id="free_em_payment_btn">Payment</button>
+                        <button class="btn btn-primary btn-block" id="em_payment_archive">ARCHIVE</button>
+                        <button class="btn btn-primary btn-block" id="free_em_payment_btn">PAYMENT</button>
                     </div>
                 </div>
             </div>

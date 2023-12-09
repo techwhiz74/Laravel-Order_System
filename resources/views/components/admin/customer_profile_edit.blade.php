@@ -1,10 +1,10 @@
 <div class="modal fade" id="admin_customer_profile_edit_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
+        <div class="modal-content" style="background-color: rgb(244, 244, 244); ">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
                     style="display: flex;"></i></button>
-            <div class="row">
+            <div class="row" style="margin-top: -30px;">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
                     <div class="pagetitle">Änderung des Kundenprofils
@@ -466,6 +466,7 @@
                 id
             },
             success: (response) => {
+                $('#admin_customer_profile_edit_popup').modal("show");
                 console.log("profile", response.profile);
                 console.log("temp", response.temp);
                 if (response.profile.image != "") {
@@ -659,7 +660,7 @@
                         $('#customer_decline').show();
                     }
                 }
-                $('#admin_customer_profile_edit_popup').modal("show");
+
             },
             error: () => {
                 console.error('err');
@@ -702,7 +703,7 @@
             processData: false,
             data: change_profile_data,
             success: () => {
-                $('#admin_customer_profile_edit_popup').hide();
+                $('#admin_customer_profile_edit_popup').modal('hide');
                 $('#customer_list_table_reload_button').trigger('click');
             },
             error: () => {
@@ -724,7 +725,7 @@
                 processData: false,
                 contentType: false,
                 success: () => {
-                    $('#admin_customer_profile_edit_popup').hide();
+                    $('#admin_customer_profile_edit_popup').modal('hide');
                     $('#customer_list_table_reload_button').trigger('click');
                     $.ajax({
                         url: '{{ __('routes.admin-confirm-profile-mail') }}',
@@ -763,7 +764,7 @@
                             .val()
                     },
                     success: () => {
-                        $('#admin_customer_profile_edit_popup').hide();
+                        $('#admin_customer_profile_edit_popup').modal('hide');
                         $('#customer_list_table_reload_button').trigger('click');
                     },
                     error: () => {
@@ -873,6 +874,7 @@
                 processData: false,
                 data: formData,
                 success: () => {
+                    $('#admin_customer_profile_edit_popup').modal('hide');
                     editCustomerProfile($('[name=admin_change_profile_id]').val());
                 },
                 error: () => {

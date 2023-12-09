@@ -17,7 +17,7 @@
             @include('users.orders.vector_price')
         </div>
     @else
-        <div class="main-content-wrapper">
+        <div>
             @yield('content')
             @include('users.orders.embroidery_information')
             @include('users.orders.embroidery_price')
@@ -25,9 +25,6 @@
             @include('users.orders.vector_price')
         </div>
     @endauth
-
-
-
     <div class="overlay"></div>
     @include('includes.footer')
 </body>

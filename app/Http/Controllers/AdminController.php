@@ -1817,6 +1817,7 @@ class AdminController extends Controller
     }
     public function EmPaymentSum(Request $request)
     {
+        $count_numebr = 0;
         $temp_order = TempOrder::where('type', 'Embroidery')->get();
         $count_numebr = $temp_order->sum('count_number');
         return response()->json($count_numebr);
@@ -1872,6 +1873,7 @@ class AdminController extends Controller
     }
     public function VePaymentSum(Request $request)
     {
+        $count_numebr = 0;
         $temp_order = TempOrder::where('type', 'Vector')->get();
         $count_numebr = $temp_order->sum('count_number');
         return response()->json($count_numebr);

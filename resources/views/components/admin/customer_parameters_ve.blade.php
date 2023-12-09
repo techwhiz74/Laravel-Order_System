@@ -1,10 +1,10 @@
 <div class="modal fade" id="admin_customer_parameters_ve_popup" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
-            <button type="button" class="backbutton" style="margin: 20px 0 0 20px;" onclick="hideModal()"><i
-                    class="fa-solid fa-left-long" style="display: flex;"></i></button>
-            <div class="row">
+        <div class="modal-content" style="background-color: rgb(244, 244, 244);">
+            <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
+                    style="display: flex;"></i></button>
+            <div class="row" style="margin-top: -30px;">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
                     <div class="pagetitle">{{ __('home.customer_ve_parameters') }}

@@ -33,7 +33,7 @@
                                     required>
                             </div>
                             <div class="submit_btn">
-                                <button type="submit">{{ __('home.change_avatar') }}</button>
+                                <button type="submit">{{ __('home.change_avatar_b') }}</button>
                             </div>
                         </form>
                     </div>

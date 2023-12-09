@@ -3,7 +3,7 @@
         <div class="modal-content">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
                     style="display: flex;"></i></button>
-            <div class="row">
+            <div class="row" style="margin-top: -30px;">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
                     <div class="pagetitle">

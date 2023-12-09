@@ -184,7 +184,7 @@ section {
 
 .login_section {
   display: flex;
-  min-height: 68vh;
+  min-height: 60vh;
   align-items: center;
   background-color: green;
   background-image: linear-gradient(-13deg, #e9e9e9 60%, #f9f9f9 60%);
@@ -262,6 +262,7 @@ section {
   justify-content: center;
   border: none;
   font-size: 14px;
+  z-index: 1000;
 }
 
 .backbutton:hover {
@@ -334,18 +335,20 @@ section {
 
 .login_section .lgg_resi {
   padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .login_section .resig_lnkk {
   display: flex;
   align-items: center;
   gap: 3px;
-  font-size: 14px;
+  font-size: 13px;
+  justify-content: space-between;
 }
 
 .login_section .resig_lnkk p {
   margin: 0;
-  text-align: right;
   line-height: 1;
 }
 
@@ -1633,13 +1636,12 @@ select#status-filter:focus-visible {
   border: 1px solid #ddd;
   padding: 10px;
   line-height: 1;
-  min-height: 270px;
   font-size: 13px;
-  margin-bottom: 5px;
+  height: 100%;
 }
 
 .order_detail_input_div_element {
-  height: 25px;
+  min-height: 25px;
   padding: 8px 10px;
   display: flex;
   align-items: center;
@@ -1679,7 +1681,7 @@ select#status-filter:focus-visible {
 .order_form_file_uplaod_command {
   color: #c3ac6d;
   text-align: center;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 #order_form_anotherOrderButton {
@@ -1811,23 +1813,11 @@ select#status-filter:focus-visible {
 #admin_delete_change_file_confirm_popup .modal-body,
 #free_order_count .modal-body,
 #admin_order_count .modal-body {
-  padding: 2vw 1vw 1vw 1vw !important;
+  padding: 30px 30px 20px 30px !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   font-size: 13px;
-}
-
-#customer_staff_create_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
 }
 
 #customer_search_popup .modal-body {
@@ -1835,27 +1825,6 @@ select#status-filter:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-#customer_staff_create_popup .modal-dialog {
-  background-color: rgba(227, 222, 222, 0.5);
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 0;
-  margin-top: 0;
-}
-
-#customer_staff_create_popup .modal-content {
-  max-width: 1000px;
-  margin: 0 auto;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -80%);
 }
 
 #free_order_detail_popup .modal-dialog,
@@ -1874,6 +1843,7 @@ select#status-filter:focus-visible {
   height: calc(100% - 110px);
 }
 
+#customer_staff_create_popup .modal-dialog,
 #admin_embroidery_payment_archive .modal-dialog,
 #admin_vector_payment_archive .modal-dialog,
 #admin_customer_parameters_em_popup .modal-dialog,
@@ -1895,6 +1865,7 @@ select#status-filter:focus-visible {
   height: 100%;
 }
 
+#customer_staff_create_popup .modal-content,
 #admin_customer_parameters_em_popup .modal-content,
 #admin_customer_parameters_ve_popup .modal-content,
 #customer_search_popup .modal-content,
@@ -2112,7 +2083,7 @@ select#status-filter:focus-visible {
 }
 
 .page_section {
-  padding: 3vw;
+  padding: 2vw 3vw;
 }
 
 .box_title {
@@ -2674,13 +2645,17 @@ select#status-filter:focus-visible {
 
   height: 30px;
   border-radius: 2px;
-  background-color: rgb(245, 245, 245);
+  background-color: #c3ac6d;
+  color: #fff;
   border: 0px;
   align-items: center;
   font-size: 13px;
   padding: 0px 5px;
   white-space: nowrap;
-  transition: background-color 0.2s linear 0s;
+}
+
+.dropdown-menu.show {
+  inset: 0px 0px auto auto !important;
 }
 
 /* Embroidory Information */
@@ -2880,9 +2855,7 @@ td {
 
 
 /* customer staff */
-#customer_staff_create_button,
-#customer_staff_edit_button,
-#customer_staff_delete_button {
+#customer_staff_create_button {
   background: #c4ae79 !important;
   color: #fff !important;
   border: 0;
@@ -2891,6 +2864,7 @@ td {
   padding: 8px 12px;
   margin: 0 5px;
   text-align: center;
+  font-weight: 900;
 }
 
 #customer_staffs {
@@ -2963,7 +2937,7 @@ td {
   background-color: #c3ac6d;
   border: none;
   border-radius: 0;
-  padding: 8px 8px;
+  padding: 10px 12px;
 }
 
 
@@ -3090,12 +3064,6 @@ td {
   line-height: 1;
 }
 
-.freelancer_job_div {
-  border: 1px solid #ddd;
-  padding: 10px;
-  height: 350px;
-}
-
 .order_change_upload_div {
   border: 1px solid #ddd;
   padding: 10px;
@@ -3104,11 +3072,6 @@ td {
   overflow-y: auto;
 }
 
-.freelancer_change_div {
-  border: 1px solid #ddd;
-  padding: 10px;
-  height: 365px;
-}
 
 #freelacner_job_upload_div,
 #admin_job_upload_div {
@@ -3572,6 +3535,9 @@ textarea:focus {
   padding: 5px 10px !important;
 }
 
+.main-content-wrapper {
+  margin-top: 100px;
+}
 
 
 
@@ -3749,9 +3715,6 @@ textarea:focus {
     margin-top: 5px;
   }
 
-  .order_detail_div {
-    min-height: auto;
-  }
 
 
   .modal {
@@ -3768,6 +3731,7 @@ textarea:focus {
     height: 100%;
   }
 
+  #customer_staff_create_popup .modal-content,
   #admin_customer_parameters_em_popup .modal-content,
   #admin_customer_parameters_ve_popup .modal-content,
   #customer_search_popup .modal-content,
@@ -3874,5 +3838,13 @@ textarea:focus {
 
   .login_logo {
     max-width: 100px !important;
+  }
+
+  .login_section .lgg_resi {
+    display: block;
+  }
+
+  .main-content-wrapper {
+    margin-top: 74px;
   }
 }

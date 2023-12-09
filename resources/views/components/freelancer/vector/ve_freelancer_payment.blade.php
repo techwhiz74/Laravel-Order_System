@@ -31,8 +31,8 @@
                         </div>
                     </div>
                     <div class="upload_btn" style="margin-top: -20px !important;">
-                        <button class="btn btn-primary btn-block" id="ve_payment_archive">Archive</button>
-                        <button class="btn btn-primary btn-block" id="free_ve_payment_btn">Payment</button>
+                        <button class="btn btn-primary btn-block" id="ve_payment_archive">ARCHIVE</button>
+                        <button class="btn btn-primary btn-block" id="free_ve_payment_btn">PAYMENT</button>
                     </div>
                 </div>
             </div>

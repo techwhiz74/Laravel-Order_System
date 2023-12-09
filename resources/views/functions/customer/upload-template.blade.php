@@ -29,7 +29,7 @@
                   {% if (!i) { %}
                       <button class="upload_table_button cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
-                          <span style="font-size:13px;">ABSCHLIESSEN</span>
+                          <span style="font-size:13px;">STORNIEREN</span>
                       </button>
                   {% } %}
               </td>

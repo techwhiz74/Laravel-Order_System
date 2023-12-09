@@ -1,15 +1,15 @@
 <div class="modal fade" id="order_detail_popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: rgb(244, 244, 244); padding-top:1vw !important;">
+        <div class="modal-content" style="background-color: rgb(244, 244, 244); ">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
                     style="display: flex;"></i></button>
-            <div class="row">
+            <div class="row" style="margin-top: -30px;">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
                     <div class="pagetitle">
                         {{ __('home.order_detail') }}
                     </div>
-                    <div class="order_detail_div" style="min-height: auto !important;">
+                    <div class="order_detail_div" style="height: auto !important;">
                         <input type="hidden" id="detail_id">
                         <div class="row">
                             <div class="col-12 col-sm-6">
@@ -114,8 +114,8 @@
                                             </label>
                                         </div>
                                         <div class="col-12 col-md-9">
-                                            <div id="detail_special_instructions" class="order_detail_input_div_element"
-                                                style="height:85px !important;">
+                                            <div id="detail_special_instructions"
+                                                class="order_detail_input_div_element">
                                             </div>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="order_detail_div" style="margin-top: 5px">
+                    <div class="order_detail_div" style="margin-top: 5px;height: auto !important;">
                         <div class="col-12">
                             <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
                                 <button class="btn btn-primary btn-sm" onclick="multipleDownload()"

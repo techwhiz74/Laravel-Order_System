@@ -500,7 +500,6 @@ class CustomerController extends Controller
             $temp_parameter->parameter9 = $parameter9;
             $temp_parameter->save();
         }
-
     }
     public function ChangeVeParameterMail(Request $request)
     {

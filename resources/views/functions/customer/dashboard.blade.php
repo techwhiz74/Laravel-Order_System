@@ -672,10 +672,4 @@
     function adminShowAllOrder() {
         $('#admin_all1').trigger('click');
     }
-    // pagination information
-    $(function() {
-        $('#view_order_popup1').click(function() {
-            $('#view-order_info').text("{{ __('home.pagination_info') }}");
-        })
-    })
 </script>

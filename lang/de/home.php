@@ -13,6 +13,7 @@ return [
     'price_vector' => 'Preisliste Vektordateien',
     'information_vector' => 'Informationen Vektordateien',
     'change_password' => 'Passwort ändern',
+    'change_password_b' => 'PASSWORT ÄNDERN',
     'logout' => 'Ausloggen',
     //sidebar
     'minimize' => 'Minimieren',
@@ -153,7 +154,8 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_type' => 'Art',
     'alldownload' => 'ALLE DATEIEN DOWNLOADEN',
     'internet_order' => 'Internet Order',
-    'cancel' => 'ABSCHLIESSEN',
+    'cancel' => 'STORNIEREN',
+    'complete' => 'ABSCHLIESSEN',
     'apply' => 'ANWENDEN',
     'COLUMN' => 'SPALTE',
 
@@ -248,7 +250,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'Files uploading failed' => 'Das Hochladen der Dateien ist fehlgeschlagen!',
     'order_form-projectname_placeholder' => 'Bitte mit klar erkennbaren Projektnamen füllen',
     'manual_input' => 'Manuelle Eingabe',
-    'close' => 'STORNIEREN',
+    'close' => 'BEENDEN',
     'order_form_file_uplaod_command' => 'IHR AUFTRAG WURDE ERFOLGREICH AN UNS ÜBERTRAGEN.',
     'order_form_AnotherOrder' => 'WEITEREN AUFTRAG ERFASSEN',
     'order_change_another' => 'EINE ANDERE BESTELLUNG ÄNDERN',
@@ -264,7 +266,7 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
 
     //order change
     'change_request' => 'Änderungswünsche',
-    'order_upload' => 'Hochladen',
+    'order_upload' => 'HOCHLADEN',
 
     //view-order-express
     'orderform_title' => 'Auftrag erfassen - Stickprogramme ',
@@ -399,13 +401,11 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'click_customer_profile_change' => 'Möchten Sie eine Anfrage an den Administrator senden, um dieses Profil zu ändern?',
     'click_customer_parameter_change' => 'Möchten Sie eine Anfrage an den Administrator senden, um diesen Parameter zu ändern?',
     'click_customer_add_employee' => 'Möchten Sie einen Mitarbeiter hinzufügen?',
-    'click_customer_edit_employee' => 'Möchten Sie den Mitarbeiter bearbeiten?',
+    'click_customer_edit_employee' => 'Möchten Sie den Mitarbeiter aktualisieren?',
     // change password
     'current_password' => 'Aktuelles Passwort',
     'new_password' => 'Neues Passwort',
     'new_password_confirm' => 'Neues Passwort wiederholen',
-    //table paginetion information
-    'pagination_info' => '1 bis 10 von 110 Einträgen anzeigen',
 
 
 
@@ -452,5 +452,6 @@ Möchten Sie diese Änderung abschließen?',
     'change4' => '4. ÄNDERUNG',
 
     'free_order_count_title' => 'Job berechnen',
-    'change_avatar' => 'Avatar Andern'
+    'change_avatar' => 'Avatar Andern',
+    'change_avatar_b' => 'AVATAR ANDERN',
 ];

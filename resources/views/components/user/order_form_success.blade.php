@@ -11,8 +11,7 @@
                     <div style="text-align:center;">
                         <button id="order_form_anotherOrderButton"
                             class="modal_close_btn">{{ __('home.order_form_AnotherOrder') }}</button>
-                        <a href="/"><button type="button" class="modal_close_btn">
-                                {{ __('home.cancel') }}</button></a>
+                        <a href="/"><button class="modal_close_btn">{{ __('home.complete') }}</button></a>
                     </div>
                 </div>
             </div>

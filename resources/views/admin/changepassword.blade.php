@@ -26,7 +26,7 @@
                         <form action="{{ __('routes.admin-updatepassword') }}" method="post">
                             @csrf
                             <div class="login_heading">
-                                <h1>Passwort ändern</h1>
+                                <h1>{{ __('home.change_password') }}</h1>
                             </div>
 
                             <div class="form_dv">
@@ -42,7 +42,7 @@
                                     required>
                             </div>
                             <div class="submit_btn">
-                                <button type="submit">Passwort ändern</button>
+                                <button type="submit">{{ __('home.change_password_b') }}</button>
                             </div>
                         </form>
 

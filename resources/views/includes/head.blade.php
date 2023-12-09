@@ -98,9 +98,6 @@
     src="https://www.jqueryscript.net/demo/jQuery-Multiple-Select-Plugin-For-Bootstrap-Bootstrap-Multiselect/js/prettify.js">
 </script>
 
-
-
-
 <script>
     function menuToggle() {
         const toggleMenu = document.querySelector(".menu");

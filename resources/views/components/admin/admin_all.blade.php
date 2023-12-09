@@ -56,7 +56,7 @@
                                     <span>{{ __('home.column') }}</span>
                                 </button>
                                 <div class="dropdown-menu megamenu" role="menu"
-                                    style="width:190px; padding:15px; font-size:13px">
+                                    style="width:250px; padding:15px; font-size:13px">
                                     <div style="margin-bottom:10px;">{{ __('home.COLUMN') }}</div>
                                     <label>
                                         <input type="checkbox" id="checkbox_admin_order_type"
@@ -111,7 +111,7 @@
                                     </label><br>
 
                                     <div class="CheckboxButtons">
-                                        <button id="" class="CheckboxButton">{{ __('home.cancel') }}</button>
+                                        <button id="" class="CheckboxButton">STORNIEREN</button>
                                         <button id="checkbox_admin_apply"
                                             class="CheckboxButton">{{ __('home.apply') }}</button>
                                     </div>
