@@ -12,7 +12,8 @@
                     <div>
                         <button type="button" onclick="AdminChangeEndChange()" class="modal_close_btn">ÄNDERUNG
                             BEENDEN</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">ABSCHLIESSEN</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="hideAlertModal()">{{ __('home.cancel') }}</button>
                     </div>
                 </div>
             </div>

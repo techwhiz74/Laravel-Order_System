@@ -12,7 +12,8 @@
                     <div style="text-align:center;">
                         <button id="admin_request_anotherOrderButton" class="modal_close_btn">EINE ANDERE BESTELLUNG
                             ÄNDERN</button>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">ABSCHLIESSEN</button>
+                        <a href="/"><button type="button"
+                                class="modal_close_btn">{{ __('home.complete') }}</button></a>
                     </div>
                 </div>
             </div>

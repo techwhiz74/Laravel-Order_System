@@ -9,146 +9,37 @@
                     <div class="pagetitle">Bestelldetails
                     </div>
                     <div style="font-size: 13px; font-family:'Inter';">
-                        <div class="row">
-                            <div class="col-12 col-lg-6">
-                                <div class="order_detail_div">
-                                    <div class="box_title">{{ __('home.detail_box1') }}</div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6 form_label">
-                                                        <label class="control-label">{{ __('home.customer_number') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div id="admin_detail_customer_number"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6 form_label">
-                                                        <label class="control-label">{{ __('home.order_number') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div id="admin_detail_order_number"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-3 form_label">
-                                                        <label class="control-label">{{ __('home.projectname') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <div id="admin_detail_project_name"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-6 order_size">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6 form_label">
-                                                        <label class="control-label">{{ __('home.size') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-8 col-md-4">
-                                                        <div id="admin_detail_size"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-4 col-md-2 form_label">
-                                                        <label class="control-label">mm
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-sm-6 order_size">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-6 form_label">
-                                                    </div>
-                                                    <div class="col-12 col-md-6">
-                                                        <div id="admin_detail_width_height"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12">
-                                            <div class="form-group form_dv_wrap order_final_product">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-3 form_label">
-                                                        <label class="control-label">{{ __('home.fianl_product') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <div id="admin_detail_final_product"
-                                                            class="order_detail_input_div_element">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12">
-                                            <div class="form-group form_dv_wrap">
-                                                <div class="row">
-                                                    <div class="col-12 col-md-3 form_label">
-                                                        <label
-                                                            class="control-label">{{ __('home.special instructions') }}
-                                                        </label>
-                                                    </div>
-                                                    <div class="col-12 col-md-9">
-                                                        <div id="admin_detail_special_instructions"
-                                                            class="order_detail_input_div_element"
-                                                            style="height:85px !important;">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="order_detail_div">
-                                    <div class="box_title">{{ __('home.detail_box2') }}</div>
-                                    <div id="admin_embroidery_parameter_div">
+                        <div style="margin-bottom: 5px">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="order_detail_div">
+                                        <div class="box_title">{{ __('home.detail_box1') }}</div>
                                         <div class="row">
-                                            <div class="col-12 col-sm-12">
+                                            <div class="col-12 col-sm-6">
                                                 <div class="form-group form_dv_wrap">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
+                                                        <div class="col-12 col-md-6 form_label">
                                                             <label
-                                                                class="control-label">{{ __('home.yarn_information') }}
+                                                                class="control-label">{{ __('home.customer_number') }}
                                                             </label>
                                                         </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_yarn_information"
+                                                        <div class="col-12 col-md-6">
+                                                            <div id="admin_detail_customer_number"
+                                                                class="order_detail_input_div_element">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6">
+                                                <div class="form-group form_dv_wrap">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6 form_label">
+                                                            <label class="control-label">{{ __('home.order_number') }}
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div id="admin_detail_order_number"
                                                                 class="order_detail_input_div_element">
                                                             </div>
                                                         </div>
@@ -160,13 +51,63 @@
                                             <div class="col-12 col-sm-12">
                                                 <div class="form-group form_dv_wrap">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.need_embroidery_files') }}
+                                                        <div class="col-12 col-md-3 form_label">
+                                                            <label class="control-label">{{ __('home.projectname') }}
                                                             </label>
                                                         </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_need_embroidery_files"
+                                                        <div class="col-12 col-md-9">
+                                                            <div id="admin_detail_project_name"
+                                                                class="order_detail_input_div_element">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 order_size">
+                                                <div class="form-group form_dv_wrap">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6 form_label">
+                                                            <label class="control-label">{{ __('home.size') }}
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-8 col-md-4">
+                                                            <div id="admin_detail_size"
+                                                                class="order_detail_input_div_element">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-4 col-md-2 form_label">
+                                                            <label class="control-label">mm
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-6 order_size">
+                                                <div class="form-group form_dv_wrap">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6 form_label">
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div id="admin_detail_width_height"
+                                                                class="order_detail_input_div_element">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12">
+                                                <div class="form-group form_dv_wrap order_final_product">
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-3 form_label">
+                                                            <label class="control-label">{{ __('home.fianl_product') }}
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-12 col-md-9">
+                                                            <div id="admin_detail_final_product"
                                                                 class="order_detail_input_div_element">
                                                             </div>
                                                         </div>
@@ -178,123 +119,13 @@
                                             <div class="col-12 col-sm-12">
                                                 <div class="form-group form_dv_wrap">
                                                     <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
+                                                        <div class="col-12 col-md-3 form_label">
                                                             <label
-                                                                class="control-label">{{ __('home.cutting_options') }}
+                                                                class="control-label">{{ __('home.special instructions') }}
                                                             </label>
                                                         </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_cutting_options"
-                                                                class="order_detail_input_div_element">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.special_cutting_options') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_special_cutting_options"
-                                                                class="order_detail_input_div_element"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.needle_instructions') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_needle_instructions"
-                                                                class="order_detail_input_div_element">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.standard_instructions') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_standard_instructions"
-                                                                class="order_detail_input_div_element">
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.special_standard_instructions') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_special_standard_instructions"
-                                                                class="order_detail_input_div_element">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="admin_vector_parameter_div">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.required_vector_file') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_required_vector_file"
-                                                                class="order_detail_input_div_element">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12">
-                                                <div class="form-group form_dv_wrap">
-                                                    <div class="row">
-                                                        <div class="col-12 col-md-4 form_label">
-                                                            <label
-                                                                class="control-label">{{ __('home.required_image_file') }}
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12 col-md-8">
-                                                            <div id="admin_required_image_file"
+                                                        <div class="col-12 col-md-9">
+                                                            <div id="admin_detail_special_instructions"
                                                                 class="order_detail_input_div_element">
                                                             </div>
                                                         </div>
@@ -304,155 +135,335 @@
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="order_detail_div">
-                                    <div class="col-12 file_view_box">
-                                        <div class="box_title">Dateiübersicht</div>
-                                        <div>
-                                            <button class="btn btn-primary btn-sm" onclick="adminMultipleDownload()"
-                                                style="background-color:#c3ac6d; border:none; font-size:13px;"><i
-                                                    class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 file_view_flex_toggle">
-                                        <div style="margin-right: 10px;">
-                                            <ul class="nav nav-tabs column_flex">
-                                                <li class="nav-item">
-                                                    <div class="folder_button" type="button"
-                                                        id="admin_subfolder_structure1">
-                                                        <div
-                                                            style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                style="width: 37px;">
-                                                        </div>
-                                                        <div style="height: 40%;padding: 3px 0;">
-                                                            <p style="padding-top: 6px;">
-                                                                ORIGINALDATEI</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <div class="folder_button" type="button"
-                                                        id="admin_subfolder_structure2">
-                                                        <div
-                                                            style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                style="width: 37px;">
-                                                        </div>
-                                                        <div style="height: 40%;padding: 3px 0;">
-                                                            <p style="padding-top: 6px;">
-                                                                STICKPROGRAMM</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <div class="folder_button" type="button"
-                                                        id="admin_subfolder_structure3">
-                                                        <div
-                                                            style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
-                                                            <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                style="width: 37px;">
-                                                        </div>
-                                                        <div style="height: 40%;padding: 3px 0;">
-                                                            <p style="padding-top: 6px;">
-                                                                VEKTORDATEI</p>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="responsive-table file_view_table">
-                                            <table id="admin_order_detail" class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th style="text-align: center;">
-                                                            {{ __('home.customer_number') }}</th>
-                                                        <th style="text-align: center">{{ __('home.order_number') }}
-                                                        </th>
-                                                        <th style="text-align: center">{{ __('home.index') }}</th>
-                                                        <th style="text-align: center">{{ __('home.extension') }}</th>
-                                                        <th style="text-align: center">{{ __('home.download') }}</th>
-                                                        <th style="text-align: center">
-                                                            {{ __('home.delete') }}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody style="text-align: center"></tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-6">
-                                <div class="freelancer_job_div">
-                                    <div id="admin_green_job">
-                                        <div class="box_title">Aktivität-Übersicht</div>
-                                        <div id="freelancer_job_start_div">
-                                            <button onclick="AdminStartJob()" class="job_button">JOB STARTEN</button>
-                                        </div>
-
-                                    </div>
-                                    <div id="admin_yellow_job">
-                                        <div class="box_title">Aktivität-Übersicht</div>
-                                        <div
-                                            style="display: flex; flex-direction:column; justify-content:space-between">
-                                            <div id="admin_job_update_div">
-                                                <button onclick="AdminUpdateJob()" class="job_button">DATEIEN
-                                                    HOCHLADEN</button>
-                                            </div>
-                                            <div id="admin_job_upload_div">
-                                                <form action="" id="admin_job_start_form"
-                                                    class="box_file_upload_form">
-                                                    <input type="hidden" name="admin_detail_id" value="">
-                                                    <div style="display: flex;">
-                                                        <div id="admin_job_upload" action="" method="POST"
-                                                            enctype="multipart/form-data"
-                                                            style="width: 100%; overflow-x:hidden; overflow-y:auto;">
-                                                            <noscript><input type="hidden" name="redirect"
-                                                                    value="" /></noscript>
-                                                            <div class="row fileupload-buttonbar">
-                                                                <div class="col-lg-7">
-                                                                    <span class="fileinput-button">
-                                                                        <i class="glyphicon glyphicon-plus"></i>
-                                                                        <span
-                                                                            style="font-size: 13px;">{{ __('home.add_file') }}...</span>
-                                                                        <input type="file" name="files[]" multiple
-                                                                            id="admin_detail_file_input" />
-                                                                    </span>
-                                                                    <button type="submit"
-                                                                        class="btn btn-primary start"
-                                                                        style="visibility: hidden;">
-                                                                        <i class="glyphicon glyphicon-upload"></i>
-                                                                        <span>Start</span>
-                                                                    </button>
-
-                                                                    <span class="fileupload-process"></span>
+                                <div class="col-12 col-lg-6">
+                                    <div class="order_detail_div">
+                                        <div class="box_title">{{ __('home.detail_box2') }}</div>
+                                        <div id="admin_embroidery_parameter_div">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.yarn_information') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_yarn_information"
+                                                                    class="order_detail_input_div_element">
                                                                 </div>
-                                                                <div class="col-lg-5 fileupload-progress fade">
-                                                                    <div class="progress progress-striped active"
-                                                                        role="progressbar" aria-valuemin="0"
-                                                                        aria-valuemax="100">
-                                                                        <div class="progress-bar progress-bar-success"
-                                                                            style="width: 0%;">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.need_embroidery_files') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_need_embroidery_files"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.cutting_options') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_cutting_options"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.special_cutting_options') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_special_cutting_options"
+                                                                    class="order_detail_input_div_element"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.needle_instructions') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_needle_instructions"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.standard_instructions') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_standard_instructions"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.special_standard_instructions') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_special_standard_instructions"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="admin_vector_parameter_div">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.required_vector_file') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_required_vector_file"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-12">
+                                                    <div class="form-group form_dv_wrap">
+                                                        <div class="row">
+                                                            <div class="col-12 col-md-4 form_label">
+                                                                <label
+                                                                    class="control-label">{{ __('home.required_image_file') }}
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-12 col-md-8">
+                                                                <div id="admin_required_image_file"
+                                                                    class="order_detail_input_div_element">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="order_detail_div">
+                                        <div class="col-12 file_view_box">
+                                            <div class="box_title">Dateiübersicht</div>
+                                            <div>
+                                                <button class="btn btn-primary btn-sm"
+                                                    onclick="adminMultipleDownload()"
+                                                    style="background-color:#c3ac6d; border:none; font-size:13px;"><i
+                                                        class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 file_view_flex_toggle">
+                                            <div style="margin-right: 10px;">
+                                                <ul class="nav nav-tabs column_flex">
+                                                    <li class="nav-item">
+                                                        <div class="folder_button" type="button"
+                                                            id="admin_subfolder_structure1">
+                                                            <div
+                                                                style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                                    style="width: 37px;">
+                                                            </div>
+                                                            <div style="height: 40%;padding: 3px 0;">
+                                                                <p style="padding-top: 6px;">
+                                                                    ORIGINALDATEI</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <div class="folder_button" type="button"
+                                                            id="admin_subfolder_structure2">
+                                                            <div
+                                                                style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                                    style="width: 37px;">
+                                                            </div>
+                                                            <div style="height: 40%;padding: 3px 0;">
+                                                                <p style="padding-top: 6px;">
+                                                                    STICKPROGRAMM</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <div class="folder_button" type="button"
+                                                            id="admin_subfolder_structure3">
+                                                            <div
+                                                                style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                                    style="width: 37px;">
+                                                            </div>
+                                                            <div style="height: 40%;padding: 3px 0;">
+                                                                <p style="padding-top: 6px;">
+                                                                    VEKTORDATEI</p>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="responsive-table file_view_table">
+                                                <table id="admin_order_detail" class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th style="text-align: center;">
+                                                                {{ __('home.customer_number') }}</th>
+                                                            <th style="text-align: center">
+                                                                {{ __('home.order_number') }}
+                                                            </th>
+                                                            <th style="text-align: center">{{ __('home.index') }}</th>
+                                                            <th style="text-align: center">{{ __('home.extension') }}
+                                                            </th>
+                                                            <th style="text-align: center">{{ __('home.download') }}
+                                                            </th>
+                                                            <th style="text-align: center">
+                                                                {{ __('home.delete') }}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody style="text-align: center"></tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="order_detail_div">
+                                        <div id="admin_green_job">
+                                            <div class="box_title">Aktivität-Übersicht</div>
+                                            <div id="freelancer_job_start_div">
+                                                <button onclick="AdminStartJob()" class="job_button">JOB
+                                                    STARTEN</button>
+                                            </div>
+
+                                        </div>
+                                        <div id="admin_yellow_job">
+                                            <div class="box_title">Aktivität-Übersicht</div>
+                                            <div
+                                                style="display: flex; flex-direction:column; justify-content:space-between">
+                                                <div id="admin_job_update_div">
+                                                    <button onclick="AdminUpdateJob()" class="job_button">DATEIEN
+                                                        HOCHLADEN</button>
+                                                </div>
+                                                <div id="admin_job_upload_div">
+                                                    <form action="" id="admin_job_start_form"
+                                                        class="box_file_upload_form">
+                                                        <input type="hidden" name="admin_detail_id" value="">
+                                                        <div style="display: flex;">
+                                                            <div id="admin_job_upload" action="" method="POST"
+                                                                enctype="multipart/form-data"
+                                                                style="width: 100%; overflow-x:hidden; overflow-y:auto;">
+                                                                <noscript><input type="hidden" name="redirect"
+                                                                        value="" /></noscript>
+                                                                <div class="row fileupload-buttonbar">
+                                                                    <div class="col-lg-7">
+                                                                        <span class="fileinput-button">
+                                                                            <i class="glyphicon glyphicon-plus"></i>
+                                                                            <span
+                                                                                style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                                            <input type="file" name="files[]"
+                                                                                multiple
+                                                                                id="admin_detail_file_input" />
+                                                                        </span>
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary start"
+                                                                            style="visibility: hidden;">
+                                                                            <i class="glyphicon glyphicon-upload"></i>
+                                                                            <span>Start</span>
+                                                                        </button>
+
+                                                                        <span class="fileupload-process"></span>
+                                                                    </div>
+                                                                    <div class="col-lg-5 fileupload-progress fade">
+                                                                        <div class="progress progress-striped active"
+                                                                            role="progressbar" aria-valuemin="0"
+                                                                            aria-valuemax="100">
+                                                                            <div class="progress-bar progress-bar-success"
+                                                                                style="width: 0%;">
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <table role="presentation" class="table table-striped"
-                                                                id="order_form_upload_list">
-                                                                <tbody class="files"></tbody>
-                                                            </table>
+                                                                <table role="presentation" class="table table-striped"
+                                                                    id="order_form_upload_list">
+                                                                    <tbody class="files"></tbody>
+                                                                </table>
 
+                                                            </div>
+                                                        </div><br>
+                                                        <div style="display: flex; justify-content:flex-end">
+                                                            <div>
+                                                                <button type="submit"
+                                                                    class="admin_job_start_submit">HOCHLADEN</button>
+                                                            </div>
                                                         </div>
-                                                    </div><br>
-                                                    <div style="display: flex; justify-content:flex-end">
-                                                        <div>
-                                                            <button type="submit"
-                                                                class="admin_job_start_submit">HOCHLADEN</button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -461,11 +472,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-1"></div>
             </div>
-
+            <div class="col-xl-1"></div>
         </div>
+
     </div>
+</div>
 </div>
 @include('components.admin.start_job_confirm_modal')
 @include('components.admin.start_job_success_modal')

@@ -5,12 +5,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Der Status änderte sich von NEU auf IN BEARBEITUNG.
+                        Der Status änderte sich von Offen auf In Bearbeitung.
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
-                        <button type="button" class="modal_close_btn" onclick="hideAlertModal()">ABSCHLIESSEN</button>
+                        <button type="button" class="modal_close_btn"
+                            onclick="hideAlertModal()">{{ __('home.close') }}</button>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@
         <div class="modal-content" style="background-color: rgb(244, 244, 244); ">
             <button type="button" class="backbutton" style="margin: 20px 0 0 20px;" onclick="hideModal()"><i
                     class="fa-solid fa-left-long" style="display: flex;"></i></button>
-            <div class="row">
+            <div class="row" style="margin-top: -30px">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
                     <div class="pagetitle">{{ __('home.customer_em_parameters') }}

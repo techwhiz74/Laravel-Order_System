@@ -56,7 +56,7 @@
                                     <span>{{ __('home.column') }}</span>
                                 </button>
                                 <div class="dropdown-menu megamenu" role="menu"
-                                    style="width:250px; padding:15px; font-size:13px">
+                                    style="width:200px; padding:15px; font-size:13px">
                                     <div style="margin-bottom:10px;">{{ __('home.COLUMN') }}</div>
                                     <label>
                                         <input type="checkbox" id="checkbox_admin_order_type"
@@ -102,7 +102,7 @@
                                     <label>
                                         <input type="checkbox" id="checkbox_admin_request" class="option-input checkbox"
                                             checked />
-                                        {{ __('home.request') }}
+                                        Änderung
                                     </label>
                                     <label>
                                         <input type="checkbox" id="checkbox_admin_delete" class="option-input checkbox"

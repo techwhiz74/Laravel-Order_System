@@ -381,7 +381,7 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'dashboard_complete_order' => 'Completed Orders',
     'dashboard_progress_order' => 'Orders In Progress',
     'dashboard_change' => 'Change Requests',
-    'dashboard_view_all' => 'View All Orders',
+    'dashboard_view_all' => 'VIEW ALL ORDERS',
 
     //click button confirm messages
     'click_customer_profile_change' => 'Would you like to send a request to admin to change this profile?',

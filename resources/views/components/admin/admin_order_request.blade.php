@@ -46,7 +46,7 @@
                                                     <button type="submit" class="btn btn-primary start"
                                                         style="visibility: hidden;">
                                                         <i class="glyphicon glyphicon-upload"></i>
-                                                        <span>UPLOAD STARTEN</span>
+                                                        <span>Start upload</span>
                                                     </button>
 
                                                     <span class="fileupload-process"></span>

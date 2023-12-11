@@ -2650,13 +2650,9 @@ select#status-filter:focus-visible {
   border: 0px;
   align-items: center;
   font-size: 13px;
-  padding: 0px 5px;
   white-space: nowrap;
 }
 
-.dropdown-menu.show {
-  inset: 0px 0px auto auto !important;
-}
 
 /* Embroidory Information */
 
@@ -3449,7 +3445,7 @@ textarea:focus {
 }
 
 .box_change_file_upload_form {
-  height: 295px;
+  height: 310px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

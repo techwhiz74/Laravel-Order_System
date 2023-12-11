@@ -433,7 +433,7 @@
                         </div>
                         <div class="col-12 col-sm-9 col-xl-10">
                             <!-- The file upload form used as target for the file upload widget -->
-                            <div id="fileupload" action="" method="POST" enctype="multipart/form-data">
+                            <div id="admin_fileupload" action="" method="POST" enctype="multipart/form-data">
                                 <!-- Redirect browsers with JavaScript disabled to the origin page -->
                                 <noscript><input type="hidden" name="redirect" value="" /></noscript>
                                 <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->

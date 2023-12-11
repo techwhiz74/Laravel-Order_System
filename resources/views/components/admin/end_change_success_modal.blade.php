@@ -5,13 +5,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div>
-                        Der Status änderte sich von ÄNDERUNG auf ABGESCHLOSSEN.
+                        Der Status änderte sich von Änderung auf Ausgeliefert.
                     </div>
                 </div>
                 <div class="row" style="text-align:center;">
                     <div>
                         <button type="button" class="modal_close_btn"
-                            onclick="EndChangeSuccess()">ABSCHLIESSEN</button>
+                            onclick="EndChangeSuccess()">{{ __('home.close') }}</button>
                     </div>
                 </div>
             </div>
