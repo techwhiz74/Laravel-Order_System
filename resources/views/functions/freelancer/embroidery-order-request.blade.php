@@ -237,8 +237,9 @@
 
         embroidery_detail_table = $('#embroidery_order_detail').DataTable({
             responsive: true,
+            info: false,
             language: {
-
+                emptyTable: "No data available in table",
             },
             processing: true,
             serverSide: true,

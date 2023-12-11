@@ -1353,6 +1353,10 @@ class AdminController extends Controller
         $delete_id = $request->post('delete_id');
         $order = Order::findOrfail($delete_id);
         $order->delete();
+        TempOrder::where('order_id', $delete_id)->delete();
+        Order_file_upload::where('order_id', $delete_id)->delete();
+        OrderChange::where('order_number', $order->order_number)->delete();
+
     }
     public function JobFileUpload(Request $request)
     {
@@ -1891,8 +1895,8 @@ class AdminController extends Controller
     public function OrderCount(Request $request)
     {
         $order = Order::findOrfail($request->post('order_id'));
-        $temp_order = new TempOrder();
         TempOrder::where('order_id', $request->post('order_id'))->delete();
+        $temp_order = new TempOrder();
         $temp_order->order_id = $request->post('order_id');
         $temp_order->type = $order->type;
         $temp_order->count_number = $request->post('count_number');

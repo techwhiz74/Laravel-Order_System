@@ -26,7 +26,7 @@
                             <tbody></tbody>
                         </table>
                     </div>
-                    <div style="display:flex; justify-content:end; margin: -60px 0 30px 0;">
+                    <div style="display:flex; justify-content:end; margin: -30px 0 30px 0;">
                         <div class="total_count_number" id="free_ve_sum">
                         </div>
                     </div>

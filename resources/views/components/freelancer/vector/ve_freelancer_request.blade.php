@@ -298,7 +298,8 @@
                                                             </th>
                                                             <th style="text-align: center">{{ __('home.download') }}
                                                             </th>
-
+                                                            <th style="text-align: center">{{ __('home.delete') }}
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody style="text-align: center"></tbody>
@@ -393,6 +394,7 @@
 @include('components.freelancer.vector.start_change_confirm_modal')
 @include('components.freelancer.vector.change_upload_success_modal')
 @include('components.freelancer.vector.end_change_success_modal')
+@include('components.freelancer.vector.delete_confirm_modal')
 
 <script>
     $.ajaxSetup({
@@ -629,6 +631,7 @@
 
         vector_detail_table = $('#vector_order_detail').DataTable({
             responsive: true,
+            searchable: false,
             language: {
 
             },
@@ -667,6 +670,12 @@
                     orderable: false,
                     searchable: false
                 },
+                {
+                    data: 'delete',
+                    name: 'delete',
+                    orderable: false,
+                    searchable: false
+                },
             ]
         });
 
@@ -689,6 +698,24 @@
             error: () => {
                 console.error('error');
             }
+        })
+    }
+
+    function DeleteVeRequestFile(id) {
+        $('#delete_ve_request_confirm_popup').modal('show');
+        console.log(id);
+        $('#delete_ve_request_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.freelancer-em-delete-files') }}' + id,
+                type: 'GET',
+                success: () => {
+                    $('#vector_subfolder_structure3_1').trigger('click');
+                    $('#delete_ve_request_confirm_popup').modal('hide');
+                },
+                error: () => {
+                    console.log("error");
+                }
+            })
         })
     }
 

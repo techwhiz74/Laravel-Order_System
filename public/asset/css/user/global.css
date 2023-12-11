@@ -1725,7 +1725,9 @@ select#status-filter:focus-visible {
 #admin_delete_detail_file_confirm_popup .modal-dialog,
 #admin_delete_change_file_confirm_popup .modal-dialog,
 #free_order_count .modal-dialog,
-#admin_order_count .modal-dialog {
+#admin_order_count .modal-dialog,
+#delete_em_request_confirm_popup .modal-dialog,
+#delete_ve_request_confirm_popup .modal-dialog {
   background-color: rgba(227, 222, 222, 0.5);
   width: 100%;
   height: 100%;
@@ -1769,7 +1771,9 @@ select#status-filter:focus-visible {
 #admin_delete_detail_file_confirm_popup .modal-content,
 #admin_delete_change_file_confirm_popup .modal-content,
 #free_order_count .modal-content,
-#admin_order_count .modal-content {
+#admin_order_count .modal-content,
+#delete_em_request_confirm_popup .modal-content,
+#delete_ve_request_confirm_popup .modal-content {
   max-width: 500px;
   margin: 0 auto;
   position: absolute;
@@ -1812,7 +1816,9 @@ select#status-filter:focus-visible {
 #admin_delete_detail_file_confirm_popup .modal-body,
 #admin_delete_change_file_confirm_popup .modal-body,
 #free_order_count .modal-body,
-#admin_order_count .modal-body {
+#admin_order_count .modal-body,
+#delete_em_request_confirm_popup .modal-body,
+#delete_ve_request_confirm_popup .modal-body {
   padding: 30px 30px 20px 30px !important;
   display: flex;
   flex-direction: column;

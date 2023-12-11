@@ -286,8 +286,6 @@ class OrderController extends Controller
 
     public function viewOrder(Request $request)
     {
-
-
         $authuser = auth()->user();
 
         if ($request->ajax()) {

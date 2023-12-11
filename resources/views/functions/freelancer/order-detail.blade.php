@@ -100,10 +100,11 @@
         free_detail_table = $('#free_order_detail').DataTable({
             responsive: true,
             language: {
-
+                emptyTable: "No data available in table",
             },
             processing: true,
             serverSide: true,
+            info: false,
             ajax: {
                 url: '{{ __('routes.freelancer-order-detail') }}',
                 data: function(d) {

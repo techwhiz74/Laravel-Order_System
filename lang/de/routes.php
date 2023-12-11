@@ -135,6 +135,8 @@ return [
     'freelancer-embroidery-payment-archive' => '/de/freelancer/embroidery-payment-archive',
     'freelancer-em-payment-sum' => '/de/freelancer/em-payment-sum',
     'freelancer-em-payment-handle' => '/de/freelancer/em-payment-handle',
+    'freelancer-em-delete-files' => '/de/freelancer/em-deletefiles/',
+
 
 
     'vector-freelancer-green' => '/de/freelancer/vector-freelancer-green',
@@ -154,6 +156,8 @@ return [
     'freelancer-vector-payment-archive' => '/de/freelancer/vector-payment-archive',
     'freelancer-ve-payment-sum' => '/de/freelancer/ve-payment-sum',
     'freelancer-ve-payment-handle' => '/de/freelancer/ve-payment-handle',
+    'freelancer-ve-delete-files' => '/de/freelancer/ve-deletefiles/',
+
 
 
 

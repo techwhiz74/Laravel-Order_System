@@ -438,7 +438,8 @@
                                                             </th>
                                                             <th style="text-align: center">{{ __('home.download') }}
                                                             </th>
-
+                                                            <th style="text-align: center">{{ __('home.delete') }}
+                                                            </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody style="text-align: center"></tbody>
@@ -448,7 +449,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
-                                    <div class="freelancer_change_div">
+                                    <div class="order_detail_div">
                                         <div id="em_green_job">
                                             <div class="box_title">{{ __('home.start_change') }}</div>
                                             <div>
@@ -540,6 +541,7 @@
 @include('components.freelancer.embroidery.start_change_confirm_modal')
 @include('components.freelancer.embroidery.change_upload_success_modal')
 @include('components.freelancer.embroidery.end_change_success_modal')
+@include('components.freelancer.embroidery.delete_confirm_modal')
 <script>
     $.ajaxSetup({
         headers: {
@@ -779,6 +781,7 @@
 
         embroidery_detail_table = $('#embroidery_order_detail').DataTable({
             responsive: true,
+            searchable: false,
             language: {
 
             },
@@ -817,6 +820,12 @@
                     orderable: false,
                     searchable: false
                 },
+                {
+                    data: 'delete',
+                    name: 'delete',
+                    orderable: false,
+                    searchable: false
+                },
             ]
         });
 
@@ -847,6 +856,23 @@
         })
     }
 
+    function DeleteEmRequestFile(id) {
+        $('#delete_em_request_confirm_popup').modal('show');
+        console.log(id);
+        $('#delete_em_request_confirm').click(function() {
+            $.ajax({
+                url: '{{ __('routes.freelancer-em-delete-files') }}' + id,
+                type: 'GET',
+                success: () => {
+                    $('#embroidery_subfolder_structure3_1').trigger('click');
+                    $('#delete_em_request_confirm_popup').modal('hide');
+                },
+                error: () => {
+                    console.log("error");
+                }
+            })
+        })
+    }
 
     function embroidery_multipleDownload() {
         window.location.href = '{{ url('multi-download') }}/' + $('[name=embroidery_request_id]').val() + '?type=' +

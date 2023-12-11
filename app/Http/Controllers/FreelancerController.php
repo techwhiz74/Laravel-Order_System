@@ -369,7 +369,7 @@ class FreelancerController extends Controller
             $users->password = bcrypt($request->newpassword);
             $users->save();
             session()->flash('message', 'Password updated successfully');
-            return redirect(__('/'));
+            return redirect(__('/en'));
         } else {
             session()->flash('message', 'Old password does not matched');
             return redirect(__('routes.freelancer-changepassword'));
@@ -867,7 +867,7 @@ class FreelancerController extends Controller
         $en_order_change = $translator->translate($order_change);
         return response()->json(['order' => $order, 'order_change' => $order_change, 'detail' => $order_file_uploads, 'change_count' => $folderCount, 'en_order' => $en_order, 'en_order_change' => $en_order_change]);
     }
-    public function OrderDetail(Request $request)
+    public function EmOrderDetail(Request $request)
     {
         $authuser = auth()->user();
         if ($request->ajax()) {
@@ -890,7 +890,58 @@ class FreelancerController extends Controller
                     $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
                     return $btn;
                 })
-                ->rawColumns(['customer_number', 'order_number', 'download'])
+                ->addColumn('delete', function ($row) use ($change_data) {
+                    $btn = '';
+                    foreach ($change_data as $change_item) {
+                        $folder = explode('/', $change_item->base_url)[3];
+                        $folder_key = explode(' ', $folder)[0];
+                        if ($folder_key == "Stickprogramm" || $folder_key == "Vektordatei") {
+                            $btn = '<button onClick = DeleteEmRequestFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                        }
+                    }
+
+                    return $btn;
+                })
+                ->rawColumns(['customer_number', 'order_number', 'download', 'delete'])
+                ->make(true);
+        }
+    }
+    public function VeOrderDetail(Request $request)
+    {
+        $authuser = auth()->user();
+        if ($request->ajax()) {
+            $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->orderBy('order_id', 'desc')->get();
+            if ($request->type == 'Stickprogramm') {
+                $change_data = Order_file_upload::where('order_id', $request->id)->where('base_url', 'LIKE', '%' . $request->type . '%')->where('base_url', 'NOT LIKE', '%Stickprogramm Änderung%')->orderBy('order_id', 'desc')->get();
+            }
+            return DataTables::of($change_data)->addIndexColumn()
+                ->editColumn('customer_number', function ($row) {
+                    $customer_number = $row->order->customer_number;
+                    return $customer_number;
+                })
+                ->editColumn('order_number', function ($row) {
+                    $order_number = $row->order->order_number;
+                    return $order_number;
+                })
+
+                ->addColumn('download', function ($row) {
+
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    return $btn;
+                })
+                ->addColumn('delete', function ($row) use ($change_data) {
+                    $btn = '';
+                    foreach ($change_data as $change_item) {
+                        $folder = explode('/', $change_item->base_url)[3];
+                        $folder_key = explode(' ', $folder)[0];
+                        if ($folder_key == "Stickprogramm" || $folder_key == "Vektordatei") {
+                            $btn = '<button onClick = DeleteVeRequestFile(' . $row->id . ') style="border:none; background:inherit;"><i class="fa-solid fa-trash-can" style="color:#c4ae79;"></i></button>';
+                        }
+                    }
+
+                    return $btn;
+                })
+                ->rawColumns(['customer_number', 'order_number', 'download', 'delete'])
                 ->make(true);
         }
     }
@@ -1565,6 +1616,16 @@ class FreelancerController extends Controller
         $delete_file = Order_file_upload::findOrfail($id);
         $delete_file->delete();
     }
+    public function EmDeleteFile($local, $id)
+    {
+        $delete_file = Order_file_upload::findOrfail($id);
+        $delete_file->delete();
+    }
+    public function VeDeleteFile($local, $id)
+    {
+        $delete_file = Order_file_upload::findOrfail($id);
+        $delete_file->delete();
+    }
     public function FreelancergetOrderDetail(Request $request)
     {
         $order = Order::findOrfail($request->get('id'));
@@ -1748,8 +1809,8 @@ class FreelancerController extends Controller
     public function FreelancerOrderCount(Request $request)
     {
         $order = Order::findOrfail($request->post('order_id'));
-        $temp_order = new TempOrder();
         TempOrder::where('order_id', $request->post('order_id'))->delete();
+        $temp_order = new TempOrder();
         $temp_order->order_id = $request->post('order_id');
         $temp_order->type = $order->type;
         $temp_order->count_number = $request->post('count_number');

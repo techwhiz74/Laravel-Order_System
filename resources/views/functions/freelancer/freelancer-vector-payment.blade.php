@@ -13,7 +13,9 @@
             processing: true,
             serverSide: true,
             searching: false,
+            info: false,
             language: {
+                emptyTable: "No data available in table",
                 paginate: {
                     next: '<i class="fa-solid fa-chevron-right"></i>', // or '→'
                     previous: '<i class="fa-solid fa-chevron-left"></i>' // or '←'
@@ -112,7 +114,9 @@
                 processing: true,
                 serverSide: true,
                 searching: false,
+                info: false,
                 language: {
+                    emptyTable: "No data available in table",
                     paginate: {
                         next: '<i class="fa-solid fa-chevron-right"></i>', // or '→'
                         previous: '<i class="fa-solid fa-chevron-left"></i>', // or '←'

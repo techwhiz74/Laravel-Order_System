@@ -133,6 +133,8 @@ return [
     'freelancer-embroidery-payment-archive' => '/en/freelancer/embroidery-payment-archive',
     'freelancer-em-payment-sum' => '/en/freelancer/em-payment-sum',
     'freelancer-em-payment-handle' => '/en/freelancer/em-payment-handle',
+    'freelancer-em-delete-files' => '/en/freelancer/em-deletefiles/',
+
 
 
 
@@ -155,6 +157,8 @@ return [
     'freelancer-vector-payment-archive' => '/en/freelancer/vector-payment-archive',
     'freelancer-ve-payment-sum' => '/en/freelancer/ve-payment-sum',
     'freelancer-ve-payment-handle' => '/en/freelancer/ve-payment-handle',
+    'freelancer-ve-delete-files' => '/en/freelancer/ve-deletefiles/',
+
 
 
 

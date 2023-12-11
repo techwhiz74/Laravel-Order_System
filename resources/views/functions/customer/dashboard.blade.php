@@ -170,6 +170,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-green-dashboard') }}",
                 type: "get",
@@ -210,6 +213,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -250,6 +256,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-red-dashboard') }}",
                 type: "get",
@@ -290,6 +299,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.embroidery-freelancer-blue-dashboard') }}",
                 type: "get",
@@ -336,6 +348,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.vector-freelancer-green-dashboard') }}",
                 type: "get",
@@ -376,6 +391,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.vector-freelancer-yellow-dashboard') }}",
                 type: "get",
@@ -416,6 +434,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.vector-freelancer-red-dashboard') }}",
                 type: "get",
@@ -456,6 +477,9 @@
             searching: false,
             paginate: false,
             info: false,
+            language: {
+                emptyTable: "No data available in table",
+            },
             ajax: {
                 url: "{{ __('routes.vector-freelancer-blue-dashboard') }}",
                 type: "get",
