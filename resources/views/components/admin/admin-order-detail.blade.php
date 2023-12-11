@@ -338,7 +338,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_subfolder_structure2">
                                                             <div
@@ -352,7 +352,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_subfolder_structure3">
                                                             <div

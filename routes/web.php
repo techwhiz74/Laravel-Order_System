@@ -143,6 +143,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/profile', [CustomerController::class, 'CustomerProfile']);
     Route::post('/profile-update', [CustomerController::class, 'profileUpdate']);
     Route::get('/profile-update-mail', [CustomerController::class, 'profileUpdateMail']);
+    Route::get('/get-profile', [CustomerController::class, 'GetProfile']);
 
 
     Route::get('/embroidery-information', [OrderController::class, 'EmbroideryInformation'])->name('embroidery-information')->withoutMiddleware([RoleMiddleware::class . ':customer']);

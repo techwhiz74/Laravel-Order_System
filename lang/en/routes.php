@@ -13,6 +13,8 @@ return [
     'customer-profile' => '/en/customer/profile',
     'customer-profileupdate' => '/en/customer/profile-update',
     'customer-profileupdate-mail' => '/en/customer/profile-update-mail',
+    'customer-get-profile' => '/en/customer/get-profile',
+
 
 
     'customer-vieworders' => '/en/customer/view-orders',

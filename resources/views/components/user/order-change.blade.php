@@ -94,7 +94,7 @@
 @include('components.user.order_change_success')
 <script>
     $(function() {
-        $('[name=time]').val(new Date());
+
 
         // order-change message and file upload form
         $('#order_change_form').submit(function(e) {
@@ -106,6 +106,7 @@
                 var data = new FormData();
                 data.append('order_id', $('[name=order_id]').val());
                 data.append('order_change_textarea', $('[name=order_change_textarea]').val());
+                data.append('time', $('[name=time]').val());
                 $('#fileupload_em_ex').find('.fileupload-buttonbar .start').trigger('click');
             } else if ($('#order_form_upload_list tr').length == 0 && $('[name=order_change_textarea]')
                 .val() != '') {
@@ -113,7 +114,6 @@
                 customer_order_change_data.append('order_id', $('[name=order_id]').val());
                 customer_order_change_data.append('order_change_textarea', $(
                     '[name=order_change_textarea]').val());
-                customer_order_change_data.append('time', $('[name=time]').val());
 
                 $.ajax({
                     url: '{{ __('routes.customer-order-change-text') }}',
@@ -158,6 +158,7 @@
         $('[name=order_id]').val(id);
         $('#order_change_popup').find('[name=order_change_textarea]').val('');
         $('#order_change_popup').find('#order_form_upload_list tr').remove();
+        $('[name=time]').val(new Date());
     }
     $(function() {
         $('#order_change_file_input').on('change', function() {

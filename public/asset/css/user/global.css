@@ -1494,12 +1494,12 @@ select#status-filter:focus-visible {
   background-color: #ccc;
   height: 100%;
   padding: 8px 0 5px 0;
-  width: 70px;
+  width: 80px;
 }
 
 .sidebar-nav li a,
 .sidebar-nav li p {
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1;
   font-family: monospace;
 }
@@ -3243,7 +3243,7 @@ input[name="selected_customer"]:checked::before {
 
 .sidebar_explain {
   height: 40%;
-  padding: 3px;
+  padding: 3px 1px;
 }
 
 .product-item-menu {
@@ -3460,10 +3460,6 @@ textarea:focus {
 .column_flex {
   flex-direction: column;
   border: none !important;
-}
-
-.nav-item {
-  padding: 1px;
 }
 
 .customer_dashboard_page {

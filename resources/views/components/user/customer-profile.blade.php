@@ -51,7 +51,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" readonly name="customer_number"
-                                                    class="form-control" value="{{ @$user->customer_number }}">
+                                                    class="form-control" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -72,7 +72,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_company" class="form-control"
-                                                    value="{{ @$user->company }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('company'))
@@ -90,7 +90,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_company_addition"
-                                                    class="form-control" value="{{ @$user->company_addition }}">
+                                                    class="form-control" value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('company_addition'))
@@ -107,7 +107,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <input type="text" name="profile_name" class="form-control"
-                                                    value="{{ @$user->name }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('name'))
@@ -124,7 +124,7 @@
                                             </div>
                                             <div class="col-12 col-md-7">
                                                 <input type="text" name="profile_first_name" class="form-control"
-                                                    value="{{ @$user->first_name }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
@@ -141,7 +141,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_street_number" class="form-control"
-                                                    value="{{ @$user->street_number }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('street_number'))
@@ -158,7 +158,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <input type="text" name="profile_postal_code" class="form-control"
-                                                    value="{{ @$user->postal_code }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('postal_code'))
@@ -175,7 +175,7 @@
                                             </div>
                                             <div class="col-12 col-md-7">
                                                 <input type="text" name="profile_location" class="form-control"
-                                                    value="{{ @$user->location }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('location'))
@@ -196,18 +196,14 @@
                                                         {{ @$user->country == 'Deutschland' ? 'selected' : '' }}>
                                                         Deutschland
                                                     </option>
-                                                    <option value="Österreich"
-                                                        {{ @$user->country == 'Österreich' ? 'selected' : '' }}>
+                                                    <option value="Österreich">
                                                         Österreich
                                                     </option>
-                                                    <option value="Schweiz"
-                                                        {{ @$user->country == 'Schweiz' ? 'selected' : '' }}>
+                                                    <option value="Schweiz">
                                                         Schweiz</option>
-                                                    <option value="Italien"
-                                                        {{ @$user->country == 'Italien' ? 'selected' : '' }}>
+                                                    <option value="Italien">
                                                         Italien</option>
-                                                    <option value="Niederlande"
-                                                        {{ @$user->country == 'Niederlande' ? 'selected' : '' }}>
+                                                    <option value="Niederlande">
                                                         Niederlande
                                                     </option>
                                                 </select>
@@ -227,7 +223,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="email" name="profile_email" class="form-control"
-                                                    value="{{ @$user->email }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('email'))
@@ -244,7 +240,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_website" class="form-control"
-                                                    value="{{ @$user->website }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('website'))
@@ -261,7 +257,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <input type="text" name="profile_phone" class="form-control"
-                                                    value="{{ @$user->phone }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('phone'))
@@ -279,7 +275,7 @@
                                             </div>
                                             <div class="col-12 col-md-7">
                                                 <input type="text" name="profile_mobile" class="form-control"
-                                                    value="{{ @$user->mobile }}">
+                                                    value="">
                                             </div>
                                         </div>
                                         @if ($errors->has('mobile'))
@@ -303,7 +299,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <input type="text" name="profile_tax_number" class="form-control"
-                                                    value="{{ @$user->tax_number }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
@@ -316,7 +312,7 @@
                                             </div>
                                             <div class="col-12 col-md-7">
                                                 <input type="text" name="profile_vat_number" class="form-control"
-                                                    value="{{ @$user->vat_number }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
@@ -329,7 +325,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_register_number"
-                                                    class="form-control" value="{{ @$user->register_number }}">
+                                                    class="form-control" value="">
                                             </div>
                                         </div>
                                     </div>
@@ -343,12 +339,10 @@
                                             <div class="col-12 col-md-9">
                                                 <select name="profile_kd_group" class="form-control">
                                                     <option value=""></option>
-                                                    <option value="Wiederverkäufer"
-                                                        {{ @$user->kd_group == 'Wiederverkäufer' ? 'selected' : '' }}>
+                                                    <option value="Wiederverkäufer">
                                                         Wiederverkäufer
                                                     </option>
-                                                    <option value="Endkunde"
-                                                        {{ @$user->kd_group == 'Endkunde' ? 'selected' : '' }}>Endkunde
+                                                    <option value="Endkunde">Endkunde
                                                     </option>
                                                 </select>
                                             </div>
@@ -364,12 +358,10 @@
                                             <div class="col-12 col-md-9">
                                                 <select name="profile_kd_category" class="form-control">
                                                     <option value=""></option>
-                                                    <option value="Stickprogramme & Vektordateien"
-                                                        {{ @$user->kd_category == 'Stickprogramme & Vektordateien' ? 'selected' : '' }}>
+                                                    <option value="Stickprogramme & Vektordateien">
                                                         Stickprogramme & Vektordateien
                                                     </option>
-                                                    <option value="Standard"
-                                                        {{ @$user->kd_category == 'Standard' ? 'selected' : '' }}>
+                                                    <option value="Standard">
                                                         Standard
                                                     </option>
                                                 </select>
@@ -386,16 +378,13 @@
                                             <div class="col-12 col-md-9">
                                                 <select name="profile_payment_method" class="form-control">
                                                     <option value=""></option>
-                                                    <option value="Sofort ohne Abzug"
-                                                        {{ @$user->payment_method == 'Sofort ohne Abzug' ? 'selected' : '' }}>
+                                                    <option value="Sofort ohne Abzug">
                                                         Sofort ohne Abzug
                                                     </option>
-                                                    <option value="Lastschrift"
-                                                        {{ @$user->payment_method == 'Lastschrift' ? 'selected' : '' }}>
+                                                    <option value="Lastschrift">
                                                         Lastschrift
                                                     </option>
-                                                    <option value="Vorkasse"
-                                                        {{ @$user->payment_method == 'Vorkasse' ? 'selected' : '' }}>
+                                                    <option value="Vorkasse">
                                                         Vorkasse</option>
                                                 </select>
                                             </div>
@@ -410,7 +399,7 @@
                                             </div>
                                             <div class="col-12 col-md-9">
                                                 <input type="text" name="profile_bank_name" class="form-control"
-                                                    value="{{ @$user->bank_name }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
@@ -423,7 +412,7 @@
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <input type="text" name="profile_IBAN" class="form-control"
-                                                    value="{{ @$user->IBAN }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>
@@ -436,7 +425,7 @@
                                             </div>
                                             <div class="col-12 col-md-7">
                                                 <input type="text" name="profile_BIC" class="form-control"
-                                                    value="{{ @$user->BIC }}">
+                                                    value="">
                                             </div>
                                         </div>
                                     </div>

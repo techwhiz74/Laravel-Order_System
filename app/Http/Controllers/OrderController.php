@@ -688,7 +688,7 @@ class OrderController extends Controller
         $special_instructions = $request->post('special_instructions');
         $customer_number = $request->post('customer_number');
         $ordered_from = $request->post('ordered_from');
-        $last_order = Order::orderBy('order_number', 'desc')->first();
+        $last_order = Order::where('customer_number', $customer_number)->orderBy('order_number', 'desc')->first();
 
         $order = Order::where('type', $type)
             ->where('project_name', $project_name)

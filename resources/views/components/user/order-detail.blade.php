@@ -146,7 +146,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
+                                    <li class="nav-item" style="margin-top: 5px;">
                                         <div class="folder_button" type="button" id="subfolder_structure2">
                                             <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
@@ -158,7 +158,18 @@
                                             </div>
                                         </div>
                                     </li>
-
+                                    <li class="nav-item" style="margin-top: 5px;">
+                                        <div class="folder_button" type="button" id="subfolder_structure3">
+                                            <div style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
+                                                <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
+                                                    style="width: 37px;">
+                                            </div>
+                                            <div style="height: 40%;padding: 3px 0;">
+                                                <label style="padding-top: 6px;">
+                                                    VEKTORDATEI</label>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="responsive-table file_view_table">
@@ -199,6 +210,7 @@
         $('#detail_id').val(id);
         $('#subfolder_structure1').hide();
         $('#subfolder_structure2').hide();
+        $('#subfolder_structure3').hide();
 
         folderType = type;
 
@@ -240,6 +252,8 @@
                         $('#subfolder_structure1').show();
                     } else if (item == "Stickprogramm") {
                         $('#subfolder_structure2').show();
+                    } else if (item == "Vektordatei") {
+                        $('#subfolder_structure3').show();
                     }
                 })
             },
@@ -304,5 +318,8 @@
     });
     $('#subfolder_structure2').click(function() {
         openOrderDetailModal($('#detail_id').val(), 'Stickprogramm');
+    });
+    $('#subfolder_structure3').click(function() {
+        openOrderDetailModal($('#detail_id').val(), 'Vektordatei');
     });
 </script>

@@ -690,7 +690,7 @@ class AdminController extends Controller
         $special_instructions = $request->post('special_instructions');
         $customer_number = $request->post('customer_number');
         $searched_id = $request->post('searched_id');
-        $last_order = Order::orderBy('order_number', 'desc')->first();
+        $last_order = Order::where('customer_number', $customer_number)->orderBy('order_number', 'desc')->first();
 
         $order = Order::where('type', $type)
             ->where('project_name', $project_name)
@@ -1505,7 +1505,6 @@ class AdminController extends Controller
         $order_id = $request->post('admin_request_id');
         $order_change_message = $request->post('admin_order_request_text');
         $time = $request->post('admin_request_time');
-
 
         $order = Order::findOrfail($order_id);
         $customer = User::findOrfail($order->user_id);

@@ -99,7 +99,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item" style="margin-top: 5px;">
                                             <div class="folder_button" type="button" id="req_subfolder_structure4_1">
                                                 <div
                                                     style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
@@ -112,7 +112,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item" style="margin-top: 5px;">
                                             <div class="folder_button" type="button" id="req_subfolder_structure4_2">
                                                 <div
                                                     style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
@@ -125,7 +125,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item" style="margin-top: 5px;">
                                             <div class="folder_button" type="button"
                                                 id="req_subfolder_structure4_3">
                                                 <div
@@ -139,7 +139,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item" style="margin-top: 5px;">
                                             <div class="folder_button" type="button"
                                                 id="req_subfolder_structure4_4">
                                                 <div

@@ -94,7 +94,7 @@
 
 <script>
     $(function() {
-        $('[name=admin_request_time]').val(new Date());
+
 
         // order-change message and file upload form
         $('#admin_request_form').submit(function(e) {
@@ -108,6 +108,7 @@
                 var data = new FormData();
                 data.append('admin_request_id', $('[name=admin_request_id]').val());
                 data.append('admin_order_request_text', $('[name=admin_order_request_text]').val());
+                data.append('admin_request_time', $('[name=admin_request_time]').val());
                 $('#admin_request_fileupload').find('.fileupload-buttonbar .start').trigger('click');
             } else if ($('#order_form_upload_list tr').length == 0 && $(
                     '[name=admin_order_request_text]').val() != '') {
@@ -116,8 +117,6 @@
                     .val());
                 admin_request_data.append('admin_order_request_text', $(
                     '[name=admin_order_request_text]').val());
-                admin_request_data.append('admin_request_time', $('[name=admin_request_time]').val());
-
                 $.ajax({
                     url: '{{ __('routes.admin-request-text') }}',
                     type: 'post',
@@ -151,6 +150,7 @@
         $('[name=admin_request_id]').val(id);
         $('#admin_request_popup').find('[name=admin_order_request_text]').val('');
         $('#admin_request_popup').find('#order_form_upload_list tr').remove();
+        $('[name=admin_request_time]').val(new Date());
     }
     $(function() {
         $('#admin_request_file_input').on('change', function() {

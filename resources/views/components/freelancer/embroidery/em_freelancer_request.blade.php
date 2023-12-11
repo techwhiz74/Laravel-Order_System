@@ -364,7 +364,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="embroidery_subfolder_structure4_1">
                                                             <div
@@ -378,7 +378,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="embroidery_subfolder_structure4_2">
                                                             <div
@@ -392,7 +392,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="embroidery_subfolder_structure4_3">
                                                             <div
@@ -406,7 +406,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="embroidery_subfolder_structure4_4">
                                                             <div
@@ -552,6 +552,7 @@
     var folderType = 'Änderungsdateien Kunde1';
 
     function EmbroideryDetailRequest(id, type) {
+        $('[name=embroidery_time]').val(new Date());
         folderType = type;
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
@@ -903,9 +904,7 @@
     $('#embroidery_subfolder_structure4_4').click(function() {
         EmbroideryDetailRequest($('[name=embroidery_request_id]').val(), 'Stickprogramm Änderung4');
     });
-    $(function() {
-        $('[name=embroidery_time]').val(new Date());
-    })
+
     $('#embroidery_uplaod_form').submit(function(e) {
         e.preventDefault();
     })

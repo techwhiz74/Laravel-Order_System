@@ -320,6 +320,11 @@ class CustomerController extends Controller
         $employees = User::orderBy('id', 'desc')->where('org_id', $authuser)->where('user_type', 'employer')->get();
         return view('users.profile.profile', compact('user', 'employees'));
     }
+    public function GetProfile(Request $reqeust)
+    {
+        $customer = auth()->user();
+        return response()->json($customer);
+    }
 
 
     public function profileUpdate(Request $request)

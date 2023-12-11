@@ -1398,7 +1398,7 @@ class FreelancerController extends Controller
         $time = $request->post('vector_time');
 
         OrderChange::where('time', $time)->delete();
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_em' . '%')->orderBy('id', 'desc')->first() ?
+        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_ve' . '%')->orderBy('id', 'desc')->first() ?
             OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer_ve' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();

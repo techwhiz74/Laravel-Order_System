@@ -402,7 +402,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_1">
                                                             <div
@@ -416,7 +416,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_2">
                                                             <div
@@ -430,7 +430,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_3">
                                                             <div
@@ -444,7 +444,7 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item">
+                                                    <li class="nav-item" style="margin-top: 5px;">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_4">
                                                             <div
@@ -593,6 +593,7 @@
     var folderType = 'Änderungsdateien Kunde1';
 
     function AdminChange(id, type) {
+        $('[name=admin_change_time]').val(new Date());
         folderType = type;
         if (type == 'Originaldatei') {
             type = 'Änderungsdateien Kunde1';
@@ -955,9 +956,7 @@
     $('#admin_change_subfolder_structure4_4').click(function() {
         AdminChange($('[name=admin_change_id]').val(), 'Stickprogramm Änderung4');
     });
-    $(function() {
-        $('[name=admin_change_time]').val(new Date());
-    })
+
     $('#admin_change_uplaod_form').submit(function(e) {
         e.preventDefault();
     })
