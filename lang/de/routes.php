@@ -73,10 +73,10 @@ return [
     'employer-setPassword' => '/de/customer/setpassword/',
     'employer-Passwordupdate' => '/de/customer/employer-password-update/',
     'employer-listemployees' => '/de/customer/listEmployees/',
-    'employer-addemployee' => '/de/customer/add-employee/',
+    'employer-addemployee' => '/de/customer/add-employee',
     'employer-getemployee' => '/de/customer/get-employee/',
     'employer-editemployee' => '/de/customer/edit-employee/',
-    'employer-updateemployee' => '/de/customer/update-employee/',
+    'employer-updateemployee' => '/de/customer/update-employee',
     'employer-deleteemployee' => '/de/customer/deleteemployee/',
     'employer-profile' => '/de/customer/employee-profile/',
     'employee-staffs-table' => '/de/customer/employee-staffs-table',
@@ -245,6 +245,7 @@ return [
     'admin-change-avatar' => '/de/admin/change-avatar',
     'admin-change-avatar-handle' => '/de/admin/change-avatar-handle',
     'admin-change-customer-avatar' => '/de/admin/change-customer-avatar',
+    'admin-delete-customer' => '/de/admin/delete-customer',
 
 
 ];

@@ -413,7 +413,7 @@ class OrderController extends Controller
                 ->addColumn('request', function ($row) use ($order_changes) {
                     $req = '';
                     foreach ($order_changes as $order_change) {
-                        if ($order_change->order_number == $row->order_number) {
+                        if ($order_change->order_id == $row->id) {
                             $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
@@ -516,13 +516,13 @@ class OrderController extends Controller
     {
         $order = Order::findOrfail($request->get('id'));
         $order_file_uploads = Order_file_upload::where('order_id', $request->get('id'))->pluck('base_url');
-        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        $folderCount = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
         return response()->json(['order' => $order, 'detail' => $order_file_uploads, 'change_count' => $folderCount]);
     }
     public function OrderRequest($locale, $id)
     {
         $order = Order::find($id);
-        $order_change = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->get();
+        $order_change = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->get();
         return response()->json($order_change);
     }
 
@@ -784,6 +784,112 @@ class OrderController extends Controller
             }
         }
     }
+    public function EmployerfileUpload(Request $request)
+    {
+        $type = $request->post('type');
+        $deliver_time = $request->post('deliver_time');
+        $project_name = $request->post('project_name');
+        $size = $request->post('size');
+        $width_height = $request->post('width_height');
+        $products = $request->post('products');
+        $special_instructions = $request->post('special_instructions');
+        $customer = User::findOrfail(auth()->user()->org_id);
+        $customer_number = $customer->customer_number;
+        $ordered_from = $customer->name;
+        $last_order = Order::where('customer_number', $customer_number)->orderBy('order_number', 'desc')->first();
+
+        $order = Order::where('type', $type)
+            ->where('project_name', $project_name)
+            ->where('size', $size)
+            ->where('deliver_time', $deliver_time)
+            ->where('width_height', $width_height)
+            ->where('products', $products)
+            ->where('special_instructions', $special_instructions)
+            ->where('ordered_from', $ordered_from)->first();
+
+
+        if ($order == null) {
+            $order = new Order();
+            $order->customer_number = $customer_number;
+            $order->order_number = $last_order == null ? '0001' : sprintf('%04s', $last_order->order_number + 1);
+            $order->project_name = $project_name;
+            $order->ordered_from = $ordered_from;
+            $order->status = 'Offen';
+            $order->type = $type;
+            $order->size = $size;
+            $order->deliver_time = $deliver_time;
+            $order->width_height = $width_height;
+            $order->products = $products;
+            $order->special_instructions = $special_instructions;
+            $order->category_id = 1;
+            $order->user_id = auth()->user()->org_id;
+            $order->assigned_to = 4;
+            $order->org_id = auth()->user()->id;
+            $order->save();
+
+        }
+
+
+        $files = $request->file("files");
+        $uploadDir = 'public/';
+        $filePath = $order->customer_number . '/' .
+            $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/Originaldatei/';
+        $path = $uploadDir . $filePath;
+
+        foreach ($files as $key => $file) {
+            // Check whether the current entity is an actual file or a folder (With a . for a name)
+            if (strlen($file->getClientOriginalName()) != 1) {
+                Storage::makeDirectory($uploadDir);
+                $fileName = $order->customer_number . '-' . $order->order_number . '-' . ($key + 1) . '.' . $file->getClientOriginalExtension();
+                $exist_file = Order_file_upload::where('base_url', 'LIKE', 'storage/' . $filePath . '%')->orderBy('base_url', 'desc')->first();
+                if ($exist_file != null) {
+                    $filePathArray = explode('/', $exist_file->base_url);
+                    $fileNameArray = explode('-', $filePathArray[4]);
+                    $fileExtensionArray = explode('.', $fileNameArray[2]);
+                    $index = $fileExtensionArray[0];
+                    $index = $index + 1;
+                    $fileName = $order->customer_number . '-' . $order->order_number . '-' . $index . '.' . $file->getClientOriginalExtension();
+                    if ($file->storeAs($filePath, $fileName, 'public')) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $index;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+                        $fullPath = '/public' . '/' . $filePath . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
+
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                } else {
+                    if ($file->storeAs($filePath, $fileName, 'public')) {
+                        $order_file_upload = new Order_file_upload();
+                        $order_file_upload->order_id = $order->id;
+                        $order_file_upload->index = $key + 1;
+                        $order_file_upload->extension = $file->getClientOriginalExtension();
+                        $order_file_upload->base_url = 'storage/' . $filePath . $fileName;
+                        $order_file_upload->save();
+
+                        $fullPath = '/public' . '/' . $filePath . $fileName;
+                        $file_path = Storage::path($fullPath);
+                        chmod($file_path, 0755);
+                        $publicPath = public_path();
+                        $publicStoragePath = $publicPath . '/storage';
+                        chmod($publicStoragePath, 0755);
+
+                        echo "The file " . $fileName . " has been uploaded";
+                    } else
+                        echo "Error";
+                }
+
+            }
+        }
+    }
     public function CustomerOrderFormMail(Request $request)
     {
 
@@ -860,13 +966,13 @@ class OrderController extends Controller
 
 
         OrderChange::where('time', $time)->delete();
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
-            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+        $change_number = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
-        $order_change->order_number = $order->order_number;
+        $order_change->order_id = $order_id;
         $order_change->message = $order_change_message;
         $order_change->change_number = $change_number + 1;
         $order_change->time = $time;
@@ -885,7 +991,7 @@ class OrderController extends Controller
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
             $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
-        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        $folderCount = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
         $folderName = 'Änderungsdateien Kunde' . ($folderCount) . '/';
         $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {
@@ -983,13 +1089,13 @@ class OrderController extends Controller
         $customer = User::findOrfail($order->user_id);
 
 
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
-            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+        $change_number = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
-        $order_change->order_number = $order->order_number;
+        $order_change->order_id = $order->id;
         $order_change->message = $order_change_message;
         $order_change->change_number = $change_number + 1;
         $order_change->time = $time;

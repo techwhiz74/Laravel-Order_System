@@ -347,24 +347,38 @@ class AdminController extends Controller
                             ';
                         }
                     }
-                    // foreach ($order_changes as $order_change) {
-                    //     if ($order_change->customer_id == $row->id) {
-                    //         $req = '
-                    //             <div class="d-flex" style="gap:20px;">
-                    //                 <div style="display: flex; margin:auto;">
-                    //                     <button onclick="HandleProfileRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-exclamation blink" style="color:#ff0000; transform:scale(2,1);"></i></button>
-                    //                 </div>
-                    //             </div>
-                    //         ';
-                    //     }
-                    // }
                     return $req;
                 })
-                ->rawColumns(['edit', 'request'])
+                ->addColumn('delete', function ($row) {
+                    $delete = '<div class="d-flex" style="gap:20px;">
+                            <div style="display: flex; margin:auto;">
+                                <button onclick="DeleteCustomer(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-trash" style="color:#c4ae79"></i></button>
+                            </div>
+                        </div>';
+                    return $delete;
+                })
+                ->rawColumns(['edit', 'request', 'delete'])
                 ->make(true);
         }
     }
-
+    public function deleteCustomer(Request $request)
+    {
+        $customer = User::findOrfail($request->post('id'));
+        User::where('user_type', 'employer')->where('org_id', $customer->id)->delete();
+        $orders = Order::where('user_id', $customer->id)->get();
+        foreach ($orders as $order) {
+            TempOrder::where('order_id', $order->id)->delete();
+            Order_file_upload::where('order_id', $order->id)->delete();
+            $order->delete();
+        }
+        OrderChange::where('customer_id', $customer->id)->delete();
+        TempCustomer::where('customer_id', $customer->id)->delete();
+        CustomerEmParameter::where('customer_id', $customer->id)->delete();
+        CustomerVeParameter::where('customer_id', $customer->id)->delete();
+        TempCustomerEmParameter::where('customer_id', $customer->id)->delete();
+        TempCustomerVeParameter::where('customer_id', $customer->id)->delete();
+        $customer->delete();
+    }
     public function getDifferences($locale, $id)
     {
         $user = User::findOrFail($id);
@@ -1355,7 +1369,7 @@ class AdminController extends Controller
         $order->delete();
         TempOrder::where('order_id', $delete_id)->delete();
         Order_file_upload::where('order_id', $delete_id)->delete();
-        OrderChange::where('order_number', $order->order_number)->delete();
+        OrderChange::where('order_id', $delete_id)->delete();
 
     }
     public function JobFileUpload(Request $request)
@@ -1411,13 +1425,13 @@ class AdminController extends Controller
         $time = $request->post('admin_change_time');
 
         OrderChange::where('time', $time)->delete();
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first() ?
-            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+        $change_number = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
-        $order_change->order_number = $order->order_number;
+        $order_change->order_id = $order->id;
         $order_change->change_number = $change_number + 1;
         $order_change->time = $time;
         if ($order->type == 'Embroidery') {
@@ -1432,7 +1446,7 @@ class AdminController extends Controller
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
             $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
-        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
+        $folderCount = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
         $folderName = 'Stickprogramm Änderung' . ($folderCount) . '/';
         $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {
@@ -1463,7 +1477,7 @@ class AdminController extends Controller
     public function EndChange(Request $request)
     {
         $order = Order::findOrfail($request->get('end_change_id'));
-        $order_change_count = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
+        $order_change_count = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'freelancer' . '%')->count();
         if ($order_change_count > 0) {
             $order->status = 'Ausgeliefert';
             $order->save();
@@ -1480,13 +1494,13 @@ class AdminController extends Controller
         $order = Order::findOrfail($order_id);
         $customer = User::findOrfail($order->user_id);
 
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
-            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+        $change_number = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
-        $order_change->order_number = $order->order_number;
+        $order_change->order_id = $order->id;
         $order_change->message = $order_change_message;
         $order_change->change_number = $change_number + 1;
         $order_change->time = $time;
@@ -1511,13 +1525,13 @@ class AdminController extends Controller
 
 
         OrderChange::where('time', $time)->delete();
-        $change_number = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
-            OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
+        $change_number = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first() ?
+            OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->orderBy('id', 'desc')->first()->change_number : 0;
 
         $order_change = new OrderChange();
         $order_change->customer_id = $order->user_id;
         $order_change->customer_name = $customer->name;
-        $order_change->order_number = $order->order_number;
+        $order_change->order_id = $order->id;
         $order_change->message = $order_change_message;
         $order_change->change_number = $change_number + 1;
         $order_change->time = $time;
@@ -1534,7 +1548,7 @@ class AdminController extends Controller
         $uploadDir = 'public/';
         $filePath = $order->customer_number . '/' .
             $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/';
-        $folderCount = OrderChange::where('order_number', $order->order_number)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
+        $folderCount = OrderChange::where('order_id', $order->id)->where('changed_from', 'LIKE', '%' . 'customer' . '%')->count();
         $folderName = 'Änderungsdateien Kunde' . ($folderCount) . '/';
         $path = $uploadDir . $filePath . $folderName;
         foreach ($files as $key => $file) {

@@ -2489,7 +2489,8 @@ select#status-filter:focus-visible {
 
 
 #order_submit_form,
-#admin_order_submit_form {
+#admin_order_submit_form,
+#employer_order_submit_form {
   border: 1px solid;
   padding: 20px;
   font-size: 13px;
@@ -3352,7 +3353,7 @@ button {
 
 .dropdown-toggle.product-multiselect div {
   max-width: 100%;
-  overflow-y: visible;
+  overflow-y: auto;
   text-wrap: wrap;
   width: 100%;
   min-height: 100%;
@@ -3470,7 +3471,8 @@ textarea:focus {
   width: 14px;
 }
 
-.admin_order_form_submit {
+.admin_order_form_submit,
+.employer_order_form_submit {
   background: #c4ae79 !important;
   color: #fff !important;
   height: 40px !important;
@@ -3481,6 +3483,7 @@ textarea:focus {
   font-family: "Inter", "Helvetica", monospace;
   float: right;
 }
+
 
 .ms-options-wrap>button {
   border: 1px solid #ddd !important;

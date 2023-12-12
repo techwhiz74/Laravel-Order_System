@@ -19,6 +19,7 @@ Route::get('/admin', [AdminController::class, 'goAdminLogin'])->name('admin');
 Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepage');
 Route::post('/import-data', [OrderController::class, 'importData'])->name('import-data');
 Route::post('/upload', [OrderController::class, 'fileUpload'])->name('upload');
+Route::post('/employer-upload', [OrderController::class, 'EmployerfileUpload'])->name('employer-upload');
 Route::post('/upload-change', [OrderController::class, 'fileUploadChange'])->name('upload-change');
 Route::post('/freelancer-job-upload', [FreelancerController::class, 'JobFileUpload'])->name('freelancer-job-upload');
 Route::post('/embroidery-upload', [FreelancerController::class, 'EmbroideryFileUpload'])->name('embroidery-upload');
@@ -105,6 +106,7 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/embroidery-payment-archive', [AdminController::class, 'EmbroideryPaymentArchive'])->name('admin-embroidery-payment-archive');
     Route::get('/vector-payment-archive', [AdminController::class, 'VectorPaymentArchive'])->name('admin-vector-payment-archive');
     Route::post('/change-customer-avatar', [AdminController::class, 'ChangeAvatar'])->name('admin-change-customer-avatar');
+    Route::post('/delete-customer', [AdminController::class, 'deleteCustomer'])->name('admin-delete-customer');
 });
 
 //customer route

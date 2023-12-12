@@ -239,6 +239,10 @@
             e.preventDefault();
             $('.product-items-menu').show();
         });
+        $('#employer_order_submit_form').submit(function(e) {
+            e.preventDefault();
+            $('.product-items-menu').show();
+        });
 
 
         //order form submit button
@@ -267,6 +271,18 @@
             admin_upload.append('customer_number', $('[name=customer_number]').val());
             admin_upload.append('ordered_from', $('[name=ordered_from]').val());
             admin_upload.append('searched_id', $('[name=searched_id]').val());
+        });
+        $('.employer_order_form_submit').click(function() {
+            var employer_upload = new FormData();
+            employer_upload.append('project_name', $('[name=project_name]').val());
+            employer_upload.append('size', $('[name=size]').val());
+            employer_upload.append('width_height', $('[name=width_height]:checked').val());
+            employer_upload.append('products', $('[name=products]').val());
+            employer_upload.append('special_instructions', $('[name=special_instructions]').val());
+            employer_upload.append('type', typeInput);
+            employer_upload.append('deliver_time', deliverTimeInput);
+            employer_upload.append('customer_number', $('[name=customer_number]').val());
+            employer_upload.append('ordered_from', $('[name=ordered_from]').val());
         });
         $('.admin_order_form_submit').click(function(e) {
             e.preventDefault();
@@ -309,6 +325,33 @@
                 $('#order_submit_form').find('.fileupload-buttonbar .start').trigger('click');
             }
 
+            if ($('[name=project_name]').val() == "") {
+                $('.order_form_validation_projectname').show();
+                $('[name=project_name]').css("border", "1px solid red");
+            }
+            if ($('[name=size]').val() == "") {
+                $('.order_form_validation_size').show();
+                $('[name=size]').css("border", "1px solid red");
+            }
+            if ($('#selected_products').text() == "") {
+                $('.order_form_validation_products').show();
+                $('#selected_products').css("border", "1px solid red");
+            }
+            if ($('#order_form_upload_list tr').length == 0) {
+                $('.order_form_file_upload').show();
+            }
+            if ($('#order_form_checkbox').is(':not(:checked)')) {
+                $('.order_form_validation_checkbox').show();
+            }
+        });
+        $('.employer_order_form_submit').click(function(e) {
+            e.preventDefault();
+
+            if (($('[name=project_name]').val() != "") && ($('#selected_products')
+                    .text() != "") && ($('#order_form_upload_list tr').length != 0) && ($(
+                    '#order_form_checkbox').is(':checked'))) {
+                $('#employer_order_submit_form').find('.fileupload-buttonbar .start').trigger('click');
+            }
             if ($('[name=project_name]').val() == "") {
                 $('.order_form_validation_projectname').show();
                 $('[name=project_name]').css("border", "1px solid red");

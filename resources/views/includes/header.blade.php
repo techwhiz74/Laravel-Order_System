@@ -61,7 +61,9 @@
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             English <i class="fa-solid fa-language"></i>
                         </button>
-                    @elseif(auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                    @elseif(auth()->user()->user_type == 'customer' ||
+                            auth()->user()->user_type == 'admin' ||
+                            auth()->user()->user_type == 'employer')
                         <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ $currentLanguage }} <i class="fa-solid fa-language"></i>
                         </button>
@@ -88,7 +90,9 @@
             <div class="col-4 col-lg-3 col-xl-2">
                 <div class="lion_nav">
                     @if (auth()->user())
-                        @if (auth()->user()->user_type == 'customer' || auth()->user()->user_type == 'admin')
+                        @if (auth()->user()->user_type == 'customer' ||
+                                auth()->user()->user_type == 'admin' ||
+                                auth()->user()->user_type == 'employer')
                             <a class="logo_img" href="/"><img
                                     src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty"></a>
                         @elseif(auth()->user()->user_type == 'freelancer')
@@ -196,6 +200,13 @@
                                 @else
                                     <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
                                 @endif
+                            @elseif(auth()->user()->user_type == 'employer')
+                                @if (Auth::user()->image)
+                                    <img src="{{ asset(Auth::user()->image) }}" alt="Profile Image"
+                                        style="width: 40px; height:40px;" />
+                                @else
+                                    <i class="fa-solid fa-circle-user fa-2x" style="color:#fff;"></i>
+                                @endif
                             @endif
                         @else
                             <a href="{{ __('routes.customer-login') }}">
@@ -208,48 +219,59 @@
                     @auth
                         <div class="menu">
                             <ul>
-                                <li>
-                                    <!-- <a href="#">Change Password</a> -->
-                                    @if (@auth()->user()->user_type == 'admin')
+                                @if (@auth()->user()->user_type == 'admin')
+                                    <li>
                                         <a
                                             href="{{ __('routes.admin-changepassword') }}">{{ __('home.change_password') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'freelancer')
-                                        <a
-                                            href="{{ __('routes.freelancer-changepassword') }}">{{ __('home.change_password') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'customer')
-                                        <a
-                                            href="{{ __('routes.customerchange-password') }}">{{ __('home.change_password') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'employer')
-                                        <a
-                                            href="{{ __('routes.customerchange-password') }}">{{ __('home.change_password') }}</a>
-                                    @endif
-                                </li>
-                                <li>
-                                    @if (@auth()->user()->user_type == 'admin')
+                                    </li>
+                                    <li>
                                         <a
                                             href="{{ __('routes.admin-change-avatar') }}">{{ __('home.change_avatar') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                                    </li>
+                                    <li>
+                                        <a href="{{ __('routes.admin-logout') }}">{{ __('home.logout') }}</a>
+                                    </li>
+                                @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
+                                    <li>
+                                        <a
+                                            href="{{ __('routes.freelancer-changepassword') }}">{{ __('home.change_password') }}</a>
+                                    </li>
+                                    <li>
                                         <a
                                             href="{{ __('routes.freelancer-em-change-avatar') }}">{{ __('home.change_avatar') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                                    </li>
+                                    <li>
+                                        <a href="{{ __('routes.freelancerlogout') }}">{{ __('home.logout') }}</a>
+                                    </li>
+                                @elseif(@auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
+                                    <li>
+                                        <a
+                                            href="{{ __('routes.freelancer-changepassword') }}">{{ __('home.change_password') }}</a>
+                                    </li>
+                                    <li>
                                         <a
                                             href="{{ __('routes.freelancer-ve-change-avatar') }}">{{ __('home.change_avatar') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'customer')
+                                    </li>
+                                    <li>
+                                        <a href="{{ __('routes.freelancerlogout') }}">{{ __('home.logout') }}</a>
+                                    </li>
+                                @elseif(@auth()->user()->user_type == 'customer')
+                                    <li>
+                                        <a
+                                            href="{{ __('routes.customerchange-password') }}">{{ __('home.change_password') }}</a>
+                                    </li>
+                                    <li>
                                         <a
                                             href="{{ __('routes.customer-change-avatar') }}">{{ __('home.change_avatar') }}</a>
-                                    @endif
-                                </li>
-                                <li>
-                                    @if (@auth()->user()->user_type == 'admin')
-                                        <a href="{{ __('routes.admin-logout') }}">{{ __('home.logout') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'freelancer')
-                                        <a href="{{ __('routes.freelancerlogout') }}">{{ __('home.logout') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'customer')
+                                    </li>
+                                    <li>
                                         <a href="{{ __('routes.customerlogout') }}">{{ __('home.logout') }}</a>
-                                    @elseif(@auth()->user()->user_type == 'employer')
+                                    </li>
+                                @elseif(@auth()->user()->user_type == 'employer')
+                                    <li>
                                         <a href="{{ __('routes.customerlogout') }}">{{ __('home.logout') }}</a>
-                                    @endif
-                                </li>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     @endauth

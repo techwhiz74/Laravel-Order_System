@@ -34,6 +34,6 @@ class Order extends Model
     }
     public function OrderChange()
     {
-        return $this->hasMany(OrderChange::class, 'order_number', 'order_number');
+        return $this->hasMany(OrderChange::class, 'order_id', 'id');
     }
 }

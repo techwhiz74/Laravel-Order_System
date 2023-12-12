@@ -280,8 +280,8 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     //customer-parameters
     'customer_em_parameters' => 'Kunden-Parameter Stickprogramme',
     'customer_ve_parameters' => 'Kunden-Parameter Vektordateien',
-    'customer_parameters_em_sidebar' => 'PARAMETER STICKPROGRAMME',
-    'customer_parameters_ve_sidebar' => 'PARAMETER VEKTORDATEIEN',
+    'customer_parameters_em_sidebar' => 'PARAMETER STICK',
+    'customer_parameters_ve_sidebar' => 'PARAMETER VEKTOR',
 
     //customer staff
     'lastName' => 'Nachname',

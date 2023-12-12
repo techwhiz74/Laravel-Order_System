@@ -22,7 +22,6 @@ class RoleMiddleware
         if (auth()->user() && auth()->user()->user_type === $role) {
             return $next($request);
         }
-
         return redirect()->route($role . '-login', ['locale' => app()->getLocale()]);
     }
 }

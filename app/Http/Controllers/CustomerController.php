@@ -77,8 +77,6 @@ class CustomerController extends Controller
         return redirect(__('routes.customer-login'))->with('danger', 'Oppes! You have entered invalid credentials');
     }
 
-
-
     // ----------------------------Customer Register------------------------------
 
     public function registration()
@@ -673,8 +671,9 @@ class CustomerController extends Controller
     }
     public function EmployeeTable(Request $request)
     {
+        $authuser = auth()->user()->id;
         if ($request->ajax()) {
-            $data = User::where('user_type', 'employer', )->get();
+            $data = User::where('user_type', 'employer')->where('org_id', $authuser)->get();
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('name', function ($row) {
                     $name = '<div style="padding-left:22px;">' . $row->name . '</div>';

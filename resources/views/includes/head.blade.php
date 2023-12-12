@@ -149,6 +149,7 @@
 <script src="{{ asset('asset/js/demo_admin_job.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin_change.js') }}"></script>
 <script src="{{ asset('asset/js/demo_admin_request.js') }}"></script>
+<script src="{{ asset('asset/js/demo_employer.js') }}"></script>
 
 <script src="{{ asset('asset/js/fastselect.standalone.js') }}"></script>
 <script src="{{ asset('asset/js/magicsuggest.js') }}"></script>

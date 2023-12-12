@@ -25,6 +25,7 @@
                                         src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
                                 </th>
                                 <th style="text-align:center;"></th>
+                                <th style="text-align:center;">{{ __('home.delete') }}</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -118,6 +119,12 @@
                     name: 'request',
                     orderable: false,
                     searchable: false
+                },
+                {
+                    data: 'delete',
+                    name: 'delete',
+                    orderable: false,
+                    searchable: false
                 }
             ]
         });
@@ -125,4 +132,29 @@
             CustomerListTable.ajax.reload();
         })
     });
+
+    function DeleteCustomer(id) {
+        $.ajax({
+            url: '{{ __('routes.admin-delete-customer') }}',
+            type: 'post',
+            data: {
+                id
+            },
+            success: () => {
+                $('#customer_list_table_reload_button').trigger('click');
+                $('#admin_all_table_reload_button').trigger('click');
+                $('#admin_green_table_reload_button').trigger('click');
+                $('#admin_yellow_table_reload_button').trigger('click');
+                $('#admin_blue_table_reload_button').trigger('click');
+                $('#admin_red_table_reload_button').trigger('click');
+                $('#admin_parameter_em_table_reload_button').trigger('click');
+                $('#admin_parameter_ve_table_reload_button').trigger('click');
+                $('#em_admin_payment_table_reload_button').trigger('click');
+                $('#ve_admin_payment_table_reload_button').trigger('click');
+            },
+            error: () => {
+                console.error("error");
+            }
+        })
+    }
 </script>

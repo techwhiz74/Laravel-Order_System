@@ -17,6 +17,22 @@
                         </div>
                     </div>
                 </li>
+            @elseif (auth()->user()->user_type == 'employer')
+                <li style="padding-left: 0 !important;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                            </div>
+
+                            <div class="sidebar_explain">
+                                <p>
+                                    {{ __('home.order_standard') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
                 <li style="padding-left: 0 !important;">
                     <div class="sidebar-div" type="button">
@@ -74,7 +90,21 @@
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
+                    </div>
+                </li>
+            @elseif (auth()->user()->user_type == 'employer')
+                <li style="margin-right: 20px;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                            </div>
 
+                            <div class="sidebar_explain">
+                                <p>{{ __('home.order_express') }}</p>
+                            </div>
+                        </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
@@ -132,12 +162,25 @@
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
                                     style="width: 29px;" />
                             </div>
-
                             <div class="sidebar_explain">
                                 <p>{{ __('home.order_standard') }}</p>
                             </div>
                         </div>
-
+                    </div>
+                </li>
+            @elseif (auth()->user()->user_type == 'employer')
+                <li>
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup3"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
+                                    style="width: 29px;" />
+                            </div>
+                            <div class="sidebar_explain">
+                                <p>{{ __('home.order_standard') }}</p>
+                            </div>
+                        </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
@@ -200,7 +243,21 @@
                                 <p>{{ __('home.order_express') }}</p>
                             </div>
                         </div>
-
+                    </div>
+                </li>
+            @elseif (auth()->user()->user_type == 'employer')
+                <li style="margin-right: 20px;">
+                    <div class="sidebar-div" type="button">
+                        <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup4"
+                            class="lion_pop_btn">
+                            <div style="height: 54%;margin-bottom: 5px;padding: 0;">
+                                <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
+                                    style="width: 29px;" />
+                            </div>
+                            <div class="sidebar_explain">
+                                <p>{{ __('home.order_express') }}</p>
+                            </div>
+                        </div>
                     </div>
                 </li>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
@@ -543,7 +600,7 @@
                             </div>
 
                             <div class="sidebar_explain">
-                                <p>ABRECHNUNG STICKPROGRAMME</p>
+                                <p>ABRECHNUNG STICK</p>
                             </div>
                         </div>
                     </div>
@@ -557,7 +614,7 @@
                             </div>
 
                             <div class="sidebar_explain">
-                                <p>ABRECHNUNG VEKTORDATEIEN</p>
+                                <p>ABRECHNUNG VEKTOR</p>
                             </div>
                         </div>
                     </div>
@@ -590,6 +647,8 @@
                 <x-user.order_form />
             @elseif (auth()->user()->user_type == 'admin')
                 <x-admin.admin_order_form />
+            @elseif (auth()->user()->user_type == 'employer')
+                <x-user.employer_order_form />
             @endif
         </div>
     </div>

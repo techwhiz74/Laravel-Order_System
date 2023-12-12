@@ -11,7 +11,7 @@
                     <table id="customer_staffs" class="table table-striped">
                         <thead>
                             <tr>
-                                <th style="text-align: center">{{ __('home.lastName') }},
+                                <th>{{ __('home.lastName') }},
                                     {{ __('home.firstName') }}</th>
                                 <th>{{ __('home.email_address') }}</th>
                                 <th>{{ __('home.created_on') }}</th>
