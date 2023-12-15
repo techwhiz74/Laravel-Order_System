@@ -107,6 +107,9 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::get('/vector-payment-archive', [AdminController::class, 'VectorPaymentArchive'])->name('admin-vector-payment-archive');
     Route::post('/change-customer-avatar', [AdminController::class, 'ChangeAvatar'])->name('admin-change-customer-avatar');
     Route::post('/delete-customer', [AdminController::class, 'deleteCustomer'])->name('admin-delete-customer');
+    Route::get('/chat-get', [AdminController::class, 'adminChatGet'])->name('admin-chat-get');
+    Route::post('/chat', [AdminController::class, 'adminChat'])->name('admin-chat');
+    Route::post('/slack/events', [AdminController::class, 'adminChat']);
 });
 
 //customer route
@@ -191,6 +194,8 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/em-parameter-change-mail', [CustomerController::class, 'ChangeEmParameterMail'])->name('customer-em-parameter-change-mail');
     Route::post('/ve-parameter-change', [CustomerController::class, 'ChangeVeParameter'])->name('customer-ve-parameter-change');
     Route::get('/ve-parameter-change-mail', [CustomerController::class, 'ChangeVeParameterMail'])->name('customer-ve-parameter-change-mail');
+    Route::post('/chat', [CustomerController::class, 'customerChat'])->name('customer-chat');
+    Route::get('/chat-get', [CustomerController::class, 'customerChatGet'])->name('customer-chat-get');
 
 });
 
@@ -251,6 +256,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/em-payment-sum', [FreelancerController::class, 'EmPaymentSum'])->name('freelancer-em-payment-sum');
     Route::post('/em-payment-handle', [FreelancerController::class, 'EmPaymentHandle'])->name('freelancer-em-payment-handle');
     Route::get('/em-deletefiles/{id}', [FreelancerController::class, 'EmDeleteFile']);
+    Route::get('/em-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-em-chat-get');
+    Route::post('/em-chat', [FreelancerController::class, 'emChat'])->name('freelancer-em-chat');
 
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
@@ -271,7 +278,8 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/ve-payment-sum', [FreelancerController::class, 'VePaymentSum'])->name('freelancer-ve-payment-sum');
     Route::post('/ve-payment-handle', [FreelancerController::class, 'VePaymentHandle'])->name('freelancer-ve-payment-handle');
     Route::get('/ve-deletefiles/{id}', [FreelancerController::class, 'VeDeleteFile']);
-
+    Route::get('/ve-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-ve-chat-get');
+    Route::post('/ve-chat', [FreelancerController::class, 'veChat'])->name('freelancer-ve-chat');
 
 
 });

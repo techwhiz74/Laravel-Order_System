@@ -44,6 +44,8 @@ return [
     'vector-program' => '/de/customer/vector-order/submit',
     'customer-files' => '/de/customer/files/',
     'customer-orderdetails' => '/de/customer/order-details/',
+    'customer-chat' => '/de/customer/chat',
+    'customer-chat-get' => '/de/customer/chat-get',
 
     'update-embOrder-view' => '/de/customer/embroidery-order/edit/',
     'update-vectorOrder-view' => '/de/customer/vector-order/edit/',
@@ -137,6 +139,8 @@ return [
     'freelancer-em-payment-sum' => '/de/freelancer/em-payment-sum',
     'freelancer-em-payment-handle' => '/de/freelancer/em-payment-handle',
     'freelancer-em-delete-files' => '/de/freelancer/em-deletefiles/',
+    'freelancer-em-chat-get' => '/de/freelancer/em-chat-get',
+    'freelancer-em-chat' => '/de/freelancer/em-chat',
 
 
 
@@ -158,6 +162,9 @@ return [
     'freelancer-ve-payment-sum' => '/de/freelancer/ve-payment-sum',
     'freelancer-ve-payment-handle' => '/de/freelancer/ve-payment-handle',
     'freelancer-ve-delete-files' => '/de/freelancer/ve-deletefiles/',
+    'freelancer-ve-chat-get' => '/de/freelancer/ve-chat-get',
+    'freelancer-ve-chat' => '/de/freelancer/ve-chat',
+
 
 
 
@@ -246,6 +253,8 @@ return [
     'admin-change-avatar-handle' => '/de/admin/change-avatar-handle',
     'admin-change-customer-avatar' => '/de/admin/change-customer-avatar',
     'admin-delete-customer' => '/de/admin/delete-customer',
+    'admin-chat-get' => '/de/admin/chat-get',
+    'admin-chat' => '/de/admin/chat',
 
 
 ];

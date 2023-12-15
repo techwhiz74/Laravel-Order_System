@@ -25,7 +25,7 @@
             @include('users.orders.vector_price')
         </div>
     @endauth
-    <div class="overlay"></div>
+    {{-- <div class="overlay"></div> --}}
     @include('includes.footer')
 </body>
 

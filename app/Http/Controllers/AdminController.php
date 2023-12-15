@@ -21,6 +21,8 @@ use App\Models\CustomerVeParameter;
 use App\Models\TempCustomerEmParameter;
 use App\Models\TempCustomerVeParameter;
 use App\Models\TempOrder;
+use App\Models\Chat;
+use App\Models\ChatMessage;
 use DateTimeZone;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ConfirmRegisterMail;
@@ -31,6 +33,7 @@ use App\Mail\ChangeEmParameterConfirmMail;
 use App\Mail\ChangeVeParameterConfirmMail;
 use App\Mail\ChangeEmParameterDeclineMail;
 use App\Mail\ChangeVeParameterDeclineMail;
+use jeremykenedy\Slack\Client as SlackClient;
 
 
 
@@ -2010,5 +2013,36 @@ class AdminController extends Controller
             }
         }
     }
+    public function adminChatGet(Request $request)
+    {
+        $em_freelancer_chat = Chat::where('person_id', 4)->first();
+        $ve_freelancer_chat = Chat::where('person_id', 5)->first();
+        $customer_chat = Chat::whereNotIn('person_id', [4, 5])->get();
+        $em_freelacner_message = ChatMessage::where('chat_type', 'em_freelancer')->orderBy('id', 'desc')->take(5)->get();
+        $ve_freelacner_message = ChatMessage::where('chat_type', 've_freelancer')->orderBy('id', 'desc')->take(5)->get();
+        $customer_message = ChatMessage::where('chat_type', 'customer')->orderBy('id', 'desc')->get();
+        $last_message = ChatMessage::orderBy('id', 'desc')->first();
+        $last_messages = ChatMessage::where('chat_id', $last_message->chat_id)->orderBy('id', 'asc')->get();
+        return response()->json($last_messages);
+    }
+    public function adminChat(Request $request, $tocken)
+    {
+        \Log::info('Incoming request:', $request->all());
+        $message = $request->post('message');
+        $chat_id = $request->post('chat_id');
+        $chat = ChatMessage::where('chat_id', $chat_id)->orderBy('id', 'desc')->first();
 
+        $chat_message = new ChatMessage();
+        $chat_message->chat_id = $chat_id;
+        $chat_message->chat_type = $chat->chat_type;
+        $chat_message->send_id = 1;
+        if ($chat->customer_number != null) {
+            $chat_message->customer_number = $chat->customer_number;
+        }
+        $chat_message->message = $message;
+        $chat_message->save();
+        $slack = new SlackClient(config('slack.endpoint'), ['username' => 'Lion Werbe GmbH']);
+        $slack->send($message);
+        return response()->json($chat_message);
+    }
 }

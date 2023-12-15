@@ -13,6 +13,8 @@ use App\Models\Order;
 use App\Models\CustomerEmParameter;
 use App\Models\CustomerVeParameter;
 use App\Models\TempOrder;
+use App\Models\Chat;
+use App\Models\ChatMessage;
 use Intervention\Image\Facades\Image;
 use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Response;
@@ -25,7 +27,7 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FreelancerEmbroideryPaymentMail;
 use App\Mail\FreelancerVectorPaymentMail;
-
+use jeremykenedy\Slack\Client as SlackClient;
 
 
 use DataTables;
@@ -1900,6 +1902,74 @@ class FreelancerController extends Controller
                 })
                 ->rawColumns(['order', 'date', 'type', 'deliver_time', 'counting_number'])
                 ->make(true);
+        }
+    }
+    public function emChat(Request $request)
+    {
+        $customer_id = auth()->user()->id;
+        $message = $request->post('message');
+        $chat = Chat::where('person_id', $customer_id)->first();
+        if ($chat === null) {
+            $chat_data = new Chat();
+            $chat_data->admin_id = 1;
+            $chat_data->person_id = $customer_id;
+            $chat_data->save();
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat_data->id;
+            $chat_message->chat_type = 'em_freelancer';
+            $chat_message->send_id = $customer_id;
+            $chat_message->message = $message;
+            $chat_message->save();
+        } else {
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat->id;
+            $chat_message->chat_type = 'em_freelancer';
+            $chat_message->send_id = $customer_id;
+            $chat_message->message = $message;
+            $chat_message->save();
+        }
+        $slack = new SlackClient(config('slack.endpoint'), [
+            'username' => 'Embroidery Freelancer',
+        ]);
+        $slack->send($message);
+        return response()->json($chat_message);
+    }
+    public function veChat(Request $request)
+    {
+        $customer_id = auth()->user()->id;
+        $message = $request->post('message');
+        $chat = Chat::where('person_id', $customer_id)->first();
+        if ($chat === null) {
+            $chat_data = new Chat();
+            $chat_data->admin_id = 1;
+            $chat_data->person_id = $customer_id;
+            $chat_data->save();
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat_data->id;
+            $chat_message->chat_type = 've_freelancer';
+            $chat_message->send_id = $customer_id;
+            $chat_message->message = $message;
+            $chat_message->save();
+        } else {
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat->id;
+            $chat_message->chat_type = 've_freelancer';
+            $chat_message->send_id = $customer_id;
+            $chat_message->message = $message;
+            $chat_message->save();
+        }
+        $slack = new SlackClient(config('slack.endpoint'), [
+            'username' => 'Vector Freelancer',
+        ]);
+        return response()->json($chat_message);
+    }
+    public function ChatGet(Request $request)
+    {
+        $customer_id = auth()->user()->id;
+        $chat = Chat::where('person_id', $customer_id)->first();
+        if ($chat != null) {
+            $message = ChatMessage::where('chat_id', $chat->id)->orderBy('id', 'desc')->get();
+            return response()->json($message);
         }
     }
 }

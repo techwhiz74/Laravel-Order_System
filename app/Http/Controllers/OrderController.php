@@ -347,10 +347,6 @@ class OrderController extends Controller
                         ->whereBetween('created_at', [date('Y-m-d', strtotime($request->start_date_filter)), date('Y-m-d', strtotime('+1 day', strtotime($request->end_date_filter)))])->get();
                 }
             }
-
-
-
-
             return DataTables::of($data)->addIndexColumn()
                 ->editColumn('order', function ($row) {
                     $order = $row->customer_number . '-' . $row->order_number;

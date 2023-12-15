@@ -13,12 +13,14 @@
         "fruitcake/laravel-cors": "^2.0.5",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
+        "jeremykenedy/slack-laravel": "^2.6",
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.15",
         "league/flysystem-ftp": "^3.0",
         "stichoza/google-translate-php": "^5.1",
+        "twilio/sdk": "^7.12",
         "yajra/laravel-datatables-oracle": "^10.7"
     },
     "require-dev": {

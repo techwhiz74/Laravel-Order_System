@@ -100,6 +100,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="chatting_div">
+                    <div class="chatting_content">
+                        <div class="chat_title">Zum Admin</div>
+                        <div class="chatting_interface">
+                        </div>
+                        <div style="display:flex">
+                            <textarea name=customer_chat_input class="form-control chat_input" style="font-size: 13px"></textarea>
+                            <button type="button" class="chat_submit" id="customer_chat_submit"><i
+                                    class="fa-regular fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                    <div type="button" class="chatting_button chatting_start" id="customer_chatting_start">
+                        <i class="fa-regular fa-comment" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                    <div class="chat_alert" id="customer_chat_alert">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div type="button" class="chatting_button chatting_close" id="customer_chatting_close">
+                        <i class="fa-solid fa-xmark" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                </div>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 1)
                 <div class="dashboard_page ">
                     <button style="display: none;" id="em_freelancer_table_reload_btn"></button>
@@ -198,6 +219,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="chatting_div">
+                    <div class="chatting_content">
+                        <div class="chat_title">To admin</div>
+                        <div class="chatting_interface">
+                        </div>
+                        <div style="display:flex">
+                            <textarea name=em_freelancer_chat_input class="form-control chat_input" style="font-size: 13px"></textarea>
+                            <button type="button" class="chat_submit" id="em_freelancer_chat_submit"><i
+                                    class="fa-regular fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                    <div type="button" class="chatting_button chatting_start" id="em_freelancer_chatting_start">
+                        <i class="fa-regular fa-comment" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                    <div class="chat_alert" id="em_freelancer_chat_alert">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div type="button" class="chatting_button chatting_close" id="em_freelancer_chatting_close">
+                        <i class="fa-solid fa-xmark" style="margin: auto; color:#ffffff"></i>
                     </div>
                 </div>
             @elseif (auth()->user()->user_type == 'freelancer' && auth()->user()->category_id == 2)
@@ -300,6 +342,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="chatting_div">
+                    <div class="chatting_content">
+                        <div class="chat_title">To admin</div>
+                        <div class="chatting_interface">
+                        </div>
+                        <div style="display:flex">
+                            <textarea name=ve_freelancer_chat_input class="form-control chat_input" style="font-size: 13px"></textarea>
+                            <button type="button" class="chat_submit" id="ve_freelancer_chat_submit"><i
+                                    class="fa-regular fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                    <div type="button" class="chatting_button chatting_start" id="ve_freelancer_chatting_start">
+                        <i class="fa-regular fa-comment" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                    <div class="chat_alert" id="ve_freelancer_chat_alert">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div type="button" class="chatting_button chatting_close" id="ve_freelancer_chatting_close">
+                        <i class="fa-solid fa-xmark" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                </div>
             @elseif (auth()->user()->user_type == 'admin')
                 <div class="dashboard_page">
                     <div class="row">
@@ -396,6 +459,27 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="chatting_div">
+                    <div class="chatting_content">
+                        <div class="chat_title"></div>
+                        <div class="chatting_interface">
+                        </div>
+                        <div style="display:flex">
+                            <textarea name=admin_chat_input class="form-control chat_input" style="font-size: 13px"></textarea>
+                            <button type="button" class="chat_submit" id="admin_chat_submit"><i
+                                    class="fa-regular fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                    <div type="button" class="chatting_button chatting_start" id="admin_chatting_start">
+                        <i class="fa-regular fa-comment" style="margin: auto; color:#ffffff"></i>
+                    </div>
+                    <div class="chat_alert" id="admin_chat_alert">
+                        <i class="fa-solid fa-circle"></i>
+                    </div>
+                    <div type="button" class="chatting_button chatting_close" id="admin_chatting_close">
+                        <i class="fa-solid fa-xmark" style="margin: auto; color:#ffffff"></i>
                     </div>
                 </div>
             @endif

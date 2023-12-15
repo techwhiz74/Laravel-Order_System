@@ -192,3 +192,4 @@
 @include('functions.admin.admin-ve-parameter')
 @include('functions.admin.admin-em-payment')
 @include('functions.admin.admin-ve-payment')
+@include('functions.admin.chat')

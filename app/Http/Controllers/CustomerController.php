@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 
 use App\Models\TempCustomer;
 use App\Models\CustomerEmParameter;
 use App\Models\CustomerVeParameter;
 use App\Models\TempCustomerEmParameter;
 use App\Models\TempCustomerVeParameter;
+use App\Models\Chat;
+use App\Models\ChatMessage;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -36,7 +37,10 @@ use Illuminate\Support\Facades\DB;
 use DataTables;
 use Illuminate\Support\Facades\Validator;
 
+use App\Jobs\PostMessageUserJob;
+use App\Jobs\PostMessageChannelJob;
 
+use jeremykenedy\Slack\Client as SlackClient;
 
 
 
@@ -45,9 +49,16 @@ class CustomerController extends Controller
     //
     public function homePage()
     {
-        $em_parameter = auth()->user() ? CustomerEmParameter::where('customer_id', auth()->user()->id)->first() : null;
-        $ve_parameter = auth()->user() ? CustomerVeParameter::where('customer_id', auth()->user()->id)->first() : null;
-        return view('home', compact('em_parameter', 've_parameter'));
+        if (auth()->check()) {
+            $chat_message = ChatMessage::orderBy('id', 'desc')->get();
+            $auth_id = auth()->user()->id;
+            $chat = ChatMessage::where('send_id', $auth_id)->first();
+            $chat_id = $chat ? $chat->chat_id : '';
+            return view('home', compact('chat_message', 'auth_id', 'chat_id'));
+        } else {
+            return view('home');
+        }
+
     }
 
 
@@ -709,5 +720,55 @@ class CustomerController extends Controller
 
         }
     }
-
+    public function customerChat(Request $request)
+    {
+        $customer_id = auth()->user()->id;
+        $message = $request->post('message');
+        $chat = Chat::where('person_id', $customer_id)->first();
+        if ($chat === null) {
+            $chat_data = new Chat();
+            $chat_data->admin_id = 1;
+            $chat_data->person_id = $customer_id;
+            $chat_data->save();
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat_data->id;
+            if ($customer_id == 4) {
+                $chat_message->chat_type = 'em_freelancer';
+            } elseif ($customer_id == 5) {
+                $chat_message->chat_type = 've_freelancer';
+            } else {
+                $chat_message->chat_type = 'customer';
+            }
+            $chat_message->send_id = $customer_id;
+            $chat_message->customer_number = User::findOrfail($customer_id)->customer_number;
+            $chat_message->message = $message;
+            $chat_message->save();
+        } else {
+            $chat_message = new ChatMessage();
+            $chat_message->chat_id = $chat->id;
+            if ($customer_id == 4) {
+                $chat_message->chat_type = 'em_freelancer';
+            } elseif ($customer_id == 5) {
+                $chat_message->chat_type = 've_freelancer';
+            } else {
+                $chat_message->chat_type = 'customer';
+            }
+            $chat_message->send_id = $customer_id;
+            $chat_message->customer_number = User::findOrfail($customer_id)->customer_number;
+            $chat_message->message = $message;
+            $chat_message->save();
+        }
+        $slack = new SlackClient(config('slack.endpoint'), ['username' => 'Kundin' . $chat_message->customer_number]);
+        $slack->send($message);
+        return response()->json($chat_message);
+    }
+    public function customerChatGet(Request $request)
+    {
+        $customer_id = auth()->user()->id;
+        $chat = Chat::where('person_id', $customer_id)->first();
+        if ($chat != null) {
+            $message = ChatMessage::where('chat_id', $chat->id)->orderBy('id', 'desc')->get();
+            return response()->json($message);
+        }
+    }
 }

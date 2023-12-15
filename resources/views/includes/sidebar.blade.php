@@ -527,7 +527,6 @@
                     </div>
                 </li>
             @endif
-
             @if (auth()->user()->user_type == 'admin')
                 <li>
                     <div class="sidebar-div" type="button">
@@ -535,7 +534,6 @@
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
                             </div>
-
                             <div class="sidebar_explain">
                                 <p>AUFTRÄGE ÄNDERUNGEN</p>
                             </div>
