@@ -46,6 +46,7 @@
                     processData: false,
                     success: () => {
                         $('#customer_em_parameter_submit').hide();
+                        $('#change_em_parameter_success_popup').modal('show');
                         $.ajax({
                             url: '{{ __('routes.customer-em-parameter-change-mail') }}',
                             type: 'get',

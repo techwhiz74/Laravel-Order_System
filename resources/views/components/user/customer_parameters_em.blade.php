@@ -347,3 +347,4 @@
         <div class="col-md-1 col-xl-2"></div>
     </div>
 </section>
+@include('components.user.change_em_parameter_success')

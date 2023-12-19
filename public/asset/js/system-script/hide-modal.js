@@ -17,6 +17,8 @@ function hideModal() {
     $('#admin_change_popup').modal('hide');
     $('#admin_request_popup').modal('hide');
     $('#change_profile_success_popup').modal('hide');
+    $('#change_em_parameter_success_popup').modal('hide');
+    $('#change_ve_parameter_success_popup').modal('hide');
     $('#free_embroidery_payment_archive').modal('hide');
     $('#free_vector_payment_archive').modal('hide');
     $('#admin_embroidery_payment_archive').modal('hide');
@@ -92,6 +94,8 @@ $(function () {
     $('#free_order_count').modal({ backdrop: 'static', keyboard: false })
     $('#admin_order_count').modal({ backdrop: 'static', keyboard: false })
     $('#change_profile_success_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#change_em_parameter_success_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#change_ve_parameter_success_popup').modal({ backdrop: 'static', keyboard: false })
     $('#delete_em_request_confirm_popup').modal({ backdrop: 'static', keyboard: false })
     $('#delete_ve_request_confirm_popup').modal({ backdrop: 'static', keyboard: false })
 })

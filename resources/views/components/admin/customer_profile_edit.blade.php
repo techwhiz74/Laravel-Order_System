@@ -875,6 +875,7 @@
                 data: formData,
                 success: () => {
                     $('#admin_customer_profile_edit_popup').modal('hide');
+                    $('#change_customer_avatar_popup').modal('hide');
                     editCustomerProfile($('[name=admin_change_profile_id]').val());
                 },
                 error: () => {

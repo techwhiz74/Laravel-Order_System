@@ -236,6 +236,8 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'order_form_AnotherOrder' => 'CREATE ANOTHER ORDER',
     'order_change_another' => 'CHANGE ANOTHER ORDER',
     'change_profile_success_command' => 'Your customer data has been successfully requested.',
+    'change_em_parameter_success_command' => 'Your embroidery parameter has been successfully requested.',
+    'change_ve_parameter_success_command' => 'Your vector parameter has been successfully requested.',
 
     //order form validation
     'validation_deliver_time' => 'Delivery Time is Required',

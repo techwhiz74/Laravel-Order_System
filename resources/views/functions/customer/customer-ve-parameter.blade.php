@@ -37,6 +37,7 @@
                     processData: false,
                     success: () => {
                         $('#customer_ve_parameter_submit').hide();
+                        $('#change_ve_parameter_success_popup').modal('show');
                         $.ajax({
                             url: '{{ __('routes.customer-ve-parameter-change-mail') }}',
                             type: 'get',

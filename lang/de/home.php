@@ -255,6 +255,8 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'order_form_AnotherOrder' => 'WEITEREN AUFTRAG ERFASSEN',
     'order_change_another' => 'EINE ANDERE BESTELLUNG ÄNDERN',
     'change_profile_success_command' => 'Ihre Kundendaten wurden erfolgreich angefordert.',
+    'change_em_parameter_success_command' => 'Ihre Stickparameter wurden erfolgreich angefordert.',
+    'change_ve_parameter_success_command' => 'Ihr Vektorparameter wurde erfolgreich angefordert.',
 
     //order form validation
     'validation_deliver_time' => 'LIEFERZEIT ist erforderlich',
