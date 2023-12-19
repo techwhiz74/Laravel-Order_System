@@ -29,6 +29,11 @@ Route::post('/admin-job-upload', [AdminController::class, 'JobFileUpload'])->nam
 Route::post('/admin-change-upload', [AdminController::class, 'ChangeFileUpload'])->name('admin-change-upload');
 Route::post('/admin-request-upload', [AdminController::class, 'RequestFileUpload'])->name('admin-request-upload');
 Route::get('/multi-download/{id}', [OrderController::class, 'multiple'])->name('multi-download');
+Route::post('/slack/event', [AdminController::class, 'adminReceiveChat']);
+Route::post('/slack/embroidery/freelancer/event', [FreelancerController::class, 'emRecieveSlackMessage']);
+Route::post('/slack/vector/freelancer/event', [FreelancerController::class, 'veRecieveSlackMessage']);
+Route::post('/slack/customer/event', [CustomerController::class, 'customerRecieveSlackMessage']);
+
 
 // admin Route
 Route::middleware([LoginMiddleware::class . ':admin'])->prefix('{locale}/admin')->group(function () {
@@ -108,8 +113,8 @@ Route::middleware([RoleMiddleware::class . ':admin'])->prefix('{locale}/admin')-
     Route::post('/change-customer-avatar', [AdminController::class, 'ChangeAvatar'])->name('admin-change-customer-avatar');
     Route::post('/delete-customer', [AdminController::class, 'deleteCustomer'])->name('admin-delete-customer');
     Route::get('/chat-get', [AdminController::class, 'adminChatGet'])->name('admin-chat-get');
+    Route::get('/chat-long-polling', [AdminController::class, 'adminChatLongPolling']);
     Route::post('/chat', [AdminController::class, 'adminChat'])->name('admin-chat');
-    Route::post('/slack/events', [AdminController::class, 'adminChat']);
 });
 
 //customer route
@@ -196,6 +201,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/ve-parameter-change-mail', [CustomerController::class, 'ChangeVeParameterMail'])->name('customer-ve-parameter-change-mail');
     Route::post('/chat', [CustomerController::class, 'customerChat'])->name('customer-chat');
     Route::get('/chat-get', [CustomerController::class, 'customerChatGet'])->name('customer-chat-get');
+    Route::get('/chat-long-polling', [CustomerController::class, 'customerChatLongPolling']);
 
 });
 
@@ -258,6 +264,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/em-deletefiles/{id}', [FreelancerController::class, 'EmDeleteFile']);
     Route::get('/em-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-em-chat-get');
     Route::post('/em-chat', [FreelancerController::class, 'emChat'])->name('freelancer-em-chat');
+    Route::get('/em-chat-long-polling', [FreelancerController::class, 'emFreelancerChatLongPolling']);
 
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
@@ -280,6 +287,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/ve-deletefiles/{id}', [FreelancerController::class, 'VeDeleteFile']);
     Route::get('/ve-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-ve-chat-get');
     Route::post('/ve-chat', [FreelancerController::class, 'veChat'])->name('freelancer-ve-chat');
+    Route::get('/ve-chat-long-polling', [FreelancerController::class, 'veFreelancerChatLongPolling']);
 
 
 });

@@ -723,6 +723,7 @@ class CustomerController extends Controller
     public function customerChat(Request $request)
     {
         $customer_id = auth()->user()->id;
+        $customer = User::findOrfail($customer_id);
         $message = $request->post('message');
         $chat = Chat::where('person_id', $customer_id)->first();
         if ($chat === null) {
@@ -758,8 +759,28 @@ class CustomerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $slack = new SlackClient(config('slack.endpoint'), ['username' => 'Kundin' . $chat_message->customer_number]);
-        $slack->send($message);
+
+        $token = 'xoxb-5817937631651-6357288024293-rnvXboZq57IwHF0sClDuWWtV';
+        $channel = 'D06A5KZ12CX';  // The ID of the channel or user where you want to send the message
+        $payload = [
+            "token" => $token,
+            "channel" => $channel,
+            "text" => $message,
+            'username' => 'Kunden' . '(' . $chat_message->customer_number . ')',
+            'icon_url' => $customer->image,
+        ];
+
+        $ch = curl_init('https://slack.com/api/chat.postMessage');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . $token
+        ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+        $result = curl_exec($ch);
+        curl_close($ch);
         return response()->json($chat_message);
     }
     public function customerChatGet(Request $request)
@@ -770,5 +791,64 @@ class CustomerController extends Controller
             $message = ChatMessage::where('chat_id', $chat->id)->orderBy('id', 'desc')->get();
             return response()->json($message);
         }
+    }
+    public function customerRecieveSlackMessage(Request $request)
+    {
+        \Log::info("This is customer slack", $request->all());
+        $requestData = $request->all();
+        $message = $requestData['event']['text'];
+
+        if (!isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+            $ts = $requestData['event']['ts'];
+            $username = $requestData['event']['username'];
+            $customer_number1 = explode('(', $username)[1];
+            $customer_number = explode(')', $customer_number1)[0];
+            $chat_message = ChatMessage::where('customer_number', $customer_number)->where('message', $message)->orderBy('id', 'desc')->first();
+            if ($chat_message) {
+                $chat_message->ts = $ts;
+                $chat_message->save();
+            }
+        }
+
+        if (isset($requestData['event']['client_msg_id']) && isset($requestData['event']['thread_ts']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+            $thread_ts = $requestData['event']['thread_ts'];
+            $thread_chat = ChatMessage::where('ts', $thread_ts)->orderBy('id', 'desc')->first();
+            if ($thread_chat) {
+                $chat_message = new ChatMessage();
+                $chat_message->chat_id = $thread_chat->chat_id;
+                $chat_message->chat_type = 'customer';
+                $chat_message->send_id = 1;
+                $chat_message->customer_number = $thread_chat->customer_number;
+                $chat_message->message = $message;
+                $chat_message->save();
+            }
+        } else {
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+                $chats = Chat::whereNotIn('person_id', [4, 5])->get();
+                foreach ($chats as $chat) {
+                    $customer = User::findOrfail($chat->person_id);
+                    $chat_message = new ChatMessage();
+                    $chat_message->chat_id = $chat->id;
+                    $chat_message->chat_type = 'customer';
+                    $chat_message->send_id = 1;
+                    $chat_message->customer_number = $customer->customer_number;
+                    $chat_message->message = $message;
+                    $chat_message->save();
+                }
+            }
+        }
+    }
+    public function customerChatLongPolling(Request $request)
+    {
+        $lastMessageId = $request->input('customerLastMessageId');
+        $customer_id = auth()->user()->id;
+        $chat = Chat::where('person_id', $customer_id)->first();
+        do {
+            $messages = ChatMessage::where('id', '>', $lastMessageId)->where('chat_id', $chat->id)->orderBy('id', 'asc')->get();
+            if ($messages->isNotEmpty()) {
+                return response()->json($messages);
+            }
+            usleep(1000000); // Wait for 1 second before checking again
+        } while (true);
     }
 }

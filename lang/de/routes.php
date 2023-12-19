@@ -46,6 +46,7 @@ return [
     'customer-orderdetails' => '/de/customer/order-details/',
     'customer-chat' => '/de/customer/chat',
     'customer-chat-get' => '/de/customer/chat-get',
+    'customer-chat-long-polling' => '/de/customer/chat-long-polling',
 
     'update-embOrder-view' => '/de/customer/embroidery-order/edit/',
     'update-vectorOrder-view' => '/de/customer/vector-order/edit/',
@@ -140,6 +141,7 @@ return [
     'freelancer-em-payment-handle' => '/de/freelancer/em-payment-handle',
     'freelancer-em-delete-files' => '/de/freelancer/em-deletefiles/',
     'freelancer-em-chat-get' => '/de/freelancer/em-chat-get',
+    'freelancer-em-chat-long-polling' => '/de/freelancer/em-chat-long-polling',
     'freelancer-em-chat' => '/de/freelancer/em-chat',
 
 
@@ -163,6 +165,7 @@ return [
     'freelancer-ve-payment-handle' => '/de/freelancer/ve-payment-handle',
     'freelancer-ve-delete-files' => '/de/freelancer/ve-deletefiles/',
     'freelancer-ve-chat-get' => '/de/freelancer/ve-chat-get',
+    'freelancer-ve-chat-long-polling' => '/de/freelancer/ve-chat-long-polling',
     'freelancer-ve-chat' => '/de/freelancer/ve-chat',
 
 
@@ -255,6 +258,7 @@ return [
     'admin-delete-customer' => '/de/admin/delete-customer',
     'admin-chat-get' => '/de/admin/chat-get',
     'admin-chat' => '/de/admin/chat',
+    'admin-chat-long-polling' => '/de/admin/chat-long-polling',
 
 
 ];

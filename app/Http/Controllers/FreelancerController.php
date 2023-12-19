@@ -168,13 +168,6 @@ class FreelancerController extends Controller
                         $btn = '<a style="text-decoration:none;" class="btn btn-secondary btn-sm" href=' . __("routes.freelancer-orderdetails") . $row->id . '>Order deatils</a>';
                         return $btn;
                     })
-                    // ->addColumn('action', function ($row) {
-                    //     $btn =  '<div class="d-flex" style="gap:20px;">
-                    //                 <div><a href=""><i class="fa-solid fa-circle-xmark" style="color: #d41616;"></i></a></div>
-                    //                 <div><a href=""><i class="fa-solid fa-circle-check" style="color: #0d8604;"></i></a></div>
-                    //             </div>';
-                    //     return $btn;
-                    // })
                     ->addColumn('upload', function ($row) {
                         $btn = '<a href=' . __("routes.delivery-files") . $row->id . ' class="btn btn-secondary btn-sm"> Upload Files </a>';
                         return $btn;
@@ -1907,6 +1900,7 @@ class FreelancerController extends Controller
     public function emChat(Request $request)
     {
         $customer_id = auth()->user()->id;
+        $customer = User::findOrfail($customer_id);
         $message = $request->post('message');
         $chat = Chat::where('person_id', $customer_id)->first();
         if ($chat === null) {
@@ -1928,15 +1922,65 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $slack = new SlackClient(config('slack.endpoint'), [
-            'username' => 'Embroidery Freelancer',
+        $token = 'xoxb-5817937631651-6382949755360-N0sSm1Q2qczMz3yDZYK2Qg5Y';
+        $channel = 'D06AYPLCRPB';  // The ID of the channel or user where you want to send the message
+        $payload = [
+            "token" => $token,
+            "channel" => $channel,
+            "text" => $message,
+            'username' => 'Stickerei-Freiberufler',
+            'icon_url' => $customer->image,
+        ];
+
+        $ch = curl_init('https://slack.com/api/chat.postMessage');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . $token
         ]);
-        $slack->send($message);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+        $result = curl_exec($ch);
+        curl_close($ch);
         return response()->json($chat_message);
+    }
+    public function emRecieveSlackMessage(Request $request)
+    {
+        \Log::info("This is em freelacner slack", $request->all());
+        $requestData = $request->all();
+        if ($requestData['event']['type'] == 'message') {
+            $message = $requestData['event']['text'];
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06AYPLCRPB') {
+                $chat_message = new ChatMessage();
+                $chat_message->chat_id = 12;
+                $chat_message->chat_type = 'em_freelancer';
+                $chat_message->send_id = 1;
+                $chat_message->message = $message;
+                $chat_message->save();
+            }
+        }
+    }
+    public function veRecieveSlackMessage(Request $request)
+    {
+        \Log::info("This is ve vector slack", $request->all());
+        $requestData = $request->all();
+        if ($requestData['event']['type'] == 'message') {
+            $message = $requestData['event']['text'];
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06ABBUCXBQ') {
+                $chat_message = new ChatMessage();
+                $chat_message->chat_id = 13;
+                $chat_message->chat_type = 've_freelancer';
+                $chat_message->send_id = 1;
+                $chat_message->message = $message;
+                $chat_message->save();
+            }
+        }
     }
     public function veChat(Request $request)
     {
         $customer_id = auth()->user()->id;
+        $customer = User::findOrfail($customer_id);
         $message = $request->post('message');
         $chat = Chat::where('person_id', $customer_id)->first();
         if ($chat === null) {
@@ -1958,9 +2002,27 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $slack = new SlackClient(config('slack.endpoint'), [
-            'username' => 'Vector Freelancer',
+        $token = 'xoxb-5817937631651-6380821125072-bdNnlYDvX5DcOOUyGddGMq0D';
+        $channel = 'D06ABBUCXBQ';  // The ID of the channel or user where you want to send the message
+        $payload = [
+            "token" => $token,
+            "channel" => $channel,
+            "text" => $message,
+            'username' => 'Vektor-Freiberufler',
+            'icon_url' => $customer->image,
+        ];
+
+        $ch = curl_init('https://slack.com/api/chat.postMessage');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/json',
+            'Authorization: Bearer ' . $token
         ]);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+
+        $result = curl_exec($ch);
+        curl_close($ch);
         return response()->json($chat_message);
     }
     public function ChatGet(Request $request)
@@ -1971,5 +2033,31 @@ class FreelancerController extends Controller
             $message = ChatMessage::where('chat_id', $chat->id)->orderBy('id', 'desc')->get();
             return response()->json($message);
         }
+    }
+    public function emFreelancerChatLongPolling(Request $request)
+    {
+        $lastMessageId = $request->input('emFreelancerLastMessageId');
+        $customer_id = auth()->user()->id;
+        $chat = Chat::where('person_id', $customer_id)->first();
+        do {
+            $messages = ChatMessage::where('id', '>', $lastMessageId)->where('chat_id', $chat->id)->orderBy('id', 'asc')->get();
+            if ($messages->isNotEmpty()) {
+                return response()->json($messages);
+            }
+            usleep(1000000); // Wait for 1 second before checking again
+        } while (true);
+    }
+    public function veFreelancerChatLongPolling(Request $request)
+    {
+        $lastMessageId = $request->input('veFreelancerLastMessageId');
+        $customer_id = auth()->user()->id;
+        $chat = Chat::where('person_id', $customer_id)->first();
+        do {
+            $messages = ChatMessage::where('id', '>', $lastMessageId)->where('chat_id', $chat->id)->orderBy('id', 'asc')->get();
+            if ($messages->isNotEmpty()) {
+                return response()->json($messages);
+            }
+            usleep(1000000); // Wait for 1 second before checking again
+        } while (true);
     }
 }

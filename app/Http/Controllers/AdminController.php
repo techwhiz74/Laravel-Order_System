@@ -2013,21 +2013,27 @@ class AdminController extends Controller
             }
         }
     }
+
     public function adminChatGet(Request $request)
     {
-        $em_freelancer_chat = Chat::where('person_id', 4)->first();
-        $ve_freelancer_chat = Chat::where('person_id', 5)->first();
-        $customer_chat = Chat::whereNotIn('person_id', [4, 5])->get();
-        $em_freelacner_message = ChatMessage::where('chat_type', 'em_freelancer')->orderBy('id', 'desc')->take(5)->get();
-        $ve_freelacner_message = ChatMessage::where('chat_type', 've_freelancer')->orderBy('id', 'desc')->take(5)->get();
-        $customer_message = ChatMessage::where('chat_type', 'customer')->orderBy('id', 'desc')->get();
         $last_message = ChatMessage::orderBy('id', 'desc')->first();
         $last_messages = ChatMessage::where('chat_id', $last_message->chat_id)->orderBy('id', 'asc')->get();
         return response()->json($last_messages);
     }
-    public function adminChat(Request $request, $tocken)
+    public function adminChatLongPolling(Request $request)
     {
-        \Log::info('Incoming request:', $request->all());
+        $lastMessageId = $request->input('adminLastMessageId');
+        $last_message = ChatMessage::orderBy('id', 'desc')->first();
+        do {
+            $messages = ChatMessage::where('id', '>', $lastMessageId)->where('chat_id', $last_message->chat_id)->orderBy('id', 'asc')->get();
+            if ($messages->isNotEmpty()) {
+                return response()->json($messages);
+            }
+            usleep(1000000); // Wait for 1 second before checking again
+        } while (true);
+    }
+    public function adminChat(Request $request)
+    {
         $message = $request->post('message');
         $chat_id = $request->post('chat_id');
         $chat = ChatMessage::where('chat_id', $chat_id)->orderBy('id', 'desc')->first();
@@ -2041,8 +2047,16 @@ class AdminController extends Controller
         }
         $chat_message->message = $message;
         $chat_message->save();
-        $slack = new SlackClient(config('slack.endpoint'), ['username' => 'Lion Werbe GmbH']);
-        $slack->send($message);
         return response()->json($chat_message);
+    }
+
+    public function adminReceiveChat(Request $request)
+    {
+        \Log::info("This is slack", $request->all());
+        $requestData = $request->all();
+        if ($requestData['event']['type'] == 'message') {
+            $message = $requestData['event']['text'];
+        }
+        \Log::info("This is slack", ['message' => $message]);
     }
 }
