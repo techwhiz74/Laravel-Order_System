@@ -257,6 +257,8 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'change_profile_success_command' => 'Ihre Kundendaten wurden erfolgreich angefordert.',
     'change_em_parameter_success_command' => 'Ihre Stickparameter wurden erfolgreich angefordert.',
     'change_ve_parameter_success_command' => 'Ihr Vektorparameter wurde erfolgreich angefordert.',
+    'order_form_alert_command' => 'Wenn Sie bestellen möchten, benötigen Sie die Kundennummer.',
+    'add_customer_success_command' => 'Sie haben den Kunden erfolgreich hinzugefügt.',
 
     //order form validation
     'validation_deliver_time' => 'LIEFERZEIT ist erforderlich',

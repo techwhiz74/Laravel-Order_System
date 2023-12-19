@@ -248,16 +248,20 @@
         //order form submit button
         $('.order_form_submit').click(function(e) {
             e.preventDefault();
-            var data = new FormData();
-            data.append('project_name', $('[name=project_name]').val());
-            data.append('size', $('[name=size]').val());
-            data.append('width_height', $('[name=width_height]:checked').val());
-            data.append('products', $('[name=products]').val());
-            data.append('special_instructions', $('[name=special_instructions]').val());
-            data.append('type', typeInput);
-            data.append('deliver_time', deliverTimeInput);
-            data.append('customer_number', $('[name=customer_number]').val());
-            data.append('ordered_from', $('[name=ordered_from]').val());
+            if ($('[name=customer_number]').val() == '') {
+                $('#order_form_alert_popup').modal('show');
+            } else {
+                var data = new FormData();
+                data.append('project_name', $('[name=project_name]').val());
+                data.append('size', $('[name=size]').val());
+                data.append('width_height', $('[name=width_height]:checked').val());
+                data.append('products', $('[name=products]').val());
+                data.append('special_instructions', $('[name=special_instructions]').val());
+                data.append('type', typeInput);
+                data.append('deliver_time', deliverTimeInput);
+                data.append('customer_number', $('[name=customer_number]').val());
+                data.append('ordered_from', $('[name=ordered_from]').val());
+            }
         });
         $('.admin_order_form_submit').click(function() {
             var admin_upload = new FormData();

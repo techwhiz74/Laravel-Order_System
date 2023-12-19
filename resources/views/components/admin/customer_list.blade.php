@@ -25,7 +25,9 @@
                                         src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
                                 </th>
                                 <th style="text-align:center;"></th>
-                                <th style="text-align:center;">{{ __('home.delete') }}</th>
+                                <th style="text-align:center;"><i class="fa-solid fa-trash"
+                                        style="color:#fff; font-size:14px;"></i>
+                                </th>
                             </tr>
                         </thead>
                         <tbody></tbody>

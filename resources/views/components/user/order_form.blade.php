@@ -474,3 +474,4 @@
 
 </section>
 @include('components.user.order_form_success')
+@include('components.user.order-form-alert-modal')

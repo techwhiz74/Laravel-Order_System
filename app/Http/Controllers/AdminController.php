@@ -355,7 +355,7 @@ class AdminController extends Controller
                 ->addColumn('delete', function ($row) {
                     $delete = '<div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="DeleteCustomer(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-trash" style="color:#c4ae79"></i></button>
+                                <button onclick="DeleteCustomer(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-trash" style="color:#c4ae79; font-size:14px;"></i></button>
                             </div>
                         </div>';
                     return $delete;
@@ -919,14 +919,12 @@ class AdminController extends Controller
         $test_parameter = TempCustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
         $parameter = CustomerEmParameter::where('customer_id', $request->post('customer_id'))->first();
         $test_parameter->delete();
-        $parameter->delete();
     }
     public function VeParameterDecline(Request $request)
     {
         $test_parameter = TempCustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
         $parameter = CustomerVeParameter::where('customer_id', $request->post('customer_id'))->first();
         $test_parameter->delete();
-        $parameter->delete();
     }
     public function EmParameterConfirmMail(Request $request)
     {

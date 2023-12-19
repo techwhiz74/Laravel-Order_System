@@ -23,6 +23,8 @@ function hideModal() {
     $('#free_vector_payment_archive').modal('hide');
     $('#admin_embroidery_payment_archive').modal('hide');
     $('#admin_vector_payment_archive').modal('hide');
+    $('#order_form_alert_popup').modal('hide');
+    $('#add_customer_success_popup').modal('hide');
 
 }
 
@@ -98,4 +100,6 @@ $(function () {
     $('#change_ve_parameter_success_popup').modal({ backdrop: 'static', keyboard: false })
     $('#delete_em_request_confirm_popup').modal({ backdrop: 'static', keyboard: false })
     $('#delete_ve_request_confirm_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#order_form_alert_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#add_customer_success_popup').modal({ backdrop: 'static', keyboard: false })
 })

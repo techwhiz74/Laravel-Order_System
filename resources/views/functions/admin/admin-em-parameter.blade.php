@@ -118,17 +118,20 @@
                         $('#admin_em_parameter_change_buttons').hide();
                         $('#admin_em_parameter_buttons').show();
                         $('[name=admin_parameter_yarn_information]').val(result[1].parameter1);
-                        $('#selected_em_parameter3').text(result[1].parameter2);
+                        if (result[1].parameter2 != null) {
+                            var fileFiles1 = result[1].parameter2.split(', ');
+                            fileFiles1.forEach(item => {
+                                $('.parameter-select-items-file').find(
+                                    'input[value="' + item + '"]').prop("checked", true);
+                            });
+                            $('#selected_em_parameter3').text(result[1].parameter2);
+                        }
                         $('[name=admin_parameter_cutting_options]').val(result[1].parameter3);
                         $('[name=admin_parameter_special_cutting_options]').val(result[1].parameter4);
                         $('[name=admin_parameter_needle_instructions]').val(result[1].parameter5);
                         $('[name=admin_parameter_standard_instructions]').val(result[1].parameter6);
                         $('[name=admin_parameter_special_standard_instructions]').val(result[1].parameter7);
-                        var fileFiles1 = result[1].parameter2.split(', ');
-                        fileFiles1.forEach(item => {
-                            $('.parameter-select-items-file').find(
-                                'input[value="' + item + '"]').prop("checked", true);
-                        });
+
                     }
                 }
                 $('#admin_customer_parameters_em_popup').modal('show');

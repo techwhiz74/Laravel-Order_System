@@ -438,6 +438,7 @@
         <div class="col-md-1 col-xl-2"></div>
     </div>
 </section>
+@include('components.admin.add-customer-success-modal')
 <script>
     $(function() {
         $('#admin_add_customer').submit(function(e) {
@@ -475,6 +476,7 @@
                     processData: false,
                     data: add_customer_data,
                     success: () => {
+                        $('#add_customer_success_popup').modal('show');
                         $('#customer_list_table_reload_button').trigger('click');
                         $('[name = add_customer_number]').val('');
                         $('[name = add_name]').val('');

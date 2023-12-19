@@ -98,6 +98,7 @@
                 id
             },
             success: (result) => {
+                console.log(result)
                 if (result[0] != null) {
                     var vectorFiles0 = result[0].parameter8.split(', ');
                     var imageFiles0 = result[0].parameter9.split(', ');
