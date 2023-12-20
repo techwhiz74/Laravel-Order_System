@@ -1922,8 +1922,8 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $token = 'xoxb-5817937631651-6382949755360-N0sSm1Q2qczMz3yDZYK2Qg5Y';
-        $channel = 'D06AYPLCRPB';  // The ID of the channel or user where you want to send the message
+        $token = 'xoxb-5817937631651-6368073639350-rrO1ZY2om4Lsr9cyulM6s3Zg';
+        $channel = 'D06BDA54KHP';  // The ID of the channel or user where you want to send the message
         $payload = [
             "token" => $token,
             "channel" => $channel,
@@ -1947,19 +1947,21 @@ class FreelancerController extends Controller
     }
     public function emRecieveSlackMessage(Request $request)
     {
-        \Log::info("This is em freelacner slack", $request->all());
-        $requestData = $request->all();
-        if ($requestData['event']['type'] == 'message') {
-            $message = $requestData['event']['text'];
-            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06AYPLCRPB') {
-                $chat_message = new ChatMessage();
-                $chat_message->chat_id = 12;
-                $chat_message->chat_type = 'em_freelancer';
-                $chat_message->send_id = 1;
-                $chat_message->message = $message;
-                $chat_message->save();
-            }
-        }
+        return response()->json($request->all());
+
+        // \Log::info("This is em freelacner slack", $request->all());
+        // $requestData = $request->all();
+        // if ($requestData['event']['type'] == 'message') {
+        //     $message = $requestData['event']['text'];
+        //     if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06BDA54KHP') {
+        //         $chat_message = new ChatMessage();
+        //         $chat_message->chat_id = 12;
+        //         $chat_message->chat_type = 'em_freelancer';
+        //         $chat_message->send_id = 1;
+        //         $chat_message->message = $message;
+        //         $chat_message->save();
+        //     }
+        // }
     }
     public function veRecieveSlackMessage(Request $request)
     {
@@ -1967,7 +1969,7 @@ class FreelancerController extends Controller
         $requestData = $request->all();
         if ($requestData['event']['type'] == 'message') {
             $message = $requestData['event']['text'];
-            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06ABBUCXBQ') {
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06AWUHNPK7') {
                 $chat_message = new ChatMessage();
                 $chat_message->chat_id = 13;
                 $chat_message->chat_type = 've_freelancer';
@@ -2002,8 +2004,8 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $token = 'xoxb-5817937631651-6380821125072-bdNnlYDvX5DcOOUyGddGMq0D';
-        $channel = 'D06ABBUCXBQ';  // The ID of the channel or user where you want to send the message
+        $token = 'xoxb-5817937631651-6396680901392-cI0JZHltxI23edV7TRCLpoM2';
+        $channel = 'D06AWUHNPK7';  // The ID of the channel or user where you want to send the message
         $payload = [
             "token" => $token,
             "channel" => $channel,

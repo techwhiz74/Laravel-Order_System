@@ -1,35 +1,37 @@
 @auth
-    <script>
-        $(function() {
+    @if (request()->is('/'))
+        <script>
+            $(function() {
 
-            // var chatMessages = @json($chat_message);
-            // var authId = {{ $auth_id }}
-            // var authChatId = {{ $chat_id ? $chat_id : 0 }};
-            $('#em_freelancer_chat_alert').hide();
-            $('#ve_freelancer_chat_alert').hide();
-            $('#customer_chat_alert').hide();
-            $('#admin_chat_alert').hide();
-            // console.log(authChatId);
-            // authMesage = [];
-            // chatMessages.forEach((chatMessage) => {
-            //     if (chatMessage.chat_id == authChatId) {
-            //         authMesage.push(chatMessage);
-            //     }
-            // })
-            // if (authMesage != '') {
-            //     if (authMesage[0].send_id == 1 && authId == 4) {
-            //         $('#em_freelancer_chat_alert').show();
-            //     } else if (authMesage[0].send_id == 1 && authId == 5) {
-            //         $('#ve_freelancer_chat_alert').show();
-            //     } else if (authMesage[0].send_id == 1 && authId != 4 && authId != 5 && authId != 1) {
-            //         $('#customer_chat_alert').show();
-            //     }
-            // }
-            // if (chatMessages[0].send_id != 1) {
-            //     $('#admin_chat_alert').show();
-            // }
-        })
-    </script>
+                var chatMessages = @json($chat_message);
+                var authId = {{ $auth_id }}
+                var authChatId = {{ $chat_id ? $chat_id : 0 }};
+                $('#em_freelancer_chat_alert').hide();
+                $('#ve_freelancer_chat_alert').hide();
+                $('#customer_chat_alert').hide();
+                $('#admin_chat_alert').hide();
+                console.log(authChatId);
+                authMesage = [];
+                chatMessages.forEach((chatMessage) => {
+                    if (chatMessage.chat_id == authChatId) {
+                        authMesage.push(chatMessage);
+                    }
+                })
+                if (authMesage != '') {
+                    if (authMesage[0].send_id == 1 && authId == 4) {
+                        $('#em_freelancer_chat_alert').show();
+                    } else if (authMesage[0].send_id == 1 && authId == 5) {
+                        $('#ve_freelancer_chat_alert').show();
+                    } else if (authMesage[0].send_id == 1 && authId != 4 && authId != 5 && authId != 1) {
+                        $('#customer_chat_alert').show();
+                    }
+                }
+                if (chatMessages[0].send_id != 1) {
+                    $('#admin_chat_alert').show();
+                }
+            })
+        </script>
+    @endif
     <script>
         $(function() {
             var chat_id;

@@ -58,7 +58,6 @@ class CustomerController extends Controller
         } else {
             return view('home');
         }
-
     }
 
 
@@ -760,8 +759,8 @@ class CustomerController extends Controller
             $chat_message->save();
         }
 
-        $token = 'xoxb-5817937631651-6357288024293-rnvXboZq57IwHF0sClDuWWtV';
-        $channel = 'D06A5KZ12CX';  // The ID of the channel or user where you want to send the message
+        $token = 'xoxb-5817937631651-6396632169824-qGYkvQ4W0DeXElA1PQZ2bjRt';
+        $channel = 'D06B28XTYCC';  // The ID of the channel or user where you want to send the message
         $payload = [
             "token" => $token,
             "channel" => $channel,
@@ -798,7 +797,7 @@ class CustomerController extends Controller
         $requestData = $request->all();
         $message = $requestData['event']['text'];
 
-        if (!isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+        if (!isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06B28XTYCC') {
             $ts = $requestData['event']['ts'];
             $username = $requestData['event']['username'];
             $customer_number1 = explode('(', $username)[1];
@@ -810,7 +809,7 @@ class CustomerController extends Controller
             }
         }
 
-        if (isset($requestData['event']['client_msg_id']) && isset($requestData['event']['thread_ts']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+        if (isset($requestData['event']['client_msg_id']) && isset($requestData['event']['thread_ts']) && $requestData['event']['channel'] == 'D06B28XTYCC') {
             $thread_ts = $requestData['event']['thread_ts'];
             $thread_chat = ChatMessage::where('ts', $thread_ts)->orderBy('id', 'desc')->first();
             if ($thread_chat) {
@@ -823,7 +822,7 @@ class CustomerController extends Controller
                 $chat_message->save();
             }
         } else {
-            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06A5KZ12CX') {
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06B28XTYCC') {
                 $chats = Chat::whereNotIn('person_id', [4, 5])->get();
                 foreach ($chats as $chat) {
                     $customer = User::findOrfail($chat->person_id);
