@@ -167,6 +167,7 @@
                     contentType: false,
                     processData: false,
                     success: () => {
+                        $('#seccess_change_admin_ve_parameter_popup').modal('show');
                         $('#admin_ve_parameter_buttons').hide();
                         console.log("success");
                     },
@@ -189,6 +190,7 @@
                 contentType: false,
                 processData: false,
                 success: () => {
+                    $('#seccess_accept_admin_ve_parameter_popup').modal('show');
                     $('#admin_ve_parameter_buttons').hide();
                     $.ajax({
                         url: '{{ __('routes.admin-change-ve-parameter-confirm-mail') }}',
@@ -218,6 +220,7 @@
                     customer_id: $('[name=admin_ve_parameter_customer_id]').val()
                 },
                 success: () => {
+                    $('#seccess_decline_admin_ve_parameter_popup').modal('show');
                     $('#admin_ve_parameter_buttons').hide();
                     $.ajax({
                         url: '{{ __('routes.admin-change-ve-parameter-decline-mail') }}',

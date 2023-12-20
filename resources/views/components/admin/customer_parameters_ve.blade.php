@@ -138,3 +138,6 @@
         </div>
     </div>
 </div>
+@include('components.admin.success-change-ve-parameter-modal')
+@include('components.admin.success-accept-ve-parameter-modal')
+@include('components.admin.success-decline-ve-parameter-modal')

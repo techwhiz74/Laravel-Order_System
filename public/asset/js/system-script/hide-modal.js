@@ -61,6 +61,12 @@ function hideAlertModal() {
     $('#change_customer_avatar_popup').modal('hide');
     $('#delete_em_request_confirm_popup').modal('hide');
     $('#delete_ve_request_confirm_popup').modal('hide');
+    $('#seccess_change_admin_em_parameter_popup').modal('hide');
+    $('#seccess_change_admin_ve_parameter_popup').modal('hide');
+    $('#seccess_accept_admin_em_parameter_popup').modal('hide');
+    $('#seccess_accept_admin_ve_parameter_popup').modal('hide');
+    $('#seccess_decline_admin_em_parameter_popup').modal('hide');
+    $('#seccess_decline_admin_ve_parameter_popup').modal('hide');
 }
 $(function () {
     $('#order_form_success_popup').modal({ backdrop: 'static', keyboard: false })
@@ -102,4 +108,10 @@ $(function () {
     $('#delete_ve_request_confirm_popup').modal({ backdrop: 'static', keyboard: false })
     $('#order_form_alert_popup').modal({ backdrop: 'static', keyboard: false })
     $('#add_customer_success_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_change_admin_em_parameter_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_change_admin_ve_parameter_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_accept_admin_em_parameter_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_accept_admin_ve_parameter_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_decline_admin_em_parameter_popup').modal({ backdrop: 'static', keyboard: false })
+    $('#seccess_decline_admin_ve_parameter_popup').modal({ backdrop: 'static', keyboard: false })
 })

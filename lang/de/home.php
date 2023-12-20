@@ -259,6 +259,13 @@ Endkunde sind, wenden Sie sich bitte an Ihren Partner in der Nähe.',
     'change_ve_parameter_success_command' => 'Ihr Vektorparameter wurde erfolgreich angefordert.',
     'order_form_alert_command' => 'Wenn Sie bestellen möchten, benötigen Sie die Kundennummer.',
     'add_customer_success_command' => 'Sie haben den Kunden erfolgreich hinzugefügt.',
+    'admin_change_em_parameter_success_command' => 'Sie haben die Kundenstickparameter erfolgreich geändert.',
+    'admin_change_ve_parameter_success_command' => 'Sie haben den Kundenvektorparameter erfolgreich geändert.',
+    'admin_accept_em_parameter_success_command' => 'Sie haben die Stickparameter des Kunden akzeptiert.',
+    'admin_accept_ve_parameter_success_command' => 'Sie haben den Kundenvektorparameter akzeptiert.',
+    'admin_decline_em_parameter_success_command' => 'Sie haben den Stickparameter des Kunden abgelehnt.',
+    'admin_decline_ve_parameter_success_command' => 'Sie haben den Kundenvektorparameter abgelehnt.',
+
 
     //order form validation
     'validation_deliver_time' => 'LIEFERZEIT ist erforderlich',

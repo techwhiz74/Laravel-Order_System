@@ -240,6 +240,12 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'change_ve_parameter_success_command' => 'Your vector parameter has been successfully requested.',
     'order_form_alert_command' => 'It need to customer number if you want to order.',
     'add_customer_success_command' => 'You have added customer successfully.',
+    'admin_change_em_parameter_success_command' => 'You have successfully changed customer embroidery parameter.',
+    'admin_change_ve_parameter_success_command' => 'You have successfully changed customer vector parameter.',
+    'admin_accept_em_parameter_success_command' => 'You have accepted customer embroidery parameter.',
+    'admin_accept_ve_parameter_success_command' => 'You have accepted customer vector parameter.',
+    'admin_decline_em_parameter_success_command' => 'You have declined customer embroidery parameter.',
+    'admin_decline_ve_parameter_success_command' => 'You have declined customer vector parameter.',
 
 
     //order form validation

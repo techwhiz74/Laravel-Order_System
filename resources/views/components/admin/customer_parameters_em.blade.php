@@ -354,3 +354,6 @@
     </div>
 </div>
 </div>
+@include('components.admin.success-change-em-parameter-modal')
+@include('components.admin.success-accept-em-parameter-modal')
+@include('components.admin.success-decline-em-parameter-modal')
