@@ -755,6 +755,7 @@
 
     function EndJob() {
         $('#free_order_count').modal('show');
+        $('[name=free_order_count_select]').val("");
         $('#free_order_count_confirm').click(function() {
             var data = new FormData();
             data.append('count_number', $('[name=free_order_count_select]').val());

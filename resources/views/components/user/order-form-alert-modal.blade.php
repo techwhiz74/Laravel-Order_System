@@ -9,7 +9,7 @@
                 </div>
                 <div class="row">
                     <div style="text-align:center;">
-                        <button type="button" class="modal_close_btn"
+                        <button type="button" class="modal_close_btn" id="order_form_alert_popup_close"
                             onclick="hideModal()">{{ __('home.close') }}</button>
                     </div>
                 </div>

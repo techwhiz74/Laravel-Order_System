@@ -15,7 +15,8 @@
                 <form id="order_submit_form" action="">
                     <input type="hidden" name="type">
                     <input type="hidden" name="deliver_time">
-                    <input type="hidden" name="customer_number" value="{{ auth()->user()->customer_number }}" />
+                    <input type="hidden" name="order_form_customer_number"
+                        value="{{ auth()->user()->customer_number }}" />
                     <input type="hidden" name="ordered_from" value="{{ auth()->user()->name }}" />
                     <div id="order_form_project_name" class="order_form_class">
                         <div class="form-group form_dv_wrap">

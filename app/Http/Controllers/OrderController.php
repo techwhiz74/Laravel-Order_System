@@ -682,7 +682,7 @@ class OrderController extends Controller
         $width_height = $request->post('width_height');
         $products = $request->post('products');
         $special_instructions = $request->post('special_instructions');
-        $customer_number = $request->post('customer_number');
+        $customer_number = $request->post('order_form_customer_number');
         $ordered_from = $request->post('ordered_from');
         $last_order = Order::where('customer_number', $customer_number)->orderBy('order_number', 'desc')->first();
 

@@ -248,7 +248,7 @@
         //order form submit button
         $('.order_form_submit').click(function(e) {
             e.preventDefault();
-            if ($('[name=customer_number]').val() == '') {
+            if ($('[name=order_form_customer_number]').val() == '') {
                 $('#order_form_alert_popup').modal('show');
             } else {
                 var data = new FormData();
@@ -259,10 +259,21 @@
                 data.append('special_instructions', $('[name=special_instructions]').val());
                 data.append('type', typeInput);
                 data.append('deliver_time', deliverTimeInput);
-                data.append('customer_number', $('[name=customer_number]').val());
+                data.append('order_form_customer_number', $('[name=order_form_customer_number]').val());
                 data.append('ordered_from', $('[name=ordered_from]').val());
             }
         });
+        $('#order_form_alert_popup_close').click(function() {
+            $('#order_form_size').css("display", "none");
+            $('#order_form_products').css("display", "none");
+            $('#order_form_anotherOrderButton').trigger('click');
+            $('.order_form_validation_projectname').hide();
+            $('[name=project_name]').css("border", "1px solid #ddd");
+            $('.order_form_file_upload').hide();
+            $('[name=size]').val("");
+            $('.order_form_validation_checkbox').hide();
+            $('#selected_products').text("No Products");
+        })
         $('.admin_order_form_submit').click(function() {
             var admin_upload = new FormData();
             admin_upload.append('project_name', $('[name=project_name]').val());
