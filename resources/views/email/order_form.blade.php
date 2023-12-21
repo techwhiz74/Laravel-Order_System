@@ -4,9 +4,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('asset/css/user/email_template.css') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Inter", "Helvetica", monospace;
+            border-spacing: 0;
+        }
+
+        table {
+            margin: auto;
+        }
+
+        .email_template_table {
+            border-collapse: collapse !important;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #efefef;
+        }
+
+        .template_div {
+            margin: 0;
+            padding: 20px;
+            height: 100% !important;
+            width: 100% !important;
+            border-top-width: 4px;
+            border-top-style: solid;
+            border-top-color: #d3d3d3;
+        }
+
+        .email_template {
+            width: 800px;
+            border-collapse: collapse !important;
+            border: 1px solid #cccccc;
+            margin: auto;
+            background-color: rgb(250, 250, 250);
+        }
+
+        .email_contact_header {
+            background-image: url('/asset/images/email_template_hearder2.jpg');
+            padding-bottom: 50px;
+        }
+
+        .contact_item {
+            padding: 12px;
+        }
+
+        .header_font {
+            font-size: 13px;
+            color: #303133;
+            letter-spacing: 0px;
+            line-height: 18px;
+            padding: 0 70px;
+        }
+
+        .item_font {
+            font-size: 24px;
+            color: #ffffff;
+            letter-spacing: 1px;
+            line-height: 28px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .content_font_left {
+            border: solid 1px #dadada;
+            border-width: 0 0 1px 0;
+            padding: 10px 0 10px 0;
+            font-size: 13px;
+            line-height: 20px;
+            color: #666666;
+            font-weight: 600;
+            width: 50%;
+        }
+
+        .content_font_right {
+            border: solid 1px #dadada;
+            border-width: 0 0 1px 0;
+            padding: 10px 0 10px 0;
+            font-size: 13px;
+            line-height: 20px;
+            color: #666666;
+            font-weight: 400;
+            width: 50%;
+        }
+
+        .footer {
+            background-color: #282828;
+        }
+
+        .footer_title_font {
+            font-size: 20px;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            line-height: 25px;
+            text-align: left;
+        }
+
+        .footer_bar {
+            width: 50px;
+            border-bottom: 4px solid #f8d35e;
+            border-radius: 2px;
+        }
+
+        .footer_content_font {
+            font-size: 13px;
+            color: #dadada;
+            letter-spacing: .5px;
+            line-height: 23px;
+        }
+
+        .footer_column_table_left {
+            margin-top: 0;
+            width: 50%;
+            padding-right: 13px;
+            text-align: left;
+        }
+
+        .footer_column_table_right {
+            margin-top: 0;
+            width: 50%;
+            padding-left: 13px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,13 +150,14 @@
                                             <tr>
                                                 <td>
                                                     <img src="{{ asset('asset/images/email_template_hearder1.jpg') }}"
-                                                        alt="logo" width="800px" height="300px"
-                                                        style="margin-bottom:-4px">
+                                                        alt="logo" width="800px" height="300px">
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td class="email_contact_header">
-                                                    <table style="margin: auto;">
+                                                <td>
+                                                    <img src="{{ asset('asset/images/email_template_hearder2.jpg') }}"
+                                                        alt="logo" width="800px" height="100px">
+                                                    {{-- <table style="margin: auto;">
                                                         <tbody>
                                                             <tr>
                                                                 <td class="contact_item">
@@ -54,7 +181,7 @@
                                                                 </td>
                                                             </tr>
                                                         </tbody>
-                                                    </table>
+                                                    </table> --}}
                                                 </td>
                                             </tr>
                                         </tbody>
