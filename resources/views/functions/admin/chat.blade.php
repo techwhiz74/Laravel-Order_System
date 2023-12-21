@@ -2,7 +2,6 @@
     @if (request()->is('/'))
         <script>
             $(function() {
-
                 var chatMessages = @json($chat_message);
                 var authId = {{ $auth_id }}
                 var authChatId = {{ $chat_id ? $chat_id : 0 }};

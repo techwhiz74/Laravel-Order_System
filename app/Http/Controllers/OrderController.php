@@ -941,7 +941,7 @@ class OrderController extends Controller
         }
         $zipStoragePath = 'public/' . $folder . $fileName;
         try {
-            Mail::to($recipient_admin)->send(new OrderFormMail($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new OrderFormMail($order, $customer, $files));
             Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $zipStoragePath));
             Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);

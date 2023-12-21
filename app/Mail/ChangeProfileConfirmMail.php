@@ -31,7 +31,7 @@ class ChangeProfileConfirmMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: "info@lionwerbung.de",
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'Confirm Change Profile',
         );
     }

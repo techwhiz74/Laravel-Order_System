@@ -31,7 +31,7 @@ class FreelancerEmbroideryPaymentMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: 'embroideryfreelancer@gmail.com',
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'Freelancer Embroidery Payment Mail',
         );
     }

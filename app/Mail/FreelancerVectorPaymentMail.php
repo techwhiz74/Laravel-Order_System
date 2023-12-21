@@ -31,7 +31,7 @@ class FreelancerVectorPaymentMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: 'vectorfreelancer@gmail.com',
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'Freelancer Vector Payment Mail',
         );
     }

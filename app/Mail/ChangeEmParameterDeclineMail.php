@@ -33,7 +33,7 @@ class ChangeEmParameterDeclineMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: "info@lionwerbung.de",
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'Decline Change Embroidery Parameter',
         );
     }

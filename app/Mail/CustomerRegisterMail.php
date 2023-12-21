@@ -35,7 +35,7 @@ class CustomerRegisterMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: $this->data['email'],
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'New Register',
         );
     }

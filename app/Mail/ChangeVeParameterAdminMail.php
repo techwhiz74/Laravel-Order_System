@@ -35,7 +35,7 @@ class ChangeVeParameterAdminMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: $this->customer->email,
+            from: env('MAIL_FROM_ADDRESS'),
             subject: 'Change Vector Parameter',
         );
     }

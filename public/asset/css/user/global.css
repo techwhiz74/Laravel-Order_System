@@ -3363,13 +3363,13 @@ button {
 .order_form_submit {
   background: #c4ae79 !important;
   color: #fff !important;
-  height: 40px !important;
   border: 0;
   border-radius: 0;
   font-size: 13px;
-  padding: 6px 25px;
+  padding: 12px 25px;
   font-family: "Inter", "Helvetica", monospace;
   float: right;
+  line-height: 1;
 }
 
 
@@ -3505,13 +3505,13 @@ textarea:focus {
 .employer_order_form_submit {
   background: #c4ae79 !important;
   color: #fff !important;
-  height: 40px !important;
   border: 0;
   border-radius: 0;
   font-size: 13px;
-  padding: 6px 25px;
+  padding: 12px 25px;
   font-family: "Inter", "Helvetica", monospace;
   float: right;
+  line-height: 1;
 }
 
 
@@ -3908,7 +3908,8 @@ textarea:focus {
     margin-top: 5px;
   }
 
-  #fileupload {
+  #fileupload,
+  #admin_fileupload {
     margin-top: 10px;
   }
 
