@@ -489,8 +489,8 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active" data-bs-interval="5000"
                             style="display: flex; justify-content:center">
-                            <img src="{{ asset('asset/images/image_slide1.jpg') }}"
-                                class="d-block custom-width zoomable home_image" alt="CUTTER & BUCK">
+                            <img src="{{ asset('asset/images/slider_header_portal.jpg') }}"
+                                class="d-block custom-width zoomable home_image" alt="CUTTER & BUCK" style="width: 100%">
                         </div>
                     </div>
                 </div>

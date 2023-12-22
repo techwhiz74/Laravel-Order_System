@@ -147,43 +147,94 @@
                                 <td>
                                     <table>
                                         <tbody>
-                                            <tr>
-                                                <td>
-                                                    <img src="{{ asset('asset/images/email_template_hearder1.jpg') }}"
-                                                        alt="logo" width="800px" height="300px">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <img src="{{ asset('asset/images/email_template_hearder2.jpg') }}"
-                                                        alt="logo" width="800px" height="100px">
-                                                    {{-- <table style="margin: auto;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="contact_item">
-                                                                    <a href="https://www.instagram.com/lionwerbung">
-                                                                        <i class="fa-brands fa-instagram fa-lg"
-                                                                            style="color:#fff"></i>
-                                                                    </a>
-                                                                </td>
-                                                                <td class="contact_item">
-                                                                    <a href="https://www.facebook.com/lionwerbung">
-                                                                        <i class="fa-brands fa-facebook-f fa-lg"
-                                                                            style="color:#fff"></i>
-                                                                    </a>
-                                                                </td>
-                                                                <td class="contact_item">
-                                                                    <a
-                                                                        href="https://api.whatsapp.com/send?phone=+4980369099894">
-                                                                        <i class="fa-brands fa-whatsapp fa-lg"
-                                                                            style="color:#fff"></i>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table> --}}
-                                                </td>
-                                            </tr>
+                                            @if ($order->type == 'Embroidery')
+                                                <tr>
+                                                    <td>
+                                                        <table
+                                                            style="background:url({{ asset('asset/images/header_bestellung_stickprogramm.jpg') }}); background-size:cover; width:800px; height:300px;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table
+                                                                            style="margin-right:150px; margin-top:180px;">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://www.instagram.com/lionwerbung">
+                                                                                            <img src="{{ asset('asset/images/instagram.png') }}"
+                                                                                                style="width: 20px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://www.facebook.com/lionwerbung">
+                                                                                            <img src="{{ asset('asset/images/facebook.png') }}"
+                                                                                                style="width: 25px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://api.whatsapp.com/send?phone=+4980369099894">
+                                                                                            <img src="{{ asset('asset/images/whatsapp.png') }}"
+                                                                                                style="width: 20px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            @endif
+                                            @if ($order->type == 'Vector')
+                                                <tr>
+                                                    <td>
+                                                        <table
+                                                            style="background:url({{ asset('asset/images/header_bestellung_vektordatei.jpg') }}); background-size:cover; width:800px; height:300px;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <table
+                                                                            style="margin-right:150px; margin-top:180px;">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://www.instagram.com/lionwerbung">
+                                                                                            <img src="{{ asset('asset/images/instagram.png') }}"
+                                                                                                style="width: 20px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://www.facebook.com/lionwerbung">
+                                                                                            <img src="{{ asset('asset/images/facebook.png') }}"
+                                                                                                style="width: 25px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td class="contact_item">
+                                                                                        <a
+                                                                                            href="https://api.whatsapp.com/send?phone=+4980369099894">
+                                                                                            <img src="{{ asset('asset/images/whatsapp.png') }}"
+                                                                                                style="width: 20px;">
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                 </td>
@@ -258,15 +309,6 @@
                                                                 <td class="content_font_right">
                                                                     {{ $order->special_instructions }}</td>
                                                             </tr>
-                                                            {{-- <tr>
-                                                                <td class="content_font_left">Attachment</td>
-                                                                <td class="content_font_right">
-                                                                    @foreach ($attached_filename as $index => $filename)
-                                                                        <a href="{{ $attached_filepath[$index] }}"
-                                                                            target="_blank">{{ $filename }}</a><br>
-                                                                    @endforeach
-                                                                </td>
-                                                            </tr> --}}
                                                             <tr>
                                                                 <td style="height: 30px;"></td>
                                                             </tr>
@@ -411,7 +453,8 @@
                                                                 <td class="footer_content_font"><a
                                                                         style="color: #dadada;"
                                                                         href="mailto:info@lionwerbung.de"
-                                                                        target="_blank">E-Mail: info@lionwerbung.de</a>
+                                                                        target="_blank">E-Mail:
+                                                                        info@lionwerbung.de</a>
                                                                 </td>
                                                             </tr>
                                                             <tr>

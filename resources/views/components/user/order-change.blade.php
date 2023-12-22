@@ -8,6 +8,7 @@
                 <div class="col-12 col-xl-10">
                     <div class="pagetitle">
                         {{ __('home.order_change') }}</div>
+                    <button style="display: none" id="order_request_mail" type="button"></button>
                     <div style="font-size: 13px">
                         <form action="" id="order_change_form">
                             <input type="hidden" name="order_id" value="" />
