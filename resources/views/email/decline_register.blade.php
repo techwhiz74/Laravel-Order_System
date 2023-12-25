@@ -60,7 +60,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {
@@ -232,7 +232,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>

@@ -9,20 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class ChangeProfileAdminMail extends Mailable
+class ChangeEmFreelacnerEndJobCustomerMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $customer;
-    public $temp_customer;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($customer, $temp_customer)
+    public function __construct()
     {
-        $this->customer = $customer;
-        $this->temp_customer = $temp_customer;
+        //
     }
 
     /**
@@ -33,8 +31,7 @@ class ChangeProfileAdminMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Kunden-Profil Änderung im Bestellportal | ' . $this->customer->customer_number,
+            subject: 'Change Em Freelacner End Job Customer Mail',
         );
     }
 
@@ -46,11 +43,7 @@ class ChangeProfileAdminMail extends Mailable
     public function content()
     {
         return new Content(
-            html: 'email.change-profile-admin',
-            with: [
-                'customer' => $this->temp_customer,
-                'temp_customer' => $this->customer->id,
-            ]
+            markdown: 'email.change-em-freelancer-end-job-customer',
         );
     }
 

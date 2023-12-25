@@ -59,7 +59,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {
@@ -271,7 +271,7 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
@@ -310,6 +310,26 @@
                                                                     {{ $order->special_instructions }}</td>
                                                             </tr>
                                                             <tr>
+                                                                <td class="content_font_left">Lieferzeit</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->type }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Delivery</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->deliver_time }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Bestellt von</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->ordered_from }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Status</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->status }}</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td style="height: 30px;"></td>
                                                             </tr>
                                                         </tbody>
@@ -332,13 +352,14 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Kundennr</td>
+                                                                <td class="content_font_left">Kundennummer
+                                                                </td>
                                                                 <td class="content_font_right">
                                                                     {{ $order->customer_number }}</td>
                                                             </tr>

@@ -10,22 +10,22 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Attachment;
 
-class OrderFormFreelancerMail extends Mailable
+class ChangeVeFreelacnerAdminMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
     public $customer;
-    public $zipStoragePath;
+    public $files;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $customer, $zipStoragePath)
+    public function __construct($order, $customer, $files)
     {
         $this->order = $order;
         $this->customer = $customer;
-        $this->zipStoragePath = $zipStoragePath;
+        $this->files = $files;
     }
 
     /**
@@ -35,12 +35,9 @@ class OrderFormFreelancerMail extends Mailable
      */
     public function envelope()
     {
-        $subject = $this->order->type == 'Embroidery' ? 'New Order Embroidery Program | ' : 'New Order Vector Program | ';
-        $subject .= $this->order->order_number;
-
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: $subject,
+            subject: 'Vector Delivery Mail Changes',
         );
     }
 
@@ -52,12 +49,12 @@ class OrderFormFreelancerMail extends Mailable
     public function content()
     {
         return new Content(
-            html: 'email.order_form_freelancer',
+            html: 'email.change-ve-freelancer-admin',
             with: [
                 'order' => $this->order,
                 'customer' => $this->customer,
-                'zipStoragePath' => $this->zipStoragePath,
-            ],
+                'files' => $this->files,
+            ]
         );
     }
 
@@ -69,7 +66,9 @@ class OrderFormFreelancerMail extends Mailable
     public function attachments()
     {
         $attachments = [];
-        $attachments[] = Attachment::fromStorage($this->zipStoragePath);
+        foreach ($this->files as $file) {
+            $attachments[] = Attachment::fromStorage($file);
+        }
         return $attachments;
     }
 }

@@ -787,11 +787,27 @@
                 $('#ve_yellow_job').hide();
                 $('#ve_upload_success_popup').modal('hide');
                 $('#end_ve_change_success_popup').modal('show');
-
+                veFreelancerChangeMail();
             },
             error: () => {
                 $('#ve_end_change_confirm_popup').modal('hide');
                 VectorEndChangeError();
+            }
+        })
+    }
+
+    function veFreelancerChangeMail() {
+        $.ajax({
+            url: '{{ __('routes.freelancer-ve-change-mail') }}',
+            type: 'get',
+            data: {
+                order_id: $('[name=vector_request_id]').val()
+            },
+            success: () => {
+                console.log("success");
+            },
+            error: () => {
+                console.error("error");
             }
         })
     }

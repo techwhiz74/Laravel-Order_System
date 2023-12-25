@@ -9,6 +9,7 @@
                     <div class="pagetitle">
                         {{ __('home.order_change') }}</div>
                     <button style="display: none" id="order_request_mail" type="button"></button>
+                    <button style="display: none" id="order_request_text_mail" type="button"></button>
                     <div style="font-size: 13px">
                         <form action="" id="order_change_form">
                             <input type="hidden" name="order_id" value="" />
@@ -95,8 +96,6 @@
 @include('components.user.order_change_success')
 <script>
     $(function() {
-
-
         // order-change message and file upload form
         $('#order_change_form').submit(function(e) {
             e.preventDefault();
@@ -115,7 +114,6 @@
                 customer_order_change_data.append('order_id', $('[name=order_id]').val());
                 customer_order_change_data.append('order_change_textarea', $(
                     '[name=order_change_textarea]').val());
-
                 $.ajax({
                     url: '{{ __('routes.customer-order-change-text') }}',
                     type: 'post',
@@ -128,7 +126,7 @@
                             'click');
                         setTimeout(() => {
                             $('#order_change_success_popup').modal('show');
-                            $('#order_request_mail').trigger('click');
+                            $('#order_request_text_mail').trigger('click');
                         }, 1000);
                     },
                     error: () => {
@@ -152,6 +150,21 @@
                 }
             })
         })
+        $('#order_request_text_mail').click(function() {
+            $.ajax({
+                url: '{{ __('routes.customer-order-request-text-mail') }}',
+                type: 'get',
+                data: {
+                    order_id: $('[name=order_id]').val()
+                },
+                success: () => {
+                    console.log("success");
+                },
+                error: () => {
+                    console.error("error");
+                }
+            })
+        })
     })
 
     function openOrderChangeModal(id) {
@@ -160,6 +173,7 @@
         $('#order_change_popup').find('[name=order_change_textarea]').val('');
         $('#order_change_popup').find('#order_form_upload_list tr').remove();
         $('[name=time]').val(new Date());
+        $('#order_form_upload_list tr').length = 0;
     }
     $(function() {
         $('#order_change_file_input').on('change', function() {

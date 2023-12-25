@@ -27,6 +27,10 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\FreelancerEmbroideryPaymentMail;
 use App\Mail\FreelancerVectorPaymentMail;
+use App\Mail\ChangeEmFreelacnerAdminMail;
+use App\Mail\ChangeEmFreelacnerEndJobAdminMail;
+use App\Mail\ChangeVeFreelacnerAdminMail;
+use App\Mail\ChangeVeFreelacnerEndJobAdminMail;
 use jeremykenedy\Slack\Client as SlackClient;
 
 
@@ -2061,5 +2065,155 @@ class FreelancerController extends Controller
             }
             usleep(1000000); // Wait for 1 second before checking again
         } while (true);
+    }
+    public function EndJobMail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('order_id'));
+        $customer = User::findOrfail($order->user_id);
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = $customer->email;
+        if ($order->type == 'Embroidery') {
+            $files = [];
+            $attachmanet_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+            foreach ($attachmanet_files as $attachmant) {
+                $customer_number = explode('/', $attachmant)[1];
+                $project_name = explode('/', $attachmant)[2];
+                $folder_name = explode('/', $attachmant)[3];
+                $filename = explode('/', $attachmant)[4];
+                if ($folder_name == 'Stickprogramm') {
+                    $files[] = 'public/' . $customer_number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+                }
+            }
+            try {
+                Mail::to($recipient_admin)->send(new ChangeEmFreelacnerEndJobAdminMail($order, $customer, $files));
+                // Mail::to($recipient_customer)->send(new ChangeEmFreelacnerEndJobAdminMail($order, $customer, $files));
+                Mail::to('christoperw818@gmail.com')->send(new ChangeEmFreelacnerEndJobAdminMail($order, $customer, $files));
+                Mail::to('habedere@sinzers.de')->send(new ChangeEmFreelacnerEndJobAdminMail($order, $customer, $files));
+                return response()->json(['message' => 'Great! Successfully sent your email']);
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+                return response()->json(['error' => 'Sorry! Please try again later']);
+            }
+        } else if ($order->type == 'Vector') {
+            $files = [];
+            $attachmanet_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+            foreach ($attachmanet_files as $attachmant) {
+                $customer_number = explode('/', $attachmant)[1];
+                $project_name = explode('/', $attachmant)[2];
+                $folder_name = explode('/', $attachmant)[3];
+                $filename = explode('/', $attachmant)[4];
+                if ($folder_name == 'Vektordatei') {
+                    $files[] = 'public/' . $customer_number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+                }
+            }
+
+            try {
+                Mail::to($recipient_admin)->send(new ChangeVeFreelacnerEndJobAdminMail($order, $customer, $files));
+                // Mail::to($recipient_customer)->send(new ChangeVeFreelacnerEndJobAdminMail($order, $customer, $files));
+                Mail::to('christoperw818@gmail.com')->send(new ChangeVeFreelacnerEndJobAdminMail($order, $customer, $files));
+                Mail::to('habedere@sinzers.de')->send(new ChangeVeFreelacnerEndJobAdminMail($order, $customer, $files));
+                return response()->json(['message' => 'Great! Successfully sent your email']);
+            } catch (\Exception $e) {
+                dd($e->getMessage());
+                return response()->json(['error' => 'Sorry! Please try again later']);
+            }
+        }
+    }
+
+    public function emChangeMail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('order_id'));
+        $customer = User::findOrfail($order->user_id);
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = $customer->email;
+
+        $files = [];
+        $folder_name = [];
+        $attachment_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+        foreach ($attachment_files as $attachmant) {
+            $folder_name[] = explode('/', $attachmant)[3];
+        }
+        $maxFolderNumber = -1;
+
+        foreach ($folder_name as $name) {
+            if (strpos($name, 'Stickprogramm Änderung') === 0) {
+                $folderNumber = (int) substr($name, strlen('Stickprogramm Änderung'));
+                if ($folderNumber > $maxFolderNumber) {
+                    $maxFolderNumber = $folderNumber;
+                }
+            }
+        }
+        foreach ($attachment_files as $attachmant) {
+            $customer_Number = explode('/', $attachmant)[1];
+            $project_name = explode('/', $attachmant)[2];
+            $folder_name = explode('/', $attachmant)[3];
+            $filename = explode('/', $attachmant)[4];
+            if (strpos($folder_name, 'Stickprogramm Änderung') === 0) {
+                $folderNumber = (int) substr($folder_name, strlen('Stickprogramm Änderung'));
+
+                if ($folderNumber == $maxFolderNumber) {
+                    $files[] = 'public/' . $customer_Number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+                }
+            }
+        }
+        // var_dump($files);
+        // die();
+        try {
+            Mail::to($recipient_admin)->send(new ChangeEmFreelacnerAdminMail($order, $customer, $files));
+            // Mail::to($recipient_customer)->send(new ChangeEmFreelacnerAdminMail($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new ChangeEmFreelacnerAdminMail($order, $customer, $files));
+            Mail::to('habedere@sinzers.de')->send(new ChangeEmFreelacnerAdminMail($order, $customer, $files));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function veChangeMail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('order_id'));
+        $customer = User::findOrfail($order->user_id);
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        $recipient_customer = $customer->email;
+
+        $files = [];
+        $folder_name = [];
+        $attachment_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
+        foreach ($attachment_files as $attachmant) {
+            $folder_name[] = explode('/', $attachmant)[3];
+        }
+        $maxFolderNumber = -1;
+
+        foreach ($folder_name as $name) {
+            if (strpos($name, 'Vektordatei Änderung') === 0) {
+                $folderNumber = (int) substr($name, strlen('Vektordatei Änderung'));
+                if ($folderNumber > $maxFolderNumber) {
+                    $maxFolderNumber = $folderNumber;
+                }
+            }
+        }
+        foreach ($attachment_files as $attachmant) {
+            $customer_Number = explode('/', $attachmant)[1];
+            $project_name = explode('/', $attachmant)[2];
+            $folder_name = explode('/', $attachmant)[3];
+            $filename = explode('/', $attachmant)[4];
+            if (strpos($folder_name, 'Vektordatei Änderung') === 0) {
+                $folderNumber = (int) substr($folder_name, strlen('Vektordatei Änderung'));
+
+                if ($folderNumber == $maxFolderNumber) {
+                    $files[] = 'public/' . $customer_Number . '/' . $project_name . '/' . $folder_name . '/' . $filename;
+                }
+            }
+        }
+        try {
+            Mail::to($recipient_admin)->send(new ChangeVeFreelacnerAdminMail($order, $customer, $files));
+            // Mail::to($recipient_customer)->send(new ChangeVeFreelacnerAdminMail($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new ChangeVeFreelacnerAdminMail($order, $customer, $files));
+            Mail::to('habedere@sinzers.de')->send(new ChangeVeFreelacnerAdminMail($order, $customer, $files));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
 }

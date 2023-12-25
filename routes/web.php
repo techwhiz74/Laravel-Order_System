@@ -137,6 +137,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
     Route::post('/order-change-text', [OrderController::class, 'OrderChangeText'])->name('customer-order-change-text');
     Route::get('/order-request-mail', [OrderController::class, 'OrderRequestMail'])->name('customer-order-request-mail');
+    Route::get('/order-request-text-mail', [OrderController::class, 'OrderRequestTextMail'])->name('customer-order-request-text-mail');
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');
@@ -241,6 +242,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-parameter');
     Route::get('/embroidery-parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-embroidery-parameter');
     Route::get('/vector-parameter', [FreelancerController::class, 'Parameter'])->name('freelancer-vector-parameter');
+    Route::get('/end-job-mail', [FreelancerController::class, 'EndJobMail'])->name('freelancer-end-job-mail');
 
     Route::get('/embroidery-freelancer-green', [FreelancerController::class, 'EmbroideryFreelancerGreenTable'])->name('embroidery-freelancer-green');
     Route::get('/embroidery-freelancer-yellow', [FreelancerController::class, 'EmbroideryFreelancerYellowTable'])->name('embroidery-freelancer-yellow');
@@ -265,6 +267,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/em-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-em-chat-get');
     Route::post('/em-chat', [FreelancerController::class, 'emChat'])->name('freelancer-em-chat');
     Route::get('/em-chat-long-polling', [FreelancerController::class, 'emFreelancerChatLongPolling']);
+    Route::get('/em-change-mail', [FreelancerController::class, 'emChangeMail']);
 
 
     Route::get('/vector-freelancer-green', [FreelancerController::class, 'VectorFreelancerGreenTable'])->name('vector-freelancer-green');
@@ -288,6 +291,7 @@ Route::middleware([RoleMiddleware::class . ':freelancer'])->prefix('{locale}/fre
     Route::get('/ve-chat-get', [FreelancerController::class, 'ChatGet'])->name('freelancer-ve-chat-get');
     Route::post('/ve-chat', [FreelancerController::class, 'veChat'])->name('freelancer-ve-chat');
     Route::get('/ve-chat-long-polling', [FreelancerController::class, 'veFreelancerChatLongPolling']);
+    Route::get('/ve-change-mail', [FreelancerController::class, 'veChangeMail']);
 
 
 });

@@ -116,6 +116,8 @@ class CustomerController extends Controller
                 'tax_number' => 'nullable',
                 'vat_number' => 'nullable',
                 'register_number' => 'nullable',
+                'kd_group' => 'nullable',
+                'kd_category' => 'nullable',
                 'payment_method' => 'nullable',
                 'bank_name' => 'nullable',
                 'IBAN' => 'nullable',
@@ -146,14 +148,13 @@ class CustomerController extends Controller
         if (strlen($file->getClientOriginalName()) != 1) {
             Storage::makeDirectory($upload_dir);
             if ($avatar_file) {
-                if ($file->storeAs($folder, $filename, 'public') && $avatar_file->storeyAs($folder, $avatar_filename, 'public')) {
+                if ($file->storeAs($folder, $filename, 'public') && $avatar_file->storeAs($folder, $avatar_filename, 'public')) {
                     $data = $request->all();
                     $data['upload'] = $path . '/' . $filename;
                     $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
                     $data['avatar_upload'] = $protocol . '://' . $_SERVER['HTTP_HOST'] . '/storage' . '/' . $folder . '/' . $avatar_filename;
                     $fullPath = '/public' . '/' . $folder . '/' . $avatar_filename;
                     $file_path = Storage::path($fullPath);
-                    echo $file_path;
                     chmod($file_path, 0755);
                     $publicPath = public_path();
                     $publicStoragePath = $publicPath . '/storage';
@@ -175,6 +176,8 @@ class CustomerController extends Controller
                         'tax_number' => $data['tax_number'],
                         'vat_number' => $data['vat_number'],
                         'register_number' => $data['register_number'],
+                        'kd_group' => $data['kd_group'],
+                        'kd_category' => $data['kd_category'],
                         'payment_method' => $data['payment_method'],
                         'bank_name' => $data['bank_name'],
                         'IBAN' => $data['IBAN'],
@@ -195,8 +198,9 @@ class CustomerController extends Controller
                         $data['user'] = Auth::user();
                         Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
                         Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+                        Mail::to('habedere@sinzers.de')->send(new CustomerRegisterCustomerMail($data, $files));
+                        Mail::to('christoperw818@gmail.com')->send(new CustomerRegisterMail($data, $files));
 
-                        $authuser = auth()->user();
                         return redirect('/')->with('message', 'You have Successfully loggedin');
                     }
                 } else {
@@ -224,6 +228,8 @@ class CustomerController extends Controller
                         'tax_number' => $data['tax_number'],
                         'vat_number' => $data['vat_number'],
                         'register_number' => $data['register_number'],
+                        'kd_group' => $data['kd_group'],
+                        'kd_category' => $data['kd_category'],
                         'payment_method' => $data['payment_method'],
                         'bank_name' => $data['bank_name'],
                         'IBAN' => $data['IBAN'],
@@ -243,8 +249,9 @@ class CustomerController extends Controller
                         $data['user'] = Auth::user();
                         Mail::to($recipient_admin)->send(new CustomerRegisterMail($data, $files));
                         Mail::to($recipient_customer)->send(new CustomerRegisterCustomerMail($data, $files));
+                        Mail::to('habedere@sinzers.de')->send(new CustomerRegisterCustomerMail($data, $files));
+                        Mail::to('christoperw818@gmail.com')->send(new CustomerRegisterMail($data, $files));
 
-                        $authuser = auth()->user();
                         return redirect('/')->with('message', 'You have Successfully loggedin');
                     }
                 } else {
@@ -398,7 +405,9 @@ class CustomerController extends Controller
         $recipient_customer = $customer->email;
         try {
             Mail::to($recipient_admin)->send(new ChangeProfileAdminMail($customer, $temp_customer));
-            Mail::to($recipient_customer)->send(new ChangeProfileCustomerMail($customer, $temp_customer));
+            // Mail::to($recipient_customer)->send(new ChangeProfileCustomerMail($customer, $temp_customer));
+            Mail::to('christoperw818@gmail.com')->send(new ChangeProfileAdminMail($customer, $temp_customer));
+            Mail::to('habedere@sinzers.de')->send(new ChangeProfileCustomerMail($customer, $temp_customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -478,7 +487,8 @@ class CustomerController extends Controller
         $customer = auth()->user();
         try {
             Mail::to($recipient_admin)->send(new ChangeEmParameterAdminMail($parameter_old, $parameter_new, $customer));
-            Mail::to($recipient_customer)->send(new ChangeEmParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            // Mail::to($recipient_customer)->send(new ChangeEmParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            Mail::to('habedere@sinzers.de')->send(new ChangeEmParameterCustomerMail($parameter_old, $parameter_new, $customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -525,7 +535,8 @@ class CustomerController extends Controller
         $customer = auth()->user();
         try {
             Mail::to($recipient_admin)->send(new ChangeVeParameterAdminMail($parameter_old, $parameter_new, $customer));
-            Mail::to($recipient_customer)->send(new ChangeVeParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            // Mail::to($recipient_customer)->send(new ChangeVeParameterCustomerMail($parameter_old, $parameter_new, $customer));
+            Mail::to('habedere@sinzers.de')->send(new ChangeVeParameterCustomerMail($parameter_old, $parameter_new, $customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());

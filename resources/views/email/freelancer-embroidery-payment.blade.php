@@ -60,7 +60,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {

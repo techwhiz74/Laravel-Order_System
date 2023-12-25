@@ -37,11 +37,15 @@ class OrderFormMail extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Envelope
      */
+
     public function envelope()
     {
+        $subject = $this->order->type == 'Embroidery' ? 'Neue Bestellung Stickprogramm | ' : 'Neue Bestellung Vektordatei | ';
+        $subject .= $this->order->order_number;
+
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'New Orders',
+            subject: $subject,
         );
     }
 

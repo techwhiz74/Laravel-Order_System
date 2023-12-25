@@ -60,7 +60,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {
@@ -227,25 +227,30 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Kundennr</td>
-                                                                <td class="content_font_right">
-
-                                                                </td>
+                                                                <td class="content_font_left">Kundennummer</td>
+                                                                <td class="content_font_right"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Firma</td>
-                                                                <td class="content_font_right">{{ $data['company'] }}
+                                                                <td class="content_font_right">
+                                                                    {{ $data['company'] }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
+                                                                <td class="content_font_left">Firmenzusatz</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['company_addition'] }}</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td class="content_font_left">Name, Vorname</td>
-                                                                <td class="content_font_right">{{ $data['name'] }}
+                                                                <td class="content_font_right">
+                                                                    {{ $data['name'] }}
                                                                     {{ $data['first_name'] }}</td>
                                                             </tr>
                                                             <tr>
@@ -254,28 +259,133 @@
                                                                     {{ $data['street_number'] }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Postleitzahl, Ort</td>
+                                                                <td class="content_font_left">Postleitzahl</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $data['postal_code'] }},
+                                                                    {{ $data['postal_code'] }}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Ort</td>
+                                                                <td class="content_font_right">
                                                                     {{ $data['location'] }}
                                                                 </td>
                                                             </tr>
-                                                            {{-- <tr>
-                                                                <td class="content_font_left">Ihre Gewerbeanmeldung
-                                                                    oder<br> Handelsregisterauszug</td>
-                                                                <td class="content_font_right"><a
-                                                                        href="{{ $data['mail_upload'] }}"
-                                                                        target="_blank">{{ $filename }}</a>
-                                                                </td>
-                                                            </tr> --}}
                                                             <tr>
-                                                                <td style="height: 30px;"></td>
+                                                                <td class="content_font_left">Land</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['location'] }}</td>
                                                             </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">E-Mail</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['email'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Website</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['website'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Telefon</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['phone'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Mobil</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['mobile'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Steuernr</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['tax_number'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">USt.-ID</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['vat_number'] }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">H-Register</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $data['register_number'] }}</td>
+                                                            </tr>
+                                                            @if ($data['kd_group'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">Kd-Gruppe</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['kd_group'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">Kd-Gruppe</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($data['kd_category'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">Kd-Kategorie</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['kd_category'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">Kd-Kategorie</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($data['payment_method'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">Zahlungsart</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['payment_method'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">Zahlungsart</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($data['bank_name'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">Bankname</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['bank_name'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">Bankname</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($data['IBAN'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">IBAN</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['IBAN'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">IBAN</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($data['BIC'] != null)
+                                                                <tr>
+                                                                    <td class="content_font_left">BIC</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $data['BIC'] }}</td>
+                                                                </tr>
+                                                            @else
+                                                                <tr>
+                                                                    <td class="content_font_left">BIC</td>
+                                                                    <td class="content_font_right"></td>
+                                                                </tr>
+                                                            @endif
                                                         </tbody>
                                                     </table>
                                                 </td>
                                             </tr>
-
                                         </tbody>
                                     </table>
                                 </td>

@@ -802,6 +802,8 @@
                             setTimeout(() => {
                                 $('#end_job_success_popup').modal('show');
                             }, 1000);
+
+                            freelancerEndJobMail();
                         },
                         error: () => {
                             $('#end_job_success_popup').modal('hide');
@@ -814,8 +816,22 @@
                 }
             })
         })
+    }
 
-
+    function freelancerEndJobMail() {
+        $.ajax({
+            url: '{{ __('routes.freelancer-end-job-mail') }}',
+            type: 'get',
+            data: {
+                order_id: $('[name=free_detail_id]').val()
+            },
+            success: () => {
+                console.log("success");
+            },
+            error: () => {
+                console.error("error");
+            }
+        })
     }
 
     function DeleteFile(id) {

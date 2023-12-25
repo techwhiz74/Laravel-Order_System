@@ -60,7 +60,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {
@@ -227,13 +227,13 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Kundennr</td>
+                                                                <td class="content_font_left">Kundennummer</td>
                                                                 <td class="content_font_right">
                                                                     {{ $customer->customer_number }}</td>
                                                             </tr>
@@ -242,6 +242,11 @@
                                                                 <td class="content_font_right">
                                                                     {{ $temp_customer->company }}
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Firmenzusatz</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->company_addition }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Name, Vorname</td>
@@ -260,6 +265,64 @@
                                                                     {{ $temp_customer->postal_code }},
                                                                     {{ $temp_customer->location }}
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Land</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->location }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">E-Mail</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->email }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Website</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->website }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Telefon, Mobil</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->phone }},
+                                                                    {{ $temp_customer->mobile }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Steuernr, USt.-ID</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->tax_number }},
+                                                                    {{ $temp_customer->vat_number }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">H-Register</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->register_number }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Kd-Gruppe</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->kd_group }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Kd-Kategorie</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->kd_category }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Zahlungsart</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->payment_method }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Bankname</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->bank_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">IBAN, BIC</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $temp_customer->IBAN }},
+                                                                    {{ $temp_customer->BIC }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="height: 30px;"></td>
@@ -284,13 +347,13 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Kundennr</td>
+                                                                <td class="content_font_left">Kundennummer</td>
                                                                 <td class="content_font_right">
                                                                     {{ $customer->customer_number }}</td>
                                                             </tr>
@@ -299,6 +362,11 @@
                                                                 <td class="content_font_right">
                                                                     {{ $customer->company }}
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Firmenzusatz</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->company_addition }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Name, Vorname</td>
@@ -317,6 +385,64 @@
                                                                     {{ $customer->postal_code }},
                                                                     {{ $customer->location }}
                                                                 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Land</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->location }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">E-Mail</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->email }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Website</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->website }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Telefon, Mobil</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->phone }},
+                                                                    {{ $customer->mobile }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Steuernr, USt.-ID</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->tax_number }},
+                                                                    {{ $customer->vat_number }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">H-Register</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->register_number }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Kd-Gruppe</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->kd_group }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Kd-Kategorie</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->kd_category }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Zahlungsart</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->payment_method }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Bankname</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->bank_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">IBAN, BIC</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $customer->IBAN }},
+                                                                    {{ $customer->BIC }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="height: 30px;"></td>

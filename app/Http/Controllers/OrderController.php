@@ -942,8 +942,11 @@ class OrderController extends Controller
         $zipStoragePath = 'public/' . $folder . $fileName;
         try {
             Mail::to($recipient_admin)->send(new OrderFormMail($order, $customer, $files));
-            Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $zipStoragePath));
-            Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $files));
+            // Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $zipStoragePath));
+            // Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new OrderFormMail($order, $customer, $files));
+            Mail::to('info@lioncap.de')->send(new OrderFormFreelancerMail($order, $customer, $zipStoragePath));
+            Mail::to('habedere@sinzers.de')->send(new OrderFormCustomerMail($order, $customer, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -1071,7 +1074,6 @@ class OrderController extends Controller
                 ->rawColumns(['customer_number', 'order_number', 'index', 'edit'])
                 ->make(true);
         }
-
     }
 
     public function OrderChangeText(Request $request)
@@ -1118,7 +1120,6 @@ class OrderController extends Controller
         $recipient_customer = $customer->email;
         $sender = $customer->email;
 
-
         $files = [];
         $folder_name = [];
         $attachment_files = Order_file_upload::where('order_id', $order->id)->pluck('base_url')->toArray();
@@ -1126,7 +1127,6 @@ class OrderController extends Controller
             $folder_name[] = explode('/', $attachmant)[3];
         }
         $maxFolderNumber = -1;
-
         foreach ($folder_name as $name) {
             if (strpos($name, 'Änderungsdateien Kunde') === 0) {
                 $folderNumber = (int) substr($name, strlen('Änderungsdateien Kunde'));
@@ -1166,8 +1166,38 @@ class OrderController extends Controller
 
         try {
             Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $files));
-            Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $zipStoragePath));
-            Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $files));
+            // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $zipStoragePath));
+            // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $files));
+            Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $zipStoragePath));
+            Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $files));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
+    }
+    public function OrderRequestTextMail(Request $request)
+    {
+        $order = Order::findOrfail($request->get('order_id'));
+        $customer = User::findOrfail($order->user_id);
+        $recipient_admin = User::where('user_type', 'admin')->first()->email;
+        if ($order->type == 'Embroidery') {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first()->email;
+        } else {
+            $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '2')->first()->email;
+        }
+        $recipient_customer = $customer->email;
+
+        $files = [];
+
+        try {
+            Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $files));
+            // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $zipStoragePath));
+            // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $files));
+            Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $files));
+            Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $files));
+            Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -1341,7 +1371,6 @@ class OrderController extends Controller
                     $final_file = null; // or set it to a default file name if needed
                 }
             }
-
 
             $order = Order::where('id', $id)->update([
 

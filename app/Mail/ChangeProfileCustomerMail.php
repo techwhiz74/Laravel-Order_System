@@ -34,7 +34,7 @@ class ChangeProfileCustomerMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Change Customer Profile',
+            subject: 'Kunden-Profil Änderung im Bestellportal | ' . $this->customer->customer_number,
         );
     }
 

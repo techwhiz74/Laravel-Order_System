@@ -203,19 +203,117 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag erhalten<br>und unser Innendienst wird sich darum kümmern.
-                                                    Sie werden baldmöglichst von uns eine
-                                                    Benachrichtigung<br>erhalten.<br><br>Sobald die entsprechenden
-                                                    Änderungen durchgeführt wurden, senden wir Ihnen eine
-                                                    Bestätigungs-E-Mail.
+                                                    Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
+                                                    Ihnen Ihr gewünschtes Stickprogramm. Die Anlagen enthalten Ihre
+                                                    <br>gewünschten Dateiformate. <br><br>Zudem
+                                                    erhalten Sie eine Ansichtsdatei (Produktionswerkblatt) in der
+                                                    Anlage.<br>Zum Öffnen dieser Datei benötigen Sie den Adobe Acrobat
+                                                    Reader, welchen Sie auf nachfolgender<br>Internetadresse kostenlos
+                                                    herunterladen können: <a href="https://get.adobe.com/de/reader/"
+                                                        target="_blank">https://get.adobe.com/de/reader/</a><br><br>Mit
+                                                    dieser Datei haben Sie als der Auftraggeber die letzte
+                                                    Möglichkeit,
+                                                    Korrekturen – gleich welcher<br>Art – vorzunehmen. Stellen
+                                                    Sie keine
+                                                    Fehler mehr fest, erklären Sie die Daten für freigegeben und
+                                                    für
+                                                    <br>alle nicht monierten Fehler, haften Sie als
+                                                    Auftragsgeber.<br><br>Ist der Auftragnehmer verpflichtet,
+                                                    den
+                                                    Liefergegenstand nach Vorgaben des
+                                                    Auftraggebers<br>(Zeichnungen,
+                                                    Modelle, Muster, Skizzen, Entwürfen, etc.) zu liefern, so
+                                                    steht der
+                                                    Auftraggeber dafür <br>ein, dass Schutzrechte Dritter
+                                                    hierdurch
+                                                    nicht verletzt werden. Im Falle der schuldhaften
+                                                    <br>Pflichtverletzung ist der Auftraggeber verpflichtet, den
+                                                    Auftragnehmer von etwaigen Ansprüchen<br>Dritter auf erstes
+                                                    Anfordern freizustellen.<br><br>Die Rechnung wird
+                                                    automatisch
+                                                    erstellt und Ihnen in den nächsten Tagen per E-Mail
+                                                    zugesandt.<br>Der Umwelt zuliebe wird keine zusätzliche
+                                                    Rechnung
+                                                    mehr auf dem Postweg verschickt.<br><br>Für Änderungswünsche
+                                                    antworten Sie einfach auf diese Nachricht.<br><br>Wir
+                                                    bedanken uns
+                                                    für Ihren geschätzten Auftrag. <br><br>
+                                                    <p style="color: #006400; font-weight:700">Kennen Sie schon unseren
+                                                        neuen
+                                                        WhatsApp-Service: Wir sind für
+                                                        Fragen
+                                                        auch unter +49(8036)<br>9099894 per WhatsApp
+                                                        erreichbar!
+                                                    </p><br>
+                                                    Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
+                                                    Verfügung.
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td style="height: 30px;"></td>
                                             </tr>
+                                            <tr>
+                                                <td>
+                                                    <table
+                                                        style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="item_font">
+                                                                    GRUNDINFORMATIONEN
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="width: 600px;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="height: 20px;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Bestellnummer</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->order_number }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Projektname</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->project_name }}</td>
+                                                            </tr>
+                                                            @if ($order->size != '')
+                                                                <tr>
+                                                                    <td class="content_font_left">Gewünschte Größe (in
+                                                                        cm)
+                                                                    </td>
+                                                                    <td class="content_font_right">{{ $order->size }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                            @if ($order->products != '')
+                                                                <tr>
+                                                                    <td class="content_font_left">Endprodukt (Material)
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $order->products }}
+                                                                    </td>
+                                                                </tr>
+                                                            @endif
+                                                            <tr>
+                                                                <td class="content_font_left">Besondere Anweisungen</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->special_instructions }}</td>
+                                                            </tr>
 
+                                                            <tr>
+                                                                <td style="height: 30px;"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
                                             <tr>
                                                 <td>
                                                     <table
@@ -238,20 +336,18 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Kundennr</td>
+                                                                <td class="content_font_left">Kundennummer</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $customer->customer_number }}</td>
+                                                                    {{ $order->customer_number }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Firma</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->company }}
+                                                                <td class="content_font_right">{{ $customer->company }}
                                                                 </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Name, Vorname</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->name }}
+                                                                <td class="content_font_right">{{ $customer->name }},
                                                                     {{ $customer->first_name }}</td>
                                                             </tr>
                                                             <tr>
@@ -263,88 +359,7 @@
                                                                 <td class="content_font_left">Postleitzahl, Ort</td>
                                                                 <td class="content_font_right">
                                                                     {{ $customer->postal_code }},
-                                                                    {{ $customer->location }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 30px;"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table
-                                                        style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="item_font">
-                                                                    Neuer Parameter
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table style="width: 600px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
-                                                                </td>
-                                                                <td class="content_font_right">
-                                                                    {{ $parameter_new->parameter8 }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $parameter_new->parameter9 }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 30px;"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table
-                                                        style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="item_font">
-                                                                    Alter Parameter
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table style="width: 600px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
-                                                                </td>
-                                                                <td class="content_font_right">
-                                                                    {{ $parameter_old->parameter8 }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $parameter_old->parameter9 }}
-                                                                </td>
+                                                                    {{ $customer->location }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="height: 30px;"></td>

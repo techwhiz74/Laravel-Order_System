@@ -243,7 +243,6 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.website') }}</label>
                                         <input type="text" class="register_input" name="website">
-
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -280,6 +279,18 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.register_number') }} </label>
                                         <input type="text" class="register_input" name="register_number">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.kd_group') }} </label>
+                                        <input type="text" class="register_input" name="kd_group">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="">
+                                        <label for="c1">{{ __('home.kd_category') }} </label>
+                                        <input type="text" class="register_input" name="kd_category">
                                     </div>
                                 </div>
                                 <div class="col-md-12">

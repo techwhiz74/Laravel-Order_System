@@ -35,9 +35,12 @@ class OrderRequestAdmin extends Mailable
      */
     public function envelope()
     {
+        $subject = $this->order->type == 'Embroidery' ? 'Neue Änderung Stickprogramm | ' : 'Neue Änderung Vektordatei | ';
+        $subject .= $this->order->order_number;
+
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Order Request',
+            subject: $subject,
         );
     }
 

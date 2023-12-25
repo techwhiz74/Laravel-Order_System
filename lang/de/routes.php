@@ -24,6 +24,7 @@ return [
     'customer-order_change' => '/de/customer/order_change',
     'customer-order-change-text' => '/de/customer/order-change-text',
     'customer-order-request-mail' => '/de/customer/order-request-mail',
+    'customer-order-request-text-mail' => '/de/customer/order-request-text-mail',
     'customer-order_request' => '/de/customer/order_request/',
     'customer-order-file-index-change' => '/de/customer/order-file-index-change',
     'customer-req-get-order-detail' => '/de/customer/req-get-order-detail',
@@ -119,6 +120,7 @@ return [
     'freelancer-em-change-avatar-handle' => '/de/freelancer/em-change-avatar-handle',
     'freelancer-ve-change-avatar' => '/de/freelancer/ve-change-avatar',
     'freelancer-ve-change-avatar-handle' => '/de/freelancer/ve-change-avatar-handle',
+    'freelancer-end-job-mail' => '/de/freelancer/end-job-mail',
 
     'embroidery-freelancer-green' => '/de/freelancer/embroidery-freelancer-green',
     'embroidery-freelancer-yellow' => '/de/freelancer/embroidery-freelancer-yellow',
@@ -143,6 +145,8 @@ return [
     'freelancer-em-chat-get' => '/de/freelancer/em-chat-get',
     'freelancer-em-chat-long-polling' => '/de/freelancer/em-chat-long-polling',
     'freelancer-em-chat' => '/de/freelancer/em-chat',
+    'freelancer-em-change-mail' => '/de/freelancer/em-change-mail',
+
 
 
 
@@ -167,6 +171,8 @@ return [
     'freelancer-ve-chat-get' => '/de/freelancer/ve-chat-get',
     'freelancer-ve-chat-long-polling' => '/de/freelancer/ve-chat-long-polling',
     'freelancer-ve-chat' => '/de/freelancer/ve-chat',
+    'freelancer-ve-change-mail' => '/de/freelancer/ve-change-mail',
+
 
 
 

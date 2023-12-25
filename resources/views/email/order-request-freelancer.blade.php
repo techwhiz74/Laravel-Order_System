@@ -60,7 +60,7 @@
             color: #303133;
             letter-spacing: 0px;
             line-height: 18px;
-            padding: 0 70px;
+            padding: 0 100px;
         }
 
         .item_font {
@@ -263,7 +263,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td class="item_font">
-                                                                    GRUNDINFORMATIONEN
+                                                                    BASIC INFORMATION
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -272,24 +272,24 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <table style="width: 660px;">
+                                                    <table style="width: 600px;">
                                                         <tbody>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Bestellnummer</td>
+                                                                <td class="content_font_left">Order Number</td>
                                                                 <td class="content_font_right">
                                                                     {{ $order->order_number }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Projektname</td>
+                                                                <td class="content_font_left">Project Name</td>
                                                                 <td class="content_font_right">
                                                                     {{ $order->project_name }}</td>
                                                             </tr>
                                                             @if ($order->size != '')
                                                                 <tr>
-                                                                    <td class="content_font_left">Gewünschte Größe (in
+                                                                    <td class="content_font_left">Desired Size (in
                                                                         cm)
                                                                     </td>
                                                                     <td class="content_font_right">{{ $order->size }}
@@ -298,7 +298,8 @@
                                                             @endif
                                                             @if ($order->products != '')
                                                                 <tr>
-                                                                    <td class="content_font_left">Endprodukt (Material)
+                                                                    <td class="content_font_left">Final Product
+                                                                        (Material)
                                                                     </td>
                                                                     <td class="content_font_right">
                                                                         {{ $order->products }}
@@ -306,11 +307,30 @@
                                                                 </tr>
                                                             @endif
                                                             <tr>
-                                                                <td class="content_font_left">Besondere Anweisungen</td>
+                                                                <td class="content_font_left">Special Instruction</td>
                                                                 <td class="content_font_right">
                                                                     {{ $order->special_instructions }}</td>
                                                             </tr>
-
+                                                            <tr>
+                                                                <td class="content_font_left">Type</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->type }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Delivery</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->deliver_time }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Ordered From</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->ordered_from }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="content_font_left">Status</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->status }}</td>
+                                                            </tr>
                                                             <tr>
                                                                 <td style="height: 30px;"></td>
                                                             </tr>
@@ -334,7 +354,7 @@
                                                     <table class="footer_column_table_left">
                                                         <tbody>
                                                             <tr>
-                                                                <td class="footer_title_font">Über Uns</td>
+                                                                <td class="footer_title_font">About Us</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
@@ -354,11 +374,11 @@
                                                                 <td style="height: 16px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="footer_content_font">Wir sind ein erfahrenes
-                                                                    Team kreativer Köpfe, welches sich der Schöpfung
-                                                                    Ihrer Unternehmensidentität und der Gestaltung
-                                                                    der dazugehörigen Werbemittel widmet.Für unsere
-                                                                    Arbeit wurden wir bereits mehrfach ausgezeichnet.
+                                                                <td class="footer_content_font">We are an experienced
+                                                                    team of creative minds who are dedicated to creating
+                                                                    your corporate identity and designing the associated
+                                                                    advertising materials. We have already received
+                                                                    several awards for our work.
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -366,7 +386,7 @@
                                                     <table class="footer_column_table_right">
                                                         <tbody>
                                                             <tr>
-                                                                <td class="footer_title_font">Kontaktinformationen</td>
+                                                                <td class="footer_title_font">Contact information</td>
                                                             </tr>
                                                             <tr>
                                                                 <td style="height: 20px;"></td>
@@ -405,11 +425,11 @@
                                                                 </td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="footer_content_font">Vertreten durch den
-                                                                    Geschäftsführer: Stephan
-                                                                    Scheuerer<br>Umsatzsteuer-Identifikationsnummer<br>gemäß
-                                                                    § 27 a Umsatzsteuergesetz:
-                                                                    DE815830440<br>Registereintrag: Traunstein HRB 28140
+                                                                <td class="footer_content_font">Represented by business
+                                                                    executive: Stephan
+                                                                    Scheuerer<br>Sales tax identification number in
+                                                                    accordance with Section 27 a of the Sales Tax Act
+                                                                    DE815830440<br>Register entry: Traunstein HRB 28140
                                                                 </td>
                                                             </tr>
                                                         </tbody>

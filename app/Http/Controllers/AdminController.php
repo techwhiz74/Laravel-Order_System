@@ -521,6 +521,8 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
         try {
             Mail::to($recipient_customer)->send(new ChangeProfileConfirmMail($customer));
+            Mail::to('christoperw818@gmail.com')->send(new ChangeProfileConfirmMail($customer));
+            Mail::to('habedere@sinzers.de')->send(new ChangeProfileConfirmMail($customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -538,6 +540,8 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
         try {
             Mail::to($recipient_customer)->send(new ChangeProfileDeclineMail($customer));
+            Mail::to('christoperw818@gmail.com')->send(new ChangeProfileDeclineMail($customer));
+            Mail::to('habedere@sinzers.de')->send(new ChangeProfileDeclineMail($customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -933,7 +937,8 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
 
         try {
-            Mail::to($recipient_customer)->send(new ChangeEmParameterConfirmMail($customer, $parameter));
+            // Mail::to($recipient_customer)->send(new ChangeEmParameterConfirmMail($customer, $parameter));
+            Mail::to('habedere@sinzers.de')->send(new ChangeEmParameterConfirmMail($customer, $parameter));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -948,6 +953,7 @@ class AdminController extends Controller
 
         try {
             Mail::to($recipient_customer)->send(new ChangeVeParameterConfirmMail($customer, $parameter));
+            Mail::to('habedere@sinzers.de')->send(new ChangeVeParameterConfirmMail($customer, $parameter));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -961,7 +967,8 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
 
         try {
-            Mail::to($recipient_customer)->send(new ChangeEmParameterDeclineMail($customer, $parameter));
+            // Mail::to($recipient_customer)->send(new ChangeEmParameterDeclineMail($customer, $parameter));
+            Mail::to('habedere@sinzers.de')->send(new ChangeEmParameterDeclineMail($customer, $parameter));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -975,7 +982,8 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
 
         try {
-            Mail::to($recipient_customer)->send(new ChangeVeParameterDeclineMail($customer, $parameter));
+            // Mail::to($recipient_customer)->send(new ChangeVeParameterDeclineMail($customer, $parameter));
+            Mail::to('habedere@sinzers.de')->send(new ChangeVeParameterDeclineMail($customer, $parameter));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -1063,7 +1071,6 @@ class AdminController extends Controller
                     return $type;
                 })
                 ->addColumn('status', function ($row) {
-
                     $status = '';
                     if ($row->status == "Offen") {
                         $status = '<div class="status-wrapper"><div class="status-sphere-open"></div><div class="status_text">Offen</div></div>';

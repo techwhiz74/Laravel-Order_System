@@ -943,10 +943,27 @@
                 $('#em_yellow_job').hide();
                 $('#em_upload_success_popup').modal('hide');
                 $('#end_em_change_success_popup').modal('show');
+                emFreelancerChangeMail();
             },
             error: () => {
                 $('#end_change_confirm_popup').modal('hide');
                 EndChangeError();
+            }
+        })
+    }
+
+    function emFreelancerChangeMail() {
+        $.ajax({
+            url: '{{ __('routes.freelancer-em-change-mail') }}',
+            type: 'get',
+            data: {
+                order_id: $('[name=embroidery_request_id]').val()
+            },
+            success: () => {
+                console.log("success");
+            },
+            error: () => {
+                console.error("error");
             }
         })
     }
