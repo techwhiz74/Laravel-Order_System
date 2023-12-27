@@ -323,7 +323,8 @@
                                                             <tr>
                                                                 <td class="content_font_left">Kundennummer</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $order->customer_number }}</td>
+                                                                    {{ $customer->customer_number }}-{{ $order->order_number }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Firma</td>

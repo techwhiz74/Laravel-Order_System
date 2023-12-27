@@ -100,6 +100,7 @@
         $('#order_change_form').submit(function(e) {
             e.preventDefault();
         });
+        var $text;
         $('.order_change_submit').click(function(e) {
             e.preventDefault();
             if ($('#order_form_upload_list tr').length != 0) {
@@ -120,7 +121,8 @@
                     contentType: false,
                     processData: false,
                     data: customer_order_change_data,
-                    success: () => {
+                    success: (result) => {
+                        $text = result;
                         $('#btn_table_refresh').trigger('click');
                         $('#customer_dahsboard_table_reload_button').trigger(
                             'click');
@@ -135,7 +137,7 @@
                 })
             }
         });
-        $('#order_request_mail').one('click', function() {
+        $('#order_request_mail').click(function() {
             $.ajax({
                 url: '{{ __('routes.customer-order-request-mail') }}',
                 type: 'get',
@@ -151,12 +153,16 @@
             })
         })
         $('#order_request_text_mail').click(function() {
+            var order_request_text_mail_data = new FormData();
+            order_request_text_mail_data.append('order_id', $(
+                '[name=order_id]').val());
+            order_request_text_mail_data.append('text', $text);
             $.ajax({
                 url: '{{ __('routes.customer-order-request-text-mail') }}',
-                type: 'get',
-                data: {
-                    order_id: $('[name=order_id]').val()
-                },
+                type: 'post',
+                data: order_request_text_mail_data,
+                contentType: false,
+                processData: false,
                 success: () => {
                     console.log("success");
                 },

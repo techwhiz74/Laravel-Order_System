@@ -205,30 +205,29 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
                                                     Ihnen Ihr gewünschtes Stickprogramm. Die Anlagen enthalten Ihre
-                                                    <br>gewünschten Dateiformate. <br><br>Zudem
+                                                    gewünschten Dateiformate. <br><br>Zudem
                                                     erhalten Sie eine Ansichtsdatei (Produktionswerkblatt) in der
                                                     Anlage.<br>Zum Öffnen dieser Datei benötigen Sie den Adobe Acrobat
-                                                    Reader, welchen Sie auf nachfolgender<br>Internetadresse kostenlos
+                                                    Reader, welchen Sie auf nachfolgender Internetadresse kostenlos
                                                     herunterladen können: <a href="https://get.adobe.com/de/reader/"
                                                         target="_blank">https://get.adobe.com/de/reader/</a><br><br>Mit
                                                     dieser Datei haben Sie als der Auftraggeber die letzte
                                                     Möglichkeit,
-                                                    Korrekturen – gleich welcher<br>Art – vorzunehmen. Stellen
+                                                    Korrekturen – gleich welcher Art – vorzunehmen. Stellen
                                                     Sie keine
                                                     Fehler mehr fest, erklären Sie die Daten für freigegeben und
-                                                    für
-                                                    <br>alle nicht monierten Fehler, haften Sie als
+                                                    für alle nicht monierten Fehler, haften Sie als
                                                     Auftragsgeber.<br><br>Ist der Auftragnehmer verpflichtet,
                                                     den
                                                     Liefergegenstand nach Vorgaben des
-                                                    Auftraggebers<br>(Zeichnungen,
+                                                    Auftraggebers (Zeichnungen,
                                                     Modelle, Muster, Skizzen, Entwürfen, etc.) zu liefern, so
                                                     steht der
-                                                    Auftraggeber dafür <br>ein, dass Schutzrechte Dritter
+                                                    Auftraggeber dafür ein, dass Schutzrechte Dritter
                                                     hierdurch
-                                                    nicht verletzt werden. Im Falle der schuldhaften
-                                                    <br>Pflichtverletzung ist der Auftraggeber verpflichtet, den
-                                                    Auftragnehmer von etwaigen Ansprüchen<br>Dritter auf erstes
+                                                    nicht verletzt werden. Im Falle der schuldhaften Pflichtverletzung
+                                                    ist der Auftraggeber verpflichtet, den
+                                                    Auftragnehmer von etwaigen Ansprüchen Dritter auf erstes
                                                     Anfordern freizustellen.<br><br>Die Rechnung wird
                                                     automatisch
                                                     erstellt und Ihnen in den nächsten Tagen per E-Mail
@@ -242,7 +241,7 @@
                                                         neuen
                                                         WhatsApp-Service: Wir sind für
                                                         Fragen
-                                                        auch unter +49(8036)<br>9099894 per WhatsApp
+                                                        auch unter +49(8036)9099894 per WhatsApp
                                                         erreichbar!
                                                     </p><br>
                                                     Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
@@ -276,7 +275,8 @@
                                                             <tr>
                                                                 <td class="content_font_left">Bestellnummer</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $order->order_number }}</td>
+                                                                    {{ $customer->customer_number }}-{{ $order->order_number }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Projektname</td>

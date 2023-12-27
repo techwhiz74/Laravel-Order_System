@@ -783,7 +783,14 @@ class AdminController extends Controller
     {
         $customer = User::findOrfail($request->get('customer_id'));
         $recipient_customer = $customer->email;
-        Mail::to($recipient_customer)->send(new ConfirmRegisterMail($customer));
+        try {
+            Mail::to('habedere@sinzers.de')->send(new ConfirmRegisterMail($customer));
+            Mail::to($recipient_customer)->send(new ConfirmRegisterMail($customer));
+            return response()->json(['message' => 'Great! Successfully sent your email']);
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return response()->json(['error' => 'Sorry! Please try again later']);
+        }
     }
     public function DeclineProfile(Request $request)
     {
@@ -796,6 +803,7 @@ class AdminController extends Controller
         $recipient_customer = $customer->email;
         try {
             Mail::to($recipient_customer)->send(new DeclineRegisterMail($customer));
+            Mail::to('habedere@sinzers.de')->send(new DeclineRegisterMail($customer));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());

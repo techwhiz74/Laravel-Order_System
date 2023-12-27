@@ -3269,7 +3269,7 @@ input[name="selected_customer"]:checked::before {
 }
 
 .footer {
-  margin: 3vh 6vw 0 6vw;
+  margin: 3vh 6vw;
 }
 
 .sidebar_explain {

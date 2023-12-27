@@ -276,9 +276,15 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
+                                                                <td class="content_font_left">Delivery type</td>
+                                                                <td class="content_font_right">
+                                                                    {{ $order->deliver_time }}</td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td class="content_font_left">Order Number</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $order->order_number }}</td>
+                                                                    {{ $customer->customer_number }}-{{ $order->order_number }}
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="content_font_left">Project Name</td>
@@ -288,7 +294,7 @@
                                                             @if ($order->size != '')
                                                                 <tr>
                                                                     <td class="content_font_left">Desired Size (in
-                                                                        cm)
+                                                                        mm)
                                                                     </td>
                                                                     <td class="content_font_right">{{ $order->size }}
                                                                     </td>
@@ -309,16 +315,7 @@
                                                                 <td class="content_font_right">
                                                                     {{ $order->special_instructions }}</td>
                                                             </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Type</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $order->type }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Delivery</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $order->deliver_time }}</td>
-                                                            </tr>
+
                                                             <tr>
                                                                 <td class="content_font_left">Ordered From</td>
                                                                 <td class="content_font_right">
@@ -329,6 +326,61 @@
                                                                 <td class="content_font_right">
                                                                     {{ $order->status }}</td>
                                                             </tr>
+                                                            @if ($order->type == 'Embroidery')
+                                                                <tr>
+                                                                    <td class="content_font_left">Yarn information</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter1 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Need embroidery files
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter2 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Cutting options</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter3 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Special cutting
+                                                                        options</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter4 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Needle instructions
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter5 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Standard instructions
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter6 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Special standard
+                                                                        instructions</td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $em_parameter->parameter7 }}</td>
+                                                                </tr>
+                                                            @elseif($order->type == 'Vector')
+                                                                <tr>
+                                                                    <td class="content_font_left">Required vector files
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $ve_parameter->parameter8 }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="content_font_left">Required image files
+                                                                    </td>
+                                                                    <td class="content_font_right">
+                                                                        {{ $ve_parameter->parameter9 }}</td>
+                                                                </tr>
+                                                            @endif
                                                             <tr>
                                                                 <td style="height: 30px;"></td>
                                                             </tr>

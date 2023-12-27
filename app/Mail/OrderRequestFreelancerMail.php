@@ -15,16 +15,22 @@ class OrderRequestFreelancerMail extends Mailable
     use Queueable, SerializesModels;
     public $order;
     public $customer;
+    public $em_parameter;
+    public $ve_parameter;
+    public $text;
     public $zipStoragePath;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $customer, $zipStoragePath)
+    public function __construct($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath)
     {
         $this->order = $order;
         $this->customer = $customer;
+        $this->em_parameter = $em_parameter;
+        $this->ve_parameter = $ve_parameter;
+        $this->text = $text;
         $this->zipStoragePath = $zipStoragePath;
     }
 
@@ -36,7 +42,7 @@ class OrderRequestFreelancerMail extends Mailable
     public function envelope()
     {
         $subject = $this->order->type == 'Embroidery' ? 'New Change Embroidery Program | ' : 'New Change Vector Program | ';
-        $subject .= $this->order->order_number;
+        $subject .= $this->customer->customer_number . '-' . $this->order->order_number;
 
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
@@ -56,6 +62,9 @@ class OrderRequestFreelancerMail extends Mailable
             with: [
                 'order' => $this->order,
                 'customer' => $this->customer,
+                'em_parameter' => $this->em_parameter,
+                've_parameter' => $this->ve_parameter,
+                'text' => $this->text,
                 'zipStoragePath' => $this->zipStoragePath,
             ]
         );

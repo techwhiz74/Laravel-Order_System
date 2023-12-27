@@ -137,7 +137,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/order_change', [OrderController::class, 'OrderChange'])->name('customer-order_change');
     Route::post('/order-change-text', [OrderController::class, 'OrderChangeText'])->name('customer-order-change-text');
     Route::get('/order-request-mail', [OrderController::class, 'OrderRequestMail'])->name('customer-order-request-mail');
-    Route::get('/order-request-text-mail', [OrderController::class, 'OrderRequestTextMail'])->name('customer-order-request-text-mail');
+    Route::post('/order-request-text-mail', [OrderController::class, 'OrderRequestTextMail'])->name('customer-order-request-text-mail');
     Route::get('/order_request/{id}', [OrderController::class, 'OrderRequest'])->name('customer-order_request');
     Route::post('/order_delete', [OrderController::class, 'DeleteOrder'])->name('customer-order_delete');
     Route::post('/toggle-status', [OrderController::class, 'toggle_status'])->name('customer-toggle-status');

@@ -1,6 +1,6 @@
 <script>
     $(function() {
-        $('#customer_order_form_mail').one('click', function() {
+        $('#customer_order_form_mail').click(function() {
             var order_form_mail_data = {
                 project_name: $('[name=project_name]').val(),
                 size: $('[name=size]').val(),

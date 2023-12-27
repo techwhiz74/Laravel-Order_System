@@ -1820,6 +1820,7 @@ class FreelancerController extends Controller
         $recipient_admin = User::where('user_type', 'admin')->first()->email;
         try {
             Mail::to($recipient_admin)->send(new FreelancerEmbroideryPaymentMail());
+            Mail::to('christoperw818@gmail.com')->send(new FreelancerEmbroideryPaymentMail());
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -1831,6 +1832,7 @@ class FreelancerController extends Controller
         $recipient_admin = User::where('user_type', 'admin')->first()->email;
         try {
             Mail::to($recipient_admin)->send(new FreelancerVectorPaymentMail());
+            Mail::to('christoperw818@gmail.com')->send(new FreelancerVectorPaymentMail());
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {
             dd($e->getMessage());

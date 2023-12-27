@@ -15,16 +15,23 @@ class OrderRequestCustomer extends Mailable
     use Queueable, SerializesModels;
     public $order;
     public $customer;
+    public $em_parameter;
+    public $ve_parameter;
+    public $text;
+
     public $files;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($order, $customer, $files)
+    public function __construct($order, $customer, $em_parameter, $ve_parameter, $text, $files)
     {
         $this->order = $order;
         $this->customer = $customer;
+        $this->em_parameter = $em_parameter;
+        $this->ve_parameter = $ve_parameter;
+        $this->text = $text;
         $this->files = $files;
     }
 
@@ -36,7 +43,7 @@ class OrderRequestCustomer extends Mailable
     public function envelope()
     {
         $subject = $this->order->type == 'Embroidery' ? 'Neue Änderung Stickprogramm | ' : 'Neue Änderung Vektordatei | ';
-        $subject .= $this->order->order_number;
+        $subject .= $this->customer->customer_number . '-' . $this->order->order_number;
 
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
@@ -56,6 +63,9 @@ class OrderRequestCustomer extends Mailable
             with: [
                 'order' => $this->order,
                 'customer' => $this->customer,
+                'em_parameter' => $this->em_parameter,
+                've_parameter' => $this->ve_parameter,
+                'text' => $this->text,
                 'files' => $this->files,
             ],
         );
