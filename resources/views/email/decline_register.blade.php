@@ -206,7 +206,7 @@
                                                     Sehr geehrte Damen und Herren,<br><br>wir bedauern Ihnen mitteilen
                                                     zu
                                                     müssen, dass Ihre Registrierung im Stick- und Vektordatei-Portal von
-                                                    uns<br>geprüft wurde und leider nicht genehmigt werden
+                                                    uns geprüft wurde und leider nicht genehmigt werden
                                                     konnte.<br><br>Wir
                                                     verstehen, dass dies enttäuschend sein mag, und möchten Ihnen für
                                                     Ihr Verständnis danken.

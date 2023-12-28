@@ -205,7 +205,7 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und<br>bestätigen Ihnen hiermit die gewünschte Änderung
+                                                    bearbeitet und bestätigen Ihnen hiermit die gewünschte Änderung
                                                     Ihrer Kunden-Parameter.
                                                 </td>
                                             </tr>
@@ -292,13 +292,13 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
+                                                                <td class="content_font_left">Benötigte Vektordateien
                                                                 </td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter->parameter8 }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
+                                                                <td class="content_font_left">Benötigte Bilddateien</td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter->parameter9 }}
                                                                 </td>

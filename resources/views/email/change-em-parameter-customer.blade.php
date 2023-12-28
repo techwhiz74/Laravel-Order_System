@@ -205,9 +205,9 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag erhalten<br>und unser Innendienst wird sich darum kümmern.
+                                                    Antrag erhalten und unser Innendienst wird sich darum kümmern.
                                                     Sie werden baldmöglichst von uns eine
-                                                    Benachrichtigung<br>erhalten.<br><br>Sobald die entsprechenden
+                                                    Benachrichtigung erhalten.<br><br>Sobald die entsprechenden
                                                     Änderungen durchgeführt wurden, senden wir Ihnen eine
                                                     Bestätigungs-E-Mail.
                                                 </td>

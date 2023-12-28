@@ -251,10 +251,10 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>wir bedanken uns herzlich für
                                                     Ihren Auftrag. Wir möchten Ihnen hiermit bestätigen und noch
-                                                    einmal<br>
-                                                    zusammenfassen.<br><br>Wir werden umgehend mit der Bearbeitung Ihres
+                                                    einmal zusammenfassen.<br><br>Wir werden umgehend mit der
+                                                    Bearbeitung Ihres
                                                     Auftrags beginnen. Sollten wir noch weitere
-                                                    Informationen<br>benötigen,
+                                                    Informationen benötigen,
                                                     werden wir uns schnellstmöglich mit Ihnen in Verbindung
                                                     setzen.<br>Für weitere Fragen oder Anliegen stehen wir Ihnen gerne
                                                     zur Verfügung.
@@ -381,7 +381,7 @@
                                                                         {{ $ve_parameter->parameter8 }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte Bilddateien
+                                                                    <td class="content_font_left">Benötigte Bilddateien
                                                                     </td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter9 }}</td>

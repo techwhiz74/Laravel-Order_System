@@ -251,11 +251,11 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br>wir haben Ihre Anfrage zur
                                                     Änderung erhalten und möchten Ihnen versichern, dass unser Team sich
-                                                    umgehend<br>darum kümmern wird.<br><br>Bitte nehmen Sie jedoch zur
+                                                    umgehend darum kümmern wird.<br><br>Bitte nehmen Sie jedoch zur
                                                     Kenntnis, dass Änderungen, welche eine Größenveränderung von mehr
-                                                    als 10%<br>oder grundlegende Änderungen beinhalten, als neue
+                                                    als 10% oder grundlegende Änderungen beinhalten, als neue
                                                     Aufträge
-                                                    betrachtet werden und separat erfasst werden<br> müssen. In solchen
+                                                    betrachtet werden und separat erfasst werden müssen. In solchen
                                                     Fällen wird die Änderung ohne Rückfrage aus unserem System gelöscht.
                                                     <br><br>Vielen Dank für Ihr Verständnis.
                                                 </td>
@@ -381,7 +381,7 @@
                                                                         {{ $ve_parameter->parameter8 }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte Bilddateien
+                                                                    <td class="content_font_left">Benötigte Bilddateien
                                                                     </td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter9 }}</td>

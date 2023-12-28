@@ -374,7 +374,7 @@
                                                                         {{ $ve_parameter->parameter8 }}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte Bilddateien
+                                                                    <td class="content_font_left">Benötigte Bilddateien
                                                                     </td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter9 }}</td>

@@ -205,10 +205,10 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>Vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und<br>müssen Ihnen bedauerlicherweise mitteilen, dass
+                                                    bearbeitet und müssen Ihnen bedauerlicherweise mitteilen, dass
                                                     wir Ihre Änderung nicht bestätigen können.<br><br>Für weitere Fragen
                                                     oder Informationen stehen wir Ihnen gerne zur Verfügung. Sie können
-                                                    uns jederzeit<br>kontaktieren.
+                                                    uns jederzeit kontaktieren.
                                                 </td>
                                             </tr>
                                             <tr>

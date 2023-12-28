@@ -205,18 +205,18 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
                                                     Ihnen Ihre gewünschte Änderung für Ihr Stickprogramm. Die
-                                                    Anlagen<br>enthalten Ihre gewünschten Dateiformate.<br><br>Mit
+                                                    Anlagen enthalten Ihre gewünschten Dateiformate.<br><br>Mit
                                                     dieser Datei haben Sie als der Auftraggeber die letzte Möglichkeit,
-                                                    Korrekturen – gleich welcher<br>Art – vorzunehmen. Stellen Sie keine
+                                                    Korrekturen – gleich welcher Art – vorzunehmen. Stellen Sie keine
                                                     Fehler mehr fest, erklären Sie die Daten für freigegeben und für
-                                                    <br>alle nicht monierten Fehler, haften Sie als
+                                                    alle nicht monierten Fehler, haften Sie als
                                                     Auftragsgeber.<br><br>Ist der Auftragnehmer verpflichtet, den
-                                                    Liefergegenstand nach Vorgaben des Auftraggebers<br>(Zeichnungen,
+                                                    Liefergegenstand nach Vorgaben des Auftraggebers (Zeichnungen,
                                                     Modelle, Muster, Skizzen, Entwürfen, etc.) zu liefern, so steht der
-                                                    Auftraggeber dafür <br>ein, dass Schutzrechte Dritter hierdurch
-                                                    nicht verletzt werden. Im Falle der schuldhaften
-                                                    <br>Pflichtverletzung ist der Auftraggeber verpflichtet, den
-                                                    Auftragnehmer von etwaigen Ansprüchen<br>Dritter auf erstes
+                                                    Auftraggeber dafür ein, dass Schutzrechte Dritter hierdurch
+                                                    nicht verletzt werden. Im Falle der schuldhaften Pflichtverletzung
+                                                    ist der Auftraggeber verpflichtet, den
+                                                    Auftragnehmer von etwaigen Ansprüchen Dritter auf erstes
                                                     Anfordern freizustellen.<br><br>
                                                     <p style="text-decoration: underline">Die Änderung ist für Sie
                                                         kostenlos.
@@ -227,7 +227,7 @@
                                                         neuen
                                                         WhatsApp-Service: Wir sind für
                                                         Fragen
-                                                        auch unter +49(8036)<br>9099894 per WhatsApp
+                                                        auch unter +49(8036)9099894 per WhatsApp
                                                         erreichbar!
                                                     </p><br>
                                                     Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
@@ -271,7 +271,7 @@
                                                             @if ($order->size != '')
                                                                 <tr>
                                                                     <td class="content_font_left">Gewünschte Größe (in
-                                                                        cm)
+                                                                        mm)
                                                                     </td>
                                                                     <td class="content_font_right">{{ $order->size }}
                                                                     </td>

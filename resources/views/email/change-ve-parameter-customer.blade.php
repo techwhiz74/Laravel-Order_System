@@ -205,9 +205,9 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag erhalten<br>und unser Innendienst wird sich darum kümmern.
+                                                    Antrag erhalten und unser Innendienst wird sich darum kümmern.
                                                     Sie werden baldmöglichst von uns eine
-                                                    Benachrichtigung<br>erhalten.<br><br>Sobald die entsprechenden
+                                                    Benachrichtigung erhalten.<br><br>Sobald die entsprechenden
                                                     Änderungen durchgeführt wurden, senden wir Ihnen eine
                                                     Bestätigungs-E-Mail.
                                                 </td>
@@ -295,13 +295,13 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
+                                                                <td class="content_font_left">Benötigte Vektordateien
                                                                 </td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter_new->parameter8 }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
+                                                                <td class="content_font_left">Benötigte Bilddateien</td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter_new->parameter9 }}
                                                                 </td>
@@ -335,13 +335,13 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
+                                                                <td class="content_font_left">Benötigte Vektordateien
                                                                 </td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter_old->parameter8 }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
+                                                                <td class="content_font_left">Benötigte Bilddateien</td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter_old->parameter9 }}
                                                                 </td>

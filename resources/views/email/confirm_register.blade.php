@@ -206,14 +206,14 @@
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Registrierung
                                                     in unserem Stick- und Vektordatei-Portal. Wir freuen uns Ihnen
-                                                    mitteilen zu<br>können, dass Ihre Registrierung erfolgreich geprüft
+                                                    mitteilen zu können, dass Ihre Registrierung erfolgreich geprüft
                                                     wurde und Sie nun als Kunde freigeschaltet sind.<br><br>Sie können
                                                     sich
                                                     ab sofort mit den Ihnen zugewiesenen Zugangsdaten in unserem Portal
                                                     anmelden.<br><br>Wir wünschen Ihnen viel Erfolg bei der Nutzung
                                                     unserer
                                                     Dienste und stehen Ihnen bei Fragen jederzeit
-                                                    zur<br>Verfügung.
+                                                    zur Verfügung.
                                                 </td>
                                             </tr>
                                             <tr>

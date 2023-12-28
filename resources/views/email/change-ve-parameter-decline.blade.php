@@ -205,10 +205,10 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>Vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag bearbeitet<br>und müssen Ihnen bedauerlicherweise mitteilen,
+                                                    Antrag bearbeitet und müssen Ihnen bedauerlicherweise mitteilen,
                                                     dass wir Ihre Änderung nicht bestätigen können.<br><br>Für weitere
                                                     Fragen oder Informationen stehen wir Ihnen gerne zur Verfügung. Sie
-                                                    können uns jederzeit<br>kontaktieren.
+                                                    können uns jederzeit kontaktieren.
                                                 </td>
                                             </tr>
                                             <tr>
@@ -294,13 +294,13 @@
                                                                 <td style="height: 20px;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Vektordateien
+                                                                <td class="content_font_left">Benötigte Vektordateien
                                                                 </td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter->parameter8 }}</td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="content_font_left">Benotigte Bilddateien</td>
+                                                                <td class="content_font_left">Benötigte Bilddateien</td>
                                                                 <td class="content_font_right">
                                                                     {{ $parameter->parameter9 }}
                                                                 </td>

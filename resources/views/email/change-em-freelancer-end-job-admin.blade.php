@@ -286,7 +286,7 @@
                                                             @if ($order->size != '')
                                                                 <tr>
                                                                     <td class="content_font_left">Gewünschte Größe (in
-                                                                        cm)
+                                                                        mm)
                                                                     </td>
                                                                     <td class="content_font_right">{{ $order->size }}
                                                                     </td>

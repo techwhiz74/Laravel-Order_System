@@ -79,7 +79,6 @@ class OrderController extends Controller
 
         DB::beginTransaction();
         try {
-
             $data = $request->all();
             $users = Auth::user()->id;
             $org_id = Auth::user()->org_id;

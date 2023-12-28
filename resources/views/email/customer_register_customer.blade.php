@@ -206,10 +206,10 @@
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Registrierung
                                                     in unserem Portal. Wir bestätigen hiermit den Eingang Ihrer Angaben
-                                                    und<br>möchten Sie darauf hinweisen, dass diese nun überprüft
+                                                    und möchten Sie darauf hinweisen, dass diese nun überprüft
                                                     werden.<br><br>Bitte beachten Sie, dass unser Service für Stick- und
                                                     Vektordateien ausschließlich der Stick- und
-                                                    Werbebranche<br>vorbehalten
+                                                    Werbebranche vorbehalten
                                                     ist.<br><br>Sobald Ihre Registrierung freigeschaltet wurde, erhalten
                                                     Sie
                                                     eine Bestätigungs-E-Mail von uns.

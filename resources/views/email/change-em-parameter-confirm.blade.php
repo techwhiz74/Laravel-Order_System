@@ -205,7 +205,7 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und<br>bestätigen Ihnen hiermit die gewünschte Änderung
+                                                    bearbeitet und bestätigen Ihnen hiermit die gewünschte Änderung
                                                     Ihrer Kunden-Parameter.
                                                 </td>
                                             </tr>
