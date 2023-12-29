@@ -125,6 +125,3 @@
     </div>
 
 </section>
-@include('components.user.order-detail')
-@include('components.user.order-change')
-@include('components.user.order-reqeust')

@@ -32,7 +32,7 @@ class DeclineRegisterMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Decline Register',
+            subject: 'Ihr Kundenkonto wurde abgelehnt | ' . $this->customer->customer_number,
         );
     }
 

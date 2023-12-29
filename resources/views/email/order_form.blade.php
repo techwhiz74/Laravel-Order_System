@@ -367,7 +367,7 @@
                                                                 </tr>
                                                             @elseif($order->type == 'Vector')
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte
+                                                                    <td class="content_font_left">Benötigte
                                                                         Vektordateien</td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter8 }}</td>

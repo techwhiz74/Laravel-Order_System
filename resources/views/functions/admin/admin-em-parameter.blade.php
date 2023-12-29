@@ -101,6 +101,7 @@
                 id
             },
             success: (result) => {
+                console.log(result);
                 if (result[0] != null) {
                     $('[name=admin_parameter_yarn_information]').val(result[0].parameter1);
                     $('#selected_em_parameter3').text(result[0].parameter2);

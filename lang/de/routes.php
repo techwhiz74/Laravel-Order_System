@@ -33,7 +33,7 @@ return [
     'customer-dashboard-red-table' => '/de/customer/dashboard-red-table',
     'customer-dashboard-yellow-table' => '/de/customer/dashboard-yellow-table',
     'customer-dashboard-blue-table' => '/de/customer/dashboard-blue-table',
-
+    'customer-order-detail-parameter' => '/de/customer/order-detail-parameter',
 
     'customer-embroidery-information' => '/de/customer/embroidery-information/',
     'customer-embroidery-price' => '/de/customer/embroidery-price/',

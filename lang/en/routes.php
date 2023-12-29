@@ -35,6 +35,8 @@ return [
     'customer-dashboard-red-table' => '/en/customer/dashboard-red-table',
     'customer-dashboard-yellow-table' => '/en/customer/dashboard-yellow-table',
     'customer-dashboard-blue-table' => '/en/customer/dashboard-blue-table',
+    'customer-order-detail-parameter' => '/en/customer/order-detail-parameter',
+
 
 
 

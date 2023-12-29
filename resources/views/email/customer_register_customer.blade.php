@@ -204,15 +204,14 @@
                                             <tr>
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Registrierung
-                                                    in unserem Portal. Wir bestätigen hiermit den Eingang Ihrer Angaben
-                                                    und möchten Sie darauf hinweisen, dass diese nun überprüft
-                                                    werden.<br><br>Bitte beachten Sie, dass unser Service für Stick- und
-                                                    Vektordateien ausschließlich der Stick- und
-                                                    Werbebranche vorbehalten
-                                                    ist.<br><br>Sobald Ihre Registrierung freigeschaltet wurde, erhalten
-                                                    Sie
-                                                    eine Bestätigungs-E-Mail von uns.
+                                                    Registrierung in unserem Portal. Ihre Angaben sind bei uns
+                                                    eingegangen und werden nun überprüft.<br><br>Bitte beachten Sie,
+                                                    dass unser Service ausschließlich für Unternehmen aus der Stick- und
+                                                    Werbebranche bestimmt ist und somit für Stick- und Vektordateien
+                                                    gedacht ist.
+                                                    <br><br>Sobald Ihre Registrierung freigeschaltet wurde, erhalten Sie
+                                                    eine Bestätigungs-E-Mail von uns.<br><br>Wir bedanken uns für Ihr
+                                                    Verständnis.<br><br>Mit freundlichen Grüßen,<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

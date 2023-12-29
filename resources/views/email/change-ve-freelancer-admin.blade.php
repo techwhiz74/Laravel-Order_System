@@ -204,7 +204,7 @@
                                             <tr>
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
-                                                    Ihnen Ihre gewünschte Änderung für Ihr Stickprogramm. Die
+                                                    Ihnen Ihre gewünschte Änderung für Ihr Vektordatei. Die
                                                     Anlagen enthalten Ihre gewünschten Dateiformate.<br><br>Mit
                                                     dieser Datei haben Sie als der Auftraggeber die letzte Möglichkeit,
                                                     Korrekturen – gleich welcher Art – vorzunehmen. Stellen Sie keine
@@ -227,11 +227,11 @@
                                                         neuen
                                                         WhatsApp-Service: Wir sind für
                                                         Fragen
-                                                        auch unter +49(8036)9099894 per WhatsApp
+                                                        auch unter +49(8036) 9099894 per WhatsApp
                                                         erreichbar!
                                                     </p><br>
                                                     Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
-                                                    Verfügung.
+                                                    Verfügung.<br><br>Mit freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

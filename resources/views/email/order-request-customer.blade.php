@@ -247,19 +247,36 @@
                                             <tr>
                                                 <td style="height: 30px;"></td>
                                             </tr>
-                                            <tr>
-                                                <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br>wir haben Ihre Anfrage zur
-                                                    Änderung erhalten und möchten Ihnen versichern, dass unser Team sich
-                                                    umgehend darum kümmern wird.<br><br>Bitte nehmen Sie jedoch zur
-                                                    Kenntnis, dass Änderungen, welche eine Größenveränderung von mehr
-                                                    als 10% oder grundlegende Änderungen beinhalten, als neue
-                                                    Aufträge
-                                                    betrachtet werden und separat erfasst werden müssen. In solchen
-                                                    Fällen wird die Änderung ohne Rückfrage aus unserem System gelöscht.
-                                                    <br><br>Vielen Dank für Ihr Verständnis.
-                                                </td>
-                                            </tr>
+                                            @if ($order->type == 'Embroidery')
+                                                <tr>
+                                                    <td class="header_font">
+                                                        Sehr geehrte Damen und Herren,<br><br>wir haben Ihre Anfrage zur
+                                                        Änderung Ihres Stickprogramms erhalten und möchten Ihnen
+                                                        versichern, dass unser Team sich umgehend darum kümmern
+                                                        wird.<br><br>Bitte nehmen Sie jedoch zur Kenntnis, dass
+                                                        Änderungen, welche eine Größenveränderung von mehr als 10% oder
+                                                        grundlegende Änderungen beinhalten, als neue Aufträge betrachtet
+                                                        werden und separat erfasst werden müssen. In solchen Fällen wird
+                                                        die Änderung ohne Rückfrage aus unserem System gelöscht.
+                                                        <br><br>Wir danken Ihnen für Ihr Verständnis und stehen Ihnen
+                                                        gerne für weitere Fragen zur Verfügung.<br><br>Mit freundlichen
+                                                        Grüßen<br><br>Lion Werbe GmbH
+                                                    </td>
+                                                </tr>
+                                            @else
+                                                <tr>
+                                                    <td class="header_font">
+                                                        Sehr geehrte Damen und Herren,<br><br>wir haben Ihre Anfrage zur
+                                                        Änderung Ihrer Vektordatei erhalten und möchten Ihnen
+                                                        versichern, dass unser Team sich umgehend darum kümmern
+                                                        wird.<br><br>Bitte beachten Sie, dass unsere Preise
+                                                        ausschließlich eine 1:1 Vektorisierung beinhalten.<br><br>Wir
+                                                        danken Ihnen für Ihr Verständnis und stehen Ihnen gerne für
+                                                        weitere Fragen zur Verfügung.
+                                                    </td>
+                                                </tr>
+                                            @endif
+
                                             <tr>
                                                 <td style="height: 30px;"></td>
                                             </tr>
@@ -375,7 +392,7 @@
                                                                 </tr>
                                                             @elseif($order->type == 'Vector')
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte
+                                                                    <td class="content_font_left">Benötigte
                                                                         Vektordateien</td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter8 }}</td>

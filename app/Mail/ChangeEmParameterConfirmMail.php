@@ -35,7 +35,7 @@ class ChangeEmParameterConfirmMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Confirm Change Embroidery Parameter',
+            subject: 'Bestätigung Änderung Parameter Stickprogramme | ' . $this->customer->customer_number,
         );
     }
 

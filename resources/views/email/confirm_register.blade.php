@@ -203,17 +203,16 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Registrierung
-                                                    in unserem Stick- und Vektordatei-Portal. Wir freuen uns Ihnen
-                                                    mitteilen zu können, dass Ihre Registrierung erfolgreich geprüft
-                                                    wurde und Sie nun als Kunde freigeschaltet sind.<br><br>Sie können
-                                                    sich
-                                                    ab sofort mit den Ihnen zugewiesenen Zugangsdaten in unserem Portal
-                                                    anmelden.<br><br>Wir wünschen Ihnen viel Erfolg bei der Nutzung
-                                                    unserer
-                                                    Dienste und stehen Ihnen bei Fragen jederzeit
-                                                    zur Verfügung.
+                                                    Sehr geehrte Damen und Herren,<br><br>wir möchten Ihnen herzlich für
+                                                    Ihre Registrierung in unserem Stick- und Vektordatei-Portal
+                                                    danken.<br><br>Es freut uns, Ihnen mitteilen zu können, dass wir
+                                                    Ihre Registrierung erfolgreich geprüft haben und Ihr Konto nun
+                                                    freigeschaltet ist.<br><br>Sie können ab sofort mit den Ihnen
+                                                    zugewiesenen Zugangsdaten auf unser Portal zugreifen und die
+                                                    vielfältigen Funktionen nutzen.<br><br>Wir wünschen Ihnen viel
+                                                    Erfolg bei der Nutzung unserer Dienste und stehen Ihnen bei Fragen
+                                                    oder Anliegen jederzeit gerne zur Verfügung.<br><br>Mit freundlichen
+                                                    Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

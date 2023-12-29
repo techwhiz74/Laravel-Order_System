@@ -35,4 +35,3 @@
         <div class="col-xl-1"></div>
     </div>
 </div>
-@include('components.admin.customer_parameters_ve')

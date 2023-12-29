@@ -203,12 +203,13 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>Vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und müssen Ihnen bedauerlicherweise mitteilen, dass
-                                                    wir Ihre Änderung nicht bestätigen können.<br><br>Für weitere Fragen
-                                                    oder Informationen stehen wir Ihnen gerne zur Verfügung. Sie können
-                                                    uns jederzeit kontaktieren.
+                                                    Sehr geehrte Damen und Herren,<br><br>wir bedanken uns herzlich für
+                                                    Ihre Änderungswünsche bezüglich Ihrer Kundendaten.<br><br>Wir haben
+                                                    Ihren Antrag bearbeitet und müssen Ihnen bedauerlicherweise
+                                                    mitteilen, dass wir Ihre Änderung nicht bestätigen
+                                                    können.<br><br>Für weitere Fragen oder Anliegen stehen wir Ihnen
+                                                    jederzeit zur Verfügung.<br><br>Mit
+                                                    freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

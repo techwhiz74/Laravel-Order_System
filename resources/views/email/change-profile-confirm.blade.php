@@ -203,10 +203,13 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und bestätigen Ihnen hiermit die gewünschte Änderung
-                                                    in Ihrem Kundenprofil.
+                                                    Sehr geehrte Damen und Herren,<br><br>wir bedanken uns herzlich für
+                                                    Ihre Änderungswünsche bezüglich Ihrer Kundendaten.<br><br>Wir haben
+                                                    Ihren Antrag sorgfältig bearbeitet und freuen uns, Ihnen mitteilen
+                                                    zu können, dass die gewünschte Änderung erfolgreich in Ihrem
+                                                    Kundenprofil vorgenommen wurde.<br><br>Für weitere Fragen oder
+                                                    Anliegen stehen wir Ihnen jederzeit zur Verfügung.<br><br>Mit
+                                                    freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

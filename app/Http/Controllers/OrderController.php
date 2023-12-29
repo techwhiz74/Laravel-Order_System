@@ -1733,4 +1733,11 @@ class OrderController extends Controller
             return response()->json(['message' => 'Something went wrong' . $e->getMessage()], 500);
         }
     }
+    public function orderDetailParameter(Request $request)
+    {
+        $order = Order::findOrfail($request->get("id"));
+        $em_parameter = CustomerEmParameter::where('customer_id', $order->user_id)->first();
+        $ve_parameter = CustomerVeParameter::where('customer_id', $order->user_id)->first();
+        return response()->json([$em_parameter, $ve_parameter]);
+    }
 }

@@ -36,7 +36,7 @@ class ChangeEmParameterAdminMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Change Embroidery Parameter',
+            subject: 'Änderung Parameter Stickprogramme  | ' . $this->customer->customer_number,
         );
     }
 

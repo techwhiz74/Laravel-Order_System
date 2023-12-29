@@ -205,254 +205,25 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
                                                     Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    erhalten und unser Innendienst wird sich darum kümmern. Sie
+                                                    erhalten und unser Innendienst wird sich darum kümmern.<br>Sie
                                                     werden baldmöglichst von uns eine Benachrichtigung erhalten.
                                                     <br><br>Sobald die entsprechenden Änderungen durchgeführt wurden,
-                                                    senden wir Ihnen eine Bestätigungs-E-Mail.
+                                                    senden wir Ihnen eine Bestätigungs-E-Mail.<br><br>Mit freundlichen
+                                                    Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <td style="height: 30px;"></td>
-                                            </tr>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 30px;"></td>
+                            </tr>
 
+                            <tr>
+                                <td>
+                                    <table style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
+                                        <tbody>
                                             <tr>
-                                                <td>
-                                                    <table
-                                                        style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="item_font">
-                                                                    NEUE ADRESSDATEN
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table style="width: 600px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kundennummer</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->customer_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Firma</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->company }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Firmenzusatz</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->company_addition }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Name, Vorname</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->name }}
-                                                                    {{ $temp_customer->first_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Straße, Hausnummer</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->street_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Postleitzahl, Ort</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->postal_code }},
-                                                                    {{ $temp_customer->location }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Land</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->location }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">E-Mail</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->email }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Website</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->website }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Telefon, Mobil</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->phone }},
-                                                                    {{ $temp_customer->mobile }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Steuernr, USt.-ID</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->tax_number }},
-                                                                    {{ $temp_customer->vat_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">H-Register</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->register_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kd-Gruppe</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->kd_group }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kd-Kategorie</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->kd_category }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Zahlungsart</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->payment_method }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Bankname</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->bank_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">IBAN, BIC</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $temp_customer->IBAN }},
-                                                                    {{ $temp_customer->BIC }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 30px;"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table
-                                                        style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="item_font">
-                                                                    ALTE ADRESSDATEN
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table style="width: 600px;">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kundennummer</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->customer_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Firma</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->company }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Firmenzusatz</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->company_addition }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Name, Vorname</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->name }}
-                                                                    {{ $customer->first_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Straße, Hausnummer</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->street_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Postleitzahl, Ort</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->postal_code }},
-                                                                    {{ $customer->location }}
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Land</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->location }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">E-Mail</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->email }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Website</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->website }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Telefon, Mobil</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->phone }},
-                                                                    {{ $customer->mobile }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Steuernr, USt.-ID</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->tax_number }},
-                                                                    {{ $customer->vat_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">H-Register</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->register_number }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kd-Gruppe</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->kd_group }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Kd-Kategorie</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->kd_category }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Zahlungsart</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->payment_method }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">Bankname</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->bank_name }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="content_font_left">IBAN, BIC</td>
-                                                                <td class="content_font_right">
-                                                                    {{ $customer->IBAN }},
-                                                                    {{ $customer->BIC }}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 30px;"></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <td class="item_font">
+                                                    NEUE ADRESSDATEN
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -460,101 +231,225 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td class="footer">
+                                <td>
                                     <table style="width: 600px;">
                                         <tbody>
                                             <tr>
-                                                <td style="height: 60px;"></td>
+                                                <td style="height: 20px;"></td>
                                             </tr>
                                             <tr>
-                                                <td style="display: flex;">
-                                                    <table class="footer_column_table_left">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="footer_title_font">Über Uns</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <table style="margin-left: 0;">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td class="footer_bar"></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 16px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font">Wir sind ein erfahrenes
-                                                                    Team kreativer Köpfe, welches sich der Schöpfung
-                                                                    Ihrer Unternehmensidentität und der Gestaltung
-                                                                    der dazugehörigen Werbemittel widmet.Für unsere
-                                                                    Arbeit wurden wir bereits mehrfach ausgezeichnet.
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <table class="footer_column_table_right">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="footer_title_font">Kontaktinformationen</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 20px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <table style="margin-left: 0;">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td class="footer_bar"></td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td style="height: 16px;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font">Lion Werbe
-                                                                    GmbH<br>Kampenwandstr. 10<br>83134 Prutting</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font">Tel.: +49 (8036) 90 99
-                                                                    892</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font">Fax: +49 (8036) 90 99
-                                                                    895</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font"><a
-                                                                        style="color: #dadada;"
-                                                                        href="mailto:info@lionwerbung.de"
-                                                                        target="_blank">E-Mail: info@lionwerbung.de</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="footer_content_font">Vertreten durch den
-                                                                    Geschäftsführer: Stephan
-                                                                    Scheuerer<br>Umsatzsteuer-Identifikationsnummer<br>gemäß
-                                                                    § 27 a Umsatzsteuergesetz:
-                                                                    DE815830440<br>Registereintrag: Traunstein HRB 28140
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <td class="content_font_left">Kundennummer</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->customer_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Firma</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->company }}
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td style="height: 60px;"></td>
+                                                <td class="content_font_left">Firmenzusatz</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->company_addition }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Name, Vorname</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->name }}
+                                                    {{ $temp_customer->first_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Straße, Hausnummer</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->street_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Postleitzahl, Ort</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->postal_code }},
+                                                    {{ $temp_customer->location }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Land</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->location }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">E-Mail</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Website</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->website }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Telefon, Mobil</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->phone }},
+                                                    {{ $temp_customer->mobile }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Steuernr, USt.-ID</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->tax_number }},
+                                                    {{ $temp_customer->vat_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">H-Register</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->register_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Kd-Gruppe</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->kd_group }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Kd-Kategorie</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->kd_category }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Zahlungsart</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->payment_method }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Bankname</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->bank_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">IBAN, BIC</td>
+                                                <td class="content_font_right">
+                                                    {{ $temp_customer->IBAN }},
+                                                    {{ $temp_customer->BIC }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 30px;"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table style="background-color: rgb(6, 6, 23); padding: 5px 0; width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="item_font">
+                                                    ALTE ADRESSDATEN
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table style="width: 600px;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="height: 20px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Kundennummer</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->customer_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Firma</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->company }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Firmenzusatz</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->company_addition }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Name, Vorname</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->name }}
+                                                    {{ $customer->first_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Straße, Hausnummer</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->street_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Postleitzahl, Ort</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->postal_code }},
+                                                    {{ $customer->location }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Land</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->location }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">E-Mail</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Website</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->website }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Telefon, Mobil</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->phone }},
+                                                    {{ $customer->mobile }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Steuernr, USt.-ID</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->tax_number }},
+                                                    {{ $customer->vat_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">H-Register</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->register_number }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Kd-Gruppe</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->kd_group }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Kd-Kategorie</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->kd_category }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Zahlungsart</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->payment_method }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">Bankname</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->bank_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="content_font_left">IBAN, BIC</td>
+                                                <td class="content_font_right">
+                                                    {{ $customer->IBAN }},
+                                                    {{ $customer->BIC }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 30px;"></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -564,7 +459,111 @@
                     </table>
                 </td>
             </tr>
+            <tr>
+                <td class="footer">
+                    <table style="width: 600px;">
+                        <tbody>
+                            <tr>
+                                <td style="height: 60px;"></td>
+                            </tr>
+                            <tr>
+                                <td style="display: flex;">
+                                    <table class="footer_column_table_left">
+                                        <tbody>
+                                            <tr>
+                                                <td class="footer_title_font">Über Uns</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 20px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="margin-left: 0;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="footer_bar"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 16px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font">Wir sind ein erfahrenes
+                                                    Team kreativer Köpfe, welches sich der Schöpfung
+                                                    Ihrer Unternehmensidentität und der Gestaltung
+                                                    der dazugehörigen Werbemittel widmet.Für unsere
+                                                    Arbeit wurden wir bereits mehrfach ausgezeichnet.
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table class="footer_column_table_right">
+                                        <tbody>
+                                            <tr>
+                                                <td class="footer_title_font">Kontaktinformationen</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 20px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <table style="margin-left: 0;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="footer_bar"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="height: 16px;"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font">Lion Werbe
+                                                    GmbH<br>Kampenwandstr. 10<br>83134 Prutting</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font">Tel.: +49 (8036) 90 99
+                                                    892</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font">Fax: +49 (8036) 90 99
+                                                    895</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font"><a style="color: #dadada;"
+                                                        href="mailto:info@lionwerbung.de" target="_blank">E-Mail:
+                                                        info@lionwerbung.de</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="footer_content_font">Vertreten durch den
+                                                    Geschäftsführer: Stephan
+                                                    Scheuerer<br>Umsatzsteuer-Identifikationsnummer<br>gemäß
+                                                    § 27 a Umsatzsteuergesetz:
+                                                    DE815830440<br>Registereintrag: Traunstein HRB 28140
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="height: 60px;"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
         </tbody>
+    </table>
+    </td>
+    </tr>
+    </tbody>
     </table>
 </body>
 

@@ -39,4 +39,3 @@
         <div class="col-xl-1"></div>
     </div>
 </section>
-@include('components.freelancer.embroidery.em_freelancer_payment_archive')

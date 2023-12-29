@@ -1494,12 +1494,12 @@ select#status-filter:focus-visible {
   background-color: #ccc;
   height: 100%;
   padding: 8px 0 5px 0;
-  width: 80px;
+  width: 75px;
 }
 
 .sidebar-nav li a,
 .sidebar-nav li p {
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1;
   font-family: monospace;
 }
@@ -1868,6 +1868,16 @@ select#status-filter:focus-visible {
 #ve_freelancer_request_popup .modal-dialog,
 #admin_order_detail_popup .modal-dialog,
 #admin_change_popup .modal-dialog,
+#order_detail_popup .modal-dialog,
+#order_change_popup .modal-dialog,
+#order_request_popup .modal-dialog,
+#customer_staff_create_popup .modal-dialog,
+#admin_embroidery_payment_archive .modal-dialog,
+#admin_vector_payment_archive .modal-dialog,
+#admin_customer_parameters_em_popup .modal-dialog,
+#admin_customer_parameters_ve_popup .modal-dialog,
+#free_embroidery_payment_archive .modal-dialog,
+#free_vector_payment_archive .modal-dialog,
 #admin_request_popup .modal-dialog {
   background-color: rgb(244, 244, 244);
   width: 100%;
@@ -1876,22 +1886,15 @@ select#status-filter:focus-visible {
   max-width: 100%;
   top: 110px;
   margin: 0;
-  height: calc(100% - 110px);
+  min-height: calc(100% - 110px);
 }
 
-#customer_staff_create_popup .modal-dialog,
-#admin_embroidery_payment_archive .modal-dialog,
-#admin_vector_payment_archive .modal-dialog,
-#admin_customer_parameters_em_popup .modal-dialog,
-#admin_customer_parameters_ve_popup .modal-dialog,
+
+
+
 #customer_search_popup .modal-dialog,
 #admin_customer_profile_request_handle_popup .modal-dialog,
-#admin_customer_profile_edit_popup .modal-dialog,
-#order_detail_popup .modal-dialog,
-#order_change_popup .modal-dialog,
-#order_request_popup .modal-dialog,
-#free_embroidery_payment_archive .modal-dialog,
-#free_vector_payment_archive .modal-dialog {
+#admin_customer_profile_edit_popup .modal-dialog {
   background-color: rgb(244, 244, 244);
   width: 100%;
   left: 0;
@@ -3667,6 +3670,10 @@ textarea:focus {
   z-index: 100000000;
 }
 
+.modal_page_view {
+  margin-top: -30px !important;
+}
+
 
 
 
@@ -3692,6 +3699,10 @@ textarea:focus {
     margin: 0 3vw;
   }
 
+  .modal_page_view {
+    margin-top: 0 !important;
+  }
+
   .copyright_list {
     justify-content: center;
   }
@@ -3703,7 +3714,6 @@ textarea:focus {
   .footer {
     margin: 2vh 6vw 2vw 6vw;
   }
-
 }
 
 @media (max-width: 1575px) {
@@ -3843,11 +3853,11 @@ textarea:focus {
     margin-top: 5px;
   }
 
-
-
   .modal {
     height: 100% !important;
   }
+
+
 
   #free_order_detail_popup .modal-dialog,
   #em_freelancer_request_popup .modal-dialog,
@@ -3988,4 +3998,6 @@ textarea:focus {
   .chat_receive_message {
     width: 200px;
   }
+
+
 }

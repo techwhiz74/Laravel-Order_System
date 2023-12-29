@@ -203,13 +203,17 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>wir bedauern Ihnen mitteilen
-                                                    zu
-                                                    müssen, dass Ihre Registrierung im Stick- und Vektordatei-Portal von
-                                                    uns geprüft wurde und leider nicht genehmigt werden
-                                                    konnte.<br><br>Wir
-                                                    verstehen, dass dies enttäuschend sein mag, und möchten Ihnen für
-                                                    Ihr Verständnis danken.
+                                                    Sehr geehrte Damen und Herren,<br><br>es tut uns aufrichtig leid,
+                                                    Ihnen mitteilen zu müssen, dass Ihre Registrierung im Stick- und
+                                                    Vektordatei-Portal von uns geprüft wurde und leider nicht genehmigt
+                                                    werden konnte.<br><br>Wir verstehen, dass diese Nachricht
+                                                    enttäuschend für Sie sein mag und möchten uns für Ihr Verständnis
+                                                    bedanken. Sollten Sie Fragen zu den Gründen der Ablehnung haben oder
+                                                    weitere Informationen benötigen, stehen wir Ihnen gerne zur
+                                                    Verfügung.<br><br>Wir bedanken uns für Ihr Interesse an unserem
+                                                    Portal und wünschen Ihnen auch weiterhin viel Erfolg bei Ihren
+                                                    zukünftigen Vorhaben.<br><br>Mit freundlichen
+                                                    Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

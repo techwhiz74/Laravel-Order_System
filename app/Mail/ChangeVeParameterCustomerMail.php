@@ -35,7 +35,7 @@ class ChangeVeParameterCustomerMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Change Vector Parameter',
+            subject: 'Änderung Parameter Vektordateien | ' . $this->customer->customer_number,
         );
     }
 

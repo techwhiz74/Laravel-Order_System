@@ -39,4 +39,3 @@
         <div class="col-xl-1"></div>
     </div>
 </section>
-@include('components.admin.admin-ve-payment-archive')

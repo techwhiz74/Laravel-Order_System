@@ -204,9 +204,11 @@
                                             <tr>
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kundendaten. Wir haben Ihren Antrag
-                                                    bearbeitet und bestätigen Ihnen hiermit die gewünschte Änderung
-                                                    Ihrer Kunden-Parameter.
+                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter für
+                                                    Vektordateien.<br><br>Wir haben Ihren Antrag bearbeitet und
+                                                    bestätigen Ihnen hiermit die gewünschte Änderung Ihrer
+                                                    Kunden-Parameter.<br><br>Mit freundlichen Grüßen<br><br>Lion Werbe
+                                                    GmbH
                                                 </td>
                                             </tr>
                                             <tr>

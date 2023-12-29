@@ -249,15 +249,13 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>wir bedanken uns herzlich für
-                                                    Ihren Auftrag. Wir möchten Ihnen hiermit bestätigen und noch
-                                                    einmal zusammenfassen.<br><br>Wir werden umgehend mit der
-                                                    Bearbeitung Ihres
-                                                    Auftrags beginnen. Sollten wir noch weitere
-                                                    Informationen benötigen,
-                                                    werden wir uns schnellstmöglich mit Ihnen in Verbindung
-                                                    setzen.<br>Für weitere Fragen oder Anliegen stehen wir Ihnen gerne
-                                                    zur Verfügung.
+                                                    Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihren Auftrag.
+                                                    Wir bestätigen hiermit den Eingang und werden umgehend mit der
+                                                    Bearbeitung beginnen.<br><br>Sollten wir für die erfolgreiche
+                                                    Durchführung des Auftrags noch weitere Informationen benötigen,
+                                                    werden wir uns umgehend mit Ihnen in Verbindung setzen.<br><br>Bei
+                                                    Fragen oder Anliegen können Sie sich jederzeit gerne an uns
+                                                    wenden.<br><br>Mit freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>
@@ -375,7 +373,7 @@
                                                                 </tr>
                                                             @elseif($order->type == 'Vector')
                                                                 <tr>
-                                                                    <td class="content_font_left">Benotigte
+                                                                    <td class="content_font_left">Benötigte
                                                                         Vektordateien</td>
                                                                     <td class="content_font_right">
                                                                         {{ $ve_parameter->parameter8 }}</td>

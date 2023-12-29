@@ -204,12 +204,14 @@
                                             <tr>
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag erhalten und unser Innendienst wird sich darum kümmern.
-                                                    Sie werden baldmöglichst von uns eine
-                                                    Benachrichtigung erhalten.<br><br>Sobald die entsprechenden
+                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter für
+                                                    Stickdateien.<br>Wir haben Ihren Antrag erhalten und unser
+                                                    Innendienst wird sich darum kümmern.<br><br>Sie werden baldmöglichst
+                                                    von uns eine Benachrichtigung erhalten.<br><br>Sobald die
+                                                    entsprechenden
                                                     Änderungen durchgeführt wurden, senden wir Ihnen eine
-                                                    Bestätigungs-E-Mail.
+                                                    Bestätigungs-E-Mail.<br><br>Mit freundlichen
+                                                    Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

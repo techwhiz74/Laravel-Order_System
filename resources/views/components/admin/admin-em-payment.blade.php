@@ -40,4 +40,3 @@
     </div>
 
 </section>
-@include('components.admin.admin-em-payment-archive')

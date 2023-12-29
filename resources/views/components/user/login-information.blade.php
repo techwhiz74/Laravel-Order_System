@@ -35,4 +35,3 @@
     </div>
 
 </section>
-@include('components.user.create-customer-staff')

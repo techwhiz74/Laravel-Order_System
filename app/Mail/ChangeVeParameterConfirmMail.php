@@ -34,7 +34,7 @@ class ChangeVeParameterConfirmMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Confirm Change Vector Parameter',
+            subject: 'Bestätigung Änderung Parameter Vektordateien | ' . $this->customer->customer_number,
         );
     }
 

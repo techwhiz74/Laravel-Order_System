@@ -37,7 +37,7 @@ class ChangeVeFreelacnerAdminMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Vector Delivery Mail Changes',
+            subject: 'Abgeschlossene Änderung Vektordatei  | ' . $this->customer->customer_number . '-' . $this->order->order_number,
         );
     }
 

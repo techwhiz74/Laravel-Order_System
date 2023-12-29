@@ -150,6 +150,7 @@ Route::middleware([RoleMiddleware::class . ':customer'])->prefix('{locale}/custo
     Route::get('/dashboard-red-table', [OrderController::class, 'DashboardRedTable'])->name('customer-dashboard-red-table');
     Route::get('/dashboard-yellow-table', [OrderController::class, 'DashboardYellowTable'])->name('customer-dashboard-yellow-table');
     Route::get('/dashboard-blue-table', [OrderController::class, 'DashboardBlueTable'])->name('customer-dashboard-blue-table');
+    Route::get('/order-detail-parameter', [OrderController::class, 'orderDetailParameter']);
 
     Route::get('/profile', [CustomerController::class, 'CustomerProfile']);
     Route::post('/profile-update', [CustomerController::class, 'profileUpdate']);

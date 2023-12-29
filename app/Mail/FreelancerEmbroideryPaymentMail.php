@@ -32,7 +32,7 @@ class FreelancerEmbroideryPaymentMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Freelancer Embroidery Payment Mail',
+            subject: 'Stickprogramme Freelancer Zahlungsanforderung',
         );
     }
 

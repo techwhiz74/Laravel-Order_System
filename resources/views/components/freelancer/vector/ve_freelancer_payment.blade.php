@@ -40,4 +40,3 @@
         <div class="col-xl-1"></div>
     </div>
 </section>
-@include('components.freelancer.vector.ve_freelancer_payment_archive')

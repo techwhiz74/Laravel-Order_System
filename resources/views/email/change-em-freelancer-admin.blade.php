@@ -205,12 +205,7 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
                                                     Ihnen Ihre gewünschte Änderung für Ihr Stickprogramm. Die
-                                                    Anlagen enthalten Ihre gewünschten Dateiformate.<br><br>Zudem
-                                                    erhalten Sie eine Ansichtsdatei (Produktionswerkblatt) in der
-                                                    Anlage.<br>Zum Öffnen dieser Datei benötigen Sie den Adobe Acrobat
-                                                    Reader, welchen Sie auf nachfolgender Internetadresse kostenlos
-                                                    herunterladen können: <a href="https://get.adobe.com/de/reader/"
-                                                        target="_blank">https://get.adobe.com/de/reader/</a><br><br>Mit
+                                                    Anlagen enthalten Ihre gewünschten Dateiformate.<br><br>Mit
                                                     dieser Datei haben Sie als der Auftraggeber die letzte Möglichkeit,
                                                     Korrekturen – gleich welcher Art – vorzunehmen. Stellen Sie keine
                                                     Fehler mehr fest, erklären Sie die Daten für freigegeben und für
@@ -232,11 +227,11 @@
                                                         neuen
                                                         WhatsApp-Service: Wir sind für
                                                         Fragen
-                                                        auch unter +49(8036)9099894 per WhatsApp
+                                                        auch unter +49(8036) 9099894 per WhatsApp
                                                         erreichbar!
                                                     </p><br>
                                                     Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
-                                                    Verfügung.
+                                                    Verfügung.<br><br>Mit freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

@@ -241,7 +241,7 @@
                                                         neuen
                                                         WhatsApp-Service: Wir sind für
                                                         Fragen
-                                                        auch unter +49(8036)9099894 per WhatsApp
+                                                        auch unter +49(8036) 9099894 per WhatsApp
                                                         erreichbar!
                                                     </p><br>
                                                     Für weitere Fragen stehen wir Ihnen jederzeit gerne zur

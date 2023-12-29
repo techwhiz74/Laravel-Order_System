@@ -4,7 +4,7 @@
         <div class="modal-content" style="background-color: rgb(244, 244, 244);">
             <button type="button" class="backbutton" onclick="hideModal()"><i class="fa-solid fa-left-long"
                     style="display: flex;"></i></button>
-            <div class="row" style="margin-top: -30px;">
+            <div class="row modal_page_view">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
                     <div class="modal-body" style="font-size: 13px; font-family:'Inter'; overflow-y:auto">

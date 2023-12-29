@@ -32,7 +32,7 @@ class ConfirmRegisterMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Confirm Register',
+            subject: 'Ihr Kundenkonto wurde freigeschaltet | ' . $this->customer->customer_number,
         );
     }
 

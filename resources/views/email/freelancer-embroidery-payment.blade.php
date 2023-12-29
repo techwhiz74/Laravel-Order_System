@@ -203,9 +203,15 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>der Freelancer Stickprogramme
-                                                    hat eine Zahlungsanforderung seiner Arbeiten angefordert. Bitte die
-                                                    Zahlung über Upwork ausführen.
+                                                    Guten Tag,<br><br>ich möchte Sie darüber informieren, dass der
+                                                    Freelancer „Stickprogramme“ für seine geleisteten Dienste eine
+                                                    Zahlungsanforderung eingereicht
+                                                    hat.<br><br>Könnten Sie bitte den Prozess für die Überweisung des
+                                                    entsprechenden Betrags über die Plattform Upwork
+                                                    veranlassen?<br><br>Für weitere Informationen oder bei Fragen stehe
+                                                    ich Ihnen gerne zur Verfügung.<br><br>Vielen Dank im Voraus für Ihre
+                                                    schnelle Erledigung.<br><br>Mit freundlichen Grüßen<br><br>Lion
+                                                    Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>

@@ -32,7 +32,7 @@ class ChangeProfileConfirmMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Confirm Change Profile',
+            subject: 'Bestätigung Änderung Kundendaten | ' . $this->customer->customer_number,
         );
     }
 

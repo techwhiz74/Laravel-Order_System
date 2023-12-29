@@ -34,7 +34,7 @@ class ChangeVeParameterDeclineMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Decline Change Vector Parameter',
+            subject: 'Ablehnung Änderung Parameter Vektordateien | ' . $this->customer->customer_number,
         );
     }
 

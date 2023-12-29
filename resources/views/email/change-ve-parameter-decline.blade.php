@@ -203,12 +203,13 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Sehr geehrte Damen und Herren,<br><br>Vielen Dank für Ihre
-                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter. Wir haben Ihren
-                                                    Antrag bearbeitet und müssen Ihnen bedauerlicherweise mitteilen,
-                                                    dass wir Ihre Änderung nicht bestätigen können.<br><br>Für weitere
-                                                    Fragen oder Informationen stehen wir Ihnen gerne zur Verfügung. Sie
-                                                    können uns jederzeit kontaktieren.
+                                                    Sehr geehrte Damen und Herren,<br><br>vielen Dank für Ihre
+                                                    Änderungswünsche bezüglich Ihrer Kunden-Parameter für
+                                                    Vektordateien.<br><br>Wir haben Ihren Antrag bearbeitet und müssen
+                                                    Ihnen bedauerlicherweise mitteilen, dass wir Ihre Änderung nicht
+                                                    bestätigen können.<br><br>Für weitere Fragen oder Informationen
+                                                    stehen wir Ihnen gerne zur Verfügung. Sie können uns jederzeit
+                                                    kontaktieren.<br><br>Mit freundlichen Grüßen<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>
