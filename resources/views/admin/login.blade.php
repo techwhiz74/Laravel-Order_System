@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
+    <meta name="description" content="It is the login page for admin. Please login with your email and password.">
+    <title>Lion Werbe GmbH | Admin Login</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -64,9 +65,15 @@
                         <form method="GET" auto-complete="off" action="{{ __('routes.admin-sign-in') }}">
                             @csrf
                             <div class="heading_logo">
-                                <div class="login_heading">
-                                    <h1>Administrator Login</h1>
+                                <div class="logo_img">
+                                    <a href="{{ asset('/') }}">
+                                        <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty"
+                                            class="login_logo">
+                                    </a>
                                 </div>
+                                <h1 class="login_heading">
+                                    Administrator Login
+                                </h1>
 
                             </div>
                             <div class="cred_txt">
@@ -94,7 +101,11 @@
                                 <div class="submit_btn">
                                     <button type="submit">{{ __('home.login_b') }}</button>
                                 </div>
-
+                            </div>
+                            <div class="lgg_resi">
+                                <div class="resig_lnkk">
+                                    <a href="{{ __('routes.customer-register') }}" style="color:#222">Passwort vergessen?</a>
+                                </div>
                             </div>
 
                             <div class="footerrr">

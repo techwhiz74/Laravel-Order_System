@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">Kundenliste
-            </div>
+            <h1 class="pagetitle">Kundenliste
+            </h1>
             <button style="display: none;" id="customer_list_table_reload_button"></button>
             <div>
                 <div class="responsive-table">
@@ -22,11 +22,10 @@
                                 <th>{{ __('home.location') }}</th>
                                 <th>{{ __('home.country') }}</th>
                                 <th style="text-align:center;"><img
-                                        src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
+                                        src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon" class="icon_size">
                                 </th>
                                 <th style="text-align:center;"></th>
-                                <th style="text-align:center;"><i class="fa-solid fa-trash"
-                                        style="color:#fff; font-size:14px;"></i>
+                                <th style="text-align:center;"><img src="{{ asset('asset/images/trash-solid-admin.svg') }}" alt="order-delete-icon" style="color: $fff" class="icon_size">
                                 </th>
                             </tr>
                         </thead>
@@ -38,8 +37,7 @@
         <div class="col-xl-1"></div>
     </div>
 </div>
-@include('components.admin.customer_profile_edit')
-@include('components.admin.customer_profile_request_handle')
+
 <script>
     $.ajaxSetup({
         headers: {

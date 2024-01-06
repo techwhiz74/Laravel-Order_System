@@ -163,21 +163,21 @@
                                                                                     <a
                                                                                         href="https://www.instagram.com/lionwerbung">
                                                                                         <img src="{{ asset('asset/images/instagram.png') }}"
-                                                                                            style="width: 20px;">
+                                                                                            style="width: 20px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                                 <td class="contact_item">
                                                                                     <a
                                                                                         href="https://www.facebook.com/lionwerbung">
                                                                                         <img src="{{ asset('asset/images/facebook.png') }}"
-                                                                                            style="width: 25px;">
+                                                                                            style="width: 25px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                                 <td class="contact_item">
                                                                                     <a
                                                                                         href="https://api.whatsapp.com/send?phone=+4980369099894">
                                                                                         <img src="{{ asset('asset/images/whatsapp.png') }}"
-                                                                                            style="width: 20px;">
+                                                                                            style="width: 20px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
@@ -205,47 +205,16 @@
                                                 <td class="header_font">
                                                     Sehr geehrte Damen und Herren,<br><br>mit dieser E-Mail senden wir
                                                     Ihnen Ihr gewünschtes Stickprogramm. Die Anlagen enthalten Ihre
-                                                    gewünschten Dateiformate. <br><br>Zudem
-                                                    erhalten Sie eine Ansichtsdatei (Produktionswerkblatt) in der
-                                                    Anlage.<br>Zum Öffnen dieser Datei benötigen Sie den Adobe Acrobat
-                                                    Reader, welchen Sie auf nachfolgender Internetadresse kostenlos
-                                                    herunterladen können: <a href="https://get.adobe.com/de/reader/"
-                                                        target="_blank">https://get.adobe.com/de/reader/</a><br><br>Mit
-                                                    dieser Datei haben Sie als der Auftraggeber die letzte
-                                                    Möglichkeit,
-                                                    Korrekturen – gleich welcher Art – vorzunehmen. Stellen
-                                                    Sie keine
-                                                    Fehler mehr fest, erklären Sie die Daten für freigegeben und
-                                                    für alle nicht monierten Fehler, haften Sie als
-                                                    Auftragsgeber.<br><br>Ist der Auftragnehmer verpflichtet,
-                                                    den
-                                                    Liefergegenstand nach Vorgaben des
-                                                    Auftraggebers (Zeichnungen,
-                                                    Modelle, Muster, Skizzen, Entwürfen, etc.) zu liefern, so
-                                                    steht der
-                                                    Auftraggeber dafür ein, dass Schutzrechte Dritter
-                                                    hierdurch
-                                                    nicht verletzt werden. Im Falle der schuldhaften Pflichtverletzung
-                                                    ist der Auftraggeber verpflichtet, den
-                                                    Auftragnehmer von etwaigen Ansprüchen Dritter auf erstes
-                                                    Anfordern freizustellen.<br><br>Die Rechnung wird
-                                                    automatisch
-                                                    erstellt und Ihnen in den nächsten Tagen per E-Mail
-                                                    zugesandt.<br>Der Umwelt zuliebe wird keine zusätzliche
-                                                    Rechnung
-                                                    mehr auf dem Postweg verschickt.<br><br>Für Änderungswünsche
-                                                    antworten Sie einfach auf diese Nachricht.<br><br>Wir
-                                                    bedanken uns
-                                                    für Ihren geschätzten Auftrag. <br><br>
-                                                    <p style="color: #006400; font-weight:700">Kennen Sie schon unseren
-                                                        neuen
-                                                        WhatsApp-Service: Wir sind für
-                                                        Fragen
-                                                        auch unter +49(8036) 9099894 per WhatsApp
-                                                        erreichbar!
-                                                    </p><br>
-                                                    Für weitere Fragen stehen wir Ihnen jederzeit gerne zur
-                                                    Verfügung.
+                                                    gewünschten Dateiformate.<br><br>Die Rechnung wird automatisch erstellt und Ihnen in den nächsten Tagen per E-Mail zugesandt.
+                                                    <br>Der Umwelt zuliebe wird keine zusätzliche Rechnung mehr auf dem Postweg verschickt.
+                                                    <br><br>Mit dieser Datei haben Sie als der Auftraggeber die letzte Möglichkeit, Korrekturen – gleich welcher Art – vorzunehmen. Stellen Sie keine Fehler mehr fest, erklären Sie die Daten für freigegeben und für alle nicht monierten Fehler, haften Sie als Auftragsgeber.
+                                                    <br><br>Ist der Auftragnehmer verpflichtet, den Liefergegenstand nach Vorgaben des Auftraggebers (Zeichnungen, Modelle, Muster, Skizzen, Entwürfen, etc.) zu liefern, so steht der Auftraggeber dafür ein, dass Schutzrechte Dritter hierdurch nicht verletzt werden. Im Falle der schuldhaften Pflichtverletzung ist der Auftraggeber verpflichtet, den Auftragnehmer von etwaigen Ansprüchen Dritter auf erstes Anfordern freizustellen.
+                                                    <br><br>Für Änderungswünsche antworten Sie einfach auf diese Nachricht.
+                                                    <br><br>Wir bedanken uns für Ihren geschätzten Auftrag.
+                                                    <br><br>Kennen Sie schon unseren neuen WhatsApp-Service: Wir sind für Fragen auch unter +49(8036) 9099894 per WhatsApp erreichbar!
+                                                    <br><br>Für weitere Fragen stehen wir Ihnen jederzeit gerne zur Verfügung.
+                                                    <br><br>Mit freundlichen Grüßen
+                                                    <br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>
@@ -288,7 +257,7 @@
                                                                     <td class="content_font_left">Gewünschte Größe (in
                                                                         mm)
                                                                     </td>
-                                                                    <td class="content_font_right">{{ $order->size }}
+                                                                    <td class="content_font_right">{{ $order->size }} {{ $order->width_height }}
                                                                     </td>
                                                                 </tr>
                                                             @endif

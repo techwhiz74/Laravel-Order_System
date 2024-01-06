@@ -81,7 +81,7 @@
                             var size = item.size;
                             console.log(size);
                             var newelement = `<div class="item" id="item">
-                            <img src="http://127.0.0.1:8000/images/files.svg" width="40" height="40">
+                            <img src="http://127.0.0.1:8000/images/files.svg" width="40" height="40" alt="image">
                             <rect class="cls-637647fac3a86d32eae6f27d-1" x="7.23" y="11.05" width="5.73" height="6.68"></rect>
                             <polygon class="cls-637647fac3a86d32eae6f27d-1" points="12.96 14.86 15.82 17.73 16.77 17.73 16.77 11.04 15.82 11.04 12.96 13.91 12.96 14.86"></polygon>
                             <polygon class="cls-637647fac3a86d32eae6f27d-1" points="20.59 6.27 20.59 22.5 3.41 22.5 3.41 1.5 15.82 1.5 20.59 6.27"></polygon>

@@ -8,7 +8,7 @@
                             <ul class="copyright_list">
                                 <li>
                                     <p>
-                                    <p style="color: #aaa"><span><span style="font-size:20px">©</span> Lion Werbe GmbH | Wir
+                                    <p style="color: #aaa"><span><span class="footer_start_sym">©</span> Lion Werbe GmbH | Wir
                                             machen Werbung.</span>
                                         <span>Stark wie ein Löwe.</span> <span>Alle Rechte vorbehalten.</span>
                                     </p>
@@ -37,7 +37,7 @@
                             <ul class="copyright_list">
                                 <li>
                                     <p>
-                                    <p style="color: #aaa"><span><span style="font-size:20px">©</span> Lion Werbe GmbH | Wir
+                                    <p style="color: #aaa"><span><span class="footer_start_sym">©</span> Lion Werbe GmbH | Wir
                                             machen Werbung.</span>
                                         <span>Stark wie ein Löwe.</span> <span>Alle Rechte vorbehalten.</span>
                                     </p>

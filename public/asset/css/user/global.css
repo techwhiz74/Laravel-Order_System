@@ -301,11 +301,11 @@ section {
   justify-content: center;
 }
 
-.login_section .heading_logo {
+.login_section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 }
 
 .login_section .heading_logo .logo_img img,
@@ -707,7 +707,7 @@ section {
   }
 }
 
-/* 
+/*
 .action .profile img {
   position: absolute;
   top: 0;
@@ -833,12 +833,12 @@ thead {
 #admin_yellow_table.table>:not(caption)>*>*,
 #admin_red_table.table>:not(caption)>*>*,
 #admin_blue_table.table>:not(caption)>*>* {
-  padding: 10px 4px;
+  padding: 10px;
 }
 
 #view-order.table>:not(caption)>*>*,
 #admin_customer_list_table_filter.table>:not(caption)>*>* {
-  padding: 8px 4px;
+  padding: 8px;
 }
 
 #admin_customer_list_table_filter input,
@@ -1869,8 +1869,6 @@ select#status-filter:focus-visible {
 #admin_order_detail_popup .modal-dialog,
 #admin_change_popup .modal-dialog,
 #order_detail_popup .modal-dialog,
-#order_change_popup .modal-dialog,
-#order_request_popup .modal-dialog,
 #customer_staff_create_popup .modal-dialog,
 #admin_embroidery_payment_archive .modal-dialog,
 #admin_vector_payment_archive .modal-dialog,
@@ -1878,31 +1876,33 @@ select#status-filter:focus-visible {
 #admin_customer_parameters_ve_popup .modal-dialog,
 #free_embroidery_payment_archive .modal-dialog,
 #free_vector_payment_archive .modal-dialog,
-#admin_request_popup .modal-dialog {
-  background-color: rgb(244, 244, 244);
-  width: 100%;
-  left: 0;
-  right: 0;
-  max-width: 100%;
-  top: 110px;
-  margin: 0;
-  min-height: calc(100% - 110px);
-}
-
-
-
-
 #customer_search_popup .modal-dialog,
 #admin_customer_profile_request_handle_popup .modal-dialog,
-#admin_customer_profile_edit_popup .modal-dialog {
+#admin_customer_profile_edit_popup .modal-dialog{
   background-color: rgb(244, 244, 244);
   width: 100%;
   left: 0;
   right: 0;
   max-width: 100%;
+  top: 108px;
   margin: 0;
-  height: 100%;
+  min-height: calc(100% - 108px);
 }
+#order_change_popup .modal-dialog,
+#order_request_popup .modal-dialog,
+#admin_request_popup .modal-dialog {
+  background-color: #fff;
+  width: 100%;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  top: 108px;
+  margin: 0;
+  min-height: calc(100% - 108px);
+}
+
+
+
 
 #customer_staff_create_popup .modal-content,
 #admin_customer_parameters_em_popup .modal-content,
@@ -2065,7 +2065,7 @@ select#status-filter:focus-visible {
 
 #wrapper.full_height #sidebar-wrapper {
   position: absolute;
-  margin-top: 110px;
+  margin-top: 108px;
   overflow-x: auto;
 }
 
@@ -2284,6 +2284,10 @@ select#status-filter:focus-visible {
   font-size: 15px;
   display: flex;
   align-items: center;
+  display: none;
+}
+.language_p::before {
+    display: none;
 }
 
 .contact_nav ul li a i {
@@ -3254,7 +3258,7 @@ input[name="selected_customer"]:checked::before {
 }
 
 .home_image {
-  height: calc(100vh - 110px);
+  height: calc(100vh - 108px);
 }
 
 .dashboard_table {
@@ -3462,10 +3466,7 @@ textarea:focus {
 }
 
 .file_view_box {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .file_view_flex_toggle {
@@ -3674,6 +3675,55 @@ textarea:focus {
   margin-top: -30px !important;
 }
 
+.registration_form {
+  font-size: 13px;
+}
+
+.registration_file_input {
+  font-size: 13px;
+  margin: 5px 0;
+}
+.order_form_sentence {
+  line-height: normal;
+  font-size: 11px !important;
+}
+#order_form_textarea {
+  height: 100px;
+}
+.footer_start_sym {
+  font-size: 20px;
+}
+.multiselect_font {
+    font-size: 13px;
+  }
+  .creat_staff_interface {
+    font-size: 13px;
+}
+.download_icon {
+    font-size: 14px;
+    color: #c4ae79;
+}
+.multidownload_button {
+    border: none !important;
+    font-size: 13px !important;
+    background-color: #c4ae79 !important;
+}
+.file_input_font {
+    font-size: 13px;
+}
+.order_request_font {
+    font-size: 13px;
+  }
+  .folder_button_position {
+    margin-top: 5px;
+  }
+  .logo_img {
+    text-align: center;
+  }
+  .login_heading {
+    text-align: center;
+    margin: 10px 0;
+  }
 
 
 
@@ -3687,7 +3737,11 @@ textarea:focus {
 
 
 
-
+/* @media (max-width: 1645px) {
+  #sidebar-wrapper {
+    padding: 13px 0 0 0;
+  }
+} */
 
 @media (max-width: 1200px) {
   .contact_nav .nav {
@@ -3708,7 +3762,7 @@ textarea:focus {
   }
 
   .dashboard_title {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .footer {
@@ -3746,11 +3800,11 @@ textarea:focus {
   }
 
   .contact_header .dropdown {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .contact_header .btn {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .navbar>.container-fluid {
@@ -3764,7 +3818,7 @@ textarea:focus {
   }
 
   .menu_list a {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .lion_list {
@@ -3772,18 +3826,18 @@ textarea:focus {
     top: 100%;
     right: 0px;
     background: #ffffff;
-    padding: 15px;
+    padding: 10px;
     z-index: 10;
     opacity: 0.9;
   }
 
   .home_image {
-    height: calc(100vh - 91px);
+    height: calc(100vh - 85px);
   }
 
   #wrapper.full_height #sidebar-wrapper {
     position: absolute;
-    margin-top: 91px;
+    margin-top: 85px;
   }
 
   .sidebar-nav {
@@ -3791,16 +3845,18 @@ textarea:focus {
   }
 
   .lion_popup_wrrpr {
-    height: calc(100vh - 167px);
-    top: 167px;
+    height: calc(100vh - 161px);
+    top: 161px;
   }
 
   .pagetitle {
-    font-size: 24px;
+    font-size: 16px;
+    text-align: center;
   }
 
   #sidebar-wrapper {
     height: 76px;
+    padding: 13px 0 !important;
   }
 
   .sidebar-nav .sidebar-div {
@@ -3812,11 +3868,12 @@ textarea:focus {
   }
 
   .table>:not(caption)>*>* {
-    padding: 8px 4px !important;
+    padding: 8px 2px !important;
   }
 
   .login_heading h1 {
-    font-size: 28px;
+    font-size: 24px;
+    line-height: 1;
   }
 
 
@@ -3858,15 +3915,27 @@ textarea:focus {
   }
 
 
-
   #free_order_detail_popup .modal-dialog,
   #em_freelancer_request_popup .modal-dialog,
   #ve_freelancer_request_popup .modal-dialog,
   #admin_order_detail_popup .modal-dialog,
   #admin_change_popup .modal-dialog,
+  #order_detail_popup .modal-dialog,
+  #order_change_popup .modal-dialog,
+  #order_request_popup .modal-dialog,
+  #customer_staff_create_popup .modal-dialog,
+  #admin_embroidery_payment_archive .modal-dialog,
+  #admin_vector_payment_archive .modal-dialog,
+  #admin_customer_parameters_em_popup .modal-dialog,
+  #admin_customer_parameters_ve_popup .modal-dialog,
+  #free_embroidery_payment_archive .modal-dialog,
+  #free_vector_payment_archive .modal-dialog,
+  #customer_search_popup .modal-dialog,
+  #admin_customer_profile_request_handle_popup .modal-dialog,
+  #admin_customer_profile_edit_popup .modal-dialog,
   #admin_request_popup .modal-dialog {
-    top: 91px;
-    height: 100%;
+    top: 85px;
+    min-height: calc(100% - 85px);
   }
 
   #customer_staff_create_popup .modal-content,
@@ -3899,11 +3968,11 @@ textarea:focus {
   table th,
   table td {
     line-height: 1;
-    font-size: 10px;
+    font-size: 7px;
   }
 
   .dashboard_icon {
-    width: 10px;
+    width: 8px;
   }
 
   .status_text {
@@ -3916,6 +3985,8 @@ textarea:focus {
 
   .controlGroup2 {
     margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
   }
 
   #fileupload,
@@ -3925,6 +3996,7 @@ textarea:focus {
 
   .dataTables_info {
     margin-top: -10px;
+    font-size: 10px;
   }
 
   .info_page {
@@ -3932,12 +4004,12 @@ textarea:focus {
   }
 
   .menu_page_title {
-    font-size: 20px;
+    font-size: 14px;
     margin: 4vw;
   }
 
   .info_page_icon {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .embroidery_information_wrapper {
@@ -3999,5 +4071,321 @@ textarea:focus {
     width: 200px;
   }
 
+  .customer_dashboard_all_button {
+    font-size: 10px;
+  }
 
+  .product-item-menu {
+    font-size: 10px;
+    height: 250px;
+    overflow-y: auto;
+  }
+
+  .login_wrap {
+    font-size: 10px;
+  }
+
+  .form_dv input[type=email],
+  .form_dv input[type=text],
+  .form_dv input[type=password] {
+    padding: 0.15rem 0.75rem;
+    font-size: 10px;
+  }
+
+  .submit_btn button {
+    padding: 4px 12px;
+    font-size: 10px;
+  }
+
+  .login_section .resig_lnkk {
+    font-size: 10px;
+  }
+
+  .footerrr .copy_right_txt p {
+    font-size: 12px;
+  }
+
+  .login_section .heading_logo .logo_img img,
+  .footerrr .fttrr_img img {
+    max-width: 120px;
+  }
+
+  .registration_form {
+    font-size: 10px;
+  }
+
+  .register_input {
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .registration_file_input {
+    font-size: 10px;
+  }
+
+  #convert_language {
+    font-size: 10px;
+  }
+
+  .login_wrap {
+    border-left: 15px solid #c4ae79;
+  }
+
+  .alert-danger {
+    left: 3vw;
+    right: 3vw;
+    font-size: 10px;
+    bottom: 8vh;
+  }
+  #order_submit_form,
+  #admin_order_submit_form,
+  #employer_order_submit_form {
+    font-size: 10px;
+  }
+  .form-group .form-control {
+    font-size: 10px;
+  }
+  .order_form_sentence {
+    font-size: 8px !important;
+  }
+  .dropdown-toggle.product-multiselect div {
+    min-height: auto;
+    height: 30px;
+  }
+  #order_form_textarea {
+    height: 70px;
+  }
+  .fileinput-button {
+    padding: 6px !important;
+  }
+  .order_form_submit {
+    font-size: 10px;;
+    padding: 8px;
+    float: none;
+    display: flex;
+    margin: auto;
+  }
+  #tableSearchInput, #adminAllTableSearchInput {
+    min-height: auto;
+    height: 30px;
+    background-size: 16px;
+  }
+  #tableDatepickerInputStart, #adminTableDatepickerInputStart {
+    min-height: auto;
+    height: 30px;
+    background-size: 14px;
+  }
+  #tableDatepickerInputEnd, #adminTableDatepickerInputEnd{
+    min-height: auto;
+    height: 30px;
+    background-size: 14px;
+  }
+  .tableCloumnBtton {
+    height: 30px;
+    font-size: 10px;
+    width: auto;
+  }
+  .dataTables_paginate .paginate_button {
+    font-size: 10px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+  .tableControl {
+    font-size: 10px;
+  }
+  .columnImage {
+    width: 10px;
+  }
+  .DatePickerWrapperStart, .DatePickerWrapperEnd {
+    width: auto;
+  }
+  .copyright_list li p, .copyright_list li a {
+    font-size: 10px;
+  }
+  .status-sphere-delivered,
+  .status-sphere-open,
+  .status-sphere-change,
+  .status-sphere-progress {
+    width: 8px;
+    height: 8px;
+    margin: auto;
+  }
+  .icon_size {
+    width: 10px;
+  }
+  .footer_start_sym {
+    font-size: 10px;
+  }
+  .upload_btn button {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .order_form_file_uplaod_command  {
+    font-size: 10px !important;
+  }
+  #order_form_anotherOrderButton,
+  .modal_close_btn {
+    font-size: 10px;
+    padding: 6px;
+    margin-top: 2px;
+  }
+  #order_form_success_popup .modal-content, #seccess_accept_admin_em_parameter_popup .modal-content, #seccess_accept_admin_ve_parameter_popup .modal-content, #seccess_decline_admin_em_parameter_popup .modal-content, #seccess_decline_admin_ve_parameter_popup .modal-content, #seccess_change_admin_em_parameter_popup .modal-content, #seccess_change_admin_ve_parameter_popup .modal-content, #add_customer_success_popup .modal-content, #order_change_success_popup .modal-content, #change_profile_success_popup .modal-content, #change_em_parameter_success_popup .modal-content, #change_ve_parameter_success_popup .modal-content, #delete_confirm_popup .modal-content, #end_job_success_popup .modal-content, #end_em_change_success_popup .modal-content, #end_ve_change_success_popup .modal-content, #start_job_confirm_popup .modal-content, #start_job_success_popup .modal-content, #free_upload_success_popup .modal-content, #end_job_error_popup .modal-content, #start_change_confirm_popup .modal-content, #end_change_confirm_popup .modal-content, #end_change_error_popup .modal-content, #ve_start_change_confirm_popup .modal-content, #em_upload_success_popup .modal-content, #ve_upload_success_popup .modal-content, #ve_end_change_confirm_popup .modal-content, #ve_end_change_error_popup .modal-content, #admin_start_job_confirm_popup .modal-content, #admin_start_job_success_popup .modal-content, #admin_upload_success_popup .modal-content, #admin_end_job_success_popup .modal-content, #change_customer_avatar_popup .modal-content, #admin_start_change_confirm_popup .modal-content, #admin_change_upload_success_popup .modal-content, #admin_end_change_success_popup .modal-content, #delete_order_confirm_popup .modal-content, #admin_request_success_popup .modal-content, #admin_delete_detail_file_confirm_popup .modal-content, #admin_delete_change_file_confirm_popup .modal-content, #free_order_count .modal-content, #admin_order_count .modal-content, #delete_em_request_confirm_popup .modal-content, #delete_ve_request_confirm_popup .modal-content, #order_form_alert_popup .modal-content {
+    max-width: 90vw;
+    height: 130px;
+  }
+  #order_form_success_popup .modal-body, #seccess_accept_admin_em_parameter_popup .modal-body, #seccess_accept_admin_ve_parameter_popup .modal-body, #seccess_decline_admin_em_parameter_popup .modal-body, #seccess_decline_admin_ve_parameter_popup .modal-body, #seccess_change_admin_em_parameter_popup .modal-body, #seccess_change_admin_ve_parameter_popup .modal-body, #add_customer_success_popup .modal-body, #order_change_success_popup .modal-body, #change_profile_success_popup .modal-body, #change_em_parameter_success_popup .modal-body, #change_ve_parameter_success_popup .modal-body, #delete_confirm_popup .modal-body, #end_job_success_popup .modal-body, #end_em_change_success_popup .modal-body, #end_ve_change_success_popup .modal-body, #start_job_confirm_popup .modal-body, #start_job_success_popup .modal-body, #free_upload_success_popup .modal-body, #end_job_error_popup .modal-body, #start_change_confirm_popup .modal-body, #end_change_confirm_popup .modal-body, #end_change_error_popup .modal-body, #ve_start_change_confirm_popup .modal-body, #em_upload_success_popup .modal-body, #ve_upload_success_popup .modal-body, #ve_end_change_confirm_popup .modal-body, #ve_end_change_error_popup .modal-body, #admin_start_job_confirm_popup .modal-body, #admin_start_job_success_popup .modal-body, #admin_upload_success_popup .modal-body, #admin_end_job_success_popup .modal-body, #change_customer_avatar_popup .modal-body, #admin_start_change_confirm_popup .modal-body, #admin_change_upload_success_popup .modal-body, #admin_end_change_success_popup .modal-body, #delete_order_confirm_popup .modal-body, #admin_request_success_popup .modal-body, #admin_delete_detail_file_confirm_popup .modal-body, #admin_delete_change_file_confirm_popup .modal-body, #free_order_count .modal-body, #admin_order_count .modal-body, #delete_em_request_confirm_popup .modal-body, #delete_ve_request_confirm_popup .modal-body, #order_form_alert_popup .modal-body {
+    padding: 30px 15px 20px 15px !important;
+    font-size: 10px;
+  }
+  legend  {
+    font-size: 12px !important;
+  }
+  .field-group {
+    font-size: 10px;
+  }
+  .order_form_input, .ms-options-wrap>button, .ms-options-wrap>button:focus {
+    height: 30px !important;
+  }
+  .multiselect_font {
+    font-size: 10px;
+  }
+  .ms-options-wrap>.ms-options>ul label {
+    font-size: 10px;
+  }
+  .ms-options-wrap>.ms-options>ul input[type="checkbox"] {
+    top: 1px;
+    width: 12px;
+  }
+  #customer_staff_create_button {
+    font-size: 10px;
+    padding: 6px;
+  }
+  .creat_staff_interface {
+    font-size: 10px;
+  }
+  #customer_staff_create_submit {
+    font-size: 10px;
+    padding: 6px;
+    height: auto;
+  }
+  .form-group .control-label, .form-group>label {
+    font-size: 10px !important;
+  }
+  .box_title {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  .order_detail_input_div_element {
+    padding: 4px 6px;
+  }
+  .order_detail_div {
+    font-size: 10px;
+  }
+  .download_icon {
+    font-size: 10px;
+  }
+  .multidownload_button {
+    font-size: 10px !important;
+  }
+  #order_change_form {
+    font-size: 10px;
+  }
+  .file_input_font {
+    font-size: 10px;
+  }
+  .order_change_submit, .freelancer_job_start_submit, .freelancer_job_update_submit, .embroidery_upload_submit, .vector_upload_submit, .admin_job_start_submit, .admin_change_upload_submit, .admin_request_submit {
+    padding: 6px;
+    font-size: 10px;
+  }
+  .request_li {
+    padding: 6px;
+  }
+  .order_request_font {
+    font-size: 10px;
+  }
+  .folder_button p,
+  .folder_button label {
+    font-size: 7px;
+  }
+  .folder_button {
+    height: 70px;
+    width: 75px;
+  }
+  .folder_button_position {
+    margin-top: 0;
+    margin-left: 5px;
+  }
+  .job_button {
+    padding: 6px;
+  }
+  .payment_selectbox_control {
+    font-size: 10px;
+  }
+  .total_count_number {
+    font-size: 10px;
+  }
+  #adminTableSearchInput  {
+    font-size: 10px;
+    height: 30px;
+  }
+  .admin_order_form_submit, .employer_order_form_submit {
+    font-size: 10px;
+    padding: 8px;
+    display: flex;
+    margin: auto;
+  }
+  #close_project_menu {
+    font-size: 10px !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 6px !important;
+  }
+  #manualInput {
+    height: 25px !important;
+    margin: 5px 0 !important;
+    font-size: 10px;
+  }
+  textarea[name='order_change_textarea'] {
+    height: 100px !important;
+  }
+  #admin_customer_list_table_filter input, #customer_search_table_filter input, #admin_parameter_em_table_filter input, #admin_parameter_ve_table_filter input {
+    font-size: 10px;
+    height: 30px;
+  }
+  .tableFilterBtton {
+    font-size: 10px;
+    height: 30px;
+    width: auto;
+  }
+  #CustomerTableSearchInput {
+    font-size: 10px;
+    height: 30px;
+  }
+  .selectbox-control {
+    font-size: 10px;
+    height: 30px;
+  }
+  .product-multiselect8, .product-multiselect9, .product-multiselect3 {
+    height: 30px;
+  }
+  #selected_ve_parameter8, #selected_ve_parameter9, #selected_em_parameter3 {
+    padding: 6px;
+    height: auto;
+  }
+  .login_section .back_btttn {
+    margin-bottom: 10px;
+  }
+  .login_section .lgg_resi {
+    padding-top: 0;
+  }
+  .order_form_validation_deliver_time, .order_form_validation_projectname, .order_form_validation_size, .order_form_validation_products, .order_form_file_upload, .order_form_validation_checkbox, .admin_search_customer_validation, .add_customer_validation_email, .add_customer_validation_password {
+    font-size: 10px;
+  }
+  .action .menu {
+    width: 150px;
+  }
+  .action .menu ul li a {
+    font-size: 10px;
+  }
 }

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">Bestellungen in Arbeit
-            </div>
+            <h1 class="pagetitle">Bestellungen in Arbeit
+            </h1>
             <div>
                 <div>
                     <button id="admin_yellow_table_reload_button" style="display: none"></button>

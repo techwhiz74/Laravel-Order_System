@@ -8,9 +8,9 @@
         <div class="padding-30">
             <div class="row">
                 <div class="col-12">
-                    <div class="pagetitle">
-                        <h1>ORDER DEATILS</h1>
-                    </div>
+                    <h1 class="pagetitle">
+                        ORDER DEATILS
+                    </h1>
                 </div>
             </div>
 
@@ -29,12 +29,7 @@
                     <div class="profile_wrap">
                         <div class="card">
                             <div class="card-body">
-                                <!-- <div class="nav nav-tabs " id="nav-tab" role="tablist">
-                                        <button class="nav-link active" id="nav-project-tab" data-bs-toggle="tab" data-bs-target="#nav-project" type="button" role="tab" aria-controls="nav-project" aria-selected="true">Project</button>
-                                        <button class="nav-link" id="nav-address-tab" data-bs-toggle="tab" data-bs-target="#nav-address" type="button" role="tab" aria-controls="nav-address" aria-selected="false">Address</button>
-                                        <button class="nav-link" id="nav-format-tab" data-bs-toggle="tab" data-bs-target="#nav-format" type="button" role="tab" aria-controls="nav-format" aria-selected="false">File Format</button>
-                                        <button class="nav-link" id="nav-file-tab" data-bs-toggle="tab" data-bs-target="#nav-file" type="button" role="tab" aria-controls="nav-file" aria-selected="false">Uploaded Files</button>
-                                    </div>   -->
+
                                 </nav>
                                 <div class="tab-content p-3 border bg-light" id="nav-tabContent">
                                     <div class="tab-pane fade active show" id="nav-project" role="tabpanel"
@@ -183,19 +178,6 @@
                     data: formData,
                     success: function(response) {
                         console.log(response);
-                        // const blob = new Blob([response]);
-                        // const url = window.URL.createObjectURL(blob);
-                        // console.log(url);
-                        // const a = document.createElement("a");
-                        // a.style.display = "none";
-                        // a.href = url;
-                        // a.download = "downloaded_file.jpg"; // Replace with the desired filename and extension
-                        // document.body.appendChild(a);
-                        // a.click();
-                        // // Clean up the URL and remove the link
-                        // window.URL.revokeObjectURL(url);
-                        // document.body.removeChild(a);
-                        // console.log(blog);
                     },
                     error: function(xhr, status, error) {
                         // Handle the error response

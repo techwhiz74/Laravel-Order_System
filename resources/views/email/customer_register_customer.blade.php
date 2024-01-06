@@ -163,21 +163,21 @@
                                                                                     <a
                                                                                         href="https://www.instagram.com/lionwerbung">
                                                                                         <img src="{{ asset('asset/images/instagram.png') }}"
-                                                                                            style="width: 20px;">
+                                                                                            style="width: 20px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                                 <td class="contact_item">
                                                                                     <a
                                                                                         href="https://www.facebook.com/lionwerbung">
                                                                                         <img src="{{ asset('asset/images/facebook.png') }}"
-                                                                                            style="width: 25px;">
+                                                                                            style="width: 25px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                                 <td class="contact_item">
                                                                                     <a
                                                                                         href="https://api.whatsapp.com/send?phone=+4980369099894">
                                                                                         <img src="{{ asset('asset/images/whatsapp.png') }}"
-                                                                                            style="width: 20px;">
+                                                                                            style="width: 20px;" alt="email_icon">
                                                                                     </a>
                                                                                 </td>
                                                                             </tr>
@@ -317,30 +317,6 @@
                                                                 <td class="content_font_right">
                                                                     {{ $data['register_number'] }}</td>
                                                             </tr>
-                                                            @if ($data['kd_group'] != null)
-                                                                <tr>
-                                                                    <td class="content_font_left">Kd-Gruppe</td>
-                                                                    <td class="content_font_right">
-                                                                        {{ $data['kd_group'] }}</td>
-                                                                </tr>
-                                                            @else
-                                                                <tr>
-                                                                    <td class="content_font_left">Kd-Gruppe</td>
-                                                                    <td class="content_font_right"></td>
-                                                                </tr>
-                                                            @endif
-                                                            @if ($data['kd_category'] != null)
-                                                                <tr>
-                                                                    <td class="content_font_left">Kd-Kategorie</td>
-                                                                    <td class="content_font_right">
-                                                                        {{ $data['kd_category'] }}</td>
-                                                                </tr>
-                                                            @else
-                                                                <tr>
-                                                                    <td class="content_font_left">Kd-Kategorie</td>
-                                                                    <td class="content_font_right"></td>
-                                                                </tr>
-                                                            @endif
                                                             @if ($data['payment_method'] != null)
                                                                 <tr>
                                                                     <td class="content_font_left">Zahlungsart</td>

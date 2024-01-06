@@ -7,7 +7,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -23,7 +23,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -38,7 +38,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_green" id="em_freelancer_green" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" />
+                                <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -52,7 +52,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_green" id="ve_freelancer_green" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/New.svg') }}" style="width:38px;" />
+                                <img src="{{ asset('asset/images/New.svg') }}" style="width:38px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -66,7 +66,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_customer_list" id="admin_customer_list1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/users-duotone.svg') }}" style="width:38px;" />
+                                <img src="{{ asset('asset/images/users-duotone.svg') }}" style="width:38px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -83,7 +83,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -98,7 +98,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -112,7 +112,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_yellow" id="em_freelancer_yellow" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -127,7 +127,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_yellow" id="ve_freelancer_yellow" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -142,7 +142,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_add_customer" id="admin_add_customer1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/user-plus-duotone.svg') }}" style="width:38px;" />
+                                <img src="{{ asset('asset/images/user-plus-duotone.svg') }}" style="width:38px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -160,7 +160,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
                             <div class="sidebar_explain">
                                 <p>{{ __('home.order_standard') }}</p>
@@ -175,7 +175,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
                             <div class="sidebar_explain">
                                 <p>{{ __('home.order_standard') }}</p>
@@ -188,7 +188,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="em_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0; ">
@@ -202,7 +202,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_red" id="ve_freelancer_red" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
@@ -217,7 +217,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup1"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -236,7 +236,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -252,7 +252,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
                             <div class="sidebar_explain">
                                 <p>{{ __('home.order_express') }}</p>
@@ -265,7 +265,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="em_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -279,7 +279,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_blue" id="ve_freelancer_blue" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -294,7 +294,7 @@
                         <div lion-pop-id="order_form_em_standard_popup" id="order_form_em_standard_popup2"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" />
+                                <img src="{{ asset('asset/images/reel-duotone.svg') }}" style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -311,7 +311,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="view_order_popup" id="view_order_popup1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/list-radio-duotone.svg') }}" style="width: 32px;" />
+                                <img src="{{ asset('asset/images/list-radio-duotone.svg') }}" style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -325,7 +325,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="em_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
+                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -339,7 +339,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="freelancer_all" id="ve_freelancer_all" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
+                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -355,7 +355,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -373,7 +373,7 @@
                         <div lion-pop-id="profile_popup" id="profile_popup1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/address-card-duotone.svg') }}"
-                                    style="width: 37px;" />
+                                    style="width: 37px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -389,7 +389,7 @@
                         <div lion-pop-id="freelancer_payment" id="em_freelancer_payment" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
-                                    style="width: 32px;" />
+                                    style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -404,7 +404,7 @@
                         <div lion-pop-id="freelancer_payment" id="ve_freelancer_payment" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
-                                    style="width: 32px;" />
+                                    style="width: 32px;" alt="sidbar_icon" />
                             </div>
 
                             <div class="sidebar_explain">
@@ -420,7 +420,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/vector-polygon-duotone.svg') }}"
-                                    style="width: 29px;" />
+                                    style="width: 29px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -438,7 +438,7 @@
                         <div lion-pop-id="login_information" id="login_information1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/users-between-lines-duotone.svg') }}"
-                                    style="width: 41px;" />
+                                    style="width: 41px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -453,7 +453,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_green" id="admin_green1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" />
+                                <img src="{{ asset('asset/images/New.svg') }}" style="width: 38px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -469,7 +469,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="customer_parameters_em" id="customer_parameters_em1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" />
+                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
@@ -484,7 +484,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_yellow" id="admin_yellow1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Process.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -502,7 +502,7 @@
                         <div lion-pop-id="customer_parameters_ve" id="customer_parameters_ve1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/grip-vertical-sharp-solid.svg') }}"
-                                    style="width: 20px;" />
+                                    style="width: 20px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
@@ -517,7 +517,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_red" id="admin_red1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" />
+                                <img src="{{ asset('asset/images/Done.svg') }}" style="width: 24px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0; ">
@@ -532,7 +532,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_blue" id="admin_blue1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" />
+                                <img src="{{ asset('asset/images/Changes.svg') }}" style="width: 40px;" alt="sidbar_icon"/>
                             </div>
                             <div class="sidebar_explain">
                                 <p>AUFTRÄGE ÄNDERUNGEN</p>
@@ -547,7 +547,7 @@
                     <div class="sidebar-div" type="button">
                         <div lion-pop-id="admin_all" id="admin_all1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" />
+                                <img src="{{ asset('asset/images/All.svg') }}" style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -564,7 +564,7 @@
                         <div lion-pop-id="admin_customer_parameters_em" id="admin_customer_parameters_em1"
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
-                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" />
+                                <img src="{{ asset('asset/images/grip-sharp-solid.svg') }}" style="width: 28px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
@@ -580,7 +580,7 @@
                             class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/grip-vertical-sharp-solid.svg') }}"
-                                    style="width: 20px;" />
+                                    style="width: 20px;" alt="sidbar_icon"/>
                             </div>
 
                             <div style="height: 40%;padding: 3px 0;">
@@ -594,7 +594,7 @@
                         <div lion-pop-id="admin_em_payment" id="admin_em_payment1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
-                                    style="width: 32px;" />
+                                    style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -608,7 +608,7 @@
                         <div lion-pop-id="admin_ve_payment" id="admin_ve_payment1" class="lion_pop_btn">
                             <div style="height: 54%;margin-bottom: 5px;padding: 0;">
                                 <img src="{{ asset('asset/images/circle-euro-duotone.svg') }}"
-                                    style="width: 32px;" />
+                                    style="width: 32px;" alt="sidbar_icon"/>
                             </div>
 
                             <div class="sidebar_explain">
@@ -826,4 +826,7 @@
     @include('components.admin.customer_parameters_ve')
     @include('components.freelancer.embroidery.em_freelancer_payment_archive')
     @include('components.freelancer.vector.ve_freelancer_payment_archive')
+    @include('components.admin.customer_search_modal')
+    @include('components.admin.customer_profile_edit')
+    @include('components.admin.customer_profile_request_handle')
 </div>

@@ -14,8 +14,10 @@ class OrderFormFreelancerMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
+    public $en_order;
     public $customer;
     public $em_parameter;
+    public $en_em_parameter;
     public $ve_parameter;
     public $zipStoragePath;
     /**
@@ -23,11 +25,13 @@ class OrderFormFreelancerMail extends Mailable
      *
      * @return void
      */
-    public function __construct($order, $customer, $em_parameter, $ve_parameter, $zipStoragePath)
+    public function __construct($order, $en_order, $customer,$em_parameter, $en_em_parameter, $ve_parameter, $zipStoragePath)
     {
         $this->order = $order;
+        $this->en_order = $en_order;
         $this->customer = $customer;
         $this->em_parameter = $em_parameter;
+        $this->en_em_parameter = $en_em_parameter;
         $this->ve_parameter = $ve_parameter;
         $this->zipStoragePath = $zipStoragePath;
     }
@@ -39,7 +43,7 @@ class OrderFormFreelancerMail extends Mailable
      */
     public function envelope()
     {
-        $subject = $this->order->type == 'vebroidery' ? 'New Order Embroidery Program | ' : 'New Order Vector Program | ';
+        $subject = $this->order->type == 'Embroidery' ? 'New Order Embroidery Files | ' : 'New Order Vector Files | ';
         $subject .= $this->customer->customer_number . '-' . $this->order->order_number;
 
         return new Envelope(
@@ -59,8 +63,10 @@ class OrderFormFreelancerMail extends Mailable
             html: 'email.order_form_freelancer',
             with: [
                 'order' => $this->order,
+                'en_order' => $this->en_order,
                 'customer' => $this->customer,
                 'em_parameter' => $this->em_parameter,
+                'en_em_parameter' => $this->en_em_parameter,
                 've_parameter' => $this->ve_parameter,
                 'zipStoragePath' => $this->zipStoragePath,
             ],

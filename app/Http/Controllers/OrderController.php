@@ -28,6 +28,7 @@ use App\Mail\OrderRequestCustomer;
 use App\Mail\OrderRequestFreelancerMail;
 use App\Mail\OrderrRequestTextFreelancerMail;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 use Illuminate\Support\Facades\File;
 use DataTables;
 use Illuminate\Support\Facades\Storage;
@@ -386,13 +387,13 @@ class OrderController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
-                        $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
+                        $btn = '<button style="border:none; background:none;" onclick="openOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '" class="icon_size"></button>';
                     }
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none;" onclick="openOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -415,7 +416,7 @@ class OrderController extends Controller
                             $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="showOrderRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="showOrderRequest(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -460,7 +461,7 @@ class OrderController extends Controller
                 })
 
                 ->addColumn('download', function ($row) {
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#222222;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
 
@@ -903,8 +904,17 @@ class OrderController extends Controller
             ->where('width_height', $width_height)
             ->where('products', $products)
             ->where('special_instructions', $special_instructions)->first();
+
         $em_parameter = CustomerEmParameter::where('customer_id', $customer->id)->first();
         $ve_parameter = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $en_em_parameter = $translator->translate($em_parameter);
+        $en_order = $translator->translate($order);
+        $en_em_parameter = json_decode($en_em_parameter);
+        $en_order = json_decode($en_order);
+
 
         $recipient_admin = User::where('user_type', 'admin')->first()->email;
         if ($order->type == 'Embroidery') {
@@ -932,7 +942,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($order->id);
         $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/' . $request->get('type') . '/';
         $files = Order_file_upload::where('order_id', $order->id)->where('base_url', 'LIKE', '%' . $folder . '%')->get();
-        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '(New-Order)' . '.zip';
+        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '.zip';
         if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
             $files = Storage::allFiles('public/' . $folder);
             foreach ($files as $key => $file) {
@@ -943,14 +953,19 @@ class OrderController extends Controller
             $zip->close();
         }
         $zipStoragePath = 'public/' . $folder . $fileName;
+
+
+
         if ($order && $order->emailed == null) {
             try {
                 Mail::to($recipient_admin)->send(new OrderFormMail($order, $customer, $em_parameter, $ve_parameter, $files));
-                // Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $zipStoragePath));
+                // Mail::to($recipient_freelancer)->send(new OrderFormFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $zipStoragePath));
                 // Mail::to($recipient_customer)->send(new OrderFormCustomerMail($order, $customer, $em_parameter, $ve_parameter, $files));
-                Mail::to('christoperw818@gmail.com')->send(new OrderFormMail($order, $customer, $em_parameter, $ve_parameter, $files));
-                Mail::to('info@lioncap.de')->send(new OrderFormFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $zipStoragePath));
                 Mail::to('habedere@sinzers.de')->send(new OrderFormCustomerMail($order, $customer, $em_parameter, $ve_parameter, $files));
+                Mail::to('christoperw818@gmail.com')->send(new OrderFormFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $zipStoragePath));
+                Mail::to('info@lioncap.de')->send(new OrderFormFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $zipStoragePath));
+
+
                 $order->emailed = 'emailed';
                 $order->save();
                 return response()->json(['message' => 'Great! Successfully sent your email']);
@@ -1123,6 +1138,14 @@ class OrderController extends Controller
         $customer = User::findOrfail($order->user_id);
         $em_parameter = CustomerEmParameter::where('customer_id', $customer->id)->first();
         $ve_parameter = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $en_em_parameter = $translator->translate($em_parameter);
+        $en_order = $translator->translate($order);
+        $en_em_parameter = json_decode($en_em_parameter);
+        $en_order = json_decode($en_order);
+
         $recipient_admin = User::where('user_type', 'admin')->first()->email;
         if ($order->type == 'Embroidery') {
             $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first()->email;
@@ -1164,7 +1187,7 @@ class OrderController extends Controller
         $order = Order::findOrFail($order->id);
         $folder = $order->customer_number . '/' . $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '/' . $folder_name . '/';
         $files = Order_file_upload::where('order_id', $order->id)->where('base_url', 'LIKE', '%' . $folder . '%')->get();
-        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '(Change-Request)' . '.zip';
+        $fileName = $order->customer_number . '-' . $order->order_number . '-' . $order->project_name . '.zip';
         if ($zip->open(storage_path('app/public/' . $folder . $fileName), ZipArchive::CREATE) === true) {
             $files = Storage::allFiles('public/' . $folder);
             foreach ($files as $key => $file) {
@@ -1183,10 +1206,10 @@ class OrderController extends Controller
             $text = $order_change1->message;
             try {
                 Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('christoperw818@gmail.com')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
                 $order_change1->emailed = 'emailed';
                 $order_change1->save();
@@ -1199,10 +1222,10 @@ class OrderController extends Controller
             $text = $order_change2->message;
             try {
                 Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('christoperw818@gmail.com')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
                 $order_change2->emailed = 'emailed';
                 $order_change2->save();
@@ -1215,10 +1238,10 @@ class OrderController extends Controller
             $text = $order_change3->message;
             try {
                 Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('christoperw818@gmail.com')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
                 $order_change3->emailed = 'emailed';
                 $order_change3->save();
@@ -1231,10 +1254,10 @@ class OrderController extends Controller
             $text = $order_change4->message;
             try {
                 Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                // Mail::to($recipient_freelancer)->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('christoperw818@gmail.com')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
+                Mail::to('info@lioncap.de')->send(new OrderRequestFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath));
                 Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
                 $order_change4->emailed = 'emailed';
                 $order_change4->save();
@@ -1253,6 +1276,14 @@ class OrderController extends Controller
         $customer = User::findOrfail($order->user_id);
         $em_parameter = CustomerEmParameter::where('customer_id', $customer->id)->first();
         $ve_parameter = CustomerVeParameter::where('customer_id', $customer->id)->first();
+        $translator = new GoogleTranslate();
+        $translator->setSource('de');
+        $translator->setTarget('en');
+        $en_em_parameter = $translator->translate($em_parameter);
+        $en_order = $translator->translate($order);
+        $en_em_parameter = json_decode($en_em_parameter);
+        $en_order = json_decode($en_order);
+
         $recipient_admin = User::where('user_type', 'admin')->first()->email;
         if ($order->type == 'Embroidery') {
             $recipient_freelancer = User::where('user_type', 'freelancer')->where('category_id', '1')->first()->email;
@@ -1265,10 +1296,10 @@ class OrderController extends Controller
 
         try {
             Mail::to($recipient_admin)->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-            // Mail::to($recipient_freelancer)->send(new OrderrRequestTextFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text));
+            // Mail::to($recipient_freelancer)->send(new OrderrRequestTextFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text));
             // Mail::to($recipient_customer)->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-            Mail::to('christoperw818@gmail.com')->send(new OrderRequestAdmin($order, $customer, $em_parameter, $ve_parameter, $text, $files));
-            Mail::to('info@lioncap.de')->send(new OrderrRequestTextFreelancerMail($order, $customer, $em_parameter, $ve_parameter, $text));
+            Mail::to('christoperw818@gmail.com')->send(new OrderrRequestTextFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text));
+            Mail::to('info@lioncap.de')->send(new OrderrRequestTextFreelancerMail($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text));
             Mail::to('habedere@sinzers.de')->send(new OrderRequestCustomer($order, $customer, $em_parameter, $ve_parameter, $text, $files));
             return response()->json(['message' => 'Great! Successfully sent your email']);
         } catch (\Exception $e) {

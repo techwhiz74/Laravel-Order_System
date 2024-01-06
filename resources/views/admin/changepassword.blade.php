@@ -25,9 +25,9 @@
 
                         <form action="{{ __('routes.admin-updatepassword') }}" method="post">
                             @csrf
-                            <div class="login_heading">
-                                <h1>{{ __('home.change_password') }}</h1>
-                            </div>
+                            <h1 class="login_heading">
+                                {{ __('home.change_password') }}
+                            </h1>
 
                             <div class="form_dv">
                                 <input type="password" placeholder="Aktuelles Passwort" name="oldpassword" required>

@@ -164,21 +164,21 @@
                                                                                         <a
                                                                                             href="https://www.instagram.com/lionwerbung">
                                                                                             <img src="{{ asset('asset/images/instagram.png') }}"
-                                                                                                style="width: 20px;">
+                                                                                                style="width: 20px;" alt="email_icon">
                                                                                         </a>
                                                                                     </td>
                                                                                     <td class="contact_item">
                                                                                         <a
                                                                                             href="https://www.facebook.com/lionwerbung">
                                                                                             <img src="{{ asset('asset/images/facebook.png') }}"
-                                                                                                style="width: 25px;">
+                                                                                                style="width: 25px;" alt="email_icon">
                                                                                         </a>
                                                                                     </td>
                                                                                     <td class="contact_item">
                                                                                         <a
                                                                                             href="https://api.whatsapp.com/send?phone=+4980369099894">
                                                                                             <img src="{{ asset('asset/images/whatsapp.png') }}"
-                                                                                                style="width: 20px;">
+                                                                                                style="width: 20px;" alt="email_icon">
                                                                                         </a>
                                                                                     </td>
                                                                                 </tr>
@@ -248,7 +248,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="header_font">
-                                                    Hello, a new order has just been entered and is ready for you to do.
+                                                    Dear freelancer,<br><br>We have great news for you! A brand new order has just been entered into the system and is waiting for you to tackle. We couldn't be more excited about this opportunity for you to showcase your skills and expertise.<br><br>Please note that this order has been generated through our automated order portal, ensuring a seamless process for both our clients and our talented freelancers like yourself. We appreciate your dedication and diligence in accepting this task.<br><br>Your exceptional work and commitment to providing top-notch services have not gone unnoticed. We have full confidence that you will deliver outstanding results once again, exceeding our clients' expectations.<br><br>Thank you for your ongoing partnership and for being an invaluable member of our team. We look forward to seeing the amazing work you will produce for this latest order.<br><br>Best regards,<br><br>Lion Werbe GmbH
                                                 </td>
                                             </tr>
                                             <tr>
@@ -296,7 +296,7 @@
                                                                     <td class="content_font_left">Desired Size (in
                                                                         mm)
                                                                     </td>
-                                                                    <td class="content_font_right">{{ $order->size }}
+                                                                    <td class="content_font_right">{{ $order->size }} {{ $en_order->width_height }}
                                                                     </td>
                                                                 </tr>
                                                             @endif
@@ -306,14 +306,14 @@
                                                                         (Material)
                                                                     </td>
                                                                     <td class="content_font_right">
-                                                                        {{ $order->products }}
+                                                                        {{ $en_order->products }}
                                                                     </td>
                                                                 </tr>
                                                             @endif
                                                             <tr>
                                                                 <td class="content_font_left">Special Instruction</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $order->special_instructions }}</td>
+                                                                    {{ $en_order->special_instructions }}</td>
                                                             </tr>
 
                                                             <tr>
@@ -324,7 +324,7 @@
                                                             <tr>
                                                                 <td class="content_font_left">Status</td>
                                                                 <td class="content_font_right">
-                                                                    {{ $order->status }}</td>
+                                                                    {{ $en_order->status }}</td>
                                                             </tr>
                                                             @if ($order->type == 'Embroidery')
                                                                 <tr>
@@ -341,31 +341,31 @@
                                                                 <tr>
                                                                     <td class="content_font_left">Cutting options</td>
                                                                     <td class="content_font_right">
-                                                                        {{ $em_parameter->parameter3 }}</td>
+                                                                        {{ $en_em_parameter->parameter3 }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="content_font_left">Special cutting
                                                                         options</td>
                                                                     <td class="content_font_right">
-                                                                        {{ $em_parameter->parameter4 }}</td>
+                                                                        {{ $en_em_parameter->parameter4 }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="content_font_left">Needle instructions
                                                                     </td>
                                                                     <td class="content_font_right">
-                                                                        {{ $em_parameter->parameter5 }}</td>
+                                                                        {{ $en_em_parameter->parameter5 }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="content_font_left">Standard instructions
                                                                     </td>
                                                                     <td class="content_font_right">
-                                                                        {{ $em_parameter->parameter6 }}</td>
+                                                                        {{ $en_em_parameter->parameter6 }}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td class="content_font_left">Special standard
                                                                         instructions</td>
                                                                     <td class="content_font_right">
-                                                                        {{ $em_parameter->parameter7 }}</td>
+                                                                        {{ $en_em_parameter->parameter7 }}</td>
                                                                 </tr>
                                                             @elseif($order->type == 'Vector')
                                                                 <tr>

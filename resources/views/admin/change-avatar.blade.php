@@ -25,9 +25,9 @@
                         <form action='{{ __('routes.admin-change-avatar-handle') }}' method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <div class="login_heading">
-                                <h1>{{ __('home.change_avatar') }}</h1>
-                            </div>
+                            <h1 class="login_heading">
+                                {{ __('home.change_avatar') }}
+                            </h1>
                             <div class="login_body">
                                 <input type="file" class="form-control" name="change_avatar" style="font-size: 13px;"
                                     required>

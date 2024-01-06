@@ -14,8 +14,10 @@ class OrderRequestFreelancerMail extends Mailable
 {
     use Queueable, SerializesModels;
     public $order;
+    public $en_order;
     public $customer;
     public $em_parameter;
+    public $en_em_parameter;
     public $ve_parameter;
     public $text;
     public $zipStoragePath;
@@ -24,11 +26,13 @@ class OrderRequestFreelancerMail extends Mailable
      *
      * @return void
      */
-    public function __construct($order, $customer, $em_parameter, $ve_parameter, $text, $zipStoragePath)
+    public function __construct($order, $en_order, $customer, $em_parameter, $en_em_parameter, $ve_parameter, $text, $zipStoragePath)
     {
         $this->order = $order;
+        $this->en_order = $en_order;
         $this->customer = $customer;
         $this->em_parameter = $em_parameter;
+        $this->en_em_parameter = $en_em_parameter;
         $this->ve_parameter = $ve_parameter;
         $this->text = $text;
         $this->zipStoragePath = $zipStoragePath;
@@ -41,7 +45,7 @@ class OrderRequestFreelancerMail extends Mailable
      */
     public function envelope()
     {
-        $subject = $this->order->type == 'Embroidery' ? 'New Change Embroidery Program | ' : 'New Change Vector Program | ';
+        $subject = $this->order->type == 'Embroidery' ? 'New Change Request Embroidery Files | ' : 'New Change Request Vector Files | ';
         $subject .= $this->customer->customer_number . '-' . $this->order->order_number;
 
         return new Envelope(
@@ -61,8 +65,10 @@ class OrderRequestFreelancerMail extends Mailable
             html: 'email.order-request-freelancer',
             with: [
                 'order' => $this->order,
+                'en_order' => $this->en_order,
                 'customer' => $this->customer,
                 'em_parameter' => $this->em_parameter,
+                'en_em_parameter' => $this->en_em_parameter,
                 've_parameter' => $this->ve_parameter,
                 'text' => $this->text,
                 'zipStoragePath' => $this->zipStoragePath,

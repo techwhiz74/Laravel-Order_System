@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
+    <meta name="description" content="It's the registration page for customer. Please register with your information.">
+    <title>Lion Werbe GmbH | Anmeldung</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -111,7 +112,7 @@
                             </a>
                         </div>
 
-                        <form action="{{ __('routes.customer-registration') }}" method="POST" style="font-size: 13px;"
+                        <form action="{{ __('routes.customer-registration') }}" method="POST" class="registration_form"
                             enctype="multipart/form-data">
                             @csrf
 
@@ -136,9 +137,9 @@
                                         </label>
                                         <input type="text" class="register_input" name="company">
                                         @if ($errors->has('company'))
-                                            <span class="text-danger">{{ __('home.company') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.company') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -155,9 +156,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" id="t1" name="name">
                                         @if ($errors->has('name'))
-                                            <span class="text-danger">{{ __('home.name') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.name') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -167,9 +168,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" id="t1" name="first_name">
                                         @if ($errors->has('first_name'))
-                                            <span class="text-danger">{{ __('home.first_name') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.first_name') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -180,8 +181,8 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="email" class="register_input" id="e1" name="email">
                                         @if ($errors->has('email'))
-                                            <span class="text-danger">{{ $errors->first('email') }}<i
-                                                    class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i
+                                                class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -191,9 +192,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" name="street_number">
                                         @if ($errors->has('street_number'))
-                                            <span class="text-danger">{{ __('home.street_number') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.street_number') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -203,9 +204,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" name="postal_code">
                                         @if ($errors->has('postal_code'))
-                                            <span class="text-danger">{{ __('home.postal_code') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.postal_code') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -215,9 +216,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" name="location">
                                         @if ($errors->has('location'))
-                                            <span class="text-danger">{{ __('home.location') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.location') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -233,9 +234,9 @@
                                             <option value="Niederlande">Niederlande</option>
                                         </select>
                                         @if ($errors->has('country'))
-                                            <span class="text-danger">{{ __('home.country') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.country') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -251,9 +252,9 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="text" class="register_input" name="phone">
                                         @if ($errors->has('phone'))
-                                            <span class="text-danger">{{ __('home.phone') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.phone') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -279,18 +280,6 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.register_number') }} </label>
                                         <input type="text" class="register_input" name="register_number">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.kd_group') }} </label>
-                                        <input type="text" class="register_input" name="kd_group">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="">
-                                        <label for="c1">{{ __('home.kd_category') }} </label>
-                                        <input type="text" class="register_input" name="kd_category">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -331,26 +320,26 @@
                                     <div class="">
                                         <label for="c1">{{ __('home.upload') }} <span
                                                 class="reqiurd">*</span></label>
-                                        <input type="file" class="form-control" name="upload"
-                                            aria-describedby="inputGroupFileAddon04" aria-label="Upload"
-                                            style="font-size:13px; margin:5px 0;">
+                                        <input type="file" class="form-control registration_file_input"
+                                            name="upload" aria-describedby="inputGroupFileAddon04"
+                                            aria-label="Upload">
                                         @if ($errors->has('upload'))
-                                            <span class="text-danger">{{ __('home.upload') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.upload') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="">
                                         <label for="c1">{{ __('home.avatar_upload') }}</label>
-                                        <input type="file" class="form-control" name="avatar_upload"
-                                            aria-describedby="inputGroupFileAddon04" aria-label="avatar_upload"
-                                            style="font-size:13px; margin:5px 0;">
+                                        <input type="file" class="form-control registration_file_input"
+                                            name="avatar_upload" aria-describedby="inputGroupFileAddon04"
+                                            aria-label="avatar_upload">
                                         @if ($errors->has('avatar_upload'))
-                                            <span class="text-danger">{{ __('home.upload') }}
-                                                {{ __('home.required') }}<i class="fa fa-exclamation-circle"
-                                                    aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i class="fa fa-exclamation-circle"
+                                                aria-hidden="true"></i> {{ __('home.upload') }}
+                                                {{ __('home.required') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -361,8 +350,8 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="password" class="register_input" name="password">
                                         @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}<i
-                                                    class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i
+                                                class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
                                 </div>
@@ -373,8 +362,8 @@
                                                 class="reqiurd">*</span></label>
                                         <input type="password" class="register_input" name="confirm_password">
                                         @if ($errors->has('confirm_password'))
-                                            <span class="text-danger">{{ $errors->first('confirm_password') }}<i
-                                                    class="fa fa-exclamation-circle" aria-hidden="true"></i></span>
+                                            <span class="text-danger"><i
+                                                class="fa fa-exclamation-circle" aria-hidden="true"></i> {{ $errors->first('confirm_password') }}</span>
                                         @endif
                                     </div>
                                 </div>

@@ -17,9 +17,8 @@
                                 {{ Session::get('success') }}
                             </p>
                         @endif
-                        <div class="pagetitle">
-                            <h1>Delivery Files</h1>
-                        </div>
+                        <h1 class="pagetitle">
+                        </h1>
                     </div>
                 </div>
                 <div class="row">
@@ -79,7 +78,6 @@
                                 @if (isset($data))
                                     <div class="row">
                                         <div class="upload_heading">
-                                            <h1> Uploaded Files </h1>
                                         </div>
                                         <div class="col-md-12" style="cursor:pointer;">
                                             @for ($i = 0; $i < count($data); $i++)

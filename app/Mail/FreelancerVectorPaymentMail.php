@@ -32,7 +32,7 @@ class FreelancerVectorPaymentMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: ' Vektordateien Freelancer Zahlungsanforderung',
+            subject: 'Vektordateien Freelancer Zahlungsanforderung',
         );
     }
 

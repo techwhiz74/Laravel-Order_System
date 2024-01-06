@@ -24,9 +24,9 @@
                         @endif
                         <form action="{{ __('routes.employer-Passwordupdate') }}" method="post">
                             @csrf
-                            <div class="login_heading">
-                                <h1>SET PASSWORD </h1>
-                            </div>
+                            <h1 class="login_heading">
+                                SET PASSWORD
+                            </h1>
                             <div class="form_dv">
                                 <input type="hidden" value="{{ @$lastSegment }}" name="emp_id">
                             </div>

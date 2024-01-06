@@ -464,7 +464,6 @@
                 <!-- ------------------------Order address details--------------------------- -->
                 <div class="tab">
                     <div class="embroidery_heading">
-                        <h1>Order Address</h1>
                     </div>
 
                     <label>{{ __('embroidery_form.salutation') }}</label>
@@ -568,7 +567,6 @@
                 <!-- ---------------Order File Format Details------------------- -->
                 <div class="tab">
                     <div class="embroidery_heading">
-                        <h1>Order File Upload</h1>
                     </div>
                     <label>{{ __('embroidery_form.file_format') }}</label>
                     <div class="custom-select">

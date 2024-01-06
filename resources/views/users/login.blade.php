@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Lion Werbe GmbH | Bestellsystem Stickprogramme & Vektordateien</title>
+    <meta name="description" content="It is the login page for customer. Please login with your email and password and start order.">
+    <title>Lion Werbe GmbH | Kundenlogin</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
@@ -52,14 +53,14 @@
                         <form method="POST" auto-complete="off" action="{{ __('routes.customer-signin') }}">
                             @csrf
                             <div class="heading_logo">
-                                <div class="login_heading">
-                                    <h1> {{ __('home.login') }}</h1>
-                                </div>
                                 <div class="logo_img">
                                     <a href="{{ asset('/') }}">
                                         <img src="{{ asset('asset/images/lion_werbe_gmbh_logo.webp') }}" alt="empty"
                                             class="login_logo">
                                     </a>
+                                </div>
+                                <div class="login_heading">
+                                    <h1> {{ __('home.login') }}</h1>
                                 </div>
                             </div>
                             <div class="cred_txt">
@@ -91,6 +92,12 @@
                                     <p>{{ __('home.no_account_yet') }}</p>
                                     <a href="{{ __('routes.customer-register') }}" style="padding: 0px 20px;"><i
                                             class="fa-solid fa-user-plus fa-lg" style="color: #c3ac6d"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="lgg_resi">
+                                <div class="resig_lnkk">
+                                    <a href="{{ __('routes.customer-register') }}" style="color:#222">Passwort vergessen?</a>
                                 </div>
                             </div>
 

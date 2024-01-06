@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-1 col-lg-2"></div>
         <div class="col-12 col-md-10 col-lg-8">
-            <div class="pagetitle" id="order_form_title">
+            <h1 class="pagetitle" id="order_form_title">
                 {{ __('home.orderform_title') }}
-            </div>
+            </h1>
             <button style="display: none" id="customer_order_form_mail" type="button"></button>
             <div>
                 <form id="employer_order_submit_form" action="">
@@ -412,7 +412,7 @@
                                             <!-- The fileinput-button span is used to style the file input field as button -->
                                             <span class="fileinput-button">
                                                 <i class="glyphicon glyphicon-plus"></i>
-                                                <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                <span class="file_input_font">{{ __('home.add_file') }}...</span>
                                                 <input type="file" name="files[]" multiple
                                                     id="employer_order_form_file_input" />
                                             </span>

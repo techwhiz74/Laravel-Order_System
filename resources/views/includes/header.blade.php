@@ -45,11 +45,11 @@
             <div class="dropdown">
                 <div class="language_p">
                     @if (auth()->user())
-                        <p style="margin-bottom: 0 !important; margin-right:10px;"><a
+                        <p style="margin-bottom: 0 !important;"><a
                                 style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
                         </p>
                     @else
-                        <p style="margin-bottom: 0 !important; margin-right:10px;"><a
+                        <p style="margin-bottom: 0 !important;"><a
                                 href="{{ __('routes.customer-register') }}"
                                 style="text-decoration: none;color: #282828;"><strong>{{ __('home.header_reisteration_link') }}</strong></a>
                         </p>

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle" style="padding-bottom: 1vw !important;">Alle Aufträge
-            </div>
+            <h1 class="pagetitle" style="padding-bottom: 1vw !important;">Alle Aufträge
+            </h1>
             <div>
                 <button id="admin_all_table_reload_button" style="display: none"></button>
                 <div>
@@ -52,7 +52,7 @@
                             <div class="tableColumn dropdown" style="margin-left: 24px;">
                                 <button class="tableCloumnBtton dropdown-toggle" href="#"
                                     data-bs-toggle="dropdown">
-                                    <img src="/asset/images/tableColumn.svg" class="columnImage" alt="">
+                                    <img src="/asset/images/tableColumn.svg" class="columnImage" alt="table column">
                                     <span>{{ __('home.column') }}</span>
                                 </button>
                                 <div class="dropdown-menu megamenu" role="menu"

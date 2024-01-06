@@ -7,8 +7,8 @@
             <div class="row modal_page_view">
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
-                    <div class="pagetitle">{{ __('home.customer_ve_parameters') }}
-                    </div>
+                    <h1 class="pagetitle">{{ __('home.customer_ve_parameters') }}
+                    </h1>
                     <div>
                         <div class="row">
                             <div class="col-12">

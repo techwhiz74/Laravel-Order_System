@@ -37,7 +37,7 @@ class ChangeVeFreelacnerEndJobAdminMail extends Mailable
     {
         return new Envelope(
             from: env('MAIL_FROM_ADDRESS'),
-            subject: 'Abgeschlossene Bestellung Stickprogramm | ' . $this->customer->customer_number . '-' . $this->order->order_number,
+            subject: 'Abgeschlossene Bestellung Vektordatei | ' . $this->customer->customer_number . '-' . $this->order->order_number,
         );
     }
 

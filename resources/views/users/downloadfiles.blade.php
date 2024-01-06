@@ -7,9 +7,8 @@
         <div class="padding-30">
             <div class="row">
                 <div class="col-12">
-                    <div class="pagetitle">
-                        <h1>Delivery Files Download </h1>
-                    </div>
+                    <h1 class="pagetitle">
+                    </h1>
                 </div>
             </div>
             @if ($files != '')
@@ -22,7 +21,6 @@
                                         @foreach ($data as $item)
                                             <div class="item download-files-item">
 
-                                                <img src="{{ asset('/images/files.svg') }}" width="40" height="40">
                                                 <rect class="cls-637647fac3a86d32eae6f27d-1" x="7.23" y="11.05"
                                                     width="5.73" height="6.68"></rect>
                                                 <polygon class="cls-637647fac3a86d32eae6f27d-1"

@@ -8,8 +8,8 @@
                 <div class="col-md-1 col-xl-2"></div>
                 <div class="col-12 col-md-10 col-xl-8">
                     <div class="modal-body" style="font-size: 13px; font-family:'Inter'; overflow-y:auto">
-                        <div class="pagetitle">Bearbeitung von Kundenprofilanfragen
-                        </div>
+                        <h1 class="pagetitle">Bearbeitung von Kundenprofilanfragen
+                        </h1>
                         <input type="hidden" name="selected_customer_id" value="" />
                         <div class="container differences-text" style="padding: 10px">
                         </div>

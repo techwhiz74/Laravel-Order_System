@@ -419,7 +419,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -475,7 +475,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -531,7 +531,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -587,7 +587,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -606,7 +606,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -657,7 +657,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -676,7 +676,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -841,7 +841,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="EmbroideryDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -886,7 +886,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) use ($change_data) {
@@ -925,7 +925,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) use ($change_data) {
@@ -985,7 +985,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1041,7 +1041,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1097,7 +1097,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1152,7 +1152,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1171,7 +1171,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -1222,7 +1222,7 @@ class FreelancerController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="freeOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1241,7 +1241,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -1557,7 +1557,7 @@ class FreelancerController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="VectorDetailRequest(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -1590,7 +1590,7 @@ class FreelancerController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) use ($change_data) {
@@ -1928,8 +1928,8 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $token = 'xoxb-5817937631651-6368073639350-rrO1ZY2om4Lsr9cyulM6s3Zg';
-        $channel = 'D06BDA54KHP';  // The ID of the channel or user where you want to send the message
+        $token = 'xoxb-5817937631651-6432446406258-n6lNZ0Xl2gcek2YMx80jmvl1';
+        $channel = 'D06CQ9U2LAF';  // The ID of the channel or user where you want to send the message
         $payload = [
             "token" => $token,
             "channel" => $channel,
@@ -1953,21 +1953,20 @@ class FreelancerController extends Controller
     }
     public function emRecieveSlackMessage(Request $request)
     {
-        return response()->json($request->all());
 
-        // \Log::info("This is em freelacner slack", $request->all());
-        // $requestData = $request->all();
-        // if ($requestData['event']['type'] == 'message') {
-        //     $message = $requestData['event']['text'];
-        //     if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06BDA54KHP') {
-        //         $chat_message = new ChatMessage();
-        //         $chat_message->chat_id = 12;
-        //         $chat_message->chat_type = 'em_freelancer';
-        //         $chat_message->send_id = 1;
-        //         $chat_message->message = $message;
-        //         $chat_message->save();
-        //     }
-        // }
+        \Log::info("This is em freelacner slack", $request->all());
+        $requestData = $request->all();
+        if ($requestData['event']['type'] == 'message') {
+            $message = $requestData['event']['text'];
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06CQ9U2LAF') {
+                $chat_message = new ChatMessage();
+                $chat_message->chat_id = 12;
+                $chat_message->chat_type = 'em_freelancer';
+                $chat_message->send_id = 1;
+                $chat_message->message = $message;
+                $chat_message->save();
+            }
+        }
     }
     public function veRecieveSlackMessage(Request $request)
     {
@@ -1975,7 +1974,7 @@ class FreelancerController extends Controller
         $requestData = $request->all();
         if ($requestData['event']['type'] == 'message') {
             $message = $requestData['event']['text'];
-            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06AWUHNPK7') {
+            if (isset($requestData['event']['client_msg_id']) && $requestData['event']['channel'] == 'D06CHPYQR8W') {
                 $chat_message = new ChatMessage();
                 $chat_message->chat_id = 13;
                 $chat_message->chat_type = 've_freelancer';
@@ -2010,8 +2009,8 @@ class FreelancerController extends Controller
             $chat_message->message = $message;
             $chat_message->save();
         }
-        $token = 'xoxb-5817937631651-6396680901392-cI0JZHltxI23edV7TRCLpoM2';
-        $channel = 'D06AWUHNPK7';  // The ID of the channel or user where you want to send the message
+        $token = 'xoxb-5817937631651-6445086705457-Xie96IlviGQvCPgCXPgW2xcC';
+        $channel = 'D06CHPYQR8W';  // The ID of the channel or user where you want to send the message
         $payload = [
             "token" => $token,
             "channel" => $channel,

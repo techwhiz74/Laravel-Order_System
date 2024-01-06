@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">{{ __('home.customer_ve_parameters') }}
-            </div>
+            <h1 class="pagetitle">{{ __('home.customer_ve_parameters') }}
+            </h1>
             <button style="display: none;" id="admin_parameter_ve_table_reload_button"></button>
             <div>
                 <input type="hidden" name="admin_ve_parameter_customer_id">
@@ -22,9 +22,8 @@
                                 <th>{{ __('home.postal_code') }}</th>
                                 <th>{{ __('home.location') }}</th>
                                 <th>{{ __('home.country') }}</th>
-                                <th style="max-width: 50px !important; text-align:center;"><img
-                                        src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon">
-                                </th>
+                                <th style="text-align:center;"><img
+                                    src="{{ asset('asset/images/DetailIcon_admin.svg') }}" alt="order-detail-icon" class="icon_size">
                             </tr>
                         </thead>
                         <tbody></tbody>

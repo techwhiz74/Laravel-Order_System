@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">
+            <h1 class="pagetitle">
                 {{ __('home.dashboard_progress_order') }}
-            </div>
+            </h1>
             <div>
                 <div>
                     <button id="ve_freelancer_yellow_table_reload_button" style="display: none"></button>

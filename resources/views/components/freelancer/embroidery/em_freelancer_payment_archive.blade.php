@@ -7,9 +7,9 @@
             <div class="row modal_page_view">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
-                    <div class="pagetitle">
+                    <h1 class="pagetitle">
                         Payment Achive
-                    </div>
+                    </h1>
                     <div style="font-size: 13px; font-family:'Inter';">
                         <div class="responsive-table">
                             <button id="em_freelancer_payment_archive_table_reload_button"

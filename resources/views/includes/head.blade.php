@@ -2,6 +2,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="description" content="It is the first page for order system. Admin, customer, freelancer use this system.">
 
 <!-- Fonts -->
 <title>{{ __('home.system_title') }}</title>
@@ -110,6 +111,19 @@
             });
         }
     }
+    $(function () {
+        if (window.innerWidth <= 992) {
+            $('#admin_all_table > thead > tr > th:eq(5)').text("");
+            $('#admin_all_table > thead > tr > th:eq(6)').text("");
+            $('#admin_all_table > thead > tr > th:eq(7)').text("");
+            $('#admin_all_table > thead > tr > th:eq(8)').text("");
+            $('#admin_all_table > thead > tr > th:eq(9)').text("");
+            $('#view-order > thead > tr > th:eq(6)').text("");
+            $('#view-order > thead > tr > th:eq(7)').text("");
+            $('#view-order > thead > tr > th:eq(8)').text("");
+            $('#view-order > thead > tr > th:eq(9)').text("");
+        }
+    })
 </script>
 
 <script src="{{ asset('asset/js/jquery.multiselect.js') }}"></script>

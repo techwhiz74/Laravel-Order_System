@@ -6,8 +6,8 @@
             <div class="row modal_page_view">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
-                    <div class="pagetitle">
-                        {{ __('home.order_change') }}</div>
+                    <h1 class="pagetitle">
+                        {{ __('home.order_change') }}</h1>
                     <button style="display: none" id="order_request_mail" type="button"></button>
                     <button style="display: none" id="order_request_text_mail" type="button"></button>
                     <div style="font-size: 13px">
@@ -41,8 +41,7 @@
                                                     <!-- The fileinput-button span is used to style the file input field as button -->
                                                     <span class="fileinput-button">
                                                         <i class="glyphicon glyphicon-plus"></i>
-                                                        <span
-                                                            style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                        <span class="file_input_font">{{ __('home.add_file') }}...</span>
                                                         <input type="file" name="files[]" multiple
                                                             id="order_change_file_input" />
                                                     </span>

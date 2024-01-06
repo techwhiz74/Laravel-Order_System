@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle" style="padding-bottom: 1vw !important;">
+            <h1 class="pagetitle" style="padding-bottom: 1vw !important;">
                 {{ __('home.overview_of_orders') }}
-            </div>
+            </h1>
             <div>
                 <div class="tableControl">
                     <div class="controlGroup1">
@@ -39,7 +39,7 @@
                     <div class="controlGroup2">
                         <div class="tableColumn dropdown">
                             <button class="tableCloumnBtton dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                <img src="/asset/images/tableColumn.svg" class="columnImage" alt="">
+                                <img src="/asset/images/tableColumn.svg" class="columnImage" alt="table column">
                                 <span>{{ __('home.column') }}</span>
                             </button>
                             <div class="dropdown-menu megamenu" role="menu"
@@ -111,7 +111,7 @@
                                     </th>
                                     <th style="text-align:center;">{{ __('home.change') }}
                                     </th>
-                                    <th style="text-align:center;">{{ __('home.request') }}
+                                    <th style="text-align:center;">Änderung
                                     </th>
                                 </tr>
                             </thead>

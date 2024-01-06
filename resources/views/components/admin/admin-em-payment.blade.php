@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">Abrechnung Stickprogramme
-            </div>
+            <h1 class="pagetitle">Abrechnung Stickprogramme
+            </h1>
             <div>
                 <div>
                     <button style="display: none" id="admin_em_payment_sum_cal"></button>
@@ -25,7 +25,7 @@
                             <tbody></tbody>
                         </table>
                     </div>
-                    <div style="display:flex; justify-content:end; margin: -60px 0 30px 0;">
+                    <div style="display:flex; justify-content:end; margin: -40px 0 30px 0;">
                         <div class="total_count_number" id="admin_em_sum">
                         </div>
                     </div>

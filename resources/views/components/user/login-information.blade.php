@@ -2,9 +2,9 @@
     <div class="row">
         <div class="col-md-1 col-xl-2"></div>
         <div class="col-12 col-md-10 col-xl-8">
-            <div class="pagetitle">
+            <h1 class="pagetitle">
                 {{ __('home.right_top_box_name') }}
-            </div>
+            </h1>
             <div class="tab-content">
                 <div class="responsive-table" style="width: 100%; font-size:13px">
                     <button style="display:none" id="customer_staffs_reload_button"></button>

@@ -6,8 +6,8 @@
             <div class="row modal_page_view">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
-                    <div class="pagetitle">Änderungsanforderungen
-                    </div>
+                    <h1 class="pagetitle">Änderungsanforderungen
+                    </h1>
                     <div style="font-size: 13px; font-family:'Inter';">
                         <div style="margin-bottom: 5px">
                             <div class="row">
@@ -318,7 +318,7 @@
                                             <nav class="navbar navbar-expand-lg navbar-light bg-light"
                                                 style="padding: 0; background:#eee !important; border:1px solid #ddd; border-bottom:none;">
                                                 <div style="padding: 0">
-                                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-bottom:0 !important;">
                                                         <li class="request_li" type="button" id="admin_change1">
                                                             {{ __('home.change1') }}
                                                         </li>
@@ -337,10 +337,9 @@
                                         </div>
                                         <div class="col-12">
                                             <div style="display: flex; justify-content:flex-end; margin-bottom:5px;">
-                                                <button class="btn btn-primary btn-sm"
-                                                    onclick="admin_change_multipleDownload()"
-                                                    style="background-color:#c3ac6d; border:none; font-size:13px;"><i
-                                                        class="fa-solid fa-download"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
+                                                <button class="btn btn-primary btn-sm multidownload_button"
+                                                    onclick="admin_change_multipleDownload()"><i
+                                                        class="fa-solid fa-download download_icon" style="color:#fff"></i>&nbsp&nbsp{{ __('home.alldownload') }}</button>
                                             </div>
                                         </div>
                                         <div class="col-12 file_view_flex_toggle">
@@ -352,7 +351,7 @@
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -366,7 +365,7 @@
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -380,7 +379,7 @@
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -394,7 +393,7 @@
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -402,13 +401,13 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item" style="margin-top: 5px;">
+                                                    <li class="nav-item folder_button_position">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_1">
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -416,13 +415,13 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item" style="margin-top: 5px;">
+                                                    <li class="nav-item folder_button_position">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_2">
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -430,13 +429,13 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item" style="margin-top: 5px;">
+                                                    <li class="nav-item folder_button_position">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_3">
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -444,13 +443,13 @@
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    <li class="nav-item" style="margin-top: 5px;">
+                                                    <li class="nav-item folder_button_position">
                                                         <div class="folder_button" type="button"
                                                             id="admin_change_subfolder_structure4_4">
                                                             <div
                                                                 style="height: 54%;margin-bottom: 5px;padding: 0; text-align:center;">
                                                                 <img src="{{ asset('asset/images/folder-open-duotone.svg') }}"
-                                                                    style="width: 37px;">
+                                                                    style="width: 37px;" alt="open">
                                                             </div>
                                                             <div style="height: 40%;padding: 3px 0;">
                                                                 <p>
@@ -520,8 +519,7 @@
                                                                         <!-- The fileinput-button span is used to style the file input field as button -->
                                                                         <span class="fileinput-button">
                                                                             <i class="glyphicon glyphicon-plus"></i>
-                                                                            <span
-                                                                                style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                                            <span class="file_input_font">{{ __('home.add_file') }}...</span>
                                                                             <input type="file" name="files[]"
                                                                                 multiple
                                                                                 id="admin_change_file_input" />

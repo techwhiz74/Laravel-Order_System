@@ -335,7 +335,6 @@ By agreeing, you accept the currently valid price list and its surcharges. These
     'em_price_title1' => 'Our prices for',
     'em_price_title2' => 'creating embroidery programs',
     'em_price_text1' => 'Three affordable fixed prices for creating your embroidery file',
-    'standard_delivery' => 'Standard Delivery',
     'em_price_li11' => 'Longest side up to 100mm',
     'em_price_li12' => 'Longest side up to 300mm',
     'em_price_li13' => 'Longest side from 300mm',

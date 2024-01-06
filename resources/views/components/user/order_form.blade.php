@@ -7,9 +7,9 @@
     <div class="row">
         <div class="col-md-1 col-lg-2"></div>
         <div class="col-12 col-md-10 col-lg-8">
-            <div class="pagetitle" id="order_form_title">
+            <h1 class="pagetitle" id="order_form_title">
                 {{ __('home.orderform_title') }}
-            </div>
+            </h1>
             <button style="display: none" id="customer_order_form_mail" type="button"></button>
             <div>
                 <form id="order_submit_form" action="">
@@ -390,7 +390,7 @@
                                 </div>
                                 <div class="col-12 col-sm-9 col-xl-10">
                                     <textarea id="order_form_textarea" name="special_instructions" class="form-control"
-                                        placeholder="{{ __('home.order_form_textarea_placeholder') }}" style="height:100px"></textarea>
+                                        placeholder="{{ __('home.order_form_textarea_placeholder') }}"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -412,7 +412,7 @@
                                             <!-- The fileinput-button span is used to style the file input field as button -->
                                             <span class="fileinput-button">
                                                 <i class="glyphicon glyphicon-plus"></i>
-                                                <span style="font-size: 13px;">{{ __('home.add_file') }}...</span>
+                                                <span class="file_input_font">{{ __('home.add_file') }}...</span>
                                                 <input type="file" name="files[]" multiple
                                                     id="order_form_file_input" />
                                             </span>
@@ -452,8 +452,7 @@
                     <div style="display: flex;">
                         <input type="checkbox" id="order_form_checkbox" style="width:30px; height:20px;" />
                         <div style="margin-left: 20px;">
-                            <label for="order_form_checkbox"
-                                style="line-height:normal; font-size:11px !important;">{{ __('home.order_form_sentence') }}</label>
+                            <label for="order_form_checkbox" class="order_form_sentence">{{ __('home.order_form_sentence') }}</label>
                             <div class="order_form_validation_checkbox">
                                 {{ __('home.validation_checkbox') }}
                             </div>

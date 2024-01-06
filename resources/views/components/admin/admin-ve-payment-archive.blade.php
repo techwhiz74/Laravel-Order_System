@@ -7,8 +7,8 @@
                 <div class="row modal_page_view">
                     <div class="col-xl-1"></div>
                     <div class="col-12 col-xl-10">
-                        <div class="pagetitle">Zahlungsarchiv
-                        </div>
+                        <h1 class="pagetitle">Zahlungsarchiv
+                        </h1>
                         <div style="font-size: 13px; font-family:'Inter';">
                             <div class="responsive-table">
                                 <button id="admin_ve_payment_archive_table_reload_button"

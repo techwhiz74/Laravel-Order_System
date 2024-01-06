@@ -23,13 +23,13 @@
                   {% if (!i && !o.options.autoUpload) { %}
                       <button class="upload_table_button start" disabled>
                           <i class="glyphicon glyphicon-upload"></i>
-                          <span style="font-size:13px;">START</span>
+                          <span>START</span>
                       </button>
                   {% } %}
                   {% if (!i) { %}
                       <button class="upload_table_button cancel">
                           <i class="glyphicon glyphicon-ban-circle"></i>
-                          <span style="font-size:13px;">{{ __(('home.cancel')) }}</span>
+                          <span>{{ __(('home.cancel')) }}</span>
                       </button>
                   {% } %}
               </td>
@@ -43,7 +43,7 @@
               <td>
                   <span class="preview">
                       {% if (file.thumbnailUrl) { %}
-                          <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                          <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}" alt="template-image"></a>
                       {% } %}
                   </span>
               </td>

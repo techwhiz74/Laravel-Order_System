@@ -7,12 +7,12 @@
             <div class="row modal_page_view">
                 <div class="col-xl-1"></div>
                 <div class="col-12 col-xl-10">
-                    <div class="pagetitle" id="staff_popup_title">
-                    </div>
+                    <h1 class="pagetitle" id="staff_popup_title">
+                    </h1>
                     <form id="add_employee_submit_form" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" id="employee_id" value="">
-                        <div class="row" style="font-size: 13px; font-family:Inter; margin-bottom:10px;">
+                        <div class="row creat_staff_interface">
                             <div class="col-xs-12 col-sm-12 col-md-12" style="margin: 5px 0;">
                                 <div class="form-group">{{ __('home.staff_create_name') }}
                                     <input type="text" id="name" class="form-control" placeholder=""
@@ -42,6 +42,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 <script>
     $.ajaxSetup({

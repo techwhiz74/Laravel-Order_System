@@ -332,7 +332,7 @@ class AdminController extends Controller
                     $edit = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="editCustomerProfile(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
+                                <button onclick="editCustomerProfile(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button>
                             </div>
                         </div>';
                     return $edit;
@@ -355,7 +355,7 @@ class AdminController extends Controller
                 ->addColumn('delete', function ($row) {
                     $delete = '<div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="DeleteCustomer(' . $row->id . ')" style="border:none; background-color:inherit;"><i class="fa-solid fa-trash" style="color:#c4ae79; font-size:14px;"></i></button>
+                                <button onclick="DeleteCustomer(' . $row->id . ')" style="border:none; background-color:inherit; display:block; margin:auto;"><img src="' . asset('asset/images/trash-solid.svg') . '" alt="order-delete-icon" class="icon_size"></button>
                             </div>
                         </div>';
                     return $delete;
@@ -821,7 +821,7 @@ class AdminController extends Controller
                     $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="openEmParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
+                                <button onclick="openEmParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button>
                             </div>
                         </div>';
 
@@ -840,7 +840,7 @@ class AdminController extends Controller
                     $parameter = '
                         <div class="d-flex" style="gap:20px;">
                             <div style="display: flex; margin:auto;">
-                                <button onclick="openVeParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>
+                                <button onclick="openVeParameter(' . $row->id . ')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button>
                             </div>
                         </div>';
                     return $parameter;
@@ -1038,7 +1038,7 @@ class AdminController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1093,7 +1093,7 @@ class AdminController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1149,7 +1149,7 @@ class AdminController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1164,7 +1164,7 @@ class AdminController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
-                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
+                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '" class="icon_size"></button>';
                     }
                     return $btn;
                 })
@@ -1212,7 +1212,7 @@ class AdminController extends Controller
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button></div>';
+                    $btn = '<div style="width:100%;text-align:center;"><button style="border:none; background:none; " onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button></div>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1231,7 +1231,7 @@ class AdminController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -1337,13 +1337,13 @@ class AdminController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if ($row->status == "Ausgeliefert" || $row->status == "Änderung") {
-                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '"></button>';
+                        $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderChangeModal(' . $row->id . ')"><img src="' . asset('asset/images/ÄndernIcon.svg') . '" class="icon_size"></button>';
                     }
                     return $btn;
                 })
                 ->addColumn('detail', function ($row) {
 
-                    $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" ></button>';
+                    $btn = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="AdminOpenOrderDetailModal(' . $row->id . ', \'Originaldatei\')"><img src="' . asset('asset/images/DetailIcon.svg') . '" alt="order-detail-icon" class="icon_size"></button>';
                     return $btn;
                 })
                 ->addColumn('deliver_time', function ($row) {
@@ -1356,7 +1356,7 @@ class AdminController extends Controller
                     return $deliver_time;
                 })
                 ->addColumn('delete', function ($row) {
-                    $delete = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="deleteOrder(' . $row->id . ')"><img src="' . asset('asset/images/trash-solid.svg') . '" alt="order-delete-icon" ></button>';
+                    $delete = '<button style="border:none; background:inherit; display:block; margin:auto;" onclick="deleteOrder(' . $row->id . ')"><img src="' . asset('asset/images/trash-solid.svg') . '" alt="order-delete-icon" class="icon_size"></button>';
                     return $delete;
                 })
                 ->addColumn('request', function ($row) {
@@ -1366,7 +1366,7 @@ class AdminController extends Controller
                         $req = '
                                 <div class="d-flex" style="gap:20px;">
                                     <div style="display: flex; margin:auto;">
-                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '"></button>
+                                        <button onclick="AdminChange(' . $row->id . ', \'Originaldatei\')" style="border:none; background-color:inherit;"><img src="' . asset('asset/images/triangle-person-digging-duotone.svg') . '" class="icon_size"></button>
                                     </div>
                                 </div>
                             ';
@@ -1612,7 +1612,7 @@ class AdminController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) use ($change_data) {
@@ -1650,7 +1650,7 @@ class AdminController extends Controller
 
                 ->addColumn('download', function ($row) {
 
-                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download" style="font-size:14px; color:#c4ae79;"></i></button></a>';
+                    $btn = '<a href="' . asset($row->base_url) . '" download><button type="button" style="background:none; border:none; padding:0;"><i class="fa-solid fa-download download_icon"></i></button></a>';
                     return $btn;
                 })
                 ->addColumn('delete', function ($row) {

@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-xl-1"></div>
         <div class="col-12 col-xl-10">
-            <div class="pagetitle">Änderungsanforderungen
-            </div>
+            <h1 class="pagetitle">Änderungsanforderungen
+            </h1>
             <div>
                 <button id="admin_blue_table_reload_button" style="display: none"></button>
                 <div class="responsive-table">

@@ -32,9 +32,9 @@
     <div class="row">
         <div class="col-md-1 col-xl-2"></div>
         <div class="col-12 col-md-10 col-xl-8">
-            <div class="pagetitle">
+            <h1 class="pagetitle">
                 {{ __('home.sample_customer') }}
-            </div>
+            </h1>
             <form id="request_profile_form" action="" class="order_fome_container">
                 <div class="customer_profile_page">
                     <input type="hidden" name="customer_id" value="{{ auth()->user()->id }}" />

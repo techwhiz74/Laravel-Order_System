@@ -145,7 +145,7 @@
             $(instance.element).addClass('jqmsLoaded ms-list-' + instance.listNumber).data('plugin_multiselect-instance', instance);
 
             // add option container
-            $(instance.element).after('<div id="ms-list-' + instance.listNumber + '" class="ms-options-wrap"><button type="button"><span style="font-size:13px;">None Selected</span></button><div class="ms-options"><ul></ul></div></div>');
+            $(instance.element).after('<div id="ms-list-' + instance.listNumber + '" class="ms-options-wrap"><button type="button"><span class="multiselect_font">None Selected</span></button><div class="ms-options"><ul></ul></div></div>');
 
             var placeholder = $(instance.element).siblings('#ms-list-' + instance.listNumber + '.ms-options-wrap').find('> button:first-child');
             var optionsWrap = $(instance.element).siblings('#ms-list-' + instance.listNumber + '.ms-options-wrap').find('> .ms-options');
@@ -580,7 +580,7 @@
                     // setup container
                     if (appendContainer) {
                         container.addClass('optgroup');
-                        container.append('<span class="label" style="font-size:13px;">' + thisOption.label + '</span>');
+                        container.append('<span class="label multiselect_font" >' + thisOption.label + '</span>');
                         container.find('> .label').css({
                             clear: 'both'
                         });

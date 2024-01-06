@@ -379,7 +379,6 @@ color: #6f6868;
             <!-- ------------------------Order address details--------------------------- -->
             <div class="tab">
                 <div class="vector_heading">
-                    <h1>Order Address:</h1>
                 </div>
 
                 <label>{{ __('embroidery_form.salutation') }}</label>
@@ -457,7 +456,6 @@ color: #6f6868;
             <!-- ---------------Order File Format Details------------------- -->
             <div class="tab">
                 <div class="vector_heading">
-                    <h1>Order File Format</h1>
                 </div>
                 <label>{{__('vector_form.file_format')}}</label>
                 <div class="custom-select">
@@ -534,7 +532,6 @@ color: #6f6868;
             <!-- ---------------Order File Upload Details------------------- -->
             <div class="tab">
                 <div class="vector_heading">
-                    <h1>Order File Upload:</h1>
                 </div>
                 <div class="row">
                     <label class="col-10">{{__('vector_form.file_upload')}}</label>

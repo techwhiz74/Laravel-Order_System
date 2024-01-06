@@ -156,33 +156,33 @@
                                                             <tr>
                                                                 <td>
                                                                     <table
-                                                                        style="margin-right:150px; margin-top:180px;">
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <td class="contact_item">
-                                                                                    <a
-                                                                                        href="https://www.instagram.com/lionwerbung">
-                                                                                        <img src="{{ asset('asset/images/instagram.png') }}"
-                                                                                            style="width: 20px;">
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td class="contact_item">
-                                                                                    <a
-                                                                                        href="https://www.facebook.com/lionwerbung">
-                                                                                        <img src="{{ asset('asset/images/facebook.png') }}"
-                                                                                            style="width: 25px;">
-                                                                                    </a>
-                                                                                </td>
-                                                                                <td class="contact_item">
-                                                                                    <a
-                                                                                        href="https://api.whatsapp.com/send?phone=+4980369099894">
-                                                                                        <img src="{{ asset('asset/images/whatsapp.png') }}"
-                                                                                            style="width: 20px;">
-                                                                                    </a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                                    style="margin-right:150px; margin-top:180px;">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td class="contact_item">
+                                                                                <a
+                                                                                    href="https://www.instagram.com/lionwerbung">
+                                                                                    <img src="{{ asset('asset/images/instagram.png') }}"
+                                                                                        style="width: 20px;" alt="email_icon">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="contact_item">
+                                                                                <a
+                                                                                    href="https://www.facebook.com/lionwerbung">
+                                                                                    <img src="{{ asset('asset/images/facebook.png') }}"
+                                                                                        style="width: 25px;" alt="email_icon">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td class="contact_item">
+                                                                                <a
+                                                                                    href="https://api.whatsapp.com/send?phone=+4980369099894">
+                                                                                    <img src="{{ asset('asset/images/whatsapp.png') }}"
+                                                                                        style="width: 20px;" alt="email_icon">
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -273,7 +273,7 @@
                                                                     <td class="content_font_left">Gewünschte Größe (in
                                                                         mm)
                                                                     </td>
-                                                                    <td class="content_font_right">{{ $order->size }}
+                                                                    <td class="content_font_right">{{ $order->size }} {{ $order->width_height }}
                                                                     </td>
                                                                 </tr>
                                                             @endif
