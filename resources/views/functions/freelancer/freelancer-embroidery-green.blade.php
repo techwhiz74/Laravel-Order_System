@@ -6,7 +6,6 @@
     });
 
     var em_freelancer_green_table;
-
     $(function() {
         em_freelancer_green_table = $('#em_freelancer_green_table').DataTable({
             responsive: true,
