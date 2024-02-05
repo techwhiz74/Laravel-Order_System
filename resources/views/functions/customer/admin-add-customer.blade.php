@@ -1,0 +1,31 @@
+<script>
+    $(function() {
+        $('#admin_add_customer1').click(function() {
+            $('[name=add_customer_number]').val("");
+            $('[name=add_company]').val("");
+            $('[name=add_company_addition]').val("");
+            $('[name=add_name]').val("");
+            $('[name=add_first_name]').val("");
+            $('[name=add_street_number]').val("");
+            $('[name=add_postal_code]').val("");
+            $('[name=add_location]').val("");
+            $('[name=add_country]').val("");
+            $('[name=add_email]').val("");
+            $('[name=add_website]').val("");
+            $('[name=add_phone]').val("");
+            $('[name=add_mobile]').val("");
+            $('[name=add_password]').val("");
+            $('[name=add_tax_number]').val("");
+            $('[name=add_vat_number]').val("");
+            $('[name=add_register_number]').val("");
+            $('[name=add_kd_group]').val("");
+            $('[name=add_kd_category]').val("");
+            $('[name=add_payment_method]').val("");
+            $('[name=add_bank_name]').val("");
+            $('[name=add_IBAN]').val("");
+            $('[name=add_BIC]').val("");
+            $('.add_customer_validation_email').hide();
+            $('.add_customer_validation_password').hide();
+        })
+    })
+</script>
