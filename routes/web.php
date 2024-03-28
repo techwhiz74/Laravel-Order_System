@@ -11,9 +11,6 @@ use App\Http\Controllers\DeliveryFileController;
 use App\Http\Middleware\LoginMiddleware;
 use App\Http\Middleware\RoleMiddleware;
 
-
-
-
 Route::get('/team', [FreelancerController::class, 'goFreelancerLogin'])->name('team');
 Route::get('/admin', [AdminController::class, 'goAdminLogin'])->name('admin');
 Route::get('/{locale?}', [CustomerController::class, 'homePage'])->name('homepage');
